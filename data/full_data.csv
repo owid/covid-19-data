@@ -94,8 +94,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-02,Australia,2,,27,1
 2020-03-03,Australia,6,0,33,1
 2020-03-04,Australia,10,0,43,1
-2020-03-05,Australia,23,2,66,3
-2020-03-06,Australia,-9,-1,57,2
+2020-03-05,Australia,14,0,57,1
+2020-03-06,Australia,0,1,57,2
 2020-03-07,Australia,5,0,62,2
 2020-03-08,Australia,12,1,74,3
 2020-03-09,Australia,3,0,77,3
@@ -720,8 +720,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-02-20,International conveyance (Diamond Princess),79,,621,2
 2020-02-21,International conveyance (Diamond Princess),13,0,634,2
 2020-02-22,International conveyance (Diamond Princess),0,0,634,2
-2020-02-23,International conveyance (Diamond Princess),0,3,634,5
-2020-02-24,International conveyance (Diamond Princess),61,-2,695,3
+2020-02-23,International conveyance (Diamond Princess),0,1,634,3
+2020-02-24,International conveyance (Diamond Princess),61,0,695,3
 2020-02-25,International conveyance (Diamond Princess),-4,0,691,3
 2020-02-26,International conveyance (Diamond Princess),0,0,691,3
 2020-02-27,International conveyance (Diamond Princess),14,1,705,4
@@ -855,8 +855,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-02-02,Japan,3,,20,
 2020-02-03,Japan,0,,20,
 2020-02-04,Japan,0,,20,
-2020-02-05,Japan,13,,33,
-2020-02-06,Japan,-8,,25,
+2020-02-05,Japan,3,,23,
+2020-02-06,Japan,2,,25,
 2020-02-07,Japan,0,,25,
 2020-02-08,Japan,0,,25,
 2020-02-09,Japan,1,,26,
@@ -1023,8 +1023,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-10,Martinique,0,,2,
 2020-02-29,Mexico,,,2,
 2020-03-01,Mexico,0,,2,
-2020-03-02,Mexico,-1,,1,
-2020-03-03,Mexico,4,,5,
+2020-03-02,Mexico,3,,5,
+2020-03-03,Mexico,0,,5,
 2020-03-04,Mexico,0,,5,
 2020-03-05,Mexico,0,,5,
 2020-03-06,Mexico,0,,5,
@@ -1872,8 +1872,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-02-02,Worldwide,2604,45,14557,305
 2020-02-03,Worldwide,2834,57,17391,362
 2020-02-04,Worldwide,3239,64,20630,426
-2020-02-05,Worldwide,3923,66,24554,492
-2020-02-06,Worldwide,3702,73,28276,565
+2020-02-05,Worldwide,3913,66,24544,492
+2020-02-06,Worldwide,3712,73,28276,565
 2020-02-07,Worldwide,3205,73,31481,638
 2020-02-08,Worldwide,3405,86,34886,724
 2020-02-09,Worldwide,2672,89,37558,813
@@ -1890,19 +1890,19 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-02-20,Worldwide,542,115,75748,2129
 2020-02-21,Worldwide,1021,118,76769,2247
 2020-02-22,Worldwide,1023,112,77794,2359
-2020-02-23,Worldwide,1017,104,78811,2465
-2020-02-24,Worldwide,517,153,79331,2618
+2020-02-23,Worldwide,1017,102,78811,2463
+2020-02-24,Worldwide,517,155,79331,2618
 2020-02-25,Worldwide,896,82,80239,2700
 2020-02-26,Worldwide,864,62,81109,2762
 2020-02-27,Worldwide,1175,42,82294,2804
 2020-02-28,Worldwide,1353,54,83652,2858
 2020-02-29,Worldwide,1748,66,85403,2924
 2020-03-01,Worldwide,1727,53,87137,2977
-2020-03-02,Worldwide,1797,64,88944,3043
-2020-03-03,Worldwide,1916,67,90869,3112
+2020-03-02,Worldwide,1801,64,88948,3043
+2020-03-03,Worldwide,1912,67,90869,3112
 2020-03-04,Worldwide,2217,86,93090,3198
-2020-03-05,Worldwide,2229,81,95333,3282
-2020-03-06,Worldwide,2855,97,98192,3380
+2020-03-05,Worldwide,2220,79,95324,3280
+2020-03-06,Worldwide,2864,99,98192,3380
 2020-03-07,Worldwide,3730,104,101927,3486
 2020-03-08,Worldwide,3644,96,105592,3584
 2020-03-09,Worldwide,3979,224,109577,3809
