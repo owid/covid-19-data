@@ -1,3 +1,3 @@
 /data/*
-  Cache-Control: public, max-age=0, s-maxage=31556926, must-revalidate
+  Cache-Control: public, max-age=0, s-maxage=1800, must-revalidate
   Access-Control-Allow-Origin: *
