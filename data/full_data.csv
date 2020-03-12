@@ -15,9 +15,11 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Afghanistan,0,,4,
 2020-03-10,Afghanistan,0,,4,
 2020-03-11,Afghanistan,0,,4,
+2020-03-12,Afghanistan,3,,7,
 2020-03-09,Albania,,,2,
 2020-03-10,Albania,0,,2,
 2020-03-11,Albania,8,,10,
+2020-03-12,Albania,0,,10,
 2020-02-26,Algeria,,,1,
 2020-02-27,Algeria,0,,1,
 2020-02-28,Algeria,0,,1,
@@ -33,6 +35,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Algeria,3,,20,
 2020-03-10,Algeria,0,,20,
 2020-03-11,Algeria,0,,20,
+2020-03-12,Algeria,5,,25,1
 2020-03-03,Andorra,,,1,
 2020-03-04,Andorra,0,,1,
 2020-03-05,Andorra,0,,1,
@@ -42,6 +45,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Andorra,0,,1,
 2020-03-10,Andorra,0,,1,
 2020-03-11,Andorra,0,,1,
+2020-03-12,Andorra,0,,1,
 2020-03-04,Argentina,,,1,
 2020-03-05,Argentina,0,,1,
 2020-03-06,Argentina,0,,1,
@@ -50,6 +54,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Argentina,3,0,12,1
 2020-03-10,Argentina,0,0,12,1
 2020-03-11,Argentina,5,0,17,1
+2020-03-12,Argentina,2,0,19,1
 2020-03-02,Armenia,,,1,
 2020-03-03,Armenia,0,,1,
 2020-03-04,Armenia,0,,1,
@@ -60,6 +65,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Armenia,0,,1,
 2020-03-10,Armenia,0,,1,
 2020-03-11,Armenia,0,,1,
+2020-03-12,Armenia,0,,1,
 2020-01-25,Australia,,,3,
 2020-01-26,Australia,1,,4,
 2020-01-27,Australia,0,,4,
@@ -107,6 +113,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Australia,3,0,77,3
 2020-03-10,Australia,15,0,92,3
 2020-03-11,Australia,20,0,112,3
+2020-03-12,Australia,10,0,122,3
 2020-02-26,Austria,,,2,
 2020-02-27,Austria,0,,2,
 2020-02-28,Austria,2,,4,
@@ -122,6 +129,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Austria,8,,112,
 2020-03-10,Austria,19,,131,
 2020-03-11,Austria,51,,182,
+2020-03-12,Austria,120,,302,
 2020-03-01,Azerbaijan,,,3,
 2020-03-02,Azerbaijan,0,,3,
 2020-03-03,Azerbaijan,0,,3,
@@ -133,6 +141,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Azerbaijan,0,,9,
 2020-03-10,Azerbaijan,0,,9,
 2020-03-11,Azerbaijan,0,,9,
+2020-03-12,Azerbaijan,0,,9,
 2020-02-25,Bahrain,,,8,
 2020-02-26,Bahrain,18,,26,
 2020-02-27,Bahrain,7,,33,
@@ -149,9 +158,11 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Bahrain,23,,79,
 2020-03-10,Bahrain,30,,109,
 2020-03-11,Bahrain,1,,110,
+2020-03-12,Bahrain,79,,189,
 2020-03-09,Bangladesh,,,3,
 2020-03-10,Bangladesh,0,,3,
 2020-03-11,Bangladesh,0,,3,
+2020-03-12,Bangladesh,0,,3,
 2020-02-28,Belarus,,,1,
 2020-02-29,Belarus,0,,1,
 2020-03-01,Belarus,0,,1,
@@ -165,6 +176,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Belarus,0,,6,
 2020-03-10,Belarus,0,,6,
 2020-03-11,Belarus,3,,9,
+2020-03-12,Belarus,3,,12,
 2020-02-05,Belgium,,,1,
 2020-02-06,Belgium,0,,1,
 2020-02-07,Belgium,0,,1,
@@ -201,13 +213,16 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Belgium,31,,200,
 2020-03-10,Belgium,39,,239,
 2020-03-11,Belgium,28,,267,
+2020-03-12,Belgium,47,,314,
 2020-03-06,Bhutan,,,1,
 2020-03-07,Bhutan,0,,1,
 2020-03-08,Bhutan,0,,1,
 2020-03-09,Bhutan,0,,1,
 2020-03-10,Bhutan,0,,1,
 2020-03-11,Bhutan,0,,1,
-2020-03-11,Bolivia (Plurinational State of),,,2,
+2020-03-12,Bhutan,0,,1,
+2020-03-11,Bolivia,,,2,
+2020-03-12,Bolivia,0,,2,
 2020-03-05,Bosnia and Herzegovina,,,2,
 2020-03-06,Bosnia and Herzegovina,0,,2,
 2020-03-07,Bosnia and Herzegovina,0,,2,
@@ -215,6 +230,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Bosnia and Herzegovina,0,,2,
 2020-03-10,Bosnia and Herzegovina,0,,2,
 2020-03-11,Bosnia and Herzegovina,2,,4,
+2020-03-12,Bosnia and Herzegovina,0,,4,
 2020-02-27,Brazil,,,1,
 2020-02-28,Brazil,0,,1,
 2020-02-29,Brazil,0,,1,
@@ -229,13 +245,17 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Brazil,6,,25,
 2020-03-10,Brazil,0,,25,
 2020-03-11,Brazil,9,,34,
-2020-03-10,Brunei Darussalam,,,1,
-2020-03-11,Brunei Darussalam,0,,1,
+2020-03-12,Brazil,18,,52,
+2020-03-10,Brunei,,,1,
+2020-03-11,Brunei,0,,1,
+2020-03-12,Brunei,11,,12,
 2020-03-08,Bulgaria,,,2,
 2020-03-09,Bulgaria,2,,4,
 2020-03-10,Bulgaria,0,,4,
-2020-03-11,Bulgaria,6,,10,
+2020-03-11,Bulgaria,2,,6,
+2020-03-12,Bulgaria,1,,7,1
 2020-03-11,Burkina Faso,,,2,
+2020-03-12,Burkina Faso,0,,2,
 2020-01-28,Cambodia,,,1,
 2020-01-29,Cambodia,0,,1,
 2020-01-30,Cambodia,0,,1,
@@ -280,12 +300,14 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Cambodia,0,,2,
 2020-03-10,Cambodia,0,,2,
 2020-03-11,Cambodia,1,,3,
+2020-03-12,Cambodia,0,,3,
 2020-03-06,Cameroon,,,1,
 2020-03-07,Cameroon,1,,2,
 2020-03-08,Cameroon,0,,2,
 2020-03-09,Cameroon,0,,2,
 2020-03-10,Cameroon,0,,2,
 2020-03-11,Cameroon,0,,2,
+2020-03-12,Cameroon,0,,2,
 2020-01-27,Canada,,,1,
 2020-01-28,Canada,1,,2,
 2020-01-29,Canada,1,,3,
@@ -331,6 +353,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Canada,5,,62,
 2020-03-10,Canada,15,,77,
 2020-03-11,Canada,16,,93,1
+2020-03-12,Canada,0,0,93,1
 2020-03-04,Chile,,,1,
 2020-03-05,Chile,0,,1,
 2020-03-06,Chile,0,,1,
@@ -339,6 +362,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Chile,5,,10,
 2020-03-10,Chile,3,,13,
 2020-03-11,Chile,4,,17,
+2020-03-12,Chile,6,,23,
 2020-01-21,China,,,278,6
 2020-01-22,China,32,0,310,6
 2020-01-23,China,264,11,574,17
@@ -390,15 +414,18 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,China,45,23,80904,3123
 2020-03-10,China,20,17,80924,3140
 2020-03-11,China,31,22,80955,3162
+2020-03-12,China,26,11,80981,3173
 2020-03-07,Colombia,,,1,
 2020-03-08,Colombia,0,,1,
 2020-03-09,Colombia,0,,1,
 2020-03-10,Colombia,2,,3,
 2020-03-11,Colombia,0,,3,
+2020-03-12,Colombia,6,,9,
 2020-03-08,Costa Rica,,,5,
 2020-03-09,Costa Rica,4,,9,
 2020-03-10,Costa Rica,0,,9,
 2020-03-11,Costa Rica,4,,13,
+2020-03-12,Costa Rica,0,,13,
 2020-02-26,Croatia,,,2,
 2020-02-27,Croatia,1,,3,
 2020-02-28,Croatia,0,,3,
@@ -414,19 +441,24 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Croatia,0,,11,
 2020-03-10,Croatia,1,,12,
 2020-03-11,Croatia,4,,16,
+2020-03-12,Croatia,0,,16,
 2020-03-10,Cyprus,,,2,
 2020-03-11,Cyprus,0,,2,
-2020-03-02,Czechia,,,3,
-2020-03-03,Czechia,0,,3,
-2020-03-04,Czechia,2,,5,
-2020-03-05,Czechia,0,,5,
-2020-03-06,Czechia,7,,12,
-2020-03-07,Czechia,0,,12,
-2020-03-08,Czechia,14,,26,
-2020-03-09,Czechia,6,,32,
-2020-03-10,Czechia,6,,38,
-2020-03-11,Czechia,23,,61,
-2020-03-11,Democratic Republic of the Congo,,,1,
+2020-03-12,Cyprus,4,,6,
+2020-03-02,Czech Republic,,,3,
+2020-03-03,Czech Republic,0,,3,
+2020-03-04,Czech Republic,2,,5,
+2020-03-05,Czech Republic,0,,5,
+2020-03-06,Czech Republic,7,,12,
+2020-03-07,Czech Republic,0,,12,
+2020-03-08,Czech Republic,14,,26,
+2020-03-09,Czech Republic,6,,32,
+2020-03-10,Czech Republic,6,,38,
+2020-03-11,Czech Republic,23,,61,
+2020-03-12,Czech Republic,33,,94,
+2020-03-12,Cote d'Ivoire,,,1,
+2020-03-11,Democratic Republic of Congo,,,1,
+2020-03-12,Democratic Republic of Congo,0,,1,
 2020-02-27,Denmark,,,1,
 2020-02-28,Denmark,0,,1,
 2020-02-29,Denmark,1,,2,
@@ -441,6 +473,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Denmark,5,,36,
 2020-03-10,Denmark,54,,90,
 2020-03-11,Denmark,172,,262,
+2020-03-12,Denmark,353,,615,
 2020-03-02,Dominican Republic,,,1,
 2020-03-03,Dominican Republic,0,,1,
 2020-03-04,Dominican Republic,0,,1,
@@ -451,6 +484,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Dominican Republic,0,,1,
 2020-03-10,Dominican Republic,4,,5,
 2020-03-11,Dominican Republic,0,,5,
+2020-03-12,Dominican Republic,0,,5,
 2020-03-01,Ecuador,,,1,
 2020-03-02,Ecuador,0,,1,
 2020-03-03,Ecuador,5,,6,
@@ -462,6 +496,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Ecuador,1,,15,
 2020-03-10,Ecuador,0,,15,
 2020-03-11,Ecuador,0,,15,
+2020-03-12,Ecuador,2,,17,
 2020-02-15,Egypt,,,1,
 2020-02-16,Egypt,0,,1,
 2020-02-17,Egypt,0,,1,
@@ -488,6 +523,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Egypt,7,,55,1
 2020-03-10,Egypt,4,0,59,1
 2020-03-11,Egypt,0,0,59,1
+2020-03-12,Egypt,8,0,67,1
 2020-02-27,Estonia,,,1,
 2020-02-28,Estonia,0,,1,
 2020-02-29,Estonia,0,,1,
@@ -502,10 +538,12 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Estonia,0,,10,
 2020-03-10,Estonia,0,,10,
 2020-03-11,Estonia,3,,13,
-2020-03-08,Faroe Islands,,,1,
-2020-03-09,Faroe Islands,1,,2,
-2020-03-10,Faroe Islands,0,,2,
-2020-03-11,Faroe Islands,0,,2,
+2020-03-12,Estonia,0,,13,
+2020-03-08,Faeroe Islands,,,1,
+2020-03-09,Faeroe Islands,1,,2,
+2020-03-10,Faeroe Islands,0,,2,
+2020-03-11,Faeroe Islands,0,,2,
+2020-03-12,Faeroe Islands,0,,2,
 2020-01-30,Finland,,,1,
 2020-01-31,Finland,0,,1,
 2020-02-01,Finland,0,,1,
@@ -548,6 +586,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Finland,11,,30,
 2020-03-10,Finland,10,,40,
 2020-03-11,Finland,0,,40,
+2020-03-12,Finland,0,,40,
 2020-01-25,France,,,3,
 2020-01-26,France,0,,3,
 2020-01-27,France,0,,3,
@@ -595,10 +634,13 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,France,410,9,1116,19
 2020-03-10,France,286,11,1402,30
 2020-03-11,France,372,3,1774,33
+2020-03-12,France,495,15,2269,48
 2020-03-08,French Guiana,,,5,
 2020-03-09,French Guiana,0,,5,
 2020-03-10,French Guiana,0,,5,
 2020-03-11,French Guiana,0,,5,
+2020-03-12,French Guiana,0,,5,
+2020-03-12,French Polynesia,,,1,
 2020-02-27,Georgia,,,1,
 2020-02-28,Georgia,0,,1,
 2020-02-29,Georgia,1,,2,
@@ -613,6 +655,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Georgia,1,,13,
 2020-03-10,Georgia,2,,15,
 2020-03-11,Georgia,8,,23,
+2020-03-12,Georgia,0,,23,
 2020-01-28,Germany,,,1,
 2020-01-29,Germany,3,,4,
 2020-01-30,Germany,0,,4,
@@ -657,6 +700,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Germany,317,,1112,
 2020-03-10,Germany,27,,1139,2
 2020-03-11,Germany,157,0,1296,2
+2020-03-12,Germany,271,1,1567,3
 2020-03-05,Gibraltar,,,1,
 2020-03-06,Gibraltar,0,,1,
 2020-03-07,Gibraltar,0,,1,
@@ -664,6 +708,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Gibraltar,0,,1,
 2020-03-10,Gibraltar,0,,1,
 2020-03-11,Gibraltar,0,,1,
+2020-03-12,Gibraltar,0,,1,
 2020-02-27,Greece,,,1,
 2020-02-28,Greece,2,,3,
 2020-02-29,Greece,0,,3,
@@ -678,13 +723,17 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Greece,7,,73,
 2020-03-10,Greece,0,,73,
 2020-03-11,Greece,16,,89,
+2020-03-12,Greece,9,,98,1
 2020-03-10,Guernsey,,,1,
 2020-03-11,Guernsey,0,,1,
-2020-03-07,Holy See,,,1,
-2020-03-08,Holy See,0,,1,
-2020-03-09,Holy See,0,,1,
-2020-03-10,Holy See,0,,1,
-2020-03-11,Holy See,0,,1,
+2020-03-12,Guernsey,0,,1,
+2020-03-07,Vatican,,,1,
+2020-03-08,Vatican,0,,1,
+2020-03-09,Vatican,0,,1,
+2020-03-10,Vatican,0,,1,
+2020-03-11,Vatican,0,,1,
+2020-03-12,Vatican,0,,1,
+2020-03-12,Honduras,,,2,
 2020-03-05,Hungary,,,2,
 2020-03-06,Hungary,0,,2,
 2020-03-07,Hungary,3,,5,
@@ -692,6 +741,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Hungary,2,,9,
 2020-03-10,Hungary,0,,9,
 2020-03-11,Hungary,4,,13,
+2020-03-12,Hungary,0,,13,
 2020-03-02,Iceland,,,2,
 2020-03-03,Iceland,7,,9,
 2020-03-04,Iceland,7,,16,
@@ -702,6 +752,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Iceland,10,,55,
 2020-03-10,Iceland,0,,55,
 2020-03-11,Iceland,6,,61,
+2020-03-12,Iceland,0,,61,
 2020-01-30,India,,,1,
 2020-01-31,India,0,,1,
 2020-02-01,India,0,,1,
@@ -744,6 +795,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,India,9,,43,
 2020-03-10,India,1,,44,
 2020-03-11,India,16,,60,
+2020-03-12,India,13,,73,
 2020-03-02,Indonesia,,,2,
 2020-03-03,Indonesia,0,,2,
 2020-03-04,Indonesia,0,,2,
@@ -754,41 +806,43 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Indonesia,0,,6,
 2020-03-10,Indonesia,13,,19,
 2020-03-11,Indonesia,8,,27,1
-2020-02-06,International conveyance (Diamond Princess),,,20,
-2020-02-07,International conveyance (Diamond Princess),41,,61,
-2020-02-08,International conveyance (Diamond Princess),3,,64,
-2020-02-09,International conveyance (Diamond Princess),0,,64,
-2020-02-10,International conveyance (Diamond Princess),6,,70,
-2020-02-11,International conveyance (Diamond Princess),65,,135,
-2020-02-12,International conveyance (Diamond Princess),40,,175,
-2020-02-13,International conveyance (Diamond Princess),-1,,174,
-2020-02-14,International conveyance (Diamond Princess),44,,218,
-2020-02-15,International conveyance (Diamond Princess),0,,218,
-2020-02-16,International conveyance (Diamond Princess),137,,355,
-2020-02-17,International conveyance (Diamond Princess),99,,454,
-2020-02-18,International conveyance (Diamond Princess),0,,454,
-2020-02-19,International conveyance (Diamond Princess),88,,542,
-2020-02-20,International conveyance (Diamond Princess),79,,621,2
-2020-02-21,International conveyance (Diamond Princess),13,0,634,2
-2020-02-22,International conveyance (Diamond Princess),0,0,634,2
-2020-02-23,International conveyance (Diamond Princess),0,1,634,3
-2020-02-24,International conveyance (Diamond Princess),61,0,695,3
-2020-02-25,International conveyance (Diamond Princess),-4,0,691,3
-2020-02-26,International conveyance (Diamond Princess),0,0,691,3
-2020-02-27,International conveyance (Diamond Princess),14,1,705,4
-2020-02-28,International conveyance (Diamond Princess),0,0,705,4
-2020-02-29,International conveyance (Diamond Princess),0,2,705,6
-2020-03-01,International conveyance (Diamond Princess),0,0,705,6
-2020-03-02,International conveyance (Diamond Princess),1,0,706,6
-2020-03-03,International conveyance (Diamond Princess),0,0,706,6
-2020-03-04,International conveyance (Diamond Princess),0,0,706,6
-2020-03-05,International conveyance (Diamond Princess),0,0,706,6
-2020-03-06,International conveyance (Diamond Princess),-10,0,696,6
-2020-03-07,International conveyance (Diamond Princess),0,0,696,6
-2020-03-08,International conveyance (Diamond Princess),0,1,696,7
-2020-03-09,International conveyance (Diamond Princess),0,0,696,7
-2020-03-10,International conveyance (Diamond Princess),0,0,696,7
-2020-03-11,International conveyance (Diamond Princess),0,0,696,7
+2020-03-12,Indonesia,7,0,34,1
+2020-02-06,International,,,20,
+2020-02-07,International,41,,61,
+2020-02-08,International,3,,64,
+2020-02-09,International,0,,64,
+2020-02-10,International,6,,70,
+2020-02-11,International,65,,135,
+2020-02-12,International,40,,175,
+2020-02-13,International,-1,,174,
+2020-02-14,International,44,,218,
+2020-02-15,International,0,,218,
+2020-02-16,International,137,,355,
+2020-02-17,International,99,,454,
+2020-02-18,International,0,,454,
+2020-02-19,International,88,,542,
+2020-02-20,International,79,,621,2
+2020-02-21,International,13,0,634,2
+2020-02-22,International,0,0,634,2
+2020-02-23,International,0,1,634,3
+2020-02-24,International,61,0,695,3
+2020-02-25,International,-4,0,691,3
+2020-02-26,International,0,0,691,3
+2020-02-27,International,14,1,705,4
+2020-02-28,International,0,0,705,4
+2020-02-29,International,0,2,705,6
+2020-03-01,International,0,0,705,6
+2020-03-02,International,1,0,706,6
+2020-03-03,International,0,0,706,6
+2020-03-04,International,0,0,706,6
+2020-03-05,International,0,0,706,6
+2020-03-06,International,-10,0,696,6
+2020-03-07,International,0,0,696,6
+2020-03-08,International,0,1,696,7
+2020-03-09,International,0,0,696,7
+2020-03-10,International,0,0,696,7
+2020-03-11,International,0,0,696,7
+2020-03-12,International,0,0,696,7
 2020-02-20,Iran,,,2,2
 2020-02-21,Iran,3,0,5,2
 2020-02-22,Iran,13,2,18,4
@@ -810,6 +864,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Iran,743,49,6566,194
 2020-03-10,Iran,595,43,7161,237
 2020-03-11,Iran,881,54,8042,291
+2020-03-12,Iran,958,63,9000,354
 2020-02-25,Iraq,,,1,
 2020-02-26,Iraq,4,,5,
 2020-02-27,Iraq,1,,6,
@@ -826,6 +881,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Iraq,6,2,60,6
 2020-03-10,Iraq,1,0,61,6
 2020-03-11,Iraq,0,0,61,6
+2020-03-12,Iraq,9,1,70,7
 2020-03-01,Ireland,,,1,
 2020-03-02,Ireland,0,,1,
 2020-03-03,Ireland,0,,1,
@@ -837,6 +893,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Ireland,2,,21,
 2020-03-10,Ireland,3,,24,
 2020-03-11,Ireland,10,,34,
+2020-03-12,Ireland,9,,43,1
 2020-02-22,Israel,,,1,
 2020-02-23,Israel,0,,1,
 2020-02-24,Israel,0,,1,
@@ -856,6 +913,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Israel,14,,39,
 2020-03-10,Israel,0,,39,
 2020-03-11,Israel,36,,75,
+2020-03-12,Israel,0,,75,
 2020-01-31,Italy,,,2,
 2020-02-01,Italy,0,,2,
 2020-02-02,Italy,0,,2,
@@ -897,7 +955,9 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Italy,1492,132,7375,366
 2020-03-10,Italy,1797,97,9172,463
 2020-03-11,Italy,977,168,10149,631
+2020-03-12,Italy,2313,196,12462,827
 2020-03-11,Jamaica,,,1,
+2020-03-12,Jamaica,0,,1,
 2020-01-21,Japan,,,1,
 2020-01-22,Japan,0,,1,
 2020-01-23,Japan,0,,1,
@@ -949,6 +1009,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Japan,33,1,488,7
 2020-03-10,Japan,26,2,514,9
 2020-03-11,Japan,54,3,568,12
+2020-03-12,Japan,52,3,620,15
 2020-03-03,Jordan,,,1,
 2020-03-04,Jordan,0,,1,
 2020-03-05,Jordan,0,,1,
@@ -958,6 +1019,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Jordan,0,,1,
 2020-03-10,Jordan,0,,1,
 2020-03-11,Jordan,0,,1,
+2020-03-12,Jordan,0,,1,
 2020-02-24,Kuwait,,,3,
 2020-02-25,Kuwait,5,,8,
 2020-02-26,Kuwait,4,,12,
@@ -975,6 +1037,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Kuwait,2,,64,
 2020-03-10,Kuwait,1,,65,
 2020-03-11,Kuwait,4,,69,
+2020-03-12,Kuwait,11,,80,
 2020-03-03,Latvia,,,1,
 2020-03-04,Latvia,0,,1,
 2020-03-05,Latvia,0,,1,
@@ -984,6 +1047,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Latvia,2,,3,
 2020-03-10,Latvia,3,,6,
 2020-03-11,Latvia,2,,8,
+2020-03-12,Latvia,8,,16,
 2020-02-22,Lebanon,,,1,
 2020-02-23,Lebanon,0,,1,
 2020-02-24,Lebanon,0,,1,
@@ -1003,6 +1067,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Lebanon,4,,32,
 2020-03-10,Lebanon,9,,41,
 2020-03-11,Lebanon,0,,41,1
+2020-03-12,Lebanon,25,2,66,3
 2020-03-05,Liechtenstein,,,1,
 2020-03-06,Liechtenstein,0,,1,
 2020-03-07,Liechtenstein,0,,1,
@@ -1010,6 +1075,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Liechtenstein,0,,1,
 2020-03-10,Liechtenstein,0,,1,
 2020-03-11,Liechtenstein,0,,1,
+2020-03-12,Liechtenstein,0,,1,
 2020-02-28,Lithuania,,,1,
 2020-02-29,Lithuania,0,,1,
 2020-03-01,Lithuania,0,,1,
@@ -1023,6 +1089,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Lithuania,0,,1,
 2020-03-10,Lithuania,0,,1,
 2020-03-11,Lithuania,0,,1,
+2020-03-12,Lithuania,2,,3,
 2020-03-02,Luxembourg,,,1,
 2020-03-03,Luxembourg,0,,1,
 2020-03-04,Luxembourg,0,,1,
@@ -1033,6 +1100,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Luxembourg,0,,2,
 2020-03-10,Luxembourg,3,,5,
 2020-03-11,Luxembourg,0,,5,
+2020-03-12,Luxembourg,12,,17,
 2020-01-26,Malaysia,,,3,
 2020-01-27,Malaysia,1,,4,
 2020-01-28,Malaysia,0,,4,
@@ -1079,18 +1147,22 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Malaysia,0,,93,
 2020-03-10,Malaysia,24,,117,
 2020-03-11,Malaysia,12,,129,
+2020-03-12,Malaysia,0,,129,
 2020-03-08,Maldives,,,2,
 2020-03-09,Maldives,2,,4,
 2020-03-10,Maldives,0,,4,
 2020-03-11,Maldives,4,,8,
+2020-03-12,Maldives,0,,8,
 2020-03-08,Malta,,,3,
 2020-03-09,Malta,0,,3,
 2020-03-10,Malta,1,,4,
 2020-03-11,Malta,0,,4,
+2020-03-12,Malta,2,,6,
 2020-03-08,Martinique,,,2,
 2020-03-09,Martinique,0,,2,
 2020-03-10,Martinique,0,,2,
 2020-03-11,Martinique,1,,3,
+2020-03-12,Martinique,0,,3,
 2020-02-29,Mexico,,,2,
 2020-03-01,Mexico,0,,2,
 2020-03-02,Mexico,3,,5,
@@ -1103,6 +1175,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Mexico,0,,7,
 2020-03-10,Mexico,0,,7,
 2020-03-11,Mexico,0,,7,
+2020-03-12,Mexico,4,,11,
 2020-03-01,Monaco,,,1,
 2020-03-02,Monaco,0,,1,
 2020-03-03,Monaco,0,,1,
@@ -1114,8 +1187,10 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Monaco,0,,1,
 2020-03-10,Monaco,0,,1,
 2020-03-11,Monaco,0,,1,
+2020-03-12,Monaco,0,,1,
 2020-03-10,Mongolia,,,1,
 2020-03-11,Mongolia,0,,1,
+2020-03-12,Mongolia,0,,1,
 2020-03-03,Morocco,,,1,
 2020-03-04,Morocco,0,,1,
 2020-03-05,Morocco,1,,2,
@@ -1125,6 +1200,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Morocco,0,,2,
 2020-03-10,Morocco,0,,2,
 2020-03-11,Morocco,1,,3,1
+2020-03-12,Morocco,2,0,5,1
 2020-01-25,Nepal,,,1,
 2020-01-26,Nepal,0,,1,
 2020-01-27,Nepal,0,,1,
@@ -1172,6 +1248,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Nepal,0,,1,
 2020-03-10,Nepal,0,,1,
 2020-03-11,Nepal,0,,1,
+2020-03-12,Nepal,0,,1,
 2020-02-28,Netherlands,,,1,
 2020-02-29,Netherlands,1,,2,
 2020-03-01,Netherlands,5,,7,
@@ -1185,6 +1262,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Netherlands,77,2,265,3
 2020-03-10,Netherlands,56,0,321,3
 2020-03-11,Netherlands,61,1,382,4
+2020-03-12,Netherlands,121,1,503,5
 2020-02-28,New Zealand,,,1,
 2020-02-29,New Zealand,0,,1,
 2020-03-01,New Zealand,0,,1,
@@ -1198,6 +1276,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,New Zealand,0,,5,
 2020-03-10,New Zealand,0,,5,
 2020-03-11,New Zealand,0,,5,
+2020-03-12,New Zealand,0,,5,
 2020-02-28,Nigeria,,,1,
 2020-02-29,Nigeria,0,,1,
 2020-03-01,Nigeria,0,,1,
@@ -1211,20 +1290,22 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Nigeria,1,,2,
 2020-03-10,Nigeria,0,,2,
 2020-03-11,Nigeria,0,,2,
-2020-02-27,North Macedonia,,,1,
-2020-02-28,North Macedonia,0,,1,
-2020-02-29,North Macedonia,0,,1,
-2020-03-01,North Macedonia,0,,1,
-2020-03-02,North Macedonia,0,,1,
-2020-03-03,North Macedonia,0,,1,
-2020-03-04,North Macedonia,0,,1,
-2020-03-05,North Macedonia,0,,1,
-2020-03-06,North Macedonia,0,,1,
-2020-03-07,North Macedonia,2,,3,
-2020-03-08,North Macedonia,0,,3,
-2020-03-09,North Macedonia,0,,3,
-2020-03-10,North Macedonia,4,,7,
-2020-03-11,North Macedonia,0,,7,
+2020-03-12,Nigeria,0,,2,
+2020-02-27,Macedonia,,,1,
+2020-02-28,Macedonia,0,,1,
+2020-02-29,Macedonia,0,,1,
+2020-03-01,Macedonia,0,,1,
+2020-03-02,Macedonia,0,,1,
+2020-03-03,Macedonia,0,,1,
+2020-03-04,Macedonia,0,,1,
+2020-03-05,Macedonia,0,,1,
+2020-03-06,Macedonia,0,,1,
+2020-03-07,Macedonia,2,,3,
+2020-03-08,Macedonia,0,,3,
+2020-03-09,Macedonia,0,,3,
+2020-03-10,Macedonia,4,,7,
+2020-03-11,Macedonia,0,,7,
+2020-03-12,Macedonia,0,,7,
 2020-02-27,Norway,,,1,
 2020-02-28,Norway,3,,4,
 2020-02-29,Norway,2,,6,
@@ -1239,13 +1320,15 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Norway,22,,169,
 2020-03-10,Norway,23,,192,
 2020-03-11,Norway,85,,277,
-2020-03-05,Occupied Palestinian Territory,,,4,
-2020-03-06,Occupied Palestinian Territory,3,,7,
-2020-03-07,Occupied Palestinian Territory,9,,16,
-2020-03-08,Occupied Palestinian Territory,0,,16,
-2020-03-09,Occupied Palestinian Territory,3,,19,
-2020-03-10,Occupied Palestinian Territory,7,,26,
-2020-03-11,Occupied Palestinian Territory,4,,30,
+2020-03-12,Norway,0,,277,
+2020-03-05,Palestine,,,4,
+2020-03-06,Palestine,3,,7,
+2020-03-07,Palestine,9,,16,
+2020-03-08,Palestine,0,,16,
+2020-03-09,Palestine,3,,19,
+2020-03-10,Palestine,7,,26,
+2020-03-11,Palestine,4,,30,
+2020-03-12,Palestine,0,,30,
 2020-02-25,Oman,,,2,
 2020-02-26,Oman,2,,4,
 2020-02-27,Oman,0,,4,
@@ -1262,6 +1345,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Oman,0,,16,
 2020-03-10,Oman,2,,18,
 2020-03-11,Oman,0,,18,
+2020-03-12,Oman,0,,18,
 2020-02-27,Pakistan,,,2,
 2020-02-28,Pakistan,0,,2,
 2020-02-29,Pakistan,0,,2,
@@ -1276,16 +1360,20 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Pakistan,1,,6,
 2020-03-10,Pakistan,10,,16,
 2020-03-11,Pakistan,0,,16,
+2020-03-12,Pakistan,3,,19,
 2020-03-10,Panama,,,1,
 2020-03-11,Panama,7,,8,1
+2020-03-12,Panama,2,0,10,1
 2020-03-09,Paraguay,,,1,
 2020-03-10,Paraguay,0,,1,
-2020-03-11,Paraguay,7,,8,
+2020-03-11,Paraguay,4,,5,
+2020-03-12,Paraguay,0,,5,
 2020-03-07,Peru,,,1,
 2020-03-08,Peru,5,,6,
 2020-03-09,Peru,0,,6,
 2020-03-10,Peru,3,,9,
 2020-03-11,Peru,2,,11,
+2020-03-12,Peru,6,,17,
 2020-01-30,Philippines,,,1,
 2020-01-31,Philippines,0,,1,
 2020-02-01,Philippines,0,,1,
@@ -1328,6 +1416,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Philippines,4,0,10,1
 2020-03-10,Philippines,23,0,33,1
 2020-03-11,Philippines,16,0,49,1
+2020-03-12,Philippines,3,1,52,2
 2020-03-04,Poland,,,1,
 2020-03-05,Poland,0,,1,
 2020-03-06,Poland,0,,1,
@@ -1336,6 +1425,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Poland,5,,11,
 2020-03-10,Poland,5,,16,
 2020-03-11,Poland,6,,22,
+2020-03-12,Poland,22,,44,
 2020-03-03,Portugal,,,2,
 2020-03-04,Portugal,0,,2,
 2020-03-05,Portugal,5,,7,
@@ -1345,6 +1435,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Portugal,9,,30,
 2020-03-10,Portugal,0,,30,
 2020-03-11,Portugal,11,,41,
+2020-03-12,Portugal,0,,41,
 2020-03-01,Qatar,,,1,
 2020-03-02,Qatar,2,,3,
 2020-03-03,Qatar,4,,7,
@@ -1356,61 +1447,64 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Qatar,3,,15,
 2020-03-10,Qatar,3,,18,
 2020-03-11,Qatar,6,,24,
-2020-01-21,Republic of Korea,,,1,
-2020-01-22,Republic of Korea,0,,1,
-2020-01-23,Republic of Korea,0,,1,
-2020-01-24,Republic of Korea,1,,2,
-2020-01-25,Republic of Korea,0,,2,
-2020-01-26,Republic of Korea,0,,2,
-2020-01-27,Republic of Korea,2,,4,
-2020-01-28,Republic of Korea,0,,4,
-2020-01-29,Republic of Korea,0,,4,
-2020-01-30,Republic of Korea,0,,4,
-2020-01-31,Republic of Korea,7,,11,
-2020-02-01,Republic of Korea,1,,12,
-2020-02-02,Republic of Korea,3,,15,
-2020-02-03,Republic of Korea,0,,15,
-2020-02-04,Republic of Korea,1,,16,
-2020-02-05,Republic of Korea,2,,18,
-2020-02-06,Republic of Korea,5,,23,
-2020-02-07,Republic of Korea,1,,24,
-2020-02-08,Republic of Korea,0,,24,
-2020-02-09,Republic of Korea,3,,27,
-2020-02-10,Republic of Korea,0,,27,
-2020-02-11,Republic of Korea,1,,28,
-2020-02-12,Republic of Korea,0,,28,
-2020-02-13,Republic of Korea,0,,28,
-2020-02-14,Republic of Korea,0,,28,
-2020-02-15,Republic of Korea,0,,28,
-2020-02-16,Republic of Korea,1,,29,
-2020-02-17,Republic of Korea,1,,30,
-2020-02-18,Republic of Korea,1,,31,
-2020-02-19,Republic of Korea,20,,51,
-2020-02-20,Republic of Korea,53,,104,1
-2020-02-21,Republic of Korea,100,0,204,1
-2020-02-22,Republic of Korea,142,1,346,2
-2020-02-23,Republic of Korea,256,3,602,5
-2020-02-24,Republic of Korea,161,2,763,7
-2020-02-25,Republic of Korea,214,3,977,10
-2020-02-26,Republic of Korea,284,2,1261,12
-2020-02-27,Republic of Korea,505,1,1766,13
-2020-02-28,Republic of Korea,571,0,2337,13
-2020-02-29,Republic of Korea,813,4,3150,17
-2020-03-01,Republic of Korea,586,1,3736,18
-2020-03-02,Republic of Korea,476,4,4212,22
-2020-03-03,Republic of Korea,600,6,4812,28
-2020-03-04,Republic of Korea,516,4,5328,32
-2020-03-05,Republic of Korea,438,3,5766,35
-2020-03-06,Republic of Korea,518,7,6284,42
-2020-03-07,Republic of Korea,483,2,6767,44
-2020-03-08,Republic of Korea,367,6,7134,50
-2020-03-09,Republic of Korea,248,1,7382,51
-2020-03-10,Republic of Korea,131,3,7513,54
-2020-03-11,Republic of Korea,242,6,7755,60
-2020-03-08,Republic of Moldova,,,1,
-2020-03-09,Republic of Moldova,0,,1,
-2020-03-10,Republic of Moldova,0,,1,
-2020-03-11,Republic of Moldova,2,,3,
+2020-03-12,Qatar,238,,262,
+2020-01-21,South Korea,,,1,
+2020-01-22,South Korea,0,,1,
+2020-01-23,South Korea,0,,1,
+2020-01-24,South Korea,1,,2,
+2020-01-25,South Korea,0,,2,
+2020-01-26,South Korea,0,,2,
+2020-01-27,South Korea,2,,4,
+2020-01-28,South Korea,0,,4,
+2020-01-29,South Korea,0,,4,
+2020-01-30,South Korea,0,,4,
+2020-01-31,South Korea,7,,11,
+2020-02-01,South Korea,1,,12,
+2020-02-02,South Korea,3,,15,
+2020-02-03,South Korea,0,,15,
+2020-02-04,South Korea,1,,16,
+2020-02-05,South Korea,2,,18,
+2020-02-06,South Korea,5,,23,
+2020-02-07,South Korea,1,,24,
+2020-02-08,South Korea,0,,24,
+2020-02-09,South Korea,3,,27,
+2020-02-10,South Korea,0,,27,
+2020-02-11,South Korea,1,,28,
+2020-02-12,South Korea,0,,28,
+2020-02-13,South Korea,0,,28,
+2020-02-14,South Korea,0,,28,
+2020-02-15,South Korea,0,,28,
+2020-02-16,South Korea,1,,29,
+2020-02-17,South Korea,1,,30,
+2020-02-18,South Korea,1,,31,
+2020-02-19,South Korea,20,,51,
+2020-02-20,South Korea,53,,104,1
+2020-02-21,South Korea,100,0,204,1
+2020-02-22,South Korea,142,1,346,2
+2020-02-23,South Korea,256,3,602,5
+2020-02-24,South Korea,161,2,763,7
+2020-02-25,South Korea,214,3,977,10
+2020-02-26,South Korea,284,2,1261,12
+2020-02-27,South Korea,505,1,1766,13
+2020-02-28,South Korea,571,0,2337,13
+2020-02-29,South Korea,813,4,3150,17
+2020-03-01,South Korea,586,1,3736,18
+2020-03-02,South Korea,476,4,4212,22
+2020-03-03,South Korea,600,6,4812,28
+2020-03-04,South Korea,516,4,5328,32
+2020-03-05,South Korea,438,3,5766,35
+2020-03-06,South Korea,518,7,6284,42
+2020-03-07,South Korea,483,2,6767,44
+2020-03-08,South Korea,367,6,7134,50
+2020-03-09,South Korea,248,1,7382,51
+2020-03-10,South Korea,131,3,7513,54
+2020-03-11,South Korea,242,6,7755,60
+2020-03-12,South Korea,114,6,7869,66
+2020-03-08,Moldova,,,1,
+2020-03-09,Moldova,0,,1,
+2020-03-10,Moldova,0,,1,
+2020-03-11,Moldova,2,,3,
+2020-03-12,Moldova,1,,4,
 2020-02-27,Romania,,,1,
 2020-02-28,Romania,0,,1,
 2020-02-29,Romania,2,,3,
@@ -1425,60 +1519,64 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Romania,2,,15,
 2020-03-10,Romania,0,,15,
 2020-03-11,Romania,10,,25,
-2020-02-01,Russian Federation,,,2,
-2020-02-02,Russian Federation,0,,2,
-2020-02-03,Russian Federation,0,,2,
-2020-02-04,Russian Federation,0,,2,
-2020-02-05,Russian Federation,0,,2,
-2020-02-06,Russian Federation,0,,2,
-2020-02-07,Russian Federation,0,,2,
-2020-02-08,Russian Federation,0,,2,
-2020-02-09,Russian Federation,0,,2,
-2020-02-10,Russian Federation,0,,2,
-2020-02-11,Russian Federation,0,,2,
-2020-02-12,Russian Federation,0,,2,
-2020-02-13,Russian Federation,0,,2,
-2020-02-14,Russian Federation,0,,2,
-2020-02-15,Russian Federation,0,,2,
-2020-02-16,Russian Federation,0,,2,
-2020-02-17,Russian Federation,0,,2,
-2020-02-18,Russian Federation,0,,2,
-2020-02-19,Russian Federation,0,,2,
-2020-02-20,Russian Federation,0,,2,
-2020-02-21,Russian Federation,0,,2,
-2020-02-22,Russian Federation,0,,2,
-2020-02-23,Russian Federation,0,,2,
-2020-02-24,Russian Federation,0,,2,
-2020-02-25,Russian Federation,0,,2,
-2020-02-26,Russian Federation,0,,2,
-2020-02-27,Russian Federation,0,,2,
-2020-02-28,Russian Federation,0,,2,
-2020-02-29,Russian Federation,0,,2,
-2020-03-01,Russian Federation,0,,2,
-2020-03-02,Russian Federation,0,,2,
-2020-03-03,Russian Federation,1,,3,
-2020-03-04,Russian Federation,0,,3,
-2020-03-05,Russian Federation,0,,3,
-2020-03-06,Russian Federation,1,,4,
-2020-03-07,Russian Federation,3,,7,
-2020-03-08,Russian Federation,0,,7,
-2020-03-09,Russian Federation,0,,7,
-2020-03-10,Russian Federation,0,,7,
-2020-03-11,Russian Federation,0,,7,
-2020-03-05,Saint Barthélemy,,,1,
-2020-03-06,Saint Barthélemy,0,,1,
-2020-03-07,Saint Barthélemy,0,,1,
-2020-03-08,Saint Barthélemy,0,,1,
-2020-03-09,Saint Barthélemy,0,,1,
-2020-03-10,Saint Barthélemy,0,,1,
-2020-03-11,Saint Barthélemy,0,,1,
-2020-03-05,Saint Martin,,,2,
-2020-03-06,Saint Martin,0,,2,
-2020-03-07,Saint Martin,0,,2,
-2020-03-08,Saint Martin,0,,2,
-2020-03-09,Saint Martin,0,,2,
-2020-03-10,Saint Martin,0,,2,
-2020-03-11,Saint Martin,0,,2,
+2020-03-12,Romania,23,,48,
+2020-02-01,Russia,,,2,
+2020-02-02,Russia,0,,2,
+2020-02-03,Russia,0,,2,
+2020-02-04,Russia,0,,2,
+2020-02-05,Russia,0,,2,
+2020-02-06,Russia,0,,2,
+2020-02-07,Russia,0,,2,
+2020-02-08,Russia,0,,2,
+2020-02-09,Russia,0,,2,
+2020-02-10,Russia,0,,2,
+2020-02-11,Russia,0,,2,
+2020-02-12,Russia,0,,2,
+2020-02-13,Russia,0,,2,
+2020-02-14,Russia,0,,2,
+2020-02-15,Russia,0,,2,
+2020-02-16,Russia,0,,2,
+2020-02-17,Russia,0,,2,
+2020-02-18,Russia,0,,2,
+2020-02-19,Russia,0,,2,
+2020-02-20,Russia,0,,2,
+2020-02-21,Russia,0,,2,
+2020-02-22,Russia,0,,2,
+2020-02-23,Russia,0,,2,
+2020-02-24,Russia,0,,2,
+2020-02-25,Russia,0,,2,
+2020-02-26,Russia,0,,2,
+2020-02-27,Russia,0,,2,
+2020-02-28,Russia,0,,2,
+2020-02-29,Russia,0,,2,
+2020-03-01,Russia,0,,2,
+2020-03-02,Russia,0,,2,
+2020-03-03,Russia,1,,3,
+2020-03-04,Russia,0,,3,
+2020-03-05,Russia,0,,3,
+2020-03-06,Russia,1,,4,
+2020-03-07,Russia,3,,7,
+2020-03-08,Russia,0,,7,
+2020-03-09,Russia,0,,7,
+2020-03-10,Russia,0,,7,
+2020-03-11,Russia,0,,7,
+2020-03-12,Russia,13,,20,
+2020-03-05,Saint Barthlemy,,,1,
+2020-03-06,Saint Barthlemy,0,,1,
+2020-03-07,Saint Barthlemy,0,,1,
+2020-03-08,Saint Barthlemy,0,,1,
+2020-03-09,Saint Barthlemy,0,,1,
+2020-03-10,Saint Barthlemy,0,,1,
+2020-03-11,Saint Barthlemy,0,,1,
+2020-03-12,Saint Barthlemy,0,,1,
+2020-03-05,Saint Martin (French part),,,2,
+2020-03-06,Saint Martin (French part),0,,2,
+2020-03-07,Saint Martin (French part),0,,2,
+2020-03-08,Saint Martin (French part),0,,2,
+2020-03-09,Saint Martin (French part),0,,2,
+2020-03-10,Saint Martin (French part),0,,2,
+2020-03-11,Saint Martin (French part),0,,2,
+2020-03-12,Saint Martin (French part),0,,2,
 2020-02-29,San Marino,,,1,
 2020-03-01,San Marino,0,,1,
 2020-03-02,San Marino,0,,1,
@@ -1491,6 +1589,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,San Marino,10,0,37,1
 2020-03-10,San Marino,12,1,49,2
 2020-03-11,San Marino,14,0,63,2
+2020-03-12,San Marino,0,0,63,2
 2020-03-03,Saudi Arabia,,,1,
 2020-03-04,Saudi Arabia,0,,1,
 2020-03-05,Saudi Arabia,1,,2,
@@ -1500,6 +1599,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Saudi Arabia,4,,15,
 2020-03-10,Saudi Arabia,0,,15,
 2020-03-11,Saudi Arabia,5,,20,
+2020-03-12,Saudi Arabia,1,,21,
 2020-03-03,Senegal,,,1,
 2020-03-04,Senegal,0,,1,
 2020-03-05,Senegal,3,,4,
@@ -1509,12 +1609,14 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Senegal,0,,4,
 2020-03-10,Senegal,0,,4,
 2020-03-11,Senegal,0,,4,
+2020-03-12,Senegal,0,,4,
 2020-03-06,Serbia,,,1,
 2020-03-07,Serbia,0,,1,
 2020-03-08,Serbia,0,,1,
 2020-03-09,Serbia,0,,1,
 2020-03-10,Serbia,0,,1,
 2020-03-11,Serbia,11,,12,
+2020-03-12,Serbia,7,,19,
 2020-01-24,Singapore,,,1,
 2020-01-25,Singapore,2,,3,
 2020-01-26,Singapore,1,,4,
@@ -1563,11 +1665,13 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Singapore,12,,150,
 2020-03-10,Singapore,10,,160,
 2020-03-11,Singapore,6,,166,
+2020-03-12,Singapore,12,,178,
 2020-03-07,Slovakia,,,1,
 2020-03-08,Slovakia,2,,3,
 2020-03-09,Slovakia,2,,5,
 2020-03-10,Slovakia,2,,7,
 2020-03-11,Slovakia,0,,7,
+2020-03-12,Slovakia,3,,10,
 2020-03-05,Slovenia,,,1,
 2020-03-06,Slovenia,5,,6,
 2020-03-07,Slovenia,3,,9,
@@ -1575,12 +1679,14 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Slovenia,4,,16,
 2020-03-10,Slovenia,7,,23,
 2020-03-11,Slovenia,8,,31,
+2020-03-12,Slovenia,26,,57,
 2020-03-06,South Africa,,,1,
 2020-03-07,South Africa,0,,1,
 2020-03-08,South Africa,1,,2,
 2020-03-09,South Africa,1,,3,
 2020-03-10,South Africa,4,,7,
 2020-03-11,South Africa,0,,7,
+2020-03-12,South Africa,6,,13,
 2020-02-01,Spain,,,1,
 2020-02-02,Spain,0,,1,
 2020-02-03,Spain,0,,1,
@@ -1621,6 +1727,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Spain,159,5,589,10
 2020-03-10,Spain,435,18,1024,28
 2020-03-11,Spain,615,8,1639,36
+2020-03-12,Spain,501,12,2140,48
 2020-01-28,Sri Lanka,,,1,
 2020-01-29,Sri Lanka,0,,1,
 2020-01-30,Sri Lanka,0,,1,
@@ -1665,6 +1772,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Sri Lanka,0,,1,
 2020-03-10,Sri Lanka,0,,1,
 2020-03-11,Sri Lanka,0,,1,
+2020-03-12,Sri Lanka,1,,2,
 2020-02-01,Sweden,,,1,
 2020-02-02,Sweden,0,,1,
 2020-02-03,Sweden,0,,1,
@@ -1705,6 +1813,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Sweden,42,,203,
 2020-03-10,Sweden,45,,248,
 2020-03-11,Sweden,78,,326,
+2020-03-12,Sweden,135,,461,
 2020-02-26,Switzerland,,,1,
 2020-02-27,Switzerland,0,,1,
 2020-02-28,Switzerland,5,,6,
@@ -1720,6 +1829,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Switzerland,68,0,332,2
 2020-03-10,Switzerland,0,0,332,2
 2020-03-11,Switzerland,159,1,491,3
+2020-03-12,Switzerland,154,1,645,4
 2020-01-21,Thailand,,,2,
 2020-01-22,Thailand,0,,2,
 2020-01-23,Thailand,2,,4,
@@ -1771,51 +1881,54 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Thailand,0,0,50,1
 2020-03-10,Thailand,3,0,53,1
 2020-03-11,Thailand,6,0,59,1
-2020-02-01,The United Kingdom,,,2,
-2020-02-02,The United Kingdom,0,,2,
-2020-02-03,The United Kingdom,0,,2,
-2020-02-04,The United Kingdom,0,,2,
-2020-02-05,The United Kingdom,0,,2,
-2020-02-06,The United Kingdom,0,,2,
-2020-02-07,The United Kingdom,1,,3,
-2020-02-08,The United Kingdom,0,,3,
-2020-02-09,The United Kingdom,0,,3,
-2020-02-10,The United Kingdom,1,,4,
-2020-02-11,The United Kingdom,4,,8,
-2020-02-12,The United Kingdom,0,,8,
-2020-02-13,The United Kingdom,1,,9,
-2020-02-14,The United Kingdom,0,,9,
-2020-02-15,The United Kingdom,0,,9,
-2020-02-16,The United Kingdom,0,,9,
-2020-02-17,The United Kingdom,0,,9,
-2020-02-18,The United Kingdom,0,,9,
-2020-02-19,The United Kingdom,0,,9,
-2020-02-20,The United Kingdom,0,,9,
-2020-02-21,The United Kingdom,0,,9,
-2020-02-22,The United Kingdom,0,,9,
-2020-02-23,The United Kingdom,0,,9,
-2020-02-24,The United Kingdom,0,,9,
-2020-02-25,The United Kingdom,4,,13,
-2020-02-26,The United Kingdom,0,,13,
-2020-02-27,The United Kingdom,0,,13,
-2020-02-28,The United Kingdom,3,,16,
-2020-02-29,The United Kingdom,4,,20,
-2020-03-01,The United Kingdom,3,,23,
-2020-03-02,The United Kingdom,13,,36,
-2020-03-03,The United Kingdom,3,,39,
-2020-03-04,The United Kingdom,12,,51,
-2020-03-05,The United Kingdom,38,,89,
-2020-03-06,The United Kingdom,29,,118,
-2020-03-07,The United Kingdom,49,,167,1
-2020-03-08,The United Kingdom,43,1,210,2
-2020-03-09,The United Kingdom,67,0,277,2
-2020-03-10,The United Kingdom,46,1,323,3
-2020-03-11,The United Kingdom,50,3,373,6
+2020-03-12,Thailand,11,0,70,1
+2020-02-01,United Kingdom,,,2,
+2020-02-02,United Kingdom,0,,2,
+2020-02-03,United Kingdom,0,,2,
+2020-02-04,United Kingdom,0,,2,
+2020-02-05,United Kingdom,0,,2,
+2020-02-06,United Kingdom,0,,2,
+2020-02-07,United Kingdom,1,,3,
+2020-02-08,United Kingdom,0,,3,
+2020-02-09,United Kingdom,0,,3,
+2020-02-10,United Kingdom,1,,4,
+2020-02-11,United Kingdom,4,,8,
+2020-02-12,United Kingdom,0,,8,
+2020-02-13,United Kingdom,1,,9,
+2020-02-14,United Kingdom,0,,9,
+2020-02-15,United Kingdom,0,,9,
+2020-02-16,United Kingdom,0,,9,
+2020-02-17,United Kingdom,0,,9,
+2020-02-18,United Kingdom,0,,9,
+2020-02-19,United Kingdom,0,,9,
+2020-02-20,United Kingdom,0,,9,
+2020-02-21,United Kingdom,0,,9,
+2020-02-22,United Kingdom,0,,9,
+2020-02-23,United Kingdom,0,,9,
+2020-02-24,United Kingdom,0,,9,
+2020-02-25,United Kingdom,4,,13,
+2020-02-26,United Kingdom,0,,13,
+2020-02-27,United Kingdom,0,,13,
+2020-02-28,United Kingdom,3,,16,
+2020-02-29,United Kingdom,4,,20,
+2020-03-01,United Kingdom,3,,23,
+2020-03-02,United Kingdom,13,,36,
+2020-03-03,United Kingdom,3,,39,
+2020-03-04,United Kingdom,12,,51,
+2020-03-05,United Kingdom,38,,89,
+2020-03-06,United Kingdom,29,,118,
+2020-03-07,United Kingdom,49,,167,1
+2020-03-08,United Kingdom,43,1,210,2
+2020-03-09,United Kingdom,67,0,277,2
+2020-03-10,United Kingdom,46,1,323,3
+2020-03-11,United Kingdom,50,3,373,6
+2020-03-12,United Kingdom,87,0,460,6
 2020-03-07,Togo,,,1,
 2020-03-08,Togo,0,,1,
 2020-03-09,Togo,0,,1,
 2020-03-10,Togo,0,,1,
 2020-03-11,Togo,0,,1,
+2020-03-12,Togo,0,,1,
 2020-03-03,Tunisia,,,1,
 2020-03-04,Tunisia,0,,1,
 2020-03-05,Tunisia,0,,1,
@@ -1825,6 +1938,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Tunisia,1,,2,
 2020-03-10,Tunisia,0,,2,
 2020-03-11,Tunisia,4,,6,
+2020-03-12,Tunisia,0,,6,
+2020-03-12,Turkey,,,1,
 2020-03-04,Ukraine,,,1,
 2020-03-05,Ukraine,0,,1,
 2020-03-06,Ukraine,0,,1,
@@ -1833,6 +1948,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,Ukraine,0,,1,
 2020-03-10,Ukraine,0,,1,
 2020-03-11,Ukraine,0,,1,
+2020-03-12,Ukraine,0,,1,
 2020-01-29,United Arab Emirates,,,4,
 2020-01-30,United Arab Emirates,0,,4,
 2020-01-31,United Arab Emirates,0,,4,
@@ -1876,103 +1992,106 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-09,United Arab Emirates,0,,45,
 2020-03-10,United Arab Emirates,14,,59,
 2020-03-11,United Arab Emirates,15,,74,
-2020-01-23,United States of America,,,1,
-2020-01-24,United States of America,0,,1,
-2020-01-25,United States of America,1,,2,
-2020-01-26,United States of America,0,,2,
-2020-01-27,United States of America,3,,5,
-2020-01-28,United States of America,0,,5,
-2020-01-29,United States of America,0,,5,
-2020-01-30,United States of America,0,,5,
-2020-01-31,United States of America,1,,6,
-2020-02-01,United States of America,1,,7,
-2020-02-02,United States of America,1,,8,
-2020-02-03,United States of America,3,,11,
-2020-02-04,United States of America,0,,11,
-2020-02-05,United States of America,0,,11,
-2020-02-06,United States of America,1,,12,
-2020-02-07,United States of America,0,,12,
-2020-02-08,United States of America,0,,12,
-2020-02-09,United States of America,0,,12,
-2020-02-10,United States of America,0,,12,
-2020-02-11,United States of America,1,,13,
-2020-02-12,United States of America,0,,13,
-2020-02-13,United States of America,1,,14,
-2020-02-14,United States of America,1,,15,
-2020-02-15,United States of America,0,,15,
-2020-02-16,United States of America,0,,15,
-2020-02-17,United States of America,0,,15,
-2020-02-18,United States of America,0,,15,
-2020-02-19,United States of America,0,,15,
-2020-02-20,United States of America,0,,15,
-2020-02-21,United States of America,0,,15,
-2020-02-22,United States of America,20,,35,
-2020-02-23,United States of America,0,,35,
-2020-02-24,United States of America,0,,35,
-2020-02-25,United States of America,18,,53,
-2020-02-26,United States of America,0,,53,
-2020-02-27,United States of America,6,,59,
-2020-02-28,United States of America,0,,59,
-2020-02-29,United States of America,3,,62,
-2020-03-01,United States of America,0,,62,
-2020-03-02,United States of America,0,,62,
-2020-03-03,United States of America,2,,64,2
-2020-03-04,United States of America,44,4,108,6
-2020-03-05,United States of America,21,3,129,9
-2020-03-06,United States of America,19,1,148,10
-2020-03-07,United States of America,65,1,213,11
-2020-03-08,United States of America,0,0,213,11
-2020-03-09,United States of America,0,0,213,11
-2020-03-10,United States of America,259,8,472,19
-2020-03-11,United States of America,224,6,696,25
-2020-01-24,Viet Nam,,,2,
-2020-01-25,Viet Nam,0,,2,
-2020-01-26,Viet Nam,0,,2,
-2020-01-27,Viet Nam,0,,2,
-2020-01-28,Viet Nam,0,,2,
-2020-01-29,Viet Nam,0,,2,
-2020-01-30,Viet Nam,0,,2,
-2020-01-31,Viet Nam,3,,5,
-2020-02-01,Viet Nam,1,,6,
-2020-02-02,Viet Nam,1,,7,
-2020-02-03,Viet Nam,1,,8,
-2020-02-04,Viet Nam,1,,9,
-2020-02-05,Viet Nam,1,,10,
-2020-02-06,Viet Nam,0,,10,
-2020-02-07,Viet Nam,2,,12,
-2020-02-08,Viet Nam,1,,13,
-2020-02-09,Viet Nam,1,,14,
-2020-02-10,Viet Nam,0,,14,
-2020-02-11,Viet Nam,1,,15,
-2020-02-12,Viet Nam,0,,15,
-2020-02-13,Viet Nam,1,,16,
-2020-02-14,Viet Nam,0,,16,
-2020-02-15,Viet Nam,0,,16,
-2020-02-16,Viet Nam,0,,16,
-2020-02-17,Viet Nam,0,,16,
-2020-02-18,Viet Nam,0,,16,
-2020-02-19,Viet Nam,0,,16,
-2020-02-20,Viet Nam,0,,16,
-2020-02-21,Viet Nam,0,,16,
-2020-02-22,Viet Nam,0,,16,
-2020-02-23,Viet Nam,0,,16,
-2020-02-24,Viet Nam,0,,16,
-2020-02-25,Viet Nam,0,,16,
-2020-02-26,Viet Nam,0,,16,
-2020-02-27,Viet Nam,0,,16,
-2020-02-28,Viet Nam,0,,16,
-2020-02-29,Viet Nam,0,,16,
-2020-03-01,Viet Nam,0,,16,
-2020-03-02,Viet Nam,0,,16,
-2020-03-03,Viet Nam,0,,16,
-2020-03-04,Viet Nam,0,,16,
-2020-03-05,Viet Nam,0,,16,
-2020-03-06,Viet Nam,0,,16,
-2020-03-07,Viet Nam,1,,17,
-2020-03-08,Viet Nam,4,,21,
-2020-03-09,Viet Nam,9,,30,
-2020-03-10,Viet Nam,1,,31,
-2020-03-11,Viet Nam,4,,35,
+2020-03-12,United Arab Emirates,0,,74,
+2020-01-23,United States,,,1,
+2020-01-24,United States,0,,1,
+2020-01-25,United States,1,,2,
+2020-01-26,United States,0,,2,
+2020-01-27,United States,3,,5,
+2020-01-28,United States,0,,5,
+2020-01-29,United States,0,,5,
+2020-01-30,United States,0,,5,
+2020-01-31,United States,1,,6,
+2020-02-01,United States,1,,7,
+2020-02-02,United States,1,,8,
+2020-02-03,United States,3,,11,
+2020-02-04,United States,0,,11,
+2020-02-05,United States,0,,11,
+2020-02-06,United States,1,,12,
+2020-02-07,United States,0,,12,
+2020-02-08,United States,0,,12,
+2020-02-09,United States,0,,12,
+2020-02-10,United States,0,,12,
+2020-02-11,United States,1,,13,
+2020-02-12,United States,0,,13,
+2020-02-13,United States,1,,14,
+2020-02-14,United States,1,,15,
+2020-02-15,United States,0,,15,
+2020-02-16,United States,0,,15,
+2020-02-17,United States,0,,15,
+2020-02-18,United States,0,,15,
+2020-02-19,United States,0,,15,
+2020-02-20,United States,0,,15,
+2020-02-21,United States,0,,15,
+2020-02-22,United States,20,,35,
+2020-02-23,United States,0,,35,
+2020-02-24,United States,0,,35,
+2020-02-25,United States,18,,53,
+2020-02-26,United States,0,,53,
+2020-02-27,United States,6,,59,
+2020-02-28,United States,0,,59,
+2020-02-29,United States,3,,62,
+2020-03-01,United States,0,,62,
+2020-03-02,United States,0,,62,
+2020-03-03,United States,2,,64,2
+2020-03-04,United States,44,4,108,6
+2020-03-05,United States,21,3,129,9
+2020-03-06,United States,19,1,148,10
+2020-03-07,United States,65,1,213,11
+2020-03-08,United States,0,0,213,11
+2020-03-09,United States,0,0,213,11
+2020-03-10,United States,259,8,472,19
+2020-03-11,United States,224,6,696,25
+2020-03-12,United States,291,4,987,29
+2020-01-24,Vietnam,,,2,
+2020-01-25,Vietnam,0,,2,
+2020-01-26,Vietnam,0,,2,
+2020-01-27,Vietnam,0,,2,
+2020-01-28,Vietnam,0,,2,
+2020-01-29,Vietnam,0,,2,
+2020-01-30,Vietnam,0,,2,
+2020-01-31,Vietnam,3,,5,
+2020-02-01,Vietnam,1,,6,
+2020-02-02,Vietnam,1,,7,
+2020-02-03,Vietnam,1,,8,
+2020-02-04,Vietnam,1,,9,
+2020-02-05,Vietnam,1,,10,
+2020-02-06,Vietnam,0,,10,
+2020-02-07,Vietnam,2,,12,
+2020-02-08,Vietnam,1,,13,
+2020-02-09,Vietnam,1,,14,
+2020-02-10,Vietnam,0,,14,
+2020-02-11,Vietnam,1,,15,
+2020-02-12,Vietnam,0,,15,
+2020-02-13,Vietnam,1,,16,
+2020-02-14,Vietnam,0,,16,
+2020-02-15,Vietnam,0,,16,
+2020-02-16,Vietnam,0,,16,
+2020-02-17,Vietnam,0,,16,
+2020-02-18,Vietnam,0,,16,
+2020-02-19,Vietnam,0,,16,
+2020-02-20,Vietnam,0,,16,
+2020-02-21,Vietnam,0,,16,
+2020-02-22,Vietnam,0,,16,
+2020-02-23,Vietnam,0,,16,
+2020-02-24,Vietnam,0,,16,
+2020-02-25,Vietnam,0,,16,
+2020-02-26,Vietnam,0,,16,
+2020-02-27,Vietnam,0,,16,
+2020-02-28,Vietnam,0,,16,
+2020-02-29,Vietnam,0,,16,
+2020-03-01,Vietnam,0,,16,
+2020-03-02,Vietnam,0,,16,
+2020-03-03,Vietnam,0,,16,
+2020-03-04,Vietnam,0,,16,
+2020-03-05,Vietnam,0,,16,
+2020-03-06,Vietnam,0,,16,
+2020-03-07,Vietnam,1,,17,
+2020-03-08,Vietnam,4,,21,
+2020-03-09,Vietnam,9,,30,
+2020-03-10,Vietnam,1,,31,
+2020-03-11,Vietnam,4,,35,
+2020-03-12,Vietnam,4,,39,
 2020-01-21,Worldwide,0,0,282,6
 2020-01-22,Worldwide,32,0,314,6
 2020-01-23,Worldwide,266,11,581,17
@@ -2023,4 +2142,5 @@ date,location,new_cases,new_deaths,total_cases,total_deaths
 2020-03-08,Worldwide,3644,96,105592,3584
 2020-03-09,Worldwide,3979,224,109577,3809
 2020-03-10,Worldwide,4119,201,113702,4012
-2020-03-11,Worldwide,4618,275,118326,4292
+2020-03-11,Worldwide,4611,275,118319,4292
+2020-03-12,Worldwide,6724,317,125048,4613
