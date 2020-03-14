@@ -5,4 +5,4 @@
   publish = "public/"
 
   # Default build command.
-  command = "python -m IPython generate.py"
+  # command = "python -m IPython generate.py"
