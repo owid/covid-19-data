@@ -261,7 +261,7 @@ df_grapher = df_grapher[['location', 'date', 'new_cases', 'new_deaths', 'total_c
 # In[26]:
 
 
-df_merged[].to_csv(os.path.join(OUTPUT_PATH, 'full_data.csv'), index=False)
+df_merged[['date', 'location', 'new_cases', 'new_deaths', 'total_cases', 'total_deaths']]     .to_csv(os.path.join(OUTPUT_PATH, 'full_data.csv'), index=False)
 
 
 # In[27]:
