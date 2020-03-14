@@ -5,4 +5,4 @@
   publish = "public/"
 
   # Default build command.
-  # command = "echo 'default context'"
+  command = "python -m IPython generate.py"
