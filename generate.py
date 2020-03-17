@@ -15,6 +15,7 @@ from datetime import datetime
 INPUT_PATH = 'input/'
 OUTPUT_PATH = 'public/data/'
 
+POPULATION_CSV_PATH = os.path.join(INPUT_PATH, 'population_thousands.csv')
 REGIONS_CSV_PATH = os.path.join(INPUT_PATH, 'regions.csv')
 DEATHS_CSV_PATH = os.path.join(INPUT_PATH, 'deaths.csv')
 CASES_CSV_PATH = os.path.join(INPUT_PATH, 'cases.csv')
@@ -28,7 +29,52 @@ get_ipython().system('mkdir -p $OUTPUT_PATH')
 
 # ## Load the data
 
+# Population figures
+
 # In[3]:
+
+
+df_pop = pd.read_csv(POPULATION_CSV_PATH)
+
+
+# In[4]:
+
+
+# WHO includes counts for Kosovo in Serbia
+# https://www.who.int/countries/srb/en/
+df_pop['entity'] = df_pop['entity'].replace({ 'Serbia (including Kosovo)': 'Serbia' })
+
+
+# In[5]:
+
+
+df_pop['population'] = df_pop['population_thousands'] * 1000
+
+
+# In[6]:
+
+
+def find_closest_year(df, year=2020):
+    df = df.copy()
+    df['year'] = df['year'].sort_values(ascending=True)
+    return df.loc[df['year'].map(lambda x: abs(x - 2020)).idxmin()]
+
+
+# In[7]:
+
+
+current_pop = pd.DataFrame([
+    find_closest_year(df, 2020)
+    for loc, df in df_pop.groupby('entity')
+]) \
+.dropna() \
+.drop(columns=['population_thousands']) \
+.rename(columns={'entity': 'location'})
+
+
+# WHO regions & OWID names
+
+# In[8]:
 
 
 df_regions = pd.read_csv(REGIONS_CSV_PATH)
@@ -36,7 +82,7 @@ df_regions = pd.read_csv(REGIONS_CSV_PATH)
 
 # Transform the "wide" format into "long" format, which is easier to work with.
 
-# In[4]:
+# In[9]:
 
 
 def melt_csv(df, var_name):
@@ -48,7 +94,7 @@ def melt_csv(df, var_name):
     ).dropna()
 
 
-# In[5]:
+# In[10]:
 
 
 df_deaths = melt_csv(pd.read_csv(DEATHS_CSV_PATH, header=1).rename(columns={ 'Date': 'date' }), 'total_deaths')
@@ -57,7 +103,7 @@ df_cases = melt_csv(pd.read_csv(CASES_CSV_PATH, header=1).rename(columns={ 'Date
 
 # Convert all numbers from floating point to integers:
 
-# In[6]:
+# In[11]:
 
 
 df_deaths['total_deaths'] = df_deaths['total_deaths'].astype('Int64')
@@ -68,7 +114,7 @@ df_cases['total_cases'] = df_cases['total_cases'].astype('Int64')
 
 # Join cases & deaths into one dataframe
 
-# In[7]:
+# In[12]:
 
 
 df_merged = df_cases.merge(
@@ -81,7 +127,7 @@ df_merged = df_cases.merge(
 
 # Standardize names to OWID names
 
-# In[8]:
+# In[13]:
 
 
 df_regions_merged = df_regions.merge(
@@ -92,19 +138,25 @@ df_regions_merged = df_regions.merge(
 )
 
 
-# In[9]:
+# In[14]:
+
+
+df_regions_merged[df_regions_merged['OWID Country Name'].isnull()]
+
+
+# In[15]:
 
 
 assert(df_regions_merged['OWID Country Name'].isnull().any() == False)
 
 
-# In[10]:
+# In[16]:
 
 
 who_name_replace_map = { r['WHO Country Name']: r['OWID Country Name'] for r in df_regions_merged.to_dict('records') }
 
 
-# In[11]:
+# In[17]:
 
 
 df_merged['location'] = df_merged['location'].replace(who_name_replace_map)
@@ -112,7 +164,7 @@ df_merged['location'] = df_merged['location'].replace(who_name_replace_map)
 
 # Calculate daily cases & deaths
 
-# In[12]:
+# In[18]:
 
 
 # Convert to Int64 to handle <NA>
@@ -122,22 +174,56 @@ df_merged['new_deaths'] = df_merged.groupby('location')['total_deaths'].diff().a
 
 # Create a `World` aggregate
 
-# In[13]:
+# In[19]:
 
 
 df_global = df_merged.groupby('date').sum().reset_index()
 df_global['location'] = 'World'
 
 
-# In[14]:
+# In[20]:
 
 
 df_merged = pd.concat([df_merged, df_global], sort=True)
 
 
+# Calculate per population variables
+
+# In[21]:
+
+
+df_merged_pop = df_merged.merge(
+    current_pop,
+    how='left',
+    on='location'
+)
+
+
+# In[22]:
+
+
+# These entities do not exist in the UN population dataset but do in the WHO data
+df_merged_pop[df_merged_pop['population'].isnull()]['location'].unique()
+
+
+# In[23]:
+
+
+df_merged_pop['total_cases_per_million'] = df_merged_pop['total_cases'] / (df_merged_pop['population'] / 1e6)
+df_merged_pop['total_deaths_per_million'] = df_merged_pop['total_deaths'] / (df_merged_pop['population'] / 1e6)
+df_merged_pop['new_cases_per_million'] = df_merged_pop['new_cases'] / (df_merged_pop['population'] / 1e6)
+df_merged_pop['new_deaths_per_million'] = df_merged_pop['new_deaths'] / (df_merged_pop['population'] / 1e6)
+
+
+# In[24]:
+
+
+df_merged = df_merged_pop.drop(columns=['year', 'population'])
+
+
 # Calculate days since 100th case
 
-# In[15]:
+# In[25]:
 
 
 THRESHOLD = 100
@@ -145,7 +231,7 @@ DAYS_SINCE_COL_NAME = 'days_since_%sth_case' % THRESHOLD
 DAYS_SINCE_COL_NAME_POSITIVE = 'days_since_%sth_case_positive' % THRESHOLD
 
 
-# In[16]:
+# In[26]:
 
 
 def get_date_of_nth_case(df, nth):
@@ -157,7 +243,7 @@ def get_date_of_nth_case(df, nth):
         return None
 
 
-# In[17]:
+# In[27]:
 
 
 date_of_nth_case = pd.DataFrame([
@@ -166,7 +252,7 @@ date_of_nth_case = pd.DataFrame([
 ], columns=['location', 'date_of_nth_case']).dropna()
 
 
-# In[18]:
+# In[28]:
 
 
 def inject_days_since(df, ref_date):
@@ -175,7 +261,7 @@ def inject_days_since(df, ref_date):
     return df
 
 
-# In[19]:
+# In[29]:
 
 
 df_grouped = df_merged.groupby('location')
@@ -185,7 +271,7 @@ df_days_since_nth_case = pd.concat([
 ])
 
 
-# In[20]:
+# In[30]:
 
 
 df_merged = df_merged.merge(
@@ -199,7 +285,7 @@ df_merged[DAYS_SINCE_COL_NAME_POSITIVE] = df_merged[DAYS_SINCE_COL_NAME]     .ma
 
 # Calculate doubling rates
 
-# In[21]:
+# In[31]:
 
 
 def get_days_to_double(df, col_name):
@@ -213,7 +299,7 @@ def get_days_to_double(df, col_name):
         return None
 
 
-# In[22]:
+# In[32]:
 
 
 days_to_double_cases = pd.DataFrame([
@@ -225,32 +311,44 @@ days_to_double_cases['days_to_double_cases'] = days_to_double_cases['days_to_dou
 
 # ### Grapher data extract
 
-# In[23]:
+# In[33]:
 
 
 df_grapher = df_merged.copy()
 df_grapher['date'] = pd.to_datetime(df_grapher['date']).map(lambda date: (date - datetime(2020, 1, 21)).days)
-df_grapher = df_grapher[['location', 'date', 'new_cases', 'new_deaths', 'total_cases', 'total_deaths', DAYS_SINCE_COL_NAME, DAYS_SINCE_COL_NAME_POSITIVE]]     .rename(columns={
+df_grapher = df_grapher[[
+    'location', 'date', 
+    'new_cases', 'new_deaths', 
+    'total_cases', 'total_deaths',
+    'new_cases_per_million', 'new_deaths_per_million', 
+    'total_cases_per_million', 'total_deaths_per_million',
+    DAYS_SINCE_COL_NAME, DAYS_SINCE_COL_NAME_POSITIVE]] \
+    .rename(columns={
         'location': 'country',
         'date': 'year',
         'new_cases': 'Daily new confirmed cases of COVID-19',
         'new_deaths': 'Daily new confirmed deaths due to COVID-19',
         'total_cases': 'Total confirmed cases of COVID-19', 
         'total_deaths': 'Total confirmed deaths due to COVID-19',
+        'new_cases_per_million': 'Daily new confirmed cases of COVID-19 per million people',
+        'new_deaths_per_million': 'Daily new confirmed deaths due to COVID-19 per million people',
+        'total_cases_per_million': 'Total confirmed cases of COVID-19 per million people', 
+        'total_deaths_per_million': 'Total confirmed deaths due to COVID-19 per million people',
         DAYS_SINCE_COL_NAME: 'Days since the total confirmed cases of COVID-19 reached %s' % THRESHOLD,
-        DAYS_SINCE_COL_NAME_POSITIVE: 'Days since the total confirmed cases of COVID-19 reached %s (positive only)' % THRESHOLD
+        DAYS_SINCE_COL_NAME_POSITIVE: 'Days since the total confirmed cases of COVID-19 reached %s (positive only)' % THRESHOLD,
+    
     })
 
 
 # ## Inspect the results
 
-# In[24]:
+# In[34]:
 
 
 # df_merged
 
 
-# In[25]:
+# In[35]:
 
 
 # df_merged[df_merged['location'] == 'World']
@@ -258,16 +356,25 @@ df_grapher = df_grapher[['location', 'date', 'new_cases', 'new_deaths', 'total_c
 
 # ## Write output files
 
-# In[26]:
+# In[41]:
 
 
-df_merged[['date', 'location', 'new_cases', 'new_deaths', 'total_cases', 'total_deaths']]     .to_csv(os.path.join(OUTPUT_PATH, 'full_data.csv'), index=False)
+# Should keep these append-only in case someone external depends on the order
+df_merged[[
+    'date', 'location',
+    'new_cases', 'new_deaths', 
+    'total_cases', 'total_deaths']] \
+    .to_csv(os.path.join(OUTPUT_PATH, 'full_data.csv'), index=False)
 
 
-# In[27]:
+# In[42]:
 
 
-for col_name in ['total_cases', 'total_deaths', 'new_cases', 'new_deaths']:
+for col_name in [
+    'total_cases', 'total_deaths', 
+    'new_cases', 'new_deaths',
+    'total_cases_per_million', 'total_deaths_per_million', 
+    'new_cases_per_million', 'new_deaths_per_million']:
     df_pivot = df_merged.pivot(index='date', columns='location', values=col_name)
     # move World to first column
     cols = df_pivot.columns.tolist()
@@ -275,19 +382,19 @@ for col_name in ['total_cases', 'total_deaths', 'new_cases', 'new_deaths']:
     df_pivot[cols].to_csv(os.path.join(OUTPUT_PATH, '%s.csv' % col_name))
 
 
-# In[28]:
+# In[43]:
 
 
 days_to_double_cases.to_csv(os.path.join(OUTPUT_PATH, 'days_to_double_cases.csv'), index=False)
 
 
-# In[29]:
+# In[44]:
 
 
 df_regions.to_csv(os.path.join(OUTPUT_PATH, 'regions.csv'), index=False)
 
 
-# In[30]:
+# In[45]:
 
 
 df_grapher.to_csv(os.path.join(OUTPUT_PATH, 'grapher.csv'), index=False)
