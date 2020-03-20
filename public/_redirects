@@ -1,0 +1,14 @@
+# Redirects for WHO data
+# We used to publish only WHO data before we switched to ECDC
+/data/days_to_double_cases.csv /data/who/days_to_double_cases.csv 301
+/data/full_data.csv /data/who/full_data.csv 301
+/data/grapher.csv /data/who/grapher.csv 301
+/data/new_cases.csv /data/who/new_cases.csv 301
+/data/new_cases_per_million.csv /data/who/new_cases_per_million.csv 301
+/data/new_deaths.csv /data/who/new_deaths.csv 301
+/data/new_deaths_per_million.csv /data/who/new_deaths_per_million.csv 301
+/data/regions.csv /data/who/regions.csv 301
+/data/total_cases.csv /data/who/total_cases.csv 301
+/data/total_cases_per_million.csv /data/who/total_cases_per_million.csv 301
+/data/total_deaths.csv /data/who/total_deaths.csv 301
+/data/total_deaths_per_million.csv /data/who/total_deaths_per_million.csv 301
