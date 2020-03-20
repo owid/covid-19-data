@@ -13,7 +13,7 @@ OUTPUT_PATH = os.path.join(CURRENT_DIR, '../public/data/ecdc/')
 TMP_PATH = os.path.join(CURRENT_DIR, '../tmp')
 
 LOCATIONS_CSV_PATH = os.path.join(INPUT_PATH, 'locations.csv')
-DATA_XLS_PATH = os.path.join(INPUT_PATH, 'releases', '2020-03-19.xlsx')
+DATA_XLS_PATH = os.path.join(INPUT_PATH, 'releases', '2020-03-20-modified.xlsx')
 
 def load_data():
     return pd.read_excel(
