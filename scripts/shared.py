@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 CURRENT_DIR = os.path.dirname(__file__)
-POPULATION_CSV_PATH = os.path.join(CURRENT_DIR, '../input/un/population_thousands.csv')
+POPULATION_CSV_PATH = os.path.join(CURRENT_DIR, '../input/un/population_2020.csv')
 
 # Per population calculations
 
@@ -18,13 +18,11 @@ def load_population(year=2020):
         POPULATION_CSV_PATH,
         keep_default_na=False
     )
-    df['population'] = df['population_thousands'] * 1000
     return pd.DataFrame([
         _find_closest_year_row(df_group, year)
         for loc, df_group in df.groupby('entity')
     ]) \
     .dropna() \
-    .drop(columns=['population_thousands']) \
     .rename(columns={'entity': 'location', 'year': 'population_year'})
 
 # Useful for adding it to regions.csv and
