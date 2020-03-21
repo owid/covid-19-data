@@ -130,7 +130,10 @@ if __name__ == '__main__':
     print("\nAttempting to download latest report...")
     download(last_n=2)
 
-    print("\nIf you don't see the latest report in the options below, please download it from: \nhttps://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide\n")
+    print(
+"""\n[Note] If you don't see the latest report in the options below, please download the Excel file from:
+https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide
+Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
 
     filenames = glob(os.path.join(RELEASES_PATH, '*.xlsx'))
     filenames.extend(glob(os.path.join(RELEASES_PATH, '*.xls')))
