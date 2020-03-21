@@ -2,6 +2,7 @@ import os
 import sys
 import pandas as pd
 from datetime import datetime, timedelta
+from termcolor import colored
 
 CURRENT_DIR = os.path.dirname(__file__)
 
@@ -15,6 +16,9 @@ TMP_PATH = os.path.join(CURRENT_DIR, '../tmp')
 
 LOCATIONS_CSV_PATH = os.path.join(INPUT_PATH, 'ecdc_country_standardized.csv')
 RELEASES_PATH = os.path.join(INPUT_PATH, 'releases')
+
+ERROR = colored("[Error]", 'red')
+WARNING = colored("[Warning]", 'yellow')
 
 def download(last_n=2):
     daterange = pd.date_range(end=datetime.utcnow(), periods=last_n).to_pydatetime().tolist()
@@ -60,25 +64,29 @@ def check_data_correctness(filename):
     df_merged = _load_merged(filename)
     df_uniq = df_merged[['Countries and territories', 'GeoId', 'location']].drop_duplicates()
     if df_uniq['location'].isnull().any():
-        print("Error: Could not find OWID names for:")
+        print("\n" + ERROR + " Could not find OWID names for:")
         print(df_uniq[df_uniq['location'].isnull()])
         csv_path = os.path.join(TMP_PATH, 'ecdc.csv')
-        print(os.path.abspath(TMP_PATH))
         os.system('mkdir -p %s' % os.path.abspath(TMP_PATH))
         df_uniq[['Countries and territories']] \
             .rename(columns={'Countries and territories': 'Country'}) \
             .to_csv(csv_path, index=False)
-        print("Saved CSV file to be standardized at %s. Move it to %s once you are done." % (csv_path, LOCATIONS_CSV_PATH))
+        print("\nSaved CSV file to be standardized at %s. \nRun it through the OWID standardizer and save in %s" % (
+            colored(os.path.abspath(csv_path), 'white'),
+            colored(os.path.abspath(LOCATIONS_CSV_PATH), 'white')
+        ))
         errors += 1
+    # Drop missing locations for the further checks – that error is addressed above
+    df_merged = df_merged.dropna(subset=['location'])
     if df_merged.duplicated(subset=['DateRep', 'location']).any():
-        print("Found duplicate rows:")
+        print("\n" + ERROR + " Found duplicate rows (this can be caused by missing OWID countries):")
         print(df_merged[df_merged.duplicated(subset=['DateRep', 'location'])])
         errors += 1
     df_pop = load_population()
     pop_entity_diff = set(df_uniq['location']) - set(df_pop['location'])
     if len(pop_entity_diff) > 0:
         # this is not an error, so don't increment errors variable
-        print("\n[Warning] These entities were not found in the population dataset:")
+        print("\n" + WARNING + " These entities were not found in the population dataset:")
         print(pop_entity_diff)
         print()
     return True if errors == 0 else False
@@ -149,12 +157,12 @@ Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
     filename = answers['filename']
 
     if check_data_correctness(filename):
-        print("Data correctness check passed.\n")
+        print("Data correctness check %s.\n" % colored("passed", 'green'))
     else:
-        print("Data correctness check failed.\n")
+        print("Data correctness check %s.\n" % colored("failed", 'red'))
         sys.exit(1)
 
     if export(filename):
-        print("Successfully exported CSVs to %s\n" % os.path.abspath(OUTPUT_PATH))
+        print("Successfully exported CSVs to %s\n" % colored(os.path.abspath(OUTPUT_PATH), 'white'))
     else:
         print("ECDC Export failed.\n")

@@ -21,6 +21,7 @@ pytz==2019.3
 readchar==2.0.1
 regex==2020.2.20
 six==1.14.0
+termcolor==1.1.0
 traitlets==4.3.3
 wcwidth==0.1.8
 xlrd==1.2.0
