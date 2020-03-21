@@ -72,15 +72,17 @@ def check_data_correctness(filename):
             .rename(columns={'Countries and territories': 'Country'}) \
             .to_csv(csv_path, index=False)
         print("\nSaved CSV file to be standardized at %s. \nRun it through the OWID standardizer and save in %s" % (
-            colored(os.path.abspath(csv_path), 'white'),
-            colored(os.path.abspath(LOCATIONS_CSV_PATH), 'white')
+            colored(os.path.abspath(csv_path), 'magenta'),
+            colored(os.path.abspath(LOCATIONS_CSV_PATH), 'magenta')
         ))
         errors += 1
     # Drop missing locations for the further checks – that error is addressed above
     df_merged = df_merged.dropna(subset=['location'])
     if df_merged.duplicated(subset=['DateRep', 'location']).any():
-        print("\n" + ERROR + " Found duplicate rows (this can be caused by missing OWID countries):")
+        print("\n" + ERROR + " Found duplicate rows:")
         print(df_merged[df_merged.duplicated(subset=['DateRep', 'location'])])
+        print("\nPlease " + colored("fix or remove the duplicate rows", 'magenta') + " in the Excel file, and then save it again but under a new name, e.g. 2020-03-20-modified.xlsx")
+        print("Also please " + colored("note down any changes you made", 'magenta') + " in %s" % os.path.abspath(os.path.join(INPUT_PATH, 'NOTES.md')))
         errors += 1
     df_pop = load_population()
     pop_entity_diff = set(df_uniq['location']) - set(df_pop['location'])
@@ -163,6 +165,6 @@ Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
         sys.exit(1)
 
     if export(filename):
-        print("Successfully exported CSVs to %s\n" % colored(os.path.abspath(OUTPUT_PATH), 'white'))
+        print("Successfully exported CSVs to %s\n" % colored(os.path.abspath(OUTPUT_PATH), 'magenta'))
     else:
         print("ECDC Export failed.\n")
