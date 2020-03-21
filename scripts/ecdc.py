@@ -67,7 +67,6 @@ def check_data_correctness(filename):
         os.system('mkdir -p %s' % os.path.abspath(TMP_PATH))
         df_uniq[['Countries and territories']] \
             .rename(columns={'Countries and territories': 'Country'}) \
-            .sort_values(by=['location']) \
             .to_csv(csv_path, index=False)
         print("Saved CSV file to be standardized at %s. Move it to %s once you are done." % (csv_path, LOCATIONS_CSV_PATH))
         errors += 1
