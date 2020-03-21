@@ -154,7 +154,7 @@ GRAPHER_COL_NAMES = {
 def existsin(l1, l2):
     return [x for x in l1 if x in l2]
 
-def standard_export(df, output_path):
+def standard_export(df, output_path, grapher_name):
     # full_data.csv
     full_data_cols = existsin(FULL_DATA_COLS, df.columns)
     df[full_data_cols].to_csv(
@@ -166,7 +166,7 @@ def standard_export(df, output_path):
     df_grapher['date'] = pd.to_datetime(df_grapher['date']).map(lambda date: (date - datetime(2020, 1, 21)).days)
     df_grapher = df_grapher[GRAPHER_COL_NAMES.keys()] \
         .rename(columns=GRAPHER_COL_NAMES) \
-        .to_csv(os.path.join(output_path, 'grapher.csv'), index=False)
+        .to_csv(os.path.join(output_path, '%s.csv' % grapher_name), index=False)
     # Pivot variables (wide format)
     for col_name in [*BASE_MEASURES, *PER_MILLION_MEASURES]:
         df_pivot = df.pivot(index='date', columns='location', values=col_name)

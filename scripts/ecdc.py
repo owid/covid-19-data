@@ -131,7 +131,11 @@ def export(filename):
     df_loc['population'] = df_loc['population'].round().astype('Int64')
     df_loc.to_csv(os.path.join(OUTPUT_PATH, 'locations.csv'), index=False)
     # The rest of the CSVs
-    return standard_export(load_standardized(filename), OUTPUT_PATH)
+    return standard_export(
+        load_standardized(filename),
+        OUTPUT_PATH,
+        "COVID-2019 - ECDC (2020)"
+    )
 
 if __name__ == '__main__':
     import inquirer
