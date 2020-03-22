@@ -112,6 +112,9 @@ def inject_days_since_all(df):
         for loc, df_group in df.groupby('location')
     ])
 
+def inject_cfr(df):
+    return df.assign(cfr=lambda x: x.total_deaths / x.total_cases * 100)
+
 
 # Export logic
 
@@ -148,7 +151,8 @@ GRAPHER_COL_NAMES = {
     'days_since_100th_case': 'Days since the total confirmed cases of COVID-19 reached 100',
     'days_since_10th_death': 'Days since the total confirmed deaths of COVID-19 reached 10',
     'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
-    'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1'
+    'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
+    'cfr': 'Case fatality rate of COVID-19 (%)'
 }
 
 def existsin(l1, l2):
