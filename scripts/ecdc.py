@@ -24,11 +24,11 @@ def download(last_n=2):
     daterange = pd.date_range(end=datetime.utcnow(), periods=last_n).to_pydatetime().tolist()
     for date in daterange:
         filename = date.strftime('%Y-%m-%d')
-        os.system('wget -c -N -o wget.log -O %(DIR)s/%(filename)s.xlsx https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s.xlsx || rm -f %(DIR)s/%(filename)s.xlsx' % {
+        os.system('wget -c -N --no-cache -o wget.log -O %(DIR)s/%(filename)s.xlsx https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s.xlsx || rm -f %(DIR)s/%(filename)s.xlsx' % {
             'filename': filename,
             'DIR': RELEASES_PATH
         })
-        os.system('wget -c -N -o wget.log -O %(DIR)s/%(filename)s.xls https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s.xls || rm -f %(DIR)s/%(filename)s.xls' % {
+        os.system('wget -c -N --no-cache -o wget.log -O %(DIR)s/%(filename)s.xls https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s.xls || rm -f %(DIR)s/%(filename)s.xls' % {
             'filename': filename,
             'DIR': RELEASES_PATH
         })
