@@ -116,12 +116,6 @@ def load_standardized(filename):
         'total_deaths'
     ])
     df = inject_days_since_all(df)
-    df_dupe_mask = df.duplicated(subset=['location', 'date'])
-    if df_dupe_mask.any():
-        print("Dataet contains duplicates for date, location:")
-        df_dupes = df[df_dupe_mask]
-        print(df_dupes)
-        sys.exit(1)
     return df.sort_values(by=['location', 'date'])
 
 def export(filename):
