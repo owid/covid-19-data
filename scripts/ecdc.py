@@ -118,7 +118,7 @@ def load_standardized(filename):
 
 def export(filename):
     # locations.csv
-    df_loc = inject_population(load_locations().reset_index())
+    df_loc = inject_population(load_locations())
     df_loc['population_year'] = df_loc['population_year'].round().astype('Int64')
     df_loc['population'] = df_loc['population'].round().astype('Int64')
     df_loc.to_csv(os.path.join(OUTPUT_PATH, 'locations.csv'), index=False)
