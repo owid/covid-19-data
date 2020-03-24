@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 from datetime import datetime
 
@@ -113,7 +114,10 @@ def inject_days_since_all(df):
     ])
 
 def inject_cfr(df):
-    return df.assign(cfr=lambda x: x.total_deaths / x.total_cases * 100)
+    df = df.copy()
+    df['cfr'] = (df['total_deaths'] / df['total_cases']) * 100
+    df['cfr_100_cases'] = np.where(df['total_cases'] >= 100, df['cfr'], None)
+    return df
 
 
 # Export logic
@@ -152,7 +156,8 @@ GRAPHER_COL_NAMES = {
     'days_since_10th_death': 'Days since the total confirmed deaths of COVID-19 reached 10',
     'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
     'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
-    'cfr': 'Case fatality rate of COVID-19 (%)'
+    'cfr': 'Case fatality rate of COVID-19 (%)',
+    'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)'
 }
 
 def existsin(l1, l2):
