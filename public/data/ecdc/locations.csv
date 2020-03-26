@@ -1,12 +1,13 @@
 Countries and territories,location,population_year,population
 Afghanistan,Afghanistan,2020,38928341
-Albania,Albania,2020,2877800
-Algeria,Algeria,2020,43851043
-Andorra,Andorra,2020,77265
 Angola,Angola,2020,32866268
-Antigua_and_Barbuda,Antigua and Barbuda,2020,97928
+Albania,Albania,2020,2877800
+Andorra,Andorra,2020,77265
 Argentina,Argentina,2020,45195777
+Antigua_and_Barbuda,Antigua and Barbuda,2020,97928
+Algeria,Algeria,2020,43851043
 Armenia,Armenia,2020,2963234
+Aruba,Aruba,2020,106766
 Australia,Australia,2020,25499881
 Austria,Austria,2020,9006400
 Azerbaijan,Azerbaijan,2020,10139175
@@ -16,6 +17,7 @@ Bangladesh,Bangladesh,2020,164689383
 Barbados,Barbados,2020,287371
 Belarus,Belarus,2020,9449321
 Belgium,Belgium,2020,11589616
+Belize,Belize,2020,397621
 Benin,Benin,2020,12123198
 Bermuda,Bermuda,2020,62273
 Bhutan,Bhutan,2020,771612
@@ -28,7 +30,6 @@ Burkina_Faso,Burkina Faso,2020,20903278
 Cambodia,Cambodia,2020,16718971
 Cameroon,Cameroon,2020,26545864
 Canada,Canada,2020,37742157
-CANADA,Canada,2020,37742157
 Cape_Verde,Cape Verde,2020,555988
 Cases_on_an_international_conveyance_Japan,International,,
 Cayman_Islands,Cayman Islands,2020,65720
@@ -42,11 +43,13 @@ Costa_Rica,Costa Rica,2020,5094114
 Cote_dIvoire,Cote d'Ivoire,2020,26378275
 Croatia,Croatia,2020,4105268
 Cuba,Cuba,2020,11326616
+Curaçao,Curacao,2020,164100
 Cyprus,Cyprus,2020,1207361
 Czech_Republic,Czech Republic,2020,10708982
 Democratic_Republic_of_the_Congo,Democratic Republic of Congo,2020,89561404
 Denmark,Denmark,2020,5792203
 Djibouti,Djibouti,2020,988002
+Dominica,Dominica,2020,71991
 Dominican_Republic,Dominican Republic,2020,10847904
 Ecuador,Ecuador,2020,17643060
 Egypt,Egypt,2020,102334403
@@ -69,6 +72,7 @@ Ghana,Ghana,2020,31072945
 Gibraltar,Gibraltar,2020,33691
 Greece,Greece,2020,10423056
 Greenland,Greenland,2020,56772
+Grenada,Grenada,2020,112519
 Guam,Guam,2020,168783
 Guatemala,Guatemala,2020,17915567
 Guernsey,Guernsey,,
@@ -96,15 +100,18 @@ Kenya,Kenya,2020,53771300
 Kosovo,Kosovo,2020,1932774
 Kuwait,Kuwait,2020,4270563
 Kyrgyzstan,Kyrgyzstan,2020,6524191
+Laos,Laos,2020,7275556
 Latvia,Latvia,2020,1886202
 Lebanon,Lebanon,2020,6825442
 Liberia,Liberia,2020,5057677
+Libya,Libya,2020,6871287
 Liechtenstein,Liechtenstein,2020,38137
 Lithuania,Lithuania,2020,2722291
 Luxembourg,Luxembourg,2020,625976
 Madagascar,Madagascar,2020,27691019
 Malaysia,Malaysia,2020,32365998
 Maldives,Maldives,2020,540542
+Mali,Mali,2020,20250834
 Malta,Malta,2020,441539
 Mauritania,Mauritania,2020,4649660
 Mauritius,Mauritius,2020,1271767
@@ -115,11 +122,11 @@ Mongolia,Mongolia,2020,3278292
 Montenegro,Montenegro,2020,628062
 Montserrat,Montserrat,2020,4999
 Morocco,Morocco,2020,36910558
+Mozambique,Mozambique,2020,31255435
 Myanmar,Myanmar,2020,54409794
 Namibia,Namibia,2020,2540916
 Nepal,Nepal,2020,29136808
 Netherlands,Netherlands,2020,17134873
-Netherlands_Antilles,Netherlands Antilles,,
 New_Caledonia,New Caledonia,2020,285491
 New_Zealand,New Zealand,2020,4822233
 Nicaragua,Nicaragua,2020,6624554
@@ -141,6 +148,7 @@ Qatar,Qatar,2020,2881060
 Romania,Romania,2020,19237682
 Russia,Russia,2020,145934460
 Rwanda,Rwanda,2020,12952209
+Saint_Kitts_and_Nevis,Saint Kitts and Nevis,2020,53192
 Saint_Lucia,Saint Lucia,2020,183629
 Saint_Vincent_and_the_Grenadines,Saint Vincent and the Grenadines,2020,110947
 San_Marino,San Marino,2020,33938
@@ -149,6 +157,7 @@ Senegal,Senegal,2020,16743930
 Serbia,Serbia,2020,6804596
 Seychelles,Seychelles,2020,98340
 Singapore,Singapore,2020,5850343
+Sint_Maarten,Sint Maarten (Dutch part),2020,42882
 Slovakia,Slovakia,2020,5459643
 Slovenia,Slovenia,2020,2078932
 Somalia,Somalia,2020,15893219
@@ -160,6 +169,7 @@ Sudan,Sudan,2020,43849269
 Suriname,Suriname,2020,586634
 Sweden,Sweden,2020,10099270
 Switzerland,Switzerland,2020,8654618
+Syria,Syria,2020,17500657
 Taiwan,Taiwan,2020,23816775
 Thailand,Thailand,2020,69799978
 Timor_Leste,Timor,2020,1318442
@@ -167,24 +177,17 @@ Togo,Togo,2020,8278737
 Trinidad_and_Tobago,Trinidad and Tobago,2020,1399491
 Tunisia,Tunisia,2020,11818618
 Turkey,Turkey,2020,84339067
+Turks_and_Caicos_islands,Turks and Caicos Islands,2020,38718
 Uganda,Uganda,2020,45741000
 Ukraine,Ukraine,2020,43733759
 United_Arab_Emirates,United Arab Emirates,2020,9890400
 United_Kingdom,United Kingdom,2020,67886004
 United_Republic_of_Tanzania,Tanzania,2020,59734213
 United_States_of_America,United States,2020,331002647
+United_States_Virgin_Islands,United States Virgin Islands,2020,104423
 Uruguay,Uruguay,2020,3473727
 Uzbekistan,Uzbekistan,2020,33469199
 Venezuela,Venezuela,2020,28435943
 Vietnam,Vietnam,2020,97338583
 Zambia,Zambia,2020,18383956
 Zimbabwe,Zimbabwe,2020,14862927
-Dominica,Dominica,2020,71991
-Grenada,Grenada,2020,112519
-Mozambique,Mozambique,2020,31255435
-Syria,Syria,2020,17500657
-Belize,Belize,2020,397621
-United_States_Virgin_Islands,United States Virgin Islands,2020,104423
-Laos,Laos,2020,7275556
-Libya,Libya,2020,6871287
-Turks_and_Caicos_islands,Turks and Caicos Islands,2020,38718
