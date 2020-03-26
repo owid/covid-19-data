@@ -68,9 +68,9 @@ days_since_spec = {
         'col': 'total_cases',
         'threshold': 100
     },
-    'days_since_10th_death': {
+    'days_since_5th_death': {
         'col': 'total_deaths',
-        'threshold': 10
+        'threshold': 5
     },
     'days_since_1_per_million_cases': {
         'col': 'total_cases_per_million',
@@ -153,7 +153,7 @@ GRAPHER_COL_NAMES = {
     'total_cases_per_million': 'Total confirmed cases of COVID-19 per million people',
     'total_deaths_per_million': 'Total confirmed deaths due to COVID-19 per million people',
     'days_since_100th_case': 'Days since the total confirmed cases of COVID-19 reached 100',
-    'days_since_10th_death': 'Days since the total confirmed deaths of COVID-19 reached 10',
+    'days_since_5th_death': 'Days since the total confirmed deaths of COVID-19 reached 5',
     'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
     'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
     'cfr': 'Case fatality rate of COVID-19 (%)',
