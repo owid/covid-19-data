@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import os
 from datetime import datetime
 
@@ -113,10 +112,47 @@ def inject_days_since_all(df):
         for loc, df_group in df.groupby('location')
     ])
 
+def _apply_row_cfr_100(row):
+    if pd.notnull(row['total_cases']) and row['total_cases'] >= 100:
+        return row['cfr']
+    return pd.NA
+
 def inject_cfr(df):
     df = df.copy()
     df['cfr'] = (df['total_deaths'] / df['total_cases']) * 100
-    df['cfr_100_cases'] = np.where(df['total_cases'] >= 100, df['cfr'], None)
+    df['cfr_100_cases'] = df.apply(_apply_row_cfr_100, axis=1)
+    return df
+
+rolling_avg_spec = {
+    'new_cases_3_day_avg': {
+        'col': 'new_cases',
+        'window': 3,
+        'min_periods': 1
+    },
+    'new_deaths_3_day_avg': {
+        'col': 'new_deaths',
+        'window': 3,
+        'min_periods': 1
+    },
+    'new_cases_7_day_avg': {
+        'col': 'new_cases',
+        'window': 7,
+        'min_periods': 3
+    },
+    'new_deaths_7_day_avg': {
+        'col': 'new_deaths',
+        'window': 7,
+        'min_periods': 3
+    },
+}
+
+def inject_rolling_avg(df):
+    df = df.copy().sort_values(by='date')
+    for col, spec in rolling_avg_spec.items():
+        df[col] = df[spec['col']].astype('float')
+        df[col] = df.groupby('location', as_index=False)[col] \
+            .rolling(window=spec['window'], min_periods=spec['min_periods'], center=True) \
+            .mean().reset_index(level=0, drop=True)
     return df
 
 
@@ -157,7 +193,11 @@ GRAPHER_COL_NAMES = {
     'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
     'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
     'cfr': 'Case fatality rate of COVID-19 (%)',
-    'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)'
+    'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
+    'new_cases_3_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 3-day average)',
+    'new_cases_7_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 7-day average)',
+    'new_deaths_3_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average)',
+    'new_deaths_7_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average)'
 }
 
 def existsin(l1, l2):
@@ -166,7 +206,7 @@ def existsin(l1, l2):
 def standard_export(df, output_path, grapher_name):
     # full_data.csv
     full_data_cols = existsin(FULL_DATA_COLS, df.columns)
-    df[full_data_cols].to_csv(
+    df[full_data_cols].dropna(subset=BASE_MEASURES, how='all').to_csv(
         os.path.join(output_path, 'full_data.csv'),
         index=False
     )

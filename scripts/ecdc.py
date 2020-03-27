@@ -8,7 +8,7 @@ CURRENT_DIR = os.path.dirname(__file__)
 
 sys.path.append(CURRENT_DIR)
 
-from shared import load_population, inject_total_daily_cols, inject_world, inject_per_million, inject_days_since_all, inject_cfr, inject_population, standard_export
+from shared import load_population, inject_total_daily_cols, inject_world, inject_per_million, inject_days_since_all, inject_cfr, inject_population, inject_rolling_avg, standard_export
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../public/data/ecdc/')
@@ -32,11 +32,21 @@ def download(last_n=2):
 
 def load_data(filename):
     filepath = os.path.join(RELEASES_PATH, filename)
-    return pd.read_excel(
+    df = pd.read_excel(
         filepath,
         # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
         keep_default_na=False
     )
+    # fill time gaps
+    df = df.set_index(['DateRep']) \
+        .groupby('Countries and territories', as_index=True) \
+        .resample('D').first() \
+        .drop(columns=['Countries and territories']) \
+        .reset_index()
+    # set to ints
+    df['Cases'] = df['Cases'].astype("Int64")
+    df['Deaths'] = df['Deaths'].astype("Int64")
+    return df
 
 def load_locations():
     return pd.read_csv(
@@ -114,6 +124,7 @@ def load_standardized(filename):
     ])
     df = inject_days_since_all(df)
     df = inject_cfr(df)
+    df = inject_rolling_avg(df)
     return df.sort_values(by=['location', 'date'])
 
 def export(filename):
