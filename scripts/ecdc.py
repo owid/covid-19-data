@@ -43,6 +43,9 @@ def load_data(filename):
         .resample('D').first() \
         .drop(columns=['Countries and territories']) \
         .reset_index()
+    # set to ints
+    df['Cases'] = df['Cases'].astype("Int64")
+    df['Deaths'] = df['Deaths'].astype("Int64")
     return df
 
 def load_locations():
