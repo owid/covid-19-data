@@ -20,32 +20,51 @@ RELEASES_PATH = os.path.join(INPUT_PATH, 'releases')
 ERROR = colored("[Error]", 'red')
 WARNING = colored("[Warning]", 'yellow')
 
-def download(last_n=2):
-    daterange = pd.date_range(end=datetime.utcnow(), periods=last_n).to_pydatetime().tolist()
-    for date in daterange:
-        filename = date.strftime('%Y-%m-%d')
-        for ext in ['xlsx', 'xls']:
-            os.system('curl --silent -f -C - -o %(DIR)s/%(filename)s https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s' % {
-                'filename': filename + '.' + ext,
-                'DIR': RELEASES_PATH
-            })
+# Used to be there until 27 March 2020
+# def download_xlsx(last_n=2):
+#     daterange = pd.date_range(end=datetime.utcnow(), periods=last_n).to_pydatetime().tolist()
+#     for date in daterange:
+#         filename = date.strftime('%Y-%m-%d')
+#         for ext in ['xlsx', 'xls']:
+#             os.system('curl --silent -f -C - -o %(DIR)s/%(filename)s https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s' % {
+#                 'filename': filename + '.' + ext,
+#                 'DIR': RELEASES_PATH
+#             })
+
+def download_csv():
+    os.system('curl --silent -f -C - -o %(DIR)s/latest.csv -L https://opendata.ecdc.europa.eu/covid19/casedistribution/csv' % {
+        'DIR': RELEASES_PATH
+    })
+
+def read_file(filename):
+    filepath = os.path.join(RELEASES_PATH, filename)
+    if filepath.endswith("csv"):
+        return pd.read_csv(
+            filepath,
+            # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
+            keep_default_na=False,
+            encoding="ISO-8859-1"
+        )
+    else:
+        return pd.read_excel(
+            filepath,
+            # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
+            keep_default_na=False
+        )
 
 def load_data(filename):
-    filepath = os.path.join(RELEASES_PATH, filename)
-    df = pd.read_excel(
-        filepath,
-        # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
-        keep_default_na=False
-    )
-    # fill time gaps
-    df = df.set_index(['DateRep']) \
-        .groupby('Countries and territories', as_index=True) \
-        .resample('D').first() \
-        .drop(columns=['Countries and territories']) \
-        .reset_index()
+    df = read_file(filename)
     # set to ints
-    df['Cases'] = df['Cases'].astype("Int64")
-    df['Deaths'] = df['Deaths'].astype("Int64")
+    df['cases'] = df['cases'].astype("Int64")
+    df['deaths'] = df['deaths'].astype("Int64")
+    df['dateRep'] = pd.to_datetime(df['dateRep'], format="%d/%m/%Y", utc=True)
+    # fill time gaps
+    df = df.set_index(['dateRep']) \
+        .groupby('countriesAndTerritories', as_index=True) \
+        .resample('D').first() \
+        .drop(columns=['countriesAndTerritories']) \
+        .reset_index()
+    df['dateRep'] = df['dateRep'].dt.date
     return df
 
 def load_locations():
@@ -53,7 +72,7 @@ def load_locations():
         LOCATIONS_CSV_PATH,
         keep_default_na=False
     ).rename(columns={
-        'Country': 'Countries and territories',
+        'Country': 'countriesAndTerritories',
         'Our World In Data Name': 'location'
     })
 
@@ -63,20 +82,21 @@ def _load_merged(filename):
     return df_data.merge(
         df_locs,
         how='left',
-        on=['Countries and territories']
+        on=['countriesAndTerritories']
     )
 
 def check_data_correctness(filename):
     errors = 0
     df_merged = _load_merged(filename)
-    df_uniq = df_merged[['Countries and territories', 'GeoId', 'location']].drop_duplicates()
+    df_uniq = df_merged[['countriesAndTerritories', 'geoId', 'location']].drop_duplicates()
     if df_uniq['location'].isnull().any():
         print("\n" + ERROR + " Could not find OWID names for:")
         print(df_uniq[df_uniq['location'].isnull()])
         csv_path = os.path.join(TMP_PATH, 'ecdc.csv')
         os.system('mkdir -p %s' % os.path.abspath(TMP_PATH))
-        df_uniq[['Countries and territories']] \
-            .rename(columns={'Countries and territories': 'Country'}) \
+        df_uniq[['countriesAndTerritories']] \
+            .drop_duplicates() \
+            .rename(columns={'countriesAndTerritories': 'Country'}) \
             .to_csv(csv_path, index=False)
         print("\nSaved CSV file to be standardized at %s. \nRun it through the OWID standardizer and save in %s" % (
             colored(os.path.abspath(csv_path), 'magenta'),
@@ -85,9 +105,9 @@ def check_data_correctness(filename):
         errors += 1
     # Drop missing locations for the further checks – that error is addressed above
     df_merged = df_merged.dropna(subset=['location'])
-    if df_merged.duplicated(subset=['DateRep', 'location']).any():
+    if df_merged.duplicated(subset=['dateRep', 'location']).any():
         print("\n" + ERROR + " Found duplicate rows:")
-        print(df_merged[df_merged.duplicated(subset=['DateRep', 'location'])])
+        print(df_merged[df_merged.duplicated(subset=['dateRep', 'location'])])
         print("\nPlease " + colored("fix or remove the duplicate rows", 'magenta') + " in the Excel file, and then save it again but under a new name, e.g. 2020-03-20-modified.xlsx")
         print("Also please " + colored("note down any changes you made", 'magenta') + " in %s" % os.path.abspath(os.path.join(INPUT_PATH, 'NOTES.md')))
         errors += 1
@@ -105,13 +125,13 @@ def check_data_correctness(filename):
 def load_standardized(filename):
     df = _load_merged(filename) \
         .drop(columns=[
-            'Countries and territories', 'GeoId',
-            'Day', 'Month', 'Year',
+            'countriesAndTerritories', 'geoId',
+            'day', 'month', 'year',
         ]) \
         .rename(columns={
-            'DateRep': 'date',
-            'Cases': 'new_cases',
-            'Deaths': 'new_deaths'
+            'dateRep': 'date',
+            'cases': 'new_cases',
+            'deaths': 'new_deaths'
         })
     df = df[['date', 'location', 'new_cases', 'new_deaths']]
     df = inject_world(df)
@@ -145,7 +165,7 @@ if __name__ == '__main__':
     from glob import glob
 
     print("\nAttempting to download latest report...")
-    download(last_n=2)
+    download_csv()
 
     print(
 """\n[Note] If you don't see the latest report in the options below, please download the Excel file from:
@@ -154,7 +174,13 @@ Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
 
     filenames = glob(os.path.join(RELEASES_PATH, '*.xlsx'))
     filenames.extend(glob(os.path.join(RELEASES_PATH, '*.xls')))
-    filenames = list(map(os.path.basename, sorted(filenames, reverse=True)))
+    filenames.extend(glob(os.path.join(RELEASES_PATH, '*.csv')))
+    filenames = list(
+        filter(
+            lambda name: not name.startswith("~"),
+            map(os.path.basename, sorted(filenames, reverse=True))
+        )
+    )
 
     answers = inquirer.prompt([
         inquirer.List('filename',
