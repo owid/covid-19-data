@@ -123,6 +123,14 @@ def inject_cfr(df):
     df['cfr_100_cases'] = df.apply(_apply_row_cfr_100, axis=1)
     return df
 
+def inject_rolling_avg(df):
+    df = df.copy()
+    df['new_cases_3_day_avg'] = df.groupby('location')['new_cases'].fillna(0).rolling(3).mean()
+    df['new_cases_7_day_avg'] = df.groupby('location')['new_cases'].fillna(0).rolling(7).mean()
+    df['new_deaths_3_day_avg'] = df.groupby('location')['new_deaths'].fillna(0).rolling(3).mean()
+    df['new_deaths_7_day_avg'] = df.groupby('location')['new_deaths'].fillna(0).rolling(7).mean()
+    return df
+
 
 # Export logic
 
@@ -161,7 +169,11 @@ GRAPHER_COL_NAMES = {
     'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
     'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
     'cfr': 'Case fatality rate of COVID-19 (%)',
-    'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)'
+    'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
+    'new_cases_3_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 3-day average)',
+    'new_cases_7_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 7-day average)',
+    'new_deaths_3_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average)',
+    'new_deaths_7_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average)'
 }
 
 def existsin(l1, l2):

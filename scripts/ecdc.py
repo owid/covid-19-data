@@ -8,7 +8,7 @@ CURRENT_DIR = os.path.dirname(__file__)
 
 sys.path.append(CURRENT_DIR)
 
-from shared import load_population, inject_total_daily_cols, inject_world, inject_per_million, inject_days_since_all, inject_cfr, inject_population, standard_export
+from shared import load_population, inject_total_daily_cols, inject_world, inject_per_million, inject_days_since_all, inject_cfr, inject_population, inject_rolling_avg, standard_export
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../public/data/ecdc/')
@@ -124,6 +124,7 @@ def load_standardized(filename):
     ])
     df = inject_days_since_all(df)
     df = inject_cfr(df)
+    df = inject_rolling_avg(df)
     return df.sort_values(by=['location', 'date'])
 
 def export(filename):
