@@ -123,12 +123,36 @@ def inject_cfr(df):
     df['cfr_100_cases'] = df.apply(_apply_row_cfr_100, axis=1)
     return df
 
+rolling_avg_spec = {
+    'new_cases_3_day_avg': {
+        'col': 'new_cases',
+        'window': 3,
+        'min_periods': 1
+    },
+    'new_deaths_3_day_avg': {
+        'col': 'new_deaths',
+        'window': 3,
+        'min_periods': 1
+    },
+    'new_cases_7_day_avg': {
+        'col': 'new_cases',
+        'window': 7,
+        'min_periods': 3
+    },
+    'new_deaths_7_day_avg': {
+        'col': 'new_deaths',
+        'window': 7,
+        'min_periods': 3
+    },
+}
+
 def inject_rolling_avg(df):
-    df = df.copy()
-    df['new_cases_3_day_avg'] = df.groupby('location')['new_cases'].fillna(0).rolling(3).mean()
-    df['new_cases_7_day_avg'] = df.groupby('location')['new_cases'].fillna(0).rolling(7).mean()
-    df['new_deaths_3_day_avg'] = df.groupby('location')['new_deaths'].fillna(0).rolling(3).mean()
-    df['new_deaths_7_day_avg'] = df.groupby('location')['new_deaths'].fillna(0).rolling(7).mean()
+    df = df.copy().sort_values(by='date')
+    for col, spec in rolling_avg_spec.items():
+        df[col] = df[spec['col']].astype('float')
+        df[col] = df.groupby('location', as_index=False)[col] \
+            .rolling(window=spec['window'], min_periods=spec['min_periods'], center=True) \
+            .mean().reset_index(level=0, drop=True)
     return df
 
 
