@@ -32,11 +32,18 @@ def download(last_n=2):
 
 def load_data(filename):
     filepath = os.path.join(RELEASES_PATH, filename)
-    return pd.read_excel(
+    df = pd.read_excel(
         filepath,
         # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
         keep_default_na=False
     )
+    # fill time gaps
+    df = df.set_index(['DateRep']) \
+        .groupby('Countries and territories', as_index=True) \
+        .resample('D').first() \
+        .drop(columns=['Countries and territories']) \
+        .reset_index()
+    return df
 
 def load_locations():
     return pd.read_csv(

@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import os
 from datetime import datetime
 
@@ -113,10 +112,15 @@ def inject_days_since_all(df):
         for loc, df_group in df.groupby('location')
     ])
 
+def _apply_row_cfr_100(row):
+    if pd.notnull(row['total_cases']) and row['total_cases'] >= 100:
+        return row['cfr']
+    return pd.NA
+
 def inject_cfr(df):
     df = df.copy()
     df['cfr'] = (df['total_deaths'] / df['total_cases']) * 100
-    df['cfr_100_cases'] = np.where(df['total_cases'] >= 100, df['cfr'], None)
+    df['cfr_100_cases'] = df.apply(_apply_row_cfr_100, axis=1)
     return df
 
 
@@ -166,7 +170,7 @@ def existsin(l1, l2):
 def standard_export(df, output_path, grapher_name):
     # full_data.csv
     full_data_cols = existsin(FULL_DATA_COLS, df.columns)
-    df[full_data_cols].to_csv(
+    df[full_data_cols].dropna(subset=BASE_MEASURES, how='all').to_csv(
         os.path.join(output_path, 'full_data.csv'),
         index=False
     )
