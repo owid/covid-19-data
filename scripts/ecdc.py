@@ -21,15 +21,16 @@ ERROR = colored("[Error]", 'red')
 WARNING = colored("[Warning]", 'yellow')
 
 # Used to be there until 27 March 2020
-# def download_xlsx(last_n=2):
-#     daterange = pd.date_range(end=datetime.utcnow(), periods=last_n).to_pydatetime().tolist()
-#     for date in daterange:
-#         filename = date.strftime('%Y-%m-%d')
-#         for ext in ['xlsx', 'xls']:
-#             os.system('curl --silent -f -C - -o %(DIR)s/%(filename)s https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s' % {
-#                 'filename': filename + '.' + ext,
-#                 'DIR': RELEASES_PATH
-#             })
+# And back again from 28 March... :?
+def download_xlsx(last_n=2):
+    daterange = pd.date_range(end=datetime.utcnow(), periods=last_n).to_pydatetime().tolist()
+    for date in daterange:
+        filename = date.strftime('%Y-%m-%d')
+        for ext in ['xlsx']:
+            os.system('curl --silent -f -C - -o %(DIR)s/%(filename)s https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s' % {
+                'filename': filename + '.' + ext,
+                'DIR': RELEASES_PATH
+            })
 
 def download_csv():
     os.system('curl --silent -f -C - -o %(DIR)s/latest.csv -L https://opendata.ecdc.europa.eu/covid19/casedistribution/csv' % {
@@ -165,6 +166,7 @@ if __name__ == '__main__':
     from glob import glob
 
     print("\nAttempting to download latest report...")
+    download_xlsx()
     download_csv()
 
     print(
