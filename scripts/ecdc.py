@@ -27,13 +27,13 @@ def download_xlsx(last_n=2):
     for date in daterange:
         filename = date.strftime('%Y-%m-%d')
         for ext in ['xlsx']:
-            os.system('curl --silent -f -C - -o %(DIR)s/%(filename)s https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s' % {
+            os.system('curl --silent -f -o %(DIR)s/%(filename)s https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide-%(filename)s' % {
                 'filename': filename + '.' + ext,
                 'DIR': RELEASES_PATH
             })
 
 def download_csv():
-    os.system('curl --silent -f -C - -o %(DIR)s/latest.csv -L https://opendata.ecdc.europa.eu/covid19/casedistribution/csv' % {
+    os.system('curl --silent -f -o %(DIR)s/latest.csv -L https://opendata.ecdc.europa.eu/covid19/casedistribution/csv' % {
         'DIR': RELEASES_PATH
     })
 
