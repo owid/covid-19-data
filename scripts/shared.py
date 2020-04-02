@@ -78,7 +78,20 @@ days_since_spec = {
     'days_since_0_1_per_million_deaths': {
         'col': 'total_deaths_per_million',
         'threshold': 0.1
-    }
+    },
+    # temporary definitions, figure out later
+    'days_since_30_new_cases': {
+        'col': 'new_cases',
+        'threshold': 30
+    },
+    'days_since_50_new_cases': {
+        'col': 'new_cases',
+        'threshold': 50
+    },
+    'days_since_10_new_deaths': {
+        'col': 'new_deaths',
+        'threshold': 30
+    },
 }
 
 def _get_date_of_nth(df, col, nth):
@@ -192,6 +205,9 @@ GRAPHER_COL_NAMES = {
     'days_since_5th_death': 'Days since the total confirmed deaths of COVID-19 reached 5',
     'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
     'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
+    'days_since_30_new_cases': 'Days since 30 daily new confirmed cases recorded',
+    'days_since_50_new_cases': 'Days since 50 daily new confirmed cases recorded',
+    'days_since_10_new_deaths': 'Days since 10 daily new confirmed deaths recorded',
     'cfr': 'Case fatality rate of COVID-19 (%)',
     'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
     'new_cases_3_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 3-day average)',
