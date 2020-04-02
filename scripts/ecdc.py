@@ -44,7 +44,7 @@ def read_file(filename):
             filepath,
             # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
             keep_default_na=False,
-            encoding="ISO-8859-1"
+            encoding="UTF-8"
         )
     else:
         return pd.read_excel(
