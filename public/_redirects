@@ -1,3 +1,6 @@
+# Redirect to OWID page with info on source data
+/ https://ourworldindata.org/coronavirus-source-data 302
+
 # Redirects for WHO data
 # We used to publish only WHO data before we switched to ECDC
 /data/days_to_double_cases.csv /data/who/days_to_double_cases.csv 301
