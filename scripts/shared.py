@@ -90,7 +90,7 @@ days_since_spec = {
     },
     'days_since_10_new_deaths': {
         'col': 'new_deaths',
-        'threshold': 30
+        'threshold': 10
     },
 }
 
