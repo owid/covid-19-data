@@ -4,6 +4,7 @@ from datetime import datetime
 
 CURRENT_DIR = os.path.dirname(__file__)
 POPULATION_CSV_PATH = os.path.join(CURRENT_DIR, '../input/un/population_2020.csv')
+CONTINENTS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/continents.csv')
 
 # Per population calculations
 
@@ -25,6 +26,16 @@ def load_population(year=2020):
     .dropna() \
     .rename(columns={'entity': 'location', 'year': 'population_year'})
 
+def load_owid_continents():
+    df = pd.read_csv(
+        CONTINENTS_CSV_PATH,
+        keep_default_na=False,
+        header=0,
+        names=['location', 'code', 'year', 'continent'],
+        usecols=['location', 'continent']
+    )
+    return df
+
 # Useful for adding it to regions.csv and
 def inject_population(df):
     return df.merge(
@@ -40,12 +51,31 @@ def inject_per_million(df, measures):
         df[pop_measure] = df[measure] / (df['population'] / 1e6)
     return df.drop(columns=['population_year', 'population'])
 
-# "World" aggregate
+# OWID continents + custom aggregates
 
-def inject_world(df):
-    df_global = df.groupby('date').sum().reset_index()
+def inject_owid_aggregates(df):
+    # "World" aggregate
+    df_global = df.groupby('date') \
+        .sum() \
+        .reset_index()
     df_global['location'] = 'World'
-    return pd.concat([df, df_global], sort=True, ignore_index=True)
+
+    # OWID continents
+    df_continents = df.merge(
+        load_owid_continents(),
+        how='left',
+        on='location'
+    )
+    df_continents = df_continents.drop(columns=['location']) \
+        .rename(columns={'continent': 'location'}) \
+        .groupby(['location', 'date']).sum() \
+        .reset_index()
+
+    return pd.concat([
+        df,
+        df_global,
+        df_continents
+    ], sort=True, ignore_index=True)
 
 # Total/daily calculation
 

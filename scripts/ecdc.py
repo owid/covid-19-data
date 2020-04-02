@@ -8,7 +8,7 @@ CURRENT_DIR = os.path.dirname(__file__)
 
 sys.path.append(CURRENT_DIR)
 
-from shared import load_population, inject_total_daily_cols, inject_world, inject_per_million, inject_days_since_all, inject_cfr, inject_population, inject_rolling_avg, standard_export
+from shared import load_population, load_owid_continents, inject_total_daily_cols, inject_owid_aggregates, inject_per_million, inject_days_since_all, inject_cfr, inject_population, inject_rolling_avg, standard_export
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../public/data/ecdc/')
@@ -135,7 +135,7 @@ def load_standardized(filename):
             'deaths': 'new_deaths'
         })
     df = df[['date', 'location', 'new_cases', 'new_deaths']]
-    df = inject_world(df)
+    df = inject_owid_aggregates(df)
     df = inject_total_daily_cols(df, ['cases', 'deaths'])
     df = inject_per_million(df, [
         'new_cases',
@@ -150,7 +150,12 @@ def load_standardized(filename):
 
 def export(filename):
     # locations.csv
-    df_loc = inject_population(load_locations())
+    df_loc = load_locations()
+    df_loc = df_loc.merge(
+        load_owid_continents(),
+        on='location'
+    )
+    df_loc = inject_population(df_loc)
     df_loc['population_year'] = df_loc['population_year'].round().astype('Int64')
     df_loc['population'] = df_loc['population'].round().astype('Int64')
     df_loc.to_csv(os.path.join(OUTPUT_PATH, 'locations.csv'), index=False)
