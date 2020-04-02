@@ -92,6 +92,10 @@ days_since_spec = {
         'col': 'new_deaths',
         'threshold': 10
     },
+    'days_since_5_new_deaths': {
+        'col': 'new_deaths',
+        'threshold': 5
+    },
 }
 
 def _get_date_of_nth(df, col, nth):
@@ -208,6 +212,7 @@ GRAPHER_COL_NAMES = {
     'days_since_30_new_cases': 'Days since 30 daily new confirmed cases recorded',
     'days_since_50_new_cases': 'Days since 50 daily new confirmed cases recorded',
     'days_since_10_new_deaths': 'Days since 10 daily new confirmed deaths recorded',
+    'days_since_5_new_deaths': 'Days since 5 daily new confirmed deaths recorded',
     'cfr': 'Case fatality rate of COVID-19 (%)',
     'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
     'new_cases_3_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 3-day average)',
