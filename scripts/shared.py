@@ -133,7 +133,6 @@ days_since_spec = {
         'col': 'total_deaths_per_million',
         'threshold': 0.1
     },
-    # temporary definitions, figure out later
     'days_since_30_new_cases': {
         'col': 'new_cases',
         'threshold': 30
@@ -141,6 +140,10 @@ days_since_spec = {
     'days_since_50_new_cases': {
         'col': 'new_cases',
         'threshold': 50
+    },
+    'days_since_30_new_cases_7_day_avg': {
+        'col': 'new_cases_7_day_avg',
+        'threshold': 30
     },
     'days_since_10_new_deaths': {
         'col': 'new_deaths',
@@ -289,6 +292,7 @@ GRAPHER_COL_NAMES = {
     'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
     'days_since_30_new_cases': 'Days since 30 daily new confirmed cases recorded',
     'days_since_50_new_cases': 'Days since 50 daily new confirmed cases recorded',
+    'days_since_30_new_cases_7_day_avg': 'Days since daily new confirmed cases (rolling 7-day average) reached 30',
     'days_since_10_new_deaths': 'Days since 10 daily new confirmed deaths recorded',
     'days_since_5_new_deaths': 'Days since 5 daily new confirmed deaths recorded',
     'days_since_3_new_deaths': 'Days since 3 daily new confirmed deaths recorded',
