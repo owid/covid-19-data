@@ -206,22 +206,26 @@ rolling_avg_spec = {
     'new_cases_3_day_avg': {
         'col': 'new_cases',
         'window': 3,
-        'min_periods': 1
+        'min_periods': 1,
+        'center': True
     },
     'new_deaths_3_day_avg': {
         'col': 'new_deaths',
         'window': 3,
-        'min_periods': 1
+        'min_periods': 1,
+        'center': True
     },
     'new_cases_7_day_avg': {
         'col': 'new_cases',
         'window': 7,
-        'min_periods': 3
+        'min_periods': 3,
+        'center': True
     },
     'new_deaths_7_day_avg': {
         'col': 'new_deaths',
         'window': 7,
-        'min_periods': 3
+        'min_periods': 3,
+        'center': True
     },
 }
 
@@ -230,7 +234,7 @@ def inject_rolling_avg(df):
     for col, spec in rolling_avg_spec.items():
         df[col] = df[spec['col']].astype('float')
         df[col] = df.groupby('location', as_index=False)[col] \
-            .rolling(window=spec['window'], min_periods=spec['min_periods'], center=True) \
+            .rolling(window=spec['window'], min_periods=spec['min_periods'], center=spec['center']) \
             .mean().reset_index(level=0, drop=True)
     return df
 
