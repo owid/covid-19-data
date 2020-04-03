@@ -53,23 +53,31 @@ def inject_per_million(df, measures):
 
 # OWID continents + custom aggregates
 
-def inject_owid_aggregates(df):
-    # "World" aggregate
-    df_global = df.groupby('date') \
+def _sum_aggregate(df, name, include=None, exclude=None):
+    df = df.copy()
+    if include:
+        df = df[df['location'].isin(include)]
+    if exclude:
+        df = df[~df['location'].isin(exclude)]
+    df = df.groupby('date') \
         .sum() \
         .reset_index()
-    df_global['location'] = 'World'
+    df['location'] = name
+    return df
+
+def inject_owid_aggregates(df):
+    # "World" aggregate
+    df_global = _sum_aggregate(df, 'World')
 
     # OWID continents
-    df_continents = df.merge(
-        load_owid_continents(),
-        how='left',
-        on='location'
-    )
-    df_continents = df_continents.drop(columns=['location']) \
-        .rename(columns={'continent': 'location'}) \
-        .groupby(['location', 'date']).sum() \
-        .reset_index()
+    locations_by_continent = load_owid_continents() \
+        .groupby('continent')['location'].apply(list) \
+        .to_dict()
+
+    df_continents = pd.concat([
+        _sum_aggregate(df, continent, include=locations)
+        for continent, locations in locations_by_continent.items()
+    ], ignore_index=True)
 
     return pd.concat([
         df,
