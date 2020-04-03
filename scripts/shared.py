@@ -227,6 +227,12 @@ rolling_avg_spec = {
         'min_periods': 3,
         'center': True
     },
+    'new_cases_7_day_avg_right': {
+        'col': 'new_cases',
+        'window': 7,
+        'min_periods': 3,
+        'center': False
+    },
     'new_deaths_7_day_avg_right': {
         'col': 'new_deaths',
         'window': 7,
@@ -293,6 +299,7 @@ GRAPHER_COL_NAMES = {
     'new_cases_7_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 7-day average)',
     'new_deaths_3_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average)',
     'new_deaths_7_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average)',
+    'new_cases_7_day_avg_right': 'Daily new confirmed cases due to COVID-19 (rolling 7-day average, right-aligned)',
     'new_deaths_7_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average, right-aligned)'
 }
 
