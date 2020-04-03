@@ -289,21 +289,28 @@ def existsin(l1, l2):
     return [x for x in l1 if x in l2]
 
 def standard_export(df, output_path, grapher_name):
-    # full_data.csv
-    full_data_cols = existsin(FULL_DATA_COLS, df.columns)
-    df[full_data_cols].dropna(subset=BASE_MEASURES, how='all').to_csv(
-        os.path.join(output_path, 'full_data.csv'),
-        index=False
-    )
     # Grapher
     df_grapher = df.copy()
     df_grapher['date'] = pd.to_datetime(df_grapher['date']).map(lambda date: (date - datetime(2020, 1, 21)).days)
     df_grapher = df_grapher[GRAPHER_COL_NAMES.keys()] \
         .rename(columns=GRAPHER_COL_NAMES) \
         .to_csv(os.path.join(output_path, '%s.csv' % grapher_name), index=False)
+
+    # Table & public extracts for external users
+    # Excludes most aggregates
+    excluded_aggregates = list(set(aggregates_spec.keys()) - set(['World']))
+    df_table = df[~df['location'].isin(excluded_aggregates)]
+    # full_data.csv
+    full_data_cols = existsin(FULL_DATA_COLS, df_table.columns)
+    df_table[full_data_cols] \
+        .dropna(subset=BASE_MEASURES, how='all') \
+        .to_csv(
+            os.path.join(output_path, 'full_data.csv'),
+            index=False
+        )
     # Pivot variables (wide format)
     for col_name in [*BASE_MEASURES, *PER_MILLION_MEASURES]:
-        df_pivot = df.pivot(index='date', columns='location', values=col_name)
+        df_pivot = df_table.pivot(index='date', columns='location', values=col_name)
         # move World to first column
         cols = df_pivot.columns.tolist()
         cols.insert(0, cols.pop(cols.index('World')))
