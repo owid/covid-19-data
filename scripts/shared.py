@@ -53,6 +53,33 @@ def inject_per_million(df, measures):
 
 # OWID continents + custom aggregates
 
+aggregates_spec = {
+    'World': {
+        'include': None,
+        'exclude': None
+    },
+    'World excl. China': {
+        'exclude': ['China']
+    },
+    'World excl. China and South Korea': {
+        'exclude': ['China', 'South Korea']
+    },
+    'World excl. China, South Korea, Japan and Singapore': {
+        'exclude': ['China', 'South Korea', 'Japan', 'Singapore']
+    },
+    # OWID continents
+    **{
+        continent: { 'include': locations, 'exclude': None }
+        for continent, locations in load_owid_continents() \
+            .groupby('continent')['location'].apply(list) \
+            .to_dict().items()
+    }
+    # European Union
+    # TODO
+    # World Bank income groups
+    # TODO
+}
+
 def _sum_aggregate(df, name, include=None, exclude=None):
     df = df.copy()
     if include:
@@ -66,23 +93,12 @@ def _sum_aggregate(df, name, include=None, exclude=None):
     return df
 
 def inject_owid_aggregates(df):
-    # "World" aggregate
-    df_global = _sum_aggregate(df, 'World')
-
-    # OWID continents
-    locations_by_continent = load_owid_continents() \
-        .groupby('continent')['location'].apply(list) \
-        .to_dict()
-
-    df_continents = pd.concat([
-        _sum_aggregate(df, continent, include=locations)
-        for continent, locations in locations_by_continent.items()
-    ], ignore_index=True)
-
     return pd.concat([
         df,
-        df_global,
-        df_continents
+        *[
+            _sum_aggregate(df, name, **params)
+            for name, params in aggregates_spec.items()
+        ]
     ], sort=True, ignore_index=True)
 
 # Total/daily calculation
