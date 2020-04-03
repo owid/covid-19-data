@@ -143,9 +143,9 @@ def load_standardized(filename):
         'total_cases',
         'total_deaths'
     ])
-    df = inject_days_since_all(df)
     df = inject_cfr(df)
     df = inject_rolling_avg(df)
+    df = inject_days_since_all(df)
     return df.sort_values(by=['location', 'date'])
 
 def export(filename):
