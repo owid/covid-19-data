@@ -20,6 +20,11 @@ RELEASES_PATH = os.path.join(INPUT_PATH, 'releases')
 ERROR = colored("[Error]", 'red')
 WARNING = colored("[Warning]", 'yellow')
 
+# Rows to discard for which data is (probably) wrong
+DISCARD_BAD_DATA = [
+    ('France', '2020-04-04'),
+]
+
 # Used to be there until 27 March 2020
 # And back again from 28 March... :?
 def download_xlsx(last_n=2):
@@ -121,6 +126,9 @@ def check_data_correctness(filename):
         print()
     return True if errors == 0 else False
 
+def discard_bad_data(df):
+    return df[~df[['location','date']].applymap(str).apply(tuple, 1).isin(DISCARD_BAD_DATA)]
+
 # Must output columns:
 # date, location, new_cases, new_deaths, total_cases, total_deaths
 def load_standardized(filename):
@@ -135,6 +143,7 @@ def load_standardized(filename):
             'deaths': 'new_deaths'
         })
     df = df[['date', 'location', 'new_cases', 'new_deaths']]
+    df = discard_bad_data(df)
     df = inject_owid_aggregates(df)
     df = inject_total_daily_cols(df, ['cases', 'deaths'])
     df = inject_per_million(df, [
