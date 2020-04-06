@@ -5,6 +5,8 @@ from datetime import datetime
 CURRENT_DIR = os.path.dirname(__file__)
 POPULATION_CSV_PATH = os.path.join(CURRENT_DIR, '../input/un/population_2020.csv')
 CONTINENTS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/continents.csv')
+WB_INCOME_GROUPS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/wb_income_groups.csv')
+EU_COUNTRIES_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/eu_countries.csv')
 
 # Per population calculations
 
@@ -35,6 +37,26 @@ def load_owid_continents():
         usecols=['location', 'continent']
     )
     return df
+
+def load_wb_income_groups():
+    df = pd.read_csv(
+        WB_INCOME_GROUPS_CSV_PATH,
+        keep_default_na=False,
+        header=0,
+        names=['location', 'year', 'income_group'],
+        usecols=['location', 'income_group']
+    )
+    return df
+
+def load_eu_country_names():
+    df = pd.read_csv(
+        EU_COUNTRIES_CSV_PATH,
+        keep_default_na=False,
+        header=0,
+        names=['location', 'eu'],
+        usecols=['location']
+    )
+    return df['location'].tolist()
 
 # Useful for adding it to regions.csv and
 def inject_population(df):
@@ -67,17 +89,24 @@ aggregates_spec = {
     'World excl. China, South Korea, Japan and Singapore': {
         'exclude': ['China', 'South Korea', 'Japan', 'Singapore']
     },
+    # European Union
+    'European Union': {
+        'include': load_eu_country_names()
+    },
     # OWID continents
     **{
         continent: { 'include': locations, 'exclude': None }
         for continent, locations in load_owid_continents() \
             .groupby('continent')['location'].apply(list) \
             .to_dict().items()
-    }
-    # European Union
-    # TODO
+    },
     # World Bank income groups
-    # TODO
+    **{
+        income_group: { 'include': locations, 'exclude': None }
+        for income_group, locations in load_wb_income_groups() \
+            .groupby('income_group')['location'].apply(list) \
+            .to_dict().items()
+    }
 }
 
 def _sum_aggregate(df, name, include=None, exclude=None):
