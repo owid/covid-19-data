@@ -38,6 +38,10 @@ def load_owid_continents():
     )
     return df
 
+locations_by_continent = load_owid_continents() \
+    .groupby('continent')['location'].apply(list) \
+    .to_dict()
+
 def load_wb_income_groups():
     df = pd.read_csv(
         WB_INCOME_GROUPS_CSV_PATH,
@@ -57,6 +61,10 @@ def load_eu_country_names():
         usecols=['location']
     )
     return df['location'].tolist()
+
+locations_by_wb_income_group = load_wb_income_groups() \
+    .groupby('income_group')['location'].apply(list) \
+    .to_dict()
 
 # Useful for adding it to regions.csv and
 def inject_population(df):
@@ -96,16 +104,18 @@ aggregates_spec = {
     # OWID continents
     **{
         continent: { 'include': locations, 'exclude': None }
-        for continent, locations in load_owid_continents() \
-            .groupby('continent')['location'].apply(list) \
-            .to_dict().items()
+        for continent, locations in locations_by_continent.items()
+    },
+    # Asia without China
+    'Asia excl. China': {
+        'include': list(
+            set(locations_by_continent['Asia']) - set(['China'])
+        )
     },
     # World Bank income groups
     **{
         income_group: { 'include': locations, 'exclude': None }
-        for income_group, locations in load_wb_income_groups() \
-            .groupby('income_group')['location'].apply(list) \
-            .to_dict().items()
+        for income_group, locations in locations_by_wb_income_group.items()
     }
 }
 
