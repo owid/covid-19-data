@@ -259,20 +259,26 @@ rolling_avg_spec = {
         'min_periods': 1,
         'center': True
     },
+    'new_cases_3_day_avg_right': {
+        'col': 'new_cases',
+        'window': 3,
+        'min_periods': 1,
+        'center': False
+    },
     'new_deaths_3_day_avg': {
         'col': 'new_deaths',
         'window': 3,
         'min_periods': 1,
         'center': True
     },
+    'new_deaths_3_day_avg_right': {
+        'col': 'new_deaths',
+        'window': 3,
+        'min_periods': 1,
+        'center': False
+    },
     'new_cases_7_day_avg': {
         'col': 'new_cases',
-        'window': 7,
-        'min_periods': 3,
-        'center': True
-    },
-    'new_deaths_7_day_avg': {
-        'col': 'new_deaths',
         'window': 7,
         'min_periods': 3,
         'center': True
@@ -282,6 +288,12 @@ rolling_avg_spec = {
         'window': 7,
         'min_periods': 3,
         'center': False
+    },
+    'new_deaths_7_day_avg': {
+        'col': 'new_deaths',
+        'window': 7,
+        'min_periods': 3,
+        'center': True
     },
     'new_deaths_7_day_avg_right': {
         'col': 'new_deaths',
@@ -349,10 +361,12 @@ GRAPHER_COL_NAMES = {
     'cfr': 'Case fatality rate of COVID-19 (%)',
     'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
     'new_cases_3_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 3-day average)',
+    'new_cases_3_day_avg_right': 'Daily new confirmed cases of COVID-19 (rolling 3-day average, right-aligned)',
     'new_cases_7_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 7-day average)',
-    'new_deaths_3_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average)',
-    'new_deaths_7_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average)',
     'new_cases_7_day_avg_right': 'Daily new confirmed cases due to COVID-19 (rolling 7-day average, right-aligned)',
+    'new_deaths_3_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average)',
+    'new_deaths_3_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average, right-aligned)',
+    'new_deaths_7_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average)',
     'new_deaths_7_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average, right-aligned)'
 }
 
