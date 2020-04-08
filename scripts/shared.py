@@ -337,14 +337,17 @@ FULL_DATA_COLS = [
 GRAPHER_COL_NAMES = {
     'location': 'Country',
     'date': 'Year',
+    # Absolute values
     'new_cases': 'Daily new confirmed cases of COVID-19',
     'new_deaths': 'Daily new confirmed deaths due to COVID-19',
     'total_cases': 'Total confirmed cases of COVID-19',
     'total_deaths': 'Total confirmed deaths due to COVID-19',
+    # Per million
     'new_cases_per_million': 'Daily new confirmed cases of COVID-19 per million people',
     'new_deaths_per_million': 'Daily new confirmed deaths due to COVID-19 per million people',
     'total_cases_per_million': 'Total confirmed cases of COVID-19 per million people',
     'total_deaths_per_million': 'Total confirmed deaths due to COVID-19 per million people',
+    # Days since
     'days_since_100th_case': 'Days since the total confirmed cases of COVID-19 reached 100',
     'days_since_5th_death': 'Days since the total confirmed deaths of COVID-19 reached 5',
     'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
@@ -358,8 +361,7 @@ GRAPHER_COL_NAMES = {
     'days_since_5_new_deaths': 'Days since 5 daily new confirmed deaths recorded',
     'days_since_3_new_deaths': 'Days since 3 daily new confirmed deaths recorded',
     'days_since_5_new_deaths_7_day_avg': 'Days since daily new confirmed deaths (rolling 7-day average) reached 5',
-    'cfr': 'Case fatality rate of COVID-19 (%)',
-    'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
+    # Rolling averages
     'new_cases_3_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 3-day average)',
     'new_cases_3_day_avg_right': 'Daily new confirmed cases of COVID-19 (rolling 3-day average, right-aligned)',
     'new_cases_7_day_avg': 'Daily new confirmed cases of COVID-19 (rolling 7-day average)',
@@ -367,7 +369,10 @@ GRAPHER_COL_NAMES = {
     'new_deaths_3_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average)',
     'new_deaths_3_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average, right-aligned)',
     'new_deaths_7_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average)',
-    'new_deaths_7_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average, right-aligned)'
+    'new_deaths_7_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average, right-aligned)',
+    # Case fatality ratio
+    'cfr': 'Case fatality rate of COVID-19 (%)',
+    'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
 }
 
 def existsin(l1, l2):
