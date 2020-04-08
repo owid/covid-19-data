@@ -301,6 +301,18 @@ rolling_avg_spec = {
         'min_periods': 3,
         'center': False
     },
+    'new_cases_per_million_7_day_avg_right': {
+        'col': 'new_cases_per_million',
+        'window': 7,
+        'min_periods': 3,
+        'center': False
+    },
+    'new_deaths_per_million_7_day_avg_right': {
+        'col': 'new_deaths_per_million',
+        'window': 7,
+        'min_periods': 3,
+        'center': False
+    },
 }
 
 def inject_rolling_avg(df):
@@ -370,6 +382,9 @@ GRAPHER_COL_NAMES = {
     'new_deaths_3_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 3-day average, right-aligned)',
     'new_deaths_7_day_avg': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average)',
     'new_deaths_7_day_avg_right': 'Daily new confirmed deaths due to COVID-19 (rolling 7-day average, right-aligned)',
+    # Rolling averages - per million
+    'new_cases_per_million_7_day_avg_right': 'Daily new confirmed cases of COVID-19 per million people (rolling 7-day average, right-aligned)',
+    'new_deaths_per_million_7_day_avg_right': 'Daily new confirmed deaths due to COVID-19 per million people (rolling 7-day average, right-aligned)',
     # Case fatality ratio
     'cfr': 'Case fatality rate of COVID-19 (%)',
     'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
