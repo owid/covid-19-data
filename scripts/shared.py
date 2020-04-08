@@ -156,27 +156,27 @@ def inject_total_daily_cols(df, measures):
 
 
 days_since_spec = {
-    'days_since_100th_case': {
+    'days_since_100_total_cases': {
         'col': 'total_cases',
         'threshold': 100
     },
-    'days_since_5th_death': {
+    'days_since_5_total_deaths': {
         'col': 'total_deaths',
         'threshold': 5
     },
-    'days_since_1_per_million_cases': {
+    'days_since_1_total_cases_per_million': {
         'col': 'total_cases_per_million',
         'threshold': 1
     },
-    'days_since_0_1_per_million_deaths': {
+    'days_since_0_1_total_deaths_per_million': {
         'col': 'total_deaths_per_million',
         'threshold': 0.1
     },
-    'days_since_0_5_per_million_deaths': {
+    'days_since_0_5_total_deaths_per_million': {
         'col': 'total_deaths_per_million',
         'threshold': 0.5
     },
-    'days_since_1_per_million_deaths': {
+    'days_since_1_total_deaths_per_million': {
         'col': 'total_deaths_per_million',
         'threshold': 1
     },
@@ -360,12 +360,12 @@ GRAPHER_COL_NAMES = {
     'total_cases_per_million': 'Total confirmed cases of COVID-19 per million people',
     'total_deaths_per_million': 'Total confirmed deaths due to COVID-19 per million people',
     # Days since
-    'days_since_100th_case': 'Days since the total confirmed cases of COVID-19 reached 100',
-    'days_since_5th_death': 'Days since the total confirmed deaths of COVID-19 reached 5',
-    'days_since_1_per_million_cases': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
-    'days_since_0_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
-    'days_since_0_5_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.5',
-    'days_since_1_per_million_deaths': 'Days since the total confirmed deaths of COVID-19 per million people reached 1',
+    'days_since_100_total_cases': 'Days since the total confirmed cases of COVID-19 reached 100',
+    'days_since_5_total_deaths': 'Days since the total confirmed deaths of COVID-19 reached 5',
+    'days_since_1_total_cases_per_million': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
+    'days_since_0_1_total_deaths_per_million': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
+    'days_since_0_5_total_deaths_per_million': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.5',
+    'days_since_1_total_deaths_per_million': 'Days since the total confirmed deaths of COVID-19 per million people reached 1',
     'days_since_30_new_cases': 'Days since 30 daily new confirmed cases recorded',
     'days_since_50_new_cases': 'Days since 50 daily new confirmed cases recorded',
     'days_since_30_new_cases_7_day_avg': 'Days since daily new confirmed cases (rolling 7-day average) reached 30',
