@@ -208,6 +208,14 @@ days_since_spec = {
         'col': 'new_deaths_7_day_avg',
         'threshold': 5
     },
+    'days_since_30_new_cases_7_day_avg_right': {
+        'col': 'new_cases_7_day_avg_right',
+        'threshold': 30
+    },
+    'days_since_5_new_deaths_7_day_avg_right': {
+        'col': 'new_deaths_7_day_avg_right',
+        'threshold': 5
+    },
     'days_since_1_new_cases_per_million_7_day_avg_right': {
         'col': 'new_cases_per_million_7_day_avg_right',
         'threshold': 1
@@ -359,6 +367,8 @@ GRAPHER_COL_NAMES = {
     'days_since_10_new_deaths': 'Days since 10 daily new confirmed deaths recorded',
     'days_since_5_new_deaths': 'Days since 5 daily new confirmed deaths recorded',
     'days_since_3_new_deaths': 'Days since 3 daily new confirmed deaths recorded',
+    'days_since_30_new_cases_7_day_avg_right': 'Days since daily new confirmed cases of COVID-19 (rolling 7-day average, right-aligned) reached 30',
+    'days_since_5_new_deaths_7_day_avg_right': 'Days since daily new confirmed deaths due to COVID-19 (rolling 7-day average, right-aligned) reached 5',
     'days_since_1_new_cases_per_million_7_day_avg_right': 'Days since daily new confirmed cases of COVID-19 per million people (rolling 7-day average, right-aligned) reached 1',
     'days_since_0_1_new_deaths_per_million_7_day_avg_right': 'Days since daily new confirmed deaths due to COVID-19 per million people (rolling 7-day average, right-aligned) reached 0.1',
     'days_since_0_01_new_deaths_per_million_7_day_avg_right': 'Days since daily new confirmed deaths due to COVID-19 per million people (rolling 7-day average, right-aligned) reached 0.01',
