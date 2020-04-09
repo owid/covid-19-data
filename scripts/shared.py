@@ -172,14 +172,6 @@ days_since_spec = {
         'col': 'total_deaths_per_million',
         'threshold': 0.1
     },
-    'days_since_0_5_total_deaths_per_million': {
-        'col': 'total_deaths_per_million',
-        'threshold': 0.5
-    },
-    'days_since_1_total_deaths_per_million': {
-        'col': 'total_deaths_per_million',
-        'threshold': 1
-    },
     'days_since_30_new_cases': {
         'col': 'new_cases',
         'threshold': 30
@@ -360,8 +352,6 @@ GRAPHER_COL_NAMES = {
     'days_since_5_total_deaths': 'Days since the total confirmed deaths of COVID-19 reached 5',
     'days_since_1_total_cases_per_million': 'Days since the total confirmed cases of COVID-19 per million people reached 1',
     'days_since_0_1_total_deaths_per_million': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.1',
-    'days_since_0_5_total_deaths_per_million': 'Days since the total confirmed deaths of COVID-19 per million people reached 0.5',
-    'days_since_1_total_deaths_per_million': 'Days since the total confirmed deaths of COVID-19 per million people reached 1',
     'days_since_30_new_cases': 'Days since 30 daily new confirmed cases recorded',
     'days_since_50_new_cases': 'Days since 50 daily new confirmed cases recorded',
     'days_since_10_new_deaths': 'Days since 10 daily new confirmed deaths recorded',
