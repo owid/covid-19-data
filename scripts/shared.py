@@ -309,7 +309,7 @@ def inject_rolling_avg(df):
         df[col] = df[spec['col']].astype('float')
         df[col] = df.groupby('location', as_index=False)[col] \
             .rolling(window=spec['window'], min_periods=spec['min_periods'], center=spec['center']) \
-            .mean().reset_index(level=0, drop=True)
+            .mean().round(decimals=10).reset_index(level=0, drop=True)
     return df
 
 
