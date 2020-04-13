@@ -329,7 +329,7 @@ Ecuador - samples tested,2020-04-10,https://www.gestionderiesgos.gob.ec/wp-conte
 Ecuador - samples tested,2020-04-11,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-11042020-07h00.pdf,Government of Ecuador,,22649,1081,1.306,0.062
 Ecuador - samples tested,2020-04-12,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-12042020-08h00.pdf,Government of Ecuador,,23635,986,1.363,0.057
 Ecuador - samples tested,2020-04-13,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-13042020-08h00.pdf,Government of Ecuador,,24553,918,1.416,0.053
-El Salvador - tests performed,2020-04-12,https://covid19.gob.sv/,Government of El Salvador,,6729,,1.039,
+El Salvador - tests performed,2020-04-12,https://covid19.gob.sv/,Government of El Salvador,updated at 11:19pm local time,6729,,1.039,
 Estonia - units unclear,2020-02-25,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,5,,0.004,
 Estonia - units unclear,2020-02-26,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,13,8,0.01,0.006
 Estonia - units unclear,2020-02-27,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,23,10,0.018,0.008
@@ -1017,6 +1017,9 @@ Mexico - cases tested,2020-04-06,https://coronavirus.gob.mx/2020/04/06/conferenc
 Mexico - cases tested,2020-04-07,https://coronavirus.gob.mx/2020/04/07/conferencia-7-de-abril/,Government of Mexico,,,,,
 Mexico - cases tested,2020-04-08,https://coronavirus.gob.mx/2020/04/08/conferencia-8-de-abril/,Government of Mexico,,20390,,0.152,
 Mexico - cases tested,2020-04-09,https://coronavirus.gob.mx/2020/04/09/conferencia-9-de-abril/,Government of Mexico,,21391,1001,0.16,0.007
+Mexico - cases tested,2020-04-10,https://coronavirus.gob.mx/2020/04/10/conferencia-10-de-abril/,Government of Mexico,,23593,2202,0.176,0.016
+Mexico - cases tested,2020-04-11,https://coronavirus.gob.mx/2020/04/11/conferencia-11-de-abril/,Government of Mexico,Received 500 error on PDF link,,,,
+Mexico - cases tested,2020-04-12,https://coronavirus.gob.mx/2020/04/12/conferencia-12-de-abril/,Government of Mexico,,26604,,0.199,
 Netherlands - people tested,2020-03-14,http://web.archive.org/web/20200326163545/https://www.rivm.nl/coronavirus/covid-19/informatie-voor-professionals/virologische-dagstaten,Dutch National Institute for Public Health and the Environment - 26 March update,Cumulative figure from the 26 March update,14555,,0.847,
 Netherlands - people tested,2020-03-15,http://web.archive.org/web/20200326163545/https://www.rivm.nl/coronavirus/covid-19/informatie-voor-professionals/virologische-dagstaten,Dutch National Institute for Public Health and the Environment - 26 March update,26 March update,,,,
 Netherlands - people tested,2020-03-16,http://web.archive.org/web/20200330101621/https://www.rivm.nl/coronavirus/covid-19/informatie-voor-professionals/virologische-dagstaten,Dutch National Institute for Public Health and the Environment - 30 March update,Cumulative figure from the 30 March update,18689,,1.088,
@@ -1175,7 +1178,10 @@ Peru - units unclear,2020-04-05,https://www.gob.pe/minsa#noticias,Peru Ministry 
 Peru - units unclear,2020-04-06,https://www.gob.pe/minsa#noticias,Peru Ministry of Health,,20414,1004,0.613,0.03
 Peru - units unclear,2020-04-07,https://www.gob.pe/minsa#noticias,Peru Ministry of Health,,21555,1141,0.647,0.034
 Peru - units unclear,2020-04-08,https://www.gob.pe/institucion/minsa/noticias/112079-minsa-casos-confirmados-por-coronavirus-covid-19-ascienden-a-4-342-en-el-peru-comunicado-n-58,Peru Ministry of Health,,39599,18044,1.189,0.542
-Peru - units unclear,2020-04-09,https://www.gob.pe/institucion/minsa/noticias/112117-minsa-casos-confirmados-por-coronavirus-covid-19-ascienden-a-5-256-en-el-peru-comunicado-n-60,Peru Ministry of Health,,48465,,1.455,0.266
+Peru - units unclear,2020-04-09,https://www.gob.pe/institucion/minsa/noticias/112117-minsa-casos-confirmados-por-coronavirus-covid-19-ascienden-a-5-256-en-el-peru-comunicado-n-60,Peru Ministry of Health,,48465,8866,1.455,0.266
+Peru - units unclear,2020-04-10,https://www.gob.pe/institucion/minsa/noticias/112148-minsa-casos-confirmados-por-coronavirus-covid-19-ascienden-a-5-897-en-el-peru-comunicado-n-61,Peru Ministry of Health,,56681,8216,1.702,0.247
+Peru - units unclear,2020-04-11,https://www.gob.pe/institucion/minsa/noticias/112163-minsa-casos-confirmados-por-coronavirus-covid-19-ascienden-a-6-848-en-el-peru-comunicado-n-62,Peru Ministry of Health,,65712,9031,1.973,0.271
+Peru - units unclear,2020-04-12,https://www.gob.pe/institucion/minsa/noticias/112194-minsa-casos-confirmados-por-coronavirus-covid-19-ascienden-a-7-519-en-el-peru-comunicado-n-63,Peru Ministry of Health,,76506,10794,2.297,0.324
 Philippines - people tested,2020-04-11,http://www.doh.gov.ph/covid19tracker,Department of Health (DOH) Philippines,,33783,,0.308,
 Poland - samples tested,2020-03-06,http://covid.sikorski.pw/data/cov-tests.csv,Poland Ministry of Health,,855,,0.023,
 Poland - samples tested,2020-03-08,http://covid.sikorski.pw/data/cov-tests.csv,Poland Ministry of Health,,1154,,0.03,
@@ -1311,49 +1317,49 @@ Russia - tests performed,2020-04-11,https://стопкоронавирус.рф/
 Russia - tests performed,2020-04-12,https://стопкоронавирус.рф/ai/doc/149/attach/2020-04-12_coronavirus_government_report.pdf,Government of the Russian Federation,,1280000,1e+05,8.902,0.695
 Russia - tests performed,2020-04-13,https://xn--80aesfpebagmfblc0a.xn--p1ai/ai/doc/152/attach/2020-04-13_coronavirus_government_report.pdf,Government of the Russian Federation,,1360000,80000,9.458,0.556
 Senegal - tests performed,2020-02-28,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1,1,0,0
-Senegal - tests performed,2020-02-29,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,,,
-Senegal - tests performed,2020-03-01,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,,,
-Senegal - tests performed,2020-03-02,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,,,
-Senegal - tests performed,2020-03-03,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,2,,0
-Senegal - tests performed,2020-03-04,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,2,,0
-Senegal - tests performed,2020-03-05,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,,,
-Senegal - tests performed,2020-03-06,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,2,,0
-Senegal - tests performed,2020-03-07,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,2,,0
-Senegal - tests performed,2020-03-08,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,2,,0
-Senegal - tests performed,2020-03-09,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,6,,0
-Senegal - tests performed,2020-03-10,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,1,,0
-Senegal - tests performed,2020-03-11,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,8,,0
-Senegal - tests performed,2020-03-12,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,6,,0
-Senegal - tests performed,2020-03-13,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,11,,0.001
-Senegal - tests performed,2020-03-14,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,3,,0
-Senegal - tests performed,2020-03-15,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,2,,0
-Senegal - tests performed,2020-03-16,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,9,,0.001
-Senegal - tests performed,2020-03-17,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,44,,0.003
-Senegal - tests performed,2020-03-18,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,27,,0.002
-Senegal - tests performed,2020-03-19,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,22,,0.001
-Senegal - tests performed,2020-03-20,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,56,,0.003
-Senegal - tests performed,2020-03-21,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,31,,0.002
-Senegal - tests performed,2020-03-22,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,85,,0.005
-Senegal - tests performed,2020-03-23,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,60,,0.003
-Senegal - tests performed,2020-03-24,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,59,,0.003
-Senegal - tests performed,2020-03-25,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,142,,0.008
-Senegal - tests performed,2020-03-26,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,130,,0.008
-Senegal - tests performed,2020-03-27,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,144,,0.008
-Senegal - tests performed,2020-03-28,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,98,,0.006
-Senegal - tests performed,2020-03-29,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,151,,0.009
-Senegal - tests performed,2020-03-30,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,87,,0.005
-Senegal - tests performed,2020-03-31,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,97,,0.006
-Senegal - tests performed,2020-04-01,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,195,,0.011
-Senegal - tests performed,2020-04-02,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,127,,0.007
-Senegal - tests performed,2020-04-03,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,153,,0.009
-Senegal - tests performed,2020-04-04,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,177,,0.01
-Senegal - tests performed,2020-04-05,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,92,,0.005
-Senegal - tests performed,2020-04-06,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,95,,0.006
-Senegal - tests performed,2020-04-07,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,110,,0.006
-Senegal - tests performed,2020-04-08,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,108,,0.006
-Senegal - tests performed,2020-04-09,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,199,,0.012
-Senegal - tests performed,2020-04-10,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,195,,0.011
-Senegal - tests performed,2020-04-11,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,,173,,0.01
+Senegal - tests performed,2020-02-29,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1,0,0,0
+Senegal - tests performed,2020-03-01,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1,0,0,0
+Senegal - tests performed,2020-03-02,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1,0,0,0
+Senegal - tests performed,2020-03-03,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,3,2,0,0
+Senegal - tests performed,2020-03-04,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,5,2,0,0
+Senegal - tests performed,2020-03-05,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,5,0,0,0
+Senegal - tests performed,2020-03-06,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,7,2,0,0
+Senegal - tests performed,2020-03-07,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,9,2,0.001,0
+Senegal - tests performed,2020-03-08,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,11,2,0.001,0
+Senegal - tests performed,2020-03-09,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,17,6,0.001,0
+Senegal - tests performed,2020-03-10,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,18,1,0.001,0
+Senegal - tests performed,2020-03-11,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,26,8,0.002,0
+Senegal - tests performed,2020-03-12,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,32,6,0.002,0
+Senegal - tests performed,2020-03-13,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,43,11,0.002,0.001
+Senegal - tests performed,2020-03-14,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,46,3,0.003,0
+Senegal - tests performed,2020-03-15,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,48,2,0.003,0
+Senegal - tests performed,2020-03-16,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,57,9,0.003,0.001
+Senegal - tests performed,2020-03-17,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,101,44,0.006,0.003
+Senegal - tests performed,2020-03-18,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,128,27,0.007,0.002
+Senegal - tests performed,2020-03-19,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,150,22,0.009,0.001
+Senegal - tests performed,2020-03-20,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,206,56,0.012,0.003
+Senegal - tests performed,2020-03-21,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,237,31,0.014,0.002
+Senegal - tests performed,2020-03-22,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,322,85,0.019,0.005
+Senegal - tests performed,2020-03-23,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,382,60,0.022,0.003
+Senegal - tests performed,2020-03-24,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,441,59,0.026,0.003
+Senegal - tests performed,2020-03-25,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,583,142,0.034,0.008
+Senegal - tests performed,2020-03-26,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,713,130,0.041,0.008
+Senegal - tests performed,2020-03-27,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,857,144,0.05,0.008
+Senegal - tests performed,2020-03-28,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,955,98,0.056,0.006
+Senegal - tests performed,2020-03-29,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1106,151,0.064,0.009
+Senegal - tests performed,2020-03-30,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1193,87,0.069,0.005
+Senegal - tests performed,2020-03-31,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1290,97,0.075,0.006
+Senegal - tests performed,2020-04-01,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1485,195,0.086,0.011
+Senegal - tests performed,2020-04-02,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1612,127,0.094,0.007
+Senegal - tests performed,2020-04-03,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1765,153,0.103,0.009
+Senegal - tests performed,2020-04-04,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1942,177,0.113,0.01
+Senegal - tests performed,2020-04-05,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,2034,92,0.118,0.005
+Senegal - tests performed,2020-04-06,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,2129,95,0.124,0.006
+Senegal - tests performed,2020-04-07,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,2239,110,0.13,0.006
+Senegal - tests performed,2020-04-08,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,2347,108,0.136,0.006
+Senegal - tests performed,2020-04-09,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,2546,199,0.148,0.012
+Senegal - tests performed,2020-04-10,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,2741,195,0.159,0.011
+Senegal - tests performed,2020-04-11,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,2914,173,0.169,0.01
 Serbia - people tested,2020-02-26,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,16,,0.002,
 Serbia - people tested,2020-02-27,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,20,4,0.002,0
 Serbia - people tested,2020-02-28,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,30,10,0.003,0.001
@@ -1999,3 +2005,4 @@ Vietnam - units unclear,2020-04-08,https://web.archive.org/web/20200408190526/ht
 Vietnam - units unclear,2020-04-09,https://ncov.moh.gov.vn/,Vietnamese Ministry of Health,,114241,4117,1.161,0.042
 Vietnam - units unclear,2020-04-10,https://ncov.moh.gov.vn/,Vietnamese Ministry of Health,,118807,4566,1.208,0.046
 Vietnam - units unclear,2020-04-11,https://ncov.moh.gov.vn/,Vietnamese Ministry of Health,,121821,3014,1.239,0.031
+Vietnam - units unclear,2020-04-13,https://ncov.moh.gov.vn/,Vietnamese Ministry of Health,"The website no longer reports the testing data on the main page in html. It looks like the testing dat ais probably being reported in the png infographic that pops up when you click on the ""Infographic Vietnam"" link partway down the page, but the text is too small (and the png resolution is too low) for me to see exactly what the text diacritics are so I can't get a proper translation. Either way, the number that is positively the cumulative total is ""121,821"", which happens to be the same as the cumulative total reported on 2020-04-11, which suggests that the number has not been updated by the ministry of health.",,,,
