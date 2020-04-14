@@ -2,7 +2,7 @@
 
 Collection of COVID-19 data & scripts used and maintained by [Our World in Data](https://ourworldindata.org/coronavirus).
 
-**NOTE: We plan to keep the data up to date for our own purposes only. We may stop maintaining this repository at any point.**
+**NOTE: We will continue to publish daily updates of confirmed cases and deaths throughout the duration of the pandemic.**
 
 Up until 17 March 2020, we were using WHO data manually extracted from their daily [situation report PDFs](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports).
 
