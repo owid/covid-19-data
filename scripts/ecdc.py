@@ -158,10 +158,14 @@ def load_standardized(filename):
 
 def export(filename):
     # locations.csv
-    df_loc = load_locations()
+    # load merged so that we exclude any past country names that exist in
+    # ecdc_country_standardized but not in the current dataset
+    df_loc = _load_merged(filename)[['countriesAndTerritories', 'location']] \
+        .drop_duplicates()
     df_loc = df_loc.merge(
         load_owid_continents(),
-        on='location'
+        on='location',
+        how='left'
     )
     df_loc = inject_population(df_loc)
     df_loc['population_year'] = df_loc['population_year'].round().astype('Int64')
