@@ -11,7 +11,7 @@ sys.path.append(CURRENT_DIR)
 from shared import load_population, load_owid_continents, inject_total_daily_cols, inject_owid_aggregates, inject_per_million, inject_days_since_all, inject_cfr, inject_population, inject_rolling_avg, standard_export
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
-OUTPUT_PATH = os.path.join(CURRENT_DIR, '../public/data/ecdc/')
+OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/ecdc/')
 TMP_PATH = os.path.join(CURRENT_DIR, '../tmp')
 
 LOCATIONS_CSV_PATH = os.path.join(INPUT_PATH, 'ecdc_country_standardized.csv')
