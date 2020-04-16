@@ -140,6 +140,8 @@ def generate_megafile():
         print(missing_iso)
         raise Exception("Missing ISO code for some locations")
 
+    all_covid = iso_codes.merge(all_covid, on="location")
+    
     all_covid.to_csv("../../public/data/owid-covid-data.csv", index=False)
     all_covid.to_excel("../../public/data/owid-covid-data.xlsx", index=False)
 
