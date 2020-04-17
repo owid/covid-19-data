@@ -1,22 +1,3 @@
-# COVID-19 data
+# Data on COVID-19 by _Our World in Data_
 
-Collection of COVID-19 data & scripts used and maintained by [Our World in Data](https://ourworldindata.org/coronavirus).
-
-**We will continue to publish daily updates of confirmed cases and deaths throughout the duration of the pandemic.**
-
-### Changelog
-
-- Up until 17 March 2020, we were using WHO data manually extracted from their daily [situation report PDFs](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports).
-
-- From 19 March 2020, we started relying on data published by the [European CDC](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide). We wrote about [why we decided to switch sources](https://ourworldindata.org/covid-sources-comparison).
-
-### Data alterations
-
-- We convert all country/region names to **Our World in Data standard entity names**.
-- We may **correct or discard inconsistencies** that we detect in the original data. Check our [notes on ECDC data](input/ecdc/NOTES.md) for examples.
-
-### Hosting
-
-The `/public` path of this repository is hosted at `https://covid.ourworldindata.org/` using [Netlify](https://netlify.com).
-
-We do our best to keep all past URLs working, however we may decide to stop maintaining data extracts at any point. The order and names of the CSV columns may also change.
+You can find our data on COVID-19 and its documentation in [`/public/data`](/public/data).
