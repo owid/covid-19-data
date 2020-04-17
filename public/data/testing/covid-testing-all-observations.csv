@@ -7,6 +7,7 @@ Argentina - tests performed,2020-04-13,https://www.argentina.gob.ar/sites/defaul
 Argentina - tests performed,2020-04-14,https://www.argentina.gob.ar/sites/default/files/14-04-20_reporte_matutino_covid_19.pdf,Government of Argentina,,22805,3047,0.501,0.067,,
 Argentina - tests performed,2020-04-15,https://www.argentina.gob.ar/sites/default/files/15-04-20_reporte-matutino-covid-19.pdf,Government of Argentina,,24374,1569,0.536,0.034,,
 Argentina - tests performed,2020-04-16,https://www.argentina.gob.ar/sites/default/files/16-04-20_reporte_matutino_covid_19.pdf,Government of Argentina,,26457,2083,0.581,0.046,2233,0.049
+Argentina - tests performed,2020-04-17,https://www.argentina.gob.ar/sites/default/files/17-04-20-reporte-matutino-covid-19_0.pdf,Government of Argentina,,28650,2193,0.63,0.048,1948.333,0.043
 Australia - units unclear,2020-03-22,https://www1.health.gov.au/internet/main/publishing.nsf/Content/novel_coronavirus_2019_ncov_weekly_epidemiology_reports_australia_2020.htm,Australian Department of Health,,143056,,5.633,,,
 Australia - units unclear,2020-03-29,https://www1.health.gov.au/internet/main/publishing.nsf/Content/novel_coronavirus_2019_ncov_weekly_epidemiology_reports_australia_2020.htm,Australian Department of Health,They say 'Number of tests performed'. Unclear but probably means people tested based on the fact they then report the share of these who tested postitive in brackets,211261,,8.318,,,
 Australia - units unclear,2020-04-02,https://www.covid19data.com.au/testing,Federal Department of Health,Most recent figure provided by Federal Department of Health.,261000,,10.276,,,
@@ -72,6 +73,7 @@ Austria - units unclear,2020-04-13,https://www.sozialministerium.at/Informatione
 Austria - units unclear,2020-04-14,https://www.sozialministerium.at/Informationen-zum-Coronavirus/Neuartiges-Coronavirus-(2019-nCov).html,Austrian Ministry for Health,,151796,3384,17.284,0.385,3607,0.411
 Austria - units unclear,2020-04-15,https://www.sozialministerium.at/Informationen-zum-Coronavirus/Neuartiges-Coronavirus-(2019-nCov).html,Austrian Ministry for Health,,156801,5005,17.854,0.57,3974.667,0.453
 Austria - units unclear,2020-04-16,https://www.sozialministerium.at/Informationen-zum-Coronavirus/Neuartiges-Coronavirus-(2019-nCov).html,Austrian Ministry for Health,,162816,6015,18.539,0.685,4801.333,0.547
+Austria - units unclear,2020-04-17,https://www.sozialministerium.at/Informationen-zum-Coronavirus/Neuartiges-Coronavirus-(2019-nCov).html,Austrian Ministry for Health,,169272,6456,19.274,0.735,5825.333,0.663
 Bahrain - units unclear,2020-03-05,https://web.archive.org/web/20200305184133/https://www.moh.gov.bh/COVID19,Ministry of Health,,5334,,3.142,,,
 Bahrain - units unclear,2020-03-07,https://web.archive.org/web/20200307100426/https://www.moh.gov.bh/COVID19,Ministry of Health,,6420,,3.781,,,
 Bahrain - units unclear,2020-03-09,https://web.archive.org/web/20200309183605/https://www.moh.gov.bh/COVID19,Ministry of Health,,7830,,4.612,,,
@@ -99,51 +101,97 @@ Bahrain - units unclear,2020-04-13,https://www.moh.gov.bh/COVID19,Ministry of He
 Bahrain - units unclear,2020-04-14,https://www.moh.gov.bh/COVID19,Ministry of Health,,70813,3486,41.71,2.053,3369,1.984
 Bahrain - units unclear,2020-04-15,https://www.moh.gov.bh/COVID19,Ministry of Health,,73272,2459,43.158,1.448,3099.667,1.826
 Bahrain - units unclear,2020-04-16,https://www.moh.gov.bh/COVID19,Ministry of Health,,76944,3672,45.321,2.163,3205.667,1.888
+Bahrain - units unclear,2020-04-17,https://www.moh.gov.bh/COVID19,Ministry of Health,,79612,2668,46.892,1.571,2933,1.727
+Bangladesh - samples tested,2020-03-04,https://covid19.cramstack.com/,Government of Bangladesh,,108,,0.001,,,
+Bangladesh - samples tested,2020-03-05,https://covid19.cramstack.com/,Government of Bangladesh,,111,3,0.001,0,,
+Bangladesh - samples tested,2020-03-06,https://covid19.cramstack.com/,Government of Bangladesh,,111,0,0.001,0,,
+Bangladesh - samples tested,2020-03-07,https://covid19.cramstack.com/,Government of Bangladesh,,120,9,0.001,0,4,0
+Bangladesh - samples tested,2020-03-08,https://covid19.cramstack.com/,Government of Bangladesh,,127,7,0.001,0,5.333,0
+Bangladesh - samples tested,2020-03-09,https://covid19.cramstack.com/,Government of Bangladesh,,137,10,0.001,0,8.667,0
+Bangladesh - samples tested,2020-03-10,https://covid19.cramstack.com/,Government of Bangladesh,,147,10,0.001,0,9,0
+Bangladesh - samples tested,2020-03-11,https://covid19.cramstack.com/,Government of Bangladesh,,163,16,0.001,0,12,0
+Bangladesh - samples tested,2020-03-12,https://covid19.cramstack.com/,Government of Bangladesh,,187,24,0.001,0,16.667,0
+Bangladesh - samples tested,2020-03-13,https://covid19.cramstack.com/,Government of Bangladesh,,211,24,0.001,0,21.333,0
+Bangladesh - samples tested,2020-03-14,https://covid19.cramstack.com/,Government of Bangladesh,,241,30,0.001,0,26,0
+Bangladesh - samples tested,2020-03-15,https://covid19.cramstack.com/,Government of Bangladesh,,268,27,0.002,0,27,0
+Bangladesh - samples tested,2020-03-16,https://covid19.cramstack.com/,Government of Bangladesh,,293,25,0.002,0,27.333,0
+Bangladesh - samples tested,2020-03-17,https://covid19.cramstack.com/,Government of Bangladesh,,342,49,0.002,0,33.667,0
+Bangladesh - samples tested,2020-03-18,https://covid19.cramstack.com/,Government of Bangladesh,,381,39,0.002,0,37.667,0
+Bangladesh - samples tested,2020-03-19,https://covid19.cramstack.com/,Government of Bangladesh,,427,46,0.003,0,44.667,0
+Bangladesh - samples tested,2020-03-20,https://covid19.cramstack.com/,Government of Bangladesh,,463,36,0.003,0,40.333,0
+Bangladesh - samples tested,2020-03-21,https://covid19.cramstack.com/,Government of Bangladesh,,499,36,0.003,0,39.333,0
+Bangladesh - samples tested,2020-03-22,https://covid19.cramstack.com/,Government of Bangladesh,,564,65,0.003,0,45.667,0
+Bangladesh - samples tested,2020-03-23,https://covid19.cramstack.com/,Government of Bangladesh,,620,56,0.004,0,52.333,0
+Bangladesh - samples tested,2020-03-24,https://covid19.cramstack.com/,Government of Bangladesh,,712,92,0.004,0.001,71,0
+Bangladesh - samples tested,2020-03-25,https://covid19.cramstack.com/,Government of Bangladesh,,794,82,0.005,0,76.667,0
+Bangladesh - samples tested,2020-03-26,https://covid19.cramstack.com/,Government of Bangladesh,,920,126,0.005,0.001,100,0.001
+Bangladesh - samples tested,2020-03-27,https://covid19.cramstack.com/,Government of Bangladesh,,1026,106,0.006,0.001,104.667,0.001
+Bangladesh - samples tested,2020-03-28,https://covid19.cramstack.com/,Government of Bangladesh,,1076,50,0.006,0,94,0.001
+Bangladesh - samples tested,2020-03-29,https://covid19.cramstack.com/,Government of Bangladesh,,1185,109,0.007,0.001,88.333,0.001
+Bangladesh - samples tested,2020-03-30,https://covid19.cramstack.com/,Government of Bangladesh,,1338,153,0.008,0.001,104,0.001
+Bangladesh - samples tested,2020-03-31,https://covid19.cramstack.com/,Government of Bangladesh,,1602,264,0.009,0.002,175.333,0.001
+Bangladesh - samples tested,2020-04-01,https://covid19.cramstack.com/,Government of Bangladesh,,1759,157,0.01,0.001,191.333,0.001
+Bangladesh - samples tested,2020-04-02,https://covid19.cramstack.com/,Government of Bangladesh,,1906,147,0.011,0.001,189.333,0.001
+Bangladesh - samples tested,2020-04-03,https://covid19.cramstack.com/,Government of Bangladesh,,2113,207,0.012,0.001,170.333,0.001
+Bangladesh - samples tested,2020-04-04,https://covid19.cramstack.com/,Government of Bangladesh,,2547,434,0.015,0.003,262.667,0.002
+Bangladesh - samples tested,2020-04-05,https://covid19.cramstack.com/,Government of Bangladesh,,2914,367,0.017,0.002,336,0.002
+Bangladesh - samples tested,2020-04-06,https://covid19.cramstack.com/,Government of Bangladesh,,3610,696,0.021,0.004,499,0.003
+Bangladesh - samples tested,2020-04-07,https://covid19.cramstack.com/,Government of Bangladesh,,4402,792,0.026,0.005,618.333,0.004
+Bangladesh - samples tested,2020-04-08,https://covid19.cramstack.com/,Government of Bangladesh,,5383,981,0.032,0.006,823,0.005
+Bangladesh - samples tested,2020-04-09,https://covid19.cramstack.com/,Government of Bangladesh,,6480,1097,0.038,0.006,956.667,0.006
+Bangladesh - samples tested,2020-04-10,https://covid19.cramstack.com/,Government of Bangladesh,,7664,1184,0.045,0.007,1087.333,0.006
+Bangladesh - samples tested,2020-04-11,https://covid19.cramstack.com/,Government of Bangladesh,,8313,649,0.049,0.004,976.667,0.006
+Bangladesh - samples tested,2020-04-12,https://covid19.cramstack.com/,Government of Bangladesh,,9653,1340,0.057,0.008,1057.667,0.006
+Bangladesh - samples tested,2020-04-13,https://covid19.cramstack.com/,Government of Bangladesh,,11223,1570,0.066,0.009,1186.333,0.007
+Bangladesh - samples tested,2020-04-14,https://covid19.cramstack.com/,Government of Bangladesh,,13128,1905,0.077,0.011,1605,0.009
+Bangladesh - samples tested,2020-04-15,https://covid19.cramstack.com/,Government of Bangladesh,,14868,1740,0.088,0.01,1738.333,0.01
+Bangladesh - samples tested,2020-04-16,https://covid19.cramstack.com/,Government of Bangladesh,,17003,2135,0.1,0.013,1926.667,0.011
 Belgium - tests performed,2020-03-01,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,56,56,0.005,0.005,,
-Belgium - tests performed,2020-03-02,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,338,282,0.029,0.024,,
-Belgium - tests performed,2020-03-03,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,815,477,0.07,0.041,271.667,0.023
-Belgium - tests performed,2020-03-04,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,1449,634,0.125,0.055,464.333,0.04
-Belgium - tests performed,2020-03-05,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,2153,704,0.185,0.061,605,0.052
-Belgium - tests performed,2020-03-06,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,3161,1008,0.272,0.087,782,0.068
-Belgium - tests performed,2020-03-07,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,3568,407,0.307,0.035,706.333,0.061
-Belgium - tests performed,2020-03-08,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,3978,410,0.342,0.035,608.333,0.052
-Belgium - tests performed,2020-03-09,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,4529,551,0.39,0.047,456,0.039
-Belgium - tests performed,2020-03-10,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,5260,731,0.453,0.063,564,0.048
-Belgium - tests performed,2020-03-11,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,6264,1004,0.539,0.086,762,0.065
-Belgium - tests performed,2020-03-12,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,7656,1392,0.659,0.12,1042.333,0.09
-Belgium - tests performed,2020-03-13,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,10037,2381,0.864,0.205,1592.333,0.137
-Belgium - tests performed,2020-03-14,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,12042,2005,1.036,0.173,1926,0.166
-Belgium - tests performed,2020-03-15,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,13169,1127,1.133,0.097,1837.667,0.158
-Belgium - tests performed,2020-03-16,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,14821,1652,1.275,0.142,1594.667,0.137
-Belgium - tests performed,2020-03-17,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,16772,1951,1.443,0.168,1576.667,0.136
-Belgium - tests performed,2020-03-18,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,19140,2368,1.647,0.204,1990.333,0.171
-Belgium - tests performed,2020-03-19,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,22029,2889,1.896,0.249,2402.667,0.207
-Belgium - tests performed,2020-03-20,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,24623,2594,2.119,0.223,2617,0.225
-Belgium - tests performed,2020-03-21,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,26568,1945,2.286,0.167,2476,0.213
-Belgium - tests performed,2020-03-22,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,27732,1164,2.387,0.1,1901,0.163
-Belgium - tests performed,2020-03-23,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,30391,2659,2.615,0.229,1922.667,0.165
-Belgium - tests performed,2020-03-24,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,33675,3284,2.898,0.283,2369,0.204
-Belgium - tests performed,2020-03-25,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,37298,3623,3.21,0.312,3188.667,0.275
-Belgium - tests performed,2020-03-26,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,40852,3554,3.516,0.306,3487,0.3
-Belgium - tests performed,2020-03-27,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,45106,4254,3.882,0.366,3810.333,0.328
-Belgium - tests performed,2020-03-28,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,48403,3297,4.166,0.284,3701.667,0.319
-Belgium - tests performed,2020-03-29,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,50446,2043,4.341,0.176,3198,0.275
-Belgium - tests performed,2020-03-30,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,53800,3354,4.63,0.289,2898,0.25
-Belgium - tests performed,2020-03-31,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,59258,5458,5.1,0.47,3618.333,0.312
-Belgium - tests performed,2020-04-01,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,64102,4844,5.517,0.417,4552,0.392
-Belgium - tests performed,2020-04-02,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,68933,4831,5.932,0.416,5044.333,0.434
-Belgium - tests performed,2020-04-03,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,74200,5267,6.386,0.453,4980.667,0.429
-Belgium - tests performed,2020-04-04,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,78509,4309,6.756,0.371,4802.333,0.413
-Belgium - tests performed,2020-04-05,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,81079,2570,6.978,0.221,4048.667,0.348
-Belgium - tests performed,2020-04-06,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,85475,4396,7.356,0.378,3758.333,0.323
-Belgium - tests performed,2020-04-07,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,91258,5783,7.854,0.498,4249.667,0.366
-Belgium - tests performed,2020-04-08,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,97306,6048,8.374,0.52,5409,0.465
-Belgium - tests performed,2020-04-09,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,103408,6102,8.899,0.525,5977.667,0.514
-Belgium - tests performed,2020-04-10,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,109974,6566,9.464,0.565,6238.667,0.537
-Belgium - tests performed,2020-04-11,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,116460,6486,10.022,0.558,6384.667,0.549
-Belgium - tests performed,2020-04-12,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,122273,5813,10.523,0.5,6288.333,0.541
-Belgium - tests performed,2020-04-13,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,127719,5446,10.991,0.469,5915,0.509
-Belgium - tests performed,2020-04-14,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,132860,5141,11.434,0.442,5466.667,0.47
+Belgium - tests performed,2020-03-02,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,335,279,0.029,0.024,,
+Belgium - tests performed,2020-03-03,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,812,477,0.07,0.041,270.667,0.023
+Belgium - tests performed,2020-03-04,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,1444,632,0.124,0.054,462.667,0.04
+Belgium - tests performed,2020-03-05,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,2146,702,0.185,0.06,603.667,0.052
+Belgium - tests performed,2020-03-06,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,3150,1004,0.271,0.086,779.333,0.067
+Belgium - tests performed,2020-03-07,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,3552,402,0.306,0.035,702.667,0.06
+Belgium - tests performed,2020-03-08,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,3951,399,0.34,0.034,601.667,0.052
+Belgium - tests performed,2020-03-09,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,4504,553,0.388,0.048,451.333,0.039
+Belgium - tests performed,2020-03-10,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,5242,738,0.451,0.064,563.333,0.049
+Belgium - tests performed,2020-03-11,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,6252,1010,0.538,0.087,767,0.066
+Belgium - tests performed,2020-03-12,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,7645,1393,0.658,0.12,1047,0.09
+Belgium - tests performed,2020-03-13,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,9998,2353,0.86,0.202,1585.333,0.136
+Belgium - tests performed,2020-03-14,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,11998,2000,1.033,0.172,1915.333,0.165
+Belgium - tests performed,2020-03-15,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,13124,1126,1.129,0.097,1826.333,0.157
+Belgium - tests performed,2020-03-16,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,14784,1660,1.272,0.143,1595.333,0.137
+Belgium - tests performed,2020-03-17,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,16737,1953,1.44,0.168,1579.667,0.136
+Belgium - tests performed,2020-03-18,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,19124,2387,1.646,0.205,2000,0.172
+Belgium - tests performed,2020-03-19,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,22031,2907,1.896,0.25,2415.667,0.208
+Belgium - tests performed,2020-03-20,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,24630,2599,2.12,0.224,2631,0.226
+Belgium - tests performed,2020-03-21,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,26585,1955,2.288,0.168,2487,0.214
+Belgium - tests performed,2020-03-22,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,27752,1167,2.388,0.1,1907,0.164
+Belgium - tests performed,2020-03-23,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,30384,2632,2.615,0.227,1918,0.165
+Belgium - tests performed,2020-03-24,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,33651,3267,2.896,0.281,2355.333,0.203
+Belgium - tests performed,2020-03-25,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,37272,3621,3.208,0.312,3173.333,0.273
+Belgium - tests performed,2020-03-26,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,40826,3554,3.513,0.306,3480.667,0.3
+Belgium - tests performed,2020-03-27,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,45061,4235,3.878,0.364,3803.333,0.327
+Belgium - tests performed,2020-03-28,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,48372,3311,4.163,0.285,3700,0.318
+Belgium - tests performed,2020-03-29,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,50387,2015,4.336,0.173,3187,0.274
+Belgium - tests performed,2020-03-30,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,53742,3355,4.625,0.289,2893.667,0.249
+Belgium - tests performed,2020-03-31,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,59197,5455,5.094,0.469,3608.333,0.31
+Belgium - tests performed,2020-04-01,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,64031,4834,5.51,0.416,4548,0.391
+Belgium - tests performed,2020-04-02,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,68833,4802,5.924,0.413,5030.333,0.433
+Belgium - tests performed,2020-04-03,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,74097,5264,6.377,0.453,4966.667,0.427
+Belgium - tests performed,2020-04-04,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,78411,4314,6.748,0.371,4793.333,0.412
+Belgium - tests performed,2020-04-05,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,80985,2574,6.969,0.222,4050.667,0.349
+Belgium - tests performed,2020-04-06,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,85392,4407,7.349,0.379,3765,0.324
+Belgium - tests performed,2020-04-07,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,91153,5761,7.845,0.496,4247.333,0.366
+Belgium - tests performed,2020-04-08,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,97196,6043,8.365,0.52,5403.667,0.465
+Belgium - tests performed,2020-04-09,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,103262,6066,8.887,0.522,5956.667,0.513
+Belgium - tests performed,2020-04-10,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,109721,6459,9.442,0.556,6189.333,0.533
+Belgium - tests performed,2020-04-11,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,115994,6273,9.982,0.54,6266,0.539
+Belgium - tests performed,2020-04-12,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,121394,5400,10.447,0.465,6044,0.52
+Belgium - tests performed,2020-04-13,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,126493,5099,10.886,0.439,5590.667,0.481
+Belgium - tests performed,2020-04-14,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,132133,5640,11.371,0.485,5379.667,0.463
+Belgium - tests performed,2020-04-15,https://epistat.sciensano.be/Data/COVID19BE_tests.csv,Sciensano (Belgian institute for health),,139081,6948,11.969,0.598,5895.667,0.507
 Bolivia - cases tested,2020-03-21,https://github.com/mauforonda/covid19-bolivia/blob/master/data.json,Ministry of Health,Made available on Github by Mau Foronda,139,,0.012,,,
 Bolivia - cases tested,2020-03-22,https://github.com/mauforonda/covid19-bolivia/blob/master/data.json,Ministry of Health,Made available on Github by Mau Foronda,178,39,0.015,0.003,,
 Bolivia - cases tested,2020-03-23,https://github.com/mauforonda/covid19-bolivia/blob/master/data.json,Ministry of Health,Made available on Github by Mau Foronda,273,95,0.024,0.008,,
@@ -170,6 +218,7 @@ Bolivia - cases tested,2020-04-12,https://github.com/mauforonda/covid19-bolivia/
 Bolivia - cases tested,2020-04-13,https://github.com/mauforonda/covid19-bolivia/blob/master/data.json,Ministry of Health,Made available on Github by Mau Foronda,2693,165,0.233,0.014,169.333,0.015
 Bolivia - cases tested,2020-04-14,https://github.com/mauforonda/covid19-bolivia/blob/master/data.json,Ministry of Health,Made available on Github by Mau Foronda,2919,226,0.253,0.02,187.667,0.016
 Bolivia - cases tested,2020-04-15,https://github.com/mauforonda/covid19-bolivia/blob/master/data.json,Ministry of Health,Made available on Github by Mau Foronda,3230,311,0.28,0.027,234,0.02
+Bolivia - cases tested,2020-04-16,https://github.com/mauforonda/covid19-bolivia/blob/master/data.json,Ministry of Health,Made available on Github by Mau Foronda,3419,189,0.296,0.016,242,0.021
 Canada - people tested,2020-03-18,https://web.archive.org/web/20200319151005/https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html,Government of Canada,As of 11am EDT (no 6pm reported),53975,,1.435,,,
 Canada - people tested,2020-03-19,https://web.archive.org/web/20200321005428/https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html,Government of Canada,As of 11am EDT (no 6pm reported),54956,981,1.461,0.026,,
 Canada - people tested,2020-03-20,https://web.archive.org/web/20200321081153/https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html,Government of Canada,As of 7pm EDT,76814,21858,2.043,0.581,,
@@ -199,6 +248,7 @@ Canada - people tested,2020-04-13,https://www.canada.ca/en/public-health/service
 Canada - people tested,2020-04-14,https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html,Government of Canada,,450717,21797,11.986,0.58,16388.333,0.436
 Canada - people tested,2020-04-15,https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html,Government of Canada,,462353,11636,12.296,0.309,19234,0.511
 Canada - people tested,2020-04-16,https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html,Government of Canada,,487060,24707,12.953,0.657,19380,0.515
+Canada - people tested,2020-04-17,https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html,Government of Canada,,503003,15943,13.377,0.424,17428.667,0.463
 Chile - tests performed,2020-04-01,https://github.com/jorgeperezrojas/covid19-data,Ministry of Health,Made available by Jorge Perez Rojas on Github,38040,,2.059,,,
 Chile - tests performed,2020-04-02,https://github.com/jorgeperezrojas/covid19-data,Ministry of Health,Made available by Jorge Perez Rojas on Github,40725,2685,2.205,0.145,,
 Chile - tests performed,2020-04-03,https://github.com/jorgeperezrojas/covid19-data,Ministry of Health,Made available by Jorge Perez Rojas on Github,44130,3405,2.389,0.184,,
@@ -215,6 +265,7 @@ Chile - tests performed,2020-04-13,https://github.com/jorgeperezrojas/covid19-da
 Chile - tests performed,2020-04-14,https://github.com/jorgeperezrojas/covid19-data,Ministry of Health,Made available by Jorge Perez Rojas on Github,87794,2759,4.753,0.149,3806.667,0.206
 Chile - tests performed,2020-04-15,https://github.com/jorgeperezrojas/covid19-data,Ministry of Health,Made available by Jorge Perez Rojas on Github,91873,4079,4.973,0.221,3200.667,0.173
 Chile - tests performed,2020-04-16,https://github.com/jorgeperezrojas/covid19-data,Ministry of Health,Made available by Jorge Perez Rojas on Github,98424,6551,5.328,0.355,4463,0.242
+Chile - tests performed,2020-04-17,https://github.com/jorgeperezrojas/covid19-data,Ministry of Health,Made available by Jorge Perez Rojas on Github,103873,5449,5.623,0.295,5359.667,0.29
 Colombia - samples processed,2020-02-29,https://github.com/sebaxtian/colombia_covid_19_pipe/blob/master/output/covid19_samples_processed.csv,National Institute of Health,Made available on Github by Sebastian Rios Sabogal,599,,0.012,,,
 Colombia - samples processed,2020-03-08,https://github.com/sebaxtian/colombia_covid_19_pipe/blob/master/output/covid19_samples_processed.csv,National Institute of Health,Made available on Github by Sebastian Rios Sabogal,759,,0.015,,,
 Colombia - samples processed,2020-03-15,https://github.com/sebaxtian/colombia_covid_19_pipe/blob/master/output/covid19_samples_processed.csv,National Institute of Health,Made available on Github by Sebastian Rios Sabogal,2343,,0.047,,,
@@ -333,6 +384,7 @@ Czech Republic - tests performed,2020-04-12,https://onemocneni-aktualne.mzcr.cz/
 Czech Republic - tests performed,2020-04-13,https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/testy.csv,Ministry of Health,,131542,3183,12.371,0.299,3752.333,0.353
 Czech Republic - tests performed,2020-04-14,https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/testy.csv,Ministry of Health,,137672,6130,12.947,0.576,4182,0.393
 Czech Republic - tests performed,2020-04-15,https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/testy.csv,Ministry of Health,,146004,8332,13.731,0.784,5881.667,0.553
+Czech Republic - tests performed,2020-04-16,https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/testy.csv,Ministry of Health,,154307,8303,14.512,0.781,7588.333,0.714
 Denmark - people tested,2020-03-20,https://www.sst.dk/da/corona/tal-og-overvaagning,Danish Health Authority,,10730,,1.851,,,
 Denmark - people tested,2020-03-21,https://www.sst.dk/da/corona/tal-og-overvaagning,Danish Health Authority,,11657,927,2.011,0.16,,
 Denmark - people tested,2020-03-23,https://www.sst.dk/da/corona/tal-og-overvaagning,Danish Health Authority,,12938,,2.232,,,
@@ -358,35 +410,36 @@ Denmark - people tested,2020-04-13,https://www.sst.dk/da/corona/tal-og-overvaagn
 Denmark - people tested,2020-04-14,https://www.sst.dk/da/corona/tal-og-overvaagning,Danish Health Authority,,74210,2111,12.802,0.364,2146.333,0.37
 Denmark - people tested,2020-04-15,https://www.sst.dk/da/corona/tal-og-overvaagning,Danish Health Authority,,77712,3502,13.406,0.604,2529,0.436
 Denmark - people tested,2020-04-16,https://www.sst.dk/da/corona/tal-og-overvaagning,Danish Health Authority,,82380,4668,14.211,0.805,3427,0.591
-Ecuador - samples tested,2020-03-18,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/11INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-18032020-15h001.pdf,Government of Ecuador,,762,,0.044,,,
-Ecuador - samples tested,2020-03-19,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/13INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-19032020-16H00.pdf,Government of Ecuador,,1153,391,0.067,0.023,,
-Ecuador - samples tested,2020-03-20,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/15INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-20032020-17H00-V2.pdf,Government of Ecuador,,1670,517,0.096,0.03,,
-Ecuador - samples tested,2020-03-21,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-21032020-17H00.pdf,Government of Ecuador,,2051,381,0.118,0.022,429.667,0.025
-Ecuador - samples tested,2020-03-22,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-22032020-10H00-V1-1-1.pdf,Government of Ecuador,,2360,309,0.136,0.018,402.333,0.023
-Ecuador - samples tested,2020-03-23,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-23032020-10H00-1.pdf,Government of Ecuador,,2780,420,0.16,0.024,370,0.021
-Ecuador - samples tested,2020-03-24,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-24032020-17h00.pdf,Government of Ecuador,,3618,838,0.209,0.048,522.333,0.03
-Ecuador - samples tested,2020-03-25,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-25032020-17h00.pdf,Government of Ecuador,,4290,672,0.247,0.039,643.333,0.037
-Ecuador - samples tested,2020-03-26,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-26032020-17h00-propuestav2.pdf,Government of Ecuador,,5090,800,0.294,0.046,770,0.044
-Ecuador - samples tested,2020-03-27,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONAL-No.027-COVI-19-COE-NACIONAL-27032020-17h00.pdf,Government of Ecuador,,5915,825,0.341,0.048,765.667,0.044
-Ecuador - samples tested,2020-03-28,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-28032020-17h00.pdf,Government of Ecuador,,6615,700,0.382,0.04,775,0.045
-Ecuador - samples tested,2020-03-29,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-29032020-17h00-1.pdf,Government of Ecuador,,6992,377,0.403,0.022,634,0.037
-Ecuador - samples tested,2020-03-30,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-30032020-17h00-v3.pdf,Government of Ecuador,,7451,459,0.43,0.026,512,0.029
-Ecuador - samples tested,2020-03-31,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-31032020-17h00.pdf,Government of Ecuador,,8251,800,0.476,0.046,545.333,0.031
-Ecuador - samples tested,2020-04-01,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-01042020-17h00-1.pdf,Government of Ecuador,,9019,768,0.52,0.044,675.667,0.039
-Ecuador - samples tested,2020-04-02,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-02042020-10h00.pdf,Government of Ecuador,,9604,585,0.554,0.034,717.667,0.041
-Ecuador - samples tested,2020-04-03,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-03042020-10h00-c.pdf,Government of Ecuador,,10317,713,0.595,0.041,688.667,0.04
-Ecuador - samples tested,2020-04-04,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-04042020-10h00.pdf,Government of Ecuador,,11309,992,0.652,0.057,763.333,0.044
-Ecuador - samples tested,2020-04-05,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-05042020-10h00.pdf,Government of Ecuador,,12386,1077,0.714,0.062,927.333,0.053
-Ecuador - samples tested,2020-04-06,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-06042020-10h00.pdf,Government of Ecuador,,13039,653,0.752,0.038,907.333,0.052
-Ecuador - samples tested,2020-04-07,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-07042020-17h00.pdf,Government of Ecuador,,14406,1367,0.831,0.079,1032.333,0.06
-Ecuador - samples tested,2020-04-08,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-08042020-07.pdf,Government of Ecuador,,15526,1120,0.896,0.065,1046.667,0.061
-Ecuador - samples tested,2020-04-09,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-09042020-07h00.pdf,Government of Ecuador,,19102,3576,1.102,0.206,2021,0.117
-Ecuador - samples tested,2020-04-10,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-10042020-07h00.pdf,Government of Ecuador,,21568,2466,1.244,0.142,2387.333,0.138
-Ecuador - samples tested,2020-04-11,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-11042020-07h00.pdf,Government of Ecuador,,22649,1081,1.306,0.062,2374.333,0.137
-Ecuador - samples tested,2020-04-12,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-12042020-08h00.pdf,Government of Ecuador,,23635,986,1.363,0.057,1511,0.087
-Ecuador - samples tested,2020-04-13,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-13042020-08h00.pdf,Government of Ecuador,,24553,918,1.416,0.053,995,0.057
-Ecuador - samples tested,2020-04-14,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-14042020-08h00.pdf,Government of Ecuador,,25347,794,1.462,0.046,899.333,0.052
-Ecuador - samples tested,2020-04-15,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-15042020-08h00.pdf,Government of Ecuador,,26093,746,1.505,0.043,819.333,0.047
+Denmark - people tested,2020-04-17,https://www.sst.dk/da/corona/tal-og-overvaagning,Danish Health Authority,,87024,4644,15.012,0.801,4271.333,0.737
+Ecuador - samples tested,2020-03-18,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/11INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-18032020-15h001.pdf,Government of Ecuador,Sum of confirmados and descartados,480,,0.028,,,
+Ecuador - samples tested,2020-03-19,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/13INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-19032020-16H00.pdf,Government of Ecuador,Sum of confirmados and descartados,672,192,0.039,0.011,,
+Ecuador - samples tested,2020-03-20,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/15INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-20032020-17H00-V2.pdf,Government of Ecuador,Sum of confirmados and descartados,959,287,0.055,0.017,,
+Ecuador - samples tested,2020-03-21,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-21032020-17H00.pdf,Government of Ecuador,Sum of confirmados and descartados,1181,222,0.068,0.013,233.667,0.014
+Ecuador - samples tested,2020-03-22,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-22032020-10H00-V1-1-1.pdf,Government of Ecuador,Sum of confirmados and descartados,1661,480,0.096,0.028,329.667,0.019
+Ecuador - samples tested,2020-03-23,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-23032020-10H00-1.pdf,Government of Ecuador,Sum of confirmados and descartados,2072,411,0.12,0.024,371,0.022
+Ecuador - samples tested,2020-03-24,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-24032020-17h00.pdf,Government of Ecuador,Sum of confirmados and descartados,2307,235,0.133,0.014,375.333,0.022
+Ecuador - samples tested,2020-03-25,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-25032020-17h00.pdf,Government of Ecuador,Sum of confirmados and descartados,2598,291,0.15,0.017,312.333,0.018
+Ecuador - samples tested,2020-03-26,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-26032020-17h00-propuestav2.pdf,Government of Ecuador,Sum of confirmados and descartados,3125,527,0.18,0.03,351,0.02
+Ecuador - samples tested,2020-03-27,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONAL-No.027-COVI-19-COE-NACIONAL-27032020-17h00.pdf,Government of Ecuador,Sum of confirmados and descartados,3568,443,0.206,0.026,420.333,0.024
+Ecuador - samples tested,2020-03-28,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-28032020-17h00.pdf,Government of Ecuador,Sum of confirmados and descartados,3935,367,0.227,0.021,445.667,0.026
+Ecuador - samples tested,2020-03-29,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-29032020-17h00-1.pdf,Government of Ecuador,Sum of confirmados and descartados,4123,188,0.238,0.011,332.667,0.019
+Ecuador - samples tested,2020-03-30,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-30032020-17h00-v3.pdf,Government of Ecuador,Sum of confirmados and descartados,4219,96,0.243,0.006,217,0.013
+Ecuador - samples tested,2020-03-31,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/03/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-31032020-17h00.pdf,Government of Ecuador,Sum of confirmados and descartados,4828,609,0.279,0.035,297.667,0.017
+Ecuador - samples tested,2020-04-01,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-01042020-17h00-1.pdf,Government of Ecuador,Sum of confirmados and descartados,5591,763,0.323,0.044,489.333,0.028
+Ecuador - samples tested,2020-04-02,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-02042020-10h00.pdf,Government of Ecuador,Sum of confirmados and descartados,6302,711,0.364,0.041,694.333,0.04
+Ecuador - samples tested,2020-04-03,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-03042020-10h00-c.pdf,Government of Ecuador,Sum of confirmados and descartados,6656,354,0.384,0.02,609.333,0.035
+Ecuador - samples tested,2020-04-04,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-04042020-10h00.pdf,Government of Ecuador,Sum of confirmados and descartados,6834,178,0.394,0.01,414.333,0.024
+Ecuador - samples tested,2020-04-05,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-05042020-10h00.pdf,Government of Ecuador,Sum of confirmados and descartados,7249,415,0.418,0.024,315.667,0.018
+Ecuador - samples tested,2020-04-06,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-06042020-10h00.pdf,Government of Ecuador,Sum of confirmados and descartados,7590,341,0.438,0.02,311.333,0.018
+Ecuador - samples tested,2020-04-07,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-07042020-17h00.pdf,Government of Ecuador,Sum of confirmados and descartados,7951,361,0.459,0.021,372.333,0.022
+Ecuador - samples tested,2020-04-08,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-08042020-07.pdf,Government of Ecuador,Sum of confirmados and descartados,8658,707,0.499,0.041,469.667,0.027
+Ecuador - samples tested,2020-04-09,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-09042020-07h00.pdf,Government of Ecuador,Sum of confirmados and descartados,9639,981,0.556,0.057,683,0.04
+Ecuador - samples tested,2020-04-10,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-10042020-07h00.pdf,Government of Ecuador,Sum of confirmados and descartados,13657,4018,0.788,0.232,1902,0.11
+Ecuador - samples tested,2020-04-11,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-11042020-07h00.pdf,Government of Ecuador,Sum of confirmados and descartados,14201,544,0.819,0.031,1847.667,0.107
+Ecuador - samples tested,2020-04-12,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-12042020-08h00.pdf,Government of Ecuador,Sum of confirmados and descartados,14584,383,0.841,0.022,1648.333,0.095
+Ecuador - samples tested,2020-04-13,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-13042020-08h00.pdf,Government of Ecuador,Sum of confirmados and descartados,14826,242,0.855,0.014,389.667,0.022
+Ecuador - samples tested,2020-04-14,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-14042020-08h00.pdf,Government of Ecuador,Sum of confirmados and descartados,15098,272,0.871,0.016,299,0.017
+Ecuador - samples tested,2020-04-15,https://www.gestionderiesgos.gob.ec/wp-content/uploads/2020/04/INFOGRAFIA-NACIONALCOVI-19-COE-NACIONAL-15042020-08h00.pdf,Government of Ecuador,Sum of confirmados and descartados,15614,516,0.901,0.03,343.333,0.02
 El Salvador - tests performed,2020-04-12,https://covid19.gob.sv/,Government of El Salvador,updated at 11:19pm local time,6729,,1.039,,,
 El Salvador - tests performed,2020-04-14,https://covid19.gob.sv/,Government of El Salvador,updated at 11:45pm local time. Note: this number was previously 7230 at 1:10pm local time.,7785,,1.202,,,
 El Salvador - tests performed,2020-04-15,https://covid19.gob.sv/,Government of El Salvador,updated at 11:35pm local time.,8333,548,1.286,0.085,,
@@ -439,8 +492,26 @@ Estonia - units unclear,2020-04-10,https://www.koroonakaart.ee/en,Estonian Centr
 Estonia - units unclear,2020-04-11,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,30337,895,23.326,0.688,1310.333,1.007
 Estonia - units unclear,2020-04-12,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,30746,409,23.641,0.314,958,0.736
 Estonia - units unclear,2020-04-13,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,32257,1511,24.802,1.162,938.333,0.721
-Estonia - units unclear,2020-04-14,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,33966,1709,26.116,1.314,1209.667,0.93
-Estonia - units unclear,2020-04-15,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,36024,2058,27.699,1.582,1759.333,1.353
+Estonia - units unclear,2020-04-14,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,33964,1707,26.115,1.313,1209,0.93
+Estonia - units unclear,2020-04-15,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,36018,2054,27.694,1.579,1757.333,1.351
+Estonia - units unclear,2020-04-16,https://www.koroonakaart.ee/en,Estonian Central Health Information System and Patient Portal,,37594,1576,28.906,1.212,1779,1.368
+Ethiopia - tests performed,2020-03-17,https://www.ephi.gov.et/images/novel_coronavirus/Press-Release-March-17-Eng-FINAL.pdf,Ethiopian Public Health Institute,"The wording is ambiguous, but the implication seems to be that 74 negative + 5 positive test results have come in so far.",79,,0.001,,,
+Ethiopia - tests performed,2020-03-22,https://twitter.com/lia_tadesse/status/1241610916736663558/photo/1,Ethiopian Public Health Institute,We could not find the corresponding PDF on the EPHI website,392,,0.003,,,
+Ethiopia - tests performed,2020-03-25,https://www.ephi.gov.et/images/novel_coronavirus/19---16-2012--.pdf,Ethiopian Public Health Institute,,576,,0.005,,,
+Ethiopia - tests performed,2020-03-27,https://www.ephi.gov.et/images/novel_coronavirus/English-Press-release_March-27-Eng-final-1.pdf,Ethiopian Public Health Institute,,718,,0.006,,,
+Ethiopia - tests performed,2020-03-31,https://www.ephi.gov.et/images/novel_coronavirus/Press-release_March-31_2020_Eng_TA.pdf,Ethiopian Public Health Institute,,1013,,0.009,,,
+Ethiopia - tests performed,2020-04-01,https://www.ephi.gov.et/images/novel_coronavirus/Press-release-confirmed-cases_April-1_2020_Eng-1.pdf,Ethiopian Public Health Institute,,1083,70,0.01,0.001,,
+Ethiopia - tests performed,2020-04-03,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release-April-3--ENG-V4.pdf,Ethiopian Public Health Institute,,1222,,0.011,,,
+Ethiopia - tests performed,2020-04-05,https://www.ephi.gov.et/images/novel_coronavirus/final-april-5-eng-confirmed-case-Press-release-April-5-ENG-V2.pdf,Ethiopian Public Health Institute,,1843,,0.016,,,
+Ethiopia - tests performed,2020-04-06,https://www.ephi.gov.et/images/novel_coronavirus/press-release-confirmed-case-April-6-2020-Enge-V1.pdf,Ethiopian Public Health Institute,,2007,164,0.018,0.001,,
+Ethiopia - tests performed,2020-04-07,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release-April-7--ENG-V5.pdf,Ethiopian Public Health Institute,,2271,264,0.02,0.002,,
+Ethiopia - tests performed,2020-04-08,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release-April-8-edited---ENG-V2-2.pdf,Ethiopian Public Health Institute,,2496,225,0.022,0.002,217.667,0.002
+Ethiopia - tests performed,2020-04-09,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release-April-9-V1.pdf,Ethiopian Public Health Institute,,2790,294,0.025,0.003,261,0.002
+Ethiopia - tests performed,2020-04-12,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release-April-12--ENG.pdf,Ethiopian Public Health Institute,,3863,,0.034,,,
+Ethiopia - tests performed,2020-04-13,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release_April-13_-ENG-edited.pdf,Ethiopian Public Health Institute,,4110,247,0.036,0.002,,
+Ethiopia - tests performed,2020-04-14,https://www.ephi.gov.et/images/novel_coronavirus/Confirmed-case-Press-release_April-14_Amh-V2.pdf,Ethiopian Public Health Institute,,4557,447,0.04,0.004,,
+Ethiopia - tests performed,2020-04-15,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release_April-15_-ENG-V1-1.pdf,Ethiopian Public Health Institute,,4988,431,0.044,0.004,375,0.003
+Ethiopia - tests performed,2020-04-16,https://www.ephi.gov.et/images/novel_coronavirus/confirmed-case-Press-release_April-16_-ENG-V1.pdf,Ethiopian Public Health Institute,,5389,401,0.048,0.004,426.333,0.004
 Finland - tests sampled,2020-03-12,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,1393,,0.25,,,
 Finland - tests sampled,2020-03-13,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,1802,409,0.323,0.073,,
 Finland - tests sampled,2020-03-14,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,2388,586,0.428,0.105,,
@@ -474,8 +545,9 @@ Finland - tests sampled,2020-04-10,https://experience.arcgis.com/experience/d40b
 Finland - tests sampled,2020-04-11,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,46043,1300,8.251,0.233,2055.333,0.368
 Finland - tests sampled,2020-04-12,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,47563,1520,8.524,0.272,1761,0.315
 Finland - tests sampled,2020-04-13,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,48461,898,8.685,0.161,1239.333,0.222
-Finland - tests sampled,2020-04-14,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,49082,621,8.796,0.111,1013,0.181
-Finland - tests sampled,2020-04-15,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,49725,643,8.911,0.115,720.667,0.129
+Finland - tests sampled,2020-04-14,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,49609,1148,8.89,0.206,1188.667,0.213
+Finland - tests sampled,2020-04-15,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,51954,2345,9.311,0.42,1463.667,0.262
+Finland - tests sampled,2020-04-16,https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26,Finnish Department of Health and Welfare,,52512,,9.411,0.1,,0.242
 France - units unclear,2020-02-24,https://www.santepubliquefrance.fr/content/download/236267/2530148,Agence nationale de santé publique,,31,,0,,,
 France - units unclear,2020-02-25,https://www.santepubliquefrance.fr/content/download/236267/2530148,Agence nationale de santé publique,,146,115,0.002,0.002,,
 France - units unclear,2020-02-26,https://www.santepubliquefrance.fr/content/download/236267/2530148,Agence nationale de santé publique,,412,266,0.006,0.004,,
@@ -580,55 +652,57 @@ Hungary - tests performed,2020-04-13,https://atlo.team/koronamonitor/,Government
 Hungary - tests performed,2020-04-14,https://atlo.team/koronamonitor/,Government of Hungary,Made available by Atlo.team,35825,1006,3.724,0.105,1288,0.134
 Hungary - tests performed,2020-04-15,https://atlo.team/koronamonitor/,Government of Hungary,Made available by Atlo.team,37326,1501,3.88,0.156,1264.667,0.132
 Hungary - tests performed,2020-04-16,https://atlo.team/koronamonitor/,Government of Hungary,Made available by Atlo.team,38489,1163,4,0.121,1223.333,0.127
-Iceland - units unclear,2020-02-26,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,41,,0.119,,,
-Iceland - units unclear,2020-02-27,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,64,23,0.186,0.067,,
-Iceland - units unclear,2020-02-28,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,77,13,0.224,0.038,,
-Iceland - units unclear,2020-02-29,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,109,32,0.318,0.093,22.667,0.066
-Iceland - units unclear,2020-03-01,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,131,22,0.382,0.064,22.333,0.065
-Iceland - units unclear,2020-03-02,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,179,48,0.522,0.14,34,0.099
-Iceland - units unclear,2020-03-03,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,224,45,0.653,0.131,38.333,0.112
-Iceland - units unclear,2020-03-04,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,305,81,0.889,0.236,58,0.169
-Iceland - units unclear,2020-03-05,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,367,62,1.069,0.181,62.667,0.183
-Iceland - units unclear,2020-03-06,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,424,57,1.235,0.166,66.667,0.194
-Iceland - units unclear,2020-03-07,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,482,58,1.404,0.169,59,0.172
-Iceland - units unclear,2020-03-08,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,519,37,1.512,0.108,50.667,0.148
-Iceland - units unclear,2020-03-09,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,617,98,1.798,0.286,64.333,0.188
-Iceland - units unclear,2020-03-10,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,786,169,2.29,0.492,101.333,0.295
-Iceland - units unclear,2020-03-11,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,935,149,2.724,0.434,138.667,0.404
-Iceland - units unclear,2020-03-12,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,1188,253,3.461,0.737,190.333,0.554
-Iceland - units unclear,2020-03-13,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,1545,357,4.501,1.04,253,0.737
-Iceland - units unclear,2020-03-14,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,1868,323,5.442,0.941,311,0.906
-Iceland - units unclear,2020-03-15,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,2943,1075,8.574,3.132,585,1.704
-Iceland - units unclear,2020-03-16,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,4650,1707,13.548,4.973,1035,3.015
-Iceland - units unclear,2020-03-17,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,6050,1400,17.627,4.079,1394,4.061
-Iceland - units unclear,2020-03-18,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,7878,1828,22.953,5.326,1645,4.793
-Iceland - units unclear,2020-03-19,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,9189,1311,26.772,3.82,1513,4.408
-Iceland - units unclear,2020-03-20,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,9768,579,28.459,1.687,1239.333,3.611
-Iceland - units unclear,2020-03-21,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,10118,350,29.479,1.02,746.667,2.176
-Iceland - units unclear,2020-03-22,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,10301,183,30.012,0.533,370.667,1.08
-Iceland - units unclear,2020-03-23,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,10760,459,31.349,1.337,330.667,0.963
-Iceland - units unclear,2020-03-24,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,11727,967,34.167,2.817,536.333,1.562
-Iceland - units unclear,2020-03-25,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,12615,888,36.754,2.587,771.333,2.247
-Iceland - units unclear,2020-03-26,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,13613,998,39.662,2.908,951,2.771
-Iceland - units unclear,2020-03-27,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,14635,1022,42.639,2.978,969.333,2.824
-Iceland - units unclear,2020-03-28,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,15484,849,45.113,2.474,956.333,2.787
-Iceland - units unclear,2020-03-29,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,16484,1000,48.026,2.914,957,2.789
-Iceland - units unclear,2020-03-30,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,17904,1420,52.164,4.137,1089.667,3.175
-Iceland - units unclear,2020-03-31,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,19516,1612,56.86,4.697,1344,3.916
-Iceland - units unclear,2020-04-01,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,20930,1414,60.98,4.12,1482,4.318
-Iceland - units unclear,2020-04-02,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,22195,1265,64.665,3.686,1430.333,4.168
-Iceland - units unclear,2020-04-03,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,23640,1445,68.875,4.21,1374.667,4.005
-Iceland - units unclear,2020-04-04,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,25394,1754,73.986,5.11,1488,4.335
-Iceland - units unclear,2020-04-05,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,27880,2486,81.229,7.243,1895,5.521
-Iceland - units unclear,2020-04-06,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,28992,1112,84.469,3.24,1784,5.198
-Iceland - units unclear,2020-04-07,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,30947,1955,90.165,5.696,1851,5.393
-Iceland - units unclear,2020-04-08,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,32623,1676,95.048,4.883,1581,4.606
-Iceland - units unclear,2020-04-10,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,34125,,99.424,,,
-Iceland - units unclear,2020-04-11,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,34635,510,100.91,1.486,,
-Iceland - units unclear,2020-04-12,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,35253,618,102.71,1.801,,
-Iceland - units unclear,2020-04-14,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,36339,,105.874,,,
-Iceland - units unclear,2020-04-15,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,37386,1047,108.925,3.05,,
-Iceland - units unclear,2020-04-16,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,38204,818,111.308,2.383,,
+Hungary - tests performed,2020-04-17,https://atlo.team/koronamonitor/,Government of Hungary,Made available by Atlo.team,41590,3101,4.323,0.322,1921.667,0.2
+Iceland - units unclear,2020-02-27,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,23,23,0.067,0.067,,
+Iceland - units unclear,2020-02-28,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,36,13,0.105,0.038,,
+Iceland - units unclear,2020-02-29,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,68,32,0.198,0.093,22.667,0.066
+Iceland - units unclear,2020-03-01,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,90,22,0.262,0.064,22.333,0.065
+Iceland - units unclear,2020-03-02,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,138,48,0.402,0.14,34,0.099
+Iceland - units unclear,2020-03-03,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,183,45,0.533,0.131,38.333,0.112
+Iceland - units unclear,2020-03-04,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,264,81,0.769,0.236,58,0.169
+Iceland - units unclear,2020-03-05,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,326,62,0.95,0.181,62.667,0.183
+Iceland - units unclear,2020-03-06,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,383,57,1.116,0.166,66.667,0.194
+Iceland - units unclear,2020-03-07,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,441,58,1.285,0.169,59,0.172
+Iceland - units unclear,2020-03-08,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,478,37,1.393,0.108,50.667,0.148
+Iceland - units unclear,2020-03-09,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,576,98,1.678,0.286,64.333,0.188
+Iceland - units unclear,2020-03-10,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,745,169,2.171,0.492,101.333,0.295
+Iceland - units unclear,2020-03-11,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,894,149,2.605,0.434,138.667,0.404
+Iceland - units unclear,2020-03-12,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,1147,253,3.342,0.737,190.333,0.554
+Iceland - units unclear,2020-03-13,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,1504,357,4.382,1.04,253,0.737
+Iceland - units unclear,2020-03-14,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,1827,323,5.323,0.941,311,0.906
+Iceland - units unclear,2020-03-15,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,2902,1075,8.455,3.132,585,1.704
+Iceland - units unclear,2020-03-16,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,4609,1707,13.428,4.973,1035,3.015
+Iceland - units unclear,2020-03-17,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,6009,1400,17.507,4.079,1394,4.061
+Iceland - units unclear,2020-03-18,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,7837,1828,22.833,5.326,1645,4.793
+Iceland - units unclear,2020-03-19,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,9148,1311,26.653,3.82,1513,4.408
+Iceland - units unclear,2020-03-20,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,9727,579,28.34,1.687,1239.333,3.611
+Iceland - units unclear,2020-03-21,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,10077,350,29.359,1.02,746.667,2.176
+Iceland - units unclear,2020-03-22,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,10260,183,29.893,0.533,370.667,1.08
+Iceland - units unclear,2020-03-23,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,10719,459,31.23,1.337,330.667,0.963
+Iceland - units unclear,2020-03-24,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,11686,967,34.047,2.817,536.333,1.562
+Iceland - units unclear,2020-03-25,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,12574,888,36.635,2.587,771.333,2.247
+Iceland - units unclear,2020-03-26,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,13572,998,39.542,2.908,951,2.771
+Iceland - units unclear,2020-03-27,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,14594,1022,42.52,2.978,969.333,2.824
+Iceland - units unclear,2020-03-28,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,15443,849,44.993,2.474,956.333,2.787
+Iceland - units unclear,2020-03-29,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,16443,1000,47.907,2.914,957,2.789
+Iceland - units unclear,2020-03-30,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,17863,1420,52.044,4.137,1089.667,3.175
+Iceland - units unclear,2020-03-31,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,19475,1612,56.741,4.697,1344,3.916
+Iceland - units unclear,2020-04-01,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,20889,1414,60.86,4.12,1482,4.318
+Iceland - units unclear,2020-04-02,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,22154,1265,64.546,3.686,1430.333,4.168
+Iceland - units unclear,2020-04-03,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,23599,1445,68.756,4.21,1374.667,4.005
+Iceland - units unclear,2020-04-04,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,25353,1754,73.866,5.11,1488,4.335
+Iceland - units unclear,2020-04-05,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,27839,2486,81.109,7.243,1895,5.521
+Iceland - units unclear,2020-04-06,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,28951,1112,84.349,3.24,1784,5.198
+Iceland - units unclear,2020-04-07,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,30906,1955,90.045,5.696,1851,5.393
+Iceland - units unclear,2020-04-08,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,32582,1676,94.928,4.883,1581,4.606
+Iceland - units unclear,2020-04-09,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,34084,1502,99.304,4.376,1711,4.985
+Iceland - units unclear,2020-04-10,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,34594,510,100.79,1.486,1229.333,3.582
+Iceland - units unclear,2020-04-11,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,35212,618,102.591,1.801,876.667,2.554
+Iceland - units unclear,2020-04-12,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,35447,235,103.275,0.685,454.333,1.324
+Iceland - units unclear,2020-04-13,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,36298,851,105.755,2.479,568,1.655
+Iceland - units unclear,2020-04-14,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,37345,1047,108.805,3.05,711,2.071
+Iceland - units unclear,2020-04-15,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,38163,818,111.188,2.383,905.333,2.637
+Iceland - units unclear,2020-04-16,https://www.covid.is/tolulegar-upplysingar,Office of the Director of Public Health,,39495,1332,115.069,3.881,1065.667,3.105
 India - people tested,2020-03-13,https://github.com/datameet/covid19,Indian Council of Medical Research,Made available by DataMeet on Github,5900,,0.004,,,
 India - people tested,2020-03-18,https://github.com/datameet/covid19,Indian Council of Medical Research,Made available by DataMeet on Github,12235,,0.009,,,
 India - people tested,2020-03-19,https://github.com/datameet/covid19,Indian Council of Medical Research,Made available by DataMeet on Github,12426,191,0.009,0,,
@@ -699,6 +773,7 @@ Indonesia - units unclear,2020-04-13,https://covid19.disiplin.id/,"Emerging infe
 Indonesia - units unclear,2020-04-14,https://covid19.disiplin.id/,"Emerging infections, Indonesian Ministry of Health",,31628,4237,0.116,0.016,3948.667,0.015
 Indonesia - units unclear,2020-04-15,https://covid19.disiplin.id/,"Emerging infections, Indonesian Ministry of Health",,33001,1373,0.121,0.005,1975.333,0.007
 Indonesia - units unclear,2020-04-16,https://covid19.disiplin.id/,"Emerging infections, Indonesian Ministry of Health",,34975,1974,0.128,0.007,2528,0.009
+Indonesia - units unclear,2020-04-17,https://covid19.disiplin.id/,"Emerging infections, Indonesian Ministry of Health",,37134,2159,0.136,0.008,1835.333,0.007
 Ireland - units unclear,2020-03-09,https://www.gov.ie/en/press-release/a4016f-statement-from-the-national-public-health-emergency-team-tuesday-10-/,Department of Health,"""""""""1,784 people have been tested""""""""",1784,,0.365,,,
 Ireland - units unclear,2020-03-17,https://www.rte.ie/news/coronavirus/2020/0317/1123663-coronavirus-ireland/,Department of Health,"""""""""6,636 Covid-19 tests have been carried out""""""""",6636,,1.358,,,
 Ireland - units unclear,2020-03-23,https://www.gov.ie/en/press-release/e378fd-statement-from-the-national-public-health-emergency-team-on-tuesday-/,Department of Health,"""""""""17,992 tests have been carried out""""""""",17992,,3.681,,,
@@ -779,6 +854,7 @@ Israel - units unclear,2020-04-12,https://t.me/s/MOHreport,Israel Ministry of He
 Israel - units unclear,2020-04-13,https://t.me/s/MOHreport,Israel Ministry of Health,Made available by Idan Dardikman on Github,172063,8991,19.747,1.032,7856.333,0.902
 Israel - units unclear,2020-04-14,https://t.me/s/MOHreport,Israel Ministry of Health,Made available by Idan Dardikman on Github,187250,15187,21.489,1.743,10890.333,1.25
 Israel - units unclear,2020-04-15,https://t.me/s/MOHreport,Israel Ministry of Health,Made available by Idan Dardikman on Github,198002,10752,22.723,1.234,11643.333,1.336
+Israel - units unclear,2020-04-16,https://t.me/s/MOHreport,Israel Ministry of Health,Made available by Idan Dardikman on Github,207509,9507,23.814,1.091,11815.333,1.356
 Italy - tests performed,2020-02-24,https://github.com/pcm-dpc/COVID-19/tree/master/dati-andamento-nazionale,Presidency of the Council of Ministers,Made available by the Department of Civil Protection on Github,4324,,0.073,,,
 Italy - tests performed,2020-02-25,https://github.com/pcm-dpc/COVID-19/tree/master/dati-andamento-nazionale,Presidency of the Council of Ministers,Made available by the Department of Civil Protection on Github,8623,4299,0.146,0.073,,
 Italy - tests performed,2020-02-26,https://github.com/pcm-dpc/COVID-19/tree/master/dati-andamento-nazionale,Presidency of the Council of Ministers,Made available by the Department of Civil Protection on Github,9587,964,0.162,0.016,,
@@ -832,6 +908,7 @@ Italy - tests performed,2020-04-13,https://github.com/pcm-dpc/COVID-19/tree/mast
 Italy - tests performed,2020-04-14,https://github.com/pcm-dpc/COVID-19/tree/master/dati-andamento-nazionale,Presidency of the Council of Ministers,Made available by the Department of Civil Protection on Github,1073689,26779,18.157,0.453,36738.667,0.621
 Italy - tests performed,2020-04-15,https://github.com/pcm-dpc/COVID-19/tree/master/dati-andamento-nazionale,Presidency of the Council of Ministers,Made available by the Department of Civil Protection on Github,1117404,43715,18.897,0.739,35737,0.604
 Italy - tests performed,2020-04-16,https://github.com/pcm-dpc/COVID-19/tree/master/dati-andamento-nazionale,Presidency of the Council of Ministers,Made available by the Department of Civil Protection on Github,1178403,60999,19.928,1.032,43831,0.741
+Italy - tests performed,2020-04-17,https://github.com/pcm-dpc/COVID-19/tree/master/dati-andamento-nazionale,Presidency of the Council of Ministers,Made available by the Department of Civil Protection on Github,1244108,65705,21.039,1.111,56806.333,0.961
 Japan - people tested,2020-02-26,https://github.com/reustle/covid19japan-data,"Ministry of Health, Labor and Welfare Press Release",Made available by Shane Reustle on Github,1890,,0.015,,,
 Japan - people tested,2020-02-27,https://github.com/reustle/covid19japan-data,"Ministry of Health, Labor and Welfare Press Release",Made available by Shane Reustle on Github,2058,,0.016,,,
 Japan - people tested,2020-02-28,https://github.com/reustle/covid19japan-data,"Ministry of Health, Labor and Welfare Press Release",Made available by Shane Reustle on Github,2209,,0.017,,,
@@ -902,43 +979,44 @@ Japan - tests performed,2020-03-05,https://www.mhlw.go.jp/content/10906000/00062
 Japan - tests performed,2020-03-06,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),20858,1960,0.165,0.015,1640.667,0.013
 Japan - tests performed,2020-03-07,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),22363,1505,0.177,0.012,1672,0.013
 Japan - tests performed,2020-03-08,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),22930,567,0.181,0.004,1344,0.01
-Japan - tests performed,2020-03-09,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),24109,1179,0.191,0.009,1083.667,0.008
-Japan - tests performed,2020-03-10,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),26047,1938,0.206,0.015,1228,0.009
-Japan - tests performed,2020-03-11,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),27862,1815,0.22,0.014,1644,0.013
-Japan - tests performed,2020-03-12,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),29587,1725,0.234,0.014,1826,0.014
-Japan - tests performed,2020-03-13,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),31127,1540,0.246,0.012,1693.333,0.013
-Japan - tests performed,2020-03-14,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),32688,1561,0.258,0.012,1608.667,0.013
-Japan - tests performed,2020-03-15,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),33326,638,0.263,0.005,1246.333,0.01
-Japan - tests performed,2020-03-16,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),34399,1073,0.272,0.008,1090.667,0.008
-Japan - tests performed,2020-03-17,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),36205,1806,0.286,0.014,1172.333,0.009
-Japan - tests performed,2020-03-18,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),37947,1742,0.3,0.014,1540.333,0.012
-Japan - tests performed,2020-03-19,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),39741,1794,0.314,0.014,1780.667,0.014
-Japan - tests performed,2020-03-20,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),41187,1446,0.326,0.011,1660.667,0.013
-Japan - tests performed,2020-03-21,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),42078,891,0.333,0.007,1377,0.011
-Japan - tests performed,2020-03-22,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),42922,844,0.339,0.007,1060.333,0.008
-Japan - tests performed,2020-03-23,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),44316,1394,0.35,0.011,1043,0.008
-Japan - tests performed,2020-03-24,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),46602,2286,0.368,0.018,1508,0.012
-Japan - tests performed,2020-03-25,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),48499,1897,0.383,0.015,1859,0.015
-Japan - tests performed,2020-03-26,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),50651,2152,0.4,0.017,2111.667,0.017
-Japan - tests performed,2020-03-27,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),52900,2249,0.418,0.018,2099.333,0.017
-Japan - tests performed,2020-03-28,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),55442,2542,0.438,0.02,2314.333,0.018
-Japan - tests performed,2020-03-29,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),57556,2114,0.455,0.017,2301.667,0.018
-Japan - tests performed,2020-03-30,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),60688,3132,0.48,0.025,2596,0.021
-Japan - tests performed,2020-03-31,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),64688,4000,0.511,0.032,3082,0.025
-Japan - tests performed,2020-04-01,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),68697,4009,0.543,0.032,3713.667,0.03
-Japan - tests performed,2020-04-02,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),73537,4840,0.581,0.038,4283,0.034
-Japan - tests performed,2020-04-03,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,79033,5496,0.625,0.043,4781.667,0.038
-Japan - tests performed,2020-04-04,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,84747,5714,0.67,0.045,5350,0.042
-Japan - tests performed,2020-04-05,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,88301,3554,0.698,0.028,4921.333,0.039
-Japan - tests performed,2020-04-06,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,93130,4829,0.736,0.038,4699,0.037
-Japan - tests performed,2020-04-07,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,99839,6709,0.789,0.053,5030.667,0.04
-Japan - tests performed,2020-04-08,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,107221,7382,0.848,0.058,6306.667,0.05
-Japan - tests performed,2020-04-09,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,115062,7841,0.91,0.062,7310.667,0.058
-Japan - tests performed,2020-04-10,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,122629,7567,0.969,0.06,7596.667,0.06
-Japan - tests performed,2020-04-11,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,129294,6665,1.022,0.053,7357.667,0.058
-Japan - tests performed,2020-04-12,https://www.mhlw.go.jp/content/10906000/000622038.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,133893,4599,1.058,0.036,6277,0.05
-Japan - tests performed,2020-04-13,https://www.mhlw.go.jp/content/10906000/000622367.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,139482,5589,1.103,0.044,5617.667,0.044
-Japan - tests performed,2020-04-14,https://www.mhlw.go.jp/content/10906000/000622367.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,146483,7001,1.158,0.055,5729.667,0.045
+Japan - tests performed,2020-03-09,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),24171,1241,0.191,0.01,1104.333,0.009
+Japan - tests performed,2020-03-10,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),26197,2026,0.207,0.016,1278,0.01
+Japan - tests performed,2020-03-11,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),28075,1878,0.222,0.015,1715,0.014
+Japan - tests performed,2020-03-12,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),29816,1741,0.236,0.014,1881.667,0.015
+Japan - tests performed,2020-03-13,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),31376,1560,0.248,0.012,1726.333,0.014
+Japan - tests performed,2020-03-14,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),32953,1577,0.261,0.012,1626,0.013
+Japan - tests performed,2020-03-15,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),33595,642,0.266,0.005,1259.667,0.01
+Japan - tests performed,2020-03-16,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),34671,1076,0.274,0.009,1098.333,0.009
+Japan - tests performed,2020-03-17,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),36497,1826,0.289,0.014,1181.333,0.009
+Japan - tests performed,2020-03-18,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),38279,1782,0.303,0.014,1561.333,0.012
+Japan - tests performed,2020-03-19,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),40086,1807,0.317,0.014,1805,0.014
+Japan - tests performed,2020-03-20,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),41532,1446,0.328,0.011,1678.333,0.013
+Japan - tests performed,2020-03-21,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),42423,891,0.335,0.007,1381.333,0.011
+Japan - tests performed,2020-03-22,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),43267,844,0.342,0.007,1060.333,0.008
+Japan - tests performed,2020-03-23,https://www.mhlw.go.jp/content/10906000/000621711.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),44661,1394,0.353,0.011,1043,0.008
+Japan - tests performed,2020-03-24,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),46952,2291,0.371,0.018,1509.667,0.012
+Japan - tests performed,2020-03-25,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),48861,1909,0.386,0.015,1864.667,0.015
+Japan - tests performed,2020-03-26,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),51016,2155,0.403,0.017,2118.333,0.017
+Japan - tests performed,2020-03-27,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),53288,2272,0.421,0.018,2112,0.017
+Japan - tests performed,2020-03-28,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),55851,2563,0.442,0.02,2330,0.018
+Japan - tests performed,2020-03-29,https://www.mhlw.go.jp/content/10906000/000621114.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),57965,2114,0.458,0.017,2316.333,0.018
+Japan - tests performed,2020-03-30,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),61164,3199,0.484,0.025,2625.333,0.021
+Japan - tests performed,2020-03-31,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),65261,4097,0.516,0.032,3136.667,0.025
+Japan - tests performed,2020-04-01,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),69418,4157,0.549,0.033,3817.667,0.03
+Japan - tests performed,2020-04-02,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined),74515,5097,0.589,0.04,4450.333,0.035
+Japan - tests performed,2020-04-03,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,80237,5722,0.634,0.045,4992,0.039
+Japan - tests performed,2020-04-04,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,86194,5957,0.681,0.047,5592,0.044
+Japan - tests performed,2020-04-05,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,89861,3667,0.71,0.029,5115.333,0.04
+Japan - tests performed,2020-04-06,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,95115,5254,0.752,0.042,4959.333,0.039
+Japan - tests performed,2020-04-07,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,102384,7269,0.809,0.057,5396.667,0.043
+Japan - tests performed,2020-04-08,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,110374,7990,0.873,0.063,6837.667,0.054
+Japan - tests performed,2020-04-09,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,118493,8119,0.937,0.064,7792.667,0.061
+Japan - tests performed,2020-04-10,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,126463,7970,1,0.063,8026.333,0.063
+Japan - tests performed,2020-04-11,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,133484,7021,1.055,0.056,7703.333,0.061
+Japan - tests performed,2020-04-12,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,138276,4792,1.093,0.038,6594.333,0.052
+Japan - tests performed,2020-04-13,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,145024,6748,1.146,0.053,6187,0.049
+Japan - tests performed,2020-04-14,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,153448,8424,1.213,0.067,6654.667,0.053
+Japan - tests performed,2020-04-15,https://www.mhlw.go.jp/content/10906000/000622733.pdf,"Ministry of Health, Labor and Welfare Press Release",Implementation status of PCR tests for new coronavirus in Japan (based on the date on which the results were determined). Preliminary data,161449,8001,1.276,0.063,7724.333,0.061
 Latvia - tests performed,2020-02-29,https://data.gov.lv/dati/eng/dataset/covid-19,Center for Disease Prevention and Control,Collected from the Latvian Open Data Portal,116,116,0.061,0.061,,
 Latvia - tests performed,2020-03-01,https://data.gov.lv/dati/eng/dataset/covid-19,Center for Disease Prevention and Control,Collected from the Latvian Open Data Portal,126,10,0.067,0.005,,
 Latvia - tests performed,2020-03-02,https://data.gov.lv/dati/eng/dataset/covid-19,Center for Disease Prevention and Control,Collected from the Latvian Open Data Portal,163,37,0.086,0.02,54.333,0.029
@@ -987,6 +1065,7 @@ Latvia - tests performed,2020-04-13,https://data.gov.lv/dati/eng/dataset/covid-1
 Latvia - tests performed,2020-04-14,https://data.gov.lv/dati/eng/dataset/covid-19,Center for Disease Prevention and Control,Collected from the Latvian Open Data Portal,29018,242,15.329,0.128,407.333,0.215
 Latvia - tests performed,2020-04-15,https://data.gov.lv/dati/eng/dataset/covid-19,Center for Disease Prevention and Control,Collected from the Latvian Open Data Portal,29896,878,15.793,0.464,560.667,0.296
 Latvia - tests performed,2020-04-16,https://data.gov.lv/dati/eng/dataset/covid-19,Center for Disease Prevention and Control,Collected from the Latvian Open Data Portal,31302,1406,16.536,0.743,842,0.445
+Latvia - tests performed,2020-04-17,https://data.gov.lv/dati/eng/dataset/covid-19,Center for Disease Prevention and Control,Collected from the Latvian Open Data Portal,32837,1535,17.347,0.811,1273,0.673
 Lithuania - samples analyzed,2020-02-28,https://web.archive.org/web/20200228132941/http://sam.lrv.lt/lt/naujienos/koronavirusas,Ministry of Health,,76,,0.027,,,
 Lithuania - samples analyzed,2020-03-04,https://web.archive.org/web/20200304175853/http://sam.lrv.lt/lt/naujienos/koronavirusas,Ministry of Health,,226,,0.079,,,
 Lithuania - samples analyzed,2020-03-13,https://web.archive.org/web/20200313222717/http://sam.lrv.lt/lt/naujienos/koronavirusas,Ministry of Health,Update at 8am,366,,0.128,,,
@@ -1013,6 +1092,7 @@ Lithuania - samples analyzed,2020-04-13,http://sam.lrv.lt/lt/naujienos/koronavir
 Lithuania - samples analyzed,2020-04-14,http://sam.lrv.lt/lt/naujienos/koronavirusas,Ministry of Health,,42690,1187,14.966,0.416,,
 Lithuania - samples analyzed,2020-04-15,http://sam.lrv.lt/lt/naujienos/koronavirusas,Ministry of Health,,44677,1987,15.663,0.697,,
 Lithuania - samples analyzed,2020-04-16,http://sam.lrv.lt/lt/naujienos/koronavirusas,Ministry of Health,,48537,3860,17.016,1.353,2344.667,0.822
+Lithuania - samples analyzed,2020-04-17,http://sam.lrv.lt/lt/naujienos/koronavirusas,Ministry of Health,,53101,4564,18.616,1.6,3470.333,1.217
 Luxembourg - tests analysed,2020-04-01,http://web.archive.org/web/20200402001153/https://gouvernement.lu/en/dossiers.gouv_msan%2Ben%2Bdossiers%2B2020%2Bcorona-virus.html,Luxembourg Government situation update,Tests carried out since the beginning of the crisis.,18690,,30.947,,,
 Luxembourg - tests analysed,2020-04-03,http://web.archive.org/web/20200404004226/https://gouvernement.lu/en/dossiers.gouv_msan%2Ben%2Bdossiers%2B2020%2Bcorona-virus.html,Luxembourg Government situation update,Tests carried out since the beginning of the crisis.,21463,,35.538,,,
 Luxembourg - tests analysed,2020-04-04,https://gouvernement.lu/en/dossiers.gouv_msan%2Ben%2Bdossiers%2B2020%2Bcorona-virus.html#bloub-0,Luxembourg Government situation update,Tests carried out since the beginning of the crisis.,22793,1330,37.74,2.202,,
@@ -1023,6 +1103,7 @@ Luxembourg - tests analysed,2020-04-11,http://web.archive.org/web/20200412134515
 Luxembourg - tests analysed,2020-04-12,http://web.archive.org/web/20200413180155/https://gouvernement.lu/en/dossiers.gouv_msan%2Ben%2Bdossiers%2B2020%2Bcorona-virus.html,Luxembourg Government situation update,Tests carried out since the beginning of the crisis.,29315,350,48.539,0.58,598,0.99
 Luxembourg - tests analysed,2020-04-14,http://web.archive.org/web/20200415105941/https://gouvernement.lu/en/dossiers.gouv_msan%2Ben%2Bdossiers%2B2020%2Bcorona-virus.html,Luxembourg Government situation update,Tests carried out since the beginning of the crisis.,29523,,48.884,,,
 Luxembourg - tests analysed,2020-04-15,http://web.archive.org/web/20200416104859/https://gouvernement.lu/en/dossiers.gouv_msan%2Ben%2Bdossiers%2B2020%2Bcorona-virus.html,Luxembourg Government situation update,Tests carried out since the beginning of the crisis.,30723,1200,50.871,1.987,,
+Luxembourg - tests analysed,2020-04-16,http://web.archive.org/web/20200417121134/https://gouvernement.lu/en/dossiers.gouv_msan%2Ben%2Bdossiers%2B2020%2Bcorona-virus.html,Luxembourg Government situation update,Tests carried out since the beginning of the crisis.,31660,937,52.422,1.551,,
 Malaysia - cases tested,2020-02-14,https://web.archive.org/web/20200215134424/http://www.moh.gov.my/index.php/pages/view/2019-ncov-wuhan/,Ministry of Health Malaysia,"update 10am, local time",653,,0.02,,,
 Malaysia - cases tested,2020-02-16,https://web.archive.org/web/20200216141136/http://www.moh.gov.my/index.php/pages/view/2019-ncov-wuhan/,Ministry of Health Malaysia,"update 10am, local time",656,,0.02,,,
 Malaysia - cases tested,2020-02-17,https://web.archive.org/web/20200217105907/http://www.moh.gov.my/index.php/pages/view/2019-ncov-wuhan/,Ministry of Health Malaysia,"update 10am, local time",757,101,0.023,0.003,,
@@ -1068,6 +1149,7 @@ Malaysia - cases tested,2020-04-12,http://www.moh.gov.my/index.php/pages/view/20
 Malaysia - cases tested,2020-04-13,http://www.moh.gov.my/index.php/pages/view/2019-ncov-wuhan,Ministry of Health Malaysia,,81730,4239,2.487,0.129,4593,0.14
 Malaysia - cases tested,2020-04-14,http://www.moh.gov.my/index.php/pages/view/2019-ncov-wuhan,Ministry of Health Malaysia,,84791,3061,2.58,0.093,4298,0.131
 Malaysia - cases tested,2020-04-15,http://www.moh.gov.my/index.php/pages/view/2019-ncov-wuhan,Ministry of Health Malaysia,,87183,2392,2.652,0.073,3230.667,0.098
+Malaysia - cases tested,2020-04-17,http://www.moh.gov.my/index.php/pages/view/2019-ncov-wuhan,Ministry of Health Malaysia,,96695,,2.942,,,
 Mexico - cases tested,2020-01-23,https://github.com/carranco-sga/Mexico-COVID-19/blob/master/Mexico_COVID19.csv,Government of Mexico,Made available on Github by Gabriel Alfonso Carranco-Sapiéns,2,,0,,,
 Mexico - cases tested,2020-01-24,https://github.com/carranco-sga/Mexico-COVID-19/blob/master/Mexico_COVID19.csv,Government of Mexico,Made available on Github by Gabriel Alfonso Carranco-Sapiéns,4,2,0,0,,
 Mexico - cases tested,2020-01-25,https://github.com/carranco-sga/Mexico-COVID-19/blob/master/Mexico_COVID19.csv,Government of Mexico,Made available on Github by Gabriel Alfonso Carranco-Sapiéns,7,3,0,0,,
@@ -1128,6 +1210,7 @@ Mexico - cases tested,2020-04-12,https://github.com/carranco-sga/Mexico-COVID-19
 Mexico - cases tested,2020-04-13,https://github.com/carranco-sga/Mexico-COVID-19/blob/master/Mexico_COVID19.csv,Government of Mexico,Made available on Github by Gabriel Alfonso Carranco-Sapiéns,28054,1450,0.21,0.011,1487,0.011
 Mexico - cases tested,2020-04-14,https://github.com/carranco-sga/Mexico-COVID-19/blob/master/Mexico_COVID19.csv,Government of Mexico,Made available on Github by Gabriel Alfonso Carranco-Sapiéns,29299,1245,0.219,0.009,1267.667,0.009
 Mexico - cases tested,2020-04-15,https://github.com/carranco-sga/Mexico-COVID-19/blob/master/Mexico_COVID19.csv,Government of Mexico,Made available on Github by Gabriel Alfonso Carranco-Sapiéns,30985,1686,0.231,0.013,1460.333,0.011
+Mexico - cases tested,2020-04-16,https://github.com/carranco-sga/Mexico-COVID-19/blob/master/Mexico_COVID19.csv,Government of Mexico,Made available on Github by Gabriel Alfonso Carranco-Sapiéns,32808,1823,0.245,0.014,1584.667,0.012
 Netherlands - people tested,2020-03-14,http://web.archive.org/web/20200326163545/https://www.rivm.nl/coronavirus/covid-19/informatie-voor-professionals/virologische-dagstaten,Dutch National Institute for Public Health and the Environment - 26 March update,Cumulative figure from the 26 March update,14555,,0.847,,,
 Netherlands - people tested,2020-03-16,http://web.archive.org/web/20200330101621/https://www.rivm.nl/coronavirus/covid-19/informatie-voor-professionals/virologische-dagstaten,Dutch National Institute for Public Health and the Environment - 30 March update,Cumulative figure from the 30 March update,18689,,1.088,,,
 Netherlands - people tested,2020-03-20,http://web.archive.org/web/20200331152253/https://www.rivm.nl/coronavirus/covid-19/informatie-voor-professionals/virologische-dagstaten,Dutch National Institute for Public Health and the Environment - 31 March update,Cumulative figure from the 31 March update,32420,,1.887,,,
@@ -1183,6 +1266,7 @@ New Zealand - units unclear,2020-04-12,https://www.health.govt.nz/our-work/disea
 New Zealand - units unclear,2020-04-13,https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-current-situation/covid-19-current-cases,Ministry of Health,,64399,1572,13.321,0.325,1884.333,0.39
 New Zealand - units unclear,2020-04-14,https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-current-situation/covid-19-current-cases,Ministry of Health,,66499,2100,13.755,0.434,1777.333,0.367
 New Zealand - units unclear,2020-04-15,https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-current-situation/covid-19-current-cases,Ministry of Health,,70160,3661,14.513,0.757,2444.333,0.505
+New Zealand - units unclear,2020-04-16,https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-current-situation/covid-19-current-cases,Ministry of Health,,74401,4241,15.39,0.877,3334,0.689
 Norway - people tested,2020-03-16,https://www.fhi.no/contentassets/e110607a67df46cbba8e30a443264a73/vedlegg/tidligere-dagsrapporter/2020-03-16---dagsrapport---covid-19-.pdf,Norwegian Institute of Public Health,,18062,,3.314,,,
 Norway - people tested,2020-03-17,https://www.fhi.no/contentassets/e110607a67df46cbba8e30a443264a73/vedlegg/tidligere-dagsrapporter/2020-03-17---dagsrapport---covid-19.pdf,Norwegian Institute of Public Health,,21647,3585,3.972,0.658,,
 Norway - people tested,2020-03-18,https://www.fhi.no/contentassets/e110607a67df46cbba8e30a443264a73/vedlegg/tidligere-dagsrapporter/2020-03-18---dagsrapport---covid-19.pdf,Norwegian Institute of Public Health,,28522,6875,5.234,1.262,,
@@ -1215,6 +1299,7 @@ Norway - people tested,2020-04-13,https://www.fhi.no/contentassets/ca5914bd0aa14
 Norway - people tested,2020-04-14,https://www.fhi.no/contentassets/ca5914bd0aa14e15a17f8a7d48fa306a/vedlegg/koronavirus---dagsrapporter/2020.04.14---dagsrapport-covid-19.pdf,Norwegian Institute of Public Health,,128569,1264,23.592,0.232,1430,0.262
 Norway - people tested,2020-04-15,https://www.fhi.no/contentassets/ca5914bd0aa14e15a17f8a7d48fa306a/vedlegg/koronavirus---dagsrapporter/2020.04.15---dagsrapport-covid-19.pdf,Norwegian Institute of Public Health,,130216,1647,23.894,0.302,1243.333,0.228
 Norway - people tested,2020-04-16,https://www.fhi.no/contentassets/ca5914bd0aa14e15a17f8a7d48fa306a/vedlegg/koronavirus---dagsrapporter/2020.04.16---dagsrapport-covid-19.pdf,Norwegian Institute of Public Health,,133707,3491,24.535,0.641,2134,0.392
+Norway - people tested,2020-04-17,https://www.fhi.no/contentassets/ca5914bd0aa14e15a17f8a7d48fa306a/vedlegg/koronavirus---dagsrapporter/2020.04.17-dagsrapport-norge-covid-19_2.pdf,Norwegian Institute of Public Health,,136236,2529,24.999,0.464,2555.667,0.469
 Pakistan - tests performed,2020-03-11,http://covid.gov.pk/stats/pakistan,Government of Pakistan,,471,,0.002,,,
 Pakistan - tests performed,2020-03-12,http://covid.gov.pk/stats/pakistan,Government of Pakistan,,531,60,0.003,0,,
 Pakistan - tests performed,2020-03-13,http://covid.gov.pk/stats/pakistan,Government of Pakistan,,609,78,0.003,0,,
@@ -1251,6 +1336,7 @@ Pakistan - tests performed,2020-04-12,http://covid.gov.pk/stats/pakistan,Governm
 Pakistan - tests performed,2020-04-13,http://covid.gov.pk/stats/pakistan,Government of Pakistan,,69928,4814,0.336,0.023,4030.667,0.019
 Pakistan - tests performed,2020-04-14,http://covid.gov.pk/stats/pakistan,Government of Pakistan,,73439,3511,0.352,0.017,3879.333,0.019
 Pakistan - tests performed,2020-04-15,http://covid.gov.pk/stats/pakistan,Government of Pakistan,,78979,5540,0.379,0.027,4621.667,0.022
+Pakistan - tests performed,2020-04-16,http://covid.gov.pk/stats/pakistan,Government of Pakistan,,84704,5725,0.407,0.027,4925.333,0.024
 Panama - units unclear,2020-03-09,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,105,105,0.024,0.024,,
 Panama - units unclear,2020-03-10,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,146,41,0.034,0.01,,
 Panama - units unclear,2020-03-11,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,194,48,0.045,0.011,64.667,0.015
@@ -1288,6 +1374,8 @@ Panama - units unclear,2020-04-11,https://github.com/c0t088/DAP-Panama,Ministry 
 Panama - units unclear,2020-04-12,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,15147,559,3.531,0.13,1040.667,0.242
 Panama - units unclear,2020-04-13,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,15567,420,3.629,0.098,639.667,0.149
 Panama - units unclear,2020-04-14,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,16053,486,3.743,0.113,488.333,0.114
+Panama - units unclear,2020-04-15,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,16854,801,3.929,0.187,569,0.133
+Panama - units unclear,2020-04-16,https://github.com/c0t088/DAP-Panama,Ministry of Health,Made available by c0t088 on Github,17850,996,4.161,0.232,761,0.177
 Paraguay - samples tested,2020-03-07,https://github.com/torresmateo/covidpy-rest/blob/master/data/covidpy.csv,Ministry of Public Health and Social Welfare,Made available on Github by Mateo Torres,1,1,0,0,,
 Paraguay - samples tested,2020-03-10,https://github.com/torresmateo/covidpy-rest/blob/master/data/covidpy.csv,Ministry of Public Health and Social Welfare,Made available on Github by Mateo Torres,9,8,0.001,0.001,,
 Paraguay - samples tested,2020-03-11,https://github.com/torresmateo/covidpy-rest/blob/master/data/covidpy.csv,Ministry of Public Health and Social Welfare,Made available on Github by Mateo Torres,16,7,0.002,0.001,5.333,0.001
@@ -1325,6 +1413,7 @@ Paraguay - samples tested,2020-04-12,https://github.com/torresmateo/covidpy-rest
 Paraguay - samples tested,2020-04-13,https://github.com/torresmateo/covidpy-rest/blob/master/data/covidpy.csv,Ministry of Public Health and Social Welfare,Made available on Github by Mateo Torres,3627,248,0.513,0.035,245.667,0.035
 Paraguay - samples tested,2020-04-14,https://github.com/torresmateo/covidpy-rest/blob/master/data/covidpy.csv,Ministry of Public Health and Social Welfare,Made available on Github by Mateo Torres,3873,246,0.548,0.035,251,0.036
 Paraguay - samples tested,2020-04-15,https://github.com/torresmateo/covidpy-rest/blob/master/data/covidpy.csv,Ministry of Public Health and Social Welfare,Made available on Github by Mateo Torres,4252,379,0.602,0.054,291,0.041
+Paraguay - samples tested,2020-04-16,https://github.com/torresmateo/covidpy-rest/blob/master/data/covidpy.csv,Ministry of Public Health and Social Welfare,Made available on Github by Mateo Torres,4597,345,0.651,0.049,323.333,0.046
 Peru - units unclear,2020-03-04,https://www.gob.pe/institucion/minsa/noticias/85332-minsa-proceso-107-muestras-por-coronavirus-covid-19-y-todas-tienen-resultado-negativo,Ministry of Health,,107,,0.003,,,
 Peru - units unclear,2020-03-06,https://www.gob.pe/institucion/minsa/noticias/108937-minsa-proceso-155-muestras-por-coronavirus-covid-19-y-una-resulto-positivo,Ministry of Health,,155,,0.005,,,
 Peru - units unclear,2020-03-07,https://www.gob.pe/minsa#noticias,Ministry of Health,,219,64,0.007,0.002,,
@@ -1442,6 +1531,7 @@ Portugal - cases tested,2020-04-13,https://github.com/dssg-pt/covid19pt-data/blo
 Portugal - cases tested,2020-04-14,https://github.com/dssg-pt/covid19pt-data/blob/master/data.csv,Ministry of Health,Made available on Github by Data Science for Social Good Portugal,140040,4120,13.705,0.403,4567,0.447
 Portugal - cases tested,2020-04-15,https://github.com/dssg-pt/covid19pt-data/blob/master/data.csv,Ministry of Health,Made available on Github by Data Science for Social Good Portugal,146744,6704,14.361,0.656,4704,0.46
 Portugal - cases tested,2020-04-16,https://github.com/dssg-pt/covid19pt-data/blob/master/data.csv,Ministry of Health,Made available on Github by Data Science for Social Good Portugal,150817,4073,14.759,0.399,4965.667,0.486
+Portugal - cases tested,2020-04-17,https://github.com/dssg-pt/covid19pt-data/blob/master/data.csv,Ministry of Health,Made available on Github by Data Science for Social Good Portugal,154135,3318,15.084,0.325,4698.333,0.46
 Romania - tests performed,2020-03-12,https://github.com/adrianp/covid19romania,Ministry of Internal Affairs,Made available by Adrian-Tudor Panescu on Github,1921,,0.099,,,
 Romania - tests performed,2020-03-13,https://github.com/adrianp/covid19romania,Ministry of Internal Affairs,Made available by Adrian-Tudor Panescu on Github,2545,624,0.131,0.032,,
 Romania - tests performed,2020-03-14,https://github.com/adrianp/covid19romania,Ministry of Internal Affairs,Made available by Adrian-Tudor Panescu on Github,2929,384,0.151,0.02,,
@@ -1478,6 +1568,7 @@ Romania - tests performed,2020-04-13,https://github.com/adrianp/covid19romania,M
 Romania - tests performed,2020-04-14,https://github.com/adrianp/covid19romania,Ministry of Internal Affairs,Made available by Adrian-Tudor Panescu on Github,70097,2893,3.615,0.149,3608.333,0.186
 Romania - tests performed,2020-04-15,https://github.com/adrianp/covid19romania,Ministry of Internal Affairs,Made available by Adrian-Tudor Panescu on Github,74827,4730,3.859,0.244,4166.333,0.215
 Romania - tests performed,2020-04-16,https://github.com/adrianp/covid19romania,Ministry of Internal Affairs,Made available by Adrian-Tudor Panescu on Github,79629,4802,4.107,0.248,4141.667,0.214
+Romania - tests performed,2020-04-17,https://github.com/adrianp/covid19romania,Ministry of Internal Affairs,Made available by Adrian-Tudor Panescu on Github,85805,6176,4.426,0.319,5236,0.27
 Russia - tests performed,2020-03-05,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,46414,,0.323,,,
 Russia - tests performed,2020-03-06,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,51366,4952,0.357,0.034,,
 Russia - tests performed,2020-03-07,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,55688,4322,0.387,0.03,,
@@ -1517,6 +1608,8 @@ Russia - tests performed,2020-04-12,https://rospotrebnadzor.ru/about/info/news/,
 Russia - tests performed,2020-04-13,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,1359993,81246,9.458,0.565,89060.667,0.619
 Russia - tests performed,2020-04-14,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,1426014,66021,9.918,0.459,80524,0.56
 Russia - tests performed,2020-04-15,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,1517992,91978,10.557,0.64,79748.333,0.555
+Russia - tests performed,2020-04-16,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,1613413,95421,11.221,0.664,84473.333,0.588
+Russia - tests performed,2020-04-17,https://rospotrebnadzor.ru/about/info/news/,Government of the Russian Federation,,1718019,104606,11.948,0.728,97335,0.677
 Senegal - tests performed,2020-02-28,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,1,1,0,0,,
 Senegal - tests performed,2020-03-03,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,3,2,0,0,,
 Senegal - tests performed,2020-03-04,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,5,2,0,0,1.667,0
@@ -1561,6 +1654,8 @@ Senegal - tests performed,2020-04-12,https://github.com/senegalouvert/COVID-19,M
 Senegal - tests performed,2020-04-13,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,3162,144,0.184,0.008,140.333,0.008
 Senegal - tests performed,2020-04-14,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,3434,272,0.2,0.016,173.333,0.01
 Senegal - tests performed,2020-04-15,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,3661,227,0.213,0.013,214.333,0.012
+Senegal - tests performed,2020-04-16,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,4096,435,0.238,0.025,311.333,0.018
+Senegal - tests performed,2020-04-17,https://github.com/senegalouvert/COVID-19,Ministry of Health and Social Action,Made available by Senegal Ouvert on Github,4393,297,0.255,0.017,319.667,0.018
 Serbia - people tested,2020-02-26,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,16,,0.002,,,
 Serbia - people tested,2020-02-27,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,20,4,0.002,0,,
 Serbia - people tested,2020-02-28,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,30,10,0.003,0.001,,
@@ -1611,8 +1706,11 @@ Serbia - people tested,2020-04-13,https://github.com/aleksandar-jovicic/COVID19-
 Serbia - people tested,2020-04-14,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,23398,2440,2.688,0.28,2333,0.268
 Serbia - people tested,2020-04-15,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,26278,2880,3.019,0.331,2655.333,0.305
 Serbia - people tested,2020-04-16,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,29472,3194,3.386,0.367,2838,0.326
+Serbia - people tested,2020-04-17,https://github.com/aleksandar-jovicic/COVID19-Serbia/blob/master/timeseries.csv,Ministry of Health,Made available by Aleksandar Jovičić on Github,32566,3094,3.742,0.355,3056,0.351
 Singapore - people tested,2020-04-07,https://www.moh.gov.sg/covid-19,Ministry of Health,,47486,,8.001,,,
+Singapore - people tested,2020-04-14,https://www.moh.gov.sg/covid-19,Ministry of Health,,59737,,10.065,,,
 Singapore - swabs tested,2020-04-07,https://www.moh.gov.sg/covid-19,Ministry of Health,,72680,,12.246,,,
+Singapore - swabs tested,2020-04-14,https://www.moh.gov.sg/covid-19,Ministry of Health,,94796,,15.972,,,
 Slovakia - analysed samples,2020-03-15,http://web.archive.org/web/20200316130239/https://www.korona.gov.sk/,National Center of Health Information and the Office of the Government of the Slovak Republic,,1545,,0.283,,,
 Slovakia - analysed samples,2020-03-16,http://web.archive.org/web/20200317171648/https://www.korona.gov.sk/,National Center of Health Information and the Office of the Government of the Slovak Republic,,1913,368,0.351,0.068,,
 Slovakia - analysed samples,2020-03-18,http://web.archive.org/web/20200319014629/https://www.korona.gov.sk/,National Center of Health Information and the Office of the Government of the Slovak Republic,,1991,,0.365,,,
@@ -1633,7 +1731,7 @@ Slovakia - analysed samples,2020-04-11,http://web.archive.org/web/20200412134305
 Slovakia - analysed samples,2020-04-12,http://web.archive.org/web/20200413175300/https://www.korona.gov.sk/,National Center of Health Information and the Office of the Government of the Slovak Republic,,28750,1324,5.274,0.243,1692.667,0.311
 Slovakia - analysed samples,2020-04-13,http://web.archive.org/web/20200414113206/https://www.korona.gov.sk/,National Center of Health Information and the Office of the Government of the Slovak Republic,,30052,1302,5.513,0.239,1402,0.257
 Slovakia - analysed samples,2020-04-14,http://web.archive.org/web/20200415165148/https://covid-19.nczisk.sk/en/,National Center of Health Information and the Office of the Government of the Slovak Republic,,31491,1439,5.777,0.264,1355,0.249
-Slovakia - analysed samples,2020-04-15,https://covid-19.nczisk.sk/en/,National Center of Health Information and the Office of the Government of the Slovak Republic,,34458,2967,6.321,0.544,1902.667,0.349
+Slovakia - analysed samples,2020-04-15,http://web.archive.org/web/20200417121344/https://covid-19.nczisk.sk/en/,National Center of Health Information and the Office of the Government of the Slovak Republic,,34458,2967,6.321,0.544,1902.667,0.349
 Slovenia - tests performed,2020-02-24,https://covid-19.sledilnik.org,National Institute of Public Health,Made available by Sledilnik.org,38,,0.018,,,
 Slovenia - tests performed,2020-02-25,https://covid-19.sledilnik.org,National Institute of Public Health,Made available by Sledilnik.org,59,21,0.028,0.01,,
 Slovenia - tests performed,2020-02-26,https://covid-19.sledilnik.org,National Institute of Public Health,Made available by Sledilnik.org,100,41,0.048,0.02,,
@@ -1686,6 +1784,7 @@ Slovenia - tests performed,2020-04-12,https://covid-19.sledilnik.org,National In
 Slovenia - tests performed,2020-04-13,https://covid-19.sledilnik.org,National Institute of Public Health,Made available by Sledilnik.org,35946,541,17.265,0.26,555.667,0.267
 Slovenia - tests performed,2020-04-14,https://covid-19.sledilnik.org,National Institute of Public Health,Made available by Sledilnik.org,37114,1168,17.826,0.561,754.333,0.362
 Slovenia - tests performed,2020-04-15,https://covid-19.sledilnik.org,National Institute of Public Health,Made available by Sledilnik.org,38137,1023,18.317,0.491,910.667,0.437
+Slovenia - tests performed,2020-04-16,https://covid-19.sledilnik.org,National Institute of Public Health,Made available by Sledilnik.org,39330,1193,18.89,0.573,1128,0.542
 South Africa - units unclear,2020-02-11,https://github.com/dsfsi/covid19za,National Institute for Communicable Diseases (NICD),Made available by the University of Pretoria on Github,61,,0.001,,,
 South Africa - units unclear,2020-02-13,https://github.com/dsfsi/covid19za,National Institute for Communicable Diseases (NICD),Made available by the University of Pretoria on Github,67,,0.001,,,
 South Africa - units unclear,2020-02-14,https://github.com/dsfsi/covid19za,National Institute for Communicable Diseases (NICD),Made available by the University of Pretoria on Github,71,4,0.001,0,,
@@ -1814,6 +1913,8 @@ South Korea - cases tested,2020-04-13,https://www.cdc.go.kr/board/board.es?mid=&
 South Korea - cases tested,2020-04-14,https://www.cdc.go.kr/board/board.es?mid=&bid=0030&act=view&list_no=366890&tag=&nPage=1,South Korea CDC,,527438,8695,10.24,0.169,5653,0.11
 South Korea - cases tested,2020-04-15,https://www.cdc.go.kr/board/board.es?mid=&bid=0030&act=view&list_no=366892&tag=&nPage=1,South Korea CDC,,534552,7114,10.378,0.138,6643.667,0.129
 South Korea - cases tested,2020-04-16,https://www.cdc.go.kr/board/board.es?mid=&bid=0030&act=view&list_no=366909&tag=&nPage=1,South Korea CDC,,538775,4223,10.46,0.082,6677.333,0.13
+South Korea - cases tested,2020-04-17,https://www.cdc.go.kr/board/board.es?mid=&bid=0030&act=view&list_no=366938&tag=&nPage=1,South Korea CDC,,546463,7688,10.609,0.149,6341.667,0.123
+Spain - tests performed,2020-04-13,https://www.mscbs.gob.es/gabinete/notasPrensa.do?metodo=detalle&id=4864,"Press release from the Ministerio de Sanidad, Consumo y Bienestar Social",,930230,,20.023,,,
 Sweden - people tested,2020-03-01,https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/bekraftade-fall-i-sverige,Public Health Agency,,1100,,0.109,,,
 Sweden - people tested,2020-03-08,https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/bekraftade-fall-i-sverige,Public Health Agency,,5400,,0.534,,,
 Sweden - people tested,2020-03-15,https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/bekraftade-fall-i-sverige,Public Health Agency,,14400,,1.423,,,
@@ -1842,6 +1943,7 @@ Switzerland - tests performed,2020-04-13,https://www.bag.admin.ch/dam/bag/de/dok
 Switzerland - tests performed,2020-04-14,https://www.bag.admin.ch/dam/bag/de/dokumente/mt/k-und-i/aktuelle-ausbrueche-pandemien/2019-nCoV/covid-19-lagebericht.pdf.download.pdf/COVID-19_Epidemiologische_Lage_Schweiz.pdf,Federal Office of Public Health,,199000,2400,22.951,0.277,3000,0.346
 Switzerland - tests performed,2020-04-15,https://www.bag.admin.ch/dam/bag/de/dokumente/mt/k-und-i/aktuelle-ausbrueche-pandemien/2019-nCoV/covid-19-lagebericht.pdf.download.pdf/COVID-19_Epidemiologische_Lage_Schweiz.pdf,Federal Office of Public Health,,202633,3633,23.37,0.419,2944.333,0.34
 Switzerland - tests performed,2020-04-16,https://www.bag.admin.ch/dam/bag/de/dokumente/mt/k-und-i/aktuelle-ausbrueche-pandemien/2019-nCoV/covid-19-lagebericht.pdf.download.pdf/COVID-19_Epidemiologische_Lage_Schweiz.pdf,Federal Office of Public Health,,206400,3767,23.805,0.434,3266.667,0.377
+Switzerland - tests performed,2020-04-17,https://www.bag.admin.ch/dam/bag/de/dokumente/mt/k-und-i/aktuelle-ausbrueche-pandemien/2019-nCoV/covid-19-lagebericht.pdf.download.pdf/COVID-19_Epidemiologische_Lage_Schweiz.pdf,Federal Office of Public Health,,211400,5000,24.381,0.577,4133.333,0.477
 Taiwan - tests performed,2020-03-06,https://www.cdc.gov.tw/Category/ListContent/EmXemht4IT-IRAPrAnyG9A?uaid=ir7Na6KVgmO5f0Ej6U-HKQ,Taiwan Centers for Disease Control (CDC),,13555,,0.569,,,
 Taiwan - tests performed,2020-03-07,https://www.cdc.gov.tw/Category/ListContent/EmXemht4IT-IRAPrAnyG9A?uaid=kWHCPxp3H9JFeUw7VYY_2w,Taiwan Centers for Disease Control (CDC),,13855,300,0.582,0.013,,
 Taiwan - tests performed,2020-03-08,https://www.cdc.gov.tw/Category/ListContent/EmXemht4IT-IRAPrAnyG9A?uaid=44foQw0Ajc9dXAm9mDWVUQ,Taiwan Centers for Disease Control (CDC),,14154,299,0.594,0.013,,
@@ -1883,6 +1985,7 @@ Taiwan - tests performed,2020-04-12,http://at.cdc.tw/5p9FaJ,Taiwan Centers for D
 Taiwan - tests performed,2020-04-13,http://at.cdc.tw/375N8X,Taiwan Centers for Disease Control (CDC),,48549,1334,2.038,0.056,1034.333,0.043
 Taiwan - tests performed,2020-04-14,http://at.cdc.tw/7IUu7Y,Taiwan Centers for Disease Control (CDC),,49748,1199,2.089,0.05,1067,0.045
 Taiwan - tests performed,2020-04-15,http://at.cdc.tw/2tLC2S,Taiwan Centers for Disease Control (CDC),,50703,955,2.129,0.04,1162.667,0.049
+Taiwan - tests performed,2020-04-16,http://at.cdc.tw/A3v56j,Taiwan Centers for Disease Control (CDC),,51603,900,2.167,0.038,1018,0.043
 Thailand - people tested,2020-03-03,https://ddc.moph.go.th/viralpneumonia/eng/file/situation/situation-no60-030363.pdf,Department of Disease Control,Results pending are included.,3680,,0.053,,,
 Thailand - people tested,2020-03-04,https://ddc.moph.go.th/viralpneumonia/eng/file/situation/situation-no61-040363.pdf,Department of Disease Control,Results pending are included.,3895,215,0.056,0.003,,
 Thailand - people tested,2020-03-05,https://ddc.moph.go.th/viralpneumonia/eng/file/situation/situation-no62-050363.pdf,Department of Disease Control,Results pending are included.,4023,128,0.058,0.002,,
@@ -1924,6 +2027,7 @@ Thailand - people tested,2020-04-11,https://ddc.moph.go.th/viralpneumonia/eng/fi
 Thailand - people tested,2020-04-12,https://ddc.moph.go.th/viralpneumonia/eng/file/situation/situation-no100-120463.pdf,Department of Disease Control,,33810,980,0.487,0.014,1089.333,0.016
 Thailand - people tested,2020-04-13,https://ddc.moph.go.th/viralpneumonia/eng/file/situation/situation-no101-130463.pdf,Department of Disease Control,,34786,976,0.501,0.014,934,0.013
 Thailand - people tested,2020-04-14,https://ddc.moph.go.th/viralpneumonia/eng/file/situation/situation-no102-140463.pdf,Department of Disease Control,,35452,666,0.511,0.01,874,0.013
+Thailand - people tested,2020-04-15,https://ddc.moph.go.th/viralpneumonia/eng/file/situation/situation-no103-150463.pdf,Department of Disease Control,,36495,1043,0.526,0.015,895,0.013
 Tunisia - units unclear,2020-03-10,https://covid-19.tn/fr/tableau-de-bord/,Tunisian Ministry of Health,,28,28,0.002,0.002,,
 Tunisia - units unclear,2020-03-11,https://covid-19.tn/fr/tableau-de-bord/,Tunisian Ministry of Health,,99,71,0.008,0.006,,
 Tunisia - units unclear,2020-03-12,https://covid-19.tn/fr/tableau-de-bord/,Tunisian Ministry of Health,,141,42,0.012,0.004,47,0.004
@@ -1960,6 +2064,7 @@ Tunisia - units unclear,2020-04-11,https://covid-19.tn/fr/tableau-de-bord/,Tunis
 Tunisia - units unclear,2020-04-12,https://covid-19.tn/fr/tableau-de-bord/,Tunisian Ministry of Health,,12085,587,1.015,0.049,579.333,0.048
 Tunisia - units unclear,2020-04-13,https://covid-19.tn/fr/tableau-de-bord/,Tunisian Ministry of Health,,12675,590,1.065,0.05,579.667,0.049
 Tunisia - units unclear,2020-04-14,https://covid-19.tn/fr/tableau-de-bord/,Tunisian Ministry of Health,,13397,722,1.126,0.061,633,0.053
+Tunisia - units unclear,2020-04-15,https://covid-19.tn/fr/tableau-de-bord/,Tunisian Ministry of Health,,14190,793,1.192,0.067,701.667,0.059
 Turkey - units unclear,2020-03-18,https://www.hurriyet.com.tr/galeri-corona-virusunde-son-durum-turkiyede-kac-vaka-var-cin-ilaci-favipiravir-nedir-iste-son-dakika-gelismeleri-41471547/2,Turkish Minister for Health,"Turkish Minister for Health said 1981 tests were conducted on 18th March, so we can subtract that from 19th March figure. This is consistent with Wikipedia",10018,,0.119,,,
 Turkey - units unclear,2020-03-19,https://www.hurriyet.com.tr/gundem/son-dakika-haberleri-bakan-koca-acikladi-corona-virusunden-olenleri-sayisi-9a-yukseldi-41474173,Turkish Minister for Health,"Turkish Minister for Health said 3656 tests were conducted on 19th March, so we can subtract that from 20th March figure. This is consistent with Wikipedia",11999,1981,0.143,0.024,,
 Turkey - units unclear,2020-03-20,https://www.hurriyetdailynews.com/coronavirus-death-toll-rises-to-21-in-turkey-947-confirmed-cases-health-minister-153168,Turkish Minister for Health,"Turkish Minister for Health said 2952 tests were conducted on 20th March, so we can subtract that from 21st March figure. This is consistent with Wikipedia",15655,3656,0.187,0.044,,
@@ -1990,6 +2095,7 @@ Turkey - units unclear,2020-04-13,https://covid19.saglik.gov.tr/,Turkish Ministr
 Turkey - units unclear,2020-04-14,https://covid19.saglik.gov.tr/,Turkish Ministry of Health,,443626,33070,5.292,0.394,34415.333,0.41
 Turkey - units unclear,2020-04-15,https://covid19.saglik.gov.tr/,Turkish Ministry of Health,,477716,34090,5.698,0.407,33872,0.404
 Turkey - units unclear,2020-04-16,https://covid19.saglik.gov.tr/,Turkish Ministry of Health,,518143,40427,6.18,0.482,35862.333,0.428
+Turkey - units unclear,2020-04-17,https://covid19.saglik.gov.tr/,Turkish Ministry of Health,,558413,40270,6.661,0.48,38262.333,0.456
 United Kingdom - people tested,2020-01-25,https://github.com/jsekamane/covid19-testing-data/blob/master/data/UK.csv,Public Health England/Department of Health and Social Care,Aggregated by Jonas K. Sekamane based on data from gov.uk,31,,0,,,
 United Kingdom - people tested,2020-01-26,https://github.com/jsekamane/covid19-testing-data/blob/master/data/UK.csv,Public Health England/Department of Health and Social Care,Aggregated by Jonas K. Sekamane based on data from gov.uk,52,21,0.001,0,,
 United Kingdom - people tested,2020-01-27,https://github.com/jsekamane/covid19-testing-data/blob/master/data/UK.csv,Public Health England/Department of Health and Social Care,Aggregated by Jonas K. Sekamane based on data from gov.uk,73,21,0.001,0,,
@@ -2073,6 +2179,7 @@ United Kingdom - people tested,2020-04-13,https://www.gov.uk/guidance/coronaviru
 United Kingdom - people tested,2020-04-14,https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public,Public Health England/Department of Health and Social Care,,302599,11879,4.494,0.176,11000.333,0.163
 United Kingdom - people tested,2020-04-15,https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public,Public Health England/Department of Health and Social Care,,313769,11170,4.66,0.166,10465,0.155
 United Kingdom - people tested,2020-04-16,https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public,Public Health England/Department of Health and Social Care,,327608,13839,4.865,0.206,12296,0.183
+United Kingdom - people tested,2020-04-17,https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public,Public Health England/Department of Health and Social Care,,341551,13943,5.072,0.207,12984,0.193
 United States - inconsistent units (COVID Tracking Project),2020-02-28,https://covidtracking.com/api/us/daily.csv,COVID Tracking Project,,9,,0,,,
 United States - inconsistent units (COVID Tracking Project),2020-02-29,https://covidtracking.com/api/us/daily.csv,COVID Tracking Project,,18,9,0,0,,
 United States - inconsistent units (COVID Tracking Project),2020-03-01,https://covidtracking.com/api/us/daily.csv,COVID Tracking Project,,40,22,0,0,,
@@ -2121,6 +2228,7 @@ United States - inconsistent units (COVID Tracking Project),2020-04-12,https://c
 United States - inconsistent units (COVID Tracking Project),2020-04-13,https://covidtracking.com/api/us/daily.csv,COVID Tracking Project,,2935006,129114,8.856,0.39,135241.333,0.408
 United States - inconsistent units (COVID Tracking Project),2020-04-14,https://covidtracking.com/api/us/daily.csv,COVID Tracking Project,,3081620,146614,9.298,0.442,138651.333,0.418
 United States - inconsistent units (COVID Tracking Project),2020-04-15,https://covidtracking.com/api/us/daily.csv,COVID Tracking Project,,3242755,161135,9.784,0.486,145621,0.439
+United States - inconsistent units (COVID Tracking Project),2020-04-16,https://covidtracking.com/api/us/daily.csv,COVID Tracking Project,,3401064,158309,10.262,0.478,155352.667,0.469
 United States - specimens tested (CDC),2020-01-18,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,4,4,0,0,,
 United States - specimens tested (CDC),2020-01-20,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,11,7,0,0,,
 United States - specimens tested (CDC),2020-01-21,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,14,3,0,0,4.667,0
@@ -2166,42 +2274,43 @@ United States - specimens tested (CDC),2020-02-29,https://www.cdc.gov/coronaviru
 United States - specimens tested (CDC),2020-03-01,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,4348,294,0.013,0.001,311.333,0.001
 United States - specimens tested (CDC),2020-03-02,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,5020,672,0.015,0.002,445,0.001
 United States - specimens tested (CDC),2020-03-03,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,5915,895,0.018,0.003,620.333,0.002
-United States - specimens tested (CDC),2020-03-04,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,7221,1306,0.022,0.004,957.667,0.003
-United States - specimens tested (CDC),2020-03-05,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,9059,1838,0.027,0.006,1346.333,0.004
-United States - specimens tested (CDC),2020-03-06,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,11072,2013,0.033,0.006,1719,0.005
-United States - specimens tested (CDC),2020-03-07,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,12782,1710,0.039,0.005,1853.667,0.006
-United States - specimens tested (CDC),2020-03-08,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,14558,1776,0.044,0.005,1833,0.005
-United States - specimens tested (CDC),2020-03-09,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,18042,3484,0.054,0.011,2323.333,0.007
-United States - specimens tested (CDC),2020-03-10,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,21889,3847,0.066,0.012,3035.667,0.009
-United States - specimens tested (CDC),2020-03-11,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,26526,4637,0.08,0.014,3989.333,0.012
-United States - specimens tested (CDC),2020-03-12,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,33074,6548,0.1,0.02,5010.667,0.015
-United States - specimens tested (CDC),2020-03-13,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,40079,7005,0.121,0.021,6063.333,0.018
-United States - specimens tested (CDC),2020-03-14,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,46289,6210,0.14,0.019,6587.667,0.02
-United States - specimens tested (CDC),2020-03-15,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,52168,5879,0.157,0.018,6364.667,0.019
-United States - specimens tested (CDC),2020-03-16,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,63495,11327,0.192,0.034,7805.333,0.024
-United States - specimens tested (CDC),2020-03-17,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,75040,11545,0.226,0.035,9583.667,0.029
-United States - specimens tested (CDC),2020-03-18,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,85884,10844,0.259,0.033,11238.667,0.034
-United States - specimens tested (CDC),2020-03-19,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,96484,10600,0.291,0.032,10996.333,0.033
-United States - specimens tested (CDC),2020-03-20,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,106819,10335,0.322,0.031,10593,0.032
-United States - specimens tested (CDC),2020-03-21,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,112800,5981,0.34,0.018,8972,0.027
-United States - specimens tested (CDC),2020-03-22,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,118009,5209,0.356,0.016,7175,0.022
-United States - specimens tested (CDC),2020-03-23,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,127498,9489,0.385,0.029,6893,0.021
-United States - specimens tested (CDC),2020-03-24,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,137090,9592,0.414,0.029,8096.667,0.025
-United States - specimens tested (CDC),2020-03-25,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,147259,10169,0.444,0.031,9750,0.03
-United States - specimens tested (CDC),2020-03-26,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,158026,10767,0.477,0.032,10176,0.031
-United States - specimens tested (CDC),2020-03-27,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,168592,10566,0.509,0.032,10500.667,0.032
-United States - specimens tested (CDC),2020-03-28,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,175704,7112,0.53,0.021,9481.667,0.028
-United States - specimens tested (CDC),2020-03-29,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,181424,5720,0.547,0.017,7799.333,0.023
-United States - specimens tested (CDC),2020-03-30,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,193133,11709,0.583,0.035,8180.333,0.024
-United States - specimens tested (CDC),2020-03-31,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,205101,11968,0.619,0.036,9799,0.029
-United States - specimens tested (CDC),2020-04-01,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,216641,11540,0.654,0.035,11739,0.035
-United States - specimens tested (CDC),2020-04-02,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,229227,12586,0.692,0.038,12031.333,0.036
-United States - specimens tested (CDC),2020-04-03,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,242277,13050,0.731,0.039,12392,0.037
-United States - specimens tested (CDC),2020-04-04,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,249904,7627,0.754,0.023,11087.667,0.033
-United States - specimens tested (CDC),2020-04-05,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,257000,7096,0.775,0.021,9257.667,0.028
-United States - specimens tested (CDC),2020-04-06,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,270115,13115,0.815,0.04,9279.333,0.028
-United States - specimens tested (CDC),2020-04-07,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,282620,12505,0.853,0.038,10905.333,0.033
-United States - specimens tested (CDC),2020-04-08,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,295562,12942,0.892,0.039,12854,0.039
+United States - specimens tested (CDC),2020-03-04,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,7220,1305,0.022,0.004,957.333,0.003
+United States - specimens tested (CDC),2020-03-05,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,9058,1838,0.027,0.006,1346,0.004
+United States - specimens tested (CDC),2020-03-06,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,11073,2015,0.033,0.006,1719.333,0.005
+United States - specimens tested (CDC),2020-03-07,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,12785,1712,0.039,0.005,1855,0.006
+United States - specimens tested (CDC),2020-03-08,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,14564,1779,0.044,0.005,1835.333,0.005
+United States - specimens tested (CDC),2020-03-09,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,18049,3485,0.054,0.011,2325.333,0.007
+United States - specimens tested (CDC),2020-03-10,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,21896,3847,0.066,0.012,3037,0.009
+United States - specimens tested (CDC),2020-03-11,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,26534,4638,0.08,0.014,3990,0.012
+United States - specimens tested (CDC),2020-03-12,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,33083,6549,0.1,0.02,5011.333,0.015
+United States - specimens tested (CDC),2020-03-13,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,40087,7004,0.121,0.021,6063.667,0.018
+United States - specimens tested (CDC),2020-03-14,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,46298,6211,0.14,0.019,6588,0.02
+United States - specimens tested (CDC),2020-03-15,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,52178,5880,0.157,0.018,6365,0.019
+United States - specimens tested (CDC),2020-03-16,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,63509,11331,0.192,0.034,7807.333,0.024
+United States - specimens tested (CDC),2020-03-17,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,75055,11546,0.226,0.035,9585.667,0.029
+United States - specimens tested (CDC),2020-03-18,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,85901,10846,0.259,0.033,11241,0.034
+United States - specimens tested (CDC),2020-03-19,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,96502,10601,0.291,0.032,10997.667,0.033
+United States - specimens tested (CDC),2020-03-20,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,106839,10337,0.322,0.031,10594.667,0.032
+United States - specimens tested (CDC),2020-03-21,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,112820,5981,0.34,0.018,8973,0.027
+United States - specimens tested (CDC),2020-03-22,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,118029,5209,0.356,0.016,7175.667,0.022
+United States - specimens tested (CDC),2020-03-23,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,127516,9487,0.385,0.029,6892.333,0.021
+United States - specimens tested (CDC),2020-03-24,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,137111,9595,0.414,0.029,8097,0.025
+United States - specimens tested (CDC),2020-03-25,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,147282,10171,0.444,0.031,9751,0.03
+United States - specimens tested (CDC),2020-03-26,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,158050,10768,0.477,0.032,10178,0.031
+United States - specimens tested (CDC),2020-03-27,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,168619,10569,0.509,0.032,10502.667,0.032
+United States - specimens tested (CDC),2020-03-28,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,175816,7197,0.53,0.022,9511.333,0.029
+United States - specimens tested (CDC),2020-03-29,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,181687,5871,0.548,0.018,7879,0.024
+United States - specimens tested (CDC),2020-03-30,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,193600,11913,0.584,0.036,8327,0.025
+United States - specimens tested (CDC),2020-03-31,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,205879,12279,0.621,0.037,10021,0.03
+United States - specimens tested (CDC),2020-04-01,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,217825,11946,0.657,0.036,12046,0.036
+United States - specimens tested (CDC),2020-04-02,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,230893,13068,0.697,0.039,12431,0.037
+United States - specimens tested (CDC),2020-04-03,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,244343,13450,0.737,0.041,12821.333,0.039
+United States - specimens tested (CDC),2020-04-04,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,252213,7870,0.761,0.024,11462.667,0.035
+United States - specimens tested (CDC),2020-04-05,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,259508,7295,0.783,0.022,9538.333,0.029
+United States - specimens tested (CDC),2020-04-06,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,273116,13608,0.824,0.041,9591,0.029
+United States - specimens tested (CDC),2020-04-07,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,286086,12970,0.863,0.039,11291,0.034
+United States - specimens tested (CDC),2020-04-08,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,299475,13389,0.904,0.04,13322.333,0.04
+United States - specimens tested (CDC),2020-04-09,https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/testing-in-us.html,United States CDC,,311814,12339,0.941,0.037,12899.333,0.039
 Uruguay - units unclear,2020-03-24,http://pasteur.uy/monitor-covid-19/,Ministry of Public Health,,1129,,0.323,,,
 Uruguay - units unclear,2020-03-30,http://pasteur.uy/monitor-covid-19/,Ministry of Public Health,,2986,,0.855,,,
 Uruguay - units unclear,2020-04-04,http://pasteur.uy/monitor-covid-19/,Ministry of Public Health,,5063,,1.449,,,
