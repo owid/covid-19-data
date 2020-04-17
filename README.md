@@ -1,3 +1,3 @@
-# Data on COVID-19 by _Our World in Data_
-
-You can find our data on COVID-19 and its documentation in [`/public/data`](/public/data).
+<h3 align="center">
+  Find our data on COVID-19 and its documentation in <a href="/public/data"><strong><code>/public/data</code> ↗️</strong></a>.
+</h3>
