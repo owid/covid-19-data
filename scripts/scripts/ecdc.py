@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 from datetime import datetime, timedelta
 from termcolor import colored
+import megafile
 
 CURRENT_DIR = os.path.dirname(__file__)
 
@@ -220,3 +221,7 @@ Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
         print("Successfully exported CSVs to %s\n" % colored(os.path.abspath(OUTPUT_PATH), 'magenta'))
     else:
         print("ECDC Export failed.\n")
+
+    print("Generating megafile…")
+    megafile.generate_megafile()
+    print("Megafile is ready.")
