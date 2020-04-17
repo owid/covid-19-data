@@ -143,8 +143,8 @@ def generate_megafile():
     all_covid = iso_codes.merge(all_covid, on="location")
 
     # Convert some variables to int in the final output, if and only if their NAs mean "zero"
-    for var in ["total_cases", "new_cases", "total_deaths", "new_deaths"]:
-        all_covid[var] = all_covid[var].fillna(0).astype(int)
+    integer_vars = ["total_cases", "new_cases", "total_deaths", "new_deaths"]
+    all_covid[integer_vars] = all_covid[integer_vars].fillna(0).astype(int)
 
     all_covid.to_csv("../../public/data/owid-covid-data.csv", index=False)
     all_covid.to_excel("../../public/data/owid-covid-data.xlsx", index=False)
