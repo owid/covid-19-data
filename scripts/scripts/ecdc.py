@@ -221,6 +221,7 @@ Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
         print("Successfully exported CSVs to %s\n" % colored(os.path.abspath(OUTPUT_PATH), 'magenta'))
     else:
         print("ECDC Export failed.\n")
+        sys.exit(1)
 
     print("Generating megafile…")
     megafile.generate_megafile()
