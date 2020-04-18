@@ -48,6 +48,9 @@ If you are interested in the individual files that make up the complete dataset,
 - **We standardize names of countries and regions.** Since the names of countries and regions are different in different data sources, we standardize all names to the [_Our World in Data_ standard entity names](https://github.com/owid/covid-19-data/blob/master/public/data/ecdc/locations.csv).
 - We may correct or discard inconsistencies that we detect in the original data.
 - Testing data is collected from many different sources. A detailed documentation for each country is available in [our post on COVID-19 testing](https://ourworldindata.org/covid-testing#source-information-country-by-country).
+- Where we collect multiple time series for a given country in our testing data (for example: for the United States, we collect data from both the CDC, and the COVID Tracking Project), our complete COVID-19 dataset only includes the "best" available series, meaning:
+  - the most complete;
+  - or, if equally complete, data on the number of people tested rather than the number of tests/samples/swabs processed.
 
 
 ## Stable URLs
