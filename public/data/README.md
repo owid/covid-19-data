@@ -2,9 +2,9 @@
 
 Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by [_Our World in Data_](https://ourworldindata.org/coronavirus). It is updated daily and includes data on confirmed cases, deaths, and testing.
 
-⬇️ [Download our complete COVID-19 dataset (CSV)](https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv)
+⬇️ [Download our complete COVID-19 dataset (CSV)](https://covid.ourworldindata.org/data/owid-covid-data.csv)
 
-⬇️ [Download our complete COVID-19 dataset (XLSX)](https://github.com/owid/covid-19-data/raw/master/public/data/owid-covid-data.xlsx)
+⬇️ [Download our complete COVID-19 dataset (XLSX)](https://covid.ourworldindata.org/data/owid-covid-data.xlsx)
 
 **We will continue to publish up-to-date data on confirmed cases, deaths, and testing, throughout the duration of the COVID-19 pandemic.**
 
@@ -17,7 +17,7 @@ Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by
 
 ## The complete _Our World in Data_ COVID-19 dataset
 
-**Our complete COVID-19 dataset is available in [CSV](https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv) and [XLSX](https://github.com/owid/covid-19-data/raw/master/public/data/owid-covid-data.xlsx) format, and includes all of our historical data on the pandemic up to the date of publication.**
+**Our complete COVID-19 dataset is available in [CSV](https://covid.ourworldindata.org/data/owid-covid-data.csv) and [XLSX](https://covid.ourworldindata.org/data/owid-covid-data.xlsx) format, and includes all of our historical data on the pandemic up to the date of publication.**
 
 The dataset follows a format of 1 row per location and date. The other columns represent all of our main variables related to confirmed cases, deaths, and testing.
 
