@@ -54,6 +54,7 @@ def get_testing():
     to_remove = [
         ("India", "people tested"),
         ("Japan", "tests performed"),
+        ("United Kingdom", "tests performed"),
         ("United States", "specimens tested (CDC)"),
         ("Singapore", "swabs tested")
     ]
