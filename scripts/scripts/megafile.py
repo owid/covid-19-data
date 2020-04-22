@@ -51,14 +51,8 @@ def get_testing():
     testing[["location", "tests_units"]] = testing.location.str.split(" - ", expand=True)
 
     # For locations with >1 series, choose a series
-    to_remove = [
-        ("India", "people tested"),
-        ("Japan", "tests performed"),
-        ("United Kingdom", "tests performed"),
-        ("United States", "specimens tested (CDC)"),
-        ("Singapore", "swabs tested")
-    ]
-    for loc, unit in to_remove:
+    to_remove = pd.read_csv(os.path.join(INPUT_DIR, "owid/secondary_testing_series.csv"))
+    for loc, unit in to_remove.itertuples(index=False, name=None):
         testing = testing[-((testing["location"] == loc) & (testing["tests_units"] == unit))]
 
     # Check for remaining duplicates of location/date
