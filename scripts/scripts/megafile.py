@@ -89,9 +89,21 @@ def get_ecdc():
     data_frames = []
 
     # Process each file and melt it to vertical format
+    print()
     for ecdc_var in ecdc_variables:
 
         tmp = pd.read_csv(os.path.join(DATA_DIR, "../../public/data/ecdc/{}.csv".format(ecdc_var)))
+
+        for country in tmp.columns[2:]:
+            if tmp[country].values[-2] > 0 and tmp[country].values[-1] > 100 \
+                and tmp[country].values[-1] / tmp[country].values[-2] > 3:
+                print("<!> Sudden increase in {}: {} from {} to {}".format(
+                    ecdc_var,
+                    country,
+                    int(tmp[country].values[-2]),
+                    int(tmp[country].values[-1])
+                ))
+
         tmp = tmp.drop(columns=["World", "International"])
         country_cols = list(tmp.columns)
         country_cols.remove("date")
@@ -102,6 +114,7 @@ def get_ecdc():
         )
         tmp[ecdc_var] = tmp[ecdc_var].round(3)
         data_frames.append(tmp)
+    print()
 
     # Outer join between all ECDC files
     ecdc = reduce(
