@@ -104,7 +104,6 @@ def get_ecdc():
                     int(tmp[country].values[-1])
                 ))
 
-        tmp = tmp.drop(columns=["World", "International"])
         country_cols = list(tmp.columns)
         country_cols.remove("date")
         tmp = (
