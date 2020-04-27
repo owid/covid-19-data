@@ -41,6 +41,7 @@ If you are interested in the individual files that make up the complete dataset,
 - From 19 March 2020, we started relying on data published by the [European CDC](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide). We wrote about [why we decided to switch sources](https://ourworldindata.org/covid-sources-comparison).
 - On 3 April 2020, we added country-level time series on COVID-19 tests.
 - On 16 April 2020, we made available a [complete dataset of all of our main variables](https://github.com/owid/covid-19-data/tree/master/public/data) related to confirmed cases, deaths, and tests.
+- On 25 April 2020, we added rows for "World" and "International". The `iso_code` column for these entries is blank.
 
 
 ## Data alterations
