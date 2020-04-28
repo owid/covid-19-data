@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 from datetime import datetime
+import megafile
 
 CURRENT_DIR = os.path.dirname(__file__)
 POPULATION_CSV_PATH = os.path.join(CURRENT_DIR, '../input/un/population_2020.csv')
@@ -74,12 +75,15 @@ def inject_population(df):
         on='location'
     )
 
+def drop_population(df):
+    return df.drop(columns=['population_year', 'population'])
+
 def inject_per_million(df, measures):
     df = inject_population(df)
     for measure in measures:
         pop_measure = measure + '_per_million'
         df[pop_measure] = df[measure] / (df['population'] / 1e6)
-    return df.drop(columns=['population_year', 'population'])
+    return drop_population(df)
 
 # OWID continents + custom aggregates
 
@@ -324,6 +328,31 @@ def inject_rolling_avg(df):
             .mean().round(decimals=10).reset_index(level=0, drop=True)
     return df
 
+def inject_exemplars(df):
+    df = inject_population(df)
+
+    # Inject days since 100th case IF population ≥ 5M
+    def mapper_days_since(row):
+        if pd.notnull(row['population']) and row['population'] >= 5e6:
+            return row['days_since_100_total_cases']
+        return pd.NA
+    df['days_since_100_total_cases_and_5m_pop'] = df.apply(mapper_days_since, axis=1)
+
+    # Inject boolean when all exenplar conditions hold
+    # Use int because the Grapher doesn't handle non-ints very well
+    countries_with_testing_data = set(megafile.get_testing()['location'])
+    def mapper_bool(row):
+        if pd.notnull(row['days_since_100_total_cases']) and \
+            pd.notnull(row['population']) and \
+            row['days_since_100_total_cases'] >= 21 and \
+            row['population'] >= 5e6 and \
+            row['location'] in countries_with_testing_data:
+            return 1
+        return 0
+    df['5m_pop_and_21_days_since_100_cases_and_testing'] = df.apply(mapper_bool, axis=1)
+
+    return drop_population(df)
+
 
 # Export logic
 
@@ -387,6 +416,9 @@ GRAPHER_COL_NAMES = {
     # Case fatality ratio
     'cfr': 'Case fatality rate of COVID-19 (%)',
     'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
+    # Exemplars variables
+    'days_since_100_total_cases_and_5m_pop': 'Days since the total confirmed cases of COVID-19 reached 100 (with population ≥ 5M)',
+    '5m_pop_and_21_days_since_100_cases_and_testing': 'Has population ≥ 5M AND had ≥100 cases ≥21 days ago AND has testing data',
 }
 
 def existsin(l1, l2):
