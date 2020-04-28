@@ -123,8 +123,7 @@ def check_data_correctness(filename):
     return True if errors == 0 else False
 
 def discard_rows(df):
-    # Temporarily exclude negative case counts for Spain
-    df.loc[(df['location'] == 'Spain') & (df['new_cases'] < 0), 'new_cases'] = pd.NA
+    # df.loc[(df['location'] == 'Spain') & (df['new_cases'] < 0), 'new_cases'] = pd.NA
     return df
 
 # Must output columns:
