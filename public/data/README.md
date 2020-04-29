@@ -2,9 +2,9 @@
 
 Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by [_Our World in Data_](https://ourworldindata.org/coronavirus). It is updated daily and includes data on confirmed cases, deaths, and testing.
 
-⬇️ [Download our complete COVID-19 dataset (CSV)](https://covid.ourworldindata.org/data/owid-covid-data.csv)
+🗂️ [Download our complete COVID-19 dataset (CSV)](https://covid.ourworldindata.org/data/owid-covid-data.csv)
 
-⬇️ [Download our complete COVID-19 dataset (XLSX)](https://covid.ourworldindata.org/data/owid-covid-data.xlsx)
+🗂️ [Download our complete COVID-19 dataset (XLSX)](https://covid.ourworldindata.org/data/owid-covid-data.xlsx)
 
 **We will continue to publish up-to-date data on confirmed cases, deaths, and testing, throughout the duration of the COVID-19 pandemic.**
 
