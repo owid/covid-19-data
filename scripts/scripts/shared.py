@@ -161,101 +161,124 @@ def inject_total_daily_cols(df, measures):
 
 days_since_spec = {
     'days_since_100_total_cases': {
-        'col': 'total_cases',
-        'threshold': 100
+        'value_col': 'total_cases',
+        'value_threshold': 100,
+        'positive_only': False
     },
     'days_since_5_total_deaths': {
-        'col': 'total_deaths',
-        'threshold': 5
+        'value_col': 'total_deaths',
+        'value_threshold': 5,
+        'positive_only': False
     },
     'days_since_1_total_cases_per_million': {
-        'col': 'total_cases_per_million',
-        'threshold': 1
+        'value_col': 'total_cases_per_million',
+        'value_threshold': 1,
+        'positive_only': False
     },
     'days_since_0_1_total_deaths_per_million': {
-        'col': 'total_deaths_per_million',
-        'threshold': 0.1
+        'value_col': 'total_deaths_per_million',
+        'value_threshold': 0.1,
+        'positive_only': False
     },
     'days_since_30_new_cases': {
-        'col': 'new_cases',
-        'threshold': 30
+        'value_col': 'new_cases',
+        'value_threshold': 30,
+        'positive_only': False
     },
     'days_since_50_new_cases': {
-        'col': 'new_cases',
-        'threshold': 50
+        'value_col': 'new_cases',
+        'value_threshold': 50,
+        'positive_only': False
     },
     'days_since_30_new_cases_7_day_avg': {
-        'col': 'new_cases_7_day_avg',
-        'threshold': 30
+        'value_col': 'new_cases_7_day_avg',
+        'value_threshold': 30,
+        'positive_only': False
     },
     'days_since_10_new_deaths': {
-        'col': 'new_deaths',
-        'threshold': 10
+        'value_col': 'new_deaths',
+        'value_threshold': 10,
+        'positive_only': False
     },
     'days_since_5_new_deaths': {
-        'col': 'new_deaths',
-        'threshold': 5
+        'value_col': 'new_deaths',
+        'value_threshold': 5,
+        'positive_only': False
     },
     'days_since_3_new_deaths': {
-        'col': 'new_deaths',
-        'threshold': 3
+        'value_col': 'new_deaths',
+        'value_threshold': 3,
+        'positive_only': False
     },
     'days_since_5_new_deaths_7_day_avg': {
-        'col': 'new_deaths_7_day_avg',
-        'threshold': 5
+        'value_col': 'new_deaths_7_day_avg',
+        'value_threshold': 5,
+        'positive_only': False
     },
     'days_since_30_new_cases_7_day_avg_right': {
-        'col': 'new_cases_7_day_avg_right',
-        'threshold': 30
+        'value_col': 'new_cases_7_day_avg_right',
+        'value_threshold': 30,
+        'positive_only': False
     },
     'days_since_5_new_deaths_7_day_avg_right': {
-        'col': 'new_deaths_7_day_avg_right',
-        'threshold': 5
+        'value_col': 'new_deaths_7_day_avg_right',
+        'value_threshold': 5,
+        'positive_only': False
     },
     'days_since_1_new_cases_per_million_7_day_avg_right': {
-        'col': 'new_cases_per_million_7_day_avg_right',
-        'threshold': 1
+        'value_col': 'new_cases_per_million_7_day_avg_right',
+        'value_threshold': 1,
+        'positive_only': False
     },
     'days_since_0_1_new_deaths_per_million_7_day_avg_right': {
-        'col': 'new_deaths_per_million_7_day_avg_right',
-        'threshold': 0.1
+        'value_col': 'new_deaths_per_million_7_day_avg_right',
+        'value_threshold': 0.1,
+        'positive_only': False
     },
     'days_since_0_01_new_deaths_per_million_7_day_avg_right': {
-        'col': 'new_deaths_per_million_7_day_avg_right',
-        'threshold': 0.01
+        'value_col': 'new_deaths_per_million_7_day_avg_right',
+        'value_threshold': 0.01,
+        'positive_only': False
     },
 }
 
-def _get_date_of_nth(df, col, nth):
+def _get_date_of_threshold(df, col, threshold):
     try:
-        df_gt_nth = df[df[col] >= nth]
+        df_gt_nth = df[df[col] >= threshold]
         earliest = df.loc[pd.to_datetime(df_gt_nth['date']).idxmin()]
         return earliest['date']
     except:
         return None
 
-def _positive_date_diff(a, b):
+def _date_diff(a, b, positive_only=False):
     diff = (a - b).days
-    return diff if diff >= 0 else None
+    if positive_only and diff < 0:
+        return None
+    return diff
 
-def _inject_days_since(df, col, ref_date):
-    df[col] = df['date'].map(lambda date: _positive_date_diff(pd.to_datetime(date), pd.to_datetime(ref_date))).astype('Int64')
-    df = df
-    return df
-
-def _inject_days_since_group(df):
+def _inject_days_since(df, col, ref_date, positive_only):
     df = df.copy()
-    for col, spec in days_since_spec.items():
-        date = _get_date_of_nth(df, spec['col'], spec['threshold'])
-        if date is not None:
-            df = _inject_days_since(df, col, date)
+    df[col] = df['date'].map(lambda date: _date_diff(
+        pd.to_datetime(date), pd.to_datetime(ref_date), positive_only
+    )).astype('Int64')
     return df
 
-def inject_days_since_all(df):
+def _inject_days_since_by_location(df, col, spec):
+    date = _get_date_of_threshold(df, spec['value_col'], spec['value_threshold'])
+    if date is not None:
+        df = _inject_days_since(df, col, date, spec['positive_only'])
+    return df
+
+def _inject_days_since_from_spec(df, col, spec):
     return pd.concat([
-        _inject_days_since_group(df_group)
-        for loc, df_group in df.groupby('location')
+        _inject_days_since_by_location(df_location, col, spec)
+        for loc, df_location in df.groupby('location')
     ])
+
+def inject_days_since(df):
+    for col, spec in days_since_spec.items():
+        df = _inject_days_since_from_spec(df, col, spec)
+    return df
 
 def _apply_row_cfr_100(row):
     if pd.notnull(row['total_cases']) and row['total_cases'] >= 100:
@@ -352,7 +375,6 @@ def inject_exemplars(df):
     df['5m_pop_and_21_days_since_100_cases_and_testing'] = df.apply(mapper_bool, axis=1)
 
     return drop_population(df)
-
 
 # Export logic
 
