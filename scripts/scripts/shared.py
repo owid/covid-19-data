@@ -163,82 +163,82 @@ days_since_spec = {
     'days_since_100_total_cases': {
         'value_col': 'total_cases',
         'value_threshold': 100,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_5_total_deaths': {
         'value_col': 'total_deaths',
         'value_threshold': 5,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_1_total_cases_per_million': {
         'value_col': 'total_cases_per_million',
         'value_threshold': 1,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_0_1_total_deaths_per_million': {
         'value_col': 'total_deaths_per_million',
         'value_threshold': 0.1,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_30_new_cases': {
         'value_col': 'new_cases',
         'value_threshold': 30,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_50_new_cases': {
         'value_col': 'new_cases',
         'value_threshold': 50,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_30_new_cases_7_day_avg': {
         'value_col': 'new_cases_7_day_avg',
         'value_threshold': 30,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_10_new_deaths': {
         'value_col': 'new_deaths',
         'value_threshold': 10,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_5_new_deaths': {
         'value_col': 'new_deaths',
         'value_threshold': 5,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_3_new_deaths': {
         'value_col': 'new_deaths',
         'value_threshold': 3,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_5_new_deaths_7_day_avg': {
         'value_col': 'new_deaths_7_day_avg',
         'value_threshold': 5,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_30_new_cases_7_day_avg_right': {
         'value_col': 'new_cases_7_day_avg_right',
         'value_threshold': 30,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_5_new_deaths_7_day_avg_right': {
         'value_col': 'new_deaths_7_day_avg_right',
         'value_threshold': 5,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_1_new_cases_per_million_7_day_avg_right': {
         'value_col': 'new_cases_per_million_7_day_avg_right',
         'value_threshold': 1,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_0_1_new_deaths_per_million_7_day_avg_right': {
         'value_col': 'new_deaths_per_million_7_day_avg_right',
         'value_threshold': 0.1,
-        'positive_only': True
+        'positive_only': False
     },
     'days_since_0_01_new_deaths_per_million_7_day_avg_right': {
         'value_col': 'new_deaths_per_million_7_day_avg_right',
         'value_threshold': 0.01,
-        'positive_only': True
+        'positive_only': False
     },
 }
 
