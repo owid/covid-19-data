@@ -1,9 +1,14 @@
+import sys
 import pandas as pd
+import numpy as np
 import os
 from datetime import datetime
-import megafile
 
 CURRENT_DIR = os.path.dirname(__file__)
+sys.path.append(CURRENT_DIR)
+
+import megafile
+
 POPULATION_CSV_PATH = os.path.join(CURRENT_DIR, '../input/un/population_2020.csv')
 CONTINENTS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/continents.csv')
 WB_INCOME_GROUPS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/wb_income_groups.csv')
@@ -376,6 +381,40 @@ def inject_exemplars(df):
 
     return drop_population(df)
 
+growth_rates_spec = {
+    'doubling_days_total_cases_3_day_periods': {
+        'value_col': 'total_cases',
+        'periods': 3
+    },
+    'doubling_days_total_cases_7_day_periods': {
+        'value_col': 'total_cases',
+        'periods': 7
+    },
+    'doubling_days_total_deaths_3_day_periods': {
+        'value_col': 'total_deaths',
+        'periods': 3
+    },
+    'doubling_days_total_deaths_7_day_periods': {
+        'value_col': 'total_deaths',
+        'periods': 7
+    },
+}
+
+def pct_change_to_doubling_days(pct_change, periods):
+    if pd.notnull(pct_change) and pct_change != 0:
+        return periods * np.log(2) / np.log(1 + pct_change)
+    return pd.NA
+
+def inject_growth_rates(df):
+    for col, spec in growth_rates_spec.items():
+        value_col = spec['value_col']
+        periods = spec['periods']
+        df[col] = df.replace({ value_col: 0 }, pd.NA) \
+            .groupby('location', as_index=False) \
+            [value_col].pct_change(periods=periods, fill_method=None) \
+            [value_col].map(lambda pct: pct_change_to_doubling_days(pct, periods))
+    return df
+
 # Export logic
 
 KEYS = ['date', 'location']
@@ -441,6 +480,11 @@ GRAPHER_COL_NAMES = {
     # Exemplars variables
     'days_since_100_total_cases_and_5m_pop': 'Days since the total confirmed cases of COVID-19 reached 100 (with population ≥ 5M)',
     '5m_pop_and_21_days_since_100_cases_and_testing': 'Has population ≥ 5M AND had ≥100 cases ≥21 days ago AND has testing data',
+    # Doubling days time-series
+    'doubling_days_total_cases_3_day_periods': 'Doubling days of total confirmed cases (3 day period)',
+    'doubling_days_total_cases_7_day_periods': 'Doubling days of total confirmed cases (7 day period)',
+    'doubling_days_total_deaths_3_day_periods': 'Doubling days of total confirmed deaths (3 day period)',
+    'doubling_days_total_deaths_7_day_periods': 'Doubling days of total confirmed deaths (7 day period)',
 }
 
 def existsin(l1, l2):
