@@ -87,7 +87,8 @@ def inject_per_million(df, measures):
     df = inject_population(df)
     for measure in measures:
         pop_measure = measure + '_per_million'
-        df[pop_measure] = df[measure] / (df['population'] / 1e6)
+        series = df[measure] / (df['population'] / 1e6)
+        df[pop_measure] = series.round(decimals=3)
     return drop_population(df)
 
 # OWID continents + custom aggregates
@@ -292,7 +293,8 @@ def _apply_row_cfr_100(row):
 
 def inject_cfr(df):
     df = df.copy()
-    df['cfr'] = (df['total_deaths'] / df['total_cases']) * 100
+    cfr_series = (df['total_deaths'] / df['total_cases']) * 100
+    df['cfr'] = cfr_series.round(decimals=3)
     df['cfr_100_cases'] = df.apply(_apply_row_cfr_100, axis=1)
     return df
 
@@ -353,7 +355,7 @@ def inject_rolling_avg(df):
         df[col] = df[spec['col']].astype('float')
         df[col] = df.groupby('location', as_index=False)[col] \
             .rolling(window=spec['window'], min_periods=spec['min_periods'], center=spec['center']) \
-            .mean().round(decimals=10).reset_index(level=0, drop=True)
+            .mean().round(decimals=5).reset_index(level=0, drop=True)
     return df
 
 def inject_exemplars(df):
@@ -402,7 +404,8 @@ growth_rates_spec = {
 
 def pct_change_to_doubling_days(pct_change, periods):
     if pd.notnull(pct_change) and pct_change != 0:
-        return periods * np.log(2) / np.log(1 + pct_change)
+        doubling_days = periods * np.log(2) / np.log(1 + pct_change)
+        return np.round(doubling_days, decimals=2)
     return pd.NA
 
 def inject_growth_rates(df):
