@@ -384,19 +384,19 @@ def inject_exemplars(df):
     return drop_population(df)
 
 growth_rates_spec = {
-    'doubling_days_total_cases_3_day_periods': {
+    'doubling_days_total_cases_3_day_period': {
         'value_col': 'total_cases',
         'periods': 3
     },
-    'doubling_days_total_cases_7_day_periods': {
+    'doubling_days_total_cases_7_day_period': {
         'value_col': 'total_cases',
         'periods': 7
     },
-    'doubling_days_total_deaths_3_day_periods': {
+    'doubling_days_total_deaths_3_day_period': {
         'value_col': 'total_deaths',
         'periods': 3
     },
-    'doubling_days_total_deaths_7_day_periods': {
+    'doubling_days_total_deaths_7_day_period': {
         'value_col': 'total_deaths',
         'periods': 7
     },
@@ -484,10 +484,10 @@ GRAPHER_COL_NAMES = {
     'days_since_100_total_cases_and_5m_pop': 'Days since the total confirmed cases of COVID-19 reached 100 (with population ≥ 5M)',
     '5m_pop_and_21_days_since_100_cases_and_testing': 'Has population ≥ 5M AND had ≥100 cases ≥21 days ago AND has testing data',
     # Doubling days time-series
-    'doubling_days_total_cases_3_day_periods': 'Doubling days of total confirmed cases (3 day period)',
-    'doubling_days_total_cases_7_day_periods': 'Doubling days of total confirmed cases (7 day period)',
-    'doubling_days_total_deaths_3_day_periods': 'Doubling days of total confirmed deaths (3 day period)',
-    'doubling_days_total_deaths_7_day_periods': 'Doubling days of total confirmed deaths (7 day period)',
+    'doubling_days_total_cases_3_day_period': 'Doubling days of total confirmed cases (3 day period)',
+    'doubling_days_total_cases_7_day_period': 'Doubling days of total confirmed cases (7 day period)',
+    'doubling_days_total_deaths_3_day_period': 'Doubling days of total confirmed deaths (3 day period)',
+    'doubling_days_total_deaths_7_day_period': 'Doubling days of total confirmed deaths (7 day period)',
 }
 
 def existsin(l1, l2):
