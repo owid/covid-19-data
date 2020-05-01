@@ -139,6 +139,10 @@ def generate_megafile():
 
     ecdc = get_ecdc()
 
+    location_mismatch = set(testing.location).difference(set(ecdc.location))
+    for l in location_mismatch:
+        print(f"<!> Location '{l}' has testing data but is absent from ECDC data")
+
     all_covid = (
         ecdc.merge(testing, on=["date", "location"], how="outer")
         .sort_values(["location", "date"])
