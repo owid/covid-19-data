@@ -25,7 +25,8 @@ def _find_closest_year_row(df, year=2020):
 def load_population(year=2020):
     df = pd.read_csv(
         POPULATION_CSV_PATH,
-        keep_default_na=False
+        keep_default_na=False,
+        usecols=["entity", "year", "population"]
     )
     return pd.DataFrame([
         _find_closest_year_row(df_group, year)
