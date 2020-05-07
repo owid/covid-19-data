@@ -9,6 +9,7 @@ Merges the main COVID-19 testing dataset with each of the COVID-19 ECDC datasets
 import os
 from functools import reduce
 import pandas as pd
+from datetime import datetime
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_DIR = os.path.join(CURRENT_DIR, '../input/')
@@ -163,6 +164,10 @@ def generate_megafile():
 
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
+
+    # Store the last updated time on the CDN
+    with open('owid-covid-data-last-updated.txt', 'w') as timestamp_file:
+      timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
 
 
 if __name__ == '__main__':
