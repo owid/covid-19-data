@@ -1,4 +1,4 @@
-# Data on COVID-19 by _Our World in Data_
+# Data on COVID-19 (coronavirus disease 2019) by _Our World in Data_
 
 Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by [_Our World in Data_](https://ourworldindata.org/coronavirus). It is updated daily and includes data on confirmed cases, deaths, and testing.
 
