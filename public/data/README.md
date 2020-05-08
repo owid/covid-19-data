@@ -11,8 +11,8 @@ Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by
 
 ## Our data sources
 
-- **Confirmed cases and deaths:** our data comes from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) (ECDC). We discuss how and when the ECDC collects and publishes this data [here](https://ourworldindata.org/coronavirus#our-world-in-data-relies-on-data-from-the-european-cdc).
-- **Testing for COVID-19:** this data is collected by the _Our World in Data_ team from official reports; you can find the source information for every country and further details [in our post on COVID-19 testing](https://ourworldindata.org/covid-testing).
+- **Confirmed cases and deaths:** our data comes from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) (ECDC). We discuss how and when the ECDC collects and publishes this data [here](https://ourworldindata.org/coronavirus#our-world-in-data-relies-on-data-from-the-european-cdc). The cases & deaths dataset is updated daily.
+- **Testing for COVID-19:** this data is collected by the _Our World in Data_ team from official reports; you can find the source information for every country and further details [in our post on COVID-19 testing](https://ourworldindata.org/covid-testing). The testing dataset is updated around twice a week.
 
 
 ## The complete _Our World in Data_ COVID-19 dataset
