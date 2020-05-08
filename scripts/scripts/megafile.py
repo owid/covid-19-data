@@ -7,13 +7,14 @@ Merges the main COVID-19 testing dataset with each of the COVID-19 ECDC datasets
 """
 
 import os
+from datetime import datetime
 from functools import reduce
 import pandas as pd
-from datetime import datetime
 
 CURRENT_DIR = os.path.dirname(__file__)
-INPUT_DIR = os.path.join(CURRENT_DIR, '../input/')
-DATA_DIR = os.path.join(CURRENT_DIR, '../../public/data/')
+INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
+TIME_DIR = os.path.join(CURRENT_DIR, "../")
+DATA_DIR = os.path.join(CURRENT_DIR, "../../public/data/")
 
 
 def get_testing():
@@ -26,14 +27,17 @@ def get_testing():
     	testing {dataframe}
     """
 
-    testing = pd.read_csv(os.path.join(DATA_DIR, "testing/covid-testing-all-observations.csv"), usecols=[
-        "Entity",
-        "Date",
-        "Cumulative total",
-        "Daily change in cumulative total",
-        "Cumulative total per thousand",
-        "Daily change in cumulative total per thousand"
-    ])
+    testing = pd.read_csv(
+        os.path.join(DATA_DIR, "testing/covid-testing-all-observations.csv"),
+        usecols=[
+            "Entity",
+            "Date",
+            "Cumulative total",
+            "Daily change in cumulative total",
+            "Cumulative total per thousand",
+            "Daily change in cumulative total per thousand"
+        ]
+    )
 
     testing.columns = [
         "location",
@@ -141,8 +145,8 @@ def generate_megafile():
     ecdc = get_ecdc()
 
     location_mismatch = set(testing.location).difference(set(ecdc.location))
-    for l in location_mismatch:
-        print(f"<!> Location '{l}' has testing data but is absent from ECDC data")
+    for loc in location_mismatch:
+        print(f"<!> Location '{loc}' has testing data but is absent from ECDC data")
 
     all_covid = (
         ecdc.merge(testing, on=["date", "location"], how="outer")
@@ -165,9 +169,9 @@ def generate_megafile():
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
 
-    # Store the last updated time on the CDN
-    with open('owid-covid-data-last-updated.txt', 'w') as timestamp_file:
-      timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
+    # Store the last updated time
+    with open(os.path.join(TIME_DIR, "owid-covid-data-last-updated.txt"), "w") as timestamp_file:
+        timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
 
 
 if __name__ == '__main__':
