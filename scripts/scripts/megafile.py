@@ -13,7 +13,6 @@ import pandas as pd
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
-TIME_DIR = os.path.join(CURRENT_DIR, "../")
 DATA_DIR = os.path.join(CURRENT_DIR, "../../public/data/")
 
 
@@ -170,7 +169,7 @@ def generate_megafile():
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
 
     # Store the last updated time
-    with open(os.path.join(TIME_DIR, "owid-covid-data-last-updated.txt"), "w") as timestamp_file:
+    with open(os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt"), "w") as timestamp_file:
         timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
 
 
