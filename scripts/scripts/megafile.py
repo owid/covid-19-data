@@ -169,7 +169,7 @@ def generate_megafile():
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
 
     # Store the last updated time
-    with open(os.path.join(DATA_DIR, "owid-covid-data-last-updated.txt"), "w") as timestamp_file:
+    with open(os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt"), "w") as timestamp_file:
         timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
 
 
