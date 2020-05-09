@@ -1,6 +1,6 @@
 # Data on COVID-19 (coronavirus) by _Our World in Data_
 
-Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by [_Our World in Data_](https://ourworldindata.org/coronavirus). It is updated daily and includes data on confirmed cases, deaths, and testing.
+Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by [_Our World in Data_](https://ourworldindata.org/coronavirus). It is updated daily and includes data on confirmed cases, deaths, and testing, as well as other variables of potential interest.
 
 🗂️ [Download our complete COVID-19 dataset (CSV)](https://covid.ourworldindata.org/data/owid-covid-data.csv)
 
@@ -13,15 +13,18 @@ Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by
 
 - **Confirmed cases and deaths:** our data comes from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) (ECDC). We discuss how and when the ECDC collects and publishes this data [here](https://ourworldindata.org/coronavirus#our-world-in-data-relies-on-data-from-the-european-cdc). The cases & deaths dataset is updated daily.
 - **Testing for COVID-19:** this data is collected by the _Our World in Data_ team from official reports; you can find the source information for every country and further details [in our post on COVID-19 testing](https://ourworldindata.org/covid-testing). The testing dataset is updated around twice a week.
+- **Other variables:** this data is collected from a variety of sources (United Nations, World Bank, Global Burden of Disease, etc.). More information is available in our codebook ([`owid-covid-data-codebook.md`](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md)).
 
 
 ## The complete _Our World in Data_ COVID-19 dataset
 
 **Our complete COVID-19 dataset is available in [CSV](https://covid.ourworldindata.org/data/owid-covid-data.csv) and [XLSX](https://covid.ourworldindata.org/data/owid-covid-data.xlsx) format, and includes all of our historical data on the pandemic up to the date of publication.**
 
-The dataset follows a format of 1 row per location and date. The other columns represent all of our main variables related to confirmed cases, deaths, and testing.
+The dataset follows a format of 1 row per location and date. The other columns represent all of our main variables related to confirmed cases, deaths, and testing, as well as other variables of potential interest.
 
-As of 17 April 2020, the columns are: `iso_code`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `total_tests_per_thousand`, `new_tests_per_thousand`, `tests_units`
+As of 9 May 2020, the columns are: `iso_code`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `total_tests_per_thousand`, `new_tests_per_thousand`, `tests_units`, `population`, `population_density`, `median_age`, `aged_65_older`, `aged_70_older`, `gdp_per_capita`, `extreme_poverty`, `cvd_death_rate`, `diabetes_prevalence`, `female_smokers`, `male_smokers`, `handwashing_facilities`, `hospital_beds_per_100k`
+
+A full codebook is made available ([`owid-covid-data-codebook.md`](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md)), with a description and source for each variable in the dataset.
 
 
 ## Additional files and information
