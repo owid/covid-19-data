@@ -128,6 +128,45 @@ def get_ecdc():
     return ecdc
 
 
+def add_macro_variables(complete_dataset):
+    """
+    Appends a list of 'macro' (non-directly COVID related) variables to the dataset
+    The data is denormalized, i.e. each yearly value (for example GDP per capita)
+    is added to each row of the complete dataset. This is meant to facilitate the use
+    of our dataset by non-experts.
+    """
+
+    original_shape = complete_dataset.shape
+
+    # For each macro variable:
+    # - the key is the name of the variable of interest
+    # - the value is the path to the corresponding file
+    macro_variables = {
+        "population": "un/population_2020.csv",
+        "population_density": "wb/population_density.csv",
+        "median_age": "un/median_age.csv",
+        "aged_65_older": "wb/aged_65_older.csv",
+        "aged_70_older": "un/aged_70_older.csv",
+        "gdp_per_capita": "wb/gdp_per_capita.csv",
+        "extreme_poverty": "wb/extreme_poverty.csv",
+        "cvd_death_rate": "gbd/cvd_death_rate.csv",
+        "diabetes_prevalence": "wb/diabetes_prevalence.csv",
+        "female_smokers": "wb/female_smokers.csv",
+        "male_smokers": "wb/male_smokers.csv",
+        "handwashing_facilities": "un/handwashing_facilities.csv",
+        "hospital_beds_per_100k": "owid/hospital_beds.csv"
+    }
+
+    for var, file in macro_variables.items():
+        var_df = pd.read_csv(os.path.join(INPUT_DIR, file), usecols=["iso_code", var])
+        var_df = var_df[-var_df["iso_code"].isnull()]
+        complete_dataset = complete_dataset.merge(var_df, on="iso_code", how="left")
+
+    assert complete_dataset.shape[0] == original_shape[0]
+    assert complete_dataset.shape[1] == original_shape[1] + len(macro_variables)
+
+    return complete_dataset
+
 def generate_megafile():
     """
     Main function of this script, run if __main__
@@ -161,6 +200,9 @@ def generate_megafile():
 
     all_covid = iso_codes.merge(all_covid, on="location")
 
+    # Add macro variables
+    all_covid = add_macro_variables(all_covid)
+
     # Convert some variables to int in the final output, if and only if their NAs mean "zero"
     integer_vars = ["total_cases", "new_cases", "total_deaths", "new_deaths"]
     all_covid[integer_vars] = all_covid[integer_vars].fillna(0).astype(int)
@@ -169,7 +211,8 @@ def generate_megafile():
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
 
     # Store the last updated time
-    with open(os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt"), "w") as timestamp_file:
+    timestamp_filename = os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt")
+    with open(timestamp_filename, "w") as timestamp_file:
         timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
 
 
