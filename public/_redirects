@@ -1,5 +1,5 @@
-# Redirect to OWID page with info on source data
-/ https://ourworldindata.org/coronavirus-source-data 302
+# Redirect to GitHub repository documentation
+/ https://github.com/owid/covid-19-data/tree/master/public/data 302
 
 # Redirects for WHO data
 # We used to publish only WHO data before we switched to ECDC
