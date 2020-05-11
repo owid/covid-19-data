@@ -48,6 +48,8 @@ def main():
     if len(missing_from_mapping) > 0:
         raise Exception(f"Missing countries in mapping: {missing_from_mapping}")
 
+    cgrt = cgrt.drop(columns=["CountryName"])
+
     rename_dict = {
         "Date": "Year",
         "C1_School closing": "School closures (OxBSG)",
