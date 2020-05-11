@@ -42,12 +42,11 @@ def main():
 
     country_mapping = pd.read_csv(os.path.join(DATA_PATH, "bsg_country_standardised.csv"))
 
-    cgrt = (
-        country_mapping.merge(cgrt, on="CountryName")
-        .drop(columns=["CountryName"])
-    )
+    cgrt = country_mapping.merge(cgrt, on="CountryName", how="right")
 
-    assert cgrt.shape[0] == rows_before
+    missing_from_mapping = cgrt[cgrt["Country"].isna()]["CountryName"].unique()
+    if len(missing_from_mapping) > 0:
+        raise Exception(f"Missing countries in mapping: {missing_from_mapping}")
 
     rename_dict = {
         "Date": "Year",
