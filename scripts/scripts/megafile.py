@@ -160,6 +160,7 @@ def add_macro_variables(complete_dataset):
     for var, file in macro_variables.items():
         var_df = pd.read_csv(os.path.join(INPUT_DIR, file), usecols=["iso_code", var])
         var_df = var_df[-var_df["iso_code"].isnull()]
+        var_df[var] = var_df[var].round(3)
         complete_dataset = complete_dataset.merge(var_df, on="iso_code", how="left")
 
     assert complete_dataset.shape[0] == original_shape[0]
