@@ -15,10 +15,10 @@ Column|Description|Source
 `new_deaths_per_million`|New deaths attributed to COVID-19 per 1,000,000 people|European Centre for Disease Prevention and Control
 `total_tests`|Total tests for COVID-19|National government reports
 `new_tests`|New tests for COVID-19|National government reports
-`new_tests_smoothed`|New tests for COVID-19, smoothed by averaging daily figures over a rolling 7-day window|National government reports
+`new_tests_smoothed`|New tests for COVID-19 (7-day smoothed). For countries that don't report testing data on a daily basis, we assume that testing changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window|National government reports
 `total_tests_per_thousand`|Total tests for COVID-19 per 1,000 people|National government reports
 `new_tests_per_thousand`|New tests for COVID-19 per 1,000 people|National government reports
-`new_tests_smoothed_per_thousand`|New tests for COVID-19 per 1,000 people, smoothed by averaging daily figures over a rolling 7-day window|National government reports
+`new_tests_smoothed_per_thousand`|New tests for COVID-19 (7-day smoothed) per 1,000 people|National government reports
 `tests_units`|Units used by the location to report its testing data|National government reports
 `stringency_index`|Government Response Stringency Index: composite measure based on 9 response indicators including school closures, workplace closures, and travel bans, rescaled to a value from 0 to 100 (100 = strictest response)|Oxford COVID-19 Government Response Tracker, Blavatnik School of Government
 `population`|Population in 2020|United Nations, Department of Economic and Social Affairs, Population Division, World Population Prospects: The 2019 Revision
