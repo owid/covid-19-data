@@ -463,6 +463,22 @@ def inject_doubling_days(df):
     return df
 
 
+# ===============================
+# Week-on-week growth calculation
+# ===============================
+
+def inject_weekly_growth(df):
+    df[['weekly_cases', 'weekly_deaths']] = df[['location', 'new_cases', 'new_deaths']] \
+        .groupby('location')[['new_cases', 'new_deaths']].fillna(0) \
+        .rolling(window=7, min_periods=7, center=False) \
+        .sum()
+    df[['weekly_pct_growth_cases', 'weekly_pct_growth_deaths']] = df[['location', 'weekly_cases', 'weekly_deaths']] \
+        .groupby('location')[['weekly_cases', 'weekly_deaths']] \
+        .pct_change(periods=7, fill_method=None) \
+        .replace([np.inf, -np.inf], pd.NA) * 100
+    return df
+
+
 # ============
 # Export logic
 # ============
@@ -535,6 +551,11 @@ GRAPHER_COL_NAMES = {
     'doubling_days_total_cases_7_day_period': 'Doubling days of total confirmed cases (7 day period)',
     'doubling_days_total_deaths_3_day_period': 'Doubling days of total confirmed deaths (3 day period)',
     'doubling_days_total_deaths_7_day_period': 'Doubling days of total confirmed deaths (7 day period)',
+    # Weekly aggregates
+    'weekly_cases': 'Weekly cases',
+    'weekly_deaths': 'Weekly deaths',
+    'weekly_pct_growth_cases': 'Weekly case growth (%)',
+    'weekly_pct_growth_deaths': 'Weekly death growth (%)',
 }
 
 def existsin(l1, l2):

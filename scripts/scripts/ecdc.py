@@ -10,7 +10,7 @@ sys.path.append(CURRENT_DIR)
 import megafile
 from shared import load_population, load_owid_continents, inject_total_daily_cols, \
     inject_owid_aggregates, inject_per_million, inject_days_since, inject_cfr, inject_population, \
-    inject_rolling_avg, inject_exemplars, inject_doubling_days,  standard_export
+    inject_rolling_avg, inject_exemplars, inject_doubling_days, inject_weekly_growth, standard_export
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/ecdc/')
@@ -144,6 +144,7 @@ def load_standardized(filename):
     df = inject_owid_aggregates(df)
     df = discard_rows(df)
     df = inject_total_daily_cols(df, ['cases', 'deaths'])
+    df = inject_weekly_growth(df)
     df = inject_doubling_days(df)
     df = inject_per_million(df, [
         'new_cases',
