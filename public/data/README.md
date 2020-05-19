@@ -22,7 +22,7 @@ Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by
 
 The dataset follows a format of 1 row per location and date. The other columns represent all of our main variables related to confirmed cases, deaths, and testing, as well as other variables of potential interest.
 
-As of 9 May 2020, the columns are: `iso_code`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `total_tests_per_thousand`, `new_tests_per_thousand`, `tests_units`, `population`, `population_density`, `median_age`, `aged_65_older`, `aged_70_older`, `gdp_per_capita`, `extreme_poverty`, `cvd_death_rate`, `diabetes_prevalence`, `female_smokers`, `male_smokers`, `handwashing_facilities`, `hospital_beds_per_100k`
+As of 19 May 2020, the columns are: `iso_code`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `new_tests_smoothed`, `total_tests_per_thousand`, `new_tests_per_thousand`, `new_tests_smoothed_per_thousand`, `tests_units`, `stringency_index`, `population`, `population_density`, `median_age`, `aged_65_older`, `aged_70_older`, `gdp_per_capita`, `extreme_poverty`, `cvd_death_rate`, `diabetes_prevalence`, `female_smokers`, `male_smokers`, `handwashing_facilities`, `hospital_beds_per_100k`
 
 A full codebook is made available ([`owid-covid-data-codebook.md`](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md)), with a description and source for each variable in the dataset.
 
@@ -69,6 +69,6 @@ All of _Our World in Data_ is completely open access and all work is licensed un
 
 ## Authors
 
-This data has been collected, aggregated, and documented by Diana Beltekian, Daniel Gavrilov, Joe Hasell, Bobbie Macdonald, Edouard Mathieu, Esteban Ortiz-Ospina, Hannah Ritchie, Max Roser.
+This data has been collected, aggregated, and documented by Diana Beltekian, Daniel Gavrilov, Charlie Giattino, Joe Hasell, Bobbie Macdonald, Edouard Mathieu, Esteban Ortiz-Ospina, Hannah Ritchie, Max Roser.
 
 The mission of _Our World in Data_ is to make data and research on the world’s largest problems understandable and accessible. [Read more about our mission](https://ourworldindata.org/about).

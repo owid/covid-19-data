@@ -33,8 +33,10 @@ def get_testing():
             "Date",
             "Cumulative total",
             "Daily change in cumulative total",
+            "7-day smoothed daily change",
             "Cumulative total per thousand",
-            "Daily change in cumulative total per thousand"
+            "Daily change in cumulative total per thousand",
+            "7-day smoothed daily change per thousand"
         ]
     )
 
@@ -43,8 +45,10 @@ def get_testing():
         "date",
         "total_tests",
         "new_tests",
+        "new_tests_smoothed",
         "total_tests_per_thousand",
-        "new_tests_per_thousand"
+        "new_tests_per_thousand",
+        "new_tests_smoothed_per_thousand"
     ]
 
     testing[["total_tests_per_thousand", "new_tests_per_thousand"]] = testing[
@@ -93,7 +97,6 @@ def get_ecdc():
     data_frames = []
 
     # Process each file and melt it to vertical format
-    print()
     for ecdc_var in ecdc_variables:
 
         tmp = pd.read_csv(os.path.join(DATA_DIR, "../../public/data/ecdc/{}.csv".format(ecdc_var)))
@@ -168,30 +171,78 @@ def add_macro_variables(complete_dataset):
 
     return complete_dataset
 
+
+def get_cgrt():
+    """
+    Downloads the latest OxCGRT dataset from BSG's GitHub repository
+    Remaps BSG country names to OWID country names
+
+    Returns:
+        cgrt {dataframe}
+    """
+
+    cgrt = pd.read_csv(
+        "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv",
+        usecols=["CountryName", "Date", "StringencyIndex"]
+    )
+
+    cgrt.loc[:, "Date"] = pd.to_datetime(cgrt["Date"], format="%Y%m%d").dt.date.astype(str)
+
+    country_mapping = pd.read_csv(os.path.join(INPUT_DIR, "bsg/bsg_country_standardised.csv"))
+
+    cgrt = country_mapping.merge(cgrt, on="CountryName", how="right")
+
+    missing_from_mapping = cgrt[cgrt["Country"].isna()]["CountryName"].unique()
+    if len(missing_from_mapping) > 0:
+        raise Exception(f"Missing countries in OxCGRT mapping: {missing_from_mapping}")
+
+    cgrt = cgrt.drop(columns=["CountryName"])
+
+    rename_dict = {
+        "Country": "location",
+        "Date": "date",
+        "StringencyIndex": "stringency_index"
+    }
+
+    cgrt = cgrt.rename(columns=rename_dict)
+
+    return cgrt
+
+
 def generate_megafile():
     """
     Main function of this script, run if __main__
     Imports and processes the testing data
     Imports and processes the ECDC data
+    Imports and processes the OxCGRT data
     Merges testing and ECDC dataframes with an outer join
     Imports ISO 3166-1 alpha-3 codes
     Checks for missing ISO codes in the lookup file compared to OWID files
     Writes the 'megafile' to CSV and XLSX in /public/data/
     """
 
+    print("Fetching testing dataset…")
     testing = get_testing()
 
+    print("Fetching ECDC dataset…")
     ecdc = get_ecdc()
+
+    print("Fetching OxCGRT dataset…")
+    cgrt = get_cgrt()
 
     location_mismatch = set(testing.location).difference(set(ecdc.location))
     for loc in location_mismatch:
         print(f"<!> Location '{loc}' has testing data but is absent from ECDC data")
+    print()
 
     all_covid = (
-        ecdc.merge(testing, on=["date", "location"], how="outer")
+        ecdc
+        .merge(testing, on=["date", "location"], how="outer")
+        .merge(cgrt, on=["date", "location"], how="left")
         .sort_values(["location", "date"])
     )
 
+    print("Adding ISO codes…")
     iso_codes = pd.read_csv(os.path.join(INPUT_DIR, "iso/iso3166_1_alpha_3_codes.csv"))
 
     missing_iso = set(all_covid.location).difference(set(iso_codes.location))
@@ -208,6 +259,7 @@ def generate_megafile():
     integer_vars = ["total_cases", "new_cases", "total_deaths", "new_deaths"]
     all_covid[integer_vars] = all_covid[integer_vars].fillna(0).astype(int)
 
+    print("Writing files…")
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
 
@@ -215,6 +267,8 @@ def generate_megafile():
     timestamp_filename = os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt")
     with open(timestamp_filename, "w") as timestamp_file:
         timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
+
+    print("All done!")
 
 
 if __name__ == '__main__':
