@@ -14,13 +14,21 @@ CONTINENTS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/continents.csv')
 WB_INCOME_GROUPS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/wb/income_groups.csv')
 EU_COUNTRIES_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/eu_countries.csv')
 
-# Per population calculations
+
+# =========
+# Utilities
+# =========
 
 def _find_closest_year_row(df, year=2020):
     """Returns the row which is closest to the year specified (in either direction)"""
     df = df.copy()
     df['year'] = df['year'].sort_values(ascending=True)
     return df.loc[df['year'].map(lambda x: abs(x - 2020)).idxmin()]
+
+
+# ============
+# Loading data
+# ============
 
 def load_population(year=2020):
     df = pd.read_csv(
@@ -73,6 +81,11 @@ locations_by_wb_income_group = load_wb_income_groups() \
     .groupby('income_group')['location'].apply(list) \
     .to_dict()
 
+
+# ==============
+# Data injection
+# ==============
+
 # Useful for adding it to regions.csv and
 def inject_population(df):
     return df.merge(
@@ -92,7 +105,10 @@ def inject_per_million(df, measures):
         df[pop_measure] = series.round(decimals=3)
     return drop_population(df)
 
+
+# ===================================
 # OWID continents + custom aggregates
+# ===================================
 
 aggregates_spec = {
     'World': {
@@ -151,7 +167,10 @@ def inject_owid_aggregates(df):
         ]
     ], sort=True, ignore_index=True)
 
+
+# =======================
 # Total/daily calculation
+# =======================
 
 def inject_total_daily_cols(df, measures):
     # must sort in order to have the cumsum() and diff() in the right direction
@@ -165,6 +184,10 @@ def inject_total_daily_cols(df, measures):
             df[daily_col] = df.groupby('location')[total_col].diff().astype('Int64')
     return df
 
+
+# ======================
+# 'Days since' variables
+# ======================
 
 days_since_spec = {
     'days_since_100_total_cases': {
@@ -287,6 +310,11 @@ def inject_days_since(df):
         df = _inject_days_since_from_spec(df, col, spec)
     return df
 
+
+# ===================
+# Case Fatality Ratio
+# ===================
+
 def _apply_row_cfr_100(row):
     if pd.notnull(row['total_cases']) and row['total_cases'] >= 100:
         return row['cfr']
@@ -298,6 +326,11 @@ def inject_cfr(df):
     df['cfr'] = cfr_series.round(decimals=3)
     df['cfr_100_cases'] = df.apply(_apply_row_cfr_100, axis=1)
     return df
+
+
+# ================
+# Rolling averages
+# ================
 
 rolling_avg_spec = {
     'new_cases_3_day_avg_right': {
@@ -359,6 +392,11 @@ def inject_rolling_avg(df):
             .mean().round(decimals=5).reset_index(level=0, drop=True)
     return df
 
+
+# ===========================
+# Variables to find exemplars
+# ===========================
+
 def inject_exemplars(df):
     df = inject_population(df)
 
@@ -383,6 +421,11 @@ def inject_exemplars(df):
     df['5m_pop_and_21_days_since_100_cases_and_testing'] = df.apply(mapper_bool, axis=1)
 
     return drop_population(df)
+
+
+# =========================
+# Doubling days calculation
+# =========================
 
 growth_rates_spec = {
     'doubling_days_total_cases_3_day_period': {
@@ -419,7 +462,10 @@ def inject_growth_rates(df):
             [value_col].map(lambda pct: pct_change_to_doubling_days(pct, periods))
     return df
 
+
+# ============
 # Export logic
+# ============
 
 KEYS = ['date', 'location']
 
