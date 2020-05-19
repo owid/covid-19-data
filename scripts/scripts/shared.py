@@ -427,7 +427,7 @@ def inject_exemplars(df):
 # Doubling days calculation
 # =========================
 
-growth_rates_spec = {
+doubling_days_spec = {
     'doubling_days_total_cases_3_day_period': {
         'value_col': 'total_cases',
         'periods': 3
@@ -452,8 +452,8 @@ def pct_change_to_doubling_days(pct_change, periods):
         return np.round(doubling_days, decimals=2)
     return pd.NA
 
-def inject_growth_rates(df):
-    for col, spec in growth_rates_spec.items():
+def inject_doubling_days(df):
+    for col, spec in doubling_days_spec.items():
         value_col = spec['value_col']
         periods = spec['periods']
         df[col] = df.replace({ value_col: 0 }, pd.NA) \
