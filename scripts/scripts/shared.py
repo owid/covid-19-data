@@ -450,10 +450,10 @@ def inject_doubling_days(df):
 # ===============================
 
 def inject_weekly_growth(df):
-    df[['weekly_cases', 'weekly_deaths']] = df[['location', 'new_cases', 'new_deaths']] \
-        .groupby('location')[['new_cases', 'new_deaths']].fillna(0) \
+    df[['weekly_cases', 'weekly_deaths']] = df[['location', 'new_cases', 'new_deaths']].fillna(0) \
+        .groupby('location')[['new_cases', 'new_deaths']] \
         .rolling(window=7, min_periods=7, center=False) \
-        .sum()
+        .sum().reset_index(level=0, drop=True)
     df[['weekly_pct_growth_cases', 'weekly_pct_growth_deaths']] = df[['location', 'weekly_cases', 'weekly_deaths']] \
         .groupby('location')[['weekly_cases', 'weekly_deaths']] \
         .pct_change(periods=7, fill_method=None) \
