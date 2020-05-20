@@ -220,11 +220,6 @@ days_since_spec = {
         'value_threshold': 50,
         'positive_only': False
     },
-    'days_since_30_new_cases_7_day_avg': {
-        'value_col': 'new_cases_7_day_avg',
-        'value_threshold': 30,
-        'positive_only': False
-    },
     'days_since_10_new_deaths': {
         'value_col': 'new_deaths',
         'value_threshold': 10,
@@ -238,11 +233,6 @@ days_since_spec = {
     'days_since_3_new_deaths': {
         'value_col': 'new_deaths',
         'value_threshold': 3,
-        'positive_only': False
-    },
-    'days_since_5_new_deaths_7_day_avg': {
-        'value_col': 'new_deaths_7_day_avg',
-        'value_threshold': 5,
         'positive_only': False
     },
     'days_since_30_new_cases_7_day_avg_right': {
