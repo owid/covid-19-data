@@ -264,7 +264,7 @@ days_since_spec = {
 
 def _get_date_of_threshold(df, col, threshold):
     try:
-        return df[df[col] >= threshold]['date'].iloc[0]
+        return df['date'][df[col] >= threshold].iloc[0]
     except:
         return None
 
@@ -278,8 +278,8 @@ def _date_diff(a, b, positive_only=False):
 
 def _days_since(df, spec):
     ref_date = pd.to_datetime(_get_date_of_threshold(df, spec['value_col'], spec['value_threshold']))
-    return df['date'].map(lambda date: _date_diff(
-        pd.to_datetime(date), ref_date, spec['positive_only']
+    return pd.to_datetime(df['date']).map(lambda date: _date_diff(
+        date, ref_date, spec['positive_only']
     )).astype('Int64')
 
 def inject_days_since(df):
