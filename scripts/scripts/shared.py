@@ -220,6 +220,11 @@ days_since_spec = {
         'value_threshold': 50,
         'positive_only': False
     },
+    'days_since_30_new_cases_7_day_avg': {
+        'value_col': 'new_cases_7_day_avg',
+        'value_threshold': 30,
+        'positive_only': False
+    },
     'days_since_10_new_deaths': {
         'value_col': 'new_deaths',
         'value_threshold': 10,
@@ -233,6 +238,11 @@ days_since_spec = {
     'days_since_3_new_deaths': {
         'value_col': 'new_deaths',
         'value_threshold': 3,
+        'positive_only': False
+    },
+    'days_since_5_new_deaths_7_day_avg': {
+        'value_col': 'new_deaths_7_day_avg',
+        'value_threshold': 5,
         'positive_only': False
     },
     'days_since_30_new_cases_7_day_avg_right': {
@@ -271,25 +281,33 @@ def _get_date_of_threshold(df, col, threshold):
         return None
 
 def _date_diff(a, b, positive_only=False):
-    if pd.isnull(a) or pd.isnull(b):
-        return None
     diff = (a - b).days
     if positive_only and diff < 0:
         return None
     return diff
 
-def _days_since(df, spec):
-    ref_date = pd.to_datetime(_get_date_of_threshold(df, spec['value_col'], spec['value_threshold']))
-    return pd.to_datetime(df['date']).map(lambda date: _date_diff(
-        date, ref_date, spec['positive_only']
+def _inject_days_since(df, col, ref_date, positive_only):
+    df = df.copy()
+    df[col] = df['date'].map(lambda date: _date_diff(
+        pd.to_datetime(date), pd.to_datetime(ref_date), positive_only
     )).astype('Int64')
+    return df
+
+def _inject_days_since_by_location(df, col, spec):
+    date = _get_date_of_threshold(df, spec['value_col'], spec['value_threshold'])
+    if date is not None:
+        df = _inject_days_since(df, col, date, spec['positive_only'])
+    return df
+
+def _inject_days_since_from_spec(df, col, spec):
+    return pd.concat([
+        _inject_days_since_by_location(df_location, col, spec)
+        for loc, df_location in df.groupby('location')
+    ])
 
 def inject_days_since(df):
-    df = df.copy()
     for col, spec in days_since_spec.items():
-        df[col] = df[['date', 'location', spec['value_col']]].groupby('location') \
-            .apply(lambda df_group: _days_since(df_group, spec)) \
-            .reset_index(level=0, drop=True)
+        df = _inject_days_since_from_spec(df, col, spec)
     return df
 
 
