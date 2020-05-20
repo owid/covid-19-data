@@ -264,40 +264,30 @@ days_since_spec = {
 
 def _get_date_of_threshold(df, col, threshold):
     try:
-        df_gt_nth = df[df[col] >= threshold]
-        earliest = df.loc[pd.to_datetime(df_gt_nth['date']).idxmin()]
-        return earliest['date']
+        return df[df[col] >= threshold]['date'].iloc[0]
     except:
         return None
 
 def _date_diff(a, b, positive_only=False):
+    if pd.isnull(a) or pd.isnull(b):
+        return None
     diff = (a - b).days
     if positive_only and diff < 0:
         return None
     return diff
 
-def _inject_days_since(df, col, ref_date, positive_only):
-    df = df.copy()
-    df[col] = df['date'].map(lambda date: _date_diff(
-        pd.to_datetime(date), pd.to_datetime(ref_date), positive_only
+def _days_since(df, spec):
+    ref_date = pd.to_datetime(_get_date_of_threshold(df, spec['value_col'], spec['value_threshold']))
+    return df['date'].map(lambda date: _date_diff(
+        pd.to_datetime(date), ref_date, spec['positive_only']
     )).astype('Int64')
-    return df
-
-def _inject_days_since_by_location(df, col, spec):
-    date = _get_date_of_threshold(df, spec['value_col'], spec['value_threshold'])
-    if date is not None:
-        df = _inject_days_since(df, col, date, spec['positive_only'])
-    return df
-
-def _inject_days_since_from_spec(df, col, spec):
-    return pd.concat([
-        _inject_days_since_by_location(df_location, col, spec)
-        for loc, df_location in df.groupby('location')
-    ])
 
 def inject_days_since(df):
+    df = df.copy()
     for col, spec in days_since_spec.items():
-        df = _inject_days_since_from_spec(df, col, spec)
+        df[col] = df[['date', 'location', spec['value_col']]].groupby('location') \
+            .apply(lambda df_group: _days_since(df_group, spec)) \
+            .reset_index(level=0, drop=True)
     return df
 
 
