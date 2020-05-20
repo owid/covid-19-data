@@ -1,7 +1,7 @@
 """
 Merges the main COVID-19 testing dataset with each of the COVID-19 ECDC datasets into a 'megafile';
 - Follows a long format of 1 row per country & date, and variables as columns;
-- Published in CSV and XLSX formats;
+- Published in CSV, XLSX, and JSON formats;
 - Includes derived variables that can't be easily calculated, such as X per capita;
 - Includes country ISO codes in a column next to country names.
 """
@@ -10,6 +10,7 @@ import os
 from datetime import datetime
 from functools import reduce
 import pandas as pd
+import json
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
@@ -23,7 +24,7 @@ def get_testing():
     Checks for duplicated location/date couples, as we can have more than 1 time series per country
 
     Returns:
-    	testing {dataframe}
+        testing {dataframe}
     """
 
     testing = pd.read_csv(
@@ -80,7 +81,7 @@ def get_ecdc():
     Merges all ECDC dataframes into one with outer joins
 
     Returns:
-    	ecdc {dataframe}
+        ecdc {dataframe}
     """
 
     ecdc_variables = [
@@ -208,6 +209,29 @@ def get_cgrt():
 
     return cgrt
 
+def df_to_json(df, output):
+    """
+    DataFrame.to_dict will not yield an adequate json formatted file
+    due to NaN, hence fillna().
+    If this function could be written in Pandas as DataFrame.to_json()
+    with iso_code as the data name, please rewrite it.
+    To the best of my knowledge the best way to achieve a specific 
+    formatted data file is via expanding json:
+    {
+    “iso_code”{
+        name: value
+        }
+    }
+    """
+    dic = {}
+    df = df.fillna("")
+    for r in df.to_dict(orient='records'):
+        id = r['iso_code']
+        dic[id] = r
+
+    with open(output, 'w') as o:
+        o.write(json.dumps(dic, indent=4))
+
 
 def generate_megafile():
     """
@@ -262,6 +286,8 @@ def generate_megafile():
     print("Writing files…")
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
+    # Export to json
+    df_to_json(all_covid, os.path.join(DATA_DIR, "owid-covid-data.json"))
 
     # Store the last updated time
     timestamp_filename = os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt")
