@@ -40,16 +40,16 @@ def get_testing():
         ]
     )
 
-    testing.columns = [
-        "location",
-        "date",
-        "total_tests",
-        "new_tests",
-        "new_tests_smoothed",
-        "total_tests_per_thousand",
-        "new_tests_per_thousand",
-        "new_tests_smoothed_per_thousand"
-    ]
+    testing = testing.rename(columns={
+        "Entity": "location",
+        "Date": "date",
+        "Cumulative total": "total_tests",
+        "Daily change in cumulative total": "new_tests",
+        "7-day smoothed daily change": "new_tests_smoothed",
+        "Cumulative total per thousand": "total_tests_per_thousand",
+        "Daily change in cumulative total per thousand": "new_tests_per_thousand",
+        "7-day smoothed daily change per thousand": "new_tests_smoothed_per_thousand"
+    })
 
     testing[["total_tests_per_thousand", "new_tests_per_thousand"]] = testing[
         ["total_tests_per_thousand", "new_tests_per_thousand"]
