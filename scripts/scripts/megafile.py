@@ -6,11 +6,11 @@ Merges the main COVID-19 testing dataset with each of the COVID-19 ECDC datasets
 - Includes country ISO codes in a column next to country names.
 """
 
+import json
 import os
 from datetime import datetime
 from functools import reduce
 import pandas as pd
-import json
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
@@ -209,28 +209,27 @@ def get_cgrt():
 
     return cgrt
 
-def df_to_json(df, output):
-    """
-    DataFrame.to_dict will not yield an adequate json formatted file
-    due to NaN, hence fillna().
-    If this function could be written in Pandas as DataFrame.to_json()
-    with iso_code as the data name, please rewrite it.
-    To the best of my knowledge the best way to achieve a specific 
-    formatted data file is via expanding json:
-    {
-    “iso_code”{
-        name: value
-        }
-    }
-    """
-    dic = {}
-    df = df.fillna("")
-    for r in df.to_dict(orient='records'):
-        id = r['iso_code']
-        dic[id] = r
 
-    with open(output, 'w') as o:
-        o.write(json.dumps(dic, indent=4))
+def df_to_json(complete_dataset, output_path):
+    """
+    Writes a JSON version of the complete dataset, with the ISO code at the root.
+    NA values are dropped from the output.
+    """
+    megajson = {}
+
+    complete_dataset = complete_dataset.dropna(axis="rows", subset=["iso_code"])
+
+    for _, row in complete_dataset.iterrows():
+        row_iso = row["iso_code"]
+        row_dict = row.drop("iso_code").dropna().to_dict()
+
+        if row_iso not in megajson:
+            megajson[row_iso] = [row_dict]
+        else:
+            megajson[row_iso].append(row_dict)
+
+    with open(output_path, "w") as file:
+        file.write(json.dumps(megajson, indent=4))
 
 
 def generate_megafile():
@@ -283,10 +282,13 @@ def generate_megafile():
     integer_vars = ["total_cases", "new_cases", "total_deaths", "new_deaths"]
     all_covid[integer_vars] = all_covid[integer_vars].fillna(0).astype(int)
 
-    print("Writing files…")
+    print("Writing to CSV…")
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
+
+    print("Writing to XLSX…")
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
-    # Export to json
+
+    print("Writing to JSON…")
     df_to_json(all_covid, os.path.join(DATA_DIR, "owid-covid-data.json"))
 
     # Store the last updated time
