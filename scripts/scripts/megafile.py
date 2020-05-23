@@ -1,11 +1,12 @@
 """
 Merges the main COVID-19 testing dataset with each of the COVID-19 ECDC datasets into a 'megafile';
 - Follows a long format of 1 row per country & date, and variables as columns;
-- Published in CSV and XLSX formats;
+- Published in CSV, XLSX, and JSON formats;
 - Includes derived variables that can't be easily calculated, such as X per capita;
 - Includes country ISO codes in a column next to country names.
 """
 
+import json
 import os
 from datetime import datetime
 from functools import reduce
@@ -23,7 +24,7 @@ def get_testing():
     Checks for duplicated location/date couples, as we can have more than 1 time series per country
 
     Returns:
-    	testing {dataframe}
+        testing {dataframe}
     """
 
     testing = pd.read_csv(
@@ -82,7 +83,7 @@ def get_ecdc():
     Merges all ECDC dataframes into one with outer joins
 
     Returns:
-    	ecdc {dataframe}
+        ecdc {dataframe}
     """
 
     ecdc_variables = [
@@ -211,6 +212,28 @@ def get_cgrt():
     return cgrt
 
 
+def df_to_json(complete_dataset, output_path):
+    """
+    Writes a JSON version of the complete dataset, with the ISO code at the root.
+    NA values are dropped from the output.
+    """
+    megajson = {}
+
+    complete_dataset = complete_dataset.dropna(axis="rows", subset=["iso_code"])
+
+    for _, row in complete_dataset.iterrows():
+        row_iso = row["iso_code"]
+        row_dict = row.drop("iso_code").dropna().to_dict()
+
+        if row_iso not in megajson:
+            megajson[row_iso] = [row_dict]
+        else:
+            megajson[row_iso].append(row_dict)
+
+    with open(output_path, "w") as file:
+        file.write(json.dumps(megajson, indent=4))
+
+
 def generate_megafile():
     """
     Main function of this script, run if __main__
@@ -261,9 +284,14 @@ def generate_megafile():
     integer_vars = ["total_cases", "new_cases", "total_deaths", "new_deaths"]
     all_covid[integer_vars] = all_covid[integer_vars].fillna(0).astype(int)
 
-    print("Writing files…")
+    print("Writing to CSV…")
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
+
+    print("Writing to XLSX…")
     all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
+
+    print("Writing to JSON…")
+    df_to_json(all_covid, os.path.join(DATA_DIR, "owid-covid-data.json"))
 
     # Store the last updated time
     timestamp_filename = os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt")
