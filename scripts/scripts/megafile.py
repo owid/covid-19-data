@@ -51,8 +51,10 @@ def get_testing():
         "7-day smoothed daily change per thousand": "new_tests_smoothed_per_thousand"
     })
 
-    testing[["total_tests_per_thousand", "new_tests_per_thousand"]] = testing[
-        ["total_tests_per_thousand", "new_tests_per_thousand"]
+    testing[
+        ["total_tests_per_thousand", "new_tests_per_thousand", "new_tests_smoothed_per_thousand"]
+    ] = testing[
+        ["total_tests_per_thousand", "new_tests_per_thousand", "new_tests_smoothed_per_thousand"]
     ].round(3)
 
     # Split the original entity into location and testing units
