@@ -6,6 +6,8 @@ Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by
 
 🗂️ [Download our complete COVID-19 dataset (XLSX)](https://covid.ourworldindata.org/data/owid-covid-data.xlsx)
 
+🗂️ [Download our complete COVID-19 dataset (JSON)](https://covid.ourworldindata.org/data/owid-covid-data.json)
+
 **We will continue to publish up-to-date data on confirmed cases, deaths, and testing, throughout the duration of the COVID-19 pandemic.**
 
 
@@ -18,9 +20,11 @@ Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by
 
 ## The complete _Our World in Data_ COVID-19 dataset
 
-**Our complete COVID-19 dataset is available in [CSV](https://covid.ourworldindata.org/data/owid-covid-data.csv) and [XLSX](https://covid.ourworldindata.org/data/owid-covid-data.xlsx) format, and includes all of our historical data on the pandemic up to the date of publication.**
+**Our complete COVID-19 dataset is available in [CSV](https://covid.ourworldindata.org/data/owid-covid-data.csv), [XLSX](https://covid.ourworldindata.org/data/owid-covid-data.xlsx), and [JSON](https://covid.ourworldindata.org/data/owid-covid-data.json) formats, and includes all of our historical data on the pandemic up to the date of publication.**
 
-The dataset follows a format of 1 row per location and date. The other columns represent all of our main variables related to confirmed cases, deaths, and testing, as well as other variables of potential interest.
+The CSV and XLSX files follow a format of 1 row per location and date. The JSON version is split by country ISO code, with an array of daily records as the value.
+
+The variables represent all of our main data related to confirmed cases, deaths, and testing, as well as other variables of potential interest.
 
 As of 19 May 2020, the columns are: `iso_code`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `new_tests_smoothed`, `total_tests_per_thousand`, `new_tests_per_thousand`, `new_tests_smoothed_per_thousand`, `tests_units`, `stringency_index`, `population`, `population_density`, `median_age`, `aged_65_older`, `aged_70_older`, `gdp_per_capita`, `extreme_poverty`, `cvd_death_rate`, `diabetes_prevalence`, `female_smokers`, `male_smokers`, `handwashing_facilities`, `hospital_beds_per_100k`
 
@@ -45,6 +49,7 @@ If you are interested in the individual files that make up the complete dataset,
 - On 3 April 2020, we added country-level time series on COVID-19 tests.
 - On 16 April 2020, we made available a [complete dataset of all of our main variables](https://github.com/owid/covid-19-data/tree/master/public/data) related to confirmed cases, deaths, and tests.
 - On 25 April 2020, we added rows for "World" and "International" to our complete dataset. The `iso_code` column for "International" is blank, and for "World" we use `OWID_WRL`.
+- On 23 May 2020, we added a JSON version of our complete dataset.
 
 
 ## Data alterations
