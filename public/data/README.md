@@ -9,9 +9,9 @@ We will continue to publish up-to-date data on confirmed cases, deaths, and test
 
 ## Our data sources
 
-- **Confirmed cases and deaths:** our data comes from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) (ECDC). We discuss how and when the ECDC collects and publishes this data [here](https://ourworldindata.org/coronavirus-source-data). The cases & deaths dataset is updated daily. *Note: the number of cases and deaths reported by any institution—including the ECDC, the WHO, Johns Hopkins and others—on a given day does not represent the actual number of new cases on that date. This is because of the long reporting chain that exists between a new case and its inclusion in statistics.*
-- **Testing for COVID-19:** this data is collected by the _Our World in Data_ team from official reports; you can find the source information for every country and further details [in our post on COVID-19 testing](https://ourworldindata.org/covid-testing). The testing dataset is updated around twice a week.
-- **Other variables:** this data is collected from a variety of sources (United Nations, World Bank, Global Burden of Disease, etc.). More information is available in our codebook ([`owid-covid-data-codebook.md`](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md)).
+- **Confirmed cases and deaths:** our data comes from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) (ECDC). We discuss how and when the ECDC collects and publishes this data [here](https://ourworldindata.org/coronavirus-source-data). The cases & deaths dataset is updated daily. *Note: the number of cases or deaths reported by any institution—including the ECDC, the WHO, Johns Hopkins and others—on a given day does not represent the actual number on that date. This is because of the long reporting chain that exists between a new case/death and its inclusion in statistics.*
+- **Testing for COVID-19:** this data is collected by the _Our World in Data_ team from official reports; you can find further details in our post on COVID-19 testing, including our [checklist of questions to understand testing data](https://ourworldindata.org/coronavirus-testing#our-checklist-for-covid-19-testing-data), information on [geographical and temporal coverage](https://ourworldindata.org/coronavirus-testing#which-countries-do-we-have-testing-data-for), and [detailed country-by-country source information](https://ourworldindata.org/coronavirus-testing#our-checklist-for-covid-19-testing-data). The testing dataset is updated around twice a week.
+- **Other variables:** this data is collected from a variety of sources (United Nations, World Bank, Global Burden of Disease, Blavatnik School of Government, etc.). More information is available in [our codebook](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md).
 
 
 ## The complete _Our World in Data_ COVID-19 dataset
@@ -24,7 +24,7 @@ The variables represent all of our main data related to confirmed cases, deaths,
 
 As of 19 May 2020, the columns are: `iso_code`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `new_tests_smoothed`, `total_tests_per_thousand`, `new_tests_per_thousand`, `new_tests_smoothed_per_thousand`, `tests_units`, `stringency_index`, `population`, `population_density`, `median_age`, `aged_65_older`, `aged_70_older`, `gdp_per_capita`, `extreme_poverty`, `cvd_death_rate`, `diabetes_prevalence`, `female_smokers`, `male_smokers`, `handwashing_facilities`, `hospital_beds_per_100k`
 
-A full codebook is made available ([`owid-covid-data-codebook.md`](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md)), with a description and source for each variable in the dataset.
+A [full codebook](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md) is made available, with a description and source for each variable in the dataset.
 
 
 ## Additional files and information
@@ -45,6 +45,8 @@ If you are interested in the individual files that make up the complete dataset,
 - On 3 April 2020, we added country-level time series on COVID-19 tests.
 - On 16 April 2020, we made available a [complete dataset of all of our main variables](https://github.com/owid/covid-19-data/tree/master/public/data) related to confirmed cases, deaths, and tests.
 - On 25 April 2020, we added rows for "World" and "International" to our complete dataset. The `iso_code` column for "International" is blank, and for "World" we use `OWID_WRL`.
+- On 9 May 2020, we added new variables related to demographic, economic, and public health data to our complete dataset.
+- On 19 May 2020, we added 2 variables related to testing: `new_tests_smoothed` and `new_tests_smoothed_per_thousand`. To generate them we assume that testing changed equally on a daily basis over any periods in which no data was reported (as not all countries report testing data on a daily basis). This produces a complete series of daily figures, which is then averaged over a rolling 7-day window.
 - On 23 May 2020, we added a JSON version of our complete dataset.
 
 
