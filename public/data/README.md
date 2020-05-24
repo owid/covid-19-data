@@ -2,18 +2,14 @@
 
 Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by [_Our World in Data_](https://ourworldindata.org/coronavirus). It is updated daily and includes data on confirmed cases, deaths, and testing, as well as other variables of potential interest.
 
-🗂️ [Download our complete COVID-19 dataset (CSV)](https://covid.ourworldindata.org/data/owid-covid-data.csv)
+### 🗂️ Download our complete COVID-19 dataset : [CSV](https://covid.ourworldindata.org/data/owid-covid-data.csv) | [XLSX](https://covid.ourworldindata.org/data/owid-covid-data.xlsx) | [JSON](https://covid.ourworldindata.org/data/owid-covid-data.json)
 
-🗂️ [Download our complete COVID-19 dataset (XLSX)](https://covid.ourworldindata.org/data/owid-covid-data.xlsx)
-
-🗂️ [Download our complete COVID-19 dataset (JSON)](https://covid.ourworldindata.org/data/owid-covid-data.json)
-
-**We will continue to publish up-to-date data on confirmed cases, deaths, and testing, throughout the duration of the COVID-19 pandemic.**
+We will continue to publish up-to-date data on confirmed cases, deaths, and testing, throughout the duration of the COVID-19 pandemic.
 
 
 ## Our data sources
 
-- **Confirmed cases and deaths:** our data comes from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) (ECDC). We discuss how and when the ECDC collects and publishes this data [here](https://ourworldindata.org/coronavirus-source-data). The cases & deaths dataset is updated daily.
+- **Confirmed cases and deaths:** our data comes from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) (ECDC). We discuss how and when the ECDC collects and publishes this data [here](https://ourworldindata.org/coronavirus-source-data). The cases & deaths dataset is updated daily. *Note: the number of cases and deaths reported by any institution—including the ECDC, the WHO, Johns Hopkins and others—on a given day does not represent the actual number of new cases on that date. This is because of the long reporting chain that exists between a new case and its inclusion in statistics.*
 - **Testing for COVID-19:** this data is collected by the _Our World in Data_ team from official reports; you can find the source information for every country and further details [in our post on COVID-19 testing](https://ourworldindata.org/covid-testing). The testing dataset is updated around twice a week.
 - **Other variables:** this data is collected from a variety of sources (United Nations, World Bank, Global Burden of Disease, etc.). More information is available in our codebook ([`owid-covid-data-codebook.md`](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md)).
 
