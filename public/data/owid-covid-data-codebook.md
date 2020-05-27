@@ -34,3 +34,4 @@ Column|Description|Source
 `male_smokers`|Share of men who smoke, most recent year available|World Bank – World Development Indicators, sourced from World Health Organization, Global Health Observatory Data Repository
 `handwashing_facilities`|Share of the population with basic handwashing facilities on premises, most recent year available|United Nations Statistics Division
 `hospital_beds_per_100k`|Hospital beds per 100,000 people, most recent year available since 2010|OECD, Eurostat, World Bank, national government records and other sources
+'Total_active_cases'|total_active_cases of covid-19|National government reports
