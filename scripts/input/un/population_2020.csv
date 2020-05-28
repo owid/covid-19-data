@@ -1,6 +1,5 @@
 entity,iso_code,year,population
 Afghanistan,AFG,2020,38928341
-Africa,"",2020,1340598113
 Albania,ALB,2020,2877800
 Algeria,DZA,2020,43851043
 American Samoa,ASM,2020,55197
@@ -11,7 +10,6 @@ Antigua and Barbuda,ATG,2020,97928
 Argentina,ARG,2020,45195777
 Armenia,ARM,2020,2963234
 Aruba,ABW,2020,106766
-Asia,"",2020,4641054786
 Australia,AUS,2020,25499881
 Austria,AUT,2020,9006400
 Azerbaijan,AZE,2020,10139175
@@ -39,12 +37,8 @@ Cambodia,KHM,2020,16718971
 Cameroon,CMR,2020,26545864
 Canada,CAN,2020,37742157
 Cape Verde,CPV,2020,555988
-Caribbean,"",2020,43532374
 Cayman Islands,CYM,2020,65720
 Central African Republic,CAF,2020,4829764
-Central America,"",2020,179670186
-Central Asia,"",2020,74338926
-Central and Southern Asia,"",2020,2014708531
 Chad,TCD,2020,16425859
 Channel Islands,OWID_CIS,2020,173859
 Chile,CHL,2020,19116209
@@ -65,8 +59,6 @@ Denmark,DNK,2020,5792203
 Djibouti,DJI,2020,988002
 Dominica,DMA,2020,71991
 Dominican Republic,DOM,2020,10847904
-Eastern Africa,"",2020,445405578
-Eastern Europe,"",2020,293013210
 Ecuador,ECU,2020,17643060
 Egypt,EGY,2020,102334403
 El Salvador,SLV,2020,6486201
@@ -74,7 +66,6 @@ Equatorial Guinea,GNQ,2020,1402985
 Eritrea,ERI,2020,3546427
 Estonia,EST,2020,1326539
 Ethiopia,ETH,2020,114963583
-Europe,"",2020,747636045
 Faeroe Islands,FRO,2020,48865
 Falkland Islands,FLK,2020,3483
 Fiji,FJI,2020,896444
@@ -98,7 +89,7 @@ Guinea,GIN,2020,13132792
 Guinea-Bissau,GNB,2020,1967998
 Guyana,GUY,2020,786559
 Haiti,HTI,2020,11402533
-High-income countries,"",2020,1263092934
+High-income countries,,2020,1263092934
 Honduras,HND,2020,9904608
 Hong Kong,HKG,2020,7496988
 Hungary,HUN,2020,9660350
@@ -120,20 +111,19 @@ Kiribati,KIR,2020,119446
 Kosovo,OWID_KOS,2020,1932774
 Kuwait,KWT,2020,4270563
 Kyrgyzstan,KGZ,2020,6524191
-Land-locked Developing Countries (LLDC),"",2020,533143398
+Land-locked Developing Countries (LLDC),,2020,533143398
 Laos,LAO,2020,7275556
-Latin America and the Caribbean,"",2020,653962332
 Latvia,LVA,2020,1886202
-Least developed countries,"",2020,1057438163
+Least developed countries,,2020,1057438163
 Lebanon,LBN,2020,6825442
 Lesotho,LSO,2020,2142252
-Less developed regions,"",2020,6521494468
+Less developed regions,,2020,6521494468
 Liberia,LBR,2020,5057677
 Libya,LBY,2020,6871287
 Liechtenstein,LIE,2020,38137
 Lithuania,LTU,2020,2722291
-Low-income countries,"",2020,775710612
-Lower-middle-income countries,"",2020,3098235284
+Low-income countries,,2020,775710612
+Lower-middle-income countries,,2020,3098235284
 Luxembourg,LUX,2020,625976
 Macao,MAC,2020,649342
 Macedonia,MKD,2020,2083380
@@ -150,16 +140,15 @@ Mauritius,MUS,2020,1271767
 Mayotte,MYT,2020,272813
 Melanesia,OWID_MNS,2020,11122990
 Mexico,MEX,2020,128932753
-Micronesia,"",2020,548927
+Micronesia,,2020,548927
 Micronesia (country),FSM,2020,115021
-Middle Africa,"",2020,179595125
-Middle-income countries,"",2020,5753051615
+Middle-income countries,,2020,5753051615
 Moldova,MDA,2020,4033963
 Monaco,MCO,2020,39244
 Mongolia,MNG,2020,3278292
 Montenegro,MNE,2020,628062
 Montserrat,MSR,2020,4999
-More developed regions,"",2020,1273304261
+More developed regions,,2020,1273304261
 Morocco,MAR,2020,36910558
 Mozambique,MOZ,2020,31255435
 Myanmar,MMR,2020,54409794
@@ -173,15 +162,9 @@ Nicaragua,NIC,2020,6624554
 Niger,NER,2020,24206636
 Nigeria,NGA,2020,206139587
 Niue,NIU,2020,1618
-North America,"",2020,368869644
 North Korea,PRK,2020,25778815
-Northern Africa,"",2020,246232508
-Northern Africa and Western Asia,"",2020,525869282
-Northern America,"",2020,368869644
-Northern Europe,"",2020,106261271
 Northern Mariana Islands,MNP,2020,57557
 Norway,NOR,2020,5421242
-Oceania,"",2020,42677809
 Oman,OMN,2020,5106622
 Pakistan,PAK,2020,220892331
 Palau,PLW,2020,18092
@@ -200,7 +183,7 @@ Reunion,REU,2020,895308
 Romania,ROU,2020,19237682
 Russia,RUS,2020,145934460
 Rwanda,RWA,2020,12952209
-Saint Barthlemy,"",2020,9885
+Saint Barthlemy,,2020,9885
 Saint Helena,SHN,2020,6071
 Saint Kitts and Nevis,KNA,2020,53192
 Saint Lucia,LCA,2020,183629
@@ -213,27 +196,20 @@ Sao Tome and Principe,STP,2020,219161
 Saudi Arabia,SAU,2020,34813867
 Senegal,SEN,2020,16743930
 Serbia,SRB,2020,6804596
-Serbia (including Kosovo),"",2020,8737370
+Serbia (including Kosovo),,2020,8737370
 Seychelles,SYC,2020,98340
 Sierra Leone,SLE,2020,7976985
 Singapore,SGP,2020,5850343
 Sint Maarten (Dutch part),SXM,2020,42882
 Slovakia,SVK,2020,5459643
 Slovenia,SVN,2020,2078932
-Small Island Developing States (SIDS),"",2020,72076098
 Solomon Islands,SLB,2020,686878
 Somalia,SOM,2020,15893219
 South Africa,ZAF,2020,59308690
-South America,"",2020,430759772
 South Korea,KOR,2020,51269183
 South Sudan,SSD,2020,11193729
-South-Eastern Asia,"",2020,668619854
-Southern Africa,"",2020,67503647
-Southern Asia,"",2020,1940369605
-Southern Europe,"",2020,152215243
 Spain,ESP,2020,46754783
 Sri Lanka,LKA,2020,21413250
-Sub-Saharan Africa,"",2020,1094365605
 Sudan,SDN,2020,43849269
 Suriname,SUR,2020,586634
 Swaziland,SWZ,2020,1160164
@@ -260,7 +236,7 @@ United Arab Emirates,ARE,2020,9890400
 United Kingdom,GBR,2020,67886004
 United States,USA,2020,331002647
 United States Virgin Islands,VIR,2020,104423
-Upper-middle-income countries,"",2020,2654816331
+Upper-middle-income countries,,2020,2654816331
 Uruguay,URY,2020,3473727
 Uzbekistan,UZB,2020,33469199
 Vanuatu,VUT,2020,307150
@@ -268,9 +244,6 @@ Vatican,VAT,2020,809
 Venezuela,VEN,2020,28435943
 Vietnam,VNM,2020,97338583
 Wallis and Futuna,WLF,2020,11246
-Western Africa,"",2020,401861255
-Western Asia,"",2020,279636774
-Western Europe,"",2020,196146321
 Western Sahara,ESH,2020,597330
 World,OWID_WRL,2020,7794798729
 Yemen,YEM,2020,29825968
