@@ -458,6 +458,21 @@ def inject_weekly_growth(df):
         .replace([np.inf, -np.inf], pd.NA) * 100
     return df
 
+# ===============================
+# Biweekly growth calculation
+# ===============================
+
+def inject_biweekly_growth(df):
+    df[['biweekly_cases', 'biweekly_deaths']] = df[['location', 'new_cases', 'new_deaths']].fillna(0) \
+        .groupby('location')[['new_cases', 'new_deaths']] \
+        .rolling(window=14, min_periods=14, center=False) \
+        .sum().reset_index(level=0, drop=True)
+    df[['biweekly_pct_growth_cases', 'biweekly_pct_growth_deaths']] = df[['location', 'biweekly_cases', 'biweekly_deaths']] \
+        .groupby('location')[['biweekly_cases', 'biweekly_deaths']] \
+        .pct_change(periods=14, fill_method=None) \
+        .replace([np.inf, -np.inf], pd.NA) * 100
+    return df
+
 
 # ============
 # Export logic
@@ -536,6 +551,11 @@ GRAPHER_COL_NAMES = {
     'weekly_deaths': 'Weekly deaths',
     'weekly_pct_growth_cases': 'Weekly case growth (%)',
     'weekly_pct_growth_deaths': 'Weekly death growth (%)',
+    # Biweekly aggregates
+    'biweekly_cases': 'Bi-weekly cases',
+    'biweekly_deaths': 'Bi-weekly deaths',
+    'biweekly_pct_growth_cases': 'Bi-weekly case growth (%)',
+    'biweekly_pct_growth_deaths': 'Bi-weekly death growth (%)',
 }
 
 def existsin(l1, l2):
