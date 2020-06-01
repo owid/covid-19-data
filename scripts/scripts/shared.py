@@ -443,35 +443,32 @@ def inject_doubling_days(df):
     return df
 
 
-# ===============================
-# Week-on-week growth calculation
-# ===============================
+# ====================================
+# Weekly & biweekly growth calculation
+# ====================================
+
+def _inject_growth(df, prefix, periods):
+    cases_colname = '%s_cases' % prefix
+    deaths_colname = '%s_deaths' % prefix
+    cases_growth_colname = '%s_pct_growth_cases' % prefix
+    deaths_growth_colname = '%s_pct_growth_deaths' % prefix
+
+    df[[cases_colname, deaths_colname]] = df[['location', 'new_cases', 'new_deaths']].fillna(0) \
+        .groupby('location')[['new_cases', 'new_deaths']] \
+        .rolling(window=periods, min_periods=periods, center=False) \
+        .sum().reset_index(level=0, drop=True)
+    df[[cases_growth_colname, deaths_growth_colname]] = df[['location', cases_colname, deaths_colname]] \
+        .groupby('location')[[cases_colname, deaths_colname]] \
+        .pct_change(periods=periods, fill_method=None) \
+        .replace([np.inf, -np.inf], pd.NA) * 100
+
+    return df
 
 def inject_weekly_growth(df):
-    df[['weekly_cases', 'weekly_deaths']] = df[['location', 'new_cases', 'new_deaths']].fillna(0) \
-        .groupby('location')[['new_cases', 'new_deaths']] \
-        .rolling(window=7, min_periods=7, center=False) \
-        .sum().reset_index(level=0, drop=True)
-    df[['weekly_pct_growth_cases', 'weekly_pct_growth_deaths']] = df[['location', 'weekly_cases', 'weekly_deaths']] \
-        .groupby('location')[['weekly_cases', 'weekly_deaths']] \
-        .pct_change(periods=7, fill_method=None) \
-        .replace([np.inf, -np.inf], pd.NA) * 100
-    return df
-
-# ===============================
-# Biweekly growth calculation
-# ===============================
+    return _inject_growth(df, 'weekly', 7)
 
 def inject_biweekly_growth(df):
-    df[['biweekly_cases', 'biweekly_deaths']] = df[['location', 'new_cases', 'new_deaths']].fillna(0) \
-        .groupby('location')[['new_cases', 'new_deaths']] \
-        .rolling(window=14, min_periods=14, center=False) \
-        .sum().reset_index(level=0, drop=True)
-    df[['biweekly_pct_growth_cases', 'biweekly_pct_growth_deaths']] = df[['location', 'biweekly_cases', 'biweekly_deaths']] \
-        .groupby('location')[['biweekly_cases', 'biweekly_deaths']] \
-        .pct_change(periods=14, fill_method=None) \
-        .replace([np.inf, -np.inf], pd.NA) * 100
-    return df
+    return _inject_growth(df, 'biweekly', 14)
 
 
 # ============
