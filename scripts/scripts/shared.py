@@ -549,10 +549,10 @@ GRAPHER_COL_NAMES = {
     'weekly_pct_growth_cases': 'Weekly case growth (%)',
     'weekly_pct_growth_deaths': 'Weekly death growth (%)',
     # Biweekly aggregates
-    'biweekly_cases': 'Bi-weekly cases',
-    'biweekly_deaths': 'Bi-weekly deaths',
-    'biweekly_pct_growth_cases': 'Bi-weekly case growth (%)',
-    'biweekly_pct_growth_deaths': 'Bi-weekly death growth (%)',
+    'biweekly_cases': 'Biweekly cases',
+    'biweekly_deaths': 'Biweekly deaths',
+    'biweekly_pct_growth_cases': 'Biweekly case growth (%)',
+    'biweekly_pct_growth_deaths': 'Biweekly death growth (%)',
 }
 
 def existsin(l1, l2):
