@@ -3,6 +3,7 @@
 Column|Description|Source
 ------|-----------|------
 `iso_code`|ISO 3166-1 alpha-3 – three-letter country codes|International Organization for Standardization
+`continent`|Continent of the geographical location|Our World in Data
 `location`|Geographical location|Our World in Data
 `date`|Date of observation|Our World in Data
 `total_cases`|Total confirmed cases of COVID-19|European Centre for Disease Prevention and Control

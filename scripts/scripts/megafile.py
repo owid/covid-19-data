@@ -267,6 +267,7 @@ def generate_megafile():
         .sort_values(["location", "date"])
     )
 
+    # Add ISO codes
     print("Adding ISO codes…")
     iso_codes = pd.read_csv(os.path.join(INPUT_DIR, "iso/iso3166_1_alpha_3_codes.csv"))
 
@@ -276,6 +277,17 @@ def generate_megafile():
         raise Exception("Missing ISO code for some locations")
 
     all_covid = iso_codes.merge(all_covid, on="location")
+
+    # Add continents
+    print("Adding continents…")
+    continents = pd.read_csv(
+        os.path.join(INPUT_DIR, "owid/continents.csv"),
+        names=["_1", "iso_code", "_2", "continent"],
+        usecols=["iso_code", "continent"],
+        header=0
+    )
+
+    all_covid = continents.merge(all_covid, on="iso_code", how="right")
 
     # Add macro variables
     all_covid = add_macro_variables(all_covid)

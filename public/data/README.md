@@ -22,7 +22,7 @@ The CSV and XLSX files follow a format of 1 row per location and date. The JSON 
 
 The variables represent all of our main data related to confirmed cases, deaths, and testing, as well as other variables of potential interest.
 
-As of 19 May 2020, the columns are: `iso_code`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `new_tests_smoothed`, `total_tests_per_thousand`, `new_tests_per_thousand`, `new_tests_smoothed_per_thousand`, `tests_units`, `stringency_index`, `population`, `population_density`, `median_age`, `aged_65_older`, `aged_70_older`, `gdp_per_capita`, `extreme_poverty`, `cvd_death_rate`, `diabetes_prevalence`, `female_smokers`, `male_smokers`, `handwashing_facilities`, `hospital_beds_per_thousand`
+As of 4 June 2020, the columns are: `iso_code`, `continent`, `location`, `date`, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, `total_cases_per_million`, `new_cases_per_million`, `total_deaths_per_million`, `new_deaths_per_million`, `total_tests`, `new_tests`, `new_tests_smoothed`, `total_tests_per_thousand`, `new_tests_per_thousand`, `new_tests_smoothed_per_thousand`, `tests_units`, `stringency_index`, `population`, `population_density`, `median_age`, `aged_65_older`, `aged_70_older`, `gdp_per_capita`, `extreme_poverty`, `cvd_death_rate`, `diabetes_prevalence`, `female_smokers`, `male_smokers`, `handwashing_facilities`, `hospital_beds_per_thousand`
 
 A [full codebook](https://github.com/owid/covid-19-data/tree/master/public/data/owid-covid-data-codebook.md) is made available, with a description and source for each variable in the dataset.
 
@@ -48,6 +48,7 @@ If you are interested in the individual files that make up the complete dataset,
 - On 9 May 2020, we added new variables related to demographic, economic, and public health data to our complete dataset.
 - On 19 May 2020, we added 2 variables related to testing: `new_tests_smoothed` and `new_tests_smoothed_per_thousand`. To generate them we assume that testing changed equally on a daily basis over any periods in which no data was reported (as not all countries report testing data on a daily basis). This produces a complete series of daily figures, which is then averaged over a rolling 7-day window.
 - On 23 May 2020, we added a JSON version of our complete dataset.
+- On 4 June 2020, we added a `continent` column to our complete dataset.
 
 
 ## Data alterations
