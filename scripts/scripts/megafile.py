@@ -292,10 +292,6 @@ def generate_megafile():
     # Add macro variables
     all_covid = add_macro_variables(all_covid)
 
-    # Convert some variables to int in the final output, if and only if their NAs mean "zero"
-    integer_vars = ["total_cases", "new_cases", "total_deaths", "new_deaths"]
-    all_covid[integer_vars] = all_covid[integer_vars].fillna(0).astype(int)
-
     print("Writing to CSV…")
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
 
