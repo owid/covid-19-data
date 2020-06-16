@@ -160,7 +160,8 @@ def add_macro_variables(complete_dataset):
         "female_smokers": "wb/female_smokers.csv",
         "male_smokers": "wb/male_smokers.csv",
         "handwashing_facilities": "un/handwashing_facilities.csv",
-        "hospital_beds_per_thousand": "owid/hospital_beds.csv"
+        "hospital_beds_per_thousand": "owid/hospital_beds.csv",
+        "life_expectancy": "owid/life_expectancy.csv"
     }
 
     for var, file in macro_variables.items():
