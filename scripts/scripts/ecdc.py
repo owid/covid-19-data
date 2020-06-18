@@ -46,13 +46,15 @@ def read_file(filename):
             filepath,
             # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
             keep_default_na=False,
+            na_values=[""],
             encoding="UTF-8"
         )
     else:
         return pd.read_excel(
             filepath,
             # Namibia has 'NA' 2-letter code, we don't want that to be <NA>
-            keep_default_na=False
+            keep_default_na=False,
+            na_values=[""]
         )
 
 def load_data(filename):
