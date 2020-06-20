@@ -11,6 +11,8 @@ import os
 from datetime import datetime
 from functools import reduce
 import pandas as pd
+import numpy as np
+
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
@@ -105,13 +107,17 @@ def get_ecdc():
         tmp = pd.read_csv(os.path.join(DATA_DIR, "../../public/data/ecdc/{}.csv".format(ecdc_var)))
 
         for country in tmp.columns[2:]:
-            if tmp[country].values[-2] > 0 and tmp[country].values[-1] > 100 \
-                and tmp[country].values[-1] / tmp[country].values[-2] > 3:
-                print("<!> Sudden increase in {}: {} from {} to {}".format(
+
+            country_vals = tmp[country].dropna().values
+            previous_RA = country_vals[-8:-1].mean()
+            new_RA = country_vals[-7:].mean()
+
+            if new_RA > 1.2 * previous_RA and new_RA > 100:
+                print("<!> Sudden increase of {} in {}: {} (7-day average was {})".format(
                     ecdc_var,
                     country,
-                    int(tmp[country].values[-2]),
-                    int(tmp[country].values[-1])
+                    int(country_vals[-1]),
+                    int(previous_RA)
                 ))
 
         country_cols = list(tmp.columns)
