@@ -18,7 +18,7 @@ We will continue to publish up-to-date data on confirmed cases, deaths, and test
 
 **Our complete COVID-19 dataset is available in [CSV](https://covid.ourworldindata.org/data/owid-covid-data.csv), [XLSX](https://covid.ourworldindata.org/data/owid-covid-data.xlsx), and [JSON](https://covid.ourworldindata.org/data/owid-covid-data.json) formats, and includes all of our historical data on the pandemic up to the date of publication.**
 
-The CSV and XLSX files follow a format of 1 row per location and date. The JSON version is split by country ISO code, with an array of daily records as the value.
+The CSV and XLSX files follow a format of 1 row per location and date. The JSON version is split by country ISO code, with static variables and an array of daily records.
 
 The variables represent all of our main data related to confirmed cases, deaths, and testing, as well as other variables of potential interest.
 
@@ -49,6 +49,7 @@ If you are interested in the individual files that make up the complete dataset,
 - On 19 May 2020, we added 2 variables related to testing: `new_tests_smoothed` and `new_tests_smoothed_per_thousand`. To generate them we assume that testing changed equally on a daily basis over any periods in which no data was reported (as not all countries report testing data on a daily basis). This produces a complete series of daily figures, which is then averaged over a rolling 7-day window.
 - On 23 May 2020, we added a JSON version of our complete dataset.
 - On 4 June 2020, we added a `continent` column to our complete dataset.
+- On 1 July 2020, we changed the format of the JSON version of our complete dataset to normalize the data and reduce file size.
 
 
 ## Data alterations
