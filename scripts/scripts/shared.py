@@ -479,7 +479,9 @@ KEYS = ['date', 'location']
 
 BASE_MEASURES = [
     'new_cases', 'new_deaths',
-    'total_cases', 'total_deaths'
+    'total_cases', 'total_deaths',
+    'weekly_cases', 'weekly_deaths',
+    'biweekly_cases', 'biweekly_deaths'
 ]
 
 PER_MILLION_MEASURES = [
@@ -553,6 +555,12 @@ GRAPHER_COL_NAMES = {
     'biweekly_deaths': 'Biweekly deaths',
     'biweekly_pct_growth_cases': 'Biweekly case growth (%)',
     'biweekly_pct_growth_deaths': 'Biweekly death growth (%)',
+    # Weekly aggregates per capita
+    'weekly_cases_per_million': 'Weekly cases per million people',
+    'weekly_deaths_per_million': 'Weekly deaths per million people',
+    # Biweekly aggregates per capita
+    'biweekly_cases_per_million': 'Biweekly cases per million people',
+    'biweekly_deaths_per_million': 'Biweekly deaths per million people',
 }
 
 def existsin(l1, l2):

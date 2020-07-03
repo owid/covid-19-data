@@ -153,7 +153,11 @@ def load_standardized(filename):
         'new_cases',
         'new_deaths',
         'total_cases',
-        'total_deaths'
+        'total_deaths',
+        'weekly_cases',
+        'weekly_deaths',
+        'biweekly_cases',
+        'biweekly_deaths'
     ])
     df = inject_cfr(df)
     df = inject_rolling_avg(df)
