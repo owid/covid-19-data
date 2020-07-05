@@ -104,11 +104,14 @@ def get_ecdc():
     # Process each file and melt it to vertical format
     for ecdc_var in ecdc_variables:
 
-        tmp = pd.read_csv(os.path.join(DATA_DIR, "../../public/data/ecdc/{}.csv".format(ecdc_var)))
+        tmp = pd.read_csv(os.path.join(DATA_DIR, f"../../public/data/ecdc/{ecdc_var}.csv"))
 
         for country in tmp.columns[2:]:
 
             country_vals = tmp[country].dropna().values
+            if len(country_vals) == 0:
+                continue
+
             previous_RA = country_vals[-8:-1].mean()
             new_RA = country_vals[-7:].mean()
 
@@ -119,6 +122,11 @@ def get_ecdc():
                     int(country_vals[-1]),
                     int(previous_RA)
                 ))
+
+            new_val = country_vals[-1]
+
+            if new_val < 0:
+                print(f"<!> Negative number of {ecdc_var} in {country}: {new_val}")
 
         country_cols = list(tmp.columns)
         country_cols.remove("date")
@@ -239,19 +247,18 @@ def generate_megafile():
     Writes the 'megafile' to CSV and XLSX in /public/data/
     """
 
-    print("Fetching testing dataset…")
+    print("\nFetching testing dataset…")
     testing = get_testing()
 
-    print("Fetching ECDC dataset…")
+    print("\nFetching ECDC dataset…")
     ecdc = get_ecdc()
-
-    print("Fetching OxCGRT dataset…")
-    cgrt = get_cgrt()
 
     location_mismatch = set(testing.location).difference(set(ecdc.location))
     for loc in location_mismatch:
         print(f"<!> Location '{loc}' has testing data but is absent from ECDC data")
-    print()
+
+    print("\nFetching OxCGRT dataset…")
+    cgrt = get_cgrt()
 
     all_covid = (
         ecdc
