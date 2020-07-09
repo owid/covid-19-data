@@ -22,6 +22,11 @@ RELEASES_PATH = os.path.join(INPUT_PATH, 'releases')
 ERROR = colored("[Error]", 'red')
 WARNING = colored("[Warning]", 'yellow')
 
+DATASET_NAME = "COVID-2019 - ECDC (2020)"
+
+def print_err(*args, **kwargs):
+    return print(*args, file=sys.stderr, **kwargs)
+
 # Used to be there until 27 March 2020
 # And back again from 28 March... :?
 def download_xlsx(last_n=2):
@@ -95,15 +100,15 @@ def check_data_correctness(filename):
     df_merged = _load_merged(filename)
     df_uniq = df_merged[['countriesAndTerritories', 'geoId', 'location']].drop_duplicates()
     if df_uniq['location'].isnull().any():
-        print("\n" + ERROR + " Could not find OWID names for:")
-        print(df_uniq[df_uniq['location'].isnull()])
+        print_err("\n" + ERROR + " Could not find OWID names for:")
+        print_err(df_uniq[df_uniq['location'].isnull()])
         csv_path = os.path.join(TMP_PATH, 'ecdc.csv')
         os.system('mkdir -p %s' % os.path.abspath(TMP_PATH))
         df_uniq[['countriesAndTerritories']] \
             .drop_duplicates() \
             .rename(columns={'countriesAndTerritories': 'Country'}) \
             .to_csv(csv_path, index=False)
-        print("\nSaved CSV file to be standardized at %s. \nRun it through the OWID standardizer and save in %s" % (
+        print_err("\nSaved CSV file to be standardized at %s. \nRun it through the OWID standardizer and save in %s" % (
             colored(os.path.abspath(csv_path), 'magenta'),
             colored(os.path.abspath(LOCATIONS_CSV_PATH), 'magenta')
         ))
@@ -111,10 +116,10 @@ def check_data_correctness(filename):
     # Drop missing locations for the further checks – that error is addressed above
     df_merged = df_merged.dropna(subset=['location'])
     if df_merged.duplicated(subset=['dateRep', 'location']).any():
-        print("\n" + ERROR + " Found duplicate rows:")
-        print(df_merged[df_merged.duplicated(subset=['dateRep', 'location'])])
-        print("\nPlease " + colored("fix or remove the duplicate rows", 'magenta') + " in the Excel file, and then save it again but under a new name, e.g. 2020-03-20-modified.xlsx")
-        print("Also please " + colored("note down any changes you made", 'magenta') + " in %s" % os.path.abspath(os.path.join(INPUT_PATH, 'NOTES.md')))
+        print_err("\n" + ERROR + " Found duplicate rows:")
+        print_err(df_merged[df_merged.duplicated(subset=['dateRep', 'location'])])
+        print_err("\nPlease " + colored("fix or remove the duplicate rows", 'magenta') + " in the Excel file, and then save it again but under a new name, e.g. 2020-03-20-modified.xlsx")
+        print_err("Also please " + colored("note down any changes you made", 'magenta') + " in %s" % os.path.abspath(os.path.join(INPUT_PATH, 'NOTES.md')))
         errors += 1
     df_pop = load_population()
     pop_entity_diff = set(df_uniq['location']) - set(df_pop['location'])
@@ -184,53 +189,67 @@ def export(filename):
     return standard_export(
         load_standardized(filename),
         OUTPUT_PATH,
-        "COVID-2019 - ECDC (2020)"
+        DATASET_NAME
     )
 
-if __name__ == '__main__':
+def run(filename=None, skip_download=False):
     import inquirer
     from glob import glob
 
-    print("\nAttempting to download latest report...")
-    download_xlsx()
-    download_csv()
+    if not skip_download:
+        print("\nAttempting to download latest report...")
+        download_xlsx()
+        download_csv()
 
-    print(
-"""\n[Note] If you don't see the latest report in the options below, please download the Excel file from:
-https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide
-Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
+    if filename is None:
+        print(
+    """\n[Note] If you don't see the latest report in the options below, please download the Excel file from:
+    https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide
+    Then move it to the folder %s\n""" % os.path.abspath(RELEASES_PATH))
 
-    filenames = glob(os.path.join(RELEASES_PATH, '*.xlsx'))
-    filenames.extend(glob(os.path.join(RELEASES_PATH, '*.xls')))
-    filenames.extend(glob(os.path.join(RELEASES_PATH, '*.csv')))
-    filenames = list(
-        filter(
-            lambda name: not name.startswith("~"),
-            map(os.path.basename, sorted(filenames, reverse=True))
+        filenames = glob(os.path.join(RELEASES_PATH, '*.xlsx'))
+        filenames.extend(glob(os.path.join(RELEASES_PATH, '*.xls')))
+        filenames.extend(glob(os.path.join(RELEASES_PATH, '*.csv')))
+        filenames = list(
+            filter(
+                lambda name: not name.startswith("~"),
+                map(os.path.basename, sorted(filenames, reverse=True))
+            )
         )
-    )
 
-    answers = inquirer.prompt([
-        inquirer.List('filename',
-                  message='Which release to use?',
-                  choices=filenames,
-                  default=0)
-    ])
+        answers = inquirer.prompt([
+            inquirer.List('filename',
+                    message='Which release to use?',
+                    choices=filenames,
+                    default=0)
+        ])
 
-    filename = answers['filename']
+        filename = answers['filename']
 
     if check_data_correctness(filename):
         print("Data correctness check %s.\n" % colored("passed", 'green'))
     else:
-        print("Data correctness check %s.\n" % colored("failed", 'red'))
+        print_err("Data correctness check %s.\n" % colored("failed", 'red'))
         sys.exit(1)
 
     if export(filename):
         print("Successfully exported CSVs to %s\n" % colored(os.path.abspath(OUTPUT_PATH), 'magenta'))
     else:
-        print("ECDC Export failed.\n")
+        print_err("ECDC Export failed.\n")
         sys.exit(1)
 
     print("Generating megafile…")
     megafile.generate_megafile()
     print("Megafile is ready.")
+
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='Run ECDC update script')
+    parser.add_argument('filename', nargs='?', default=None, help="CSV/XLSX filename")
+    parser.add_argument('-s', '--skip-download', action='store_true', help="Skip downloading files from the ECDC website")
+    args = parser.parse_args()
+    run(
+        filename=args.filename,
+        skip_download=args.skip_download
+    )
