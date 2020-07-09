@@ -16,7 +16,9 @@ prompt-tool-kit==1.0.14
 prompt-toolkit==3.0.4
 ptyprocess==0.6.0
 Pygments==2.6.1
+PyMySQL==0.9.3
 python-dateutil==2.8.1
+python-dotenv==0.14.0
 python-editor==1.0.4
 pytz==2019.3
 readchar==2.0.1
@@ -24,5 +26,6 @@ regex==2020.2.20
 six==1.14.0
 termcolor==1.1.0
 traitlets==4.3.3
+Unidecode==1.1.1
 wcwidth==0.1.8
 xlrd==1.2.0
