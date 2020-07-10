@@ -103,31 +103,7 @@ def get_ecdc():
 
     # Process each file and melt it to vertical format
     for ecdc_var in ecdc_variables:
-
         tmp = pd.read_csv(os.path.join(DATA_DIR, f"../../public/data/ecdc/{ecdc_var}.csv"))
-
-        for country in tmp.columns[2:]:
-
-            country_vals = tmp[country].dropna().values
-            if len(country_vals) == 0:
-                continue
-
-            previous_RA = country_vals[-8:-1].mean()
-            new_RA = country_vals[-7:].mean()
-
-            if new_RA > 1.2 * previous_RA and new_RA > 100:
-                print("<!> Sudden increase of {} in {}: {} (7-day average was {})".format(
-                    ecdc_var,
-                    country,
-                    int(country_vals[-1]),
-                    int(previous_RA)
-                ))
-
-            new_val = country_vals[-1]
-
-            if new_val < 0:
-                print(f"<!> Negative number of {ecdc_var} in {country}: {new_val}")
-
         country_cols = list(tmp.columns)
         country_cols.remove("date")
         tmp = (
@@ -220,7 +196,7 @@ def df_to_json(complete_dataset, output_path, static_columns):
     complete_dataset = complete_dataset.dropna(axis="rows", subset=["iso_code"])
 
     for _, row in complete_dataset.iterrows():
-        
+
         row_iso = row["iso_code"]
         row_dict_static = row.drop("iso_code")[static_columns].dropna().to_dict()
         row_dict_dynamic = row.drop("iso_code").drop(static_columns).dropna().to_dict()
