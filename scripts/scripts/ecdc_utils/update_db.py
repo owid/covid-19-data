@@ -15,6 +15,7 @@ CURRENT_DIR = os.path.dirname(__file__)
 sys.path.append(CURRENT_DIR)
 from db import connection
 from db_utils import DBUtils
+from slack_client import send_success
 
 sys.path.append(os.path.join(CURRENT_DIR, ".."))
 import ecdc
@@ -221,3 +222,7 @@ if __name__ == "__main__":
                 }) + "\n")
 
     print("Database update successful.")
+    send_success(
+        channel='corona-data-updates',
+        message='*Updated database*'
+    )

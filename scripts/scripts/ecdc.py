@@ -1,6 +1,7 @@
 import os
 import sys
 import pandas as pd
+import numpy as np
 from datetime import datetime, timedelta
 from termcolor import colored
 
@@ -12,6 +13,8 @@ from shared import load_population, load_owid_continents, inject_total_daily_col
     inject_owid_aggregates, inject_per_million, inject_days_since, inject_cfr, inject_population, \
     inject_rolling_avg, inject_exemplars, inject_doubling_days, inject_weekly_growth, \
     inject_biweekly_growth, standard_export, ZERO_DAY
+
+from ecdc_utils.slack_client import send_warning, send_success
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/ecdc/')
@@ -98,7 +101,10 @@ def _load_merged(filename):
 
 def check_data_correctness(filename):
     errors = 0
+
     df_merged = _load_merged(filename)
+
+    # Check that every country name is standardized
     df_uniq = df_merged[['countriesAndTerritories', 'geoId', 'location']].drop_duplicates()
     if df_uniq['location'].isnull().any():
         print_err("\n" + ERROR + " Could not find OWID names for:")
@@ -114,14 +120,19 @@ def check_data_correctness(filename):
             colored(os.path.abspath(LOCATIONS_CSV_PATH), 'magenta')
         ))
         errors += 1
+
     # Drop missing locations for the further checks – that error is addressed above
     df_merged = df_merged.dropna(subset=['location'])
+
+    # Check for duplicate rows
     if df_merged.duplicated(subset=['dateRep', 'location']).any():
         print_err("\n" + ERROR + " Found duplicate rows:")
         print_err(df_merged[df_merged.duplicated(subset=['dateRep', 'location'])])
         print_err("\nPlease " + colored("fix or remove the duplicate rows", 'magenta') + " in the Excel file, and then save it again but under a new name, e.g. 2020-03-20-modified.xlsx")
         print_err("Also please " + colored("note down any changes you made", 'magenta') + " in %s" % os.path.abspath(os.path.join(INPUT_PATH, 'NOTES.md')))
         errors += 1
+
+    # Check for missing population figures
     df_pop = load_population()
     pop_entity_diff = set(df_uniq['location']) - set(df_pop['location'])
     if len(pop_entity_diff) > 0:
@@ -129,6 +140,50 @@ def check_data_correctness(filename):
         print("\n" + WARNING + " These entities were not found in the population dataset:")
         print(pop_entity_diff)
         print()
+        formatted_msg = ", ".join([f"`{entity}`" for entity in pop_entity_diff])
+        send_warning(
+            channel='corona-data-updates',
+            message=f'These entities were not found in the population dataset:\n{formatted_msg}'
+        )
+
+    # Check for sudden changes
+    sudden_changes_msg = ''
+    for location, df_location in df_merged.groupby('location'):
+        # Skip checks for "International"
+        if location == 'International':
+            continue
+
+        for var_name in ['cases', 'deaths']:
+            country_vals = df_location[var_name].dropna().values
+            if len(country_vals) == 0:
+                continue
+
+            previous_RA = np.mean(country_vals[-8:-1])
+            new_RA = np.mean(country_vals[-7:])
+
+            if new_RA > 1.2 * previous_RA and new_RA > 100:
+                sudden_changes_msg += "<!> Sudden increase of *{}* in *{}*: {} (7-day average was {})\n".format(
+                    var_name,
+                    location,
+                    int(country_vals[-1]),
+                    int(previous_RA)
+                )
+
+            new_val = country_vals[-1]
+
+            if new_val < 0:
+                sudden_changes_msg += f"<!> Negative number of *{var_name}* in *{location}*: {new_val}\n"
+
+    if sudden_changes_msg:
+        print(sudden_changes_msg)
+        formatted_msg = sudden_changes_msg.replace('<!>', ':warning:')
+        send_warning(
+            channel='corona-data-updates',
+            message=f'Sudden changes in data:\n{formatted_msg}'
+        )
+
+    sys.exit(0)
+
     return True if errors == 0 else False
 
 def discard_rows(df):
@@ -242,6 +297,11 @@ def run(filename=None, skip_download=False):
     print("Generating megafile…")
     megafile.generate_megafile()
     print("Megafile is ready.")
+
+    send_success(
+        channel='corona-data-updates',
+        message='*Updated GitHub exports*'
+    )
 
 
 if __name__ == '__main__':
