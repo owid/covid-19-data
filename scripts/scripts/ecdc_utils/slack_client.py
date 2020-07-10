@@ -64,7 +64,7 @@ def send_success(channel, message, trace=None):
         channel=channel,
         attachments=[
             {
-                "color": WARNING_COLOR,
+                "color": SUCCESS_COLOR,
                 "blocks": [
                     {
                         "type": "section",
