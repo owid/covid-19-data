@@ -2,7 +2,7 @@
 
 set -e
 
-BRANCH="autoupdate"
+BRANCH="master"
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../.. && pwd )"
 SCRIPTS_DIR=$ROOT_DIR/scripts
 LATEST_CSV_PATH=$ROOT_DIR/scripts/input/ecdc/releases/latest.csv
