@@ -10,7 +10,8 @@ sys.path.append(CURRENT_DIR)
 import megafile
 from shared import load_population, load_owid_continents, inject_total_daily_cols, \
     inject_owid_aggregates, inject_per_million, inject_days_since, inject_cfr, inject_population, \
-    inject_rolling_avg, inject_exemplars, inject_doubling_days, inject_weekly_growth, inject_biweekly_growth, standard_export
+    inject_rolling_avg, inject_exemplars, inject_doubling_days, inject_weekly_growth, \
+    inject_biweekly_growth, standard_export, ZERO_DAY
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/ecdc/')

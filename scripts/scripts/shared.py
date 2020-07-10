@@ -14,6 +14,8 @@ CONTINENTS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/continents.csv')
 WB_INCOME_GROUPS_CSV_PATH = os.path.join(CURRENT_DIR, '../input/wb/income_groups.csv')
 EU_COUNTRIES_CSV_PATH = os.path.join(CURRENT_DIR, '../input/owid/eu_countries.csv')
 
+ZERO_DAY = "2020-01-21"
+zero_day = datetime.strptime(ZERO_DAY, "%Y-%m-%d")
 
 # =========
 # Utilities
@@ -569,7 +571,7 @@ def existsin(l1, l2):
 def standard_export(df, output_path, grapher_name):
     # Grapher
     df_grapher = df.copy()
-    df_grapher['date'] = pd.to_datetime(df_grapher['date']).map(lambda date: (date - datetime(2020, 1, 21)).days)
+    df_grapher['date'] = pd.to_datetime(df_grapher['date']).map(lambda date: (date - zero_day).days)
     df_grapher = df_grapher[GRAPHER_COL_NAMES.keys()] \
         .rename(columns=GRAPHER_COL_NAMES) \
         .to_csv(os.path.join(output_path, '%s.csv' % grapher_name), index=False)

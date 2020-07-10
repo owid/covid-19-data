@@ -93,8 +93,15 @@ if __name__ == "__main__":
             print_err(f"Entity names missing from database: {str(missing_entity_names)}")
             sys.exit(1)
 
+        # Fetch the source
+
+        (db_source_id,) = db.fetch_one("""
+            SELECT id
+            FROM sources
+            WHERE datasetId = %s
+        """, db_dataset_id)
+
         # Check whether all variables match database variables.
-        # If there are differences, report & quit.
 
         id_names = ["Country", "Year"]
         variable_names = list(set(df.columns) - set(id_names))
@@ -107,15 +114,37 @@ if __name__ == "__main__":
 
         db_variable_id_by_name = { name: id for id, name in db_variables_query }
 
-        if set(variable_names) != set(db_variable_id_by_name.keys()):
-            sym_diff = set(variable_names).symmetric_difference(set(db_variable_id_by_name))
-            print_err(f"Variables in database mismatch variables in dataset. Symmetric difference: {sym_diff}")
-            sys.exit(1)
-
-        # TODO: Remove any variables no longer in the dataset. This is safe because any variables used in
+        # Remove any variables no longer in the dataset. This is safe because any variables used in
         # charts won't be deleted because of database constrant checks.
 
-        # TODO: Add variables that didn't exist before. Make sure to set yearIsDay.
+        variable_names_to_remove = list(set(db_variable_id_by_name.keys()) - set(variable_names))
+        if len(variable_names_to_remove):
+            print(f"Removing variables: {str(variable_names_to_remove)}")
+            variable_ids_to_remove = [ db_variable_id_by_name[n] for n in variable_names_to_remove ]
+            db.execute("""
+                DELETE FROM data_values
+                WHERE variableId IN %(ids)s;
+                DELETE FROM variables
+                WHERE id IN %(ids)s;
+            """, { 'ids': variable_ids_to_remove })
+
+        # Add variables that didn't exist before. Make sure to set yearIsDay.
+
+        variable_names_to_insert = list(set(variable_names) - set(db_variable_id_by_name.keys()))
+        if len(variable_names_to_insert):
+            print(f"Inserting variables: {str(variable_names_to_insert)}")
+            for name in variable_names_to_insert:
+                db_variable_id_by_name[name] = db.upsert_variable(
+                    name=name,
+                    code=None,
+                    unit='',
+                    short_unit=None,
+                    source_id=db_source_id,
+                    dataset_id=db_dataset_id,
+                    display={
+                        'yearIsDay': True,
+                        'zeroDay': ecdc.ZERO_DAY
+                    })
 
         # Delete all data_values in dataset
 
@@ -167,8 +196,8 @@ if __name__ == "__main__":
         db.execute("""
             UPDATE sources
             SET name = %s
-            WHERE datasetId = %s
-        """, [source_name, db_dataset_id])
+            WHERE id = %s
+        """, [source_name, db_source_id])
 
         # Update chart versions to trigger rebake
 
@@ -190,3 +219,5 @@ if __name__ == "__main__":
                 f.write(json.dumps({
                     'message': "Automatic ECDC update"
                 }) + "\n")
+
+    print("Database update successful.")
