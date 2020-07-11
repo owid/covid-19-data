@@ -12,7 +12,7 @@ ERROR_COLOR = "#a30200"
 WARNING_COLOR = "#f2c744"
 SUCCESS_COLOR = "#01a715"
 
-def send_error(channel, title, message, trace=None):
+def send_error(channel, title, message=None, trace=None):
     if not client: return None
     title = f"Error: {title}"
     if trace: text += f"\n```{trace}```"
@@ -28,7 +28,7 @@ def send_error(channel, title, message, trace=None):
         ]
     )
 
-def send_warning(channel, title, message, trace=None):
+def send_warning(channel, title, message=None, trace=None):
     if not client: return None
     title = f"Warning: {title}"
     if trace: text += f"\n```{trace}```"
@@ -44,7 +44,7 @@ def send_warning(channel, title, message, trace=None):
         ]
     )
 
-def send_success(channel, title, message, trace=None):
+def send_success(channel, title, message=None, trace=None):
     if not client: return None
     if trace: text += f"\n```{trace}```"
     return client.chat_postMessage(
@@ -59,22 +59,18 @@ def send_success(channel, title, message, trace=None):
         ]
     )
 
-# if __name__ == '__main__':
-#     send_error(
-#         channel='bot-testing',
-#         title='Random error',
-#         message='Abc\ndef\nghi'
-#     )
-#     send_warning(
-#         channel='bot-testing',
-#         title='Random error',
-#         message='Abc\ndef\nghi'
-#     )
-#     send_success(
-#         channel='bot-testing',
-#         title='Random error',
-#         message='Abc\ndef\nghi'
-#     )
-    # except SlackApiError as e:
-    #     # You will get a SlackApiError if "ok" is False
-    #     assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
+if __name__ == '__main__':
+    send_error(
+        channel='bot-testing',
+        title='Random error',
+        message='Abc\ndef\nghi'
+    )
+    send_warning(
+        channel='bot-testing',
+        title='Random error',
+        message='Abc\ndef\nghi'
+    )
+    send_success(
+        channel='bot-testing',
+        title='Random error'
+    )
