@@ -182,8 +182,6 @@ def check_data_correctness(filename):
             message=f'Sudden changes in data:\n{formatted_msg}'
         )
 
-    sys.exit(0)
-
     return True if errors == 0 else False
 
 def discard_rows(df):
