@@ -12,6 +12,8 @@ has_changed() {
   [ $? -ne 0 ]
 }
 
+cd $ROOT_DIR
+
 # Activate Python virtualenv
 source $SCRIPTS_DIR/venv/bin/activate
 
