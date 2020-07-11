@@ -224,5 +224,5 @@ if __name__ == "__main__":
     print("Database update successful.")
     send_success(
         channel='corona-data-updates',
-        message='*Updated database*'
+        title=f'Updated Grapher dataset {ecdc.DATASET_NAME}'
     )

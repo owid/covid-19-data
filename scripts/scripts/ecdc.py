@@ -143,7 +143,8 @@ def check_data_correctness(filename):
         formatted_msg = ", ".join([f"`{entity}`" for entity in pop_entity_diff])
         send_warning(
             channel='corona-data-updates',
-            message=f'These entities were not found in the population dataset:\n{formatted_msg}'
+            title='Some entities are missing from the population dataset',
+            message=formatted_msg
         )
 
     # Check for sudden changes
@@ -179,7 +180,8 @@ def check_data_correctness(filename):
         formatted_msg = sudden_changes_msg.replace('<!>', ':warning:')
         send_warning(
             channel='corona-data-updates',
-            message=f'Sudden changes in data:\n{formatted_msg}'
+            title='Sudden changes in data',
+            message=formatted_msg
         )
 
     return True if errors == 0 else False
@@ -298,7 +300,7 @@ def run(filename=None, skip_download=False):
 
     send_success(
         channel='corona-data-updates',
-        message='*Updated GitHub exports*'
+        title='Updated GitHub exports'
     )
 
 

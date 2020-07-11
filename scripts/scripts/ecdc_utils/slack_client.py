@@ -12,79 +12,69 @@ ERROR_COLOR = "#a30200"
 WARNING_COLOR = "#f2c744"
 SUCCESS_COLOR = "#01a715"
 
-def send_error(channel, message, trace=None):
+def send_error(channel, title, message, trace=None):
     if not client: return None
-    text = f"*Error*: {message}"
+    title = f"Error: {title}"
     if trace: text += f"\n```{trace}```"
     return client.chat_postMessage(
         channel=channel,
         attachments=[
             {
                 "color": ERROR_COLOR,
-                "blocks": [
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": text
-                        }
-                    }
-                ]
+                "title": title,
+                "fallback": title,
+                "text": message
             }
         ]
     )
 
-def send_warning(channel, message, trace=None):
+def send_warning(channel, title, message, trace=None):
     if not client: return None
-    text = f"*Warning*: {message}"
+    title = f"Warning: {title}"
     if trace: text += f"\n```{trace}```"
     return client.chat_postMessage(
         channel=channel,
         attachments=[
             {
                 "color": WARNING_COLOR,
-                "blocks": [
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": text
-                        }
-                    }
-                ]
+                "title": title,
+                "fallback": title,
+                "text": message
             }
         ]
     )
 
-def send_success(channel, message, trace=None):
+def send_success(channel, title, message, trace=None):
     if not client: return None
-    text = message
     if trace: text += f"\n```{trace}```"
     return client.chat_postMessage(
         channel=channel,
         attachments=[
             {
                 "color": SUCCESS_COLOR,
-                "blocks": [
-                    {
-                        "type": "section",
-                        "text": {
-                            "type": "mrkdwn",
-                            "text": text
-                        }
-                    }
-                ]
+                "title": title,
+                "fallback": title,
+                "text": message
             }
         ]
     )
 
 # if __name__ == '__main__':
-#     try:
-#         response = send_error(
-#             'corona-data-updates',
-#             'Random error',
-#             'Abc\ndef\nghi'
-#         )
-#     except SlackApiError as e:
-#         # You will get a SlackApiError if "ok" is False
-#         assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
+#     send_error(
+#         channel='bot-testing',
+#         title='Random error',
+#         message='Abc\ndef\nghi'
+#     )
+#     send_warning(
+#         channel='bot-testing',
+#         title='Random error',
+#         message='Abc\ndef\nghi'
+#     )
+#     send_success(
+#         channel='bot-testing',
+#         title='Random error',
+#         message='Abc\ndef\nghi'
+#     )
+    # except SlackApiError as e:
+    #     # You will get a SlackApiError if "ok" is False
+    #     assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
