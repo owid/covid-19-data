@@ -197,6 +197,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Afghanistan,0,0,34451,1010,1500.0,146.0,3484.0,289.0
 2020-07-14,Afghanistan,4,2,34455,1012,1071.0,92.0,3217.0,279.0
 2020-07-15,Afghanistan,285,33,34740,1045,1146.0,109.0,3223.0,299.0
+2020-07-16,Afghanistan,254,49,34994,1094,1341.0,157.0,3158.0,320.0
 2020-03-09,Albania,2,0,2,0,,,,
 2020-03-10,Albania,4,0,6,0,,,,
 2020-03-11,Albania,4,0,10,0,,,,
@@ -326,6 +327,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Albania,83,4,3454,93,561.0,17.0,1052.0,38.0
 2020-07-14,Albania,117,2,3571,95,607.0,16.0,1105.0,37.0
 2020-07-15,Albania,96,2,3667,97,629.0,16.0,1132.0,35.0
+2020-07-16,Albania,85,4,3752,101,646.0,18.0,1172.0,36.0
 2019-12-31,Algeria,0,0,0,0,,,,
 2020-01-01,Algeria,0,0,0,0,,,,
 2020-01-02,Algeria,0,0,0,0,,,,
@@ -524,6 +526,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Algeria,483,7,19195,1011,3254.0,59.0,5922.0,114.0
 2020-07-14,Algeria,494,7,19689,1018,3285.0,59.0,6118.0,113.0
 2020-07-15,Algeria,527,10,20216,1028,3337.0,60.0,6309.0,116.0
+2020-07-16,Algeria,554,12,20770,1040,3422.0,62.0,6498.0,120.0
 2020-03-03,Andorra,1,0,1,0,,,,
 2020-03-09,Andorra,,,,,1.0,0.0,,
 2020-03-10,Andorra,,,,,0.0,0.0,,
@@ -654,6 +657,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Andorra,0,0,855,52,0.0,0.0,0.0,0.0
 2020-07-14,Andorra,3,0,858,52,3.0,0.0,3.0,0.0
 2020-07-15,Andorra,3,0,861,52,6.0,0.0,6.0,0.0
+2020-07-16,Andorra,1,0,862,52,7.0,0.0,7.0,0.0
 2020-03-22,Angola,2,0,2,0,,,,
 2020-03-23,Angola,0,0,2,0,,,,
 2020-03-24,Angola,0,0,2,0,,,,
@@ -770,6 +774,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Angola,23,1,506,26,160.0,7.0,239.0,15.0
 2020-07-14,Angola,0,0,506,26,153.0,7.0,230.0,15.0
 2020-07-15,Angola,19,0,525,26,172.0,7.0,241.0,13.0
+2020-07-16,Angola,51,1,576,27,190.0,6.0,285.0,12.0
 2020-03-27,Anguilla,2,0,2,0,,,,
 2020-03-28,Anguilla,0,0,2,0,,,,
 2020-03-29,Anguilla,0,0,2,0,,,,
@@ -881,6 +886,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Anguilla,0,0,3,0,0.0,0.0,0.0,0.0
 2020-07-14,Anguilla,0,0,3,0,0.0,0.0,0.0,0.0
 2020-07-15,Anguilla,0,0,3,0,0.0,0.0,0.0,0.0
+2020-07-16,Anguilla,0,0,3,0,0.0,0.0,0.0,0.0
 2020-03-15,Antigua and Barbuda,1,0,1,0,,,,
 2020-03-21,Antigua and Barbuda,0,0,1,0,1.0,0.0,,
 2020-03-22,Antigua and Barbuda,0,0,1,0,0.0,0.0,,
@@ -999,6 +1005,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Antigua and Barbuda,0,0,74,3,6.0,0.0,9.0,0.0
 2020-07-14,Antigua and Barbuda,0,0,74,3,4.0,0.0,8.0,0.0
 2020-07-15,Antigua and Barbuda,0,0,74,3,4.0,0.0,8.0,0.0
+2020-07-16,Antigua and Barbuda,0,0,74,3,1.0,0.0,8.0,0.0
 2020-03-04,Argentina,1,0,1,0,,,,
 2020-03-06,Argentina,1,0,2,0,,,,
 2020-03-07,Argentina,6,0,8,0,,,,
@@ -1132,6 +1139,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Argentina,2644,8,100153,1818,24790.0,328.0,42422.0,601.0
 2020-07-14,Argentina,2952,85,103105,1903,25303.0,380.0,40850.0,623.0
 2020-07-15,Argentina,147,23,103252,1926,22818.0,324.0,38735.0,619.0
+2020-07-16,Argentina,3645,124,106897,2050,23484.0,396.0,39713.0,699.0
 2019-12-31,Armenia,0,0,0,0,,,,
 2020-01-01,Armenia,0,0,0,0,,,,
 2020-01-02,Armenia,0,0,0,0,,,,
@@ -1330,6 +1338,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Armenia,577,6,31969,565,3363.0,81.0,6842.0,132.0
 2020-07-14,Armenia,182,8,32151,573,3215.0,82.0,7024.0,140.0
 2020-07-15,Armenia,339,8,32490,581,3205.0,78.0,6948.0,138.0
+2020-07-16,Armenia,515,11,33005,592,3185.0,71.0,6940.0,139.0
 2020-03-13,Aruba,2,0,2,0,,,,
 2020-03-19,Aruba,,,,,2.0,0.0,,
 2020-03-20,Aruba,2,0,4,0,2.0,0.0,,
@@ -1450,6 +1459,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Aruba,0,0,105,3,0.0,0.0,4.0,0.0
 2020-07-14,Aruba,0,0,105,3,0.0,0.0,2.0,0.0
 2020-07-15,Aruba,1,0,106,3,1.0,0.0,3.0,0.0
+2020-07-16,Aruba,0,0,106,3,1.0,0.0,3.0,0.0
 2019-12-31,Australia,0,0,0,0,,,,
 2020-01-01,Australia,0,0,0,0,,,,
 2020-01-02,Australia,0,0,0,0,,,,
@@ -1648,6 +1658,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Australia,244,1,9797,108,1348.0,4.0,2111.0,4.0
 2020-07-14,Australia,183,0,9980,108,1394.0,2.0,2213.0,4.0
 2020-07-15,Australia,271,0,10251,108,1496.0,2.0,2417.0,4.0
+2020-07-16,Australia,244,3,10495,111,1609.0,5.0,2575.0,7.0
 2019-12-31,Austria,0,0,0,0,,,,
 2020-01-01,Austria,0,0,0,0,,,,
 2020-01-02,Austria,0,0,0,0,,,,
@@ -1846,6 +1857,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Austria,52,2,18847,708,578.0,2.0,1222.0,6.0
 2020-07-14,Austria,12,0,18859,708,533.0,2.0,1193.0,5.0
 2020-07-15,Austria,201,1,19060,709,645.0,3.0,1283.0,4.0
+2020-07-16,Austria,55,1,19115,710,599.0,4.0,1301.0,5.0
 2019-12-31,Azerbaijan,0,0,0,0,,,,
 2020-01-01,Azerbaijan,0,0,0,0,,,,
 2020-01-02,Azerbaijan,0,0,0,0,,,,
@@ -2044,6 +2056,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Azerbaijan,520,8,24041,306,3717.0,56.0,7617.0,108.0
 2020-07-14,Azerbaijan,529,7,24570,313,3733.0,55.0,7602.0,107.0
 2020-07-15,Azerbaijan,543,6,25113,319,3739.0,54.0,7589.0,106.0
+2020-07-16,Azerbaijan,559,7,25672,326,3756.0,52.0,7560.0,106.0
 2020-03-16,Bahamas,1,0,1,0,,,,
 2020-03-17,Bahamas,0,0,1,0,,,,
 2020-03-20,Bahamas,2,0,3,0,,,,
@@ -2164,6 +2177,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bahamas,0,0,111,11,7.0,0.0,7.0,0.0
 2020-07-14,Bahamas,2,0,113,11,9.0,0.0,9.0,0.0
 2020-07-15,Bahamas,3,0,116,11,12.0,0.0,12.0,0.0
+2020-07-16,Bahamas,3,0,119,11,13.0,0.0,15.0,0.0
 2019-12-31,Bahrain,0,0,0,0,,,,
 2020-01-01,Bahrain,0,0,0,0,,,,
 2020-01-02,Bahrain,0,0,0,0,,,,
@@ -2362,6 +2376,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bahrain,471,5,32941,109,3574.0,12.0,7236.0,26.0
 2020-07-14,Bahrain,535,0,33476,109,3655.0,11.0,7237.0,25.0
 2020-07-15,Bahrain,602,2,34078,111,3757.0,13.0,7320.0,24.0
+2020-07-16,Bahrain,482,6,34560,117,3629.0,17.0,7146.0,25.0
 2020-03-09,Bangladesh,3,0,3,0,,,,
 2020-03-15,Bangladesh,0,0,3,0,3.0,0.0,,
 2020-03-16,Bangladesh,,,,,0.0,0.0,,
@@ -2486,6 +2501,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bangladesh,2666,47,183795,2352,21378.0,300.0,46008.0,614.0
 2020-07-14,Bangladesh,3099,39,186894,2391,21276.0,295.0,45093.0,608.0
 2020-07-15,Bangladesh,3163,33,190057,2424,21412.0,273.0,44574.0,577.0
+2020-07-16,Bangladesh,3533,33,193590,2457,21456.0,260.0,44332.0,569.0
 2020-03-18,Barbados,1,0,1,0,,,,
 2020-03-19,Barbados,0,0,1,0,,,,
 2020-03-20,Barbados,1,0,2,0,,,,
@@ -2606,6 +2622,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Barbados,0,0,103,7,5.0,0.0,6.0,0.0
 2020-07-14,Barbados,0,0,103,7,5.0,0.0,6.0,0.0
 2020-07-15,Barbados,0,0,103,7,5.0,0.0,6.0,0.0
+2020-07-16,Barbados,1,0,104,7,6.0,0.0,7.0,0.0
 2019-12-31,Belarus,0,0,0,0,,,,
 2020-01-01,Belarus,0,0,0,0,,,,
 2020-01-02,Belarus,0,0,0,0,,,,
@@ -2804,6 +2821,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Belarus,165,5,64932,464,1378.0,41.0,3457.0,81.0
 2020-07-14,Belarus,182,4,65114,468,1310.0,39.0,3324.0,81.0
 2020-07-15,Belarus,155,6,65269,474,1266.0,38.0,3151.0,82.0
+2020-07-16,Belarus,174,6,65443,480,1219.0,37.0,3019.0,82.0
 2019-12-31,Belgium,0,0,0,0,,,,
 2020-01-01,Belgium,0,0,0,0,,,,
 2020-01-02,Belgium,0,0,0,0,,,,
@@ -3002,6 +3020,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Belgium,101,0,62707,9782,691.0,11.0,1346.0,30.0
 2020-07-14,Belgium,74,5,62781,9787,723.0,13.0,1354.0,35.0
 2020-07-15,Belgium,0,0,62781,9787,658.0,11.0,1272.0,33.0
+2020-07-16,Belgium,258,5,63039,9792,829.0,14.0,1441.0,31.0
 2020-03-24,Belize,1,0,1,0,,,,
 2020-03-25,Belize,0,0,1,0,,,,
 2020-03-26,Belize,1,0,2,0,,,,
@@ -3116,6 +3135,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Belize,0,0,37,2,7.0,0.0,13.0,0.0
 2020-07-14,Belize,0,0,37,2,7.0,0.0,13.0,0.0
 2020-07-15,Belize,2,0,39,2,9.0,0.0,11.0,0.0
+2020-07-16,Belize,0,0,39,2,9.0,0.0,11.0,0.0
 2020-03-17,Benin,1,0,1,0,,,,
 2020-03-18,Benin,0,0,1,0,,,,
 2020-03-19,Benin,0,0,1,0,,,,
@@ -3237,6 +3257,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Benin,0,0,1378,26,179.0,5.0,229.0,10.0
 2020-07-14,Benin,0,0,1378,26,179.0,5.0,191.0,7.0
 2020-07-15,Benin,0,0,1378,26,179.0,5.0,179.0,5.0
+2020-07-16,Benin,0,0,1378,26,93.0,3.0,179.0,5.0
 2020-03-20,Bermuda,2,0,2,0,,,,
 2020-03-21,Bermuda,0,0,2,0,,,,
 2020-03-22,Bermuda,0,0,2,0,,,,
@@ -3355,6 +3376,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bermuda,0,0,150,9,4.0,0.0,4.0,0.0
 2020-07-14,Bermuda,0,0,150,9,4.0,0.0,4.0,0.0
 2020-07-15,Bermuda,0,0,150,9,2.0,0.0,4.0,0.0
+2020-07-16,Bermuda,0,0,150,9,1.0,0.0,4.0,0.0
 2020-03-06,Bhutan,1,0,1,0,,,,
 2020-03-12,Bhutan,,,,,1.0,0.0,,
 2020-03-13,Bhutan,0,0,1,0,0.0,0.0,,
@@ -3482,6 +3504,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bhutan,2,0,84,0,4.0,0.0,8.0,0.0
 2020-07-14,Bhutan,0,0,84,0,4.0,0.0,7.0,0.0
 2020-07-15,Bhutan,0,0,84,0,4.0,0.0,7.0,0.0
+2020-07-16,Bhutan,0,0,84,0,4.0,0.0,7.0,0.0
 2020-03-12,Bolivia,2,0,2,0,,,,
 2020-03-13,Bolivia,1,0,3,0,,,,
 2020-03-14,Bolivia,7,0,10,0,,,,
@@ -3607,6 +3630,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bolivia,987,53,48187,1807,8890.0,373.0,16663.0,793.0
 2020-07-14,Bolivia,1063,59,49250,1866,8741.0,390.0,17125.0,795.0
 2020-07-15,Bolivia,1617,32,50867,1898,9322.0,368.0,17648.0,775.0
+2020-07-16,Bolivia,1351,44,52218,1942,9234.0,365.0,17991.0,741.0
 2020-04-02,Bonaire Sint Eustatius and Saba,2,0,2,0,,,,
 2020-04-03,Bonaire Sint Eustatius and Saba,0,0,2,0,,,,
 2020-04-04,Bonaire Sint Eustatius and Saba,0,0,2,0,,,,
@@ -3712,6 +3736,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bonaire Sint Eustatius and Saba,0,0,7,0,0.0,0.0,0.0,0.0
 2020-07-14,Bonaire Sint Eustatius and Saba,0,0,7,0,0.0,0.0,0.0,0.0
 2020-07-15,Bonaire Sint Eustatius and Saba,2,0,9,0,2.0,0.0,2.0,0.0
+2020-07-16,Bonaire Sint Eustatius and Saba,0,0,9,0,2.0,0.0,2.0,0.0
 2020-03-06,Bosnia and Herzegovina,2,0,2,0,,,,
 2020-03-12,Bosnia and Herzegovina,1,0,3,0,3.0,0.0,,
 2020-03-13,Bosnia and Herzegovina,0,0,3,0,1.0,0.0,,
@@ -3839,6 +3864,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bosnia and Herzegovina,482,4,6884,220,1635.0,30.0,2777.0,41.0
 2020-07-14,Bosnia and Herzegovina,95,4,6979,224,1521.0,25.0,2636.0,41.0
 2020-07-15,Bosnia and Herzegovina,2,2,6981,226,1360.0,19.0,2528.0,41.0
+2020-07-16,Bosnia and Herzegovina,426,7,7407,233,1538.0,24.0,2954.0,48.0
 2020-04-01,Botswana,3,0,3,0,,,,
 2020-04-02,Botswana,1,1,4,1,,,,
 2020-04-03,Botswana,0,0,4,1,,,,
@@ -3945,6 +3971,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Botswana,85,0,399,1,124.0,0.0,274.0,0.0
 2020-07-14,Botswana,0,0,399,1,124.0,0.0,224.0,0.0
 2020-07-15,Botswana,0,0,399,1,85.0,0.0,172.0,0.0
+2020-07-16,Botswana,0,0,399,1,85.0,0.0,172.0,0.0
 2019-12-31,Brazil,0,0,0,0,,,,
 2020-01-01,Brazil,0,0,0,0,,,,
 2020-01-02,Brazil,0,0,0,0,,,,
@@ -4143,6 +4170,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Brazil,24831,631,1864681,72100,261626.0,7233.0,520538.0,14478.0
 2020-07-14,Brazil,20286,733,1884967,72833,261683.0,7346.0,516772.0,14519.0
 2020-07-15,Brazil,41857,1300,1926824,74133,258235.0,7392.0,524783.0,14539.0
+2020-07-16,Brazil,39924,1233,1966748,75366,253588.0,7402.0,517995.0,14734.0
 2020-03-27,British Virgin Islands,2,0,2,0,,,,
 2020-03-28,British Virgin Islands,0,0,2,0,,,,
 2020-03-29,British Virgin Islands,0,0,2,0,,,,
@@ -4254,6 +4282,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,British Virgin Islands,0,0,8,1,0.0,0.0,0.0,0.0
 2020-07-14,British Virgin Islands,0,0,8,1,0.0,0.0,0.0,0.0
 2020-07-15,British Virgin Islands,0,0,8,1,0.0,0.0,0.0,0.0
+2020-07-16,British Virgin Islands,0,0,8,1,0.0,0.0,0.0,0.0
 2020-03-10,Brunei,1,0,1,0,,,,
 2020-03-12,Brunei,10,0,11,0,,,,
 2020-03-13,Brunei,14,0,25,0,,,,
@@ -4381,6 +4410,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Brunei,0,0,141,3,0.0,0.0,0.0,0.0
 2020-07-14,Brunei,0,0,141,3,0.0,0.0,0.0,0.0
 2020-07-15,Brunei,0,0,141,3,0.0,0.0,0.0,0.0
+2020-07-16,Brunei,0,0,141,3,0.0,0.0,0.0,0.0
 2020-03-08,Bulgaria,2,0,2,0,,,,
 2020-03-09,Bulgaria,2,0,4,0,,,,
 2020-03-12,Bulgaria,3,1,7,1,,,,
@@ -4509,6 +4539,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Bulgaria,77,6,7252,268,1512.0,22.0,2561.0,49.0
 2020-07-14,Bulgaria,159,8,7411,276,1497.0,26.0,2580.0,53.0
 2020-07-15,Bulgaria,234,7,7645,283,1543.0,29.0,2656.0,53.0
+2020-07-16,Bulgaria,232,6,7877,289,1535.0,30.0,2723.0,57.0
 2020-03-11,Burkina Faso,2,0,2,0,,,,
 2020-03-12,Burkina Faso,0,0,2,0,,,,
 2020-03-15,Burkina Faso,1,0,3,0,,,,
@@ -4634,6 +4665,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Burkina Faso,3,0,1036,53,49.0,0.0,77.0,0.0
 2020-07-14,Burkina Faso,0,0,1036,53,36.0,0.0,77.0,0.0
 2020-07-15,Burkina Faso,2,0,1038,53,35.0,0.0,76.0,0.0
+2020-07-16,Burkina Faso,0,0,1038,53,33.0,0.0,76.0,0.0
 2020-04-01,Burundi,2,0,2,0,,,,
 2020-04-02,Burundi,0,0,2,0,,,,
 2020-04-03,Burundi,1,0,3,0,,,,
@@ -4740,6 +4772,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Burundi,0,0,250,1,59.0,0.0,80.0,0.0
 2020-07-14,Burundi,19,0,269,1,78.0,0.0,99.0,0.0
 2020-07-15,Burundi,0,0,269,1,78.0,0.0,99.0,0.0
+2020-07-16,Burundi,0,0,269,1,78.0,0.0,99.0,0.0
 2019-12-31,Cambodia,0,0,0,0,,,,
 2020-01-01,Cambodia,0,0,0,0,,,,
 2020-01-02,Cambodia,0,0,0,0,,,,
@@ -4938,6 +4971,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Cambodia,0,0,156,0,15.0,0.0,15.0,0.0
 2020-07-14,Cambodia,9,0,165,0,24.0,0.0,24.0,0.0
 2020-07-15,Cambodia,0,0,165,0,24.0,0.0,24.0,0.0
+2020-07-16,Cambodia,1,0,166,0,25.0,0.0,25.0,0.0
 2020-03-07,Cameroon,1,0,1,0,,,,
 2020-03-09,Cameroon,1,0,2,0,,,,
 2020-03-13,Cameroon,,,,,2.0,0.0,,
@@ -5065,6 +5099,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Cameroon,257,0,15173,359,1462.0,31.0,2581.0,46.0
 2020-07-14,Cameroon,0,0,15173,359,1136.0,29.0,2581.0,46.0
 2020-07-15,Cameroon,0,0,15173,359,257.0,0.0,2581.0,46.0
+2020-07-16,Cameroon,0,0,15173,359,257.0,0.0,2581.0,46.0
 2019-12-31,Canada,0,0,0,0,,,,
 2020-01-01,Canada,0,0,0,0,,,,
 2020-01-02,Canada,0,0,0,0,,,,
@@ -5263,6 +5298,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Canada,244,10,107579,8783,2055.0,99.0,4340.0,261.0
 2020-07-14,Canada,565,7,108144,8790,2221.0,97.0,4237.0,224.0
 2020-07-15,Canada,331,8,108475,8798,2320.0,87.0,4282.0,207.0
+2020-07-16,Canada,341,12,108816,8810,2394.0,73.0,4623.0,219.0
 2020-03-21,Cape Verde,2,0,2,0,,,,
 2020-03-22,Cape Verde,1,0,3,0,,,,
 2020-03-23,Cape Verde,0,0,3,0,,,,
@@ -5380,6 +5416,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Cape Verde,107,0,1698,19,247.0,2.0,543.0,7.0
 2020-07-14,Cape Verde,24,0,1722,19,259.0,2.0,557.0,7.0
 2020-07-15,Cape Verde,58,0,1780,19,281.0,1.0,553.0,4.0
+2020-07-16,Cape Verde,57,0,1837,19,295.0,1.0,570.0,4.0
 2020-03-20,Cayman Islands,1,0,1,0,,,,
 2020-03-21,Cayman Islands,2,1,3,1,,,,
 2020-03-22,Cayman Islands,0,0,3,1,,,,
@@ -5498,6 +5535,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Cayman Islands,0,0,201,1,0.0,0.0,5.0,0.0
 2020-07-14,Cayman Islands,0,0,201,1,0.0,0.0,2.0,0.0
 2020-07-15,Cayman Islands,2,0,203,1,2.0,0.0,3.0,0.0
+2020-07-16,Cayman Islands,0,0,203,1,2.0,0.0,2.0,0.0
 2020-03-16,Central African Republic,1,0,1,0,,,,
 2020-03-17,Central African Republic,0,0,1,0,,,,
 2020-03-18,Central African Republic,0,0,1,0,,,,
@@ -5620,6 +5658,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Central African Republic,0,0,4288,53,319.0,5.0,859.0,8.0
 2020-07-14,Central African Republic,33,0,4321,53,288.0,1.0,708.0,6.0
 2020-07-15,Central African Republic,35,0,4356,53,285.0,1.0,611.0,6.0
+2020-07-16,Central African Republic,6,0,4362,53,253.0,1.0,617.0,6.0
 2020-03-20,Chad,1,0,1,0,,,,
 2020-03-21,Chad,0,0,1,0,,,,
 2020-03-22,Chad,1,0,2,0,,,,
@@ -5738,6 +5777,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Chad,6,1,880,75,8.0,1.0,14.0,1.0
 2020-07-14,Chad,0,0,880,75,8.0,1.0,14.0,1.0
 2020-07-15,Chad,4,0,884,75,11.0,1.0,18.0,1.0
+2020-07-16,Chad,1,0,885,75,12.0,1.0,19.0,1.0
 2020-03-04,Chile,1,0,1,0,,,,
 2020-03-05,Chile,2,0,3,0,,,,
 2020-03-06,Chile,1,0,4,0,,,,
@@ -5871,6 +5911,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Chile,3012,98,315041,6979,19509.0,671.0,43059.0,1470.0
 2020-07-14,Chile,2616,45,317657,7024,19100.0,640.0,41658.0,1449.0
 2020-07-15,Chile,1836,45,319493,7069,18474.0,635.0,40100.0,1381.0
+2020-07-16,Chile,1712,117,321205,7186,18122.0,613.0,39162.0,1433.0
 2019-12-31,China,27,0,27,0,,,,
 2020-01-01,China,0,0,27,0,,,,
 2020-01-02,China,0,0,27,0,,,,
@@ -6069,6 +6110,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,China,46,0,85117,4641,246.0,0.0,360.0,0.0
 2020-07-14,China,55,1,85172,4642,276.0,1.0,392.0,1.0
 2020-07-15,China,54,0,85226,4642,309.0,1.0,441.0,1.0
+2020-07-16,China,20,2,85246,4644,296.0,3.0,430.0,3.0
 2020-03-07,Colombia,1,0,1,0,,,,
 2020-03-10,Colombia,2,0,3,0,,,,
 2020-03-12,Colombia,6,0,9,0,,,,
@@ -6197,6 +6239,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Colombia,5083,188,150445,5307,33335.0,1243.0,58676.0,2201.0
 2020-07-14,Colombia,3782,148,154227,5455,33946.0,1245.0,59184.0,2232.0
 2020-07-15,Colombia,5671,170,159898,5625,35404.0,1266.0,62052.0,2291.0
+2020-07-16,Colombia,5271,189,165169,5814,36531.0,1287.0,63160.0,2344.0
 2020-05-02,Comoros,1,0,1,0,,,,
 2020-05-03,Comoros,0,0,1,0,,,,
 2020-05-04,Comoros,2,0,3,0,,,,
@@ -6272,6 +6315,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Comoros,0,0,317,7,6.0,0.0,45.0,0.0
 2020-07-14,Comoros,0,0,317,7,6.0,0.0,45.0,0.0
 2020-07-15,Comoros,0,0,317,7,4.0,0.0,14.0,0.0
+2020-07-16,Comoros,4,0,321,7,8.0,0.0,18.0,0.0
 2020-03-16,Congo,1,0,1,0,,,,
 2020-03-17,Congo,0,0,1,0,,,,
 2020-03-18,Congo,0,0,1,0,,,,
@@ -6394,6 +6438,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Congo,75,0,2103,47,546.0,3.0,858.0,7.0
 2020-07-14,Congo,0,0,2103,47,546.0,3.0,858.0,7.0
 2020-07-15,Congo,119,0,2222,47,665.0,3.0,977.0,7.0
+2020-07-16,Congo,136,1,2358,48,537.0,1.0,976.0,7.0
 2020-03-07,Costa Rica,1,0,1,0,,,,
 2020-03-09,Costa Rica,4,0,5,0,,,,
 2020-03-10,Costa Rica,4,0,9,0,,,,
@@ -6524,6 +6569,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Costa Rica,365,2,7596,30,2600.0,11.0,4466.0,15.0
 2020-07-14,Costa Rica,440,1,8036,31,2795.0,8.0,4767.0,16.0
 2020-07-15,Costa Rica,446,5,8482,36,2996.0,13.0,5023.0,20.0
+2020-07-16,Costa Rica,504,4,8986,40,3150.0,16.0,5233.0,23.0
 2020-03-12,Cote d'Ivoire,1,0,1,0,,,,
 2020-03-15,Cote d'Ivoire,3,0,4,0,,,,
 2020-03-16,Cote d'Ivoire,0,0,4,0,,,,
@@ -6648,6 +6694,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Cote d'Ivoire,323,2,12766,84,1994.0,10.0,3822.0,18.0
 2020-07-14,Cote d'Ivoire,106,0,12872,84,1906.0,9.0,3658.0,18.0
 2020-07-15,Cote d'Ivoire,165,3,13037,87,2071.0,12.0,3538.0,19.0
+2020-07-16,Cote d'Ivoire,366,0,13403,87,1899.0,9.0,3701.0,19.0
 2019-12-31,Croatia,0,0,0,0,,,,
 2020-01-01,Croatia,0,0,0,0,,,,
 2020-01-02,Croatia,0,0,0,0,,,,
@@ -6845,7 +6892,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-12,Croatia,140,1,3672,118,578.0,5.0,1048.0,11.0
 2020-07-13,Croatia,50,1,3722,119,571.0,6.0,1031.0,12.0
 2020-07-14,Croatia,53,0,3775,119,555.0,6.0,1050.0,12.0
-2020-07-15,Croatia,52,1,3827,120,555.0,7.0,1050.0,13.0
+2020-07-15,Croatia,52,0,3827,119,555.0,6.0,1050.0,12.0
+2020-07-16,Croatia,126,0,3953,119,628.0,5.0,1122.0,11.0
 2020-03-12,Cuba,3,0,3,0,,,,
 2020-03-14,Cuba,1,0,4,0,,,,
 2020-03-15,Cuba,0,0,4,0,,,,
@@ -6969,6 +7017,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Cuba,6,0,2426,87,54.0,1.0,94.0,1.0
 2020-07-14,Cuba,2,0,2428,87,48.0,1.0,88.0,1.0
 2020-07-15,Cuba,4,0,2432,87,37.0,1.0,91.0,1.0
+2020-07-16,Cuba,6,0,2438,87,39.0,1.0,90.0,1.0
 2020-03-13,Curacao,1,0,1,0,,,,
 2020-03-19,Curacao,,,,,1.0,0.0,,
 2020-03-20,Curacao,2,0,3,0,2.0,0.0,,
@@ -7089,6 +7138,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Curacao,0,0,25,1,0.0,0.0,1.0,0.0
 2020-07-14,Curacao,1,0,26,1,1.0,0.0,2.0,0.0
 2020-07-15,Curacao,0,0,26,1,1.0,0.0,1.0,0.0
+2020-07-16,Curacao,0,0,26,1,1.0,0.0,1.0,0.0
 2020-03-10,Cyprus,2,0,2,0,,,,
 2020-03-12,Cyprus,4,0,6,0,,,,
 2020-03-14,Cyprus,8,0,14,0,,,,
@@ -7215,6 +7265,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Cyprus,7,0,1021,19,18.0,0.0,27.0,0.0
 2020-07-14,Cyprus,1,0,1022,19,18.0,0.0,26.0,0.0
 2020-07-15,Cyprus,0,0,1022,19,17.0,0.0,24.0,0.0
+2020-07-16,Cyprus,1,0,1023,19,15.0,0.0,24.0,0.0
 2019-12-31,Czech Republic,0,0,0,0,,,,
 2020-01-01,Czech Republic,0,0,0,0,,,,
 2020-01-02,Czech Republic,0,0,0,0,,,,
@@ -7413,6 +7464,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Czech Republic,59,0,13174,352,659.0,4.0,1571.0,4.0
 2020-07-14,Czech Republic,64,1,13238,353,672.0,3.0,1433.0,5.0
 2020-07-15,Czech Republic,103,2,13341,355,656.0,4.0,1387.0,6.0
+2020-07-16,Czech Republic,134,0,13475,355,661.0,4.0,1429.0,6.0
 2020-03-11,Democratic Republic of Congo,1,0,1,0,,,,
 2020-03-14,Democratic Republic of Congo,1,0,2,0,,,,
 2020-03-15,Democratic Republic of Congo,0,0,2,0,,,,
@@ -7538,6 +7590,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Democratic Republic of Congo,62,0,8032,188,622.0,7.0,1206.0,31.0
 2020-07-14,Democratic Republic of Congo,42,1,8074,189,642.0,7.0,1135.0,22.0
 2020-07-15,Democratic Republic of Congo,61,0,8135,189,475.0,7.0,1097.0,20.0
+2020-07-16,Democratic Republic of Congo,27,2,8162,191,425.0,7.0,1041.0,17.0
 2019-12-31,Denmark,0,0,0,0,,,,
 2020-01-01,Denmark,0,0,0,0,,,,
 2020-01-02,Denmark,0,0,0,0,,,,
@@ -7736,6 +7789,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Denmark,0,0,12946,609,114.0,3.0,271.0,5.0
 2020-07-14,Denmark,91,1,13037,610,159.0,3.0,286.0,5.0
 2020-07-15,Denmark,24,0,13061,610,173.0,1.0,293.0,5.0
+2020-07-16,Denmark,31,0,13092,610,192.0,1.0,298.0,4.0
 2020-03-19,Djibouti,1,0,1,0,,,,
 2020-03-20,Djibouti,0,0,1,0,,,,
 2020-03-21,Djibouti,0,0,1,0,,,,
@@ -7855,6 +7909,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Djibouti,17,0,4972,56,180.0,1.0,329.0,4.0
 2020-07-14,Djibouti,5,0,4977,56,155.0,1.0,321.0,3.0
 2020-07-15,Djibouti,2,0,4979,56,101.0,1.0,297.0,2.0
+2020-07-16,Djibouti,6,0,4985,56,96.0,1.0,281.0,1.0
 2020-03-23,Dominica,1,0,1,0,,,,
 2020-03-24,Dominica,0,0,1,0,,,,
 2020-03-25,Dominica,1,0,2,0,,,,
@@ -7970,6 +8025,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Dominica,0,0,18,0,0.0,0.0,0.0,0.0
 2020-07-14,Dominica,0,0,18,0,0.0,0.0,0.0,0.0
 2020-07-15,Dominica,0,0,18,0,0.0,0.0,0.0,0.0
+2020-07-16,Dominica,0,0,18,0,0.0,0.0,0.0,0.0
 2019-12-31,Dominican Republic,0,0,0,0,,,,
 2020-01-01,Dominican Republic,0,0,0,0,,,,
 2020-01-02,Dominican Republic,0,0,0,0,,,,
@@ -8168,6 +8224,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Dominican Republic,1418,17,44532,897,7107.0,103.0,13159.0,171.0
 2020-07-14,Dominican Republic,974,6,45506,903,7378.0,99.0,13690.0,170.0
 2020-07-15,Dominican Republic,799,7,46305,910,7875.0,89.0,13737.0,163.0
+2020-07-16,Dominican Republic,1366,19,47671,929,8083.0,100.0,14284.0,175.0
 2019-12-31,Ecuador,0,0,0,0,,,,
 2020-01-01,Ecuador,0,0,0,0,,,,
 2020-01-02,Ecuador,0,0,0,0,,,,
@@ -8366,6 +8423,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Ecuador,661,16,67870,5047,5912.0,266.0,12615.0,618.0
 2020-07-14,Ecuador,589,16,68459,5063,6079.0,242.0,12794.0,561.0
 2020-07-15,Ecuador,1111,67,69570,5130,6325.0,257.0,13138.0,603.0
+2020-07-16,Ecuador,759,28,70329,5158,6108.0,258.0,12072.0,582.0
 2019-12-31,Egypt,0,0,0,0,,,,
 2020-01-01,Egypt,0,0,0,0,,,,
 2020-01-02,Egypt,0,0,0,0,,,,
@@ -8564,6 +8622,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Egypt,0,0,81158,3769,5905.0,426.0,15970.0,980.0
 2020-07-14,Egypt,1843,166,83001,3935,6779.0,513.0,16247.0,1063.0
 2020-07-15,Egypt,929,73,83930,4008,6651.0,519.0,15619.0,1055.0
+2020-07-16,Egypt,913,59,84843,4067,6539.0,503.0,15029.0,1033.0
 2020-03-19,El Salvador,1,0,1,0,,,,
 2020-03-20,El Salvador,0,0,1,0,,,,
 2020-03-21,El Salvador,2,0,3,0,,,,
@@ -8683,6 +8742,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,El Salvador,283,13,9674,267,1897.0,50.0,3740.0,103.0
 2020-07-14,El Salvador,304,11,9978,278,1951.0,55.0,3805.0,114.0
 2020-07-15,El Salvador,325,0,10303,278,1996.0,49.0,3865.0,104.0
+2020-07-16,El Salvador,342,20,10645,298,2079.0,63.0,3909.0,116.0
 2020-03-15,Equatorial Guinea,1,0,1,0,,,,
 2020-03-16,Equatorial Guinea,0,0,1,0,,,,
 2020-03-17,Equatorial Guinea,0,0,1,0,,,,
@@ -8806,6 +8866,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Equatorial Guinea,0,0,3071,51,0.0,0.0,1070.0,19.0
 2020-07-14,Equatorial Guinea,0,0,3071,51,0.0,0.0,1070.0,19.0
 2020-07-15,Equatorial Guinea,0,0,3071,51,0.0,0.0,1070.0,19.0
+2020-07-16,Equatorial Guinea,0,0,3071,51,0.0,0.0,1070.0,19.0
 2020-03-22,Eritrea,1,0,1,0,,,,
 2020-03-23,Eritrea,0,0,1,0,,,,
 2020-03-24,Eritrea,0,0,1,0,,,,
@@ -8922,6 +8983,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Eritrea,0,0,232,0,17.0,0.0,41.0,0.0
 2020-07-14,Eritrea,0,0,232,0,17.0,0.0,41.0,0.0
 2020-07-15,Eritrea,0,0,232,0,17.0,0.0,29.0,0.0
+2020-07-16,Eritrea,0,0,232,0,17.0,0.0,29.0,0.0
 2019-12-31,Estonia,0,0,0,0,,,,
 2020-01-01,Estonia,0,0,0,0,,,,
 2020-01-02,Estonia,0,0,0,0,,,,
@@ -9120,6 +9182,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Estonia,0,0,2014,69,21.0,0.0,27.0,0.0
 2020-07-14,Estonia,0,0,2014,69,20.0,0.0,27.0,0.0
 2020-07-15,Estonia,1,0,2015,69,20.0,0.0,26.0,0.0
+2020-07-16,Estonia,1,0,2016,69,13.0,0.0,27.0,0.0
 2020-03-14,Ethiopia,1,0,1,0,,,,
 2020-03-15,Ethiopia,0,0,1,0,,,,
 2020-03-16,Ethiopia,3,0,4,0,,,,
@@ -9244,6 +9307,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Ethiopia,158,3,7560,127,1714.0,24.0,1871.0,29.0
 2020-07-14,Ethiopia,206,1,7766,128,1380.0,12.0,1920.0,25.0
 2020-07-15,Ethiopia,203,11,7969,139,1303.0,20.0,2123.0,36.0
+2020-07-16,Ethiopia,212,7,8181,146,1407.0,26.0,2335.0,43.0
 2020-03-06,Faeroe Islands,1,0,1,0,,,,
 2020-03-07,Faeroe Islands,1,0,2,0,,,,
 2020-03-08,Faeroe Islands,1,0,3,0,,,,
@@ -9376,6 +9440,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Faeroe Islands,0,0,188,0,1.0,0.0,1.0,0.0
 2020-07-14,Faeroe Islands,0,0,188,0,1.0,0.0,1.0,0.0
 2020-07-15,Faeroe Islands,0,0,188,0,0.0,0.0,1.0,0.0
+2020-07-16,Faeroe Islands,0,0,188,0,0.0,0.0,1.0,0.0
 2020-04-04,Falkland Islands,1,0,1,0,,,,
 2020-04-05,Falkland Islands,0,0,1,0,,,,
 2020-04-06,Falkland Islands,1,0,2,0,,,,
@@ -9479,6 +9544,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Falkland Islands,0,0,13,0,0.0,0.0,0.0,0.0
 2020-07-14,Falkland Islands,0,0,13,0,0.0,0.0,0.0,0.0
 2020-07-15,Falkland Islands,0,0,13,0,0.0,0.0,0.0,0.0
+2020-07-16,Falkland Islands,0,0,13,0,0.0,0.0,0.0,0.0
 2020-03-20,Fiji,1,0,1,0,,,,
 2020-03-21,Fiji,0,0,1,0,,,,
 2020-03-22,Fiji,1,0,2,0,,,,
@@ -9597,6 +9663,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Fiji,5,0,26,0,8.0,0.0,8.0,0.0
 2020-07-14,Fiji,0,0,26,0,7.0,0.0,8.0,0.0
 2020-07-15,Fiji,0,0,26,0,7.0,0.0,8.0,0.0
+2020-07-16,Fiji,0,0,26,0,5.0,0.0,8.0,0.0
 2019-12-31,Finland,0,0,0,0,,,,
 2020-01-01,Finland,0,0,0,0,,,,
 2020-01-02,Finland,0,0,0,0,,,,
@@ -9783,18 +9850,19 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-01,Finland,5,0,7214,328,59.0,1.0,102.0,2.0
 2020-07-02,Finland,22,0,7236,328,69.0,1.0,119.0,2.0
 2020-07-03,Finland,5,0,7241,328,69.0,1.0,124.0,2.0
-2020-07-04,Finland,1,1,7242,329,51.0,1.0,109.0,3.0
-2020-07-05,Finland,6,0,7248,329,57.0,1.0,106.0,3.0
-2020-07-06,Finland,5,0,7253,329,62.0,1.0,110.0,3.0
-2020-07-07,Finland,4,0,7257,329,48.0,1.0,113.0,2.0
-2020-07-08,Finland,5,0,7262,329,48.0,1.0,107.0,2.0
-2020-07-09,Finland,3,0,7265,329,29.0,1.0,98.0,2.0
-2020-07-10,Finland,8,0,7273,329,32.0,1.0,101.0,2.0
-2020-07-11,Finland,6,0,7279,329,37.0,0.0,88.0,1.0
-2020-07-12,Finland,0,0,7279,329,31.0,0.0,88.0,1.0
-2020-07-13,Finland,15,0,7294,329,41.0,0.0,103.0,1.0
-2020-07-14,Finland,1,0,7295,329,38.0,0.0,86.0,1.0
-2020-07-15,Finland,6,0,7301,329,39.0,0.0,87.0,1.0
+2020-07-04,Finland,28,0,7269,328,78.0,0.0,136.0,2.0
+2020-07-05,Finland,1,0,7270,328,79.0,0.0,128.0,2.0
+2020-07-06,Finland,2,0,7272,328,81.0,0.0,129.0,2.0
+2020-07-07,Finland,3,0,7275,328,66.0,0.0,131.0,1.0
+2020-07-08,Finland,1,0,7276,328,62.0,0.0,121.0,1.0
+2020-07-09,Finland,7,0,7283,328,47.0,0.0,116.0,1.0
+2020-07-10,Finland,4,0,7287,328,46.0,0.0,115.0,1.0
+2020-07-11,Finland,3,0,7290,328,21.0,0.0,99.0,0.0
+2020-07-12,Finland,0,0,7290,328,20.0,0.0,99.0,0.0
+2020-07-13,Finland,2,0,7292,328,20.0,0.0,101.0,0.0
+2020-07-14,Finland,4,0,7296,328,21.0,0.0,87.0,0.0
+2020-07-15,Finland,0,0,7296,328,20.0,0.0,82.0,0.0
+2020-07-16,Finland,0,0,7296,328,13.0,0.0,60.0,0.0
 2019-12-31,France,0,0,0,0,,,,
 2020-01-01,France,0,0,0,0,,,,
 2020-01-02,France,0,0,0,0,,,,
@@ -9993,6 +10061,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,France,0,0,170752,30004,3792.0,111.0,7816.0,226.0
 2020-07-14,France,1625,25,172377,30029,4042.0,109.0,8117.0,216.0
 2020-07-15,France,0,0,172377,30029,3567.0,96.0,7576.0,186.0
+2020-07-16,France,927,91,173304,30120,3831.0,155.0,7585.0,259.0
 2020-03-19,French Polynesia,3,0,3,0,,,,
 2020-03-20,French Polynesia,0,0,3,0,,,,
 2020-03-21,French Polynesia,12,0,15,0,,,,
@@ -10112,6 +10181,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,French Polynesia,0,0,62,0,0.0,0.0,0.0,0.0
 2020-07-14,French Polynesia,0,0,62,0,0.0,0.0,0.0,0.0
 2020-07-15,French Polynesia,0,0,62,0,0.0,0.0,0.0,0.0
+2020-07-16,French Polynesia,0,0,62,0,0.0,0.0,0.0,0.0
 2020-03-13,Gabon,1,0,1,0,,,,
 2020-03-15,Gabon,0,0,1,0,,,,
 2020-03-16,Gabon,0,0,1,0,,,,
@@ -10236,6 +10306,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Gabon,0,0,5942,46,322.0,2.0,733.0,6.0
 2020-07-14,Gabon,84,0,6026,46,283.0,0.0,632.0,4.0
 2020-07-15,Gabon,0,0,6026,46,283.0,0.0,632.0,4.0
+2020-07-16,Gabon,95,0,6121,46,250.0,0.0,608.0,4.0
 2020-03-18,Gambia,1,0,1,0,,,,
 2020-03-19,Gambia,0,0,1,0,,,,
 2020-03-20,Gambia,0,0,1,0,,,,
@@ -10356,6 +10427,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Gambia,0,0,64,3,7.0,1.0,19.0,1.0
 2020-07-14,Gambia,0,0,64,3,3.0,0.0,17.0,1.0
 2020-07-15,Gambia,0,0,64,3,3.0,0.0,17.0,1.0
+2020-07-16,Gambia,0,0,64,3,1.0,0.0,15.0,1.0
 2019-12-31,Georgia,0,0,0,0,,,,
 2020-01-01,Georgia,0,0,0,0,,,,
 2020-01-02,Georgia,0,0,0,0,,,,
@@ -10554,6 +10626,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Georgia,9,0,995,15,42.0,0.0,69.0,0.0
 2020-07-14,Georgia,4,0,999,15,41.0,0.0,71.0,0.0
 2020-07-15,Georgia,4,0,1003,15,40.0,0.0,75.0,0.0
+2020-07-16,Georgia,3,0,1006,15,38.0,0.0,75.0,0.0
 2019-12-31,Germany,0,0,0,0,,,,
 2020-01-01,Germany,0,0,0,0,,,,
 2020-01-02,Germany,0,0,0,0,,,,
@@ -10752,6 +10825,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Germany,159,1,198963,9064,2409.0,48.0,5202.0,103.0
 2020-07-14,Germany,0,0,198963,9064,2019.0,40.0,4704.0,91.0
 2020-07-15,Germany,763,7,199726,9071,2385.0,35.0,5001.0,86.0
+2020-07-16,Germany,534,7,200260,9078,2477.0,30.0,5032.0,84.0
 2020-03-13,Ghana,2,0,2,0,,,,
 2020-03-15,Ghana,0,0,2,0,,,,
 2020-03-16,Ghana,0,0,2,0,,,,
@@ -10876,6 +10950,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Ghana,270,4,24518,139,4433.0,17.0,7167.0,27.0
 2020-07-14,Ghana,470,0,24988,139,3911.0,10.0,7637.0,27.0
 2020-07-15,Ghana,0,0,24988,139,3020.0,10.0,7247.0,27.0
+2020-07-16,Ghana,442,0,25430,139,2608.0,10.0,7296.0,22.0
 2020-03-20,Gibraltar,10,0,10,0,,,,
 2020-03-21,Gibraltar,0,0,10,0,,,,
 2020-03-22,Gibraltar,0,0,10,0,,,,
@@ -10994,6 +11069,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Gibraltar,0,0,180,0,2.0,0.0,3.0,0.0
 2020-07-14,Gibraltar,0,0,180,0,1.0,0.0,3.0,0.0
 2020-07-15,Gibraltar,0,0,180,0,1.0,0.0,3.0,0.0
+2020-07-16,Gibraltar,0,0,180,0,1.0,0.0,2.0,0.0
 2019-12-31,Greece,0,0,0,0,,,,
 2020-01-01,Greece,0,0,0,0,,,,
 2020-01-02,Greece,0,0,0,0,,,,
@@ -11192,6 +11268,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Greece,31,0,3803,193,284.0,1.0,427.0,2.0
 2020-07-14,Greece,23,0,3826,193,264.0,1.0,436.0,2.0
 2020-07-15,Greece,57,0,3883,193,294.0,0.0,474.0,1.0
+2020-07-16,Greece,27,0,3910,193,288.0,0.0,478.0,1.0
 2020-03-20,Greenland,2,0,2,0,,,,
 2020-03-21,Greenland,0,0,2,0,,,,
 2020-03-22,Greenland,0,0,2,0,,,,
@@ -11310,6 +11387,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Greenland,0,0,13,0,0.0,0.0,0.0,0.0
 2020-07-14,Greenland,0,0,13,0,0.0,0.0,0.0,0.0
 2020-07-15,Greenland,0,0,13,0,0.0,0.0,0.0,0.0
+2020-07-16,Greenland,0,0,13,0,0.0,0.0,0.0,0.0
 2020-03-23,Grenada,1,0,1,0,,,,
 2020-03-24,Grenada,0,0,1,0,,,,
 2020-03-25,Grenada,0,0,1,0,,,,
@@ -11425,6 +11503,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Grenada,0,0,23,0,0.0,0.0,0.0,0.0
 2020-07-14,Grenada,0,0,23,0,0.0,0.0,0.0,0.0
 2020-07-15,Grenada,0,0,23,0,0.0,0.0,0.0,0.0
+2020-07-16,Grenada,0,0,23,0,0.0,0.0,0.0,0.0
 2020-03-19,Guam,3,0,3,0,,,,
 2020-03-20,Guam,9,0,12,0,,,,
 2020-03-21,Guam,2,0,14,0,,,,
@@ -11544,6 +11623,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Guam,0,0,312,5,11.0,0.0,59.0,0.0
 2020-07-14,Guam,0,0,312,5,9.0,0.0,55.0,0.0
 2020-07-15,Guam,1,0,313,5,10.0,0.0,46.0,0.0
+2020-07-16,Guam,1,0,314,5,5.0,0.0,34.0,0.0
 2020-03-15,Guatemala,1,0,1,0,,,,
 2020-03-16,Guatemala,0,1,1,1,,,,
 2020-03-17,Guatemala,5,0,6,1,,,,
@@ -11667,6 +11747,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Guatemala,757,47,29355,1219,6107.0,272.0,12425.0,492.0
 2020-07-14,Guatemala,387,25,29742,1244,5770.0,263.0,12333.0,498.0
 2020-07-15,Guatemala,1130,58,30872,1302,6085.0,298.0,12776.0,529.0
+2020-07-16,Guatemala,1202,48,32074,1350,6663.0,297.0,13063.0,533.0
 2020-03-20,Guernsey,1,0,1,0,,,,
 2020-03-21,Guernsey,0,0,1,0,,,,
 2020-03-22,Guernsey,0,0,1,0,,,,
@@ -11785,6 +11866,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Guernsey,0,0,252,13,0.0,0.0,0.0,0.0
 2020-07-14,Guernsey,0,0,252,13,0.0,0.0,0.0,0.0
 2020-07-15,Guernsey,0,0,252,13,0.0,0.0,0.0,0.0
+2020-07-16,Guernsey,0,0,252,13,0.0,0.0,0.0,0.0
 2020-03-14,Guinea,1,0,1,0,,,,
 2020-03-15,Guinea,0,0,1,0,,,,
 2020-03-17,Guinea,0,0,1,0,,,,
@@ -11908,6 +11990,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Guinea,97,0,6141,37,531.0,3.0,799.0,6.0
 2020-07-14,Guinea,0,0,6141,37,505.0,3.0,790.0,6.0
 2020-07-15,Guinea,0,0,6141,37,444.0,3.0,750.0,4.0
+2020-07-16,Guinea,135,1,6276,38,579.0,4.0,872.0,5.0
 2020-03-27,Guinea-Bissau,2,0,2,0,,,,
 2020-03-28,Guinea-Bissau,0,0,2,0,,,,
 2020-03-29,Guinea-Bissau,0,0,2,0,,,,
@@ -12019,6 +12102,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Guinea-Bissau,0,0,1842,25,77.0,0.0,228.0,4.0
 2020-07-14,Guinea-Bissau,0,0,1842,25,77.0,0.0,228.0,4.0
 2020-07-15,Guinea-Bissau,60,1,1902,26,112.0,1.0,248.0,2.0
+2020-07-16,Guinea-Bissau,0,0,1902,26,112.0,1.0,248.0,2.0
 2020-03-13,Guyana,1,1,1,1,,,,
 2020-03-16,Guyana,3,0,4,1,,,,
 2020-03-17,Guyana,0,0,4,1,,,,
@@ -12142,6 +12226,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Guyana,6,0,297,17,24.0,2.0,67.0,5.0
 2020-07-14,Guyana,3,0,300,17,22.0,1.0,65.0,5.0
 2020-07-15,Guyana,8,0,308,17,23.0,1.0,63.0,5.0
+2020-07-16,Guyana,5,1,313,18,28.0,2.0,65.0,5.0
 2020-03-20,Haiti,2,0,2,0,,,,
 2020-03-21,Haiti,0,0,2,0,,,,
 2020-03-22,Haiti,0,0,2,0,,,,
@@ -12260,6 +12345,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Haiti,37,0,6727,139,394.0,26.0,880.0,35.0
 2020-07-14,Haiti,0,2,6727,141,356.0,28.0,794.0,36.0
 2020-07-15,Haiti,104,2,6831,143,399.0,26.0,856.0,38.0
+2020-07-16,Haiti,71,2,6902,145,416.0,22.0,862.0,38.0
 2020-03-12,Honduras,2,0,2,0,,,,
 2020-03-14,Honduras,1,0,3,0,,,,
 2020-03-16,Honduras,3,0,6,0,,,,
@@ -12384,6 +12470,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Honduras,507,3,28090,774,4147.0,135.0,10008.0,295.0
 2020-07-14,Honduras,489,15,28579,789,3914.0,133.0,9761.0,304.0
 2020-07-15,Honduras,527,18,29106,807,3678.0,130.0,9548.0,310.0
+2020-07-16,Honduras,930,18,30036,825,4058.0,131.0,9774.0,283.0
 2020-03-05,Hungary,2,0,2,0,,,,
 2020-03-07,Hungary,2,0,4,0,,,,
 2020-03-08,Hungary,3,0,7,0,,,,
@@ -12516,6 +12603,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Hungary,5,0,4234,595,51.0,6.0,92.0,14.0
 2020-07-14,Hungary,13,0,4247,595,58.0,6.0,102.0,10.0
 2020-07-15,Hungary,16,0,4263,595,53.0,6.0,108.0,10.0
+2020-07-16,Hungary,0,0,4263,595,53.0,6.0,106.0,9.0
 2019-12-31,Iceland,0,0,0,0,,,,
 2020-01-01,Iceland,0,0,0,0,,,,
 2020-01-02,Iceland,0,0,0,0,,,,
@@ -12714,6 +12802,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Iceland,8,0,1896,10,33.0,0.0,58.0,0.0
 2020-07-14,Iceland,4,0,1900,10,34.0,0.0,60.0,0.0
 2020-07-15,Iceland,5,0,1905,10,32.0,0.0,63.0,0.0
+2020-07-16,Iceland,6,0,1911,10,31.0,0.0,64.0,0.0
 2019-12-31,India,0,0,0,0,,,,
 2020-01-01,India,0,0,0,0,,,,
 2020-01-02,India,0,0,0,0,,,,
@@ -12912,6 +13001,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,India,28701,500,878254,23174,180841.0,3481.0,329936.0,6699.0
 2020-07-14,India,28498,553,906752,23727,187087.0,3567.0,339912.0,6834.0
 2020-07-15,India,29429,582,936181,24309,193764.0,3667.0,350688.0,6909.0
+2020-07-16,India,32695,606,968876,24915,201580.0,3786.0,364235.0,7081.0
 2019-12-31,Indonesia,0,0,0,0,,,,
 2020-01-01,Indonesia,0,0,0,0,,,,
 2020-01-02,Indonesia,0,0,0,0,,,,
@@ -13110,6 +13200,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Indonesia,1681,71,75699,3606,11950.0,435.0,21689.0,852.0
 2020-07-14,Indonesia,1282,50,76981,3656,12023.0,415.0,21889.0,851.0
 2020-07-15,Indonesia,1591,54,78572,3710,12346.0,401.0,22187.0,834.0
+2020-07-16,Indonesia,1522,87,80094,3797,12015.0,438.0,22324.0,863.0
 2019-12-31,International,0,0,0,0,,,,
 2020-01-01,International,0,0,0,0,,,,
 2020-01-02,International,0,0,0,0,,,,
@@ -13379,6 +13470,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Iran,2186,194,257303,12829,16865.0,1258.0,34634.0,2321.0
 2020-07-14,Iran,2349,203,259652,13032,16601.0,1301.0,34447.0,2362.0
 2020-07-15,Iran,2521,179,262173,13211,16485.0,1280.0,34511.0,2394.0
+2020-07-16,Iran,2388,199,264561,13410,16182.0,1326.0,34350.0,2452.0
 2019-12-31,Iraq,0,0,0,0,,,,
 2020-01-01,Iraq,0,0,0,0,,,,
 2020-01-02,Iraq,0,0,0,0,,,,
@@ -13577,6 +13669,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Iraq,2312,95,77506,3150,17027.0,677.0,32104.0,1394.0
 2020-07-14,Iraq,2229,100,79735,3250,17460.0,683.0,32584.0,1411.0
 2020-07-15,Iraq,2022,95,81757,3345,17056.0,660.0,32648.0,1402.0
+2020-07-16,Iraq,2110,87,83867,3432,16425.0,653.0,32343.0,1382.0
 2019-12-31,Ireland,0,0,0,0,,,,
 2020-01-01,Ireland,0,0,0,0,,,,
 2020-01-02,Ireland,0,0,0,0,,,,
@@ -13775,6 +13868,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Ireland,17,0,25628,1746,101.0,5.0,189.0,11.0
 2020-07-14,Ireland,10,0,25638,1746,107.0,5.0,176.0,11.0
 2020-07-15,Ireland,32,0,25670,1746,132.0,3.0,197.0,10.0
+2020-07-16,Ireland,13,2,25683,1748,141.0,5.0,206.0,10.0
 2020-03-21,Isle of Man,1,0,1,0,,,,
 2020-03-22,Isle of Man,1,0,2,0,,,,
 2020-03-23,Isle of Man,0,0,2,0,,,,
@@ -13892,6 +13986,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Isle of Man,0,0,336,24,0.0,0.0,0.0,0.0
 2020-07-14,Isle of Man,0,0,336,24,0.0,0.0,0.0,0.0
 2020-07-15,Isle of Man,0,0,336,24,0.0,0.0,0.0,0.0
+2020-07-16,Isle of Man,0,0,336,24,0.0,0.0,0.0,0.0
 2019-12-31,Israel,0,0,0,0,,,,
 2020-01-01,Israel,0,0,0,0,,,,
 2020-01-02,Israel,0,0,0,0,,,,
@@ -14090,6 +14185,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Israel,1207,8,38670,362,8712.0,31.0,14915.0,44.0
 2020-07-14,Israel,1962,3,40632,365,9446.0,27.0,16191.0,46.0
 2020-07-15,Israel,1728,6,42360,371,10138.0,29.0,17116.0,51.0
+2020-07-16,Israel,2354,9,44714,380,11157.0,36.0,18457.0,58.0
 2019-12-31,Italy,0,0,0,0,,,,
 2020-01-01,Italy,0,0,0,0,,,,
 2020-01-02,Italy,0,0,0,0,,,,
@@ -14288,6 +14384,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Italy,234,9,243061,34954,1450.0,93.0,2751.0,216.0
 2020-07-14,Italy,169,13,243230,34967,1411.0,98.0,2794.0,223.0
 2020-07-15,Italy,114,17,243344,34984,1388.0,85.0,2766.0,217.0
+2020-07-16,Italy,162,13,243506,34997,1357.0,83.0,2746.0,209.0
 2020-03-12,Jamaica,2,0,2,0,,,,
 2020-03-13,Jamaica,4,0,6,0,,,,
 2020-03-14,Jamaica,2,0,8,0,,,,
@@ -14413,6 +14510,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Jamaica,0,0,758,10,26.0,0.0,62.0,0.0
 2020-07-14,Jamaica,1,0,759,10,22.0,0.0,61.0,0.0
 2020-07-15,Jamaica,3,0,762,10,17.0,0.0,60.0,0.0
+2020-07-16,Jamaica,1,0,763,10,12.0,0.0,56.0,0.0
 2019-12-31,Japan,0,0,0,0,,,,
 2020-01-01,Japan,0,0,0,0,,,,
 2020-01-02,Japan,0,0,0,0,,,,
@@ -14611,6 +14709,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Japan,373,0,21502,982,1980.0,5.0,3026.0,10.0
 2020-07-14,Japan,718,0,22220,982,2592.0,5.0,3627.0,10.0
 2020-07-15,Japan,288,2,22508,984,2527.0,6.0,3785.0,10.0
+2020-07-16,Japan,382,1,22890,985,2716.0,5.0,4016.0,10.0
 2020-03-20,Jersey,5,0,5,0,,,,
 2020-03-21,Jersey,7,0,12,0,,,,
 2020-03-22,Jersey,0,0,12,0,,,,
@@ -14729,6 +14828,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Jersey,0,0,325,31,5.0,0.0,6.0,0.0
 2020-07-14,Jersey,4,0,329,31,4.0,0.0,10.0,0.0
 2020-07-15,Jersey,0,0,329,31,4.0,0.0,10.0,0.0
+2020-07-16,Jersey,0,0,329,31,4.0,0.0,10.0,0.0
 2020-03-03,Jordan,1,0,1,0,,,,
 2020-03-08,Jordan,0,0,1,0,,,,
 2020-03-09,Jordan,,,,,1.0,0.0,,
@@ -14860,6 +14960,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Jordan,3,0,1179,10,15.0,0.0,58.0,1.0
 2020-07-14,Jordan,4,0,1183,10,16.0,0.0,55.0,1.0
 2020-07-15,Jordan,15,0,1198,10,29.0,0.0,66.0,1.0
+2020-07-16,Jordan,3,0,1201,10,32.0,0.0,68.0,1.0
 2020-03-15,Kazakhstan,6,0,6,0,,,,
 2020-03-16,Kazakhstan,3,0,9,0,,,,
 2020-03-17,Kazakhstan,2,0,11,0,,,,
@@ -14983,6 +15084,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Kazakhstan,1636,111,59889,375,11315.0,187.0,38562.0,192.0
 2020-07-14,Kazakhstan,1866,0,61755,375,12072.0,111.0,39936.0,187.0
 2020-07-15,Kazakhstan,1759,0,63514,375,12455.0,111.0,22449.0,187.0
+2020-07-16,Kazakhstan,1674,0,65188,375,12167.0,111.0,22614.0,187.0
 2020-03-14,Kenya,1,0,1,0,,,,
 2020-03-15,Kenya,0,0,1,0,,,,
 2020-03-16,Kenya,2,0,3,0,,,,
@@ -15107,6 +15209,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Kenya,379,1,10105,185,2219.0,25.0,4035.0,42.0
 2020-07-14,Kenya,189,12,10294,197,2227.0,33.0,4104.0,53.0
 2020-07-15,Kenya,497,5,10791,202,2541.0,35.0,4425.0,54.0
+2020-07-16,Kenya,461,7,11252,209,2724.0,40.0,4579.0,60.0
 2020-03-14,Kosovo,2,0,2,0,,,,
 2020-03-15,Kosovo,3,0,5,0,,,,
 2020-03-16,Kosovo,8,0,13,0,,,,
@@ -15231,6 +15334,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Kosovo,216,1,4931,102,1575.0,36.0,2254.0,53.0
 2020-07-14,Kosovo,187,6,5118,108,1610.0,33.0,2319.0,59.0
 2020-07-15,Kosovo,0,0,5118,108,1415.0,29.0,2240.0,57.0
+2020-07-16,Kosovo,119,4,5237,112,1351.0,30.0,2246.0,58.0
 2019-12-31,Kuwait,0,0,0,0,,,,
 2020-01-01,Kuwait,0,0,0,0,,,,
 2020-01-02,Kuwait,0,0,0,0,,,,
@@ -15429,6 +15533,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Kuwait,836,4,54894,390,4953.0,22.0,9952.0,42.0
 2020-07-14,Kuwait,614,3,55508,393,4864.0,20.0,9984.0,43.0
 2020-07-15,Kuwait,666,3,56174,396,4929.0,19.0,9979.0,42.0
+2020-07-16,Kuwait,703,3,56877,399,4870.0,20.0,9937.0,41.0
 2020-03-19,Kyrgyzstan,3,0,3,0,,,,
 2020-03-20,Kyrgyzstan,3,0,6,0,,,,
 2020-03-21,Kyrgyzstan,0,0,6,0,,,,
@@ -15548,6 +15653,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Kyrgyzstan,488,15,11117,147,3426.0,55.0,6100.0,97.0
 2020-07-14,Kyrgyzstan,421,2,11538,149,3397.0,50.0,6242.0,92.0
 2020-07-15,Kyrgyzstan,439,11,11977,160,3491.0,48.0,6242.0,98.0
+2020-07-16,Kyrgyzstan,521,7,12498,167,3651.0,51.0,6763.0,105.0
 2020-03-25,Laos,2,0,2,0,,,,
 2020-03-26,Laos,0,0,2,0,,,,
 2020-03-27,Laos,4,0,6,0,,,,
@@ -15661,6 +15767,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Laos,0,0,19,0,0.0,0.0,0.0,0.0
 2020-07-14,Laos,0,0,19,0,0.0,0.0,0.0,0.0
 2020-07-15,Laos,0,0,19,0,0.0,0.0,0.0,0.0
+2020-07-16,Laos,0,0,19,0,0.0,0.0,0.0,0.0
 2020-03-03,Latvia,1,0,1,0,,,,
 2020-03-08,Latvia,1,0,2,0,,,,
 2020-03-09,Latvia,1,0,3,0,3.0,0.0,,
@@ -15792,6 +15899,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Latvia,0,0,1173,30,49.0,0.0,57.0,0.0
 2020-07-14,Latvia,1,1,1174,31,47.0,1.0,57.0,1.0
 2020-07-15,Latvia,4,0,1178,31,44.0,1.0,60.0,1.0
+2020-07-16,Latvia,0,0,1178,31,37.0,1.0,57.0,1.0
 2019-12-31,Lebanon,0,0,0,0,,,,
 2020-01-01,Lebanon,0,0,0,0,,,,
 2020-01-02,Lebanon,0,0,0,0,,,,
@@ -15990,6 +16098,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Lebanon,166,0,2334,36,461.0,0.0,594.0,2.0
 2020-07-14,Lebanon,85,0,2419,36,534.0,0.0,674.0,2.0
 2020-07-15,Lebanon,32,1,2451,37,544.0,1.0,673.0,3.0
+2020-07-16,Lebanon,91,1,2542,38,596.0,2.0,754.0,4.0
 2020-05-15,Lesotho,1,0,1,0,,,,
 2020-05-16,Lesotho,0,0,1,0,,,,
 2020-05-17,Lesotho,0,0,1,0,,,,
@@ -16052,6 +16161,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Lesotho,49,1,233,2,154.0,2.0,206.0,2.0
 2020-07-14,Lesotho,0,0,233,2,142.0,2.0,206.0,2.0
 2020-07-15,Lesotho,12,1,245,3,154.0,3.0,218.0,3.0
+2020-07-16,Lesotho,11,0,256,3,165.0,3.0,221.0,3.0
 2020-03-17,Liberia,1,0,1,0,,,,
 2020-03-18,Liberia,1,0,2,0,,,,
 2020-03-19,Liberia,0,0,2,0,,,,
@@ -16173,6 +16283,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Liberia,12,4,1010,51,136.0,14.0,242.0,17.0
 2020-07-14,Liberia,14,0,1024,51,133.0,12.0,254.0,15.0
 2020-07-15,Liberia,0,0,1024,51,107.0,10.0,244.0,15.0
+2020-07-16,Liberia,32,15,1056,66,130.0,25.0,252.0,29.0
 2020-03-25,Libya,1,0,1,0,,,,
 2020-03-26,Libya,0,0,1,0,,,,
 2020-03-27,Libya,0,0,1,0,,,,
@@ -16286,6 +16397,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Libya,44,1,1433,39,444.0,12.0,671.0,18.0
 2020-07-14,Libya,79,1,1512,40,466.0,8.0,750.0,19.0
 2020-07-15,Libya,51,2,1563,42,381.0,7.0,739.0,18.0
+2020-07-16,Libya,26,1,1589,43,407.0,8.0,731.0,19.0
 2020-03-05,Liechtenstein,1,0,1,0,,,,
 2020-03-11,Liechtenstein,,,,,1.0,0.0,,
 2020-03-12,Liechtenstein,2,0,3,0,2.0,0.0,,
@@ -16414,6 +16526,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Liechtenstein,0,0,85,1,1.0,0.0,2.0,0.0
 2020-07-14,Liechtenstein,0,0,85,1,0.0,0.0,2.0,0.0
 2020-07-15,Liechtenstein,0,0,85,1,0.0,0.0,2.0,0.0
+2020-07-16,Liechtenstein,0,0,85,1,0.0,0.0,2.0,0.0
 2019-12-31,Lithuania,0,0,0,0,,,,
 2020-01-01,Lithuania,0,0,0,0,,,,
 2020-01-02,Lithuania,0,0,0,0,,,,
@@ -16612,6 +16725,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Lithuania,4,0,1869,79,33.0,0.0,53.0,1.0
 2020-07-14,Lithuania,5,0,1874,79,33.0,0.0,58.0,1.0
 2020-07-15,Lithuania,1,0,1875,79,31.0,0.0,58.0,1.0
+2020-07-16,Lithuania,7,0,1882,79,28.0,0.0,64.0,1.0
 2019-12-31,Luxembourg,0,0,0,0,,,,
 2020-01-01,Luxembourg,0,0,0,0,,,,
 2020-01-02,Luxembourg,0,0,0,0,,,,
@@ -16809,7 +16923,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-12,Luxembourg,65,0,4842,110,366.0,0.0,625.0,0.0
 2020-07-13,Luxembourg,83,1,4925,111,403.0,1.0,683.0,1.0
 2020-07-14,Luxembourg,31,0,4956,111,414.0,1.0,700.0,1.0
-2020-07-15,Luxembourg,0,0,4956,111,353.0,1.0,657.0,1.0
+2020-07-15,Luxembourg,100,0,5056,111,453.0,1.0,757.0,1.0
+2020-07-16,Luxembourg,0,0,5056,111,406.0,1.0,711.0,1.0
 2019-12-31,Macedonia,0,0,0,0,,,,
 2020-01-01,Macedonia,0,0,0,0,,,,
 2020-01-02,Macedonia,0,0,0,0,,,,
@@ -17008,6 +17123,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Macedonia,144,7,8111,382,1065.0,41.0,2019.0,96.0
 2020-07-14,Macedonia,86,3,8197,385,1075.0,39.0,1973.0,87.0
 2020-07-15,Macedonia,131,4,8328,389,1088.0,38.0,1978.0,87.0
+2020-07-16,Macedonia,194,4,8522,393,1121.0,34.0,2052.0,87.0
 2020-03-21,Madagascar,3,0,3,0,,,,
 2020-03-22,Madagascar,0,0,3,0,,,,
 2020-03-23,Madagascar,0,0,3,0,,,,
@@ -17125,6 +17241,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Madagascar,289,1,4867,35,2139.0,6.0,2789.0,17.0
 2020-07-14,Madagascar,213,2,5080,37,1830.0,4.0,2942.0,17.0
 2020-07-15,Madagascar,263,2,5343,39,1871.0,6.0,3129.0,19.0
+2020-07-16,Madagascar,262,4,5605,43,2032.0,10.0,3302.0,21.0
 2020-04-03,Malawi,3,0,3,0,,,,
 2020-04-04,Malawi,0,0,3,0,,,,
 2020-04-05,Malawi,1,0,4,0,,,,
@@ -17229,6 +17346,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Malawi,103,5,2364,38,622.0,19.0,1218.0,25.0
 2020-07-14,Malawi,66,1,2430,39,612.0,20.0,1206.0,25.0
 2020-07-15,Malawi,67,1,2497,40,620.0,16.0,1232.0,24.0
+2020-07-16,Malawi,117,3,2614,43,685.0,18.0,1272.0,27.0
 2019-12-31,Malaysia,0,0,0,0,,,,
 2020-01-01,Malaysia,0,0,0,0,,,,
 2020-01-02,Malaysia,0,0,0,0,,,,
@@ -17427,6 +17545,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Malaysia,14,0,8718,122,60.0,1.0,84.0,1.0
 2020-07-14,Malaysia,7,0,8725,122,57.0,1.0,88.0,1.0
 2020-07-15,Malaysia,4,0,8729,122,55.0,1.0,90.0,1.0
+2020-07-16,Malaysia,5,0,8734,122,57.0,1.0,94.0,1.0
 2020-03-08,Maldives,2,0,2,0,,,,
 2020-03-09,Maldives,2,0,4,0,,,,
 2020-03-11,Maldives,2,0,6,0,,,,
@@ -17555,6 +17674,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Maldives,67,0,2731,13,263.0,2.0,408.0,5.0
 2020-07-14,Maldives,31,0,2762,13,271.0,1.0,426.0,5.0
 2020-07-15,Maldives,39,1,2801,14,300.0,2.0,440.0,5.0
+2020-07-16,Maldives,30,0,2831,14,314.0,1.0,449.0,5.0
 2020-03-26,Mali,2,0,2,0,,,,
 2020-03-27,Mali,2,0,4,0,,,,
 2020-03-28,Mali,0,0,4,0,,,,
@@ -17667,6 +17787,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Mali,5,0,2411,121,81.0,2.0,264.0,7.0
 2020-07-14,Mali,1,0,2412,121,81.0,2.0,239.0,6.0
 2020-07-15,Mali,11,0,2423,121,75.0,2.0,242.0,5.0
+2020-07-16,Mali,10,0,2433,121,75.0,1.0,231.0,5.0
 2020-03-07,Malta,1,0,1,0,,,,
 2020-03-08,Malta,2,0,3,0,,,,
 2020-03-09,Malta,0,0,3,0,,,,
@@ -17798,6 +17919,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Malta,0,0,674,9,2.0,0.0,4.0,0.0
 2020-07-14,Malta,0,0,674,9,2.0,0.0,4.0,0.0
 2020-07-15,Malta,0,0,674,9,1.0,0.0,4.0,0.0
+2020-07-16,Malta,0,0,674,9,1.0,0.0,4.0,0.0
 2020-03-15,Mauritania,1,0,1,0,,,,
 2020-03-16,Mauritania,0,0,1,0,,,,
 2020-03-17,Mauritania,0,0,1,0,,,,
@@ -17921,6 +18043,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Mauritania,0,0,5126,144,247.0,14.0,1219.0,24.0
 2020-07-14,Mauritania,229,3,5355,147,476.0,17.0,1206.0,21.0
 2020-07-15,Mauritania,91,2,5446,149,567.0,19.0,1297.0,23.0
+2020-07-16,Mauritania,0,0,5446,149,422.0,14.0,1297.0,23.0
 2020-03-20,Mauritius,3,0,3,0,,,,
 2020-03-21,Mauritius,9,0,12,0,,,,
 2020-03-22,Mauritius,2,1,14,1,,,,
@@ -18039,6 +18162,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Mauritius,0,0,342,10,1.0,0.0,1.0,0.0
 2020-07-14,Mauritius,0,0,342,10,0.0,0.0,1.0,0.0
 2020-07-15,Mauritius,0,0,342,10,0.0,0.0,1.0,0.0
+2020-07-16,Mauritius,1,0,343,10,1.0,0.0,2.0,0.0
 2019-12-31,Mexico,0,0,0,0,,,,
 2020-01-01,Mexico,0,0,0,0,,,,
 2020-01-02,Mexico,0,0,0,0,,,,
@@ -18237,6 +18361,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Mexico,4482,276,299750,35006,42902.0,4367.0,82898.0,8358.0
 2020-07-14,Mexico,4685,443,304435,35449,42685.0,4330.0,83778.0,8328.0
 2020-07-15,Mexico,7051,878,311486,36327,43478.0,4313.0,85397.0,8558.0
+2020-07-16,Mexico,6149,579,317635,36906,42632.0,4110.0,85865.0,8396.0
 2020-03-08,Moldova,1,0,1,0,,,,
 2020-03-11,Moldova,2,0,3,0,,,,
 2020-03-12,Moldova,1,0,4,0,,,,
@@ -18365,6 +18490,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Moldova,174,2,19382,642,1568.0,57.0,3132.0,112.0
 2020-07-14,Moldova,57,7,19439,649,1533.0,54.0,3082.0,113.0
 2020-07-15,Moldova,269,9,19708,658,1567.0,55.0,3095.0,113.0
+2020-07-16,Moldova,332,1,20040,659,1569.0,45.0,3142.0,110.0
 2019-12-31,Monaco,0,0,0,0,,,,
 2020-01-01,Monaco,0,0,0,0,,,,
 2020-01-02,Monaco,0,0,0,0,,,,
@@ -18563,6 +18689,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Monaco,0,0,109,5,1.0,0.0,6.0,0.0
 2020-07-14,Monaco,0,0,109,5,1.0,0.0,6.0,0.0
 2020-07-15,Monaco,0,0,109,5,1.0,0.0,6.0,0.0
+2020-07-16,Monaco,0,0,109,5,1.0,0.0,6.0,0.0
 2020-03-10,Mongolia,1,0,1,0,,,,
 2020-03-15,Mongolia,0,0,1,0,,,,
 2020-03-16,Mongolia,,,,,1.0,0.0,,
@@ -18687,6 +18814,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Mongolia,0,0,230,0,10.0,0.0,10.0,0.0
 2020-07-14,Mongolia,13,0,243,0,23.0,0.0,23.0,0.0
 2020-07-15,Mongolia,18,0,261,0,41.0,0.0,41.0,0.0
+2020-07-16,Mongolia,0,0,261,0,34.0,0.0,41.0,0.0
 2020-03-18,Montenegro,2,0,2,0,,,,
 2020-03-19,Montenegro,6,0,8,0,,,,
 2020-03-20,Montenegro,5,0,13,0,,,,
@@ -18807,6 +18935,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Montenegro,57,0,1221,23,440.0,9.0,740.0,12.0
 2020-07-14,Montenegro,66,0,1287,23,446.0,9.0,786.0,12.0
 2020-07-15,Montenegro,0,0,1287,23,380.0,6.0,739.0,11.0
+2020-07-16,Montenegro,0,0,1287,23,327.0,6.0,711.0,11.0
 2020-03-21,Montserrat,1,0,1,0,,,,
 2020-03-22,Montserrat,0,0,1,0,,,,
 2020-03-23,Montserrat,0,0,1,0,,,,
@@ -18924,6 +19053,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Montserrat,0,0,12,1,1.0,0.0,1.0,0.0
 2020-07-14,Montserrat,0,0,12,1,1.0,0.0,1.0,0.0
 2020-07-15,Montserrat,0,0,12,1,1.0,0.0,1.0,0.0
+2020-07-16,Montserrat,0,0,12,1,1.0,0.0,1.0,0.0
 2020-03-03,Morocco,1,0,1,0,,,,
 2020-03-06,Morocco,1,0,2,0,,,,
 2020-03-09,Morocco,,,,,2.0,0.0,,
@@ -19055,6 +19185,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Morocco,203,5,15745,250,1530.0,15.0,3693.0,29.0
 2020-07-14,Morocco,191,5,15936,255,1607.0,20.0,3646.0,30.0
 2020-07-15,Morocco,161,2,16097,257,1768.0,22.0,3564.0,29.0
+2020-07-16,Morocco,165,2,16262,259,1491.0,17.0,3626.0,31.0
 2020-03-23,Mozambique,1,0,1,0,,,,
 2020-03-24,Mozambique,0,0,1,0,,,,
 2020-03-25,Mozambique,0,0,1,0,,,,
@@ -19170,6 +19301,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Mozambique,22,0,1157,9,170.0,1.0,298.0,4.0
 2020-07-14,Mozambique,62,0,1219,9,207.0,1.0,336.0,3.0
 2020-07-15,Mozambique,49,0,1268,9,228.0,1.0,379.0,3.0
+2020-07-16,Mozambique,62,0,1330,9,259.0,1.0,427.0,3.0
 2020-03-17,Myanmar,0,0,0,0,,,,
 2020-03-23,Myanmar,,,,,0.0,0.0,,
 2020-03-24,Myanmar,2,0,2,0,2.0,0.0,,
@@ -19286,6 +19418,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Myanmar,1,0,331,6,18.0,0.0,32.0,0.0
 2020-07-14,Myanmar,5,0,336,6,20.0,0.0,37.0,0.0
 2020-07-15,Myanmar,1,0,337,6,21.0,0.0,38.0,0.0
+2020-07-16,Myanmar,0,0,337,6,19.0,0.0,33.0,0.0
 2020-03-15,Namibia,2,0,2,0,,,,
 2020-03-16,Namibia,0,0,2,0,,,,
 2020-03-17,Namibia,0,0,2,0,,,,
@@ -19409,6 +19542,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Namibia,117,0,785,1,373.0,1.0,602.0,1.0
 2020-07-14,Namibia,76,0,861,1,376.0,1.0,665.0,1.0
 2020-07-15,Namibia,3,1,864,2,325.0,2.0,661.0,2.0
+2020-07-16,Namibia,96,0,960,2,367.0,2.0,675.0,2.0
 2019-12-31,Nepal,0,0,0,0,,,,
 2020-01-01,Nepal,0,0,0,0,,,,
 2020-01-02,Nepal,0,0,0,0,,,,
@@ -19607,6 +19741,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Nepal,82,0,16801,38,1017.0,4.0,4029.0,10.0
 2020-07-14,Nepal,144,0,16945,38,981.0,3.0,3697.0,9.0
 2020-07-15,Nepal,116,0,17061,38,1097.0,3.0,3497.0,9.0
+2020-07-16,Nepal,116,1,17177,39,754.0,4.0,3131.0,9.0
 2019-12-31,Netherlands,0,0,0,0,,,,
 2020-01-01,Netherlands,0,0,0,0,,,,
 2020-01-02,Netherlands,0,0,0,0,,,,
@@ -19801,10 +19936,11 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-09,Netherlands,52,3,50691,6126,356.0,17.0,887.0,29.0
 2020-07-10,Netherlands,52,1,50743,6127,386.0,18.0,829.0,27.0
 2020-07-11,Netherlands,42,0,50785,6127,353.0,16.0,780.0,24.0
-2020-07-12,Netherlands,81,1,50866,6128,373.0,11.0,792.0,23.0
-2020-07-13,Netherlands,101,0,50967,6128,401.0,10.0,820.0,23.0
-2020-07-14,Netherlands,71,0,51038,6128,436.0,9.0,815.0,21.0
-2020-07-15,Netherlands,53,0,51091,6128,452.0,5.0,818.0,19.0
+2020-07-12,Netherlands,81,0,50866,6127,373.0,10.0,792.0,22.0
+2020-07-13,Netherlands,101,0,50967,6127,401.0,9.0,820.0,22.0
+2020-07-14,Netherlands,71,0,51038,6127,436.0,8.0,815.0,20.0
+2020-07-15,Netherlands,53,0,51091,6127,452.0,4.0,818.0,18.0
+2020-07-16,Netherlands,106,0,51197,6127,506.0,1.0,862.0,18.0
 2020-03-21,New Caledonia,2,0,2,0,,,,
 2020-03-22,New Caledonia,2,0,4,0,,,,
 2020-03-23,New Caledonia,1,0,5,0,,,,
@@ -19922,6 +20058,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,New Caledonia,0,0,21,0,0.0,0.0,0.0,0.0
 2020-07-14,New Caledonia,0,0,21,0,0.0,0.0,0.0,0.0
 2020-07-15,New Caledonia,1,0,22,0,1.0,0.0,1.0,0.0
+2020-07-16,New Caledonia,0,0,22,0,1.0,0.0,1.0,0.0
 2019-12-31,New Zealand,0,0,0,0,,,,
 2020-01-01,New Zealand,0,0,0,0,,,,
 2020-01-02,New Zealand,0,0,0,0,,,,
@@ -20120,6 +20257,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,New Zealand,0,0,1194,22,11.0,0.0,16.0,0.0
 2020-07-14,New Zealand,1,0,1195,22,9.0,0.0,17.0,0.0
 2020-07-15,New Zealand,2,0,1197,22,10.0,0.0,19.0,0.0
+2020-07-16,New Zealand,1,0,1198,22,8.0,0.0,18.0,0.0
 2020-03-19,Nicaragua,1,0,1,0,,,,
 2020-03-20,Nicaragua,0,0,1,0,,,,
 2020-03-21,Nicaragua,1,0,2,0,,,,
@@ -20239,6 +20377,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Nicaragua,0,0,2846,91,327.0,8.0,676.0,17.0
 2020-07-14,Nicaragua,0,0,2846,91,327.0,8.0,676.0,17.0
 2020-07-15,Nicaragua,301,8,3147,99,301.0,8.0,628.0,16.0
+2020-07-16,Nicaragua,0,0,3147,99,301.0,8.0,628.0,16.0
 2020-03-21,Niger,1,0,1,0,,,,
 2020-03-22,Niger,0,0,1,0,,,,
 2020-03-23,Niger,0,0,1,0,,,,
@@ -20356,6 +20495,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Niger,0,0,1099,68,6.0,0.0,25.0,1.0
 2020-07-14,Niger,0,0,1099,68,6.0,0.0,24.0,1.0
 2020-07-15,Niger,0,0,1099,68,5.0,0.0,24.0,1.0
+2020-07-16,Niger,1,1,1100,69,3.0,1.0,25.0,2.0
 2019-12-31,Nigeria,0,0,0,0,,,,
 2020-01-01,Nigeria,0,0,0,0,,,,
 2020-01-02,Nigeria,0,0,0,0,,,,
@@ -20554,6 +20694,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Nigeria,571,16,32558,740,3847.0,95.0,7991.0,175.0
 2020-07-14,Nigeria,595,4,33153,744,3867.0,90.0,8020.0,171.0
 2020-07-15,Nigeria,463,10,33616,754,3827.0,85.0,7922.0,164.0
+2020-07-16,Nigeria,643,6,34259,760,4010.0,76.0,7775.0,157.0
 2020-03-31,Northern Mariana Islands,2,0,2,0,,,,
 2020-04-01,Northern Mariana Islands,4,0,6,0,,,,
 2020-04-02,Northern Mariana Islands,0,1,6,1,,,,
@@ -20661,6 +20802,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Northern Mariana Islands,0,0,33,2,2.0,0.0,3.0,0.0
 2020-07-14,Northern Mariana Islands,0,0,33,2,2.0,0.0,3.0,0.0
 2020-07-15,Northern Mariana Islands,3,0,36,2,5.0,0.0,6.0,0.0
+2020-07-16,Northern Mariana Islands,0,0,36,2,5.0,0.0,6.0,0.0
 2019-12-31,Norway,0,0,0,0,,,,
 2020-01-01,Norway,0,0,0,0,,,,
 2020-01-02,Norway,0,0,0,0,,,,
@@ -20859,6 +21001,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Norway,0,0,8965,252,70.0,1.0,150.0,3.0
 2020-07-14,Norway,16,1,8981,253,51.0,2.0,126.0,4.0
 2020-07-15,Norway,3,0,8984,253,48.0,2.0,119.0,3.0
+2020-07-16,Norway,17,0,9001,253,54.0,2.0,114.0,2.0
 2019-12-31,Oman,0,0,0,0,,,,
 2020-01-01,Oman,0,0,0,0,,,,
 2020-01-02,Oman,0,0,0,0,,,,
@@ -21057,6 +21200,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Oman,1318,9,56015,257,9837.0,44.0,17865.0,94.0
 2020-07-14,Oman,2164,2,58179,259,10444.0,41.0,19119.0,90.0
 2020-07-15,Oman,1389,14,59568,273,10571.0,49.0,19498.0,97.0
+2020-07-16,Oman,1679,8,61247,281,11040.0,48.0,20053.0,96.0
 2019-12-31,Pakistan,0,0,0,0,,,,
 2020-01-01,Pakistan,0,0,0,0,,,,
 2020-01-02,Pakistan,0,0,0,0,,,,
@@ -21255,6 +21399,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Pakistan,2753,69,251625,5266,19807.0,504.0,45113.0,1099.0
 2020-07-14,Pakistan,1979,54,253604,5320,19095.0,481.0,44267.0,1016.0
 2020-07-15,Pakistan,2165,66,255769,5386,18280.0,464.0,42299.0,991.0
+2020-07-16,Pakistan,2145,40,257914,5426,17066.0,443.0,40105.0,953.0
 2020-03-06,Palestine,7,0,7,0,,,,
 2020-03-07,Palestine,9,0,16,0,,,,
 2020-03-08,Palestine,3,0,19,0,,,,
@@ -21386,6 +21531,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Palestine,341,5,7038,37,2580.0,17.0,4790.0,30.0
 2020-07-14,Palestine,403,4,7441,41,2655.0,20.0,4998.0,33.0
 2020-07-15,Palestine,293,6,7734,47,2642.0,25.0,4969.0,38.0
+2020-07-16,Palestine,420,0,8154,47,2587.0,22.0,5059.0,36.0
 2020-03-10,Panama,1,0,1,0,,,,
 2020-03-11,Panama,6,1,7,1,,,,
 2020-03-12,Panama,7,0,14,1,,,,
@@ -21514,6 +21660,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Panama,1301,16,45633,909,7484.0,162.0,13947.0,305.0
 2020-07-14,Panama,1540,23,47173,932,7839.0,162.0,14388.0,312.0
 2020-07-15,Panama,923,28,48096,960,7805.0,161.0,14546.0,329.0
+2020-07-16,Panama,1147,22,49243,982,7992.0,163.0,14780.0,337.0
 2020-03-21,Papua New Guinea,1,0,1,0,,,,
 2020-03-22,Papua New Guinea,0,0,1,0,,,,
 2020-03-23,Papua New Guinea,0,0,1,0,,,,
@@ -21631,6 +21778,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Papua New Guinea,0,0,11,0,0.0,0.0,0.0,0.0
 2020-07-14,Papua New Guinea,0,0,11,0,0.0,0.0,0.0,0.0
 2020-07-15,Papua New Guinea,0,0,11,0,0.0,0.0,0.0,0.0
+2020-07-16,Papua New Guinea,0,0,11,0,0.0,0.0,0.0,0.0
 2020-03-08,Paraguay,1,0,1,0,,,,
 2020-03-11,Paraguay,4,0,5,0,,,,
 2020-03-13,Paraguay,1,0,6,0,,,,
@@ -21758,6 +21906,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Paraguay,128,1,2948,22,521.0,2.0,821.0,7.0
 2020-07-14,Paraguay,32,3,2980,25,524.0,5.0,789.0,9.0
 2020-07-15,Paraguay,94,0,3074,25,572.0,5.0,853.0,8.0
+2020-07-16,Paraguay,124,0,3198,25,644.0,5.0,938.0,6.0
 2020-03-07,Peru,1,0,1,0,,,,
 2020-03-09,Peru,6,0,7,0,,,,
 2020-03-10,Peru,2,0,9,0,,,,
@@ -21888,6 +22037,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Peru,3616,188,326326,11870,23608.0,1281.0,46907.0,2553.0
 2020-07-14,Peru,3797,184,330123,12054,24420.0,1282.0,47758.0,2550.0
 2020-07-15,Peru,3744,175,333867,12229,24589.0,1277.0,48654.0,2552.0
+2020-07-16,Peru,3857,188,337724,12417,24813.0,1284.0,49247.0,2557.0
 2019-12-31,Philippines,0,0,0,0,,,,
 2020-01-01,Philippines,0,0,0,0,,,,
 2020-01-02,Philippines,0,0,0,0,,,,
@@ -22086,6 +22236,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Philippines,2037,162,56259,1534,14429.0,244.0,20804.0,290.0
 2020-07-14,Philippines,747,65,57006,1599,10673.0,296.0,20568.0,344.0
 2020-07-15,Philippines,539,4,57545,1603,9672.0,294.0,20031.0,337.0
+2020-07-16,Philippines,1305,11,58850,1614,8491.0,300.0,20339.0,344.0
 2020-03-04,Poland,1,0,1,0,,,,
 2020-03-07,Poland,4,0,5,0,,,,
 2020-03-08,Poland,1,0,6,0,,,,
@@ -22218,6 +22369,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Poland,370,3,37891,1571,1941.0,54.0,3984.0,133.0
 2020-07-14,Poland,299,5,38190,1576,2035.0,55.0,4036.0,132.0
 2020-07-15,Poland,267,12,38457,1588,2045.0,60.0,4064.0,125.0
+2020-07-16,Poland,323,6,38780,1594,2091.0,52.0,4005.0,117.0
 2020-03-03,Portugal,2,0,2,0,,,,
 2020-03-04,Portugal,2,0,4,0,,,,
 2020-03-05,Portugal,1,0,5,0,,,,
@@ -22353,6 +22505,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Portugal,291,6,46512,1660,2615.0,46.0,4866.0,96.0
 2020-07-14,Portugal,306,2,46818,1662,2689.0,42.0,4906.0,94.0
 2020-07-15,Portugal,233,6,47051,1668,2635.0,39.0,4910.0,92.0
+2020-07-16,Portugal,375,8,47426,1676,2567.0,45.0,4972.0,97.0
 2020-03-28,Puerto Rico,64,2,64,2,,,,
 2020-03-29,Puerto Rico,36,1,100,3,,,,
 2020-03-30,Puerto Rico,27,2,127,5,,,,
@@ -22463,6 +22616,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Puerto Rico,288,0,9821,167,1905.0,12.0,2632.0,14.0
 2020-07-14,Puerto Rico,189,0,10010,167,1425.0,12.0,2760.0,14.0
 2020-07-15,Puerto Rico,113,2,10123,169,1409.0,12.0,2658.0,16.0
+2020-07-16,Puerto Rico,256,2,10379,171,1475.0,12.0,2842.0,18.0
 2019-12-31,Qatar,0,0,0,0,,,,
 2020-01-01,Qatar,0,0,0,0,,,,
 2020-01-02,Qatar,0,0,0,0,,,,
@@ -22661,6 +22815,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Qatar,470,1,103598,147,3799.0,19.0,9185.0,37.0
 2020-07-14,Qatar,418,2,104016,149,3671.0,16.0,8910.0,36.0
 2020-07-15,Qatar,517,1,104533,150,3588.0,16.0,8445.0,37.0
+2020-07-16,Qatar,450,1,104983,151,3430.0,13.0,7980.0,36.0
 2019-12-31,Romania,0,0,0,0,,,,
 2020-01-01,Romania,0,0,0,0,,,,
 2020-01-02,Romania,0,0,0,0,,,,
@@ -22859,6 +23014,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Romania,456,13,32535,1884,3562.0,134.0,6222.0,272.0
 2020-07-14,Romania,413,17,32948,1901,3725.0,133.0,6366.0,267.0
 2020-07-15,Romania,637,30,33585,1931,3965.0,132.0,6615.0,280.0
+2020-07-16,Romania,641,21,34226,1952,4051.0,135.0,6930.0,285.0
 2019-12-31,Russia,0,0,0,0,,,,
 2020-01-01,Russia,0,0,0,0,,,,
 2020-01-02,Russia,0,0,0,0,,,,
@@ -23057,6 +23213,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Russia,6615,130,727162,11335,45911.0,1174.0,92725.0,2262.0
 2020-07-14,Russia,6537,104,733699,11439,45837.0,1143.0,92543.0,2273.0
 2020-07-15,Russia,6248,175,739947,11614,45717.0,1120.0,92098.0,2294.0
+2020-07-16,Russia,6422,156,746369,11770,45577.0,1103.0,91964.0,2234.0
 2020-03-15,Rwanda,1,0,1,0,,,,
 2020-03-16,Rwanda,4,0,5,0,,,,
 2020-03-17,Rwanda,0,0,5,0,,,,
@@ -23180,6 +23337,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Rwanda,38,0,1337,4,232.0,1.0,437.0,2.0
 2020-07-14,Rwanda,41,0,1378,4,265.0,1.0,377.0,2.0
 2020-07-15,Rwanda,38,0,1416,4,244.0,1.0,391.0,2.0
+2020-07-16,Rwanda,19,0,1435,4,241.0,1.0,393.0,1.0
 2020-03-26,Saint Kitts and Nevis,2,0,2,0,,,,
 2020-03-27,Saint Kitts and Nevis,0,0,2,0,,,,
 2020-03-28,Saint Kitts and Nevis,0,0,2,0,,,,
@@ -23292,6 +23450,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Saint Kitts and Nevis,0,0,17,0,1.0,0.0,2.0,0.0
 2020-07-14,Saint Kitts and Nevis,0,0,17,0,1.0,0.0,2.0,0.0
 2020-07-15,Saint Kitts and Nevis,0,0,17,0,1.0,0.0,2.0,0.0
+2020-07-16,Saint Kitts and Nevis,0,0,17,0,1.0,0.0,2.0,0.0
 2020-03-15,Saint Lucia,2,0,2,0,,,,
 2020-03-16,Saint Lucia,0,0,2,0,,,,
 2020-03-17,Saint Lucia,0,0,2,0,,,,
@@ -23415,6 +23574,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Saint Lucia,0,0,22,0,0.0,0.0,3.0,0.0
 2020-07-14,Saint Lucia,0,0,22,0,0.0,0.0,3.0,0.0
 2020-07-15,Saint Lucia,0,0,22,0,0.0,0.0,3.0,0.0
+2020-07-16,Saint Lucia,0,0,22,0,0.0,0.0,3.0,0.0
 2020-03-13,Saint Vincent and the Grenadines,1,0,1,0,,,,
 2020-03-19,Saint Vincent and the Grenadines,,,,,1.0,0.0,,
 2020-03-20,Saint Vincent and the Grenadines,,,,,0.0,0.0,,
@@ -23535,6 +23695,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Saint Vincent and the Grenadines,6,0,35,0,6.0,0.0,6.0,0.0
 2020-07-14,Saint Vincent and the Grenadines,0,0,35,0,6.0,0.0,6.0,0.0
 2020-07-15,Saint Vincent and the Grenadines,0,0,35,0,6.0,0.0,6.0,0.0
+2020-07-16,Saint Vincent and the Grenadines,0,0,35,0,6.0,0.0,6.0,0.0
 2019-12-31,San Marino,0,0,0,0,,,,
 2020-01-01,San Marino,0,0,0,0,,,,
 2020-01-02,San Marino,0,0,0,0,,,,
@@ -23733,6 +23894,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,San Marino,0,0,714,42,1.0,0.0,16.0,0.0
 2020-07-14,San Marino,0,0,714,42,1.0,0.0,16.0,0.0
 2020-07-15,San Marino,0,0,714,42,1.0,0.0,16.0,0.0
+2020-07-16,San Marino,0,0,714,42,1.0,0.0,16.0,0.0
 2020-04-09,Sao Tome and Principe,4,0,4,0,,,,
 2020-04-10,Sao Tome and Principe,0,0,4,0,,,,
 2020-04-11,Sao Tome and Principe,0,0,4,0,,,,
@@ -23831,6 +23993,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Sao Tome and Principe,2,0,729,14,9.0,1.0,16.0,1.0
 2020-07-14,Sao Tome and Principe,3,0,732,14,11.0,1.0,19.0,1.0
 2020-07-15,Sao Tome and Principe,0,0,732,14,8.0,1.0,18.0,1.0
+2020-07-16,Sao Tome and Principe,5,0,737,14,13.0,1.0,22.0,1.0
 2020-03-03,Saudi Arabia,1,0,1,0,,,,
 2020-03-06,Saudi Arabia,4,0,5,0,,,,
 2020-03-08,Saudi Arabia,2,0,7,0,,,,
@@ -23963,6 +24126,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Saudi Arabia,2779,42,232259,2223,22750.0,307.0,49766.0,672.0
 2020-07-14,Saudi Arabia,2852,20,235111,2243,21395.0,275.0,48675.0,644.0
 2020-07-15,Saudi Arabia,2692,40,237803,2283,20695.0,266.0,46980.0,634.0
+2020-07-16,Saudi Arabia,2671,42,240474,2325,20330.0,266.0,46249.0,627.0
 2020-03-03,Senegal,1,0,1,0,,,,
 2020-03-05,Senegal,2,0,3,0,,,,
 2020-03-06,Senegal,1,0,4,0,,,,
@@ -24095,6 +24259,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Senegal,121,3,8135,148,735.0,15.0,1549.0,43.0
 2020-07-14,Senegal,63,2,8198,150,720.0,14.0,1500.0,42.0
 2020-07-15,Senegal,45,0,8243,150,696.0,13.0,1450.0,38.0
+2020-07-16,Senegal,126,3,8369,153,712.0,12.0,1444.0,37.0
 2020-03-07,Serbia,1,0,1,0,,,,
 2020-03-11,Serbia,4,0,5,0,,,,
 2020-03-12,Serbia,13,0,18,0,,,,
@@ -24223,6 +24388,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Serbia,287,11,18360,393,2229.0,82.0,4314.0,123.0
 2020-07-14,Serbia,279,12,18639,405,2219.0,88.0,4351.0,131.0
 2020-07-15,Serbia,344,13,18983,418,2264.0,88.0,4419.0,141.0
+2020-07-16,Serbia,351,11,19334,429,2258.0,88.0,4498.0,148.0
 2020-03-15,Seychelles,2,0,2,0,,,,
 2020-03-16,Seychelles,1,0,3,0,,,,
 2020-03-17,Seychelles,1,0,4,0,,,,
@@ -24346,6 +24512,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Seychelles,0,0,100,0,89.0,0.0,89.0,0.0
 2020-07-14,Seychelles,0,0,100,0,19.0,0.0,89.0,0.0
 2020-07-15,Seychelles,0,0,100,0,19.0,0.0,89.0,0.0
+2020-07-16,Seychelles,0,0,100,0,9.0,0.0,89.0,0.0
 2020-04-01,Sierra Leone,1,0,1,0,,,,
 2020-04-02,Sierra Leone,0,0,1,0,,,,
 2020-04-03,Sierra Leone,1,0,2,0,,,,
@@ -24452,6 +24619,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Sierra Leone,17,0,1635,63,93.0,1.0,208.0,3.0
 2020-07-14,Sierra Leone,7,0,1642,63,100.0,1.0,192.0,3.0
 2020-07-15,Sierra Leone,9,1,1651,64,79.0,1.0,189.0,4.0
+2020-07-16,Sierra Leone,17,0,1668,64,84.0,1.0,170.0,4.0
 2019-12-31,Singapore,0,0,0,0,,,,
 2020-01-01,Singapore,0,0,0,0,,,,
 2020-01-02,Singapore,0,0,0,0,,,,
@@ -24650,6 +24818,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Singapore,178,0,45961,26,1297.0,0.0,2502.0,0.0
 2020-07-14,Singapore,322,0,46283,26,1300.0,0.0,2622.0,0.0
 2020-07-15,Singapore,346,1,46629,27,1489.0,1.0,2722.0,1.0
+2020-07-16,Singapore,249,0,46878,27,1580.0,1.0,2756.0,1.0
 2020-03-03,Sint Maarten (Dutch part),1,0,1,0,,,,
 2020-03-09,Sint Maarten (Dutch part),,,,,1.0,0.0,,
 2020-03-10,Sint Maarten (Dutch part),,,,,0.0,0.0,,
@@ -24780,6 +24949,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Sint Maarten (Dutch part),0,0,78,15,0.0,0.0,1.0,0.0
 2020-07-14,Sint Maarten (Dutch part),0,0,78,15,0.0,0.0,1.0,0.0
 2020-07-15,Sint Maarten (Dutch part),0,0,78,15,0.0,0.0,1.0,0.0
+2020-07-16,Sint Maarten (Dutch part),0,0,78,15,0.0,0.0,1.0,0.0
 2020-03-07,Slovakia,1,0,1,0,,,,
 2020-03-08,Slovakia,2,0,3,0,,,,
 2020-03-09,Slovakia,2,0,5,0,,,,
@@ -24910,6 +25080,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Slovakia,8,0,1901,28,137.0,0.0,237.0,0.0
 2020-07-14,Slovakia,1,0,1902,28,137.0,0.0,237.0,0.0
 2020-07-15,Slovakia,6,0,1908,28,141.0,0.0,241.0,0.0
+2020-07-16,Slovakia,19,0,1927,28,129.0,0.0,240.0,0.0
 2020-03-05,Slovenia,1,0,1,0,,,,
 2020-03-06,Slovenia,5,0,6,0,,,,
 2020-03-07,Slovenia,3,0,9,0,,,,
@@ -25042,6 +25213,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Slovenia,14,0,1841,111,141.0,0.0,260.0,0.0
 2020-07-14,Slovenia,8,0,1849,111,133.0,0.0,264.0,0.0
 2020-07-15,Slovenia,10,0,1859,111,120.0,0.0,259.0,0.0
+2020-07-16,Slovenia,19,0,1878,111,115.0,0.0,265.0,0.0
 2020-03-17,Somalia,1,0,1,0,,,,
 2020-03-18,Somalia,0,0,1,0,,,,
 2020-03-19,Somalia,0,0,1,0,,,,
@@ -25163,6 +25335,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Somalia,8,1,3059,93,62.0,1.0,165.0,3.0
 2020-07-14,Somalia,0,0,3059,93,53.0,1.0,155.0,3.0
 2020-07-15,Somalia,17,0,3076,93,61.0,1.0,152.0,3.0
+2020-07-16,Somalia,7,0,3083,93,55.0,1.0,159.0,3.0
 2020-03-06,South Africa,1,0,1,0,,,,
 2020-03-08,South Africa,1,0,2,0,,,,
 2020-03-09,South Africa,1,0,3,0,,,,
@@ -25293,6 +25466,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,South Africa,12058,108,276242,4079,79492.0,880.0,138108.0,1623.0
 2020-07-14,South Africa,11554,93,287796,4172,82075.0,862.0,143532.0,1643.0
 2020-07-15,South Africa,10496,174,298292,4346,82437.0,844.0,147083.0,1689.0
+2020-07-16,South Africa,12757,107,311049,4453,86384.0,851.0,151716.0,1704.0
 2019-12-31,South Korea,0,0,0,0,,,,
 2020-01-01,South Korea,0,0,0,0,,,,
 2020-01-02,South Korea,0,0,0,0,,,,
@@ -25491,6 +25665,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,South Korea,62,0,13479,289,388.0,6.0,722.0,7.0
 2020-07-14,South Korea,33,0,13512,289,331.0,4.0,712.0,7.0
 2020-07-15,South Korea,39,0,13551,289,307.0,4.0,701.0,7.0
+2020-07-16,South Korea,61,2,13612,291,319.0,4.0,708.0,9.0
 2020-04-06,South Sudan,1,0,1,0,,,,
 2020-04-07,South Sudan,0,0,1,0,,,,
 2020-04-08,South Sudan,0,0,1,0,,,,
@@ -25592,6 +25767,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,South Sudan,10,0,2139,41,103.0,3.0,150.0,5.0
 2020-07-14,South Sudan,9,0,2148,41,55.0,1.0,142.0,4.0
 2020-07-15,South Sudan,0,0,2148,41,50.0,1.0,142.0,4.0
+2020-07-16,South Sudan,5,0,2153,41,47.0,1.0,147.0,4.0
 2019-12-31,Spain,0,0,0,0,,,,
 2020-01-01,Spain,0,0,0,0,,,,
 2020-01-02,Spain,0,0,0,0,,,,
@@ -25788,8 +25964,8 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-11,Spain,0,0,253908,28403,3363.0,18.0,5439.0,62.0
 2020-07-12,Spain,0,0,253908,28403,3363.0,18.0,5138.0,60.0
 2020-07-13,Spain,2045,3,255953,28406,4164.0,18.0,6983.0,60.0
-2020-07-14,Spain,,,,,3823.0,14.0,6682.0,51.0
-2020-07-15,Spain,666,3,256619,28409,4106.0,13.0,6960.0,46.0
+2020-07-14,Spain,666,3,256619,28409,4489.0,17.0,7348.0,54.0
+2020-07-15,Spain,875,4,257494,28413,4981.0,17.0,7835.0,50.0
 2019-12-31,Sri Lanka,0,0,0,0,,,,
 2020-01-01,Sri Lanka,0,0,0,0,,,,
 2020-01-02,Sri Lanka,0,0,0,0,,,,
@@ -25988,6 +26164,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Sri Lanka,106,0,2617,11,541.0,0.0,580.0,0.0
 2020-07-14,Sri Lanka,29,0,2646,11,568.0,0.0,604.0,0.0
 2020-07-15,Sri Lanka,19,0,2665,11,584.0,0.0,618.0,0.0
+2020-07-16,Sri Lanka,9,0,2674,11,580.0,0.0,620.0,0.0
 2020-03-14,Sudan,1,0,1,0,,,,
 2020-03-15,Sudan,0,1,1,1,,,,
 2020-03-16,Sudan,0,0,1,1,,,,
@@ -26112,6 +26289,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Sudan,0,0,10250,650,483.0,42.0,992.0,78.0
 2020-07-14,Sudan,66,7,10316,657,549.0,49.0,1058.0,85.0
 2020-07-15,Sudan,0,0,10316,657,319.0,35.0,1058.0,85.0
+2020-07-16,Sudan,211,11,10527,668,443.0,32.0,954.0,66.0
 2020-03-15,Suriname,1,0,1,0,,,,
 2020-03-21,Suriname,0,0,1,0,1.0,0.0,,
 2020-03-22,Suriname,4,0,5,0,4.0,0.0,,
@@ -26230,6 +26408,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Suriname,0,0,741,18,147.0,4.0,251.0,7.0
 2020-07-14,Suriname,39,0,780,18,166.0,4.0,279.0,5.0
 2020-07-15,Suriname,21,0,801,18,187.0,4.0,284.0,5.0
+2020-07-16,Suriname,48,0,849,18,184.0,1.0,314.0,5.0
 2020-03-15,Swaziland,1,0,1,0,,,,
 2020-03-16,Swaziland,0,0,1,0,,,,
 2020-03-17,Swaziland,0,0,1,0,,,,
@@ -26353,6 +26532,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Swaziland,40,2,1351,20,363.0,7.0,570.0,9.0
 2020-07-14,Swaziland,38,0,1389,20,378.0,7.0,594.0,9.0
 2020-07-15,Swaziland,45,0,1434,20,378.0,6.0,622.0,9.0
+2020-07-16,Swaziland,55,0,1489,20,351.0,6.0,649.0,9.0
 2019-12-31,Sweden,0,0,0,0,,,,
 2020-01-01,Sweden,0,0,0,0,,,,
 2020-01-02,Sweden,0,0,0,0,,,,
@@ -26551,6 +26731,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Sweden,0,0,74898,5526,3479.0,106.0,9761.0,246.0
 2020-07-14,Sweden,928,10,75826,5536,2765.0,103.0,8159.0,226.0
 2020-07-15,Sweden,175,9,76001,5545,2657.0,98.0,7550.0,212.0
+2020-07-16,Sweden,491,27,76492,5572,2634.0,90.0,6800.0,202.0
 2019-12-31,Switzerland,0,0,0,0,,,,
 2020-01-01,Switzerland,0,0,0,0,,,,
 2020-01-02,Switzerland,0,0,0,0,,,,
@@ -26749,6 +26930,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Switzerland,85,0,32798,1685,614.0,0.0,1264.0,4.0
 2020-07-14,Switzerland,63,0,32861,1685,631.0,0.0,1292.0,4.0
 2020-07-15,Switzerland,70,2,32931,1687,647.0,2.0,1300.0,4.0
+2020-07-16,Switzerland,132,0,33063,1687,650.0,2.0,1212.0,3.0
 2020-03-23,Syria,1,0,1,0,,,,
 2020-03-24,Syria,0,0,1,0,,,,
 2020-03-25,Syria,0,0,1,0,,,,
@@ -26864,6 +27046,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Syria,0,0,394,16,36.0,3.0,138.0,7.0
 2020-07-14,Syria,23,3,417,19,45.0,5.0,148.0,10.0
 2020-07-15,Syria,22,2,439,21,67.0,7.0,160.0,12.0
+2020-07-16,Syria,19,1,458,22,86.0,8.0,165.0,13.0
 2019-12-31,Taiwan,0,0,0,0,,,,
 2020-01-01,Taiwan,0,0,0,0,,,,
 2020-01-02,Taiwan,0,0,0,0,,,,
@@ -27062,6 +27245,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Taiwan,0,0,451,7,2.0,0.0,4.0,0.0
 2020-07-14,Taiwan,0,0,451,7,2.0,0.0,4.0,0.0
 2020-07-15,Taiwan,0,0,451,7,2.0,0.0,4.0,0.0
+2020-07-16,Taiwan,1,0,452,7,3.0,0.0,4.0,0.0
 2020-05-01,Tajikistan,15,0,15,0,,,,
 2020-05-02,Tajikistan,0,0,15,0,,,,
 2020-05-03,Tajikistan,17,0,32,0,,,,
@@ -27138,6 +27322,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Tajikistan,46,0,6552,55,339.0,2.0,703.0,3.0
 2020-07-14,Tajikistan,43,0,6595,55,333.0,2.0,695.0,3.0
 2020-07-15,Tajikistan,48,1,6643,56,328.0,3.0,689.0,4.0
+2020-07-16,Tajikistan,52,0,6695,56,331.0,2.0,690.0,4.0
 2020-03-17,Tanzania,1,0,1,0,,,,
 2020-03-18,Tanzania,0,0,1,0,,,,
 2020-03-19,Tanzania,2,0,3,0,,,,
@@ -27259,6 +27444,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Tanzania,0,0,509,21,0.0,0.0,0.0,0.0
 2020-07-14,Tanzania,0,0,509,21,0.0,0.0,0.0,0.0
 2020-07-15,Tanzania,0,0,509,21,0.0,0.0,0.0,0.0
+2020-07-16,Tanzania,0,0,509,21,0.0,0.0,0.0,0.0
 2019-12-31,Thailand,0,0,0,0,,,,
 2020-01-01,Thailand,0,0,0,0,,,,
 2020-01-02,Thailand,0,0,0,0,,,,
@@ -27457,6 +27643,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Thailand,3,0,3220,58,25.0,0.0,58.0,0.0
 2020-07-14,Thailand,7,0,3227,58,32.0,0.0,56.0,0.0
 2020-07-15,Thailand,5,0,3232,58,35.0,0.0,59.0,0.0
+2020-07-16,Thailand,4,0,3236,58,34.0,0.0,57.0,0.0
 2020-03-22,Timor,1,0,1,0,,,,
 2020-03-23,Timor,0,0,1,0,,,,
 2020-03-24,Timor,0,0,1,0,,,,
@@ -27573,6 +27760,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Timor,0,0,24,0,0.0,0.0,0.0,0.0
 2020-07-14,Timor,0,0,24,0,0.0,0.0,0.0,0.0
 2020-07-15,Timor,0,0,24,0,0.0,0.0,0.0,0.0
+2020-07-16,Timor,0,0,24,0,0.0,0.0,0.0,0.0
 2020-03-07,Togo,1,0,1,0,,,,
 2020-03-13,Togo,,,,,1.0,0.0,,
 2020-03-14,Togo,,,,,0.0,0.0,,
@@ -27699,6 +27887,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Togo,2,0,720,15,40.0,0.0,78.0,1.0
 2020-07-14,Togo,1,0,721,15,41.0,0.0,78.0,1.0
 2020-07-15,Togo,10,0,731,15,42.0,0.0,81.0,1.0
+2020-07-16,Togo,9,0,740,15,45.0,0.0,79.0,1.0
 2020-03-13,Trinidad and Tobago,1,0,1,0,,,,
 2020-03-14,Trinidad and Tobago,1,0,2,0,,,,
 2020-03-15,Trinidad and Tobago,0,0,2,0,,,,
@@ -27824,6 +28013,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Trinidad and Tobago,0,0,133,8,0.0,0.0,7.0,0.0
 2020-07-14,Trinidad and Tobago,0,0,133,8,0.0,0.0,7.0,0.0
 2020-07-15,Trinidad and Tobago,0,0,133,8,0.0,0.0,3.0,0.0
+2020-07-16,Trinidad and Tobago,0,0,133,8,0.0,0.0,3.0,0.0
 2020-03-03,Tunisia,1,0,1,0,,,,
 2020-03-09,Tunisia,,,,,1.0,0.0,,
 2020-03-10,Tunisia,1,0,2,0,1.0,0.0,,
@@ -27954,6 +28144,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Tunisia,18,0,1263,50,75.0,0.0,94.0,0.0
 2020-07-14,Tunisia,39,0,1302,50,103.0,0.0,130.0,0.0
 2020-07-15,Tunisia,4,0,1306,50,101.0,0.0,132.0,0.0
+2020-07-16,Tunisia,13,0,1319,50,98.0,0.0,144.0,0.0
 2020-03-12,Turkey,1,0,1,0,,,,
 2020-03-13,Turkey,1,0,2,0,,,,
 2020-03-16,Turkey,16,0,18,0,,,,
@@ -28078,6 +28269,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Turkey,1012,19,212993,5363,7235.0,138.0,15754.0,266.0
 2020-07-14,Turkey,1008,19,214001,5382,7157.0,141.0,15388.0,267.0
 2020-07-15,Turkey,992,20,214993,5402,7096.0,142.0,15087.0,271.0
+2020-07-16,Turkey,947,17,215940,5419,7002.0,137.0,14842.0,269.0
 2020-03-25,Turks and Caicos Islands,1,0,1,0,,,,
 2020-03-26,Turks and Caicos Islands,0,0,1,0,,,,
 2020-03-27,Turks and Caicos Islands,1,0,2,0,,,,
@@ -28191,6 +28383,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Turks and Caicos Islands,6,0,72,2,25.0,0.0,44.0,1.0
 2020-07-14,Turks and Caicos Islands,0,0,72,2,23.0,0.0,31.0,1.0
 2020-07-15,Turks and Caicos Islands,0,0,72,2,23.0,0.0,31.0,0.0
+2020-07-16,Turks and Caicos Islands,0,0,72,2,17.0,0.0,30.0,0.0
 2020-03-22,Uganda,1,0,1,0,,,,
 2020-03-23,Uganda,0,0,1,0,,,,
 2020-03-24,Uganda,8,0,9,0,,,,
@@ -28307,6 +28500,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Uganda,12,0,1025,0,86.0,0.0,166.0,0.0
 2020-07-14,Uganda,4,0,1029,0,76.0,0.0,159.0,0.0
 2020-07-15,Uganda,11,0,1040,0,69.0,0.0,151.0,0.0
+2020-07-16,Uganda,3,0,1043,0,66.0,0.0,150.0,0.0
 2020-03-04,Ukraine,1,0,1,0,,,,
 2020-03-10,Ukraine,,,,,1.0,0.0,,
 2020-03-11,Ukraine,,,,,0.0,0.0,,
@@ -28436,6 +28630,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Ukraine,1290,26,54133,1398,5090.0,136.0,11151.0,269.0
 2020-07-14,Ukraine,638,14,54771,1412,5164.0,129.0,11143.0,265.0
 2020-07-15,Ukraine,0,0,54771,1412,4357.0,106.0,9773.0,239.0
+2020-07-16,Ukraine,836,15,55607,1427,4383.0,100.0,10609.0,254.0
 2019-12-31,United Arab Emirates,0,0,0,0,,,,
 2020-01-01,United Arab Emirates,0,0,0,0,,,,
 2020-01-02,United Arab Emirates,0,0,0,0,,,,
@@ -28634,6 +28829,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,United Arab Emirates,401,2,54854,333,3314.0,10.0,7057.0,20.0
 2020-07-14,United Arab Emirates,344,1,55198,334,3130.0,10.0,6952.0,20.0
 2020-07-15,United Arab Emirates,375,1,55573,335,2973.0,9.0,6906.0,20.0
+2020-07-16,United Arab Emirates,275,0,55848,335,2803.0,8.0,6779.0,19.0
 2019-12-31,United Kingdom,0,0,0,0,,,,
 2020-01-01,United Kingdom,0,0,0,0,,,,
 2020-01-02,United Kingdom,0,0,0,0,,,,
@@ -28832,6 +29028,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,United Kingdom,650,21,289603,44819,4187.0,599.0,-21548.0,1269.0
 2020-07-14,United Kingdom,530,11,290133,44830,4365.0,594.0,-21832.0,1255.0
 2020-07-15,United Kingdom,1240,138,291373,44968,5024.0,577.0,-21281.0,1238.0
+2020-07-16,United Kingdom,538,85,291911,45053,4932.0,536.0,-21572.0,1147.0
 2019-12-31,United States,0,0,0,0,,,,
 2020-01-01,United States,0,0,0,0,,,,
 2020-01-02,United States,0,0,0,0,,,,
@@ -29030,6 +29227,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,United States,57258,391,3304942,135205,416307.0,5258.0,755946.0,9401.0
 2020-07-14,United States,58114,400,3363056,135605,424431.0,5299.0,772504.0,9465.0
 2020-07-15,United States,68518,861,3431574,136466,435476.0,4986.0,797142.0,9056.0
+2020-07-16,United States,67717,953,3499291,137419,444287.0,5110.0,812811.0,9357.0
 2020-03-24,United States Virgin Islands,17,0,17,0,,,,
 2020-03-25,United States Virgin Islands,0,0,17,0,,,,
 2020-03-26,United States Virgin Islands,0,0,17,0,,,,
@@ -29144,6 +29342,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,United States Virgin Islands,0,0,181,6,69.0,0.0,100.0,0.0
 2020-07-14,United States Virgin Islands,36,0,217,6,101.0,0.0,133.0,0.0
 2020-07-15,United States Virgin Islands,0,0,217,6,95.0,0.0,133.0,0.0
+2020-07-16,United States Virgin Islands,32,0,249,6,105.0,0.0,157.0,0.0
 2020-03-15,Uruguay,6,0,6,0,,,,
 2020-03-16,Uruguay,2,0,8,0,,,,
 2020-03-17,Uruguay,21,0,29,0,,,,
@@ -29267,6 +29466,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Uruguay,1,1,987,31,31.0,3.0,58.0,4.0
 2020-07-14,Uruguay,2,0,989,31,29.0,2.0,57.0,4.0
 2020-07-15,Uruguay,8,0,997,31,32.0,2.0,61.0,4.0
+2020-07-16,Uruguay,12,0,1009,31,35.0,2.0,66.0,3.0
 2020-03-16,Uzbekistan,6,0,6,0,,,,
 2020-03-17,Uzbekistan,2,0,8,0,,,,
 2020-03-18,Uzbekistan,8,0,16,0,,,,
@@ -29389,6 +29589,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Uzbekistan,680,4,13193,61,3050.0,26.0,5162.0,39.0
 2020-07-14,Uzbekistan,679,3,13872,64,3413.0,26.0,5574.0,40.0
 2020-07-15,Uzbekistan,421,4,14293,68,3455.0,27.0,5666.0,42.0
+2020-07-16,Uzbekistan,494,4,14787,72,3528.0,25.0,5883.0,46.0
 2020-03-07,Vatican,1,0,1,0,,,,
 2020-03-13,Vatican,,,,,1.0,0.0,,
 2020-03-14,Vatican,,,,,0.0,0.0,,
@@ -29515,6 +29716,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Vatican,0,0,12,0,0.0,0.0,0.0,0.0
 2020-07-14,Vatican,0,0,12,0,0.0,0.0,0.0,0.0
 2020-07-15,Vatican,0,0,12,0,0.0,0.0,0.0,0.0
+2020-07-16,Vatican,0,0,12,0,0.0,0.0,0.0,0.0
 2020-03-15,Venezuela,10,0,10,0,,,,
 2020-03-16,Venezuela,5,0,15,0,,,,
 2020-03-17,Venezuela,18,0,33,0,,,,
@@ -29638,6 +29840,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Venezuela,287,4,9465,89,2296.0,25.0,4168.0,45.0
 2020-07-14,Venezuela,242,4,9707,93,2296.0,25.0,4177.0,45.0
 2020-07-15,Venezuela,303,3,10010,96,2317.0,25.0,4178.0,45.0
+2020-07-16,Venezuela,418,4,10428,100,2418.0,25.0,4366.0,46.0
 2019-12-31,Vietnam,0,0,0,0,,,,
 2020-01-01,Vietnam,0,0,0,0,,,,
 2020-01-02,Vietnam,0,0,0,0,,,,
@@ -29836,6 +30039,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Vietnam,2,0,372,0,17.0,0.0,17.0,0.0
 2020-07-14,Vietnam,1,0,373,0,4.0,0.0,18.0,0.0
 2020-07-15,Vietnam,0,0,373,0,4.0,0.0,18.0,0.0
+2020-07-16,Vietnam,0,0,373,0,4.0,0.0,18.0,0.0
 2020-04-26,Western Sahara,6,0,6,0,,,,
 2020-04-27,Western Sahara,0,0,6,0,,,,
 2020-04-28,Western Sahara,0,0,6,0,,,,
@@ -29917,6 +30121,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Western Sahara,0,0,519,1,0.0,0.0,311.0,0.0
 2020-07-14,Western Sahara,242,0,761,1,242.0,0.0,553.0,0.0
 2020-07-15,Western Sahara,5,0,766,1,247.0,0.0,386.0,0.0
+2020-07-16,Western Sahara,0,0,766,1,247.0,0.0,305.0,0.0
 2019-12-31,World,27,0,27,0,,,,
 2020-01-01,World,0,0,27,0,,,,
 2020-01-02,World,0,0,27,0,,,,
@@ -30103,18 +30308,19 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-01,World,192563,5732,10465987,511041,1236315.0,33750.0,2322967.0,67527.0
 2020-07-02,World,200215,4931,10666202,515972,1265198.0,33483.0,2346642.0,67215.0
 2020-07-03,World,178389,5143,10844591,521115,1262007.0,31907.0,2386254.0,66036.0
-2020-07-04,World,206544,5122,11051135,526237,1279292.0,32320.0,2415476.0,66144.0
-2020-07-05,World,189605,4344,11240740,530581,1287511.0,32031.0,2443087.0,66270.0
-2020-07-06,World,178979,3380,11419719,533961,1306257.0,32364.0,2492174.0,65672.0
-2020-07-07,World,175445,3854,11595164,537815,1321740.0,32506.0,2531343.0,66101.0
-2020-07-08,World,207024,6091,11802188,543906,1336201.0,32865.0,2572516.0,66615.0
-2020-07-09,World,215473,5375,12017661,549281,1351459.0,33309.0,2616657.0,66792.0
-2020-07-10,World,228608,5441,12246269,554722,1401678.0,33607.0,2663685.0,65514.0
-2020-07-11,World,230051,5276,12476320,559998,1425185.0,33761.0,2704477.0,66081.0
-2020-07-12,World,218178,4926,12694498,564924,1453758.0,34343.0,2741269.0,66374.0
-2020-07-13,World,195295,3815,12889793,568739,1470074.0,34778.0,2776331.0,67142.0
-2020-07-14,World,189425,3923,13079218,572662,1484054.0,34847.0,2805794.0,67353.0
-2020-07-15,World,219945,5657,13299163,578319,1496975.0,34413.0,2833176.0,67278.0
+2020-07-04,World,206571,5121,11051162,526236,1279319.0,32319.0,2415503.0,66143.0
+2020-07-05,World,189600,4344,11240762,530580,1287533.0,32030.0,2443109.0,66269.0
+2020-07-06,World,178976,3380,11419738,533960,1306276.0,32363.0,2492193.0,65671.0
+2020-07-07,World,175444,3854,11595182,537814,1321758.0,32505.0,2531361.0,66100.0
+2020-07-08,World,207020,6091,11802202,543905,1336215.0,32864.0,2572530.0,66614.0
+2020-07-09,World,215477,5375,12017679,549280,1351477.0,33308.0,2616675.0,66791.0
+2020-07-10,World,228604,5441,12246283,554721,1401692.0,33606.0,2663699.0,65513.0
+2020-07-11,World,230048,5276,12476331,559997,1425169.0,33761.0,2704488.0,66080.0
+2020-07-12,World,218178,4925,12694509,564922,1453747.0,34342.0,2741280.0,66372.0
+2020-07-13,World,195282,3815,12889791,568737,1470053.0,34777.0,2776329.0,67140.0
+2020-07-14,World,190094,3926,13079885,572663,1484703.0,34849.0,2806461.0,67354.0
+2020-07-15,World,220248,5657,13300133,578320,1497931.0,34415.0,2834146.0,67279.0
+2020-07-16,World,230495,5572,13530628,583892,1512949.0,34612.0,2864426.0,67920.0
 2020-04-10,Yemen,1,0,1,0,,,,
 2020-04-11,Yemen,0,0,1,0,,,,
 2020-04-12,Yemen,0,0,1,0,,,,
@@ -30212,6 +30418,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Yemen,76,52,1465,417,200.0,79.0,347.0,115.0
 2020-07-14,Yemen,33,7,1498,424,208.0,79.0,370.0,120.0
 2020-07-15,Yemen,4,6,1502,430,205.0,82.0,344.0,118.0
+2020-07-16,Yemen,24,3,1526,433,208.0,82.0,336.0,115.0
 2020-03-19,Zambia,2,0,2,0,,,,
 2020-03-20,Zambia,0,0,2,0,,,,
 2020-03-21,Zambia,0,0,2,0,,,,
@@ -30331,6 +30538,7 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Zambia,0,0,1895,42,263.0,12.0,338.0,20.0
 2020-07-14,Zambia,0,0,1895,42,263.0,12.0,327.0,20.0
 2020-07-15,Zambia,388,40,2283,82,388.0,40.0,689.0,58.0
+2020-07-16,Zambia,0,0,2283,82,388.0,40.0,651.0,52.0
 2020-03-21,Zimbabwe,1,0,1,0,,,,
 2020-03-22,Zimbabwe,1,0,2,0,,,,
 2020-03-23,Zimbabwe,0,0,2,0,,,,
@@ -30448,3 +30656,4 @@ date,location,new_cases,new_deaths,total_cases,total_deaths,weekly_cases,weekly_
 2020-07-13,Zimbabwe,3,0,985,18,269.0,10.0,418.0,12.0
 2020-07-14,Zimbabwe,49,1,1034,19,300.0,10.0,460.0,12.0
 2020-07-15,Zimbabwe,0,0,1034,19,247.0,10.0,443.0,12.0
+2020-07-16,Zimbabwe,55,1,1089,20,204.0,11.0,484.0,13.0
