@@ -276,7 +276,7 @@ def generate_megafile():
         "aged_70_older": "un/aged_70_older.csv",
         "gdp_per_capita": "wb/gdp_per_capita.csv",
         "extreme_poverty": "wb/extreme_poverty.csv",
-        "cvd_death_rate": "gbd/cvd_death_rate.csv",
+        "cardiovasc_death_rate": "gbd/cardiovasc_death_rate.csv",
         "diabetes_prevalence": "wb/diabetes_prevalence.csv",
         "female_smokers": "wb/female_smokers.csv",
         "male_smokers": "wb/male_smokers.csv",
