@@ -309,7 +309,7 @@ def update_db():
     source_name = f"European CDC – Situation Update Worldwide – Last updated {time_str} (London time)"
     import_dataset(
         dataset_name=DATASET_NAME,
-        namespace=NAMESPACE,
+        namespace='owid',
         csv_path=os.path.join(OUTPUT_PATH, DATASET_NAME + ".csv"),
         default_variable_display={
             'yearIsDay': True,
