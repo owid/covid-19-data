@@ -44,7 +44,7 @@ if has_changed $ROOT_DIR/scripts/input/ecdc/releases/latest.csv; then
   git commit -m "Automated ECDC update"
   git push
 else
-  echo "ECDC CSV is up to date"
+  echo "ECDC export is up to date"
 fi
 
 # Always run the database update.
@@ -67,10 +67,33 @@ if has_changed $ROOT_DIR/scripts/input/gmobility/latest.csv; then
   git commit -m "Automated Google Mobility update"
   git push
 else
-  echo "Google Mobility is up to date"
+  echo "Google Mobility export is up to date"
 fi
 
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 python -c 'import gmobility; gmobility.update_db()'
+
+# =====================================================================
+# Policy responses
+
+# Download CSV
+python -c 'import oxcgrt; oxcgrt.download_csv()'
+
+# If there are any unstaged changes in the repo, then the
+# CSV has changed, and we need to run the update script.
+if has_changed $ROOT_DIR/scripts/input/bsg/latest.csv; then
+  echo "Generating OxCGRT export..."
+  python -c 'import oxcgrt; oxcgrt.export_grapher()'
+  git add .
+  git commit -m "Automated OxCGRT update"
+  git push
+else
+  echo "OxCGRT export is up to date"
+fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+python -c 'import oxcgrt; oxcgrt.update_db()'
