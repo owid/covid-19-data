@@ -14,7 +14,8 @@ from shared import load_population, load_owid_continents, inject_total_daily_col
     inject_rolling_avg, inject_exemplars, inject_doubling_days, inject_weekly_growth, \
     inject_biweekly_growth, standard_export, ZERO_DAY
 
-from ecdc_utils.slack_client import send_warning, send_success
+from utils.slack_client import send_warning, send_success
+from utils.db_imports import import_dataset
 
 INPUT_PATH = os.path.join(CURRENT_DIR, '../input/ecdc/')
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/ecdc/')
@@ -248,7 +249,7 @@ def export(filename):
         DATASET_NAME
     )
 
-def run(filename=None, skip_download=False):
+def main(filename=None, skip_download=False):
     import inquirer
     from glob import glob
 
@@ -303,6 +304,20 @@ def run(filename=None, skip_download=False):
         title='Updated GitHub exports'
     )
 
+def update_db():
+    time_str = datetime.now().astimezone(tz_london).strftime("%-d %B, %H:%M")
+    source_name = f"European CDC – Situation Update Worldwide – Last updated {time_str} (London time)"
+    import_dataset(
+        dataset_name=DATASET_NAME,
+        namespace=NAMESPACE,
+        csv_path=os.path.join(OUTPUT_PATH, DATASET_NAME + ".csv"),
+        default_variable_display={
+            'yearIsDay': True,
+            'zeroDay': ZERO_DAY
+        },
+        source_name=source_name
+    )
+
 
 if __name__ == '__main__':
     import argparse
@@ -310,7 +325,7 @@ if __name__ == '__main__':
     parser.add_argument('filename', nargs='?', default=None, help="CSV/XLSX filename")
     parser.add_argument('-s', '--skip-download', action='store_true', help="Skip downloading files from the ECDC website")
     args = parser.parse_args()
-    run(
+    main(
         filename=args.filename,
         skip_download=args.skip_download
     )

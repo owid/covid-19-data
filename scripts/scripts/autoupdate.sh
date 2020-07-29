@@ -5,7 +5,6 @@ set -e
 BRANCH="master"
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )"
 SCRIPTS_DIR=$ROOT_DIR/scripts
-LATEST_CSV_PATH=$ROOT_DIR/scripts/input/ecdc/releases/latest.csv
 
 has_changed() {
   git diff --name-only --exit-code $1 >/dev/null 2>&1
@@ -27,14 +26,17 @@ git pull
 # for now, which would be more robust, but can easily lead to some
 # accidental code loss while testing locally.
 
+# Switch to scripts/ dir – we will start executing now
+cd $SCRIPTS_DIR/scripts
+
 # Attempt to download ECDC CSV
-(cd $SCRIPTS_DIR/scripts; python -c 'import ecdc; ecdc.download_csv()')
+python -c 'import ecdc; ecdc.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
-if has_changed $LATEST_CSV_PATH; then
+if has_changed $ROOT_DIR/scripts/input/ecdc/releases/latest.csv; then
   echo "Generating ECDC files..."
-  python $SCRIPTS_DIR/scripts/ecdc.py latest.csv --skip-download
+  python ecdc.py latest.csv --skip-download
   git add .
   git commit -m "Automated update"
   git push
@@ -45,4 +47,4 @@ fi
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-python $SCRIPTS_DIR/scripts/ecdc_utils/update_db.py
+python -c 'import ecdc; ecdc.update_db()'

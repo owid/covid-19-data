@@ -42,7 +42,7 @@ tz_utc = tz_db = timezone.utc
 tz_local = datetime.now(tz_utc).astimezone().tzinfo
 tz_london = pytz.timezone('Europe/London')
 
-def update_dataset(dataset_name, namespace, csv_path, default_variable_display, source_name):
+def import_dataset(dataset_name, namespace, csv_path, default_variable_display, source_name):
     with connection as c:
         db = DBUtils(c)
 
@@ -217,18 +217,4 @@ def update_dataset(dataset_name, namespace, csv_path, default_variable_display, 
     send_success(
         channel='corona-data-updates' if not os.getenv('IS_DEV') else 'bot-testing',
         title=f'Updated Grapher dataset: {dataset_name}'
-    )
-
-if __name__ == "__main__":
-    time_str = datetime.now().astimezone(tz_london).strftime("%-d %B, %H:%M")
-    source_name = f"European CDC – Situation Update Worldwide – Last updated {time_str} (London time)"
-    update_dataset(
-        dataset_name=ecdc.DATASET_NAME,
-        namespace=NAMESPACE,
-        csv_path=os.path.join(ecdc.OUTPUT_PATH, ecdc.DATASET_NAME + ".csv"),
-        default_variable_display={
-            'yearIsDay': True,
-            'zeroDay': ecdc.ZERO_DAY
-        },
-        source_name=source_name
     )
