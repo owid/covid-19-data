@@ -2,6 +2,7 @@ import os
 import sys
 import pandas as pd
 import numpy as np
+import pytz
 from datetime import datetime, timedelta
 from termcolor import colored
 
@@ -305,7 +306,7 @@ def main(filename=None, skip_download=False):
     )
 
 def update_db():
-    time_str = datetime.now().astimezone(tz_london).strftime("%-d %B, %H:%M")
+    time_str = datetime.now().astimezone(pytz.timezone('Europe/London')).strftime("%-d %B, %H:%M")
     source_name = f"European CDC – Situation Update Worldwide – Last updated {time_str} (London time)"
     import_dataset(
         dataset_name=DATASET_NAME,

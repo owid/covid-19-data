@@ -18,7 +18,6 @@ from db_utils import DBUtils
 from slack_client import send_success
 
 sys.path.append(os.path.join(CURRENT_DIR, ".."))
-import ecdc
 
 # ID of user who imports the data
 USER_ID = 29
@@ -40,7 +39,6 @@ def chunk_df(df, n):
 
 tz_utc = tz_db = timezone.utc
 tz_local = datetime.now(tz_utc).astimezone().tzinfo
-tz_london = pytz.timezone('Europe/London')
 
 def import_dataset(dataset_name, namespace, csv_path, default_variable_display, source_name):
     with connection as c:
@@ -64,7 +62,7 @@ def import_dataset(dataset_name, namespace, csv_path, default_variable_display, 
         file_modified_time = datetime.fromtimestamp(os.stat(csv_path).st_mtime).replace(tzinfo=tz_local)
 
         if file_modified_time <= db_dataset_modified_time:
-            print("Database is up to date")
+            print(f"Dataset is up to date: {dataset_name}")
             sys.exit(0)
 
         print("Updating database...")
