@@ -1,17 +1,28 @@
 import os
+import sys
 import pandas as pd
+import pytz
 from datetime import datetime
 
-URL = "https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv"
-
 CURRENT_DIR = os.path.dirname(__file__)
+sys.path.append(CURRENT_DIR)
+
+from utils.db_imports import import_dataset
+
+URL = "https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv"
+DATASET_NAME = 'Google Mobility Trends (2020)'
+
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/gmobility/")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/gmobility/')
-CSV_PATH = os.path.join(INPUT_PATH, 'latest.csv')
+INPUT_CSV_PATH = os.path.join(INPUT_PATH, 'latest.csv')
+OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
+
+ZERO_DAY = "2020-01-01"
+zero_day = datetime.strptime(ZERO_DAY, "%Y-%m-%d")
 
 def download_csv():
-    os.system('curl --silent -f -o %(CSV_PATH)s -L %(URL)s' % {
-        'CSV_PATH': CSV_PATH,
+    os.system('curl --silent -f -o %(INPUT_CSV_PATH)s -L %(URL)s' % {
+        'INPUT_CSV_PATH': INPUT_CSV_PATH,
         'URL': URL
     })
 
@@ -33,11 +44,15 @@ def export_grapher():
         "residential_percent_change_from_baseline"
     ]
 
-    df = pd.read_csv(CSV_PATH, usecols=cols)
+    df = pd.read_csv(INPUT_CSV_PATH, usecols=cols)
 
-    # Convert date column to days of the year
-    df['date'] = pd.to_datetime(df['date'], format="%Y/%m/%d", utc=True)
-    df['date'] = df['date'].dt.dayofyear
+    # Convert date column to days since zero_day
+    df['date'] = pd.to_datetime(
+        df['date'],
+        format="%Y/%m/%d"
+    ).map(
+        lambda date: (date - zero_day).days
+    )
 
     # Standardise country names to OWID country names
     country_mapping = pd.read_csv(os.path.join(INPUT_PATH, "gmobility_country_standardized.csv"))
@@ -66,7 +81,21 @@ def export_grapher():
 
     # Save to files
     os.system('mkdir -p %s' % os.path.abspath(OUTPUT_PATH))
-    country_mobility.to_csv(os.path.join(OUTPUT_PATH, 'Google Mobility Trends (2020).csv'), index=False)
+    country_mobility.to_csv(OUTPUT_CSV_PATH, index=False)
+
+def update_db():
+    time_str = datetime.now().astimezone(pytz.timezone('Europe/London')).strftime("%-d %B, %H:%M")
+    source_name = f"Google COVID-19 Community Mobility Trends – Last updated {time_str} (London time)"
+    import_dataset(
+        dataset_name=DATASET_NAME,
+        namespace='owid',
+        csv_path=OUTPUT_CSV_PATH,
+        default_variable_display={
+            'yearIsDay': True,
+            'zeroDay': ZERO_DAY
+        },
+        source_name=source_name
+    )
 
 if __name__ == '__main__':
     download_csv()

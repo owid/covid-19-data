@@ -29,6 +29,9 @@ git pull
 # Switch to scripts/ dir – we will start executing now
 cd $SCRIPTS_DIR/scripts
 
+# =====================================================================
+# ECDC
+
 # Attempt to download ECDC CSV
 python -c 'import ecdc; ecdc.download_csv()'
 
@@ -38,7 +41,7 @@ if has_changed $ROOT_DIR/scripts/input/ecdc/releases/latest.csv; then
   echo "Generating ECDC files..."
   python ecdc.py latest.csv --skip-download
   git add .
-  git commit -m "Automated update"
+  git commit -m "Automated ECDC update"
   git push
 else
   echo "ECDC CSV is up to date"
@@ -48,3 +51,26 @@ fi
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 python -c 'import ecdc; ecdc.update_db()'
+
+# =====================================================================
+# Google Mobility
+
+# Download CSV
+python -c 'import gmobility; gmobility.download_csv()'
+
+# If there are any unstaged changes in the repo, then the
+# CSV has changed, and we need to run the update script.
+if has_changed $ROOT_DIR/scripts/input/gmobility/latest.csv; then
+  echo "Generating Google Mobility export..."
+  python -c 'import gmobility; gmobility.export_grapher()'
+  git add .
+  git commit -m "Automated Google Mobility update"
+  git push
+else
+  echo "Google Mobility is up to date"
+fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+python -c 'import gmobility; gmobility.update_db()'
