@@ -16,6 +16,11 @@ cd $ROOT_DIR
 # Activate Python virtualenv
 source $SCRIPTS_DIR/venv/bin/activate
 
+# Interpret inline Python script in `scripts` directory
+run_python() {
+  (cd $SCRIPTS_DIR/scripts; python -c "$1")
+}
+
 # Make sure we have the latest commit.
 # Stash uncommitted changes.
 git add .
@@ -26,14 +31,11 @@ git pull
 # for now, which would be more robust, but can easily lead to some
 # accidental code loss while testing locally.
 
-# Switch to scripts/ dir – we will start executing now
-cd $SCRIPTS_DIR/scripts
-
 # =====================================================================
 # ECDC
 
 # Attempt to download ECDC CSV
-python -c 'import ecdc; ecdc.download_csv()'
+run_python 'import ecdc; ecdc.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
@@ -50,19 +52,19 @@ fi
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-python -c 'import ecdc; ecdc.update_db()'
+run_python 'import ecdc; ecdc.update_db()'
 
 # =====================================================================
 # Google Mobility
 
 # Download CSV
-python -c 'import gmobility; gmobility.download_csv()'
+run_python 'import gmobility; gmobility.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
 if has_changed $ROOT_DIR/scripts/input/gmobility/latest.csv; then
   echo "Generating Google Mobility export..."
-  python -c 'import gmobility; gmobility.export_grapher()'
+  run_python 'import gmobility; gmobility.export_grapher()'
   git add .
   git commit -m "Automated Google Mobility update"
   git push
@@ -73,19 +75,19 @@ fi
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-python -c 'import gmobility; gmobility.update_db()'
+run_python 'import gmobility; gmobility.update_db()'
 
 # =====================================================================
 # Policy responses
 
 # Download CSV
-python -c 'import oxcgrt; oxcgrt.download_csv()'
+run_python 'import oxcgrt; oxcgrt.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
 if has_changed $ROOT_DIR/scripts/input/bsg/latest.csv; then
   echo "Generating OxCGRT export..."
-  python -c 'import oxcgrt; oxcgrt.export_grapher()'
+  run_python 'import oxcgrt; oxcgrt.export_grapher()'
   git add .
   git commit -m "Automated OxCGRT update"
   git push
@@ -96,4 +98,4 @@ fi
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-python -c 'import oxcgrt; oxcgrt.update_db()'
+run_python 'import oxcgrt; oxcgrt.update_db()'
