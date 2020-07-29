@@ -28,7 +28,7 @@ git pull
 # accidental code loss while testing locally.
 
 # Attempt to download ECDC CSV
-python $SCRIPTS_DIR/scripts/ecdc_utils/download_csv.py
+(cd $SCRIPTS_DIR/scripts; python -c 'import ecdc; ecdc.download_csv()')
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
