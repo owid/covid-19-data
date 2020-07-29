@@ -3,10 +3,19 @@ from datetime import datetime
 import pandas as pd
 
 URL = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv"
-CURRENT_DIR = os.path.dirname(__file__)
-DATA_PATH = os.path.join(CURRENT_DIR, "../input/bsg/")
 
-def main():
+CURRENT_DIR = os.path.dirname(__file__)
+INPUT_PATH = os.path.join(CURRENT_DIR, "../input/bsg/")
+OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/bsg/')
+CSV_PATH = os.path.join(INPUT_PATH, 'latest.csv')
+
+def download_csv():
+    os.system('curl --silent -f -o %(CSV_PATH)s -L %(URL)s' % {
+        'CSV_PATH': CSV_PATH,
+        'URL': URL
+    })
+
+def export_grapher():
 
     cols = [
         "CountryName",
@@ -31,7 +40,7 @@ def main():
         "StringencyIndex"
     ]
 
-    cgrt = pd.read_csv(URL, usecols=cols)
+    cgrt = pd.read_csv(CSV_PATH, usecols=cols)
 
     cgrt.loc[:, "Date"] = (
         (pd.to_datetime(cgrt["Date"], format="%Y%m%d") - datetime(2020, 1, 1))
@@ -40,7 +49,7 @@ def main():
 
     rows_before = cgrt.shape[0]
 
-    country_mapping = pd.read_csv(os.path.join(DATA_PATH, "bsg_country_standardised.csv"))
+    country_mapping = pd.read_csv(os.path.join(INPUT_PATH, "bsg_country_standardised.csv"))
 
     cgrt = country_mapping.merge(cgrt, on="CountryName", how="right")
 
@@ -74,7 +83,9 @@ def main():
 
     cgrt = cgrt.rename(columns=rename_dict)
 
-    cgrt.to_csv(os.path.join(DATA_PATH, "oxcgrt.csv"), index=False)
+    os.system('mkdir -p %s' % os.path.abspath(OUTPUT_PATH))
+    cgrt.to_csv(os.path.join(OUTPUT_PATH, "COVID Government Response (OxBSG).csv"), index=False)
 
 if __name__ == '__main__':
-    main()
+    download_csv()
+    export_grapher()
