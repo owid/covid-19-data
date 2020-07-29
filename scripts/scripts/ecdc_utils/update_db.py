@@ -26,7 +26,6 @@ USER_ID = 29
 # Dataset namespace
 NAMESPACE = 'owid'
 
-GRAPHER_DATASET_PATH = os.path.join(ecdc.OUTPUT_PATH, ecdc.DATASET_NAME + ".csv")
 DEPLOY_QUEUE_PATH = os.getenv('DEPLOY_QUEUE_PATH')
 
 
@@ -43,8 +42,7 @@ tz_utc = tz_db = timezone.utc
 tz_local = datetime.now(tz_utc).astimezone().tzinfo
 tz_london = pytz.timezone('Europe/London')
 
-
-if __name__ == "__main__":
+def update_dataset(dataset_name, namespace, csv_path, default_variable_display, source_name):
     with connection as c:
         db = DBUtils(c)
 
@@ -60,10 +58,10 @@ if __name__ == "__main__":
             FROM datasets
             WHERE name = %s
             AND namespace = %s
-        """, [ecdc.DATASET_NAME, NAMESPACE])
+        """, [dataset_name, namespace])
 
         db_dataset_modified_time = db_dataset_modified_time.replace(tzinfo=tz_db)
-        file_modified_time = datetime.fromtimestamp(os.stat(GRAPHER_DATASET_PATH).st_mtime).replace(tzinfo=tz_local)
+        file_modified_time = datetime.fromtimestamp(os.stat(csv_path).st_mtime).replace(tzinfo=tz_local)
 
         if file_modified_time <= db_dataset_modified_time:
             print("Database is up to date")
@@ -73,7 +71,7 @@ if __name__ == "__main__":
 
         # Load dataset data frame
 
-        df = pd.read_csv(GRAPHER_DATASET_PATH)
+        df = pd.read_csv(csv_path)
 
         # Check whether all entities exist in the database.
         # If some are missing, report & quit.
@@ -142,10 +140,7 @@ if __name__ == "__main__":
                     short_unit=None,
                     source_id=db_source_id,
                     dataset_id=db_dataset_id,
-                    display={
-                        'yearIsDay': True,
-                        'zeroDay': ecdc.ZERO_DAY
-                    })
+                    display=default_variable_display)
 
         # Delete all data_values in dataset
 
@@ -191,9 +186,6 @@ if __name__ == "__main__":
 
         # Update source name ("last updated at")
 
-        time_str = datetime.now().astimezone(tz_london).strftime("%-d %B, %H:%M")
-        source_name = f"European CDC – Situation Update Worldwide – Last updated {time_str} (London time)"
-
         db.execute("""
             UPDATE sources
             SET name = %s
@@ -209,20 +201,34 @@ if __name__ == "__main__":
                 SELECT DISTINCT chart_dimensions.chartId
                 FROM chart_dimensions
                 JOIN variables ON variables.id = chart_dimensions.variableId
-                WHERE variables.datasetId = 5071
+                WHERE variables.datasetId = %s
             )
-        """)
+        """, [db_dataset_id])
 
         # Enqueue deploy
 
         if DEPLOY_QUEUE_PATH:
             with open(DEPLOY_QUEUE_PATH, 'a') as f:
                 f.write(json.dumps({
-                    'message': "Automatic ECDC update"
+                    'message': f"Automated dataset update: {dataset_name}"
                 }) + "\n")
 
     print("Database update successful.")
     send_success(
-        channel='corona-data-updates',
-        title=f'Updated Grapher dataset {ecdc.DATASET_NAME}'
+        channel='corona-data-updates' if not os.getenv('IS_DEV') else 'bot-testing',
+        title=f'Updated Grapher dataset: {dataset_name}'
+    )
+
+if __name__ == "__main__":
+    time_str = datetime.now().astimezone(tz_london).strftime("%-d %B, %H:%M")
+    source_name = f"European CDC – Situation Update Worldwide – Last updated {time_str} (London time)"
+    update_dataset(
+        dataset_name=ecdc.DATASET_NAME,
+        namespace=NAMESPACE,
+        csv_path=os.path.join(ecdc.OUTPUT_PATH, ecdc.DATASET_NAME + ".csv"),
+        default_variable_display={
+            'yearIsDay': True,
+            'zeroDay': ecdc.ZERO_DAY
+        },
+        source_name=source_name
     )
