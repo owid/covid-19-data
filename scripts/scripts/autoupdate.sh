@@ -41,7 +41,7 @@ run_python 'import ecdc; ecdc.download_csv()'
 # CSV has changed, and we need to run the update script.
 if has_changed $ROOT_DIR/scripts/input/ecdc/releases/latest.csv; then
   echo "Generating ECDC files..."
-  python ecdc.py latest.csv --skip-download
+  python $SCRIPTS_DIR/scripts/ecdc.py latest.csv --skip-download
   git add .
   git commit -m "Automated ECDC update"
   git push
