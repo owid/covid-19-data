@@ -2,6 +2,7 @@ import os
 import sys
 import pandas as pd
 import pytz
+import tarfile
 from datetime import datetime
 
 CURRENT_DIR = os.path.dirname(__file__)
@@ -15,6 +16,7 @@ DATASET_NAME = 'Google Mobility Trends (2020)'
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/gmobility/")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/gmobility/')
 INPUT_CSV_PATH = os.path.join(INPUT_PATH, 'latest.csv')
+INPUT_TAR_PATH = os.path.join(INPUT_PATH, 'latest.tar.gz')
 OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
 
 ZERO_DAY = "2020-01-01"
@@ -25,6 +27,12 @@ def download_csv():
         'INPUT_CSV_PATH': INPUT_CSV_PATH,
         'URL': URL
     })
+
+def compress_csv():
+    tf = tarfile.open(INPUT_TAR_PATH, mode='w:gz')
+    tf.add(INPUT_CSV_PATH)
+    tf.close()
+    os.remove(INPUT_CSV_PATH)
 
 def export_grapher():
 
@@ -100,3 +108,4 @@ def update_db():
 if __name__ == '__main__':
     download_csv()
     export_grapher()
+    compress_csv()
