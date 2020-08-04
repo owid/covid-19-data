@@ -2,7 +2,7 @@ import os
 import sys
 import pandas as pd
 import pytz
-import tarfile
+import gzip
 from datetime import datetime
 
 CURRENT_DIR = os.path.dirname(__file__)
@@ -15,24 +15,20 @@ DATASET_NAME = 'Google Mobility Trends (2020)'
 
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/gmobility/")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/gmobility/')
-INPUT_CSV_PATH = os.path.join(INPUT_PATH, 'latest.csv')
-INPUT_TAR_PATH = os.path.join(INPUT_PATH, 'latest.tar.gz')
+TEMP_CSV_PATH = os.path.join(INPUT_PATH, 'latest.csv')
+INPUT_CSV_GZIP_PATH = os.path.join(INPUT_PATH, 'latest.csv.gz')
 OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
 
 ZERO_DAY = "2020-01-01"
 zero_day = datetime.strptime(ZERO_DAY, "%Y-%m-%d")
 
 def download_csv():
-    os.system('curl --silent -f -o %(INPUT_CSV_PATH)s -L %(URL)s' % {
-        'INPUT_CSV_PATH': INPUT_CSV_PATH,
-        'URL': URL
-    })
-
-def compress_csv():
-    tf = tarfile.open(INPUT_TAR_PATH, mode='w:gz')
-    tf.add(INPUT_CSV_PATH)
-    tf.close()
-    os.remove(INPUT_CSV_PATH)
+    # Download the latest CSV
+    os.system(f'curl --silent -f -o {TEMP_CSV_PATH} -L {URL}')
+    # gzip in order to not exceed GitHub's 100MB file limit
+    with open(TEMP_CSV_PATH, 'rb') as f_csv, gzip.open(INPUT_CSV_GZIP_PATH, 'wb') as f_csv_gz:
+        f_csv_gz.writelines(f_csv)
+    os.remove(TEMP_CSV_PATH)
 
 def export_grapher():
 
@@ -52,7 +48,7 @@ def export_grapher():
         "residential_percent_change_from_baseline"
     ]
 
-    df = pd.read_csv(INPUT_CSV_PATH, usecols=cols)
+    df = pd.read_csv(INPUT_CSV_GZIP_PATH, usecols=cols, compression='gzip')
 
     # Convert date column to days since zero_day
     df['date'] = pd.to_datetime(
@@ -108,4 +104,3 @@ def update_db():
 if __name__ == '__main__':
     download_csv()
     export_grapher()
-    compress_csv()

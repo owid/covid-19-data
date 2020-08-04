@@ -11,6 +11,12 @@ has_changed() {
   [ $? -ne 0 ]
 }
 
+has_changed_gzip() {
+  # Ignore the header because it includes the creation time
+  cmp --silent -i 8 $1 <(git show HEAD:$1)
+  [ $? -ne 0 ]
+}
+
 cd $ROOT_DIR
 
 # Activate Python virtualenv
@@ -39,7 +45,7 @@ run_python 'import ecdc; ecdc.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
-if has_changed $ROOT_DIR/scripts/input/ecdc/releases/latest.csv; then
+if has_changed ./scripts/input/ecdc/releases/latest.csv; then
   echo "Generating ECDC files..."
   python $SCRIPTS_DIR/scripts/ecdc.py latest.csv --skip-download
   git add .
@@ -62,10 +68,9 @@ run_python 'import gmobility; gmobility.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
-if has_changed $ROOT_DIR/scripts/input/gmobility/latest.csv; then
+if has_changed_gzip ./scripts/input/gmobility/latest.csv.gz; then
   echo "Generating Google Mobility export..."
   run_python 'import gmobility; gmobility.export_grapher()'
-  run_python 'import gmobility; gmobility.compress_csv()'
   git add .
   git commit -m "Automated Google Mobility update"
   git push
@@ -86,7 +91,7 @@ run_python 'import oxcgrt; oxcgrt.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
-if has_changed $ROOT_DIR/scripts/input/bsg/latest.csv; then
+if has_changed ./scripts/input/bsg/latest.csv; then
   echo "Generating OxCGRT export..."
   run_python 'import oxcgrt; oxcgrt.export_grapher()'
   git add .
