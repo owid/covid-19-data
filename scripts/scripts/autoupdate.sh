@@ -65,6 +65,7 @@ run_python 'import gmobility; gmobility.download_csv()'
 if has_changed $ROOT_DIR/scripts/input/gmobility/latest.csv; then
   echo "Generating Google Mobility export..."
   run_python 'import gmobility; gmobility.export_grapher()'
+  run_python 'import gmobility; gmobility.compress_csv()'
   git add .
   git commit -m "Automated Google Mobility update"
   git push
