@@ -20,6 +20,8 @@ Column|Description|Source
 `total_tests_per_thousand`|Total tests for COVID-19 per 1,000 people|National government reports
 `new_tests_per_thousand`|New tests for COVID-19 per 1,000 people|National government reports
 `new_tests_smoothed_per_thousand`|New tests for COVID-19 (7-day smoothed) per 1,000 people|National government reports
+`positive_rate`|The share of COVID-19 tests that are positive, given as a rolling 7-day average (this is the inverse of `tests_per_case`)|National government reports
+`tests_per_case`|Tests conducted per new confirmed case of COVID-19, given as a rolling 7-day average (this is the inverse of `positive_rate`)|National government reports
 `tests_units`|Units used by the location to report its testing data|National government reports
 `stringency_index`|Government Response Stringency Index: composite measure based on 9 response indicators including school closures, workplace closures, and travel bans, rescaled to a value from 0 to 100 (100 = strictest response)|Oxford COVID-19 Government Response Tracker, Blavatnik School of Government
 `population`|Population in 2020|United Nations, Department of Economic and Social Affairs, Population Division, World Population Prospects: The 2019 Revision
