@@ -40,7 +40,7 @@ def chunk_df(df, n):
 tz_utc = tz_db = timezone.utc
 tz_local = datetime.now(tz_utc).astimezone().tzinfo
 
-def import_dataset(dataset_name, namespace, csv_path, default_variable_display, source_name):
+def import_dataset(dataset_name, namespace, csv_path, default_variable_display, source_name, slack_notifications=True):
     with connection as c:
         db = DBUtils(c)
 
@@ -212,7 +212,9 @@ def import_dataset(dataset_name, namespace, csv_path, default_variable_display, 
                 }) + "\n")
 
     print("Database update successful.")
-    send_success(
-        channel='corona-data-updates' if not os.getenv('IS_DEV') else 'bot-testing',
-        title=f'Updated Grapher dataset: {dataset_name}'
-    )
+
+    if slack_notifications:
+        send_success(
+            channel='corona-data-updates' if not os.getenv('IS_DEV') else 'bot-testing',
+            title=f'Updated Grapher dataset: {dataset_name}'
+        )

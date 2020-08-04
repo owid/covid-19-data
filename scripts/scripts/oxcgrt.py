@@ -107,7 +107,8 @@ def update_db():
             'yearIsDay': True,
             'zeroDay': ZERO_DAY
         },
-        source_name=source_name
+        source_name=source_name,
+        slack_notifications=False
     )
 
 if __name__ == '__main__':
