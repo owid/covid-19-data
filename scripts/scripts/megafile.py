@@ -55,7 +55,7 @@ def get_testing():
         "Daily change in cumulative total per thousand": "new_tests_per_thousand",
         "7-day smoothed daily change per thousand": "new_tests_smoothed_per_thousand",
         "Short-term positive rate": "positive_rate",
-        "Tests per case": "tests_per_case"
+        "Short-term tests per case": "tests_per_case"
     })
 
     testing[
