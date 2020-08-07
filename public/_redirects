@@ -15,3 +15,6 @@
 /data/total_cases_per_million.csv /data/who/total_cases_per_million.csv 301
 /data/total_deaths.csv /data/who/total_deaths.csv 301
 /data/total_deaths_per_million.csv /data/who/total_deaths_per_million.csv 301
+
+# Codebook changed from markdown to CSV
+/data/owid-covid-data-codebook.md /data/owid-covid-codebook.csv 301
