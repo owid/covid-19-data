@@ -164,7 +164,7 @@ def check_data_correctness(filename):
             previous_RA = np.mean(country_vals[-8:-1])
             new_RA = np.mean(country_vals[-7:])
 
-            if new_RA > 1.2 * previous_RA and new_RA > 100:
+            if new_RA >= 1.5 * previous_RA and new_RA > 100:
                 sudden_changes_msg += "<!> Sudden increase of *{}* in *{}*: {} (7-day average was {})\n".format(
                     var_name,
                     location,
