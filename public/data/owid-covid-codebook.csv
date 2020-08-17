@@ -5,12 +5,16 @@ location,Geographical location,Our World in Data
 date,Date of observation,Our World in Data
 total_cases,Total confirmed cases of COVID-19,European Centre for Disease Prevention and Control
 new_cases,New confirmed cases of COVID-19,European Centre for Disease Prevention and Control
+new_cases_smoothed,New confirmed cases of COVID-19 (7-day smoothed),European Centre for Disease Prevention and Control
 total_deaths,Total deaths attributed to COVID-19,European Centre for Disease Prevention and Control
 new_deaths,New deaths attributed to COVID-19,European Centre for Disease Prevention and Control
+new_deaths_smoothed,New deaths attributed to COVID-19 (7-day smoothed),European Centre for Disease Prevention and Control
 total_cases_per_million,"Total confirmed cases of COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
 new_cases_per_million,"New confirmed cases of COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
+new_cases_smoothed_per_million,"New confirmed cases of COVID-19 (7-day smoothed) per 1,000,000 people",European Centre for Disease Prevention and Control
 total_deaths_per_million,"Total deaths attributed to COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
 new_deaths_per_million,"New deaths attributed to COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
+new_deaths_smoothed_per_million,"New deaths attributed to COVID-19 (7-day smoothed) per 1,000,000 people",European Centre for Disease Prevention and Control
 total_tests,Total tests for COVID-19,National government reports
 new_tests,New tests for COVID-19,National government reports
 new_tests_smoothed,"New tests for COVID-19 (7-day smoothed). For countries that don't report testing data on a daily basis, we assume that testing changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window",National government reports
