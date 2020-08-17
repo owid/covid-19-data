@@ -121,7 +121,12 @@ def get_ecdc():
         )
         if ecdc_var[:7] == "weekly_":
             tmp[ecdc_var] = tmp[ecdc_var].div(7).round(3)
-            tmp = tmp.rename(columns={ecdc_var: ecdc_var.replace("weekly", "new") + "_smoothed"})
+            tmp = tmp.rename(errors="ignore", columns={
+                "weekly_cases": "new_cases_smoothed",
+                "weekly_deaths": "new_deaths_smoothed",
+                "weekly_cases_per_million": "new_cases_smoothed_per_million",
+                "weekly_deaths_per_million": "new_deaths_smoothed_per_million"
+            })
         else:
             tmp[ecdc_var] = tmp[ecdc_var].round(3)
         data_frames.append(tmp)
