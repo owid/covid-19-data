@@ -95,12 +95,16 @@ def get_ecdc():
     ecdc_variables = [
         "total_cases",
         "new_cases",
+        "weekly_cases",
         "total_deaths",
         "new_deaths",
+        "weekly_deaths",
         "total_cases_per_million",
         "new_cases_per_million",
+        "weekly_cases_per_million",
         "total_deaths_per_million",
-        "new_deaths_per_million"
+        "new_deaths_per_million",
+        "weekly_deaths_per_million"
     ]
 
     data_frames = []
@@ -115,7 +119,11 @@ def get_ecdc():
             .rename(columns={"value": ecdc_var, "variable": "location"})
             .dropna()
         )
-        tmp[ecdc_var] = tmp[ecdc_var].round(3)
+        if ecdc_var[:7] == "weekly_":
+            tmp[ecdc_var] = tmp[ecdc_var].div(7).round(3)
+            tmp = tmp.rename(columns={ecdc_var: ecdc_var.replace("weekly", "new") + "_smoothed"})
+        else:
+            tmp[ecdc_var] = tmp[ecdc_var].round(3)
         data_frames.append(tmp)
     print()
 
