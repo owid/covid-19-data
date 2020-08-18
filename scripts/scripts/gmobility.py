@@ -47,7 +47,7 @@ def export_grapher():
         "residential_percent_change_from_baseline"
     ]
 
-    mobility = pd.read_csv(INPUT_CSV_GZIP_PATH, usecols=cols, compression="gzip")
+    mobility = pd.read_csv(INPUT_CSV_GZIP_PATH, usecols=cols, compression="gzip", low_memory=False)
 
     # Convert date column to days since zero_day
     mobility["date"] = pd.to_datetime(
@@ -94,6 +94,21 @@ def export_grapher():
 
     # Rename columns
     country_mobility = country_mobility.rename(columns=rename_dict)
+
+    # Replace time series with 7-day rolling averages
+    country_mobility = country_mobility.sort_values(by=["Country", "Year"]).reset_index(drop=True)
+    smoothed_cols = [
+        "Retail & Recreation", "Grocery & Pharmacy", "Parks",
+        "Transit Stations", "Workplaces", "Residential"
+    ]
+    country_mobility[smoothed_cols] = (
+        country_mobility
+        .groupby("Country", as_index=False)
+        .rolling(window=7, min_periods=3, center=False)
+        .mean()
+        .round(3)
+        .reset_index()[smoothed_cols]
+    )
 
     # Save to files
     os.system("mkdir -p %s" % os.path.abspath(OUTPUT_PATH))
