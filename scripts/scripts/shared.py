@@ -303,10 +303,24 @@ def _apply_row_cfr_100(row):
     return pd.NA
 
 def inject_cfr(df):
-    df = df.copy()
     cfr_series = (df['total_deaths'] / df['total_cases']) * 100
     df['cfr'] = cfr_series.round(decimals=3)
     df['cfr_100_cases'] = df.apply(_apply_row_cfr_100, axis=1)
+
+    shifted_cases = (
+        df.sort_values('date')
+        .groupby('location')
+        ['new_cases_7_day_avg_right']
+        .shift(13)
+    )
+    df['cfr_short_term'] = (
+        df['new_deaths_7_day_avg_right']
+        .div(shifted_cases)
+        .replace(np.inf, np.nan)
+        .mul(100)
+        .round(3)
+    )
+
     return df
 
 
@@ -539,6 +553,7 @@ GRAPHER_COL_NAMES = {
     # Case fatality ratio
     'cfr': 'Case fatality rate of COVID-19 (%)',
     'cfr_100_cases': 'Case fatality rate of COVID-19 (%) (Only observations with ≥100 cases)',
+    'cfr_short_term': 'Case fatality rate of COVID-19 (%) (Short-term)',
     # Exemplars variables
     'days_since_100_total_cases_and_5m_pop': 'Days since the total confirmed cases of COVID-19 reached 100 (with population ≥ 5M)',
     '5m_pop_and_21_days_since_100_cases_and_testing': 'Has population ≥ 5M AND had ≥100 cases ≥21 days ago AND has testing data',

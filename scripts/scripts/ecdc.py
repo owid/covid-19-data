@@ -222,8 +222,8 @@ def load_standardized(filename):
         'biweekly_cases',
         'biweekly_deaths'
     ])
-    df = inject_cfr(df)
     df = inject_rolling_avg(df)
+    df = inject_cfr(df)
     df = inject_days_since(df)
     df = inject_exemplars(df)
     return df.sort_values(by=['location', 'date'])
