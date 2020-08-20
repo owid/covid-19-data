@@ -114,6 +114,12 @@ def get_ecdc():
         tmp = pd.read_csv(os.path.join(DATA_DIR, f"../../public/data/ecdc/{ecdc_var}.csv"))
         country_cols = list(tmp.columns)
         country_cols.remove("date")
+
+        # Carrying last observation forward for International totals to avoid discrepancies
+        if ecdc_var[:5] == "total":
+            tmp = tmp.sort_values("date")
+            tmp["International"] = tmp["International"].ffill()
+
         tmp = (
             pd.melt(tmp, id_vars="date", value_vars=country_cols)
             .rename(columns={"value": ecdc_var, "variable": "location"})
