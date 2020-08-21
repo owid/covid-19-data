@@ -8,3 +8,5 @@ __pycache__/
 tmp/
 ~$*.xls*
 *.log
+scripts/scripts/testing/input/*
+testing_dataset_config.json
