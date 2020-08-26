@@ -13,13 +13,12 @@ def main():
             url = resource["url"]
             break
 
-    df = pd.read_csv(url, sep=";")
+    df = pd.read_csv(url, sep=";", usecols=["jour", "cl_age90", "T"])
 
     df = (
         df[df.cl_age90 == 0]
-        .groupby("jour", as_index=False)
-        .agg({"T": "sum"})
         .rename(columns={"jour": "Date", "T": "Daily change in cumulative total"})
+        .drop(columns=["cl_age90"])
     )
 
     df.loc[:, "Country"] = "France"
