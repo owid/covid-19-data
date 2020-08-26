@@ -180,8 +180,13 @@ def get_cgrt():
 
     cgrt = pd.read_csv(
         "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv",
-        usecols=["CountryName", "Date", "StringencyIndex"]
+        low_memory=False
     )
+
+    if "RegionCode" in cgrt.columns:
+        cgrt = cgrt[cgrt.RegionCode.isnull()]
+
+    cgrt = cgrt[["CountryName", "Date", "StringencyIndex"]]
 
     cgrt.loc[:, "Date"] = pd.to_datetime(cgrt["Date"], format="%Y%m%d").dt.date.astype(str)
 

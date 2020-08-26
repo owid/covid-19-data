@@ -52,7 +52,12 @@ def export_grapher():
         "ContainmentHealthIndex"
     ]
 
-    cgrt = pd.read_csv(INPUT_CSV_PATH, usecols=cols)
+    cgrt = pd.read_csv(INPUT_CSV_PATH, low_memory=False)
+
+    if "RegionCode" in cgrt.columns:
+        cgrt = cgrt[cgrt.RegionCode.isnull()]
+
+    cgrt = cgrt[cols]
 
     cgrt.loc[:, "Date"] = pd.to_datetime(cgrt["Date"], format="%Y%m%d").map(
         lambda date: (date - zero_day).days
