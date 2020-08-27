@@ -1,4 +1,4 @@
-formatted_date <- (today() - 1) %>% str_replace_all("-", "")
+formatted_date <- format.Date(today() - 1, "%Y%m%d")
 
 confirmados <- sprintf("https://coronavirus.gob.mx/datos/Downloads/Files/Casos_Diarios_Estado_Nacional_Confirmados_%s.csv", formatted_date)
 negativos <- sprintf("https://coronavirus.gob.mx/datos/Downloads/Files/Casos_Diarios_Estado_Nacional_Negativos_%s.csv", formatted_date)
@@ -6,8 +6,8 @@ negativos <- sprintf("https://coronavirus.gob.mx/datos/Downloads/Files/Casos_Dia
 process_file <- function(url) {
     df <- fread(url, showProgress = FALSE)
     df <- df[nombre == "Nacional"] %>%
-        gather(Date, Count, 4:ncol(df))
-    setDT(df)
+        gather(Date, Count, 4:ncol(df)) %>%
+        data.table()
     df[, c("cve_ent", "poblacion", "nombre") := NULL]
     df[, Date := dmy(Date)]
     return(df)
@@ -17,8 +17,8 @@ confirmados <- process_file(confirmados)
 negativos <- process_file(negativos)
 
 df <- merge(confirmados, negativos, by = "Date", all = TRUE)
-df[, Count.x := nafill(Count.x, fill = 0)]
-df[, Count.y := nafill(Count.y, fill = 0)]
+df[is.na(Count.x), Count.x := 0]
+df[is.na(Count.y), Count.y := 0]
 df[, `Daily change in cumulative total` := Count.x + Count.y]
 df[, c("Count.x", "Count.y") := NULL]
 df <- df[`Daily change in cumulative total` != 0]
