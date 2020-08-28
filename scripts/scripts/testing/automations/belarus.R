@@ -24,7 +24,7 @@ page <- read_html(url)
 count <- page %>%
     html_node(".content") %>%
     html_text() %>%
-    str_extract("Всего проведено [\\d ]+ (млн.? \\d+ тыс. \\d+ )?тест") %>%
+    str_extract("Всего проведено [\\d ]+ (млн.? \\d+ тыс. \\d+ ?)?тест") %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
 
