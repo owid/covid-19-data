@@ -72,7 +72,9 @@ We have the goal to keep all stable URLs working, even when we have to restructu
 
 ## License
 
-All of _Our World in Data_ is completely open access and all work is licensed under the [Creative Commons BY license](https://creativecommons.org/licenses/by/4.0/). You have the permission to use, distribute, and reproduce in any medium, provided the source and authors are credited.
+All visualizations, data, scripts and code produced by _Our World in Data_ are completely open access under the [Creative Commons BY license](https://creativecommons.org/licenses/by/4.0/). You have the permission to use, distribute, and reproduce these in any medium, provided the source and authors are credited.
+
+The data produced by third parties and made available by _Our World in Data_ is subject to the license terms from the original third-party authors. We will always indicate the original source of the data in our database, and you should always check the license of any such third-party data before use.
 
 
 ## Authors
