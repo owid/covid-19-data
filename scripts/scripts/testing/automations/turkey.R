@@ -1,7 +1,7 @@
 url <- "https://covid19.saglik.gov.tr/"
 
 count <- read_html(url) %>%
-    html_node(".corona-bg .row .col-sm-6 .list-group-genislik li") %>%
+    html_node(".toplam-test-sayisi") %>%
     html_text() %>%
     str_extract("[\\d\\.]+") %>%
     str_replace_all("\\.", "") %>%
