@@ -12,7 +12,7 @@ df[, change := NULL]
 
 df[, Country := "Hong Kong"]
 df[, Units := "tests performed"]
-df[, `Source URL` := "https://data.gov.hk/en-data/dataset/hk-dh-chpsebcddr-novel-infectious-agent/resource/000cc801-6294-4ea9-b505-f5f1633a53b9"]
+df[, `Source URL` := "https://data.gov.hk/en-data/dataset/hk-dh-chpsebcddr-novel-infectious-agent/resource/64674927-bed8-4db9-9f1a-6999733ff221"]
 df[, `Source label` := "Department of Health"]
 df[, Notes := NA_character_]
 df[, `Testing type` := "PCR only"]

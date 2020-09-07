@@ -1,5 +1,5 @@
 # Link to data drop: https://drive.google.com/drive/folders/1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o
-url <- "https://drive.google.com/drive/folders/1VCjxPkiFPyceTiyJzRvn7eO616twBOpy"
+url <- "https://drive.google.com/drive/folders/1hPR6jirw7NP8aVu39soiTnx5hwI2WbTf"
 
 drive_auth(email = CONFIG$google_credentials_email)
 files <- drive_ls(url)

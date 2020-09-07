@@ -8,7 +8,10 @@ script <- script[which(str_detect(script, "window\\.infographicData"))]
 
 header_string <- '"NUHI\\*","Border screening","deCODE Genetics"'
 
-graph <- str_extract_all(script, sprintf('%s[^A-Za-z]+', header_string)) %>% unlist
+graph <- script %>%
+    str_replace_all("null", "0") %>%
+    str_extract_all(sprintf('%s[^A-Za-z]+', header_string)) %>%
+    unlist
 graph <- graph[which(!str_detect(graph, "%"))]
 
 data <- graph %>%
