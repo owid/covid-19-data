@@ -10,7 +10,7 @@ def main():
 
     existing = pd.read_csv("automated_sheets/Turkey.csv").sort_values("Date", ascending=False)
     
-    if count > new["Cumulative total"][0]:
+    if count > existing["Cumulative total"][0]:
         new = existing.head(1).copy()
         new.loc[:, "Date"] = datetime.date.today()
         new.loc[:, "Cumulative total"] = count
