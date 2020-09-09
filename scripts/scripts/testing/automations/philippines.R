@@ -1,12 +1,22 @@
 # Link to data drop: https://drive.google.com/drive/folders/1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o
-url <- "https://drive.google.com/drive/folders/1hPR6jirw7NP8aVu39soiTnx5hwI2WbTf"
 
 drive_auth(email = CONFIG$google_credentials_email)
+
+master_folder <- "https://drive.google.com/drive/folders/1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o"
+files <- drive_ls(master_folder)
+setDT(files)
+pdf_file <- files[str_detect(files$name, "READ ME FIRST"), id]
+drive_download(file = as_id(pdf_file), path = "tmp/tmp.pdf", overwrite = TRUE, verbose = FALSE)
+
+url <- pdf_text("tmp/tmp.pdf") %>%
+    str_extract_all("https://bit.ly.*") %>%
+    unlist() %>%
+    head(1)
+url <- httr::GET(url)$url
+
 files <- drive_ls(url)
 setDT(files)
-
 testing_aggregates_file <- files[str_detect(files$name, "Testing Aggregates.csv"), id]
-
 drive_download(file = as_id(testing_aggregates_file), path = "tmp/tmp.csv", overwrite = TRUE, verbose = FALSE)
 
 df <- fread("tmp/tmp.csv", select = c("report_date", "cumulative_unique_individuals"), showProgress = FALSE)

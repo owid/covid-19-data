@@ -5,6 +5,7 @@ import re
 import json
 import requests
 import subprocess
+import time
 import pandas as pd
 from seleniumwire import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -32,7 +33,7 @@ def main() -> None:
     i = 0
     df = None
     while df is None and i < MAX_TRIES:
-        print(f'retrieving testing data (attempt {1+i} of {MAX_TRIES})...')
+        #print(f'retrieving testing data (attempt {1+i} of {MAX_TRIES})...')
         df = get_data()
         i += 1
     assert df is not None, f'Failed to retrieve testing data after {i} tries.'
@@ -52,6 +53,7 @@ def get_data() -> pd.DataFrame:
         driver = webdriver.Firefox()
         driver.implicitly_wait(IMPLICIT_WAIT)
         driver.get(DASHBOARD_URL)
+        time.sleep(15)
         # searches in all requests made by `DASHBOARD_URL` for the request containing the
         # testing data time series.
         found_testing_data = False

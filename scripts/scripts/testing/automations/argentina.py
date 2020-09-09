@@ -1,3 +1,4 @@
+import datetime
 import pandas as pd
 import numpy as np
 
@@ -25,6 +26,9 @@ def get_tests():
     df["Notes"] = np.nan
     df["Source URL"] = "https://datos.gob.ar/dataset/salud-covid-19-determinaciones-registradas-republica-argentina/archivo/salud_0de942d4-d106-4c74-b6b2-3654b0c53a3a"
     df["Source label"] = "Government of Argentina"
+
+    # Censoring data for the last 5 days (too much lag in reporting)
+    df = df[df["Date"] <= (datetime.date.today() - datetime.timedelta(days=5)).strftime("%Y-%m-%d")]
 
     df.to_csv("automated_sheets/Argentina - tests performed.csv", index=False)
 
@@ -55,6 +59,9 @@ def get_people():
     df["Notes"] = np.nan
     df["Source URL"] = "https://datos.gob.ar/dataset/salud-covid-19-casos-registrados-republica-argentina/archivo/salud_fd657d02-a33a-498b-a91b-2ef1a68b8d16"
     df["Source label"] = "Government of Argentina"
+
+    # Censoring data for the last 5 days (too much lag in reporting)
+    df = df[df["Date"] <= (datetime.date.today() - datetime.timedelta(days=5)).strftime("%Y-%m-%d")]
 
     df.to_csv("automated_sheets/Argentina - people tested.csv", index=False)
 

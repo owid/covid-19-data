@@ -82,6 +82,7 @@ def get_data() -> pd.DataFrame:
     df = df[['Date', 'Cumulative total']]
     df = df[df["Cumulative total"] > 0]
     df = df.groupby("Cumulative total", as_index=False).min()
+    df = df.groupby("Date", as_index=False).min()
     return df
 
 def sanity_checks(df: pd.DataFrame) -> None:
