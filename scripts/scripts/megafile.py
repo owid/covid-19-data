@@ -310,7 +310,8 @@ def generate_megafile():
         "male_smokers": "wb/male_smokers.csv",
         "handwashing_facilities": "un/handwashing_facilities.csv",
         "hospital_beds_per_thousand": "owid/hospital_beds.csv",
-        "life_expectancy": "owid/life_expectancy.csv"
+        "life_expectancy": "owid/life_expectancy.csv",
+        "human_development_index": "un/human_development_index.csv",
     }
     all_covid = add_macro_variables(all_covid, macro_variables)
 
