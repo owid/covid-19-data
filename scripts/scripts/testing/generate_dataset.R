@@ -5,14 +5,13 @@ library(googlesheets4)
 library(imputeTS)
 library(lubridate)
 library(readr)
+library(retry)
 library(rjson)
 library(slackr)
 library(stringr)
 library(tidyr)
 library(zoo)
 rm(list = ls())
-
-NOTIFY <- FALSE
 
 TESTING_FOLDER <- dirname(rstudioapi::getSourceEditorContext()$path)
 setwd(TESTING_FOLDER)
@@ -54,7 +53,12 @@ parse_country <- function(sheet_name) {
         filepath <- sprintf("automated_sheets/%s.csv", sheet_name)
         collated <- suppressMessages(read_csv(filepath))
     } else {
-        collated <- suppressMessages(read_sheet(key, sheet = sheet_name))
+        retry(
+            expr = {collated <- suppressMessages(read_sheet(key, sheet = sheet_name))},
+            when = "RESOURCE_EXHAUSTED",
+            max_tries = 5,
+            interval = 100
+        )
     }
 
     stopifnot(length(table(collated$Units)) == 1)
@@ -228,7 +232,7 @@ grapher <- collated[, .(
 # For each country-date it subtracts the date of the observation
 # from the date of the most recent observation in the dataset.
 most_recent_obs_date <- grapher[, max(date)]
-grapher[!is.na(total_tests), days_since_observation := as.integer(most_recent_obs_date - date)]
+grapher[!is.na(total_tests) | !is.na(new_tests), days_since_observation := as.integer(most_recent_obs_date - date)]
 
 # Add attempted countries
 source("attempts.R")
@@ -305,37 +309,23 @@ clean_folder <- function(path) {
 }
 clean_folder(sprintf("%s/grapher-history/", CONFIG$internal_shared_folder))
 
-# Log to txt file
-log <- sprintf("%s\n\n%s series from %s countries were included in the output\nUpdate time: %s (British time)",
-               paste0(public_latest$Entity, collapse = "\n"),
-               nrow(public_latest),
-               length(countries),
-               now_uk)
-writeLines(log, sprintf("%s/LOGFILE.txt", CONFIG$internal_shared_folder))
-
 # Make sanity check graph
-ggplot(data = public[!is.na(`Cumulative total`)],
+sanity_plot <- ggplot(data = public[!is.na(`Cumulative total`)],
        aes(x = Date, y = `Cumulative total`, group = Entity)) +
     geom_line(alpha = 0.5, color="black") +
-    geom_point(alpha = 0.5, color="black") +
-    scale_y_log10() +
-    ggsave(sprintf("%s/sanitycheck_total.png", CONFIG$internal_shared_folder), width = 10, height = 6)
+    scale_y_log10()
+print(sanity_plot)
 
 old_updates <- head(setorder(public[, .(LastUpdate = max(Date)), Entity], LastUpdate), 10)
 old_updates <- paste0(old_updates$Entity, ": ", old_updates$LastUpdate, collapse = "\n")
 
-# Send Slack message
-if (NOTIFY == TRUE) {
-    slack_log <- sprintf(
-        "```%s series from %s countries were included in the output\nUpdate time: %s (British time)\n\nLeast up-to-date time series:\n%s```",
-        nrow(public_latest),
-        length(countries),
-        now_uk,
-        old_updates
-    )
-    slackr_setup(config_file = CONFIG$slack_credentials)
-    slackr_upload(sprintf("%s/sanitycheck_total.png", CONFIG$internal_shared_folder),
-                  channel = CONFIG$slack_channel, title = "Sanity check", initial_comment = slack_log)
-}
-
+log <- sprintf(
+    "%s series from %s countries were included in the output\nLeast up-to-date time series:\n%s",
+    nrow(public_latest),
+    length(countries),
+    old_updates
+)
+message("-----")
+message(log)
+message("-----")
 message(update_time)
