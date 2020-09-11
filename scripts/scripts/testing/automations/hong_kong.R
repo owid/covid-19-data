@@ -1,5 +1,5 @@
 df <- fread("http://www.chp.gov.hk/files/misc/statistics_on_covid_19_testing_cumulative.csv",
-            showProgress = FALSE)
+            showProgress = FALSE, select = c("日期由 From Date", "日期至 To Date", "檢測數字 Number of tests"))
 
 setnames(df, c("from", "Date", "change"))
 

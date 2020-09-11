@@ -1,4 +1,6 @@
-date <- today() - 1
+Sys.setlocale("LC_TIME", "en_US")
+
+date <- today() - 2
 
 url <- sprintf(
     "https://malawipublichealth.org/index.php/resources/COVID-19 SitRep Updates/%s/%s_Malawi COVID-19 situation report.pdf/download",
