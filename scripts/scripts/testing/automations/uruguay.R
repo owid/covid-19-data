@@ -2,7 +2,7 @@ url <- read_html("https://www.gub.uy/ministerio-salud-publica/comunicacion/notic
     html_nodes(".List--media h3 a") %>%
     html_attr("href")
 
-url <- url[str_detect(url, "informe-situacion-sobre-coronavirus")] %>%
+url <- url[str_detect(url, "informacion-situacion-sobre-coronavirus")] %>%
     paste0("https://www.gub.uy", .) %>%
     head(1)
 

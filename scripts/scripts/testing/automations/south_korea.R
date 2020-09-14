@@ -11,9 +11,9 @@ page <- read_html(url)
 tables <- page %>%
     html_nodes("table")
 
-table <- tables[str_detect(tables %>% html_text(), "Testing in progress")][2] %>%
+table <- tables[str_detect(tables %>% html_text(), "Testing in progress")]
+table <- table[min(length(table), 2)] %>%
     html_table(fill = TRUE)
-
 table <- table[[1]] %>% data.table()
 table <- table[str_detect(X1, "As of ")] %>%
     tail(1)

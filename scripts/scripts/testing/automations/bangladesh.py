@@ -84,6 +84,7 @@ def get_data() -> pd.DataFrame:
         df = pd.DataFrame({'Date': dates, 'Cumulative total': ts_cumtests})
         df['Date'] = pd.to_datetime(df['Date'], format='%Y%m%d').dt.strftime('%Y-%m-%d')
         df['Cumulative total'] = df['Cumulative total'].astype(int)
+        df = df.sort_values("Date").groupby("Cumulative total", as_index=False).head(1)
     except Exception as e:
         df = None
         print(f'Error in retrieving testing data: {e}')
