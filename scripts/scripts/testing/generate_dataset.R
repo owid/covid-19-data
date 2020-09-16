@@ -188,9 +188,9 @@ add_case_ratios <- function(df) {
     confirmed_cases[, ra7d_new_cases := frollmean(cases - shift(cases, 1), n = 7, align = "right"), Country]
     confirmed_cases[ra7d_new_cases < 0, ra7d_new_cases := NA_real_]
 
-    # Drop observations of all tests per case and positivity variables for countries
+    # Drop observations of all positive rate variables for countries
     # that include positive antibody results in their confirmed cases
-    confirmed_cases <- confirmed_cases[!Country %in% c("Peru", "Ecuador", "Brazil", "Costa Rica")]
+    confirmed_cases <- confirmed_cases[!Country %in% c("Peru", "Ecuador", "Brazil", "Costa Rica", "Colombia")]
     df <- merge(df, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
 
     # Tests per cases
