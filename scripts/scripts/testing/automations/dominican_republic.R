@@ -17,13 +17,15 @@ count <- pdf_text("tmp/tmp.pdf") %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
 
-add_snapshot(
-    count = count,
-    date = date,
-    sheet_name = "Dominican Republic",
-    country = "Dominican Republic",
-    units = "samples tested",
-    testing_type = "PCR only",
-    source_url = url,
-    source_label = "Ministry of Public Health and Social Assistance"
-)
+if (!is.na(date)) {
+    add_snapshot(
+        count = count,
+        date = date,
+        sheet_name = "Dominican Republic",
+        country = "Dominican Republic",
+        units = "samples tested",
+        testing_type = "PCR only",
+        source_url = url,
+        source_label = "Ministry of Public Health and Social Assistance"
+    )
+}
