@@ -6,7 +6,7 @@ script <- page %>%
     html_text()
 script <- script[which(str_detect(script, "window\\.infographicData"))]
 
-header_string <- '"NUHI\\*","Border screening","deCODE Genetics"'
+header_string <- '"NUHI\\*","Border screening","Quarantine and random","deCODE Genetics"'
 
 graph <- script %>%
     str_replace_all("null", "0") %>%
@@ -35,7 +35,7 @@ for (i in seq_along(categories)) {
 }
 
 setDT(df)
-df[, `Daily change in cumulative total` := NUHI + `deCODE Genetics`]
+df[, `Daily change in cumulative total` := NUHI + `deCODE Genetics` + `Quarantine and random`]
 
 df[, Country := "Iceland"]
 df[, Units := "tests performed"]
@@ -43,7 +43,7 @@ df[, `Source URL` := "https://www.covid.is/data"]
 df[, `Source label` := "Government of Iceland"]
 df[, Notes := NA_character_]
 df[, `Testing type` := "PCR only"]
-df[, c("NUHI", "deCODE Genetics", "Border screening") := NULL]
+df[, c("NUHI", "deCODE Genetics", "Border screening", "Quarantine and random") := NULL]
 
 old <- fread("automated_sheets/Iceland.csv")
 old[, Date := ymd(Date)]

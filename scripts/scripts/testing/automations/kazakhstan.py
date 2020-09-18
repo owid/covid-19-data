@@ -80,11 +80,8 @@ def get_data() -> pd.DataFrame:
     caps['goog:loggingPrefs'] = {'performance': 'ALL'}
     try:
         driver = webdriver.Chrome(desired_capabilities=caps, options=options)
-        print("1")
         driver.implicitly_wait(IMPLICIT_WAIT)
-        print("2")
         driver.get(URL)
-        print("3")
         # retrieves browser logs.
         wait = 5
         time.sleep(wait*3)  # the dashboard tends to be slow to load.

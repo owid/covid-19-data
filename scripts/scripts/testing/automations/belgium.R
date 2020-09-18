@@ -1,6 +1,8 @@
 df <- fread("https://epistat.sciensano.be/Data/COVID19BE_tests.csv", showProgress = FALSE)
 setnames(df, c("DATE", "TESTS_ALL"), c("Date", "Daily change in cumulative total"))
 
+df <- df[, .(`Daily change in cumulative total` = sum(`Daily change in cumulative total`)), Date]
+
 df[, Country := "Belgium"]
 df[, Units := "tests performed"]
 df[, `Source URL` := "https://epistat.sciensano.be/Data/COVID19BE_tests.csv"]
