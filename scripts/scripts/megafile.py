@@ -315,6 +315,9 @@ def generate_megafile():
     }
     all_covid = add_macro_variables(all_covid, macro_variables)
 
+    # Check that we only have 1 unique row for each location/date pair
+    assert df.drop_duplicates(subset=["location", "date"]).shape == df.shape
+
     print("Writing to CSV…")
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
 
