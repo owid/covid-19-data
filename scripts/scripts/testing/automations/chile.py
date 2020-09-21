@@ -23,10 +23,14 @@ def main():
 
         driver.get("https://e.infogram.com/79acdebc-18ad-4399-8936-bce3b3a49068")
         time.sleep(2)
-        driver.execute_script("window.scrollTo(0, 1000)")
-        time.sleep(2)
-        driver.execute_script("window.scrollTo(0, 2000)")
-        time.sleep(2)
+        driver.execute_script("window.scrollTo(0, 750)")
+        time.sleep(1)
+        driver.execute_script("window.scrollTo(0, 1500)")
+        time.sleep(1)
+        driver.execute_script("window.scrollTo(0, 2250)")
+        time.sleep(1)
+        driver.execute_script("window.scrollTo(0, 3000)")
+        time.sleep(1)
         driver.find_elements_by_class_name("igc-data-download")[3].click()
         time.sleep(2)
 

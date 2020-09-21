@@ -11,7 +11,10 @@ if (is.na(url)) {
         html_attr("href")
 }
 
-date <- str_extract(url, "2020\\d{4}") %>% ymd()
+date <- str_extract(url, "202\\d{5}") %>% ymd()
+if (is.na(date)) {
+    date <- str_extract(url, "\\d\\d-\\d\\d-202\\d") %>% dmy()
+}
 if (is.na(date)) date <- today()
 
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)

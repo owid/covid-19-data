@@ -2,7 +2,7 @@ url <- "https://www.sozialministerium.at/Informationen-zum-Coronavirus/Neuartige
 
 count <- read_html(url) %>%
     html_node(".table-responsive table") %>%
-    html_table(dec = ",")
+    html_table(dec = ",", fill = TRUE)
 
 row_n <- which(str_detect(count$Bundesland, "Testungen"))
 col_n <- which(str_detect(names(count), "Österreich"))
