@@ -81,6 +81,11 @@ def load_data(filename):
         .drop(columns=['countriesAndTerritories']) \
         .reset_index()
     df['dateRep'] = df['dateRep'].dt.date
+
+    # Fix for Sweden: set recent days to np.nan when equal to 0
+    last_filled_sweden = df[(df.countriesAndTerritories == "Sweden") & (df.cases > 0)].index.max()
+    false_rows_sweden = (df.index > last_filled_sweden) & (df.countriesAndTerritories == "Sweden")
+    df = df[-false_rows_sweden]
     return df
 
 def load_locations():
