@@ -5,15 +5,13 @@ url <- read_html("https://www.health.gov.au/resources/collections/coronavirus-co
 
 page <- read_html(url)
 
-date <- page %>%
-    html_node("main .health-field .date-display-single") %>%
-    html_text() %>%
-    dmy() %>%
-    date()
-
 url <- page %>%
     html_node("main .health-file a") %>%
     html_attr("href")
+
+date <- url %>%
+    str_extract("\\d+-[^\\d]+-202\\d") %>%
+    dmy()
 
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
 

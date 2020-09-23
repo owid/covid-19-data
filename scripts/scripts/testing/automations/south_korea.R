@@ -1,40 +1,20 @@
-url <- "https://www.cdc.go.kr/board/board.es?mid=&bid=0030"
-
-url <- read_html("https://www.cdc.go.kr/board/board.es?mid=&bid=0030") %>%
-    html_nodes(".dbody .title a")
-
-url <- (url %>% html_attr("href"))[str_detect(url %>% html_text, "The updates on COVID-19 in Korea")][1] %>%
-    paste0("https://www.cdc.go.kr", .)
+url <- "http://ncov.mohw.go.kr/en/"
 
 page <- read_html(url)
 
-tables <- page %>%
-    html_nodes("table")
-
-table <- tables[str_detect(tables %>% html_text(), "Testing in progress")]
-table <- table[min(length(table), 2)] %>%
-    html_table(fill = TRUE)
-table <- table[[1]] %>% data.table()
-table <- table[str_detect(X1, "As of ")] %>%
-    tail(1)
-
-done <- table$X2 %>%
-    str_extract("[\\d,]+") %>%
+count <- page %>%
+    html_nodes(".misil_r span") %>%
+    html_text() %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
-
-pending <- table$X7 %>%
-    str_extract("[\\d,]+") %>%
-    str_replace_all("[^\\d]", "") %>%
-    as.integer()
-
-count <- done - pending
+count <- count[2]
 
 date <- page %>%
-    html_node(".head li b") %>%
+    html_node(".m_inspect_status h3 em") %>%
     html_text() %>%
-    ymd_hm() %>%
-    date()
+    str_extract(" on [A-Za-z]+ \\d+, 202\\d") %>%
+    str_replace(" on ", "") %>%
+    mdy()
 
 add_snapshot(
     count = count,
@@ -44,5 +24,5 @@ add_snapshot(
     testing_type = "PCR only",
     units = "people tested",
     source_url = url,
-    source_label = "South Korea CDC"
+    source_label = "Ministry of Health and Welfare"
 )
