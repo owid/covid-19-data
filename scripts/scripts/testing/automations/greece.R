@@ -20,7 +20,7 @@ if (is.na(date)) date <- today()
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
 
 count <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract("έχουν συνολικά ελεγχθεί \\d+") %>%
+    str_extract("ελεγχθεί \\d+ κλινικά") %>%
     str_replace_all("[^\\d]", "") %>%
     na.omit() %>%
     as.integer()

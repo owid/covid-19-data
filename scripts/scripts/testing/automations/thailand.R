@@ -5,7 +5,7 @@ url <- read_html("https://ddc.moph.go.th/viralpneumonia/situation.php") %>%
 
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
 
-string <- "ยสะสม\n.*[\\d,]{6,}.*\n.*[\\d,]{6,}.*"
+string <- "ยสะสม\n.*[\\d,]{6,}.*(\n.*){1,2}[\\d,]{6,}.*"
 
 counts <- pdf_text("tmp/tmp.pdf") %>%
     str_extract(string) %>%
