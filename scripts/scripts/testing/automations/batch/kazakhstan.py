@@ -57,7 +57,7 @@ def main() -> None:
     i = 0
     df = None
     while df is None and i < MAX_TRIES:
-        print(f'retrieving COVID-19 testing data (attempt {1+i} of {MAX_TRIES})...')
+        #print(f'retrieving COVID-19 testing data (attempt {1+i} of {MAX_TRIES})...')
         df = get_data()
         i += 1
     assert df is not None, f'Failed to retrieve testing data after {i} tries.'

@@ -1,6 +1,6 @@
 # Link to data drop: https://drive.google.com/drive/folders/1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o
 
-drive_auth(email = CONFIG$google_credentials_email)
+suppressMessages(drive_auth(email = CONFIG$google_credentials_email))
 
 master_folder <- "https://drive.google.com/drive/folders/1ZPPcVU4M7T-dtRyUceb0pMAd8ickYf8o"
 files <- drive_ls(master_folder)
