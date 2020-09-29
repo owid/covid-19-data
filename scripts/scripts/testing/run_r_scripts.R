@@ -1,23 +1,28 @@
-library(data.table)
-library(googledrive)
-library(googlesheets4)
-library(imputeTS)
-library(lubridate)
-library(pdftools)
-library(reticulate)
-library(rio)
-library(rjson)
-library(rvest)
-library(stringr)
-library(tidyr)
-rm(list = ls())
+suppressPackageStartupMessages({
+    library(data.table)
+    library(googledrive)
+    library(googlesheets4)
+    library(httr)
+    library(imputeTS)
+    library(lubridate)
+    library(pdftools)
+    library(rio)
+    library(rjson)
+    library(rvest)
+    library(stringr)
+    library(tidyr)
+})
+
+args <- commandArgs(trailingOnly=TRUE)
+execution_mode <- args[1]
 
 SKIP <- c()
-start_after <- "arh"
+if (length(SKIP) > 0) warning("Skipping the following countries: ", paste0(SKIP, collapse = ", "))
+start_after <- NULL
 
-TESTING_FOLDER <- dirname(rstudioapi::getSourceEditorContext()$path)
-setwd(TESTING_FOLDER)
+setwd("~/Git/covid-19-data/scripts/scripts/testing")
 CONFIG <- fromJSON(file = "testing_dataset_config.json")
+`_` <- Sys.setlocale("LC_TIME", "en_US")
 
 add_snapshot <- function(count, sheet_name, country, units, date = today(),
                          source_url, source_label, testing_type,
@@ -60,16 +65,13 @@ add_snapshot <- function(count, sheet_name, country, units, date = today(),
     fwrite(df, sprintf("automated_sheets/%s.csv", sheet_name))
 }
 
-scripts <- list.files("automations", pattern = "\\.(R|py)$", full.names = TRUE, include.dirs = FALSE)
+scripts_path <- ifelse(execution_mode == "quick", "automations/incremental", "automations")
+scripts <- list.files(scripts_path, pattern = "\\.R$", full.names = TRUE, include.dirs = FALSE, recursive = TRUE)
 if (length(SKIP) > 0) scripts <- scripts[!str_detect(scripts, paste(SKIP, collapse = "|"))]
 if (!is.null(start_after)) scripts <- scripts[str_extract(scripts, "[a-z_.]+(R|py)$") > start_after]
 
 for (s in scripts) {
     rm(list = setdiff(ls(), c("scripts", "add_snapshot", "s", "CONFIG")))
     message(sprintf("%s - %s", Sys.time(), s))
-    if (str_detect(s, "py$")) {
-        source_python(s)
-    } else {
-        source(s)
-    }
+    source(s)
 }
