@@ -3,7 +3,7 @@ df <- fread("https://raw.githubusercontent.com/COVID19-Malta/COVID19-Cases/maste
 
 df[, Units := str_replace(Entity, "Malta - ", "")]
 df[, Country := "Malta"]
-df[, Date := str_sub(Date, 1, 10)]
+df[, Date := dmy(str_sub(Date, 1, 10))]
 df[, `Source URL` := "https://github.com/COVID19-Malta/COVID19-Cases/blob/master/COVID-19%20Malta%20-%20Number%20of%20PCR%20Tests%20by%20Date.csv"]
 df[, `Testing type` := "PCR only"]
 df[, `Source label` := "COVID-19 Malta Public Health Response Team"]

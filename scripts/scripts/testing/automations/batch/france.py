@@ -1,18 +1,11 @@
-import requests
 import json
 import pandas as pd
 import numpy as np
 
 
 def main():
-    r = requests.get("https://www.data.gouv.fr/api/1/datasets/donnees-relatives-aux-resultats-des-tests-virologiques-covid-19/")
-    r = json.loads(r.content)
-    for resource in r["resources"]:
-        desc = resource["description"].lower()
-        if "quotidien" in desc and "france" in desc:
-            url = resource["url"]
-            break
 
+    url = "https://www.data.gouv.fr/fr/datasets/r/dd0de5d9-b5a5-4503-930a-7b08dc0adc7c"
     df = pd.read_csv(url, sep=";", usecols=["jour", "cl_age90", "T"])
 
     df = (
