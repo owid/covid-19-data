@@ -9,7 +9,7 @@ df <- tables[tbl_idx] %>%
     html_table(fill = TRUE)
 df <- df[[1]]
 setDT(df)
-df <- df[, .(Date, `Nombre de personnes testées`)]
+df <- df[, .(Date, `Nombre de tests PCR effectués`)]
 
 df[, Date := dmy(Date)]
 df <- df[!is.na(Date)]
@@ -19,9 +19,9 @@ setorder(df, Date)
 df <- df[, .SD[1], `Cumulative total`]
 
 df[, Country := "Luxembourg"]
-df[, Units := "people tested"]
+df[, Units := "tests performed"]
 df[, `Testing type` := "PCR only"]
-df[, `Source label` := "Luxembourg Government situation update"]
+df[, `Source label` := "Luxembourg Ministry of Health"]
 df[, `Source URL` := url]
 df[, Notes := NA_character_]
 
