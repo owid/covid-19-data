@@ -13,6 +13,9 @@ def main():
 
     date = soup.find("header", class_="border-title").find("span").text
     date = re.search(r"Update hingga (\d+[^\d]+202\d)", date).group(1)
+    date = (
+        date.replace("Oktober", "October")
+    )
     date = pd.Series(pd.to_datetime(date)).dt.date.astype(str)
     
     if data.Date.max() < date[0]:
