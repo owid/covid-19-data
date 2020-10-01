@@ -12,11 +12,13 @@ suppressPackageStartupMessages({
     library(stringr)
     library(tidyr)
 })
+rm(list = ls())
+
+SKIP <- c()
 
 args <- commandArgs(trailingOnly=TRUE)
 execution_mode <- args[1]
 
-SKIP <- c()
 if (length(SKIP) > 0) warning("Skipping the following countries: ", paste0(SKIP, collapse = ", "))
 start_after <- NULL
 
