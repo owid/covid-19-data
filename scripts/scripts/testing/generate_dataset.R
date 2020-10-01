@@ -142,6 +142,7 @@ parse_country <- function(sheet_name) {
         View(repeated)
         stop("Duplicate date")
     }
+    stopifnot(year(min(collated$Date)) >= 2020)
 
     return(collated)
 }
