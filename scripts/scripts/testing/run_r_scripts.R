@@ -20,7 +20,6 @@ args <- commandArgs(trailingOnly=TRUE)
 execution_mode <- args[1]
 
 if (length(SKIP) > 0) warning("Skipping the following countries: ", paste0(SKIP, collapse = ", "))
-start_after <- NULL
 
 setwd("~/Git/covid-19-data/scripts/scripts/testing")
 CONFIG <- fromJSON(file = "testing_dataset_config.json")
@@ -70,7 +69,6 @@ add_snapshot <- function(count, sheet_name, country, units, date = today(),
 scripts_path <- ifelse(execution_mode == "quick", "automations/incremental", "automations")
 scripts <- list.files(scripts_path, pattern = "\\.R$", full.names = TRUE, include.dirs = FALSE, recursive = TRUE)
 if (length(SKIP) > 0) scripts <- scripts[!str_detect(scripts, paste(SKIP, collapse = "|"))]
-if (!is.null(start_after)) scripts <- scripts[str_extract(scripts, "[a-z_.]+(R|py)$") > start_after]
 
 for (s in scripts) {
     rm(list = setdiff(ls(), c("scripts", "add_snapshot", "s", "CONFIG")))
