@@ -9,12 +9,12 @@ SKIP = []
 execution_mode = sys.argv[1]
 scripts_path = "automations/incremental/*.py" if execution_mode == "quick" else "automations/*/*.py"
 
+scripts = glob(scripts_path)
+
 if len(SKIP) > 0:
     print(f"Warning message:\nSkipping the following countries: {', '.join(SKIP)}")
     SKIP = "|".join(SKIP)
-
-scripts = glob(scripts_path)
-scripts = [s for s in scripts if not bool(re.search(pattern=SKIP, string=s))]
+    scripts = [s for s in scripts if not bool(re.search(pattern=SKIP, string=s))]
 
 for script_name in scripts:
     print(f"{datetime.datetime.now().replace(microsecond=0)} - {script_name}")
