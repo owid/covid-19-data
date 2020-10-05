@@ -194,7 +194,11 @@ def check_data_correctness(filename):
     return True if errors == 0 else False
 
 def discard_rows(df):
-    # df.loc[(df['location'] == 'Spain') & (df['new_cases'] < 0), 'new_cases'] = pd.NA
+    # Drop last day for regional aggregates that include Spain and Sweden, due to reporting lag
+    df = df[-(
+        (df["date"] == df["date"].max()) &
+        (df["location"].isin(["Europe", "European Union"]))
+    )]
     return df
 
 # Must output columns:
