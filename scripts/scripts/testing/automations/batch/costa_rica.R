@@ -49,6 +49,8 @@ df <- data.table(
 # See https://owid.slack.com/archives/C011DSUBY6A/p1596231838050800
 df[Date == "2020-03-25" & Discarded == 5, Discarded := 65]
 df[Date == "2020-03-25" & Discarded == 5, `Source URL` := "https://www.ministeriodesalud.go.cr/sobre_ministerio/prensa/img_cvd/img_datos_marzo_2020_15.jpeg"]
+# https://owid.slack.com/archives/C011DSUBY6A/p1601911640008800
+df[Date == "2020-03-15", Discarded := Discarded + 72]
 
 df[, `Daily change in cumulative total` := Confirmed + Discarded]
 df[, c("Confirmed", "Discarded") := NULL]

@@ -24,6 +24,13 @@ def main():
     df.loc[:, "Source URL"] = "https://covid19bd.idare.io/"
     df.loc[:, "Notes"] = pd.NA
 
+    # Manual fix for error in data
+    df.loc[
+        (df["Date"] == pd.to_datetime("2020-03-16")) &
+        (df["Daily change in cumulative total"] == 39),
+        "Date"
+    ] = "2020-03-17"
+
     df.to_csv("automated_sheets/Bangladesh.csv", index=False)
 
 if __name__ == "__main__":
