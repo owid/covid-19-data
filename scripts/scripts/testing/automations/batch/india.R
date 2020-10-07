@@ -10,7 +10,6 @@ process_entry <- function(entry) {
 }
 
 df <- rbindlist(lapply(df$rows, FUN = process_entry), fill = TRUE)
-df[, Date := ymd(Date) - 1]
 setorder(df, Date)
 df <- df[, .SD[1], Date]
 
