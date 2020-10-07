@@ -73,5 +73,5 @@ if (length(SKIP) > 0) scripts <- scripts[!str_detect(scripts, paste(SKIP, collap
 for (s in scripts) {
     rm(list = setdiff(ls(), c("scripts", "add_snapshot", "s", "CONFIG")))
     message(sprintf("%s - %s", Sys.time(), s))
-    source(s)
+    try(source(s))
 }
