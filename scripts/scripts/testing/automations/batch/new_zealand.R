@@ -7,6 +7,7 @@ df <- df[2:nrow(df)]
 
 df[, `Tests per day` := NULL]
 setnames(df, c("Total tests (cumulative)"), c("Cumulative total"))
+df[, `Cumulative total` := as.integer(str_replace_all(`Cumulative total`, "[^\\d]", ""))]
 
 df[, Date := dmy(paste0(Date, "-2020"))]
 df[, Country := "New Zealand"]

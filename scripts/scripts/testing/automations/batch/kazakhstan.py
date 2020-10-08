@@ -1,4 +1,4 @@
-"""Constructs daily time series of COVID-19 testing data for Libya.
+"""Constructs daily time series of COVID-19 testing data for Kazakhstan.
 
 Dashboard: https://hls.kz/
 
