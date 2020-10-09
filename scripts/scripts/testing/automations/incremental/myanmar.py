@@ -9,7 +9,6 @@ import datetime
 import calendar
 from typing import List, Tuple
 from io import BytesIO
-from tqdm import tqdm
 from bs4 import BeautifulSoup
 import pandas as pd
 import pdfplumber
