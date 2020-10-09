@@ -102,7 +102,7 @@ def _extract_samples_tested(url: str, date: datetime.date) -> int:
     return samples_cumul
 
 
-def _get_bounding_box_and_regex(date: datetime.date) -> Tuple[Tuple[float, float, float, float], re.Pattern]:
+def _get_bounding_box_and_regex(date):
     """retrieves the bounding box that contains the samples tested figure
     in a situation report, along with the appropriate regular expression
     for extracting the samples tested figure from the text.
