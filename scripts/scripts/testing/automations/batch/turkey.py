@@ -28,6 +28,7 @@ def main():
         df.loc[:, "Source URL"] = SOURCE_URL
         df.loc[:, "Source label"] = "Turkish Ministry of Health"
         df.loc[:, "Notes"] = pd.NA
+        df.loc[:, "Testing type"] = "PCR only"
 
         df.to_csv("automated_sheets/Turkey.csv", index=False)
 
