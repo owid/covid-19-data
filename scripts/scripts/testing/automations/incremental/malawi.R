@@ -1,5 +1,3 @@
-Sys.setlocale("LC_TIME", "en_US")
-
 date <- today() - 2
 
 url <- sprintf(
