@@ -22,7 +22,12 @@ def main():
             "Bugünkü Test Sayısı": "Daily change in cumulative total"
         })
 
-        df["Date"] = df["Date"].apply(dateparser.parse)
+        # Set negative total changes to NA
+        df["total_diff"] = df["Cumulative total"] - df["Cumulative total"].shift(-1)
+        df.loc[df["total_diff"] < 0, "Cumulative total"] = pd.NA
+        df = df.drop(columns=["total_diff"])
+
+        df["Date"] = df["Date"].str.replace("MAYIS", "mayıs").apply(dateparser.parse, languages=["tr"])
         df.loc[:, "Country"] = "Turkey"
         df.loc[:, "Units"] = "tests performed"
         df.loc[:, "Source URL"] = SOURCE_URL
