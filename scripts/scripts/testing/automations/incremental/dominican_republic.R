@@ -1,4 +1,7 @@
-url <- read_html("https://www.msp.gob.do/web/?page_id=6948#1586785071804-577a2da4-6f72") %>%
+url <- read_html(GET(
+        "https://www.msp.gob.do/web/?page_id=6948#1586785071804-577a2da4-6f72",
+        config(ssl_verifypeer=0)
+    )) %>%
     html_node(".infobox a") %>%
     html_attr("href") %>%
     paste0("https://www.msp.gob.do", .)
