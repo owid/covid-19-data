@@ -1,9 +1,9 @@
-url <- read_html("https://www.health.gov.au/resources/collections/coronavirus-covid-19-at-a-glance-infographic-collection") %>%
+url <- read_html(GET("https://www.health.gov.au/resources/collections/coronavirus-covid-19-at-a-glance-infographic-collection")) %>%
     html_node("main .container .row .paragraphs-items a") %>%
     html_attr("href") %>%
     paste0("https://www.health.gov.au", .)
 
-page <- read_html(url)
+page <- read_html(GET(url))
 
 url <- page %>%
     html_node("main .health-file a") %>%
@@ -13,7 +13,7 @@ date <- url %>%
     str_extract("\\d+-[^\\d]+-202\\d") %>%
     dmy()
 
-download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
+download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE, method = "curl")
 
 regex <- "([\\d,]+\\s+)+Overseas acquired"
 
