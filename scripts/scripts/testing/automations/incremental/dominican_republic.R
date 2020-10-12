@@ -6,7 +6,7 @@ url <- read_html(GET(
     html_attr("href") %>%
     paste0("https://www.msp.gob.do", .)
 
-download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
+download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE, method = "curl", extra = "-k")
 
 date <- pdf_text("tmp/tmp.pdf") %>%
     str_extract("Boletín.*\n +[\\d/]{10}") %>%
