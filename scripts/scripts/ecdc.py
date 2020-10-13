@@ -199,6 +199,11 @@ def discard_rows(df):
         (df["date"] == df["date"].max()) &
         (df["location"].isin(["Europe", "European Union"]))
     )]
+    # Drop last two days for Belgium, to avoid artificially declining series due to reporting lags
+    df = df[-(
+        (df["date"] > df["date"].max() - timedelta(days=2)) &
+        (df["location"] == "Belgium")
+    )]
     return df
 
 # Must output columns:
