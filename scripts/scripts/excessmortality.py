@@ -1,11 +1,14 @@
+import requests
 import os
 import datetime
 import pandas as pd
 
+
 CURRENT_DIR = os.path.dirname(__file__)
 OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/excess_mortality/')
 
-def main():
+
+def update_dataset():
 
     df = pd.read_csv("https://raw.githubusercontent.com/owid/owid-datasets/master/datasets/Excess%20Mortality%20Data%20%E2%80%93%20HMD%20(2020)/Excess%20Mortality%20Data%20%E2%80%93%20HMD%20(2020).csv")
     
@@ -27,5 +30,14 @@ def main():
 
     df.to_csv(os.path.join(OUTPUT_PATH, "excess_mortality.csv"), index=False)
 
+
+def update_readme():
+    
+    response = requests.get("https://raw.githubusercontent.com/owid/owid-datasets/master/datasets/Excess%20Mortality%20Data%20%E2%80%93%20HMD%20(2020)/README.md")
+    with open(os.path.join(OUTPUT_PATH, "README.md"), "wb") as file:
+        file.write(response.content)
+
+
 if __name__ == "__main__":
-    main()
+    update_dataset()
+    update_readme()
