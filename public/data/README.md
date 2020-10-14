@@ -34,7 +34,8 @@ If you are interested in the individual files that make up the complete dataset,
 - [`ecdc`](https://github.com/owid/covid-19-data/tree/master/public/data/ecdc): data from the European Centre for Disease Prevention and Control, related to confirmed cases and deaths;
 - [`testing`](https://github.com/owid/covid-19-data/tree/master/public/data/testing): data from various official sources, related to COVID-19 tests performed in each country. This folder contains two files with more detailed information:
   - [`covid-testing-all-observations.csv`](https://github.com/owid/covid-19-data/blob/master/public/data/testing/covid-testing-all-observations.csv) includes, for each historical observation, the source of the individual data point, and sometimes notes on data collection;
-  - [`covid-testing-latest-data-source-details.csv`](https://github.com/owid/covid-19-data/blob/master/public/data/testing/covid-testing-latest-data-source-details.csv) includes, for each country in our testing dataset, the latest figures and a detailed description of how the country’s data is collected.
+  - [`covid-testing-latest-data-source-details.csv`](https://github.com/owid/covid-19-data/blob/master/public/data/testing/covid-testing-latest-data-source-details.csv) includes, for each country in our testing dataset, the latest figures and a detailed description of how the country’s data is collected;
+- [`excess_mortality`](https://github.com/owid/covid-19-data/tree/master/public/data/excess_mortality): data on excess mortality during the pandemic;
 - [`who`](https://github.com/owid/covid-19-data/tree/master/public/data/who): data from the World Health Organization, related to confirmed cases and deaths—_we have stopped using and updating this data since 18 March 2020_.
 
 
@@ -54,6 +55,7 @@ If you are interested in the individual files that make up the complete dataset,
 - On 7 August 2020, we transformed our markdown codebook to a CSV file to allow easier merging with the complete dataset.
 - On 17 August 2020, we added 4 variables related to cases and deaths: `new_cases_smoothed`, `new_deaths_smoothed`, `new_cases_smoothed_per_million`, and `new_deaths_smoothed_per_million`. These metrics are averaged versions (over a rolling 7-day window) of the daily variables.
 - On 10 September 2020, we added the `human_development_index` column to our complete dataset.
+- On 14 October 2020, we added data on excess mortality during the pandemic in the `excess_mortality` folder.
 
 
 ## Data alterations
