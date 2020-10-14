@@ -1,3 +1,4 @@
+import datetime
 import json
 import pandas as pd
 import numpy as np
@@ -11,6 +12,9 @@ def tests_performed():
     df["Valeur"] = df["Valeur"].str.replace(r"\s", "").astype(int)
 
     df = df.rename(columns={"Valeur": "Daily change in cumulative total", "Indicateurs": "Date"})
+
+    assert pd.to_datetime(df.Date.max()) >= datetime.date.today() - datetime.timedelta(days=7), \
+        "File is older than 7 days. Import new data from Geodes."
 
     df.loc[:, "Country"] = "France"
     df.loc[:, "Units"] = "tests performed"

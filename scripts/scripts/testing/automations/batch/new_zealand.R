@@ -1,18 +1,20 @@
-df <- read_html("https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-current-situation/covid-19-current-cases") %>%
-    html_nodes(".table-style-two")
+url <- "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-testing-data"
 
-df <- df[df %>% html_node("caption") %>% html_text %>% str_detect("tests") %>% replace_na(FALSE)][[1]] %>% html_table
-setDT(df)
-df <- df[2:nrow(df)]
+df <- read_html(url) %>%
+    html_node("#tests-cumulative table") %>%
+    html_table() %>%
+    data.table() %>%
+    tail(-1)
 
-df[, `Tests per day` := NULL]
-setnames(df, c("Total tests (cumulative)"), c("Cumulative total"))
+setnames(df, c("Total tests (cumulative)", "Tests per day"), c("Cumulative total", "Daily change in cumulative total"))
+
 df[, `Cumulative total` := as.integer(str_replace_all(`Cumulative total`, "[^\\d]", ""))]
+df[, `Daily change in cumulative total` := as.integer(str_replace_all(`Daily change in cumulative total`, "[^\\d]", ""))]
 
 df[, Date := dmy(paste0(Date, "-2020"))]
 df[, Country := "New Zealand"]
 df[, Units := "tests performed"]
-df[, `Source URL` := "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-current-situation/covid-19-current-cases"]
+df[, `Source URL` := url]
 df[, `Source label` := "Ministry of Health"]
 df[, Notes := NA_character_]
 df[, `Testing type` := "PCR only"]

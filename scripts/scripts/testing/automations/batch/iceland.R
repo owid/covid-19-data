@@ -45,9 +45,8 @@ df[, Notes := NA_character_]
 df[, `Testing type` := "PCR only"]
 df[, c("Diagnostic test", "deCODE Genetics screening", "Border screening 1 and 2", "Quarantine and random screening") := NULL]
 
-old <- fread("automated_sheets/Iceland.csv")
+old <- fread("input/Iceland_old.csv")
 old[, Date := ymd(Date)]
-old <- old[Date < min(df$Date)]
 
 full <- rbindlist(list(old, df), use.names = TRUE, fill = FALSE)
 setorder(full, -Date)
