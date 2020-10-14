@@ -1,0 +1,31 @@
+import os
+import datetime
+import pandas as pd
+
+CURRENT_DIR = os.path.dirname(__file__)
+OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/excess_mortality/')
+
+def main():
+
+    df = pd.read_csv("https://raw.githubusercontent.com/owid/owid-datasets/master/datasets/Excess%20Mortality%20Data%20%E2%80%93%20HMD%20(2020)/Excess%20Mortality%20Data%20%E2%80%93%20HMD%20(2020).csv")
+    
+    df = df.rename(columns={
+        "Entity": "location",
+        "Year": "date",
+        "Excess mortality P-scores, all ages": "p_scores_all_ages",
+        "Excess mortality P-scores, ages 0–14": "p_scores_0_14",
+        "Excess mortality P-scores, ages 15–64": "p_scores_15_64",
+        "Excess mortality P-scores, ages 65–74": "p_scores_65_74",
+        "Excess mortality P-scores, ages 75–84": "p_scores_75_84",
+        "Excess mortality P-scores, ages 85+": "p_scores_85plus",
+        "Deaths, 2020, all ages": "deaths_2020_all_ages",
+        "Average deaths, 2015–2019, all ages": "avg_deaths_2015_2019"
+    })
+
+    df.loc[:, "date"] = [pd.to_datetime("2020-01-01") + datetime.timedelta(days=d) for d in df.date]
+    df = df.sort_values(["location", "date"])
+
+    df.to_csv(os.path.join(OUTPUT_PATH, "excess_mortality.csv"), index=False)
+
+if __name__ == "__main__":
+    main()
