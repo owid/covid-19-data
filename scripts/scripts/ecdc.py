@@ -157,8 +157,9 @@ def check_data_correctness(filename):
     # Check for sudden changes
     sudden_changes_msg = ''
     for location, df_location in df_merged.groupby('location'):
+
         # Skip checks for "International"
-        if location == 'International':
+        if location == 'International' or df_location.shape[0] < 8:
             continue
 
         for var_name in ['cases', 'deaths']:
