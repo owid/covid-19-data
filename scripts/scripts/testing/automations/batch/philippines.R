@@ -24,7 +24,7 @@ setnames(df, "report_date", "Date")
 df <- df[, .(`Cumulative total` = sum(cumulative_unique_individuals)), Date]
 setorder(df, Date)
 
-df[, Date := dmy(Date)]
+df[, Date := ymd(Date)]
 stopifnot(sum(is.na(df$Date)) == 0)
 df[, Country := "Philippines"]
 df[, Units := "people tested"]
