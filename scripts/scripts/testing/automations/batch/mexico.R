@@ -1,7 +1,7 @@
 formatted_date <- format.Date(today() - 1, "%Y%m%d")
 
-confirmados <- sprintf("https://coronavirus.gob.mx/datos/Downloads/Files/Casos_Diarios_Estado_Nacional_Confirmados_%s.csv", formatted_date)
-negativos <- sprintf("https://coronavirus.gob.mx/datos/Downloads/Files/Casos_Diarios_Estado_Nacional_Negativos_%s.csv", formatted_date)
+confirmados <- sprintf("https://datos.covid-19.conacyt.mx/Downloads/Files/Casos_Diarios_Estado_Nacional_Confirmados_%s.csv", formatted_date)
+negativos <- sprintf("https://datos.covid-19.conacyt.mx/Downloads/Files/Casos_Diarios_Estado_Nacional_Negativos_%s.csv", formatted_date)
 
 process_file <- function(url) {
     df <- fread(url, showProgress = FALSE)

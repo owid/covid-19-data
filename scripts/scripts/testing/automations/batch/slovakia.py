@@ -11,7 +11,7 @@ def main():
     
     df = pd.DataFrame(data, columns=["Date", "Daily change in cumulative total"])
 
-    df.loc[:, "Date"] = pd.to_datetime(df["Date"])
+    df.loc[:, "Date"] = pd.to_datetime(df["Date"], format="%d-%m-%Y")
     df.loc[:, "Source URL"] = "https://www.korona.gov.sk"
     df.loc[:, "Source label"] = "National Health Information Centre"
     df.loc[:, "Country"] = "Slovakia"
