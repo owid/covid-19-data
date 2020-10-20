@@ -6,16 +6,12 @@ import numpy as np
 def get_tests():
     df = pd.read_csv(
         "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Determinaciones.csv",
-        #encoding="utf-16",
-        usecols=["fecha", "total"],
-        decimal=",",
-        dtype={"fecha": object, "total": object}
+        usecols=["fecha", "total"]
     )
 
     # Occasional errors where some lab inserts data before 2020
     df["fecha"] = df.fecha.str.replace("^20[01][0-9]", "2020")
     
-    df.loc[:, "total"] = df.total.str.replace("\\.", "").astype(int)
     df = df.groupby("fecha", as_index=False).sum()
 
     df.columns = ["Date", "Daily change in cumulative total"]
@@ -36,7 +32,6 @@ def get_tests():
 def get_people():
     df = pd.read_csv(
         "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Casos.csv",
-        #encoding="utf-16",
         usecols=["fecha_diagnostico", "clasificacion_resumen"]
     )
     df = df[-df.fecha_diagnostico.isnull()]
