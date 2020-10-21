@@ -46,7 +46,7 @@ def download_xlsx(last_n=2):
             })
 
 def download_csv():
-    os.system('curl --silent -f -o %(DIR)s/latest.csv -L https://opendata.ecdc.europa.eu/covid19/casedistribution/csv' % {
+    os.system('curl --silent -f -o %(DIR)s/latest.csv -L https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/data.csv' % {
         'DIR': RELEASES_PATH
     })
 
