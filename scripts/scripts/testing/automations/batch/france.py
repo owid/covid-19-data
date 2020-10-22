@@ -1,3 +1,4 @@
+import os
 import datetime
 import json
 import pandas as pd
@@ -6,15 +7,15 @@ import numpy as np
 
 def tests_performed():
 
+    assert datetime.datetime.utcfromtimestamp(os.stat("input/data.xlsx").st_mtime).date() == datetime.date.today(), \
+        "File is too old. Import new data from Geodes."
+
     df = pd.read_excel("input/data.xlsx", sheet_name ="Graphiques", skiprows=3)
     df = df.iloc[0:df[df.Indicateurs.isna()].index.min(), :]
 
     df["Valeur"] = df["Valeur"].str.replace(r"\s", "").astype(int)
 
     df = df.rename(columns={"Valeur": "Daily change in cumulative total", "Indicateurs": "Date"})
-
-    assert pd.to_datetime(df.Date.max()) >= datetime.date.today() - datetime.timedelta(days=7), \
-        "File is older than 7 days. Import new data from Geodes."
 
     df.loc[:, "Country"] = "France"
     df.loc[:, "Units"] = "tests performed"
