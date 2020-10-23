@@ -38,9 +38,9 @@ df[, `Cumulative total` := NA_integer_]
 
 existing <- fread("automated_sheets/Sweden - tests performed.csv")
 existing[, Date := ymd(Date)]
+existing <- existing[Date < min(df$Date)]
 
 df <- rbindlist(list(existing, df), use.names = TRUE)
 setorder(df, -Date)
-df <- unique(df)
 
 fwrite(df, "automated_sheets/Sweden - tests performed.csv")
