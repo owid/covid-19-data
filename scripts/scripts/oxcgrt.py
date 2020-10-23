@@ -48,6 +48,7 @@ def export_grapher():
         "H3_Contact tracing",
         "H4_Emergency investment in healthcare",
         "H5_Investment in vaccines",
+        "H6_Facial Coverings",
         "StringencyIndex",
         "ContainmentHealthIndex"
     ]
@@ -88,6 +89,7 @@ def export_grapher():
         "H4_Emergency investment in healthcare": "Emergency investment in health care (OxBSG)",
         "H5_Investment in vaccines": "Investment in Vaccines (OxBSG)",
         "H3_Contact tracing": "Contact tracing (OxBSG)",
+        "H6_Facial Coverings": "Facial coverings (OxBSG)",
         "StringencyIndex": "Stringency Index (OxBSG)",
         "ContainmentHealthIndex": "Containment and Health Index (OxBSG)",
         "C4_Restrictions on gatherings": "Restrictions on gatherings (OxBSG)",
