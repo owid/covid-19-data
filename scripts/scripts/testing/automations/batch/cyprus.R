@@ -1,6 +1,7 @@
 url <- read_html("https://www.data.gov.cy/node/4617?language=en") %>%
-    html_node(".data-link") %>%
+    html_nodes(".data-link") %>%
     html_attr("href")
+url <- url[str_detect(url, "csv$")]
 
 df <- fread(url, showProgress = FALSE, select = c("date", "daily tests performed", "total tests"), na.strings = ":")
 setnames(df, c("Date", "Daily change in cumulative total", "Cumulative total"))
