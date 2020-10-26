@@ -86,6 +86,10 @@ parse_country <- function(sheet_name) {
 
     stopifnot(nrow(collated) > 0)
 
+    # Censor the last month of data for the Netherlands
+    # https://twitter.com/jacvre/status/1319939664321589249
+    if (sheet_name == "Netherlands") collated <- collated %>% filter(Date <= today() - 30)
+
     # Calculate daily change when absent
     if (!"Daily change in cumulative total" %in% names(collated)) {
         collated <- collated %>%

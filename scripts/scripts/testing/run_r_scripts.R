@@ -6,7 +6,6 @@ suppressPackageStartupMessages({
     library(imputeTS)
     library(lubridate)
     library(pdftools)
-    library(rio)
     library(rjson)
     library(rvest)
     library(stringr)
