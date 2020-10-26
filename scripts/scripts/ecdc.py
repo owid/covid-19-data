@@ -205,11 +205,6 @@ def discard_rows(df):
         (df["date"] > df["date"].max() - timedelta(days=2)) &
         (df["location"] == "Belgium")
     )]
-    # Drop last days for Russia until data from ECDC can be clarified
-    df = df[-(
-        (df["date"] > df["date"].max() - timedelta(days=1)) &
-        (df["location"] == "Russia")
-    )]
     return df
 
 # Must output columns:
