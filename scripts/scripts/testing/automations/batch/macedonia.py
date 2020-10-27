@@ -24,7 +24,7 @@ from selenium.webdriver.chrome.options import Options
 
 COUNTRY = 'Macedonia'
 UNITS = 'tests performed'
-TESTING_TYPE = ''  # TODO: update this once metadata is finalized.
+TESTING_TYPE = 'unclear'
 SOURCE_LABEL = 'Ministry of Health'
 SOURCE_URL = 'https://koronavirus.gov.mk/stat'
 DASHBOARD_URL = 'https://datastudio.google.com/embed/u/0/reporting/9f5104d0-12fd-4e16-9a11-993685cfd40f/page/1M'

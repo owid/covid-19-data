@@ -1,4 +1,4 @@
-df <- suppressMessages(import("input/DATA PORTUGAL.xlsx"))
+df <- suppressMessages(rio::import("input/DATA PORTUGAL.xlsx"))
 setDT(df)
 df <- df[, 1:3]
 
