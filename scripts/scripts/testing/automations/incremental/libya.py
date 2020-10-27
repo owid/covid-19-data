@@ -57,7 +57,7 @@ def main():
         })
 
         df = pd.concat([new, existing]).sort_values("Date", ascending=False)
-        df.loc["Cumulative total"] = pd.NA
+        df.loc[:, "Cumulative total"] = pd.NA
         df.to_csv("automated_sheets/Libya.csv", index=False)
 
 
