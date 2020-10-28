@@ -3,6 +3,7 @@ import requests
 import datetime
 from bs4 import BeautifulSoup
 import pandas as pd
+import dateparser
 
 
 SOURCE_URL = "https://ncdc.org.ly/Ar"
@@ -18,7 +19,7 @@ def libya_get_tests_snapshot():
     # retrieves the daily testing figure.
     s = 'عدد العينات'
     tests_today_str = None
-    td_to_search = soup.find('div', {'class': 'wptb-table-container-matrix'}).find_all('td')
+    td_to_search = soup.find_all('td')
     while tests_today_str is None and len(td_to_search):
         td = td_to_search.pop(0)
         if td and s in td.text:
@@ -28,13 +29,10 @@ def libya_get_tests_snapshot():
     assert tests_today_str is not None, 'Failed to find daily change testing figure.'
     tests_today = int(re.sub(r'[\s,]*', '', tests_today_str))
     # retrieves the date that the data was updated.
-    date = None
-    span = soup.find('span', {'style': 'color: #003366;'})
+    span = soup.find('div', {'class': 'wptb-table-container-matrix'}).find('td').find('strong')
     assert span is not None, "Failed to find span containing the date."
-    regex_res = re.search(r'[^0-9]{0,20}(?P<dd>\d{1,2})-(?P<mm>\d{1,2})-(?P<yyyy>\d{4})[^0-9]{0,20}', span.text)
-    if regex_res:
-        dd, mm, yyyy = regex_res.groups()
-        date = datetime.datetime(int(yyyy), int(mm), int(dd)).strftime('%Y-%m-%d')
+    regex_res = re.search(r'\d.*2020', span.text)
+    date = str(dateparser.parse(regex_res[0], languages=["ar"]).date())
     return date, tests_today
 
 

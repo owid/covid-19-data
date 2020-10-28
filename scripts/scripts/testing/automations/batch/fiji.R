@@ -9,6 +9,9 @@ df[, Date := dmy(paste(Date, "2020"))]
 df[, `Tests per day` := NULL]
 setnames(df, "Cumulative", "Cumulative total")
 
+setorder(df, "Cumulative total", "Date")
+df <- df[, .SD[1], `Cumulative total`]
+
 df[, Country := "Fiji"]
 df[, Units := "tests performed"]
 df[, `Testing type` := "PCR only"]

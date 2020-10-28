@@ -1,18 +1,20 @@
-df <- fread("http://www.chp.gov.hk/files/misc/statistics_on_covid_19_testing_cumulative.csv",
-            showProgress = FALSE, select = c("日期由 From Date", "日期至 To Date", "檢測數字 Number of tests"))
+url <- "http://www.chp.gov.hk/files/misc/statistics_on_covid_19_testing_cumulative.csv"
 
-setnames(df, c("from", "Date", "change"))
+df <- fread(url, showProgress = FALSE)
+
+setnames(df, c("from", "Date", "tests1", "tests2", "tests3"))
+df[, change := rowSums(df[, c("tests1", "tests2", "tests3")], na.rm = TRUE)]
 
 df[, from := NULL]
 df[, Date := dmy(Date)]
 
 setorder(df, Date)
 df[, `Cumulative total` := cumsum(change)]
-df[, change := NULL]
+df <- df[, c("Date", "Cumulative total")]
 
 df[, Country := "Hong Kong"]
 df[, Units := "tests performed"]
-df[, `Source URL` := "https://data.gov.hk/en-data/dataset/hk-dh-chpsebcddr-novel-infectious-agent/resource/64674927-bed8-4db9-9f1a-6999733ff221"]
+df[, `Source URL` := url]
 df[, `Source label` := "Department of Health"]
 df[, Notes := NA_character_]
 df[, `Testing type` := "PCR only"]

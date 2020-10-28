@@ -41,7 +41,6 @@ hardcoded_data = [
 
 # sample of official values for cross-checking against scraped data.
 sample_official_data = [
-    ("2020-09-28", {SERIES_TYPE: 185708, "source": "https://datastudio.google.com/embed/u/0/reporting/9f5104d0-12fd-4e16-9a11-993685cfd40f/page/1M"}),
     ("2020-08-25", {SERIES_TYPE: 140313, "source": "https://datastudio.google.com/embed/u/0/reporting/9f5104d0-12fd-4e16-9a11-993685cfd40f/page/1M"}),
     ("2020-08-23", {SERIES_TYPE: 136480, "source": "https://datastudio.google.com/embed/u/0/reporting/9f5104d0-12fd-4e16-9a11-993685cfd40f/page/1M"}),
     ("2020-07-20", {SERIES_TYPE: 86544, "source": "https://datastudio.google.com/embed/u/0/reporting/9f5104d0-12fd-4e16-9a11-993685cfd40f/page/1M"}),
@@ -155,6 +154,7 @@ def _clean_df(df: pd.DataFrame) -> pd.DataFrame:
     df.loc[:, 'Date'] = pd.to_datetime(df['Date'], format='%Y%m%d').dt.strftime('%Y-%m-%d')
     df.loc[:, 'Cumulative total'] = df['Cumulative total'].astype(int)
     df = df[df['Cumulative total'] > 0].copy()
+    df = df.groupby("Cumulative total", as_index=False).min()
     df.loc[:, 'Source URL'] = SOURCE_URL
     df = df[['Date', SERIES_TYPE, 'Source URL']]
     if len(hardcoded_data) > 0:

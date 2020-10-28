@@ -90,6 +90,9 @@ def get_data() -> pd.DataFrame:
     df[SERIES_TYPE] = df[SERIES_TYPE].astype(int)
     # with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None):
     #     print(df)
+
+    # Temporary fix for 2020-10-25 (typo in total number of tests)
+    df = df[-(df["Date"] == "2020-10-25")]
     return df
 
 

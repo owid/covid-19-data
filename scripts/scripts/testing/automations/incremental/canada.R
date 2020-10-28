@@ -8,9 +8,7 @@ date <- page %>%
     ymd()
 
 df <- page %>%
-    html_nodes("main .mwstransform table")
-
-df <- df[[1]] %>%
+    html_node("main .mwstransform table") %>%
     html_table()
 
 pos <- df$`Total positive` %>%
