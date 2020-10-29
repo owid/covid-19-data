@@ -57,7 +57,7 @@ If you are interested in the individual files that make up the complete dataset,
 - On 17 August 2020, we added 4 variables related to cases and deaths: `new_cases_smoothed`, `new_deaths_smoothed`, `new_cases_smoothed_per_million`, and `new_deaths_smoothed_per_million`. These metrics are averaged versions (over a rolling 7-day window) of the daily variables.
 - On 10 September 2020, we added the `human_development_index` column to our complete dataset.
 - On 14 October 2020, we added data on excess mortality during the pandemic in the `excess_mortality` folder, sourced from [the Human Mortality Database](https://www.mortality.org/) and [the UK Office for National Statistics](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/januarytojune2020).
-- On 29 October 2020, we added data on hospitalizations and intensive care unit (ICU) admissions, sourced from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-data-hospital-and-icu-admission-rates-and-current-occupancy-covid-19) (ECDC), who provide these statistics only for a select number of European countries, and updates it on a weekly basis.
+- On 29 October 2020, we added data on hospitalizations and intensive care unit (ICU) admissions, sourced from the [European Centre for Disease Prevention and Control](https://www.ecdc.europa.eu/en/publications-data/download-data-hospital-and-icu-admission-rates-and-current-occupancy-covid-19) (ECDC), who provide these statistics only for a select number of European countries, and update it on a weekly basis.
 
 
 ## Data alterations
