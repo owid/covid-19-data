@@ -147,6 +147,37 @@ def get_ecdc():
     return ecdc
 
 
+def get_hosp():
+
+    hosp = pd.read_csv(os.path.join(DATA_DIR, "ecdc/COVID-2019 - Hospital & ICU (ECDC).csv"))
+    hosp = hosp.rename(columns={
+        "entity": "location",
+        "year": "date",
+        "Daily ICU occupancy": "icu_patients",
+        "Daily ICU occupancy per million": "icu_patients_per_million",
+        "Daily hospital occupancy": "hosp_patients",
+        "Daily hospital occupancy per million": "hosp_patients_per_million",
+        "Weekly new ICU admissions": "weekly_icu_admissions",
+        "Weekly new ICU admissions per million": "weekly_icu_admissions_per_million",
+        "Weekly new hospital admissions": "weekly_hosp_admissions",
+        "Weekly new hospital admissions per million": "weekly_hosp_admissions_per_million",
+    })
+    hosp.loc[:, "date"] = (
+        ([pd.to_datetime("2020-01-21")] * hosp.shape[0]) + hosp["date"].apply(pd.offsets.Day)
+    ).astype(str)
+    hosp = hosp.dropna(subset=[
+        "icu_patients",
+        "icu_patients_per_million",
+        "hosp_patients",
+        "hosp_patients_per_million",
+        "weekly_icu_admissions",
+        "weekly_icu_admissions_per_million",
+        "weekly_hosp_admissions",
+        "weekly_hosp_admissions_per_million"
+    ], how="all")
+    return hosp
+
+
 def add_macro_variables(complete_dataset, macro_variables):
     """
     Appends a list of 'macro' (non-directly COVID related) variables to the dataset
@@ -257,6 +288,9 @@ def generate_megafile():
     print("\nFetching ECDC dataset…")
     ecdc = get_ecdc()
 
+    print("\nFetching hospital dataset…")
+    hosp = get_hosp()
+
     location_mismatch = set(testing.location).difference(set(ecdc.location))
     for loc in location_mismatch:
         print(f"<!> Location '{loc}' has testing data but is absent from ECDC data")
@@ -266,6 +300,7 @@ def generate_megafile():
 
     all_covid = (
         ecdc
+        .merge(hosp, on=["date", "location"], how="outer")
         .merge(testing, on=["date", "location"], how="outer")
         .merge(cgrt, on=["date", "location"], how="left")
         .sort_values(["location", "date"])
