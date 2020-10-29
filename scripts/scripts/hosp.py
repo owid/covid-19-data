@@ -36,15 +36,13 @@ def undo_per_100k(df):
     return df
 
 
-def weekly_to_daily(df):
+def week_to_date(df):
     daily_records = df[df["indicator"].str.contains("Daily")]
-    date_week_mapping = daily_records[["date", "year_week"]].drop_duplicates()
-    
+    date_week_mapping = (
+        daily_records[["year_week", "date"]].groupby("year_week", as_index=False).max()
+    )
     weekly_records = df[df["indicator"].str.contains("Weekly")].drop(columns="date")
-    weekly_records = pd.merge(weekly_records, date_week_mapping, on="year_week", how="left")
-    weekly_records.loc[:, "value"] = weekly_records["value"].div(7)
-    weekly_records.loc[:, "indicator"] = weekly_records["indicator"].str.replace("Weekly", "Daily")
-
+    weekly_records = pd.merge(weekly_records, date_week_mapping, on="year_week")
     df = pd.concat([daily_records, weekly_records]).drop(columns="year_week")
     return df
 
@@ -74,7 +72,7 @@ def main():
     df = download_data()
     df = standardize_entities(df)
     df = undo_per_100k(df)
-    df = weekly_to_daily(df)
+    df = week_to_date(df)
     df = add_per_million(df)
     df = owid_format(df)
     df = date_to_owid_year(df)
