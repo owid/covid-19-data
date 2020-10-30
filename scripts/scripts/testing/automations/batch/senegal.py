@@ -129,6 +129,7 @@ def get_data() -> pd.DataFrame:
     df[SERIES_TYPE] = df[SERIES_TYPE].astype(int)
     # with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None):
     #     print(df)
+    df = df[df["Date"] <= str(datetime.date.today())]
     return df
 
 

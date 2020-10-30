@@ -42,12 +42,7 @@ sample_official_data = [
     ("2020-03-21", {SERIES_TYPE: 10436, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
     ("2020-04-09", {SERIES_TYPE: 58506, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
     ("2020-04-30", {SERIES_TYPE: 169646, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
-    ("2020-05-16", {SERIES_TYPE: 282185, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
-    ("2020-06-25", {SERIES_TYPE: 411268, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
-    ("2020-07-31", {SERIES_TYPE: 632854, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
-    ("2020-08-07", {SERIES_TYPE: 657897, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
-    ("2020-09-01", {SERIES_TYPE: 844706, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
-    ("2020-09-09", {SERIES_TYPE: 923917, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"}),
+    ("2020-05-16", {SERIES_TYPE: 282185, "source": "https://covid19ireland-geohive.hub.arcgis.com/pages/hospitals-icu--testing"})
 ]
 
 
