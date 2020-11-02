@@ -8,6 +8,8 @@ setnames(df, c("Date", "Daily change in cumulative total", "Cumulative total"))
 
 df <- df[!is.na(`Daily change in cumulative total`) | !is.na(`Cumulative total`)]
 
+if (str_detect(df$Date[1], "^\\d{4}")) df[, Date := str_replace(Date, "^00", "")]
+
 df[, Date := dmy(Date)]
 df[, Country := "Cyprus"]
 df[, `Source label` := "Ministry of Health"]
