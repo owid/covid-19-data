@@ -1,16 +1,11 @@
 url <- read_html("https://www.sante.gov.mr/?cat=4&paged=1") %>%
-    html_nodes(".post-title a") %>%
-    html_attr("href") %>%
-    sort()
-
-url <- url[url >= "https://www.sante.gov.mr/?p=5081"]
+    html_node(".post-title a") %>%
+    html_attr("href")
 
 process_article <- function(url) {
-    message(url)
     url <- read_html(url) %>%
         html_node(".post-content a") %>%
         html_attr("href")
-    message(url)
 
     if (is.na(url) | !str_detect(str_to_lower(url), "sitrep")) return(NULL)
 

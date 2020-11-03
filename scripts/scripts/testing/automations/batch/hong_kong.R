@@ -2,8 +2,8 @@ url <- "http://www.chp.gov.hk/files/misc/statistics_on_covid_19_testing_cumulati
 
 df <- fread(url, showProgress = FALSE)
 
-setnames(df, c("from", "Date", "tests1", "tests2", "tests3"))
-df[, change := rowSums(df[, c("tests1", "tests2", "tests3")], na.rm = TRUE)]
+setnames(df, c("from", "Date", "tests1", "tests2", "tests3", "tests4"))
+df[, change := rowSums(df[, c("tests1", "tests2", "tests3", "tests4")], na.rm = TRUE)]
 
 df[, from := NULL]
 df[, Date := dmy(Date)]

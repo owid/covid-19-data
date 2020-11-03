@@ -5,7 +5,7 @@ url <- release %>%
     html_node("a") %>%
     html_attr("href")
 
-idx <- min(which(str_detect(url, "patsyent")))
+idx <- min(which(str_detect(url, "pats[yi]ent")))
 
 release <- release[idx]
 
