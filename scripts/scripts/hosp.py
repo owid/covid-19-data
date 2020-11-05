@@ -15,6 +15,7 @@ POPULATION = pd.read_csv(
 
 def download_data():
     df = pd.read_csv(SOURCE_URL, usecols=["country", "indicator", "date", "value", "year_week"])
+    df = df.drop_duplicates()
     df = df.rename(columns={"country": "entity"})
     return df
 
