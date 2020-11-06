@@ -9,8 +9,8 @@ url <- read_html(GET(
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE, method = "curl", extra = "-k")
 
 date <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract("Boletín.*\n +[\\d/]{10}") %>%
-    str_extract("[\\d/]{10}$") %>%
+    str_extract("Boletín.*\n +[\\d/]{9,10}") %>%
+    str_extract("[\\d/]{9,10}$") %>%
     dmy() %>%
     head(1)
 

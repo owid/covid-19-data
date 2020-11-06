@@ -4,9 +4,9 @@ count <- read_html(url) %>%
     html_nodes(".text") %>%
     html_text()
 
-count <- str_extract(count, "Iki šiol iš viso ištirta ėminių dėl įtariamo koronaviruso:\\s+\\d+") %>%
-    str_extract(":\\s+\\d+") %>%
-    str_extract("\\d+") %>%
+count <- str_extract(count, "Iki šiol iš viso ištirta ėminių dėl įtariamo koronaviruso:\\s+[\\d ]+") %>%
+    str_extract(":\\s+[\\d ]+") %>%
+    str_replace_all("[^\\d]", "") %>%
     as.integer()
 
 add_snapshot(
