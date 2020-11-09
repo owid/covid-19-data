@@ -4,11 +4,19 @@ links <- read_html("https://gov.ro/ro/media/comunicate") %>%
 
 url <- links[str_detect(links, "buletin")][1]
 
-count <- read_html(url) %>%
-    html_node(".pageDescription") %>%
-    html_text() %>%
-    str_extract("Până la această dată.*[\\d.]+.*teste") %>%
-    str_extract("[\\d.]+") %>%
+url <- read_html(url) %>%
+    html_node(".pageDescription a") %>%
+    html_attr("href")
+
+date <- str_extract(url, "\\d+-\\d+_BULETIN") %>%
+    str_replace("BULETIN", "2020") %>%
+    dmy()
+
+download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
+
+count <- pdf_text("tmp/tmp.pdf") %>%
+    str_extract("Până la această dată, la nivel național, au fost prelucrate.*de") %>%
+    na.omit() %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
 
