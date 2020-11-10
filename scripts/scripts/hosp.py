@@ -120,7 +120,7 @@ def main():
     df = add_per_million(df)
     df = owid_format(df)
     df = date_to_owid_year(df)
-    df.to_csv(os.path.join(OUTPUT_PATH, "COVID-2019 - Hospital & ICU (ECDC).csv"), index=False)
+    df.to_csv(os.path.join(OUTPUT_PATH, "COVID-2019 - Hospital & ICU.csv"), index=False)
 
 
 if __name__ == "__main__":
