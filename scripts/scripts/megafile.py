@@ -149,7 +149,7 @@ def get_ecdc():
 
 def get_hosp():
 
-    hosp = pd.read_csv(os.path.join(DATA_DIR, "ecdc/COVID-2019 - Hospital & ICU (ECDC).csv"))
+    hosp = pd.read_csv(os.path.join(DATA_DIR, "ecdc/COVID-2019 - Hospital & ICU.csv"))
     hosp = hosp.rename(columns={
         "entity": "location",
         "year": "date",
