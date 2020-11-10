@@ -64,7 +64,7 @@ parse_country <- function(sheet_name) {
     stopifnot(length(table(collated$Units)) == 1)
     stopifnot(length(table(collated$`Testing type`)) == 1)
     stopifnot(collated$`Testing type`[1] %in% c("PCR only", "unclear", "includes non-PCR"))
-    stopifnot(collated$Units[1] %in% c("people tested", "samples tested", "tests performed", "units unclear", "tests performed (CDC)"))
+    stopifnot(collated$Units[1] %in% c("people tested", "samples tested", "tests performed", "units unclear"))
 
     collated <- collated %>%
         mutate(Units = if_else(`Testing type` == "includes non-PCR", sprintf("%s (incl. non-PCR)", Units), Units)) %>%
