@@ -15,14 +15,14 @@ new_cases_smoothed_per_million,"New confirmed cases of COVID-19 (7-day smoothed)
 total_deaths_per_million,"Total deaths attributed to COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
 new_deaths_per_million,"New deaths attributed to COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
 new_deaths_smoothed_per_million,"New deaths attributed to COVID-19 (7-day smoothed) per 1,000,000 people",European Centre for Disease Prevention and Control
-icu_patients,"Number of COVID-19 patients in intensive care units (ICUs) on a given day",European Centre for Disease Prevention and Control
-icu_patients_per_million,"Number of COVID-19 patients in intensive care units (ICUs) on a given day per 1,000,000 people",European Centre for Disease Prevention and Control
-hosp_patients,"Number of COVID-19 patients in hospital on a given day",European Centre for Disease Prevention and Control
-hosp_patients_per_million,"Number of COVID-19 patients in hospital on a given day per 1,000,000 people",European Centre for Disease Prevention and Control
-weekly_icu_admissions,"Number of COVID-19 patients newly admitted to intensive care units (ICUs) in a given week",European Centre for Disease Prevention and Control
-weekly_icu_admissions_per_million,"Number of COVID-19 patients newly admitted to intensive care units (ICUs) in a given week per 1,000,000 people",European Centre for Disease Prevention and Control
-weekly_hosp_admissions,"Number of COVID-19 patients newly admitted to hospitals in a given week",European Centre for Disease Prevention and Control
-weekly_hosp_admissions_per_million,"Number of COVID-19 patients newly admitted to hospitals in a given week per 1,000,000 people",European Centre for Disease Prevention and Control
+icu_patients,"Number of COVID-19 patients in intensive care units (ICUs) on a given day",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
+icu_patients_per_million,"Number of COVID-19 patients in intensive care units (ICUs) on a given day per 1,000,000 people",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
+hosp_patients,"Number of COVID-19 patients in hospital on a given day",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
+hosp_patients_per_million,"Number of COVID-19 patients in hospital on a given day per 1,000,000 people",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
+weekly_icu_admissions,"Number of COVID-19 patients newly admitted to intensive care units (ICUs) in a given week",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
+weekly_icu_admissions_per_million,"Number of COVID-19 patients newly admitted to intensive care units (ICUs) in a given week per 1,000,000 people",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
+weekly_hosp_admissions,"Number of COVID-19 patients newly admitted to hospitals in a given week",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
+weekly_hosp_admissions_per_million,"Number of COVID-19 patients newly admitted to hospitals in a given week per 1,000,000 people",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
 total_tests,Total tests for COVID-19,National government reports
 new_tests,New tests for COVID-19,National government reports
 new_tests_smoothed,"New tests for COVID-19 (7-day smoothed). For countries that don't report testing data on a daily basis, we assume that testing changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window",National government reports
