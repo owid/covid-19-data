@@ -48,6 +48,48 @@ def week_to_date(df):
     return df
 
 
+def add_us_data(df):
+    usa = pd.read_csv(
+        "https://covidtracking.com/data/download/national-history.csv",
+        usecols=[
+            "date", "hospitalizedCurrently", "inIcuCurrently", "hospitalizedIncrease", "inIcuCumulative"
+        ]
+    )
+
+    usa.loc[:, "date"] = pd.to_datetime(usa["date"])
+    usa = usa.sort_values("date")
+    usa = usa[usa["date"] >= "2020-03-02"]
+
+    usa.loc[:, "icuIncrease"] = usa["inIcuCumulative"].sub(usa["inIcuCumulative"].shift(1))
+    usa = usa.drop(columns=["inIcuCumulative"])
+
+    stock = usa[["date", "hospitalizedCurrently", "inIcuCurrently"]]
+    stock = stock.melt("date", ["hospitalizedCurrently", "inIcuCurrently"])
+    stock.loc[:, "date"] = stock["date"].dt.date
+
+    flow = usa[["date", "hospitalizedIncrease", "icuIncrease"]].copy()
+    flow.loc[:, "date"] = (flow["date"] + pd.to_timedelta(6 - flow["date"].dt.dayofweek, unit="d")).dt.date
+    flow = flow[flow["date"] <= datetime.date.today()]
+    flow = flow.groupby("date", as_index=False).sum()
+    flow = flow.melt("date", ["hospitalizedIncrease", "icuIncrease"])
+
+    usa = pd.concat([stock, flow]).dropna(subset=["value"])
+    usa = usa.rename(columns={"variable": "indicator"})
+    usa.loc[:, "indicator"] = usa["indicator"].replace({
+        "hospitalizedCurrently": "Daily hospital occupancy",
+        "inIcuCurrently": "Daily ICU occupancy",
+        "hospitalizedIncrease": "Weekly new hospital admissions",
+        "icuIncrease": "Weekly new ICU admissions"
+    })
+
+    usa.loc[:, "entity"] = "United States"
+    usa.loc[:, "iso_code"] = "USA"
+    usa.loc[:, "population"] = 331002647
+
+    df = pd.concat([df, usa])
+    return df
+
+
 def add_per_million(df):
     per_million = df.copy()
     per_million.loc[:, "value"] = per_million["value"].div(per_million["population"]).mul(1000000)
@@ -74,6 +116,7 @@ def main():
     df = standardize_entities(df)
     df = undo_per_100k(df)
     df = week_to_date(df)
+    df = add_us_data(df)
     df = add_per_million(df)
     df = owid_format(df)
     df = date_to_owid_year(df)
