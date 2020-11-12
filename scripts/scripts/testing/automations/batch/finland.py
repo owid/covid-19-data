@@ -36,6 +36,7 @@ def main():
     )
 
     df = df[-df["Daily change in cumulative total"].isnull()]
+    df = df[df["Daily change in cumulative total"] != 0]
     df.loc[:, "Country"] = "Finland"
     df.loc[:, "Units"] = "samples tested"
     df.loc[:, "Source URL"] = "https://experience.arcgis.com/experience/d40b2aaf08be4b9c8ec38de30b714f26"
