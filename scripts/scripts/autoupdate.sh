@@ -93,7 +93,7 @@ run_python 'import gmobility; gmobility.update_db()'
 OXCGRT_CSV_PATH=./scripts/input/bsg/latest.csv
 UPDATE_INTERVAL_SECONDS=$(expr 60 \* 60 \* 24) # 24 hours
 CURRENT_TIME=$(date +%s)
-UPDATED_TIME=$(stat $FILE -c %Y)
+UPDATED_TIME=$(stat $OXCGRT_CSV_PATH -c %Y)
 
 if [ $(expr $CURRENT_TIME - $UPDATED_TIME) -gt $UPDATE_INTERVAL_SECONDS ]; then
   # Download CSV
