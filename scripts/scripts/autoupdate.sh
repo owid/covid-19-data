@@ -91,7 +91,7 @@ run_python 'import gmobility; gmobility.update_db()'
 # last 6 hours.
 
 OXCGRT_CSV_PATH=./scripts/input/bsg/latest.csv
-UPDATE_INTERVAL_SECONDS=$(expr 60 \* 60 \* 6) # 6 hours
+UPDATE_INTERVAL_SECONDS=$(expr 60 \* 60 \* 24) # 24 hours
 CURRENT_TIME=$(date +%s)
 UPDATED_TIME=$(stat $FILE -c %Y)
 
