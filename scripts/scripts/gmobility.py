@@ -84,12 +84,12 @@ def export_grapher():
     # Assign new column names
     rename_dict = {
         "date": "Year",
-        "retail_and_recreation_percent_change_from_baseline": "Retail & Recreation",
-        "grocery_and_pharmacy_percent_change_from_baseline": "Grocery & Pharmacy",
-        "parks_percent_change_from_baseline": "Parks",
-        "transit_stations_percent_change_from_baseline": "Transit Stations",
-        "workplaces_percent_change_from_baseline": "Workplaces",
-        "residential_percent_change_from_baseline": "Residential"
+        "retail_and_recreation_percent_change_from_baseline": "retail_and_recreation",
+        "grocery_and_pharmacy_percent_change_from_baseline": "grocery_and_pharmacy",
+        "parks_percent_change_from_baseline": "parks",
+        "transit_stations_percent_change_from_baseline": "transit_stations",
+        "workplaces_percent_change_from_baseline": "workplaces",
+        "residential_percent_change_from_baseline": "residential"
     }
 
     # Rename columns
@@ -98,8 +98,8 @@ def export_grapher():
     # Replace time series with 7-day rolling averages
     country_mobility = country_mobility.sort_values(by=["Country", "Year"]).reset_index(drop=True)
     smoothed_cols = [
-        "Retail & Recreation", "Grocery & Pharmacy", "Parks",
-        "Transit Stations", "Workplaces", "Residential"
+        "retail_and_recreation", "grocery_and_pharmacy", "parks",
+        "transit_stations", "workplaces", "residential"
     ]
     country_mobility[smoothed_cols] = (
         country_mobility
