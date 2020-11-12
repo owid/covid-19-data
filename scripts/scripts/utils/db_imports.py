@@ -208,7 +208,8 @@ def import_dataset(dataset_name, namespace, csv_path, default_variable_display, 
         if DEPLOY_QUEUE_PATH:
             with open(DEPLOY_QUEUE_PATH, 'a') as f:
                 f.write(json.dumps({
-                    'message': f"Automated dataset update: {dataset_name}"
+                    'message': f"Automated dataset update: {dataset_name}",
+                    'timeISOString': datetime.now().isoformat()
                 }) + "\n")
 
     print("Database update successful.")
