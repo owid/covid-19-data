@@ -86,19 +86,32 @@ run_python 'import gmobility; gmobility.update_db()'
 # =====================================================================
 # Policy responses
 
-# Download CSV
-run_python 'import oxcgrt; oxcgrt.download_csv()'
+# The policy update files change far too often (every hour or so).
+# We don't want to run an update if one has already been run in the
+# last 6 hours.
 
-# If there are any unstaged changes in the repo, then the
-# CSV has changed, and we need to run the update script.
-if has_changed ./scripts/input/bsg/latest.csv; then
-  echo "Generating OxCGRT export..."
-  run_python 'import oxcgrt; oxcgrt.export_grapher()'
-  git add .
-  git commit -m "Automated OxCGRT update"
-  git push
+OXCGRT_CSV_PATH=./scripts/input/bsg/latest.csv
+UPDATE_INTERVAL_SECONDS=$(expr 60 \* 60 \* 24) # 24 hours
+CURRENT_TIME=$(date +%s)
+UPDATED_TIME=$(stat $FILE -c %Y)
+
+if [ $(expr $CURRENT_TIME - $UPDATED_TIME) -gt $UPDATE_INTERVAL_SECONDS ]; then
+  # Download CSV
+  run_python 'import oxcgrt; oxcgrt.download_csv()'
+
+  # If there are any unstaged changes in the repo, then the
+  # CSV has changed, and we need to run the update script.
+  if has_changed $OXCGRT_CSV_PATH; then
+    echo "Generating OxCGRT export..."
+    run_python 'import oxcgrt; oxcgrt.export_grapher()'
+    git add .
+    git commit -m "Automated OxCGRT update"
+    git push
+  else
+    echo "OxCGRT export is up to date"
+  fi
 else
-  echo "OxCGRT export is up to date"
+  echo "OxCGRT CSV was recently updated; skipping download"
 fi
 
 # Always run the database update.
