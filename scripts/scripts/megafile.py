@@ -165,16 +165,6 @@ def get_hosp():
     hosp.loc[:, "date"] = (
         ([pd.to_datetime("2020-01-21")] * hosp.shape[0]) + hosp["date"].apply(pd.offsets.Day)
     ).astype(str)
-    hosp = hosp.dropna(subset=[
-        "icu_patients",
-        "icu_patients_per_million",
-        "hosp_patients",
-        "hosp_patients_per_million",
-        "weekly_icu_admissions",
-        "weekly_icu_admissions_per_million",
-        "weekly_hosp_admissions",
-        "weekly_hosp_admissions_per_million"
-    ], how="all")
     return hosp
 
 
