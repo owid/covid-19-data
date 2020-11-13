@@ -1,11 +1,11 @@
 label,preprocess,code_name,full_name
 i1_health,,household_members_contact,About how many people from your household have you come into physical contact with (within 2 meters / 6 feet)?
 i2_health,,people_contact_outside_household,"Not including those people in your household, about how many people have you come into physical contact with (within 2 meters / 6 feet)?"
-i7a_health,,time_left_home_yesterday,"How many times did you leave your home yesterday?  If you are not staying at home, how many times did you leave where you are staying yesterday?"
+i7a_health,,times_left_home_yesterday,"How many times did you leave your home yesterday?  If you are not staying at home, how many times did you leave where you are staying yesterday?"
 i5a_health,binary,contact_symptomatic_person_before_own_symptoms,"Thinking about the 7 days before your symptoms started, had you been in physical contact (within 2 meters / 6 feet) with someone who has a confirmed diagnosis of coronavirus (Covid-19), or someone with the relevant symptoms."
 i6_health,frequency,isolated_with_symptoms,"Since developing those symptoms, have you self-isolated yourself on each of the following 7 days?"
 i7b_health,binary,doctor_visit_last_week_with_symptoms,"And in the last 7 days, have you physically been to the premises of a doctor, nurse, pharmacy or hospital as a result of having those symptoms?"
-i8_health,binary,visited_covid_location_before_symtpoms,"And thinking about the 7 days before your symptoms started, did you travel to a location where coronavirus has been reported?"
+i8_health,binary,visited_covid_location_before_symptoms,"And thinking about the 7 days before your symptoms started, did you travel to a location where coronavirus has been reported?"
 i9_health,binary,willingness_isolate_if_symptoms,"Thinking about the next 7 days… would you isolate yourself after feeling unwell or having any of the following new symptoms: a dry cough, fever, loss of sense of smell, loss of sense of taste, shortness of breath or difficulty breathing?"
 i10_health,easiness,difficult_to_isolate,"If you were advised to do so by a healthcare professional or public health authority, would it be difficult for you to self-isolate for 7 days?"
 i11_health,willingness,willingness_isolate_if_advised,"If you were advised to do so by a healthcare professional or public health authority, would you be willing to self-isolate for 7 days?"
