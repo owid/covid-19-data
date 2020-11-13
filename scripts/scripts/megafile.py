@@ -19,69 +19,6 @@ INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
 DATA_DIR = os.path.join(CURRENT_DIR, "../../public/data/")
 
 
-def get_testing():
-    """
-    Reads the main COVID-19 testing dataset located in /public/data/testing/
-    Rearranges the Entity column to separate location from testing units
-    Checks for duplicated location/date couples, as we can have more than 1 time series per country
-
-    Returns:
-        testing {dataframe}
-    """
-
-    testing = pd.read_csv(
-        os.path.join(DATA_DIR, "testing/covid-testing-all-observations.csv"),
-        usecols=[
-            "Entity",
-            "Date",
-            "Cumulative total",
-            "Daily change in cumulative total",
-            "7-day smoothed daily change",
-            "Cumulative total per thousand",
-            "Daily change in cumulative total per thousand",
-            "7-day smoothed daily change per thousand",
-            "Short-term positive rate",
-            "Short-term tests per case"
-        ]
-    )
-
-    testing = testing.rename(columns={
-        "Entity": "location",
-        "Date": "date",
-        "Cumulative total": "total_tests",
-        "Daily change in cumulative total": "new_tests",
-        "7-day smoothed daily change": "new_tests_smoothed",
-        "Cumulative total per thousand": "total_tests_per_thousand",
-        "Daily change in cumulative total per thousand": "new_tests_per_thousand",
-        "7-day smoothed daily change per thousand": "new_tests_smoothed_per_thousand",
-        "Short-term positive rate": "positive_rate",
-        "Short-term tests per case": "tests_per_case"
-    })
-
-    testing[
-        ["total_tests_per_thousand", "new_tests_per_thousand", "new_tests_smoothed_per_thousand"]
-    ] = testing[
-        ["total_tests_per_thousand", "new_tests_per_thousand", "new_tests_smoothed_per_thousand"]
-    ].round(3)
-
-    # Split the original entity into location and testing units
-    testing[["location", "tests_units"]] = testing.location.str.split(" - ", expand=True)
-
-    # For locations with >1 series, choose a series
-    to_remove = pd.read_csv(os.path.join(INPUT_DIR, "owid/secondary_testing_series.csv"))
-    for loc, unit in to_remove.itertuples(index=False, name=None):
-        testing = testing[-((testing["location"] == loc) & (testing["tests_units"] == unit))]
-
-    # Check for remaining duplicates of location/date
-    duplicates = testing.groupby(["location", "date"]).size().to_frame("n")
-    duplicates = duplicates[duplicates["n"] > 1]
-    if duplicates.shape[0] > 0:
-        print(duplicates)
-        raise Exception("Multiple rows for the same location and date")
-
-    return testing
-
-
 def get_ecdc():
     """
     Reads each COVID-19 ECDC dataset located in /public/data/ecdc/
@@ -147,8 +84,27 @@ def get_ecdc():
     return ecdc
 
 
-def get_hosp():
+def get_reprod():
+    reprod = pd.read_csv(
+        os.path.join(INPUT_DIR, "reproduction/database.csv"),
+        usecols=["Country/Region", "Date", "R", "days_infectious"]
+    )
+    reprod = (
+        reprod[reprod["days_infectious"] == 7]
+        .drop(columns=["days_infectious"])
+        .rename(columns={
+            "Country/Region": "location",
+            "Date": "date",
+            "R": "reproduction_rate"
+        })
+        .round(2)
+    )
+    mapping = pd.read_csv(os.path.join(INPUT_DIR, "reproduction/reprod_country_standardized.csv"))
+    reprod = reprod.replace(dict(zip(mapping.reprod, mapping.owid)))
+    return reprod
 
+
+def get_hosp():
     hosp = pd.read_csv(os.path.join(DATA_DIR, "ecdc/COVID-2019 - Hospital & ICU.csv"))
     hosp = hosp.rename(columns={
         "entity": "location",
@@ -161,11 +117,76 @@ def get_hosp():
         "Weekly new ICU admissions per million": "weekly_icu_admissions_per_million",
         "Weekly new hospital admissions": "weekly_hosp_admissions",
         "Weekly new hospital admissions per million": "weekly_hosp_admissions_per_million",
-    })
+    }).round(3)
     hosp.loc[:, "date"] = (
         ([pd.to_datetime("2020-01-21")] * hosp.shape[0]) + hosp["date"].apply(pd.offsets.Day)
     ).astype(str)
     return hosp
+
+
+def get_testing():
+    """
+    Reads the main COVID-19 testing dataset located in /public/data/testing/
+    Rearranges the Entity column to separate location from testing units
+    Checks for duplicated location/date couples, as we can have more than 1 time series per country
+
+    Returns:
+        testing {dataframe}
+    """
+
+    testing = pd.read_csv(
+        os.path.join(DATA_DIR, "testing/covid-testing-all-observations.csv"),
+        usecols=[
+            "Entity",
+            "Date",
+            "Cumulative total",
+            "Daily change in cumulative total",
+            "7-day smoothed daily change",
+            "Cumulative total per thousand",
+            "Daily change in cumulative total per thousand",
+            "7-day smoothed daily change per thousand",
+            "Short-term positive rate",
+            "Short-term tests per case"
+        ]
+    )
+
+    testing = testing.rename(columns={
+        "Entity": "location",
+        "Date": "date",
+        "Cumulative total": "total_tests",
+        "Daily change in cumulative total": "new_tests",
+        "7-day smoothed daily change": "new_tests_smoothed",
+        "Cumulative total per thousand": "total_tests_per_thousand",
+        "Daily change in cumulative total per thousand": "new_tests_per_thousand",
+        "7-day smoothed daily change per thousand": "new_tests_smoothed_per_thousand",
+        "Short-term positive rate": "positive_rate",
+        "Short-term tests per case": "tests_per_case"
+    })
+
+    testing[[
+        "total_tests_per_thousand", "new_tests_per_thousand", "new_tests_smoothed_per_thousand",
+        "tests_per_case", "positive_rate"
+    ]] = testing[[
+        "total_tests_per_thousand", "new_tests_per_thousand", "new_tests_smoothed_per_thousand",
+        "tests_per_case", "positive_rate"
+    ]].round(3)
+
+    # Split the original entity into location and testing units
+    testing[["location", "tests_units"]] = testing.location.str.split(" - ", expand=True)
+
+    # For locations with >1 series, choose a series
+    to_remove = pd.read_csv(os.path.join(INPUT_DIR, "owid/secondary_testing_series.csv"))
+    for loc, unit in to_remove.itertuples(index=False, name=None):
+        testing = testing[-((testing["location"] == loc) & (testing["tests_units"] == unit))]
+
+    # Check for remaining duplicates of location/date
+    duplicates = testing.groupby(["location", "date"]).size().to_frame("n")
+    duplicates = duplicates[duplicates["n"] > 1]
+    if duplicates.shape[0] > 0:
+        print(duplicates)
+        raise Exception("Multiple rows for the same location and date")
+
+    return testing
 
 
 def add_macro_variables(complete_dataset, macro_variables):
@@ -175,7 +196,6 @@ def add_macro_variables(complete_dataset, macro_variables):
     is added to each row of the complete dataset. This is meant to facilitate the use
     of our dataset by non-experts.
     """
-
     original_shape = complete_dataset.shape
 
     for var, file in macro_variables.items():
@@ -272,14 +292,25 @@ def generate_megafile():
     Writes the 'megafile' to CSV and XLSX in /public/data/
     """
 
-    print("\nFetching testing dataset…")
-    testing = get_testing()
-
     print("\nFetching ECDC dataset…")
     ecdc = get_ecdc()
 
+    print("\nFetching reproduction rate…")
+    reprod = get_reprod()
+
+    location_mismatch = set(reprod.location).difference(set(ecdc.location))
+    for loc in location_mismatch:
+        print(f"<!> Location '{loc}' has reproduction rates but is absent from ECDC data")
+
     print("\nFetching hospital dataset…")
     hosp = get_hosp()
+
+    location_mismatch = set(hosp.location).difference(set(ecdc.location))
+    for loc in location_mismatch:
+        print(f"<!> Location '{loc}' has hospital data but is absent from ECDC data")
+
+    print("\nFetching testing dataset…")
+    testing = get_testing()
 
     location_mismatch = set(testing.location).difference(set(ecdc.location))
     for loc in location_mismatch:
@@ -290,6 +321,7 @@ def generate_megafile():
 
     all_covid = (
         ecdc
+        .merge(reprod, on=["date", "location"], how="left")
         .merge(hosp, on=["date", "location"], how="outer")
         .merge(testing, on=["date", "location"], how="outer")
         .merge(cgrt, on=["date", "location"], how="left")
