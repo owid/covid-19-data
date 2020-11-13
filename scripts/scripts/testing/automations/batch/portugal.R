@@ -11,14 +11,14 @@ df[, c("day", "month") := NULL]
 
 df <- df[!is.na(`Daily change in cumulative total`)]
 
-if (max(df$Date) < today() - 7) {
-    github <- fread("https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/amostras.csv",
-                showProgress = FALSE, select = c("data", "amostras"))
-    setnames(github, c("Date", "Cumulative total"))
-    github[, Date := dmy(Date)]
-    github <- github[!is.na(`Cumulative total`)]
-    if (max(github$Date) > max(df$Date)) df <- copy(github)
-}
+# if (max(df$Date) < today() - 7) {
+#     github <- fread("https://raw.githubusercontent.com/dssg-pt/covid19pt-data/master/amostras.csv",
+#                 showProgress = FALSE, select = c("data", "amostras"))
+#     setnames(github, c("Date", "Cumulative total"))
+#     github[, Date := dmy(Date)]
+#     github <- github[!is.na(`Cumulative total`)]
+#     if (max(github$Date) > max(df$Date)) df <- copy(github)
+# }
 
 df[, Country := "Portugal"]
 df[, Units := "samples tested"]
