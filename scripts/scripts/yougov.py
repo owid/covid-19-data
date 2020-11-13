@@ -162,13 +162,7 @@ def aggregate(df):
 
 def rename_columns(df):
     df = df[["Entity", "Date"] + list(MAPPING.label)]
-    for row in MAPPING.itertuples():
-        full_name = row.full_name
-        if not pd.isnull(row.preprocess):
-            positive_answers = [f"'{k}'" for k,v in MAPPED_VALUES[row.preprocess].items() if v == 100]
-            positive_answers = ", ".join(positive_answers)
-            full_name += f" (% who answered {positive_answers})"
-        df = df.rename(columns={row.label: full_name})
+    df = df.rename(columns=dict(zip(MAPPING.label, MAPPING.code_name)))
     return df
 
 
