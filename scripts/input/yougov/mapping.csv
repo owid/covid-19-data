@@ -1,0 +1,57 @@
+label,preprocess,full_name
+i1_health,,About how many people from your household have you come into physical contact with (within 2 meters / 6 feet)?
+i2_health,,"Not including those people in your household, about how many people have you come into physical contact with (within 2 meters / 6 feet)?"
+i7a_health,,"How many times did you leave your home yesterday?  If you are not staying at home, how many times did you leave where you are staying yesterday?"
+i5a_health,binary,"Thinking about the 7 days before your symptoms started, had you been in physical contact (within 2 meters / 6 feet) with someone who has a confirmed diagnosis of coronavirus (Covid-19), or someone with the relevant symptoms."
+i6_health,frequency,"Since developing those symptoms, have you self-isolated yourself on each of the following 7 days?"
+i7b_health,binary,"And in the last 7 days, have you physically been to the premises of a doctor, nurse, pharmacy or hospital as a result of having those symptoms?"
+i8_health,binary,"And thinking about the 7 days before your symptoms started, did you travel to a location where coronavirus has been reported?"
+i9_health,binary,"Thinking about the next 7 days… would you isolate yourself after feeling unwell or having any of the following new symptoms: a dry cough, fever, loss of sense of smell, loss of sense of taste, shortness of breath or difficulty breathing?"
+i10_health,easiness,"If you were advised to do so by a healthcare professional or public health authority, would it be difficult for you to self-isolate for 7 days?"
+i11_health,willingness,"If you were advised to do so by a healthcare professional or public health authority, would you be willing to self-isolate for 7 days?"
+i12_health_1,frequency,"Worn a face mask outside your home (e.g. when on public transport, going to a supermarket, going to a main road)"
+i12_health_2,frequency,Washed hands with soap and water
+i12_health_3,frequency,Used hand sanitiser
+i12_health_4,frequency,Covered your nose and mouth when sneezing or coughing
+i12_health_5,frequency,Avoided contact with people who have symptoms or you think may have been exposed to the coronavirus
+i12_health_6,frequency,Avoided going out in general
+i12_health_7,frequency,Avoided going to hospital or other healthcare settings
+i12_health_8,frequency,Avoided taking public transport
+i12_health_9,frequency,Avoided working outside your home
+i12_health_10,frequency,Avoided letting your children go to school/ university
+i12_health_11,frequency,Avoided having guests to your home
+i12_health_12,frequency,Avoided small social gatherings (not more than 2 people)
+i12_health_13,frequency,Avoided medium-sized social gatherings (between 3 and 10 people)
+i12_health_14,frequency,Avoided large-sized social gatherings (more than 10 people)
+i12_health_15,frequency,Avoided crowded areas
+i12_health_16,frequency,Avoided going to shops
+i12_health_17,frequency,"Slept in separate bedrooms at home, when normally you would share a bedroom"
+i12_health_18,frequency,"Eaten separately at home, when normally you would eat a meal with others"
+i12_health_19,frequency,"Cleaned frequently touched surfaces in the home (e.g. doorknobs, toilets, taps)"
+i12_health_20,frequency,Avoided touching objects in public (e.g. elevator buttons or doors)
+i13_health,,"Thinking about yesterday… about how many times, would you say you washed your hands with soap or used hand sanitiser?"
+WCRV_4,scariness,Scared that I will contract the Coronavirus (COVID-19)
+CORE_B2_4,happiness,"Compared with two weeks ago, would you say you are more happy now?"
+WCRex1,handling,Do you think the Government are handling the issue of the Coronavirus (COVID-19) well?
+i12_health_21,frequency,Worn a face mask inside your home
+i12_health_22,frequency,Worn a face mask inside a grocery store / supermarket
+i12_health_23,frequency,Worn a face mask inside a clothing / footwear shop
+i12_health_24,frequency,Worn a face mask at your place of work
+i12_health_25,frequency,Worn a face mask on public transportation
+r1_1,agreement,Coronavirus (COVID-19) is very dangerous for me
+r1_2,agreement,It is likely that I will get coronavirus (COVID-19) in the future
+r1_3,agreement,Wearing a mask will protect me against coronavirus (COVID-19)
+r1_4,agreement,Wearing a mask will protect others against coronavirus (COVID-19)
+r1_5,agreement,Wearing a mask to protect me against coronavirus (COVID-19) is not possible for me
+r1_6,agreement,I feel it is important to carry out activities which will improve my health
+r1_7,agreement,My life has been greatly affected by coronavirus (COVID-19)
+ct2,binary,"If you were contacted, would you be willing provide contact information?"
+ct4,binary,"If you tested positive for COVID-19 and are asked to share with health authorities the names of people you had been in contact with, would you share the names of all the people?"
+i12_health_26,frequency,"Avoided attending public events, such as sports matches, festivals, theatres, clubs, or going to religious services"
+ox5_1,trustworthiness,Trustworthiness of most people in your region
+ox5_2,trustworthiness,Trustworthiness of the government of your country
+ox6,efficiency,Would you say the public sector in your country is efficient?
+w1,unity,Is your country now more united than before the coronavirus (COVID-19) outbreak?
+w2,strength,Do you have a strong sense of belonging to your local community?
+w3,increase,Has your sense of belonging to your local community increased during the coronavirus (COVID-19) outbreak?
+w6,binary,"In your opinion, in the past month, have other people in your community provided assistance to others, such as a friend, neighbour or co-worker, for example childcare or running errands, without expecting anything in return?"
