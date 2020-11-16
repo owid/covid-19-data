@@ -94,6 +94,7 @@ def get_data() -> pd.DataFrame:
     df_hardcoded = pd.DataFrame(hardcoded_data)
     df = pd.concat([df, df_hardcoded], axis=0, sort=False).reset_index(drop=True)
     df.sort_values('Date', inplace=True)
+    df = df.dropna(subset=["Cumulative total"])
     return df
 
 

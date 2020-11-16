@@ -15,13 +15,14 @@ date <- str_extract(url, "\\d+-\\d+_BULETIN") %>%
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
 
 count <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract("Până la această dată, la nivel național, au fost prelucrate.*de") %>%
+    str_extract("Până la această dată, la nivel național, au fost prelucrate.*") %>%
     na.omit() %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
 
 add_snapshot(
     count = count,
+    date = date,
     sheet_name = "Romania",
     country = "Romania",
     testing_type = "PCR only",
