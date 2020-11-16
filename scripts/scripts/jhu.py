@@ -187,7 +187,7 @@ def main():
     if export(df_merged):
         print("Successfully exported CSVs to %s\n" % colored(os.path.abspath(OUTPUT_PATH), "magenta"))
     else:
-        print_err("ECDC Export failed.\n")
+        print_err("JHU export failed.\n")
         sys.exit(1)
 
     print("Generating megafile…")
