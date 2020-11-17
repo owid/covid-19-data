@@ -317,6 +317,7 @@ def inject_cfr(df):
         df['new_deaths_7_day_avg_right']
         .div(shifted_cases)
         .replace(np.inf, np.nan)
+        .replace(-np.inf, np.nan)
         .mul(100)
         .round(3)
     )
