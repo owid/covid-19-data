@@ -204,10 +204,10 @@ def main(skip_download=False):
     # megafile.generate_megafile()
     # print("Megafile is ready.")
 
-    # send_success(
-    #     channel="corona-data-updates",
-    #     title="Updated JHU GitHub exports"
-    # )
+    send_success(
+        channel="corona-data-updates",
+        title="Updated JHU GitHub exports"
+    )
 
 def update_db():
     time_str = datetime.now().astimezone(pytz.timezone("Europe/London")).strftime("%-d %B, %H:%M")
