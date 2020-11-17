@@ -81,7 +81,7 @@ fi
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-run_python 'import jhu; jhu.update_db()'
+# run_python 'import jhu; jhu.update_db()'
 
 # =====================================================================
 # Google Mobility
