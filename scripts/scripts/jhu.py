@@ -1,3 +1,4 @@
+import argparse
 import os
 import sys
 from functools import reduce
@@ -33,9 +34,17 @@ DATASET_NAME = "COVID-19 - Johns Hopkins University"
 def print_err(*args, **kwargs):
     return print(*args, file=sys.stderr, **kwargs)
 
+def download_csv():
+    files = [
+        "time_series_covid19_confirmed_global.csv",
+        "time_series_covid19_deaths_global.csv"
+    ]
+    for file in files:
+        os.system(f"curl --silent -f -o {INPUT_PATH}/{file} -L https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/{file}")
+
 def get_metric(metric, region):
-    file_url = f"https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_{metric}_{region}.csv"
-    df = pd.read_csv(file_url).drop(columns=["Lat", "Long"])
+    file_path = os.path.join(INPUT_PATH, f"time_series_covid19_{metric}_{region}.csv")
+    df = pd.read_csv(file_path).drop(columns=["Lat", "Long"])
     
     if metric == "confirmed":
         metric = "total_cases"
@@ -174,7 +183,11 @@ def export(df_merged):
         DATASET_NAME
     )
 
-def main():
+def main(skip_download=False):
+
+    if not skip_download:
+        print("\nAttempting to download latest CSV files...")
+        download_csv()
 
     df_merged = _load_merged()
 
@@ -214,4 +227,7 @@ def update_db():
     )
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Run JHU update script")
+    parser.add_argument("-s", "--skip-download", action="store_true", help="Skip downloading files from the JHU repository")
+    args = parser.parse_args()
+    main(skip_download=args.skip_download)
