@@ -452,7 +452,7 @@ def inject_doubling_days(df):
     for col, spec in doubling_days_spec.items():
         value_col = spec['value_col']
         periods = spec['periods']
-        df.loc[df[value_col] == 0, value_col] = pd.NA
+        df.loc[df[value_col] == 0, value_col] = np.nan
         df[col] = df.groupby('location', as_index=False) \
             [value_col].pct_change(periods=periods, fill_method=None) \
             [value_col].map(lambda pct: pct_change_to_doubling_days(pct, periods))
