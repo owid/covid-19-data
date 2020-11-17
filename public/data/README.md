@@ -6,6 +6,8 @@ Our complete COVID-19 dataset is a collection of the COVID-19 data maintained by
 
 We will continue to publish up-to-date data on confirmed cases, deaths, hospitalizations, and testing, throughout the duration of the COVID-19 pandemic.
 
+> ⚠️ Our source for confirmed cases and deaths, the European Centre for Disease Prevention and Control (ECDC), [recently announced](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) that it would switch from a daily to a weekly reporting schedule from December. _Our World in Data_ will therefore have to transition away from the ECDC as a source to continue to provide daily updates of confirmed cases and deaths. **Starting on November 30, the data for confirmed cases and deaths presented on [ourworldindata.org](https://ourworldindata.org/coronavirus-data-explorer) and available in our GitHub repository will be sourced from the daily dataset provided by [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19).** The data last sourced from the ECDC will remain available as an archive on GitHub. The format (variable names and types) of our complete COVID-19 dataset will remain the same.
+
 
 ## Our data sources
 
