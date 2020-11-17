@@ -40,6 +40,7 @@ def download_csv():
         "time_series_covid19_deaths_global.csv"
     ]
     for file in files:
+        print(file)
         os.system(f"curl --silent -f -o {INPUT_PATH}/{file} -L https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/{file}")
 
 def get_metric(metric, region):
@@ -58,10 +59,11 @@ def get_metric(metric, region):
     df.loc[df["Country/Region"].isin(["Diamond Princess", "MS Zaandam"]), "Country/Region"] = "International"
 
     # subnational = df[-df["Province/State"].isna()]
+    # subnational = subnational.groupby(["Country/Region", "Province/State"], as_index=False).sum()
     # subnational.loc[:, "Country/Region"] = subnational["Country/Region"] + " – " + subnational["Province/State"]
     # subnational = subnational.drop(columns=["Province/State"])
 
-    national = df.groupby("Country/Region", as_index=False).sum()
+    national = df.drop(columns="Province/State").groupby("Country/Region", as_index=False).sum()
 
     df = national.copy() # df = pd.concat([national, subnational]).reset_index(drop=True)
     df = df.melt(
@@ -75,14 +77,9 @@ def get_metric(metric, region):
     return df
 
 def load_data():
-    data_frames = [
-        get_metric("confirmed", "global"),
-        get_metric("deaths", "global")
-    ]
-    jhu = reduce(
-        lambda left, right: pd.merge(left, right, on=["date", "Country/Region"], how="outer"),
-        data_frames
-    )
+    global_cases = get_metric("confirmed", "global")
+    global_deaths = get_metric("deaths", "global")
+    jhu = pd.merge(global_cases, global_deaths, on=["date", "Country/Region"], how="outer")
     return jhu
 
 def load_locations():
@@ -203,14 +200,14 @@ def main(skip_download=False):
         print_err("JHU export failed.\n")
         sys.exit(1)
 
-    print("Generating megafile…")
-    megafile.generate_megafile()
-    print("Megafile is ready.")
+    # print("Generating megafile…")
+    # megafile.generate_megafile()
+    # print("Megafile is ready.")
 
-    send_success(
-        channel="corona-data-updates",
-        title="Updated GitHub exports"
-    )
+    # send_success(
+    #     channel="corona-data-updates",
+    #     title="Updated JHU GitHub exports"
+    # )
 
 def update_db():
     time_str = datetime.now().astimezone(pytz.timezone("Europe/London")).strftime("%-d %B, %H:%M")
