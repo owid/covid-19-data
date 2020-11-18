@@ -11,6 +11,7 @@ url <- read_html(url) %>%
 date <- str_extract(url, "\\d+-\\d+_BULETIN") %>%
     str_replace("BULETIN", "2020") %>%
     dmy()
+if (is.na(date)) date <- today()
 
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
 
