@@ -317,7 +317,7 @@ def main(filename=None, skip_download=False):
 
     send_success(
         channel='corona-data-updates',
-        title='Updated GitHub exports'
+        title='Updated ECDC GitHub exports'
     )
 
 def update_db():
