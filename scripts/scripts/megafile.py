@@ -1,5 +1,5 @@
 """
-Merges the main COVID-19 testing dataset with each of the COVID-19 ECDC datasets into a 'megafile';
+Merges the main COVID-19 testing dataset with each of the COVID-19 JHU datasets into a 'megafile';
 - Follows a long format of 1 row per country & date, and variables as columns;
 - Published in CSV, XLSX, and JSON formats;
 - Includes derived variables that can't be easily calculated, such as X per capita;
@@ -19,17 +19,17 @@ INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
 DATA_DIR = os.path.join(CURRENT_DIR, "../../public/data/")
 
 
-def get_ecdc():
+def get_jhu():
     """
-    Reads each COVID-19 ECDC dataset located in /public/data/ecdc/
+    Reads each COVID-19 JHU dataset located in /public/data/jhu/
     Melts the dataframe to vertical format (1 row per country and date)
-    Merges all ECDC dataframes into one with outer joins
+    Merges all JHU dataframes into one with outer joins
 
     Returns:
-        ecdc {dataframe}
+        jhu {dataframe}
     """
 
-    ecdc_variables = [
+    jhu_variables = [
         "total_cases",
         "new_cases",
         "weekly_cases",
@@ -47,23 +47,23 @@ def get_ecdc():
     data_frames = []
 
     # Process each file and melt it to vertical format
-    for ecdc_var in ecdc_variables:
-        tmp = pd.read_csv(os.path.join(DATA_DIR, f"../../public/data/ecdc/{ecdc_var}.csv"))
+    for jhu_var in jhu_variables:
+        tmp = pd.read_csv(os.path.join(DATA_DIR, f"../../public/data/jhu/{jhu_var}.csv"))
         country_cols = list(tmp.columns)
         country_cols.remove("date")
 
         # Carrying last observation forward for International totals to avoid discrepancies
-        if ecdc_var[:5] == "total":
+        if jhu_var[:5] == "total":
             tmp = tmp.sort_values("date")
             tmp["International"] = tmp["International"].ffill()
 
         tmp = (
             pd.melt(tmp, id_vars="date", value_vars=country_cols)
-            .rename(columns={"value": ecdc_var, "variable": "location"})
+            .rename(columns={"value": jhu_var, "variable": "location"})
             .dropna()
         )
-        if ecdc_var[:7] == "weekly_":
-            tmp[ecdc_var] = tmp[ecdc_var].div(7).round(3)
+        if jhu_var[:7] == "weekly_":
+            tmp[jhu_var] = tmp[jhu_var].div(7).round(3)
             tmp = tmp.rename(errors="ignore", columns={
                 "weekly_cases": "new_cases_smoothed",
                 "weekly_deaths": "new_deaths_smoothed",
@@ -71,17 +71,17 @@ def get_ecdc():
                 "weekly_deaths_per_million": "new_deaths_smoothed_per_million"
             })
         else:
-            tmp[ecdc_var] = tmp[ecdc_var].round(3)
+            tmp[jhu_var] = tmp[jhu_var].round(3)
         data_frames.append(tmp)
     print()
 
-    # Outer join between all ECDC files
-    ecdc = reduce(
+    # Outer join between all files
+    jhu = reduce(
         lambda left, right: pd.merge(left, right, on=["date", "location"], how="outer"),
         data_frames
     )
 
-    return ecdc
+    return jhu
 
 
 def get_reprod():
@@ -281,46 +281,36 @@ def df_to_json(complete_dataset, output_path, static_columns):
 
 
 def generate_megafile():
-    """
-    Main function of this script, run if __main__
-    Imports and processes the testing data
-    Imports and processes the ECDC data
-    Imports and processes the OxCGRT data
-    Merges testing and ECDC dataframes with an outer join
-    Imports ISO 3166-1 alpha-3 codes
-    Checks for missing ISO codes in the lookup file compared to OWID files
-    Writes the 'megafile' to CSV and XLSX in /public/data/
-    """
 
-    print("\nFetching ECDC dataset…")
-    ecdc = get_ecdc()
+    print("\nFetching JHU dataset…")
+    jhu = get_jhu()
 
     print("\nFetching reproduction rate…")
     reprod = get_reprod()
 
-    location_mismatch = set(reprod.location).difference(set(ecdc.location))
+    location_mismatch = set(reprod.location).difference(set(jhu.location))
     for loc in location_mismatch:
-        print(f"<!> Location '{loc}' has reproduction rates but is absent from ECDC data")
+        print(f"<!> Location '{loc}' has reproduction rates but is absent from JHU data")
 
     print("\nFetching hospital dataset…")
     hosp = get_hosp()
 
-    location_mismatch = set(hosp.location).difference(set(ecdc.location))
+    location_mismatch = set(hosp.location).difference(set(jhu.location))
     for loc in location_mismatch:
-        print(f"<!> Location '{loc}' has hospital data but is absent from ECDC data")
+        print(f"<!> Location '{loc}' has hospital data but is absent from JHU data")
 
     print("\nFetching testing dataset…")
     testing = get_testing()
 
-    location_mismatch = set(testing.location).difference(set(ecdc.location))
+    location_mismatch = set(testing.location).difference(set(jhu.location))
     for loc in location_mismatch:
-        print(f"<!> Location '{loc}' has testing data but is absent from ECDC data")
+        print(f"<!> Location '{loc}' has testing data but is absent from JHU data")
 
     print("\nFetching OxCGRT dataset…")
     cgrt = get_cgrt()
 
     all_covid = (
-        ecdc
+        jhu
         .merge(reprod, on=["date", "location"], how="left")
         .merge(hosp, on=["date", "location"], how="outer")
         .merge(testing, on=["date", "location"], how="outer")
