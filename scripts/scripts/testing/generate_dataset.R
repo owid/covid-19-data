@@ -184,7 +184,7 @@ collated <- add_iso_codes(collated)
 
 add_case_ratios <- function(df) {
     # Import cases from latest online version rather than local to avoid desync
-    confirmed_cases <- fread("https://covid.ourworldindata.org/data/ecdc/total_cases.csv", showProgress = FALSE)
+    confirmed_cases <- fread("https://covid.ourworldindata.org/data/jhu/total_cases.csv", showProgress = FALSE)
     setnames(confirmed_cases, "date", "Date")
     confirmed_cases <- gather(confirmed_cases, Country, cases, 2:ncol(confirmed_cases))
     setDT(confirmed_cases)
