@@ -273,7 +273,7 @@ copy_paste_annotation <- paste(copy_paste_annotation$country, copy_paste_annotat
 writeLines(copy_paste_annotation, sprintf("%s/copy_paste_annotation.txt", CONFIG$internal_shared_folder))
 
 # Write grapher file
-fwrite(grapher, sprintf("%s/grapher-latest/grapher-latest.csv", CONFIG$internal_shared_folder))
+fwrite(grapher, sprintf("%s/grapher-latest/COVID testing time series data.csv", CONFIG$internal_shared_folder))
 fwrite(grapher, sprintf("%s/grapher-history/grapher-%s.csv", CONFIG$internal_shared_folder, ts))
 
 # Make public version
