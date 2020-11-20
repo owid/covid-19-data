@@ -22,7 +22,6 @@ def rwanda_get_tests_snapshot():
     }
     res = requests.get(url, params=params)
     json_data = json.loads(res.text)
-    import pdb; pdb.set_trace()
     assert len(json_data['features']) == 1, "only expected a single result."
     timestamp = json_data['features'][0]['attributes']['last_edited_date']
     date = datetime.datetime.utcfromtimestamp(timestamp/1000).strftime('%Y-%m-%d')

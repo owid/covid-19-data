@@ -1,5 +1,7 @@
+import os
 import time
 import pandas as pd
+from glob import glob
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -22,7 +24,7 @@ def main():
 
         # Setting Chrome to trust downloads
         driver.command_executor._commands["send_command"] = ("POST", "/session/$sessionId/chromium/send_command")
-        params = {"cmd": "Page.setDownloadBehavior", "params": {"behavior": "allow", "downloadPath": "input"}}
+        params = {"cmd": "Page.setDownloadBehavior", "params": {"behavior": "allow", "downloadPath": "tmp"}}
         command_result = driver.execute("send_command", params)
 
         driver.get(SOURCE_URL)
@@ -34,7 +36,8 @@ def main():
         driver.find_element_by_css_selector(".directDownload a").click()
         time.sleep(2)
 
-    df = pd.read_excel("input/Thailand_COVID-19_testing_data.xlsx")
+    file = glob("tmp/Thailand*")[0]
+    df = pd.read_excel(file)
     df.loc[:, "Date"] = pd.to_datetime(df["Date"], errors="coerce")
     df = df[["Date", "Total"]].dropna()
     df = df[df["Total"] > 0]
@@ -49,6 +52,7 @@ def main():
     df.loc[:, "Testing type"] = "PCR only"
 
     df.to_csv("automated_sheets/Thailand.csv", index=False)
+    os.remove(file)
 
 
 if __name__ == '__main__':

@@ -17,14 +17,13 @@ def tests_performed():
 
     # Antigen tests
     antigen = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/a4db9eea-9423-4fcd-8373-e2b1e3f27ad3", sep=";")
-    antigen = antigen[antigen["act_description"].isin(["FORFAIT COVID  AVEC PRÉLÈVEMENT", "FORFAIT COVID  SANS PRÉLÈVEMENT"])]
+    antigen = antigen[antigen["act_code"].isin([3701270700313, 3701270700306])]
     assert len(antigen) > 0
     antigen = antigen[["date", "quantity"]].groupby("date", as_index=False).sum()
     antigen = antigen.rename(columns={"quantity": "Antigen", "date": "Date"})
 
-    df = pd.merge(pcr, antigen, on="Date", how="outer").fillna(0)
+    df = pd.merge(pcr, antigen, on="Date", how="inner").fillna(0)
     df.loc[:, "Daily change in cumulative total"] = df["PCR"].add(df["Antigen"]).astype(int)
-    import pdb; pdb.set_trace()
     df = df.drop(columns=["PCR", "Antigen"])
 
     df.loc[:, "Country"] = "France"
@@ -41,11 +40,11 @@ def tests_performed():
 def people_tested():
 
     url = "https://www.data.gouv.fr/fr/datasets/r/dd0de5d9-b5a5-4503-930a-7b08dc0adc7c"
-    df = pd.read_csv(url, sep=";", usecols=["jour", "cl_age90", "T"])
+    df = pd.read_csv(url, sep=";", usecols=["jour", "cl_age90", "t"])
 
     df = (
         df[df.cl_age90 == 0]
-        .rename(columns={"jour": "Date", "T": "Daily change in cumulative total"})
+        .rename(columns={"jour": "Date", "t": "Daily change in cumulative total"})
         .drop(columns=["cl_age90"])
     )
 
