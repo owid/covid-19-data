@@ -22,7 +22,7 @@ def tests_performed():
     antigen = antigen[["date", "quantity"]].groupby("date", as_index=False).sum()
     antigen = antigen.rename(columns={"quantity": "Antigen", "date": "Date"})
 
-    df = pd.merge(pcr, antigen, on="Date", how="inner").fillna(0)
+    df = pd.merge(pcr, antigen, on="Date", how="left").fillna(0)
     df.loc[:, "Daily change in cumulative total"] = df["PCR"].add(df["Antigen"]).astype(int)
     df = df.drop(columns=["PCR", "Antigen"])
 
