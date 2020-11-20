@@ -63,6 +63,19 @@ MAPPED_VALUES = {
 }
 
 
+def read_country_data(country, extension):
+    df = pd.read_csv(
+        f"https://github.com/YouGov-Data/covid-19-tracker/raw/master/data/{country}.{extension}",
+        low_memory=False,
+        na_values=[
+            "", "Not sure", " ", "Prefer not to say", "Don't know", 98, "Don't Know",
+            "Not applicable - I have already contracted Coronavirus (COVID-19)",
+            "Not applicable - I have already contracted Coronavirus"
+        ]
+    )
+    return df
+
+
 def merge_files():
 
     all_data = []
@@ -71,21 +84,14 @@ def merge_files():
         "https://github.com/YouGov-Data/covid-19-tracker/raw/master/countries.csv", header=None
     )[0])
 
-    # Data for the UK is split between two files in the repo
-    countries.remove("united-kingdom")
-    countries += ["united-kingdom1", "united-kingdom2"]
-
     for country in tqdm(countries):
         tqdm.write(country)
-        df = pd.read_csv(
-            f"https://github.com/YouGov-Data/covid-19-tracker/raw/master/data/{country}.csv",
-            low_memory=False,
-            na_values=[
-                "", "Not sure", " ", "Prefer not to say", "Don't know", 98, "Don't Know",
-                "Not applicable - I have already contracted Coronavirus (COVID-19)",
-                "Not applicable - I have already contracted Coronavirus"
-            ]
-        )
+        try:
+            df = read_country_data(country, "csv")
+            df.loc[:, "Date"] = pd.to_datetime(df.endtime, format="%d/%m/%Y %H:%M")
+        except:
+            df = read_country_data(country, "zip")
+            df.loc[:, "Date"] = pd.to_datetime(df.endtime, format="%Y-%m-%d %H:%M:%S")
         df.loc[:, "country"] = country
         all_data.append(df)
 
@@ -94,11 +100,7 @@ def merge_files():
 
 
 def make_weekly(df):
-    df.loc[:, "Date"] = (
-        pd.to_datetime(df.endtime, format="%d/%m/%Y %H:%S")
-        .dt.to_period('W')
-        .apply(lambda r: r.start_time)
-    )
+    df.loc[:, "Date"] = df["Date"].dt.to_period("W").apply(lambda r: r.start_time)
     df.loc[:, "Date"] = (df.Date - datetime.datetime(2020, 1, 21)).dt.days
     df = df.drop(columns=["endtime", "RecordNo"])
     return df
@@ -146,8 +148,7 @@ def standardize_entities(df):
         "taiwan": "Taiwan",
         "thailand": "Thailand",
         "united-arab-emirates": "United Arab Emirates",
-        "united-kingdom1": "United Kingdom",
-        "united-kingdom2": "United Kingdom",
+        "united-kingdom": "United Kingdom",
         "united-states": "United States",
         "vietnam": "Vietnam"
     })
