@@ -2,11 +2,13 @@ url <- "http://www.chp.gov.hk/files/misc/statistics_on_covid_19_testing_cumulati
 
 df <- fread(url, showProgress = FALSE)
 
-setnames(df, c("from", "Date", "tests1", "tests2", "tests3", "tests4"))
-df[, change := rowSums(df[, c("tests1", "tests2", "tests3", "tests4")], na.rm = TRUE)]
+setnames(df, c("from", "Date", "t1", "t2", "t3", "t4", "t5"))
+df[, change := rowSums(df[, c("t1", "t2", "t3", "t4", "t5")], na.rm = TRUE)]
 
 df[, from := NULL]
 df[, Date := dmy(Date)]
+
+df <- df[, .(change = sum(change, na.rm = TRUE)), Date]
 
 setorder(df, Date)
 df[, `Cumulative total` := cumsum(change)]

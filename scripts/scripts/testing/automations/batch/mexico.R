@@ -23,9 +23,8 @@ df[, `Daily change in cumulative total` := Count.x + Count.y]
 df[, c("Count.x", "Count.y") := NULL]
 df <- df[`Daily change in cumulative total` != 0]
 
-# Because of the significant lag in test reporting in Mexico, we censor the last 5 days of data
-# to avoid showing a large decrease in the number of tests
-df <- head(df, -5)
+# Because of the significant lag in test reporting in Mexico, we censor the last 10 days of data to avoid showing a large decrease in the number of tests, and thus an overestimated positive rate.
+df <- df[Date < today() - 10]
 
 df[, Country := "Mexico"]
 df[, Units := "people tested"]

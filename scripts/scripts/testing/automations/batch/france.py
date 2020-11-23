@@ -40,11 +40,11 @@ def tests_performed():
 def people_tested():
 
     url = "https://www.data.gouv.fr/fr/datasets/r/dd0de5d9-b5a5-4503-930a-7b08dc0adc7c"
-    df = pd.read_csv(url, sep=";", usecols=["jour", "cl_age90", "t"])
+    df = pd.read_csv(url, sep=";", usecols=["jour", "cl_age90", "T"])
 
     df = (
         df[df.cl_age90 == 0]
-        .rename(columns={"jour": "Date", "t": "Daily change in cumulative total"})
+        .rename(columns={"jour": "Date", "T": "Daily change in cumulative total"})
         .drop(columns=["cl_age90"])
     )
 
