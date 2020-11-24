@@ -24,8 +24,8 @@ samples <- data.table(
     `Testing type` = "unclear"
 )
 
-# Fix wrong figure in repo file: https://github.com/datameet/covid19/blob/master/downloads/icmr-backup/ICMR_testing_update_06Nov2020.pdf
-samples[Date == "2020-11-06", `Cumulative total` := 115429095]
+# Fix wrong figures in repo file
+samples[Date == "2020-11-20", `Cumulative total` := 129591786]
 
 samples <- samples[!is.na(`Cumulative total`)]
 fwrite(samples, "automated_sheets/India - Samples tested.csv")
