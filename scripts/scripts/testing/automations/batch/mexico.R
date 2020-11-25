@@ -28,7 +28,7 @@ df <- df[Date < today() - 10]
 
 df[, Country := "Mexico"]
 df[, Units := "people tested"]
-df[, `Source URL` := "https://datos.gob.mx/busca/dataset/informacion-referente-a-casos-covid-19-en-mexico"]
+df[, `Source URL` := "https://datos.covid-19.conacyt.mx/#DownZCSV"]
 df[, `Source label` := "Health Secretary"]
 df[, Notes := NA_character_]
 df[, `Testing type` := "PCR only"]
