@@ -44,6 +44,9 @@ stopifnot("Detailed description" %in% names(metadata))
 fwrite(metadata, sprintf("%s/backups/METADATA.csv", CONFIG$internal_shared_folder))
 sheet_names <- sort(metadata$Sheet)
 
+# Cut-off periods
+cutoff <- fread("../../input/owid/testing_cutoffs.csv")
+
 parse_country <- function(sheet_name) {
     message(sheet_name)
     is_automated <- metadata %>% filter(Sheet == sheet_name) %>% pull("Automated")
@@ -86,9 +89,12 @@ parse_country <- function(sheet_name) {
 
     stopifnot(nrow(collated) > 0)
 
-    # Censor the last month of data for the Netherlands
-    # https://twitter.com/jacvre/status/1319939664321589249
-    if (sheet_name == "Netherlands") collated <- collated %>% filter(Date <= today() - 30)
+    # Censor recent data when needed, based on /scripts/input/owid/testing_cutoffs.csv
+    if (sheet_name %in% cutoff$country_sheet) {
+        cutoff_period <- cutoff %>% filter(country_sheet == sheet_name) %>% pull(cutoff_days)
+        collated <- collated %>% filter(Date < (today() - cutoff_period))
+        message(sprintf("Applied cut-off of %s days for %s", cutoff_period, sheet_name))
+    }
 
     # Calculate daily change when absent
     if (!"Daily change in cumulative total" %in% names(collated)) {

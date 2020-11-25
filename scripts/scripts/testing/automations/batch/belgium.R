@@ -11,6 +11,5 @@ df[, Notes := NA_character_]
 df[, `Testing type` := "unclear"]
 
 df <- df[ymd(Date) <= today()]
-df <- head(df, -1)
 
 fwrite(df, "automated_sheets/Belgium.csv")
