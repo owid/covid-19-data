@@ -20,7 +20,7 @@ process_article <- function(url) {
     stopifnot(!is.na(date))
 
     count <- pdf_text("tmp/tmp.pdf") %>%
-        str_extract("\\d+ ?tests ont été effectués") %>%
+        str_extract("[\\d ]+ ?tests ont été effectués") %>%
         str_replace_all("[^\\d]", "") %>%
         na.omit() %>%
         as.integer() %>%

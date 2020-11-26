@@ -1,21 +1,6 @@
-url <- read_html("https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/") %>%
-    html_node(".main-container__inner .panel-body a") %>%
-    html_attr("href") %>%
-    read_html() %>%
-    html_node("aside .custom-bullet-list a") %>%
-    html_attr("href")
+date <- today() - 1
 
-if (is.na(url)) {
-    url <- read_html("https://eody.gov.gr/epidimiologika-statistika-dedomena/ektheseis-covid-19/") %>%
-        html_node(".main-container__inner .panel-body a") %>%
-        html_attr("href")
-}
-
-date <- str_extract(url, "202\\d{5}") %>% ymd()
-if (is.na(date)) {
-    date <- str_extract(url, "\\d\\d-\\d\\d-202\\d") %>% dmy()
-}
-if (is.na(date)) date <- today()
+url <- sprintf("https://eody.gov.gr/wp-content/uploads/2020/11/covid-gr-daily-report-%s.pdf", format.Date(date, "%Y%m%d"))
 
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
 
