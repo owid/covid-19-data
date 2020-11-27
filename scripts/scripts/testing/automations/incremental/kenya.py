@@ -35,7 +35,7 @@ def main():
 
     existing = pd.read_csv("automated_sheets/Kenya.csv")
 
-    if date > existing["Date"].max():
+    if date > existing["Date"].max() and tests_cumul > existing["Cumulative total"].max():
 
         new = pd.DataFrame({
             "Country": "Kenya",
