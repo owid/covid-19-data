@@ -36,11 +36,11 @@ df[, Notes := NA]
 df[, `Testing type` := "PCR only"]
 df[, `Cumulative total` := NA_integer_]
 
-existing <- fread("automated_sheets/Sweden - tests performed.csv")
+existing <- fread("automated_sheets/Sweden.csv")
 existing[, Date := ymd(Date)]
 existing <- existing[Date < min(df$Date)]
 
 df <- rbindlist(list(existing, df), use.names = TRUE)
 setorder(df, -Date)
 
-fwrite(df, "automated_sheets/Sweden - tests performed.csv")
+fwrite(df, "automated_sheets/Sweden.csv")
