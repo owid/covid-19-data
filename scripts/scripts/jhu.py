@@ -200,9 +200,9 @@ def main(skip_download=False):
         print_err("JHU export failed.\n")
         sys.exit(1)
 
-    # print("Generating megafile…")
-    # megafile.generate_megafile()
-    # print("Megafile is ready.")
+    print("Generating megafile…")
+    megafile.generate_megafile()
+    print("Megafile is ready.")
 
     send_success(
         channel="corona-data-updates",
