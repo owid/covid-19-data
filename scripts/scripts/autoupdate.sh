@@ -41,24 +41,24 @@ git pull
 # ECDC
 
 # Attempt to download ECDC CSV
-# run_python 'import ecdc; ecdc.download_csv()'
+run_python 'import ecdc; ecdc.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
-# if has_changed ./scripts/input/ecdc/releases/latest.csv; then
-#   echo "Generating ECDC files..."
-#   python $SCRIPTS_DIR/scripts/ecdc.py latest.csv --skip-download
-#   git add .
-#   git commit -m "Automated ECDC update"
-#   git push
-# else
-#   echo "ECDC export is up to date"
-# fi
+if has_changed ./scripts/input/ecdc/releases/latest.csv; then
+  echo "Generating ECDC files..."
+  python $SCRIPTS_DIR/scripts/ecdc.py latest.csv --skip-download
+  git add .
+  git commit -m "Automated ECDC update"
+  git push
+else
+  echo "ECDC export is up to date"
+fi
 
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-# run_python 'import ecdc; ecdc.update_db()'
+run_python 'import ecdc; ecdc.update_db()'
 
 # =====================================================================
 # JHU

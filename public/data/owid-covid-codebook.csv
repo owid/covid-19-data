@@ -3,18 +3,18 @@ iso_code,ISO 3166-1 alpha-3 – three-letter country codes,International Organiz
 continent,Continent of the geographical location,Our World in Data
 location,Geographical location,Our World in Data
 date,Date of observation,Our World in Data
-total_cases,Total confirmed cases of COVID-19,COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_cases,New confirmed cases of COVID-19,COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_cases_smoothed,New confirmed cases of COVID-19 (7-day smoothed),COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-total_deaths,Total deaths attributed to COVID-19,COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_deaths,New deaths attributed to COVID-19,COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_deaths_smoothed,New deaths attributed to COVID-19 (7-day smoothed),COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-total_cases_per_million,"Total confirmed cases of COVID-19 per 1,000,000 people",COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_cases_per_million,"New confirmed cases of COVID-19 per 1,000,000 people",COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_cases_smoothed_per_million,"New confirmed cases of COVID-19 (7-day smoothed) per 1,000,000 people",COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-total_deaths_per_million,"Total deaths attributed to COVID-19 per 1,000,000 people",COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_deaths_per_million,"New deaths attributed to COVID-19 per 1,000,000 people",COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
-new_deaths_smoothed_per_million,"New deaths attributed to COVID-19 (7-day smoothed) per 1,000,000 people",COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University
+total_cases,Total confirmed cases of COVID-19,European Centre for Disease Prevention and Control
+new_cases,New confirmed cases of COVID-19,European Centre for Disease Prevention and Control
+new_cases_smoothed,New confirmed cases of COVID-19 (7-day smoothed),European Centre for Disease Prevention and Control
+total_deaths,Total deaths attributed to COVID-19,European Centre for Disease Prevention and Control
+new_deaths,New deaths attributed to COVID-19,European Centre for Disease Prevention and Control
+new_deaths_smoothed,New deaths attributed to COVID-19 (7-day smoothed),European Centre for Disease Prevention and Control
+total_cases_per_million,"Total confirmed cases of COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
+new_cases_per_million,"New confirmed cases of COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
+new_cases_smoothed_per_million,"New confirmed cases of COVID-19 (7-day smoothed) per 1,000,000 people",European Centre for Disease Prevention and Control
+total_deaths_per_million,"Total deaths attributed to COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
+new_deaths_per_million,"New deaths attributed to COVID-19 per 1,000,000 people",European Centre for Disease Prevention and Control
+new_deaths_smoothed_per_million,"New deaths attributed to COVID-19 (7-day smoothed) per 1,000,000 people",European Centre for Disease Prevention and Control
 reproduction_rate,"Real-time estimate of the effective reproduction rate (R) of COVID-19","Arroyo Marioli et al. (2020). https://doi.org/10.2139/ssrn.3581633"
 icu_patients,"Number of COVID-19 patients in intensive care units (ICUs) on a given day",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
 icu_patients_per_million,"Number of COVID-19 patients in intensive care units (ICUs) on a given day per 1,000,000 people",European Centre for Disease Prevention and Control for European countries / COVID Tracking Project for the United States
