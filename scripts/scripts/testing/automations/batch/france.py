@@ -38,7 +38,6 @@ def tests_performed():
 
     df.loc[:, "Country"] = "France"
     df.loc[:, "Units"] = "tests performed"
-    df.loc[:, "Testing type"] = "includes non-PCR"
     df.loc[:, "Cumulative total"] = pd.NA
     df.loc[:, "Source URL"] = "https://geodes.santepubliquefrance.fr / https://www.data.gouv.fr/fr/datasets/covid-executions-et-ventes-de-tests-antigeniques-rapides-en-pharmacie/"
     df.loc[:, "Source label"] = "National Public Health Agency / IQVIA France"
