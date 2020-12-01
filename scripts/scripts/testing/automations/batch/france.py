@@ -34,7 +34,7 @@ def tests_performed():
     df.loc[:, "Source label"] = "National Public Health Agency / IQVIA France"
     df.loc[:, "Notes"] = pd.NA
 
-    df.to_csv("automated_sheets/France - tests performed.csv", index=False)
+    df.to_csv("automated_sheets/France.csv", index=False)
 
 
 def people_tested():
