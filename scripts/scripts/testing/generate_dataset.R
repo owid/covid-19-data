@@ -147,6 +147,7 @@ parse_country <- function(sheet_name) {
     collated <- add_smoothed_series(collated)
 
     setDT(collated)
+
     if (!collated$Country[1] %in% positive_rate_exclusions) {
         collated <- merge(collated, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
 
@@ -157,12 +158,13 @@ parse_country <- function(sheet_name) {
             stopifnot(max(collated$`Short-term positive rate`, na.rm = TRUE) <= 1)
         } else {
             collated$is_official_pr <- FALSE
-            collated[, `Short-term positive rate` := round(new_cases_smoothed / `7-day smoothed daily change`, 3)]
+            collated[, `Short-term positive rate` := new_cases_smoothed / `7-day smoothed daily change`]
             collated[`Short-term positive rate` < 0 | `Short-term positive rate` > 1, `Short-term positive rate` := NA]
         }
 
         # Tests per case = inverse of positive rate
         collated[, `Short-term tests per case` := ifelse(`Short-term positive rate` > 0, round(1 / `Short-term positive rate`, 1), NA_integer_)]
+        collated[, `Short-term positive rate` := round(`Short-term positive rate`, 3)]
 
         # Cumulative versions based on JHU data
         collated[, `Cumulative positive rate` := round(total_cases / `Cumulative total`, 3)]
