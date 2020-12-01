@@ -17,9 +17,6 @@ html_data <- data.table(public_latest)
 
 html_data[, Country := Entity %>% str_replace(" - .*", "")]
 
-non_pcr_note = "\n\nThe %s testing data includes non-PCR tests, which reduces its comparability with other countries."
-html_data[str_detect(Entity, "(incl. non-PCR)"), `Detailed description` := paste0(`Detailed description`, sprintf(non_pcr_note, Country))]
-
 setorder(html_data, Country, `General source label`)
 
 countries <- unique(html_data$Country)
@@ -55,21 +52,26 @@ for (c in countries) {
 
         source_number <- ifelse(nrow(country_rows) > 1, sprintf(" #%s", i), "")
 
-        html_add(sprintf('<p><strong>Source%s: </strong><a href="%s">%s</a><br>',
+        html_add(sprintf('<p><strong>Source%s: </strong><a href="%s">%s</a></p>',
                          source_number,
                          row$`General source URL`,
                          row$`General source label`))
 
-        html_add(sprintf('<strong>Short description: </strong>%s</p>',
+        html_add(sprintf('<p><strong>Short description: </strong>%s</p>',
                          activate_links(row$`Short description`)))
 
-        if (!is.na(row$`7-day smoothed daily change per thousand`)) {
-            html_add(sprintf('<p><strong>Latest estimate: </strong>%s daily tests per thousand people (as of %s).</p>',
-                             format(round(row$`7-day smoothed daily change per thousand`, 2), big.mark=","),
-                             str_squish(format.Date(row$Date, "%e %B %Y"))))
+        if (!is.na(row$`Test definition`)) {
+            html_add(sprintf('<p><strong>Test definition: </strong>%s</p>', row$`Test definition`))
         }
 
-        html_add(sprintf('<p><strong>Detailed description:</strong><br><br>%s</p>',
+        if (!is.na(row$`Case definition`)) {
+            html_add(sprintf('<p><strong>Case definition: </strong>%s</p>', row$`Case definition`))
+        }
+
+        html_add(sprintf('<p><strong>Positive rate: </strong>%s</p>',
+                         ifelse(row$is_official_pr, "collected directly from the source.", "calculated by Our World in Data as the 7-day rolling average of daily cases, divided by the 7-day rolling average of daily tests.")))
+
+        html_add(sprintf('<p><strong>Detailed description:</strong><br>%s</p>',
                          str_replace_all(activate_links(row$`Detailed description`), "\n", "<br>")))
     }
 

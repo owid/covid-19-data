@@ -38,7 +38,7 @@ world_population <- population[Country == "World", Population]
 # Find sheets marked as Collate = TRUE in METADATA
 gs4_auth(email = CONFIG$google_credentials_email)
 key <- CONFIG$covid_time_series_gsheet
-metadata <- read_sheet(key, sheet = "METADATA", range = "A2:M300") %>%
+metadata <- read_sheet(key, sheet = "METADATA", range = "A2:L300") %>%
     filter(Collate == TRUE)
 stopifnot("Detailed description" %in% names(metadata))
 fwrite(metadata, sprintf("%s/backups/METADATA.csv", CONFIG$internal_shared_folder))
@@ -76,12 +76,7 @@ parse_country <- function(sheet_name) {
 
     stopifnot(length(table(collated$Units)) == 1)
     stopifnot(length(table(collated$`Testing type`)) == 1)
-    stopifnot(collated$`Testing type`[1] %in% c("PCR only", "unclear", "includes non-PCR"))
     stopifnot(collated$Units[1] %in% c("people tested", "samples tested", "tests performed", "units unclear"))
-
-    collated <- collated %>%
-        mutate(Units = if_else(`Testing type` == "includes non-PCR", sprintf("%s (incl. non-PCR)", Units), Units)) %>%
-        select(-`Testing type`)
 
     collated <- collated %>%
         filter(!is.na(Country) & !is.na(Date)) %>%
@@ -157,10 +152,12 @@ parse_country <- function(sheet_name) {
         collated <- merge(collated, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
 
         if ("Positive rate" %in% names(collated)) {
+            collated$is_official_pr <- TRUE
             setnames(collated, "Positive rate", "Short-term positive rate")
             stopifnot(min(collated$`Short-term positive rate`, na.rm = TRUE) >= 0)
             stopifnot(max(collated$`Short-term positive rate`, na.rm = TRUE) <= 1)
         } else {
+            collated$is_official_pr <- FALSE
             collated[, `Short-term positive rate` := round(new_cases_smoothed / `7-day smoothed daily change`, 3)]
             collated[`Short-term positive rate` < 0 | `Short-term positive rate` > 1, `Short-term positive rate` := NA]
         }
@@ -290,7 +287,7 @@ public_latest <- merge(public, metadata)
 public_latest[, c("Sheet", "Ready for review", "Collate") := NULL]
 setorder(public_latest, Entity, -Date)
 public_latest <- public_latest[, .SD[1], Entity]
-public[, c("Sheet", "Number of observations", "Cumulative tests per case", "Cumulative positive rate") := NULL]
+public[, c("Sheet", "Number of observations", "Cumulative tests per case", "Cumulative positive rate", "is_official_pr") := NULL]
 setcolorder(public, "Entity")
 
 # Generate HTML code for WordPress
