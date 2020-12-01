@@ -26,6 +26,16 @@ def tests_performed():
     df.loc[:, "Daily change in cumulative total"] = df["PCR"].add(df["Antigen"]).astype(int)
     df = df.drop(columns=["PCR", "Antigen"])
 
+    # Positive rate
+    pr = pd.read_csv(
+        "https://www.data.gouv.fr/fr/datasets/r/381a9472-ce83-407d-9a64-1b8c23af83df",
+        usecols=["extract_date", "tx_pos"]
+    )
+    pr.loc[:, "tx_pos"] = pr["tx_pos"].div(100).round(3)
+    pr = pr.rename(columns={"extract_date": "Date", "tx_pos": "Positive rate"})
+
+    df = pd.merge(df, pr, on="Date", how="left")
+
     df.loc[:, "Country"] = "France"
     df.loc[:, "Units"] = "tests performed"
     df.loc[:, "Testing type"] = "includes non-PCR"
