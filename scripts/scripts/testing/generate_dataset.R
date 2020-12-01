@@ -87,7 +87,8 @@ parse_country <- function(sheet_name) {
         filter(!is.na(Country) & !is.na(Date)) %>%
         select(Country, Units, Date, `Source URL`, `Source label`, Notes,
                matches("^Cumulative total$"),
-               matches("^Daily change in cumulative total$"))
+               matches("^Daily change in cumulative total$"),
+               matches("^Positive rate$"))
 
     fwrite(collated, sprintf("%s/backups/%s.csv", CONFIG$internal_shared_folder, sheet_name))
 
@@ -151,8 +152,31 @@ parse_country <- function(sheet_name) {
 
     collated <- add_smoothed_series(collated)
 
-    # Sanity checks
     setDT(collated)
+    if (!collated$Country[1] %in% positive_rate_exclusions) {
+        collated <- merge(collated, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
+
+        if ("Positive rate" %in% names(collated)) {
+            setnames(collated, "Positive rate", "Short-term positive rate")
+            stopifnot(min(collated$`Short-term positive rate`, na.rm = TRUE) >= 0)
+            stopifnot(max(collated$`Short-term positive rate`, na.rm = TRUE) <= 1)
+        } else {
+            collated[, `Short-term positive rate` := round(new_cases_smoothed / `7-day smoothed daily change`, 3)]
+            collated[`Short-term positive rate` < 0 | `Short-term positive rate` > 1, `Short-term positive rate` := NA]
+        }
+
+        # Tests per case = inverse of positive rate
+        collated[, `Short-term tests per case` := ifelse(`Short-term positive rate` > 0, round(1 / `Short-term positive rate`, 1), NA_integer_)]
+
+        # Cumulative versions based on JHU data
+        collated[, `Cumulative positive rate` := round(total_cases / `Cumulative total`, 3)]
+        collated[`Cumulative positive rate` < 0 | `Cumulative positive rate` > 1, `Cumulative positive rate` := NA]
+        collated[, `Cumulative tests per case` := ifelse(`Cumulative positive rate` > 0, round(1 / `Cumulative positive rate`, 1), NA_integer_)]
+
+        collated[, c("total_cases", "new_cases_smoothed") := NULL]
+    }
+
+    # Sanity checks
     if (any(collated$`Daily change in cumulative total` == 0, na.rm = TRUE)) {
         View(collated)
         stop("At least one daily change == 0")
@@ -164,24 +188,6 @@ parse_country <- function(sheet_name) {
     }
     stopifnot(year(min(collated$Date)) >= 2020)
     stopifnot(max(collated$Date) <= today())
-
-    if (!collated$Country[1] %in% positive_rate_exclusions) {
-        collated <- merge(collated, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
-
-        # Tests per cases
-        collated[, `Cumulative tests per case` := round(`Cumulative total` / total_cases, 3)]
-        collated[`Cumulative tests per case` == Inf | `Cumulative tests per case` < 1, `Cumulative tests per case` := NA]
-        collated[, `Short-term tests per case` := round(`7-day smoothed daily change` / new_cases_smoothed, 3)]
-        collated[`Short-term tests per case` == Inf | `Short-term tests per case` < 1, `Short-term tests per case` := NA]
-
-        # Positive rate
-        collated[, `Cumulative positive rate` := round(total_cases / `Cumulative total`, 3)]
-        collated[`Cumulative positive rate` > 1, `Cumulative positive rate` := NA]
-        collated[, `Short-term positive rate` := round(new_cases_smoothed / `7-day smoothed daily change`, 3)]
-        collated[`Short-term positive rate` > 1, `Short-term positive rate` := NA]
-
-        collated[, c("total_cases", "new_cases_smoothed") := NULL]
-    }
 
     return(collated)
 }
