@@ -47,6 +47,16 @@ sheet_names <- sort(metadata$Sheet)
 # Cut-off periods
 cutoff <- fread("../../input/owid/testing_cutoffs.csv")
 
+# Import cases from latest online version rather than local to avoid desync
+confirmed_cases <- fread("https://covid.ourworldindata.org/data/owid-covid-data.csv",
+                         showProgress = FALSE, select = c("date", "location", "new_cases_smoothed", "total_cases"))
+setnames(confirmed_cases, c("date", "location"), c("Date", "Country"))
+confirmed_cases[, Date := ymd(Date)]
+
+# Exclude countries from positive rate calculations
+positive_rate_exclusions <- c("Peru", "Ecuador", "Brazil", "Costa Rica", "Colombia")
+
+# Process each country's data
 parse_country <- function(sheet_name) {
     message(sheet_name)
     is_automated <- metadata %>% filter(Sheet == sheet_name) %>% pull("Automated")
@@ -155,11 +165,30 @@ parse_country <- function(sheet_name) {
     stopifnot(year(min(collated$Date)) >= 2020)
     stopifnot(max(collated$Date) <= today())
 
+    if (!collated$Country[1] %in% positive_rate_exclusions) {
+        collated <- merge(collated, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
+
+        # Tests per cases
+        collated[, `Cumulative tests per case` := round(`Cumulative total` / total_cases, 3)]
+        collated[`Cumulative tests per case` == Inf | `Cumulative tests per case` < 1, `Cumulative tests per case` := NA]
+        collated[, `Short-term tests per case` := round(`7-day smoothed daily change` / new_cases_smoothed, 3)]
+        collated[`Short-term tests per case` == Inf | `Short-term tests per case` < 1, `Short-term tests per case` := NA]
+
+        # Positive rate
+        collated[, `Cumulative positive rate` := round(total_cases / `Cumulative total`, 3)]
+        collated[`Cumulative positive rate` > 1, `Cumulative positive rate` := NA]
+        collated[, `Short-term positive rate` := round(new_cases_smoothed / `7-day smoothed daily change`, 3)]
+        collated[`Short-term positive rate` > 1, `Short-term positive rate` := NA]
+
+        collated[, c("total_cases", "new_cases_smoothed") := NULL]
+    }
+
     return(collated)
 }
 
 # Process all countries
-collated <- rbindlist(lapply(sheet_names, FUN = parse_country), use.names = TRUE)
+collated <- lapply(sheet_names, FUN = parse_country)
+collated <- rbindlist(collated, use.names = TRUE, fill = TRUE)
 collated[, Entity := paste(Country, "-", Units)]
 setorder(collated, Country, Units, Date)
 
@@ -187,40 +216,6 @@ add_iso_codes <- function(df) {
     return(df)
 }
 collated <- add_iso_codes(collated)
-
-add_case_ratios <- function(df) {
-    # Import cases from latest online version rather than local to avoid desync
-    confirmed_cases <- fread("https://covid.ourworldindata.org/data/jhu/total_cases.csv", showProgress = FALSE)
-    setnames(confirmed_cases, "date", "Date")
-    confirmed_cases <- gather(confirmed_cases, Country, cases, 2:ncol(confirmed_cases))
-    setDT(confirmed_cases)
-    confirmed_cases[, Date := ymd(Date)]
-    setorder(confirmed_cases, Country, Date)
-    confirmed_cases[, cases := na_locf(cases, na_remaining = "keep"), Country]
-    confirmed_cases[, ra7d_new_cases := frollmean(cases - shift(cases, 1), n = 7, align = "right"), Country]
-    confirmed_cases[ra7d_new_cases < 0, ra7d_new_cases := NA_real_]
-
-    # Drop observations of all positive rate variables for countries
-    # that include positive antibody results in their confirmed cases
-    confirmed_cases <- confirmed_cases[!Country %in% c("Peru", "Ecuador", "Brazil", "Costa Rica", "Colombia")]
-    df <- merge(df, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
-
-    # Tests per cases
-    df[, `Cumulative tests per case` := round(`Cumulative total` / cases, 3)]
-    df[`Cumulative tests per case` == Inf | `Cumulative tests per case` < 1, `Cumulative tests per case` := NA]
-    df[, `Short-term tests per case` := round(`7-day smoothed daily change` / ra7d_new_cases, 3)]
-    df[`Short-term tests per case` == Inf | `Short-term tests per case` < 1, `Short-term tests per case` := NA]
-
-    # Positive rate
-    df[, `Cumulative positive rate` := round(cases / `Cumulative total`, 3)]
-    df[`Cumulative positive rate` > 1, `Cumulative positive rate` := NA]
-    df[, `Short-term positive rate` := round(ra7d_new_cases / `7-day smoothed daily change`, 3)]
-    df[`Short-term positive rate` > 1, `Short-term positive rate` := NA]
-
-    df[, c("cases", "ra7d_new_cases") := NULL]
-    return(df)
-}
-collated <- add_case_ratios(collated)
 
 # Make grapher version
 grapher <- collated[, .(
