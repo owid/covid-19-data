@@ -75,7 +75,6 @@ parse_country <- function(sheet_name) {
     }
 
     stopifnot(length(table(collated$Units)) == 1)
-    stopifnot(length(table(collated$`Testing type`)) == 1)
     stopifnot(collated$Units[1] %in% c("people tested", "samples tested", "tests performed", "units unclear"))
 
     collated <- collated %>%
