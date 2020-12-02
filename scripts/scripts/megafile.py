@@ -8,7 +8,7 @@ Merges the main COVID-19 testing dataset with each of the COVID-19 JHU datasets 
 
 import json
 import os
-from datetime import datetime
+from datetime import datetime, date
 from functools import reduce
 import pandas as pd
 import numpy as np
@@ -186,6 +186,9 @@ def get_testing():
         print(duplicates)
         raise Exception("Multiple rows for the same location and date")
 
+    # Remove observations for current day to avoid rows with testing data but no case/deaths
+    testing = testing[testing["date"] < str(date.today())]
+
     return testing
 
 
@@ -361,6 +364,9 @@ def generate_megafile():
         "human_development_index": "un/human_development_index.csv",
     }
     all_covid = add_macro_variables(all_covid, macro_variables)
+
+    # Sort by location and date
+    all_covid = all_covid.sort_values(["location", "date"])
 
     # Check that we only have 1 unique row for each location/date pair
     assert all_covid.drop_duplicates(subset=["location", "date"]).shape == all_covid.shape
