@@ -90,7 +90,8 @@ parse_country <- function(sheet_name) {
         inner_join(population, by = "Country") %>%
         arrange(Date) %>%
         mutate(Sheet = sheet_name) %>%
-        mutate(Date = date(Date))
+        mutate(Date = date(Date)) %>%
+        filter(Date < today())
 
     stopifnot(nrow(collated) > 0)
 
