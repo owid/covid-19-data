@@ -33,7 +33,6 @@ df[, Country := "United States"]
 df[, Units := "tests performed"]
 df[, `Source label` := "Department of Health & Human Services"]
 df[, `Source URL` := url]
-df[, `Testing type` := "PCR"]
 df[, Notes := NA_character_]
 
 fwrite(df, "automated_sheets/United States - tests performed.csv")
