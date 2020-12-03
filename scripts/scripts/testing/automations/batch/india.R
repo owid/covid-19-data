@@ -20,8 +20,7 @@ samples <- data.table(
     Units = "samples tested",
     `Source label` = "Indian Council of Medical Research",
     `Source URL` = "https://github.com/datameet/covid19",
-    Notes = "Made available by DataMeet on GitHub",
-    `Testing type` = "unclear"
+    Notes = "Made available by DataMeet on GitHub"
 )
 
 # Fix wrong figures in repo file
@@ -37,8 +36,7 @@ people <- data.table(
     Units = "people tested",
     `Source label` = "Indian Council of Medical Research",
     `Source URL` = "https://github.com/datameet/covid19",
-    Notes = "Made available by DataMeet on GitHub",
-    `Testing type` = "unclear"
+    Notes = "Made available by DataMeet on GitHub"
 )
 
 people <- people[!is.na(`Cumulative total`)]
