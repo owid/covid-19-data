@@ -1,6 +1,6 @@
 date <- today() - 1
 
-url <- sprintf("https://eody.gov.gr/wp-content/uploads/2020/11/covid-gr-daily-report-%s.pdf", format.Date(date, "%Y%m%d"))
+url <- sprintf("https://eody.gov.gr/wp-content/uploads/%s/covid-gr-daily-report-%s.pdf", format.Date(date, "%Y/%m"), format.Date(date, "%Y%m%d"))
 
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
 
