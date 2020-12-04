@@ -41,6 +41,7 @@ def main():
         .str.replace("Ene", "Jan")
         .str.replace("Abr", "Apr")
         .str.replace("Ago", "Aug")
+        .str.replace("Dic", "Dec")
     )
 
     df.loc[:, "Daily change in cumulative total"] = df["Daily change in cumulative total"].astype(int)

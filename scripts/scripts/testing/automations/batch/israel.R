@@ -12,7 +12,7 @@ setnames(df, c("Date", "Cumulative total"))
 # Dates in the Excel file are sometimes formatted in the wrong ways
 # Some will appear as dates, others as integers
 # This recreates a date sequence (if at least the first and last rows have correct dates)
-suppressWarnings(df[, Date := date(mdy_hms(Date))])
+suppressWarnings(df[, Date := date(dmy_hms(Date))])
 min_date <- df$Date[1]
 max_date <- df$Date[nrow(df)]
 stopifnot(!is.na(min_date))

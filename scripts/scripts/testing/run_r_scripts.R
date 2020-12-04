@@ -25,7 +25,7 @@ CONFIG <- fromJSON(file = "testing_dataset_config.json")
 `_` <- Sys.setlocale("LC_TIME", "en_US")
 
 add_snapshot <- function(count, sheet_name, country, units, date = today(),
-                         source_url, source_label, testing_type,
+                         source_url, source_label, testing_type = NA_character_,
                          notes = NA_character_, daily_change = NA_integer_) {
 
     prev <- fread(file = sprintf("automated_sheets/%s.csv", sheet_name))
