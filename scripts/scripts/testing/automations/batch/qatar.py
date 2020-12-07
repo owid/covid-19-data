@@ -91,8 +91,8 @@ def get_data() -> pd.DataFrame:
     # with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None):
     #     print(df)
 
-    # Temporary fix for 2020-10-25 (typo in total number of tests)
-    df = df[-(df["Date"] == "2020-10-25")]
+    # Temporary fix for 2020-10-25 and 2020-11-21 (typo in total number of tests)
+    df = df[-(df["Date"].isin(["2020-10-25", "2020-11-21"]))]
     return df
 
 

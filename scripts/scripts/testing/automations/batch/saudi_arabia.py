@@ -35,20 +35,6 @@ hardcoded_data = [
     # {'Date': "", SERIES_TYPE: , "Source URL": ""},
 ]
 
-
-# sample of official values for cross-checking against the unofficial data.
-sample_official_data = [
-    ("2020-09-07", {SERIES_TYPE: 48690, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-09-08-008.aspx"}),
-    ("2020-09-06", {SERIES_TYPE: 44171, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-09-07-006.aspx"}),
-    ("2020-08-28", {SERIES_TYPE: 52008, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-08-29-001.aspx"}),
-    ("2020-08-10", {SERIES_TYPE: 60828, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-08-11-004.aspx"}),
-    ("2020-06-07", {SERIES_TYPE: 18578, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-06-08-004.aspx"}),
-    ("2020-06-06", {SERIES_TYPE: 25036, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-06-07-005.aspx"}),
-    ("2020-05-30", {SERIES_TYPE: 16200, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-05-31-003.aspx"}),
-    ("2020-05-19", {SERIES_TYPE: 18094, "source": "https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/News-2020-05-20-002.aspx"}),
-]
-
-
 def main() -> None:
     df = get_data()
     df['Source URL'] = df['Source URL'].apply(lambda x: SOURCE_URL if pd.isnull(x) else x)
@@ -104,11 +90,6 @@ def sanity_checks(df: pd.DataFrame) -> None:
     # checks that the cumulative number of tests on date t is always greater than the figure for t-1:
     assert (df_temp['Cumulative total'].iloc[1:] >= df_temp['Cumulative total'].shift(1).iloc[1:]).all(), "On one or more dates, `Cumulative total` is greater on date t-1."
     # df.iloc[1:][df['Cumulative total'].iloc[1:] < df['Cumulative total'].shift(1).iloc[1:]]
-    # cross-checks a sample of scraped figures against the expected result.
-    assert len(sample_official_data) > 0
-    for dt, d in sample_official_data:
-        val = df_temp.loc[df_temp['Date'] == dt, SERIES_TYPE].squeeze().sum()
-        assert val == d[SERIES_TYPE], f"scraped value ({val:,d}) != official value ({d[SERIES_TYPE]:,d}) on {dt}"
     return None
 
 

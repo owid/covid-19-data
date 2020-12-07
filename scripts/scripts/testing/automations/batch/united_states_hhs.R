@@ -18,11 +18,12 @@ url <- read_html("https://www.cdc.gov/coronavirus/2019-ncov/covid-data/covidview
     html_attr("href") %>%
     str_subset("csv$") %>%
     paste0("https://www.cdc.gov", .)
-positive_rate <- fread(url, skip = 6, select = c("Week", "% of Specimens Positive for SARS-CoV-2"))
+positive_rate <- fread(url, skip = 5, select = c("Week", "% of Specimens Positive for SARS-CoV-2"))
 positive_rate[, year := str_sub(Week, 1, 4)]
 positive_rate[, week_no := as.integer(str_sub(Week, 5, 6))]
 positive_rate[, Date := ymd(sprintf("%s0101", year))]
 week(positive_rate$Date) <- positive_rate$week_no
+positive_rate[, Date := Date + 3]
 positive_rate[, c("year", "week_no", "Week") := NULL]
 setnames(positive_rate, "% of Specimens Positive for SARS-CoV-2", "Positive rate")
 positive_rate[, `Positive rate` := round(`Positive rate` / 100, 3)]

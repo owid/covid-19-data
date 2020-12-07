@@ -1,4 +1,4 @@
-url <- "https://raw.githubusercontent.com/okestonia/koroonakaart/master/koroonakaart/src/data.json"
+url <- "https://www.koroonakaart.ee/data.json"
 df <- fromJSON(file = url)
 df <- data.table(
     Date = df$dates2,
