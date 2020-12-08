@@ -5,7 +5,7 @@ setnames(df, c("datum", "testy_celkem"), c("Date", "Cumulative total"))
 
 df <- df[, .(Date = min(Date)), `Cumulative total`]
 
-df[, Country := "Czech Republic"]
+df[, Country := "Czechia"]
 df[, Units := "tests performed"]
 df[, `Source URL` := "https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/testy.csv"]
 df[, `Source label` := "Ministry of Health"]
