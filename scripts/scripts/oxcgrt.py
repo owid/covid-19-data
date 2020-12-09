@@ -49,6 +49,7 @@ def export_grapher():
         "H4_Emergency investment in healthcare",
         "H5_Investment in vaccines",
         "H6_Facial Coverings",
+        "H7_Vaccination policy",
         "StringencyIndex",
         "ContainmentHealthIndex"
     ]
@@ -97,10 +98,11 @@ def export_grapher():
         "E1_Income support": "income_support",
         "E2_Debt/contract relief": "debt_relief",
         "E4_International support": "international_support",
+        "H7_Vaccination policy": "vaccination_policy",
         "H2_Testing policy": "testing_policy"
     }
 
-    cgrt = cgrt.rename(columns=rename_dict)
+    cgrt = cgrt.rename(columns=rename_dict).sort_values(["Country", "Year"])
 
     os.system('mkdir -p %s' % os.path.abspath(OUTPUT_PATH))
     cgrt.to_csv(OUTPUT_CSV_PATH, index=False)
