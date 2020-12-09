@@ -27,7 +27,13 @@ def main():
         df.loc[df["total_diff"] < 0, "Cumulative total"] = pd.NA
         df = df.drop(columns=["total_diff"])
 
-        df["Date"] = df["Date"].str.replace("MAYIS", "mayıs").str.replace("KASIM", "kasım").apply(dateparser.parse, languages=["tr"])
+        df["Date"] = (
+            df["Date"]
+            .str.replace("MAYIS", "mayıs")
+            .str.replace("KASIM", "kasım")
+            .str.replace("ARALIK", "aralık")
+            .apply(dateparser.parse, languages=["tr"])
+        )
         df.loc[:, "Country"] = "Turkey"
         df.loc[:, "Units"] = "tests performed"
         df.loc[:, "Source URL"] = SOURCE_URL
