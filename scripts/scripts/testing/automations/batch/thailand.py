@@ -49,7 +49,6 @@ def main():
     df.loc[:, "Source label"] = "Ministry of Public Health"
     df.loc[:, "Units"] = "tests performed"
     df.loc[:, "Notes"] = pd.NA
-    df.loc[:, "Testing type"] = "PCR only"
 
     df.to_csv("automated_sheets/Thailand.csv", index=False)
     os.remove(file)
