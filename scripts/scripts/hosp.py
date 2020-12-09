@@ -21,9 +21,6 @@ def download_data():
 
 
 def standardize_entities(df):
-    df.loc[:, "entity"] = df["entity"].replace({
-        "Czechia": "Czech Republic"
-    })
     return df
 
 

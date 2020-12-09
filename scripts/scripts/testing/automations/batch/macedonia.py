@@ -1,4 +1,4 @@
-"""Constructs daily time series of COVID-19 testing data for Macedonia.
+"""Constructs daily time series of COVID-19 testing data for North Macedonia.
 
 Official dashboard: https://koronavirus.gov.mk/stat
 (https://datastudio.google.com/embed/u/0/reporting/9f5104d0-12fd-4e16-9a11-993685cfd40f/page/1M)
@@ -22,7 +22,7 @@ from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-COUNTRY = 'Macedonia'
+COUNTRY = 'North Macedonia'
 UNITS = 'tests performed'
 TESTING_TYPE = 'unclear'
 SOURCE_LABEL = 'Ministry of Health'
