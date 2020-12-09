@@ -26,7 +26,7 @@ def main():
     pr = pr.rename(columns={"extract_date": "Date", "tx_pos": "Positive rate"})
 
     df = pd.merge(df, pr, on="Date", how="outer").sort_values("Date")
-    df = df[(-df["Daily change in cumulative total"].isna()) | (-df["Positive rate"].isna())]
+    df = df.dropna(subset=["Daily change in cumulative total", "Positive rate"], how="all")
 
     df.loc[:, "Country"] = "France"
     df.loc[:, "Units"] = "people tested"
