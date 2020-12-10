@@ -9,9 +9,6 @@ setDT(df)
 df <- df[, .(Dátum, `Mintavétel száma`)]
 setnames(df, c("Date", "Cumulative total"))
 
-df <- df[nchar(Date) == 10]
-df[, Date := as_datetime(as.integer(df$Date))]
-df[, `Cumulative total` := as.integer(`Cumulative total`)]
 df <- df[, .(Date = min(Date)), `Cumulative total`]
 
 df[, Date := date(Date)]
