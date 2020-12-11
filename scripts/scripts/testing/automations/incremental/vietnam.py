@@ -67,9 +67,9 @@ def _get_newsletter_urls() -> List[dict]:
     for h2 in list_h2_headings:
         regex_res = re.search(r'covid-19', h2.text, re.IGNORECASE)
         if regex_res:
-            date_regex_res = re.search(r'\(\w{4}\s+(\d{1,2})/(\d{1,2})/(\d{4})\)', h2.text.strip())
+            date_regex_res = re.search(r"[\d/]{8,10}", h2.text.strip()).group(0)
             if date_regex_res:
-                dd, mm, yyyy = date_regex_res.groups()
+                dd, mm, yyyy = re.findall(r"\d+", date_regex_res)
                 date = datetime.datetime(int(yyyy), int(mm), int(dd))
                 url = f"{domain}{h2.find('a').get('href')}"
                 # print(date)

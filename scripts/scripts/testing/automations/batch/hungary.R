@@ -6,10 +6,10 @@ df <- suppressMessages(read_sheet(
 ))
 
 setDT(df)
-df <- df[, .(Dátum, `Mintavétel száma`)]
-setnames(df, c("Date", "Cumulative total"))
+df <- df[, .(Dátum, `Új mintavételek száma`)]
+setnames(df, c("Date", "Daily change in cumulative total"))
 
-df <- df[, .(Date = min(Date)), `Cumulative total`]
+df <- df[`Daily change in cumulative total` != 0]
 
 df[, Date := date(Date)]
 df[, Country := "Hungary"]
@@ -17,6 +17,5 @@ df[, Units := "tests performed"]
 df[, `Source label` := "Government of Hungary"]
 df[, `Source URL` := "https://atlo.team/koronamonitor/"]
 df[, Notes := "Made available by Atlo.team"]
-df[, `Testing type` := "PCR only"]
 
 fwrite(df, "automated_sheets/Hungary.csv")
