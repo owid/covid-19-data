@@ -8,11 +8,11 @@ audited <- audited[CHECKED == TRUE & (`REPLACE URL` == TRUE | `REPLACE NOTES` ==
 for (i in seq_len(nrow(audited))) {
     row <- audited[i]
 
-    if (row$`REPLACE NOTES` == TRUE) {
+    if (isTRUE(row$`REPLACE NOTES`)) {
         collated[Entity == row$Entity & Date == row$Date, Notes := row$`NEW NOTES`]
     }
 
-    if (row$`REPLACE URL` == TRUE) {
+    if (isTRUE(row$`REPLACE URL`)) {
         collated[Entity == row$Entity & Date == row$Date, `Source URL` := row$`NEW URL`]
     }
 }
