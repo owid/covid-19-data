@@ -4,7 +4,8 @@ url <- read_html(GET(
     )) %>%
     html_node(".infobox a") %>%
     html_attr("href") %>%
-    paste0("https://www.msp.gob.do", .)
+    paste0("https://www.msp.gob.do", .) %>%
+    str_squish()
 
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE, method = "curl", extra = "-k")
 

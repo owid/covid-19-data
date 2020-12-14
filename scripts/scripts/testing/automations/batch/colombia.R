@@ -1,18 +1,21 @@
-json <- fromJSON(file = "https://atlas.jifo.co/api/connectors/88d50014-8241-4771-972b-547ace9ad447")
-json <- json$data[[1]]
-json <- tail(json, -2)
+df <- fread("https://www.datos.gov.co/resource/8835-5baf.csv", showProgress = FALSE,
+            select = c("fecha", "positivas_acumuladas", "negativas_acumuladas"))
 
-dates <- sapply(json, FUN = "[", 1) %>% str_extract("\\d+/\\d+/\\d+") %>% dmy()
-values <- sapply(json, FUN = "[", 2) %>% str_replace_all("[^\\d]", "") %>% as.integer()
-stopifnot(length(dates) == length(values))
+df <- df[fecha != "Acumulado Feb"]
+df[, Date := date(ymd_hms(fecha))]
 
-df <- data.table(`Cumulative total` = values, Date = dates)
+df[, `Cumulative total` := positivas_acumuladas + negativas_acumuladas]
+
+setorder(df, Date)
+df[, `Positive rate` := frollmean(positivas_acumuladas - shift(positivas_acumuladas, 1), 7) / frollmean(`Cumulative total` - shift(`Cumulative total`, 1), 7)]
+
+df <- df[, c("Date", "Cumulative total", "Positive rate")]
+df <- df[!is.na(`Cumulative total`)]
 
 df[, Country := "Colombia"]
-df[, Units := "samples tested"]
-df[, `Source URL` := "https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx#muestras"]
+df[, Units := "tests performed"]
+df[, `Source URL` := "https://www.datos.gov.co/Salud-y-Protecci-n-Social/Pruebas-PCR-procesadas-de-COVID-19-en-Colombia-Dep/8835-5baf"]
 df[, `Source label` := "National Institute of Health"]
 df[, Notes := NA_character_]
-df[, `Testing type` := "PCR only"]
 
 fwrite(df, "automated_sheets/Colombia.csv")

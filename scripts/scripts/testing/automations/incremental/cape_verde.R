@@ -1,6 +1,13 @@
-url <- read_html("https://covid19.cv/category/boletim-epidemiologico/page/1/") %>%
-    html_node(".elementor-post__title a") %>%
-    html_attr("href")
+retry(
+    expr = {
+        url <- read_html("https://covid19.cv/category/boletim-epidemiologico/page/1/") %>%
+            html_node(".elementor-post__title a") %>%
+            html_attr("href")
+    },
+    when = "SSL_ERROR_SYSCALL",
+    max_tries = 3,
+    interval = 10
+)
 
 page <- read_html(url)
 date <- page %>%

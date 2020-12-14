@@ -43,7 +43,8 @@ def main():
         .str.replace("Ago", "Aug")
         .str.replace("Dic", "Dec")
     )
-
+    
+    df = df[-df["Daily change in cumulative total"].isna()]
     df.loc[:, "Daily change in cumulative total"] = df["Daily change in cumulative total"].astype(int)
     df.loc[:, "Country"] = "Chile"
     df.loc[:, "Source URL"] = "https://www.gob.cl/coronavirus/cifrasoficiales/#reportes"
