@@ -20,6 +20,13 @@ get_metadata <- function() {
     return(metadata)
 }
 
+add_world <- function(df) {
+    world <- df[, .(total_vaccinations = sum(total_vaccinations)), date]
+    world[, location := "World"]
+    df <- rbindlist(list(df, world), use.names = TRUE)
+    return(df)
+}
+
 add_daily <- function(df) {
     setorder(df, date)
     df[, new_vaccinations := (total_vaccinations - shift(total_vaccinations, 1))]
@@ -98,6 +105,9 @@ generate_grapher_file <- function(grapher) {
 metadata <- get_metadata()
 vax <- rbindlist(lapply(metadata$location, FUN = process_location))
 vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "location")]
+
+# Global figures
+vax <- add_world(vax)
 
 # Derived variables
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
