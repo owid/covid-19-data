@@ -54,7 +54,7 @@ setnames(confirmed_cases, c("date", "location"), c("Date", "Country"))
 confirmed_cases[, Date := ymd(Date)]
 
 # Exclude countries from positive rate calculations
-positive_rate_exclusions <- c("Peru", "Ecuador", "Brazil", "Costa Rica", "Colombia")
+positive_rate_exclusions <- c("Peru", "Ecuador", "Brazil", "Costa Rica")
 
 # Process each country's data
 parse_country <- function(sheet_name) {
@@ -153,12 +153,12 @@ parse_country <- function(sheet_name) {
         collated <- merge(collated, confirmed_cases, by = c("Country", "Date"), all.x = TRUE)
 
         if ("Positive rate" %in% names(collated)) {
-            collated$is_official_pr <- TRUE
+            collated$pr_method <- "official"
             setnames(collated, "Positive rate", "Short-term positive rate")
             stopifnot(min(collated$`Short-term positive rate`, na.rm = TRUE) >= 0)
             stopifnot(max(collated$`Short-term positive rate`, na.rm = TRUE) <= 1)
         } else {
-            collated$is_official_pr <- FALSE
+            collated$pr_method <- "OWID"
             collated[, `Short-term positive rate` := new_cases_smoothed / `7-day smoothed daily change`]
             collated[`Short-term positive rate` < 0 | `Short-term positive rate` > 1, `Short-term positive rate` := NA]
         }
@@ -289,7 +289,7 @@ public_latest <- merge(public, metadata)
 public_latest[, c("Sheet", "Ready for review", "Collate") := NULL]
 setorder(public_latest, Entity, -Date)
 public_latest <- public_latest[, .SD[1], Entity]
-public[, c("Sheet", "Number of observations", "Cumulative tests per case", "Cumulative positive rate", "is_official_pr") := NULL]
+public[, c("Sheet", "Number of observations", "Cumulative tests per case", "Cumulative positive rate", "pr_method") := NULL]
 setcolorder(public, "Entity")
 
 # Generate HTML code for WordPress

@@ -69,7 +69,11 @@ for (c in countries) {
         }
 
         html_add(sprintf('<p><strong>Positive rate: </strong>%s</p>',
-                         ifelse(row$is_official_pr, "collected directly from the source.", "calculated by Our World in Data as the 7-day rolling average of daily cases, divided by the 7-day rolling average of daily tests.")))
+                         plyr::mapvalues(row$pr_method, warn_missing = FALSE,
+                                         from = c("official", "OWID", NA),
+                                         to = c("collected directly from the source.",
+                                         "calculated by Our World in Data as the 7-day rolling average of daily cases, divided by the 7-day rolling average of daily tests.",
+                                         "not calculated (see detailed description)."))))
 
         html_add(sprintf('<p><strong>Detailed description:</strong><br>%s</p>',
                          str_replace_all(activate_links(row$`Detailed description`), "\n", "<br>")))
