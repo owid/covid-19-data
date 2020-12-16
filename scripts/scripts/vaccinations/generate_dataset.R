@@ -80,7 +80,7 @@ add_per_capita <- function(df) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
     df <- merge(df, pop)
     for (metric in c("total_vaccinations", "new_vaccinations", "new_vaccinations_smoothed")) {
-        df[[sprintf("%s_per_thousand", metric)]] <- round(df[[metric]] * 1000 / df$population, 3)
+        df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 3)
     }
     df[, population := NULL]
     return(df)
