@@ -73,6 +73,17 @@ def get_metric(metric, region):
     )
     df.loc[:, "date"] = pd.to_datetime(df["date"], format="%m/%d/%y").dt.date
     df = df.sort_values("date")
+
+    # Only start country series when total_cases > 0 or total_deaths > 0 to minimize file size
+    cutoff = (
+        df.loc[df[metric] == 0, ["date", "Country/Region"]]
+        .groupby("Country/Region", as_index=False)
+        .max()
+        .rename(columns={"date": "cutoff"})
+    )
+    df = df.merge(cutoff, on="Country/Region", how="left")
+    df = df[(df.date > df.cutoff) | (df.cutoff.isna())].drop(columns="cutoff")
+
     df.loc[:, metric.replace("total_", "new_")] = df[metric] - df.groupby("Country/Region")[metric].shift(1)
     return df
 
@@ -172,6 +183,7 @@ def export(df_merged):
     df_loc = inject_population(df_loc)
     df_loc["population_year"] = df_loc["population_year"].round().astype("Int64")
     df_loc["population"] = df_loc["population"].round().astype("Int64")
+    df_loc = df_loc.sort_values("location")
     df_loc.to_csv(os.path.join(OUTPUT_PATH, "locations.csv"), index=False)
     # The rest of the CSVs
     return standard_export(
