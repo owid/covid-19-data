@@ -13,6 +13,8 @@ gs4_auth(email = CONFIG$google_credentials_email)
 GSHEET_KEY <- CONFIG$vax_time_series_gsheet
 VACCINE_LIST <- c("pfizer_biontech")
 
+subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
+
 get_metadata <- function() {
     metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))
     metadata <- metadata[include == TRUE]
@@ -21,7 +23,7 @@ get_metadata <- function() {
 }
 
 add_world <- function(df) {
-    world <- df[, .(total_vaccinations = sum(total_vaccinations)), date]
+    world <- df[!location %in% subnational_pop$location, .(total_vaccinations = sum(total_vaccinations)), date]
     world[, location := "World"]
     df <- rbindlist(list(df, world), use.names = TRUE)
     return(df)
@@ -78,6 +80,8 @@ process_location <- function(location_name) {
 
 add_per_capita <- function(df) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
+    pop <- rbindlist(list(pop, subnational_pop))
+
     df <- merge(df, pop)
     for (metric in c("total_vaccinations", "new_vaccinations", "new_vaccinations_smoothed")) {
         df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 3)
