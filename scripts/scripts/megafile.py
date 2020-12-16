@@ -124,6 +124,14 @@ def get_hosp():
     return hosp
 
 
+def get_vax():
+    vax = pd.read_csv(
+        os.path.join(DATA_DIR, "vaccinations/vaccinations.csv"),
+        usecols=["location", "date", "total_vaccinations", "total_vaccinations_per_hundred"]
+    )
+    return vax
+
+
 def get_testing():
     """
     Reads the main COVID-19 testing dataset located in /public/data/testing/
@@ -309,6 +317,10 @@ def generate_megafile():
     for loc in location_mismatch:
         print(f"<!> Location '{loc}' has testing data but is absent from JHU data")
 
+    print("\nFetching vaccination dataset…")
+    vax = get_vax()
+    vax = vax[vax.location.isin(jhu.location)]
+
     print("\nFetching OxCGRT dataset…")
     cgrt = get_cgrt()
 
@@ -317,6 +329,7 @@ def generate_megafile():
         .merge(reprod, on=["date", "location"], how="left")
         .merge(hosp, on=["date", "location"], how="outer")
         .merge(testing, on=["date", "location"], how="outer")
+        .merge(vax, on=["date", "location"], how="outer")
         .merge(cgrt, on=["date", "location"], how="left")
         .sort_values(["location", "date"])
     )
