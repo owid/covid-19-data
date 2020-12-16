@@ -10,7 +10,7 @@ process_file <- function(url, metric) {
         data.table()
     df[, c("cve_ent", "poblacion", "nombre") := NULL]
     df[, Date := dmy(Date)]
-    setnames(df, "count", metric)
+    setnames(df, "Count", metric)
     return(df)
 }
 

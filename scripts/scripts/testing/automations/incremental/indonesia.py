@@ -7,20 +7,17 @@ import pandas as pd
 def main():
     data = pd.read_csv("automated_sheets/Indonesia.csv")
 
-    url = "https://covid19.disiplin.id/"
+    url = "https://infeksiemerging.kemkes.go.id/dashboard/covid-19"
     req = requests.get(url)
     soup = BeautifulSoup(req.content, "html.parser")
 
-    date = soup.find("header", class_="border-title").find("span").text
-    date = re.search(r"Update hingga (\d+[^\d]+202\d)", date).group(1)
-    date = (
-        date.replace("Oktober", "October").replace("Desember", "December")
-    )
+    date = soup.find("div", class_="section-tittle").find("p").text
+    date = re.search(r"Update (\d+[^\d]+202\d)", date).group(1)
     date = pd.Series(pd.to_datetime(date)).dt.date.astype(str)
-    
+
     if data.Date.max() < date[0]:
 
-        count = soup.find("div", class_="box-right").find("div", class_="global-area").find("h4").text
+        count = soup.find("div", class_="card-dashboard").find("h3").text
         count = int(count.replace(".", ""))
 
         if count > data["Cumulative total"].max():
