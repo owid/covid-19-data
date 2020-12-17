@@ -1,6 +1,7 @@
-location,vaccines,source_name,source_website
-England,Pfizer/BioNTech,Government of the United Kingdom,
-Northern Ireland,Pfizer/BioNTech,Government of the United Kingdom,
-Scotland,Pfizer/BioNTech,Government of the United Kingdom,
-United Kingdom,Pfizer/BioNTech,Government of the United Kingdom,
-Wales,Pfizer/BioNTech,Government of the United Kingdom,
+location,source_name,source_website,vaccines
+England,Government of the United Kingdom,,Pfizer/BioNTech
+Northern Ireland,Government of the United Kingdom,,Pfizer/BioNTech
+Russia,Government of Russia,,Sputnik V
+Scotland,Government of the United Kingdom,,Pfizer/BioNTech
+United Kingdom,Government of the United Kingdom,,Pfizer/BioNTech
+Wales,Government of the United Kingdom,,Pfizer/BioNTech

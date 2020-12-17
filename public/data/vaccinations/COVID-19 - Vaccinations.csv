@@ -1,7 +1,11 @@
-country,year,total_vaccinations,new_vaccinations,new_vaccinations_smoothed,total_vaccinations_per_hundred,new_vaccinations_per_hundred,new_vaccinations_smoothed_per_hundred
-England,330,108000,,,0.192,,
-Northern Ireland,330,4000,,,0.211,,
-Scotland,330,18000,,,0.329,,
-United Kingdom,330,137897,,,0.203,,
-Wales,330,7897,,,0.25,,
-World,330,137897,,,0.002,,
+country,year,total_vaccinations,total_vaccinations_per_hundred
+England,330,108000,0.192
+Northern Ireland,330,4000,0.211
+Russia,316,100000,0.069
+Russia,324,150000,0.103
+Scotland,330,18000,0.329
+United Kingdom,330,137897,0.203
+Wales,330,7897,0.25
+World,316,100000,0.001
+World,324,150000,0.002
+World,330,287897,0.004

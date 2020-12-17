@@ -1,7 +1,11 @@
-location,date,total_vaccinations,new_vaccinations,new_vaccinations_smoothed,total_vaccinations_per_hundred,new_vaccinations_per_hundred,new_vaccinations_smoothed_per_hundred
-England,2020-12-16,108000,,,0.192,,
-Northern Ireland,2020-12-16,4000,,,0.211,,
-Scotland,2020-12-16,18000,,,0.329,,
-United Kingdom,2020-12-16,137897,,,0.203,,
-Wales,2020-12-16,7897,,,0.25,,
-World,2020-12-16,137897,,,0.002,,
+location,date,total_vaccinations,total_vaccinations_per_hundred
+England,2020-12-16,108000,0.192
+Northern Ireland,2020-12-16,4000,0.211
+Russia,2020-12-02,100000,0.069
+Russia,2020-12-10,150000,0.103
+Scotland,2020-12-16,18000,0.329
+United Kingdom,2020-12-16,137897,0.203
+Wales,2020-12-16,7897,0.25
+World,2020-12-02,100000,0.001
+World,2020-12-10,150000,0.002
+World,2020-12-16,287897,0.004
