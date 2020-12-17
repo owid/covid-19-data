@@ -38,8 +38,12 @@ world_population <- population[Country == "World", Population]
 # Find sheets marked as Collate = TRUE in METADATA
 gs4_auth(email = CONFIG$google_credentials_email)
 key <- CONFIG$covid_time_series_gsheet
-metadata <- read_sheet(key, sheet = "METADATA", range = "A2:L300") %>%
-    filter(Collate == TRUE)
+retry(
+    expr = {metadata <- read_sheet(key, sheet = "METADATA", range = "A2:L300") %>% filter(Collate == TRUE)},
+    when = "RESOURCE_EXHAUSTED",
+    max_tries = 5,
+    interval = 100
+)
 stopifnot("Detailed description" %in% names(metadata))
 fwrite(metadata, sprintf("%s/backups/METADATA.csv", CONFIG$internal_shared_folder))
 sheet_names <- sort(metadata$Sheet)

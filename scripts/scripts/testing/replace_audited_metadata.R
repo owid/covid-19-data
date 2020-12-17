@@ -1,7 +1,11 @@
 original_shape <- dim(collated)
 
-audited <- read_sheet(CONFIG$audit_gsheet, sheet = "AUDIT") %>%
-    data.table()
+retry(
+    expr = {audited <- read_sheet(CONFIG$audit_gsheet, sheet = "AUDIT") %>% data.table()},
+    when = "RESOURCE_EXHAUSTED",
+    max_tries = 5,
+    interval = 100
+)
 audited[, Date := date(Date)]
 audited <- audited[CHECKED == TRUE & (`REPLACE URL` == TRUE | `REPLACE NOTES` == TRUE)]
 
