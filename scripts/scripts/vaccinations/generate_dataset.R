@@ -12,7 +12,7 @@ CONFIG <- fromJSON(file = "vax_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
 gs4_auth(email = CONFIG$google_credentials_email)
 GSHEET_KEY <- CONFIG$vax_time_series_gsheet
-VACCINE_LIST <- c("pfizer_biontech")
+VACCINE_LIST <- c("Pfizer/BioNTech", "Sputnik V")
 
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
 
@@ -31,6 +31,7 @@ add_world <- function(df) {
     setorder(world, location, date)
     world[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
     world <- world[, .(total_vaccinations = sum(total_vaccinations, na.rm = TRUE)), date]
+    world <- world[, .(date = min(date)), total_vaccinations]
     world[, location := "World"]
     df <- rbindlist(list(df, world), use.names = TRUE)
     return(df)
@@ -78,8 +79,8 @@ process_location <- function(location_name) {
     stopifnot(length(setdiff(df$vaccine, c(VACCINE_LIST, "total"))) == 0)
 
     # Derived variables
-    df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
-    df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_smoothed))
+    # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
+    # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_smoothed))
 
     fwrite(df, sprintf("../../../public/data/vaccinations/country_data/%s.csv", location_name), scipen = 999)
     return(df)
@@ -91,14 +92,17 @@ add_per_capita <- function(df) {
 
     df <- merge(df, pop)
     for (metric in c("total_vaccinations", "new_vaccinations", "new_vaccinations_smoothed")) {
-        df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 3)
+        if (metric %in% names(df)) {
+            df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 3)
+        }
     }
     df[, population := NULL]
     return(df)
 }
 
-generate_locations_file <- function(metadata) {
-    metadata <- metadata[, c("location", "vaccines", "source_name", "source_website")]
+generate_locations_file <- function(metadata, vax_per_loc) {
+    metadata <- metadata[, c("location", "source_name", "source_website")]
+    metadata <- merge(metadata, vax_per_loc, how = "outer", by = "location")
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
 }
 
@@ -115,17 +119,20 @@ generate_grapher_file <- function(grapher) {
 
 metadata <- get_metadata()
 vax <- rbindlist(lapply(metadata$location, FUN = process_location))
+vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(vaccine)), collapse = ", ")), location]
+
+# Aggregate across all vaccines
 vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "location")]
 
 # Global figures
 vax <- add_world(vax)
 
 # Derived variables
-vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
-vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
+# vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
+# vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
 vax <- add_per_capita(vax)
 
 setorder(vax, location, date)
-generate_locations_file(metadata)
+generate_locations_file(metadata, vax_per_loc)
 generate_vaccinations_file(vax)
 generate_grapher_file(copy(vax))
