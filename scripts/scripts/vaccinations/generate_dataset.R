@@ -4,6 +4,7 @@ library(imputeTS)
 library(lubridate)
 library(retry)
 library(rjson)
+library(tidyr)
 rm(list = ls())
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
@@ -23,7 +24,13 @@ get_metadata <- function() {
 }
 
 add_world <- function(df) {
-    world <- df[!location %in% subnational_pop$location, .(total_vaccinations = sum(total_vaccinations)), date]
+    world <- df[!location %in% subnational_pop$location]
+    world <- spread(world, location, total_vaccinations)
+    world <- gather(world, location, total_vaccinations, 2:ncol(world))
+    setDT(world)
+    setorder(world, location, date)
+    world[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
+    world <- world[, .(total_vaccinations = sum(total_vaccinations, na.rm = TRUE)), date]
     world[, location := "World"]
     df <- rbindlist(list(df, world), use.names = TRUE)
     return(df)
@@ -118,6 +125,7 @@ vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
 vax <- add_per_capita(vax)
 
+setorder(vax, location, date)
 generate_locations_file(metadata)
 generate_vaccinations_file(vax)
 generate_grapher_file(copy(vax))
