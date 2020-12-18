@@ -101,9 +101,14 @@ add_per_capita <- function(df) {
     return(df)
 }
 
-generate_locations_file <- function(metadata, vax_per_loc) {
-    metadata <- metadata[, c("location", "source_name", "source_website")]
-    metadata <- merge(metadata, vax_per_loc, how = "outer", by = "location")
+improve_metadata <- function(metadata, vax_per_loc, latest_meta) {
+    metadata <- merge(merge(metadata, vax_per_loc, "location"), latest_meta, "location")
+    metadata[is.na(source_website), source_website := source_url]
+    metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url", "date") := NULL]
+    return(metadata)
+}
+
+generate_locations_file <- function(metadata) {
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
 }
 
@@ -118,10 +123,28 @@ generate_grapher_file <- function(grapher) {
     fwrite(grapher, "../../../public/data/vaccinations/COVID-19 - Vaccinations.csv", scipen = 999)
 }
 
+generate_html <- function(metadata) {
+    html <- copy(metadata)
+    html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
+    html[, source_name := paste0("<td>", source_name, "</td>")]
+    html[, source_website := paste0("<a href='", source_website, "'>Link</a>")]
+    html[, vaccines := paste0("<td>", vaccines, "</td></tr>")]
+    setnames(html, c("Location", "Source", "Reference", "Vaccines"))
+    header <- paste0("<tr>", paste0("<th>", names(html), "</th>", collapse = ""), "</tr>")
+    html[, body := paste0(Location, Source, Reference, Vaccines)]
+    body <- paste0(html$body, collapse = "")
+    html_table <- paste0("<table>", header, body, "</table>")
+    writeLines(html_table, "source_table.html")
+}
+
 metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
 vax <- rbindlist(vax, use.names=TRUE)
+
 vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(vaccine)), collapse = ", ")), location]
+setorder(vax, date)
+latest_meta <- vax[, .SD[.N], location]
+metadata <- improve_metadata(metadata, vax_per_loc, latest_meta)
 
 # Aggregate across all vaccines
 vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "location")]
@@ -135,6 +158,7 @@ vax <- add_world(vax)
 vax <- add_per_capita(vax)
 
 setorder(vax, location, date)
-generate_locations_file(metadata, vax_per_loc)
 generate_vaccinations_file(vax)
 generate_grapher_file(copy(vax))
+generate_locations_file(metadata)
+generate_html(metadata)
