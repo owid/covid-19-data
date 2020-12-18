@@ -9,7 +9,7 @@ pdf_file <- files[str_detect(files$name, "READ ME FIRST"), id]
 drive_download(file = as_id(pdf_file), path = "tmp/tmp.pdf", overwrite = TRUE, verbose = FALSE)
 
 url <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract_all("https://bit.ly.*") %>%
+    str_extract_all("https?://bit.ly.*") %>%
     unlist() %>%
     head(1)
 url <- httr::GET(url)$url
@@ -28,7 +28,6 @@ df[, Date := ymd(Date)]
 stopifnot(sum(is.na(df$Date)) == 0)
 df[, Country := "Philippines"]
 df[, Units := "people tested"]
-df[, `Testing type` := "unclear"]
 df[, `Source URL` := url]
 df[, `Source label` := "Philippines Department of Health"]
 df[, Notes := NA_character_]
