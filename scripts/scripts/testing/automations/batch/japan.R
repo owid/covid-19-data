@@ -8,7 +8,6 @@ df[, Date := ymd(Date)]
 
 df[, Country := "Japan"]
 df[, Units := "people tested"]
-df[, `Testing type` := "PCR only"]
 df[, `Source URL` := url]
 df[, `Source label` := "Ministry of Health, Labour and Welfare"]
 df[, Notes := NA_character_]
