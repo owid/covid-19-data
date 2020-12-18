@@ -120,7 +120,7 @@ generate_grapher_file <- function(grapher) {
 
 metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
-vax <- rbindlist(vax)
+vax <- rbindlist(vax, use.names=TRUE)
 vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(vaccine)), collapse = ", ")), location]
 
 # Aggregate across all vaccines
