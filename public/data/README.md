@@ -33,6 +33,7 @@ A [full codebook](https://github.com/owid/covid-19-data/tree/master/public/data/
 
 If you are interested in the individual files that make up the complete dataset, or more detailed information, other files can be found in the subfolders:
 
+- [`latest`](https://github.com/owid/covid-19-data/tree/master/public/data/latest): shortened version of our complete dataset with only the latest value for each location and metric (within a limit of 2 weeks in the past). This file is available in CSV, XLSX, and JSON formats.
 - [`jhu`](https://github.com/owid/covid-19-data/tree/master/public/data/jhu): data from the COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University, related to confirmed cases and deaths;
 - [`testing`](https://github.com/owid/covid-19-data/tree/master/public/data/testing): data from various official sources, related to COVID-19 tests performed in each country. This folder contains two files with more detailed information:
   - [`covid-testing-all-observations.csv`](https://github.com/owid/covid-19-data/blob/master/public/data/testing/covid-testing-all-observations.csv) includes, for each historical observation, the source of the individual data point, and sometimes notes on data collection;
@@ -66,6 +67,7 @@ If you are interested in the individual files that make up the complete dataset,
 - On 30 November 2020, we changed our source for confirmed cases and deaths to the [COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19). Our previous source for confirmed cases and deaths, the European Centre for Disease Prevention and Control (ECDC), [had announced in November 2020](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide) that it would switch from a daily to a weekly reporting schedule from December. _Our World in Data_ therefore had to transition away from the ECDC as a source to continue to provide daily updates of confirmed cases and deaths. The data last sourced from the ECDC remains available as an archive in the [`ecdc`](https://github.com/owid/covid-19-data/tree/master/public/data/ecdc) folder. The format (variable names and types) of our complete COVID-19 dataset remains the same.
 - On 9 December 2020, we changed the names of three countries in our files to match their recently-changed official names. `Czech Republic` has become `Czechia`, `Macedonia` has become `North Macedonia`, and `Swaziland` has become `Eswatini`.
 - On 16 December 2020, we started collecting country-level time series on COVID-19 vaccinations.
+- On 18 December 2020, we added in the [`latest`](https://github.com/owid/covid-19-data/tree/master/public/data/latest) folder a shortened version of our complete dataset with only the latest value for each location and metric (within a limit of 2 weeks in the past). This file is available in CSV, XLSX, and JSON formats.
 
 
 ## Data alterations

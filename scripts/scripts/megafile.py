@@ -8,7 +8,7 @@ Merges the main COVID-19 testing dataset with each of the COVID-19 JHU datasets 
 
 import json
 import os
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from functools import reduce
 import pandas as pd
 import numpy as np
@@ -291,6 +291,21 @@ def df_to_json(complete_dataset, output_path, static_columns):
         file.write(json.dumps(megajson, indent=4))
 
 
+def create_latest(df):
+
+    df = df[df.date >= str(date.today() - timedelta(weeks = 2))]
+    df = df.sort_values("date")
+
+    latest = [df[df.location == loc].ffill().tail(1).round(3) for loc in set(df.location)]
+    latest = pd.concat(latest)
+    latest = latest.sort_values("location").drop(columns="date")
+
+    print("Writing latest version…")
+    latest.to_csv(os.path.join(DATA_DIR, "latest/owid-covid-latest.csv"), index=False)
+    latest.to_excel(os.path.join(DATA_DIR, "latest/owid-covid-latest.xlsx"), index=False)
+    latest.set_index("iso_code").to_json(os.path.join(DATA_DIR, "latest/owid-covid-latest.json"), orient="index")
+
+
 def generate_megafile():
 
     print("\nFetching JHU dataset…")
@@ -397,6 +412,9 @@ def generate_megafile():
     timestamp_filename = os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt")
     with open(timestamp_filename, "w") as timestamp_file:
         timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
+
+    # Create light versions of complete dataset with only the latest data point
+    create_latest(all_covid)
 
     print("All done!")
 
