@@ -101,7 +101,10 @@ add_per_capita <- function(df) {
     return(df)
 }
 
-improve_metadata <- function(metadata, vax_per_loc, latest_meta) {
+improve_metadata <- function(metadata, vax) {
+    setorder(vax, date)
+    vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(vaccine)), collapse = ", ")), location]
+    latest_meta <- vax[, .SD[.N], location]
     metadata <- merge(merge(metadata, vax_per_loc, "location"), latest_meta, "location")
     metadata[is.na(source_website), source_website := source_url]
     metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url", "date") := NULL]
@@ -127,7 +130,7 @@ generate_html <- function(metadata) {
     html <- copy(metadata)
     html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
     html[, source_name := paste0("<td>", source_name, "</td>")]
-    html[, source_website := paste0("<a href='", source_website, "'>Link</a>")]
+    html[, source_website := paste0("<td><a href='", source_website, "'>Link</a></td>")]
     html[, vaccines := paste0("<td>", vaccines, "</td></tr>")]
     setnames(html, c("Location", "Source", "Reference", "Vaccines"))
     header <- paste0("<tr>", paste0("<th>", names(html), "</th>", collapse = ""), "</tr>")
@@ -141,10 +144,7 @@ metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
 vax <- rbindlist(vax, use.names=TRUE)
 
-vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(vaccine)), collapse = ", ")), location]
-setorder(vax, date)
-latest_meta <- vax[, .SD[.N], location]
-metadata <- improve_metadata(metadata, vax_per_loc, latest_meta)
+metadata <- improve_metadata(metadata, vax)
 
 # Aggregate across all vaccines
 vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "location")]
