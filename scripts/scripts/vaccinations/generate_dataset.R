@@ -2,6 +2,7 @@ library(data.table)
 library(googlesheets4)
 library(imputeTS)
 library(lubridate)
+library(readr)
 library(retry)
 library(rjson)
 library(tidyr)
@@ -62,8 +63,8 @@ process_location <- function(location_name) {
     message(location_name)
     is_automated <- metadata[location == location_name, automated]
     if (is_automated) {
-        filepath <- sprintf("automated_sheets/%s.csv", location_name)
-        df <- fread(filepath, showProgress = FALSE)
+        filepath <- sprintf("automations/output/%s.csv", location_name)
+        df <- data.table(suppressMessages(read_csv(filepath)))
     } else {
         retry(
             expr = {df <- suppressMessages(read_sheet(GSHEET_KEY, sheet = location_name))},
@@ -118,7 +119,8 @@ generate_grapher_file <- function(grapher) {
 }
 
 metadata <- get_metadata()
-vax <- rbindlist(lapply(metadata$location, FUN = process_location))
+vax <- lapply(metadata$location, FUN = process_location)
+vax <- rbindlist(vax)
 vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(vaccine)), collapse = ", ")), location]
 
 # Aggregate across all vaccines
