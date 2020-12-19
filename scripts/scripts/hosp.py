@@ -1,5 +1,7 @@
 import datetime
+import json
 import os
+import requests
 import pandas as pd
 
 
@@ -45,7 +47,7 @@ def week_to_date(df):
     return df
 
 
-def add_us_data(df):
+def add_united_states(df):
     usa = pd.read_csv(
         "https://covidtracking.com/data/download/national-history.csv",
         usecols=[
@@ -87,6 +89,33 @@ def add_us_data(df):
     return df
 
 
+def add_canada(df):
+    url = "https://api.covid19tracker.ca/reports?after=2020-03-09"
+    data = requests.get(url).json()
+    data = json.dumps(data["data"])
+    canada = pd.read_json(data, orient="records")
+    canada = canada[["date", "total_hospitalizations", "total_criticals"]]
+    canada = canada.melt("date", ["total_hospitalizations", "total_criticals"], "indicator")
+    canada.loc[:, "indicator"] = canada["indicator"].replace({
+        "total_hospitalizations": "Daily hospital occupancy",
+        "total_criticals": "Daily ICU occupancy"
+    })
+
+    canada.loc[:, "date"] = canada["date"].dt.date
+    canada.loc[:, "entity"] = "Canada"
+    canada.loc[:, "iso_code"] = "CAN"
+    canada.loc[:, "population"] = 37742157
+
+    df = pd.concat([df, canada])
+    return df
+
+
+def add_countries(df):
+    df = add_united_states(df)
+    df = add_canada(df)
+    return df
+
+
 def add_per_million(df):
     per_million = df.copy()
     per_million.loc[:, "value"] = per_million["value"].div(per_million["population"]).mul(1000000)
@@ -114,7 +143,7 @@ def main():
     df = standardize_entities(df)
     df = undo_per_100k(df)
     df = week_to_date(df)
-    df = add_us_data(df)
+    df = add_countries(df)
     df = add_per_million(df)
     df = owid_format(df)
     df = date_to_owid_year(df)
