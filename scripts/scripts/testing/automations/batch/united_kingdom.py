@@ -33,11 +33,9 @@ def main():
     df['newVirusTests2'] = df.apply(lambda row: _fill_virus_tests(row, 'new', MAX_DATE_FILL_PILLAR_ONE_TWO), axis=1)
     
     # assigns `Notes` column
-    note1 = ('Constructed from the newVirusTests/cumVirusTests variables '
-             'available at Source URL')
+    note1 = ('Constructed from the newVirusTests/cumVirusTests variables')
     note2 = ('Sum of tests processed for pillars 1 and 2 '
-             '(cumPillarOneTwoTestsByPublishDate/newPillarOneTwoTestsByPublishDate '
-             'variables available at Source URL)')
+             '(cumPillarOneTwoTestsByPublishDate/newPillarOneTwoTestsByPublishDate')
     notes = []
     for _, row in df.iterrows():
         note = None
