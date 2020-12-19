@@ -137,7 +137,7 @@ generate_html <- function(metadata) {
     html[, body := paste0(Location, Source, Reference, Vaccines)]
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table>", header, body, "</table>")
-    writeLines(html_table, "source_table.html")
+    writeLines(html_table, "automations/source_table.html")
 }
 
 metadata <- get_metadata()
