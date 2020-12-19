@@ -129,6 +129,7 @@ def get_vax():
         os.path.join(DATA_DIR, "vaccinations/vaccinations.csv"),
         usecols=["location", "date", "total_vaccinations", "total_vaccinations_per_hundred"]
     )
+    vax["total_vaccinations_per_hundred"] = vax["total_vaccinations_per_hundred"].round(3)
     return vax
 
 
