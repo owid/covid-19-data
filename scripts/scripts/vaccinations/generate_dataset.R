@@ -131,13 +131,13 @@ generate_grapher_file <- function(grapher) {
 generate_html <- function(metadata) {
     html <- copy(metadata)
     html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
-    html[, source_name := paste0("<td>", source_name, "</td>")]
-    html[, source_website := paste0('<td><a href="', source_website, '">Link</a></td>')]
-    html[, vaccines := paste0("<td>", vaccines, "</td>")]
-    html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%B %e, %Y")), "</td></tr>")]
-    setnames(html, c("Location", "Source", "Reference", "Vaccines", "Last observation date"))
+    html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%B %e, %Y")), "</td>")]
+    html[, vaccines := paste0("<td>", vaccines, "</td></tr>")]
+    html[, source := paste0('<td><a href="', source_website, '">', source_name, '</a></td>')]
+    html <- html[, c("location", "source", "last_observation_date", "vaccines")]
+    setnames(html, c("Location", "Source", "Last observation date", "Vaccines"))
     header <- paste0("<tr>", paste0("<th>", names(html), "</th>", collapse = ""), "</tr>")
-    html[, body := paste0(Location, Source, Reference, Vaccines, `Last observation date`)]
+    html[, body := paste0(Location, Source, `Last observation date`, Vaccines)]
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table><tbody>", header, body, "</tbody></table>")
     writeLines(html_table, "automations/source_table.html")
@@ -165,3 +165,7 @@ generate_vaccinations_file(vax)
 generate_grapher_file(copy(vax))
 generate_locations_file(metadata)
 generate_html(metadata)
+
+upper_choices <- c(1, 1.5, 2, 2.5, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
+message(sprintf("---\nPer capita upper bound: %s",
+                upper_choices[min(which(upper_choices > max(vax$total_vaccinations_per_hundred)))]))
