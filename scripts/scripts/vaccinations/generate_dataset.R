@@ -166,6 +166,6 @@ generate_grapher_file(copy(vax))
 generate_locations_file(metadata)
 generate_html(metadata)
 
-upper_choices <- c(1, 1.5, 2, 2.5, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
+upper_choices <- c(0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
 message(sprintf("---\nPer capita upper bound: %s",
-                upper_choices[min(which(upper_choices > max(vax$total_vaccinations_per_hundred)))]))
+                upper_choices[which.min(abs(max(vax$total_vaccinations_per_hundred) - upper_choices))]))
