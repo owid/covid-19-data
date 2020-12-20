@@ -5,6 +5,7 @@ library(lubridate)
 library(readr)
 library(retry)
 library(rjson)
+library(stringr)
 library(tidyr)
 rm(list = ls())
 
@@ -107,7 +108,8 @@ improve_metadata <- function(metadata, vax) {
     latest_meta <- vax[, .SD[.N], location]
     metadata <- merge(merge(metadata, vax_per_loc, "location"), latest_meta, "location")
     metadata[is.na(source_website), source_website := source_url]
-    metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url", "date") := NULL]
+    setnames(metadata, "date", "last_observation_date")
+    metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url") := NULL]
     return(metadata)
 }
 
@@ -131,10 +133,11 @@ generate_html <- function(metadata) {
     html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
     html[, source_name := paste0("<td>", source_name, "</td>")]
     html[, source_website := paste0("<td><a href='", source_website, "'>Link</a></td>")]
-    html[, vaccines := paste0("<td>", vaccines, "</td></tr>")]
-    setnames(html, c("Location", "Source", "Reference", "Vaccines"))
+    html[, vaccines := paste0("<td>", vaccines, "</td>")]
+    html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%B %e, %Y")), "</td></tr>")]
+    setnames(html, c("Location", "Source", "Reference", "Vaccines", "Last observation date"))
     header <- paste0("<tr>", paste0("<th>", names(html), "</th>", collapse = ""), "</tr>")
-    html[, body := paste0(Location, Source, Reference, Vaccines)]
+    html[, body := paste0(Location, Source, Reference, Vaccines, `Last observation date`)]
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table>", header, body, "</table>")
     writeLines(html_table, "automations/source_table.html")
