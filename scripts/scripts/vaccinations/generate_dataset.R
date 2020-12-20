@@ -78,7 +78,7 @@ process_location <- function(location_name) {
     df[, date := date(date)]
 
     # Sanity checks
-    stopifnot(length(setdiff(df$vaccine, c(VACCINE_LIST, "total"))) == 0)
+    stopifnot(length(setdiff(df$vaccine, VACCINE_LIST)) == 0)
 
     # Derived variables
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
