@@ -132,14 +132,14 @@ generate_html <- function(metadata) {
     html <- copy(metadata)
     html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
     html[, source_name := paste0("<td>", source_name, "</td>")]
-    html[, source_website := paste0("<td><a href='", source_website, "'>Link</a></td>")]
+    html[, source_website := paste0('<td><a href="', source_website, '">Link</a></td>')]
     html[, vaccines := paste0("<td>", vaccines, "</td>")]
     html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%B %e, %Y")), "</td></tr>")]
     setnames(html, c("Location", "Source", "Reference", "Vaccines", "Last observation date"))
     header <- paste0("<tr>", paste0("<th>", names(html), "</th>", collapse = ""), "</tr>")
     html[, body := paste0(Location, Source, Reference, Vaccines, `Last observation date`)]
     body <- paste0(html$body, collapse = "")
-    html_table <- paste0("<table>", header, body, "</table>")
+    html_table <- paste0("<table><tbody>", header, body, "</tbody></table>")
     writeLines(html_table, "automations/source_table.html")
 }
 
