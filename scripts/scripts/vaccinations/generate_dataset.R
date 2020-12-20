@@ -14,7 +14,7 @@ CONFIG <- fromJSON(file = "vax_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
 gs4_auth(email = CONFIG$google_credentials_email)
 GSHEET_KEY <- CONFIG$vax_time_series_gsheet
-VACCINE_LIST <- c("Pfizer/BioNTech", "Sputnik V")
+VACCINE_LIST <- c("Pfizer/BioNTech", "Sputnik V", "CNBG, Sinovac")
 
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
 
