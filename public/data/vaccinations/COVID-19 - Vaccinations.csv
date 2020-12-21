@@ -1,29 +1,31 @@
 country,year,total_vaccinations,total_vaccinations_per_hundred
 Canada,328,5,0
-Canada,329,723,0.002
-Canada,330,2985,0.008
-Canada,331,7204,0.019
+Canada,329,723,0
+Canada,330,2985,0.01
+Canada,331,7204,0.02
 Canada,332,11170,0.03
-Canada,333,11886,0.031
-Canada,334,12605,0.033
-China,333,1000000,0.069
-England,330,108000,0.192
-Northern Ireland,330,4000,0.211
-Russia,316,100000,0.069
-Russia,324,150000,0.103
-Russia,328,200000,0.137
-Scotland,330,18000,0.329
-United Kingdom,330,137897,0.203
-United Kingdom,333,350000,0.516
-United States,333,272001,0.082
-United States,334,556208,0.168
+Canada,333,11886,0.03
+Canada,334,12733,0.03
+Canada,335,12848,0.03
+China,333,1000000,0.07
+England,330,108000,0.19
+Northern Ireland,330,4000,0.21
+Russia,316,100000,0.07
+Russia,324,150000,0.1
+Russia,328,200000,0.14
+Scotland,330,18000,0.33
+United Kingdom,330,137897,0.2
+United Kingdom,333,350000,0.52
+United States,333,272001,0.08
+United States,334,556208,0.17
 Wales,330,7897,0.25
-World,316,100000,0.001
-World,324,150000,0.002
-World,328,200005,0.003
-World,329,200723,0.003
-World,330,340882,0.004
-World,331,345101,0.004
-World,332,349067,0.004
-World,333,1833887,0.024
-World,334,2118813,0.027
+World,316,100000,0
+World,324,150000,0
+World,328,200005,0
+World,329,200723,0
+World,330,340882,0
+World,331,345101,0
+World,332,349067,0
+World,333,1833887,0.02
+World,334,2118941,0.03
+World,335,2119056,0.03

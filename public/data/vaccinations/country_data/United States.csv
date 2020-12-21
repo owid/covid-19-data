@@ -1,3 +1,3 @@
-location,date,vaccine,total_vaccinations,source_url
-United States,2020-12-19,Pfizer/BioNTech,272001,https://www.cdc.gov/vaccines/acip/meetings/downloads/slides-2020-12/slides-12-19/05-COVID-CLARK.pdf
-United States,2020-12-20,Pfizer/BioNTech,556208,https://www.cdc.gov/coronavirus/2019-ncov/vaccines/index.html
+location,total_vaccinations,date,vaccine,source_url
+United States,556208,2020-12-20,Pfizer/BioNTech,https://www.cdc.gov/coronavirus/2019-ncov/vaccines/index.html
+United States,272001,2020-12-19,Pfizer/BioNTech,https://www.cdc.gov/vaccines/acip/meetings/downloads/slides-2020-12/slides-12-19/05-COVID-CLARK.pdf
