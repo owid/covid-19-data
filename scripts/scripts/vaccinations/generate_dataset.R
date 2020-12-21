@@ -95,7 +95,7 @@ add_per_capita <- function(df) {
     df <- merge(df, pop)
     for (metric in c("total_vaccinations", "new_vaccinations", "new_vaccinations_smoothed")) {
         if (metric %in% names(df)) {
-            df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 3)
+            df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 2)
         }
     }
     df[, population := NULL]
