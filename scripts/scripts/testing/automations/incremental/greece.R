@@ -1,14 +1,22 @@
-date <- today() - 1
+url <- "https://covid19.gov.gr/"
 
-url <- sprintf("https://eody.gov.gr/wp-content/uploads/%s/covid-gr-daily-report-%s.pdf", format.Date(date, "%Y/%m"), format.Date(date, "%Y%m%d"))
+page <- read_html(url)
 
-download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE)
+elements <- page %>% html_nodes("section .elementor-widget-container")
+idx <- which(html_text(elements) == "ΔΕΙΓΜΑΤΑ") - 1
 
-count <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract("ελεγχθεί \\d+ κλινικά") %>%
+count <- elements[idx] %>%
+    html_text() %>%
+    str_extract("[\\d\\.]+") %>%
     str_replace_all("[^\\d]", "") %>%
-    na.omit() %>%
     as.integer()
+
+date <- page %>%
+    html_nodes(".elementor-icon-list-text") %>%
+    html_text() %>%
+    str_extract("[\\d/]{10}") %>%
+    na.omit() %>%
+    dmy()
 
 add_snapshot(
     count = count,
@@ -18,5 +26,5 @@ add_snapshot(
     units = "samples tested",
     testing_type = "PCR only",
     source_url = url,
-    source_label = "National Organization of Public Health"
+    source_label = "Government of Greece"
 )

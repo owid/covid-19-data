@@ -22,5 +22,6 @@ add_snapshot(
     country = "Croatia",
     units = "people tested",
     source_url = url,
+    testing_type = "PCR only",
     source_label = "Government of Croatia"
 )
