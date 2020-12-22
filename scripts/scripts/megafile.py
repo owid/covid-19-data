@@ -400,6 +400,9 @@ def generate_megafile():
     # Check that we only have 1 unique row for each location/date pair
     assert all_covid.drop_duplicates(subset=["location", "date"]).shape == all_covid.shape
 
+    # Create light versions of complete dataset with only the latest data point
+    create_latest(all_covid)
+
     print("Writing to CSV…")
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
 
@@ -413,9 +416,6 @@ def generate_megafile():
     timestamp_filename = os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt")
     with open(timestamp_filename, "w") as timestamp_file:
         timestamp_file.write(datetime.utcnow().replace(microsecond=0).isoformat())
-
-    # Create light versions of complete dataset with only the latest data point
-    create_latest(all_covid)
 
     print("All done!")
 
