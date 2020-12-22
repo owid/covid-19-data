@@ -82,7 +82,7 @@ def get_metric(metric, region):
         .rename(columns={"date": "cutoff"})
     )
     df = df.merge(cutoff, on="Country/Region", how="left")
-    df = df[(df.date > df.cutoff) | (df.cutoff.isna())].drop(columns="cutoff")
+    df = df[(df.date >= df.cutoff) | (df.cutoff.isna())].drop(columns="cutoff")
 
     df.loc[:, metric.replace("total_", "new_")] = df[metric] - df.groupby("Country/Region")[metric].shift(1)
     return df
