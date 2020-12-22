@@ -1,15 +1,16 @@
 country,year,total_vaccinations,total_vaccinations_per_hundred
-Canada,328,5,0
-Canada,329,723,0
-Canada,330,2985,0.01
-Canada,331,7204,0.02
+Canada,328,297,0
+Canada,329,1163,0
+Canada,330,3685,0.01
+Canada,331,7203,0.02
 Canada,332,11170,0.03
 Canada,333,11886,0.03
-Canada,334,12733,0.03
-Canada,335,17633,0.05
+Canada,334,14487,0.04
+Canada,335,20861,0.06
 China,333,1000000,0.07
 England,330,108000,0.19
 Israel,334,10000,0.12
+Israel,335,30000,0.35
 Northern Ireland,330,4000,0.21
 Russia,316,100000,0.07
 Russia,324,150000,0.1
@@ -20,14 +21,15 @@ United Kingdom,333,350000,0.52
 United Kingdom,335,500000,0.74
 United States,333,272001,0.08
 United States,334,556208,0.17
+United States,335,614117,0.19
 Wales,330,7897,0.25
 World,316,100000,0
 World,324,150000,0
-World,328,200005,0
-World,329,200723,0
-World,330,340882,0
-World,331,345101,0
+World,328,200297,0
+World,329,201163,0
+World,330,341582,0
+World,331,345100,0
 World,332,349067,0
 World,333,1833887,0.02
-World,334,2128941,0.03
-World,335,2283841,0.03
+World,334,2130695,0.03
+World,335,2364978,0.03

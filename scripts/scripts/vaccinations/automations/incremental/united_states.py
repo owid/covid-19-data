@@ -1,27 +1,25 @@
-import re
+import json
 import requests
-from bs4 import BeautifulSoup
 import pandas as pd
 import vax_utils
 
 def main():
-
-    url = "https://www.cdc.gov/coronavirus/2019-ncov/vaccines/index.html"
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
     
-    count = soup.find("p", text=re.compile(r"ADMINISTERED DOSES")).parent.findChildren()[1].text
-    count = vax_utils.clean_count(count)
+    url = "https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=vaccination_data"
+    data = requests.get(url).json()
+    data = data["vaccination_data"][0]
 
-    date = str(soup.find_all(text=re.compile(r"Update:.*202\d"))[0])
-    date = re.search(r"[A-Za-z]+ \d+ 202\d", date).group(0)
-    date = pd.to_datetime(date)
+    count = data["Doses_Administered"]
+
+    date = data["Date"]
+    date = pd.to_datetime(date, format="%m/%d/%Y")
     date = str(date.date())
 
     vax_utils.increment(
         location = "United States",
         total_vaccinations = count,
         date = date,
-        source_url = url,
+        source_url = "https://covid.cdc.gov/covid-data-tracker/#vaccinations",
         vaccine = "Pfizer/BioNTech"
     )
 
