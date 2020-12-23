@@ -14,7 +14,6 @@ CONFIG <- fromJSON(file = "vax_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
 gs4_auth(email = CONFIG$google_credentials_email)
 GSHEET_KEY <- CONFIG$vax_time_series_gsheet
-VACCINE_LIST <- c("Pfizer/BioNTech", "Sputnik V", "CNBG, Sinovac")
 
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
 
@@ -82,9 +81,6 @@ process_location <- function(location_name) {
     }
     df <- df[, c("location", "date", "vaccine", "total_vaccinations", "source_url")]
     df[, date := date(date)]
-
-    # Sanity checks
-    stopifnot(length(setdiff(df$vaccine, VACCINE_LIST)) == 0)
 
     # Derived variables
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
@@ -172,6 +168,6 @@ generate_grapher_file(copy(vax))
 generate_locations_file(metadata)
 generate_html(metadata)
 
-upper_choices <- c(0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
+upper_choices <- c(2.5, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
 message(sprintf("---\nPer capita upper bound: %s",
                 upper_choices[which.min(abs(max(vax$total_vaccinations_per_hundred) - upper_choices))]))
