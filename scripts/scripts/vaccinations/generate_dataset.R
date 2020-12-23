@@ -82,6 +82,9 @@ process_location <- function(location_name) {
     df <- df[, c("location", "date", "vaccine", "total_vaccinations", "source_url")]
     df[, date := date(date)]
 
+    # Sanity checks
+    stopifnot(length(unique(df$vaccine)) == 1)
+
     # Derived variables
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_smoothed))
