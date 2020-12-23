@@ -19,7 +19,12 @@ VACCINE_LIST <- c("Pfizer/BioNTech", "Sputnik V", "CNBG, Sinovac")
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
 
 get_metadata <- function() {
-    metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))
+    retry(
+        expr = {metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))},
+        when = "RESOURCE_EXHAUSTED",
+        max_tries = 5,
+        interval = 100
+    )
     metadata <- metadata[include == TRUE]
     setorder(metadata, location)
     return(metadata)
@@ -75,6 +80,7 @@ process_location <- function(location_name) {
         )
         setDT(df)
     }
+    df <- df[, c("location", "date", "vaccine", "total_vaccinations", "source_url")]
     df[, date := date(date)]
 
     # Sanity checks
