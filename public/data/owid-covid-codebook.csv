@@ -33,8 +33,8 @@ new_tests_smoothed_per_thousand,National government reports,"New tests for COVID
 tests_per_case,National government reports,"Tests conducted per new confirmed case of COVID-19, given as a rolling 7-day average (this is the inverse of positive_rate)"
 positive_rate,National government reports,"The share of COVID-19 tests that are positive, given as a rolling 7-day average (this is the inverse of tests_per_case)"
 tests_units,National government reports,Units used by the location to report its testing data
-total_vaccinations,National government reports,Total vaccinations against COVID-19
-total_vaccinations_per_hundred,National government reports,"Total vaccinations against COVID-19 per 100 people"
+total_vaccinations,National government reports,Number of COVID-19 vaccination doses administered
+total_vaccinations_per_hundred,National government reports,Number of COVID-19 vaccination doses administered per 100 people
 stringency_index,"Oxford COVID-19 Government Response Tracker, Blavatnik School of Government","Government Response Stringency Index: composite measure based on 9 response indicators including school closures, workplace closures, and travel bans, rescaled to a value from 0 to 100 (100 = strictest response)"
 population,"United Nations, Department of Economic and Social Affairs, Population Division, World Population Prospects 2019 Revision",Population in 2020
 population_density,"World Bank World Development Indicators, sourced from Food and Agriculture Organization and World Bank estimates","Number of people divided by land area, measured in square kilometers, most recent year available"
