@@ -10,7 +10,7 @@ values <- page %>%
 labels <- page %>%
     html_nodes(".statistics-container .statistics-label") %>%
     html_text() %>%
-    str_detect("Направени PCR тестове")
+    str_detect("Направени тестове")
 
 count <- values[labels]
 
@@ -21,5 +21,5 @@ add_snapshot(
     units = "tests performed",
     source_url = url,
     source_label = "Bulgaria COVID-10 Information Portal",
-    testing_type = "PCR only"
+    testing_type = "unclear"
 )
