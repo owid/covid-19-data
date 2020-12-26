@@ -13,6 +13,8 @@ def main():
     })
 
     df["date"] = pd.to_datetime(df["date"], format="%d-%m-%Y")
+
+    df = df.groupby("total_vaccinations", as_index=False).min()
     
     df.loc[:, "location"] = "Canada"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
