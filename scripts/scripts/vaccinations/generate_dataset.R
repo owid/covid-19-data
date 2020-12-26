@@ -82,9 +82,6 @@ process_location <- function(location_name) {
     df <- df[, c("location", "date", "vaccine", "total_vaccinations", "source_url")]
     df[, date := date(date)]
 
-    # Sanity checks
-    stopifnot(length(unique(df$vaccine)) == 1)
-
     # Derived variables
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_smoothed))
@@ -109,7 +106,7 @@ add_per_capita <- function(df) {
 
 improve_metadata <- function(metadata, vax) {
     setorder(vax, date)
-    vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(vaccine)), collapse = ", ")), location]
+    vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(unlist(str_split(vaccine, ", ")))), collapse = ", ")), location]
     latest_meta <- vax[, .SD[.N], location]
     metadata <- merge(merge(metadata, vax_per_loc, "location"), latest_meta, "location")
     metadata[is.na(source_website), source_website := source_url]
