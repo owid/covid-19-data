@@ -86,6 +86,7 @@ process_location <- function(location_name) {
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
     # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_smoothed))
 
+    setorder(df, date)
     fwrite(df, sprintf("../../../public/data/vaccinations/country_data/%s.csv", location_name), scipen = 999)
     return(df)
 }
