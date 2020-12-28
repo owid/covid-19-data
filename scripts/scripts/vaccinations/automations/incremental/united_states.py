@@ -16,11 +16,11 @@ def main():
     date = str(date.date())
 
     vax_utils.increment(
-        location = "United States",
-        total_vaccinations = count,
-        date = date,
-        source_url = "https://covid.cdc.gov/covid-data-tracker/#vaccinations",
-        vaccine = "Pfizer/BioNTech"
+        location="United States",
+        total_vaccinations=count,
+        date=date,
+        source_url="https://covid.cdc.gov/covid-data-tracker/#vaccinations",
+        vaccine="Moderna, Pfizer/BioNTech"
     )
 
 if __name__ == "__main__":

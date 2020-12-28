@@ -1,11 +1,17 @@
-location,source_name,source_website,vaccines,last_observation_date
-Canada,COVID-19 Canada Open Data Working Group,https://github.com/ishaberry/Covid19Canada,Pfizer/BioNTech,2020-12-21
-China,National Health Commission,https://www.bloomberg.com/news/articles/2020-12-19/china-says-1-million-vaccines-already-given-plans-further-shots,"CNBG, Sinovac",2020-12-19
-England,Government of the United Kingdom,https://twitter.com/nadhimzahawi/status/1339143635586207744,Pfizer/BioNTech,2020-12-16
-Israel,Government of Israel,https://www.gov.il/en/departments/news/22122020-01,Pfizer/BioNTech,2020-12-21
-Northern Ireland,Government of the United Kingdom,https://twitter.com/nadhimzahawi/status/1339143635586207744,Pfizer/BioNTech,2020-12-16
-Russia,Government of Russia,https://uk.reuters.com/article/health-coronavirus-russia-vaccine-idUKKBN28O1OA,Sputnik V,2020-12-14
-Scotland,Government of the United Kingdom,https://twitter.com/nadhimzahawi/status/1339143635586207744,Pfizer/BioNTech,2020-12-16
-United Kingdom,Government of the United Kingdom,https://twitter.com/10DowningStreet/status/1341077469907054598,Pfizer/BioNTech,2020-12-21
-United States,Centers for Disease Control and Prevention,https://covid.cdc.gov/covid-data-tracker/#vaccinations,Pfizer/BioNTech,2020-12-21
-Wales,Government of the United Kingdom,https://twitter.com/nadhimzahawi/status/1339143635586207744,Pfizer/BioNTech,2020-12-16
+location,source_name,source_website,situation,vaccines,last_observation_date
+Bahrain,Ministry of Health,https://twitter.com/MOH_Bahrain,Daily update from MOH Twitter account,Sinopharm,2020-12-28
+Canada,COVID-19 Canada Open Data Working Group,https://github.com/ishaberry/Covid19Canada,Automated based on volunteer group,Pfizer/BioNTech,2020-12-27
+Chile,Department of Statistics and Health Information,https://deis.minsal.cl/,Daily update on official dashboard,Pfizer/BioNTech,2020-12-27
+China,National Health Commission,https://www.bloomberg.com/news/articles/2020-12-19/china-says-1-million-vaccines-already-given-plans-further-shots,"Sporadic updates, needs regular googling","CNBG, Sinovac",2020-12-19
+Costa Rica,Government of Costa Rica,https://www.presidencia.go.cr/comunicados/2020/12/55-ticos-recibieron-la-primera-dosis-de-la-vacuna-contra-covid-19-este-24-de-diciembre/,"One report after 1st day of vaccination, check subsequent reports",Pfizer/BioNTech,2020-12-24
+Denmark,Statens Serum Institut,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,Check daily from SSI website,Pfizer/BioNTech,2020-12-27
+England,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare,Automated based on official API,Pfizer/BioNTech,2020-12-20
+Germany,Robert Koch Institut,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquoten-Tab.html,Check daily from RKI website,Pfizer/BioNTech,2020-12-27
+Israel,Government of Israel,https://www.gov.il/he/departments/news/28122020-01,Daily update from Edelstein Twitter account and/or gov't press reports,Pfizer/BioNTech,2020-12-27
+Mexico,Secretary of Health,https://www.gob.mx/salud/prensa/269-continua-jornada-de-vacunacion-contra-covid-19-en-mexico,"One report after 1st day of vaccination, check subsequent reports",Pfizer/BioNTech,2020-12-27
+Northern Ireland,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare,Automated based on official API,Pfizer/BioNTech,2020-12-20
+Russia,Government of Russia,https://tass.com/society/1238521,"Sporadic updates, needs regular googling",Sputnik V,2020-12-22
+Scotland,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare,Automated based on official API,Pfizer/BioNTech,2020-12-20
+United Kingdom,Government of the United Kingdom,https://www.gov.uk/government/speeches/prime-ministers-statement-on-eu-negotiations-24-december-2020,Automated based on official API,Pfizer/BioNTech,2020-12-24
+United States,Centers for Disease Control and Prevention,https://covid.cdc.gov/covid-data-tracker/#vaccinations,Automated based on CDC dashboard,"Moderna, Pfizer/BioNTech",2020-12-28
+Wales,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare,Automated based on official API,Pfizer/BioNTech,2020-12-20

@@ -38,7 +38,6 @@ def merge_old_new(old, new):
 
 def get_recent_data() -> pd.DataFrame:
     newsletter_urls = _get_newsletter_urls()
-    newsletter_urls = newsletter_urls[:5]
     data = []
     for d in newsletter_urls:
         try:
@@ -63,13 +62,13 @@ def _get_newsletter_urls() -> List[dict]:
     res = requests.get(url)
     soup = BeautifulSoup(res.content, 'html.parser')
     records = []
-    list_h2_headings = soup.find('div', {'class': 'lotusWidgetBody1'}).find_all('h2')
+    list_h2_headings = soup.find('div', {'class': 'lotusWidgetBody1'}).find_all('h2')[:5]
     for h2 in list_h2_headings:
         regex_res = re.search(r'covid-19', h2.text, re.IGNORECASE)
         if regex_res:
-            date_regex_res = re.search(r"[\d/]{8,10}", h2.text.strip()).group(0)
+            date_regex_res = re.search(r"[\d/]{8,10}", h2.text.strip())
             if date_regex_res:
-                dd, mm, yyyy = re.findall(r"\d+", date_regex_res)
+                dd, mm, yyyy = re.findall(r"\d+", date_regex_res.group(0))
                 date = datetime.datetime(int(yyyy), int(mm), int(dd))
                 url = f"{domain}{h2.find('a').get('href')}"
                 # print(date)

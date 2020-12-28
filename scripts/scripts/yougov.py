@@ -88,9 +88,11 @@ def merge_files():
         tqdm.write(country)
         try:
             df = read_country_data(country, "csv")
-            df.loc[:, "Date"] = pd.to_datetime(df.endtime, format="%d/%m/%Y %H:%M")
         except:
             df = read_country_data(country, "zip")
+        try:
+            df.loc[:, "Date"] = pd.to_datetime(df.endtime, format="%d/%m/%Y %H:%M")
+        except:
             df.loc[:, "Date"] = pd.to_datetime(df.endtime, format="%Y-%m-%d %H:%M:%S")
         df.loc[:, "country"] = country
         all_data.append(df)

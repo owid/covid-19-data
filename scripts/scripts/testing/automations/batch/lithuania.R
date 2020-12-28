@@ -10,9 +10,8 @@ df[, Date := date(ymd_hms(Date))]
 
 df[, Country := "Lithuania"]
 df[, Units := "tests performed"]
-df[, `Testing type` := "PCR only"]
 df[, `Source label` := "Government of Lithuania"]
-df[, `Source URL` := "https://open-data-ls-osp-sdg.hub.arcgis.com/datasets/538b7bd574594daa86fefd16509cbc36_0"]
+df[, `Source URL` := "https://open-data-ls-osp-sdg.hub.arcgis.com/search?q=COVID19%20tyrimai"]
 df[, Notes := NA_character_]
 
 fwrite(df, "automated_sheets/Lithuania.csv")

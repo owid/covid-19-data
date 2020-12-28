@@ -231,10 +231,7 @@ def get_cgrt():
         cgrt {dataframe}
     """
 
-    cgrt = pd.read_csv(
-        "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest_combined.csv",
-        low_memory=False
-    )
+    cgrt = pd.read_csv(os.path.join(INPUT_DIR, "bsg/latest.csv"), low_memory=False)
 
     if "RegionCode" in cgrt.columns:
         cgrt = cgrt[cgrt.RegionCode.isnull()]
