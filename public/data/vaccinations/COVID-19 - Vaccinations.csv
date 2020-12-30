@@ -1,4 +1,5 @@
 country,year,total_vaccinations,total_vaccinations_per_hundred
+Austria,344,6000,0.07
 Bahrain,337,38965,2.29
 Bahrain,338,50071,2.94
 Bahrain,339,50543,2.97
@@ -33,8 +34,10 @@ Denmark,342,6775,0.12
 England,334,521594,0.93
 Estonia,342,207,0.02
 Estonia,343,516,0.04
+Estonia,344,884,0.07
 Germany,341,21566,0.03
 Germany,342,41962,0.05
+Germany,343,78109,0.09
 Hungary,342,1094,0.01
 Hungary,343,2461,0.03
 Israel,334,7700,0.09
@@ -92,4 +95,5 @@ World,339,3211904,0.04
 World,340,4187640,0.05
 World,341,4320894,0.06
 World,342,4666558,0.06
-World,343,4868073,0.06
+World,343,4904220,0.06
+World,344,4910588,0.06
