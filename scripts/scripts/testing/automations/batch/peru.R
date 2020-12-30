@@ -24,7 +24,7 @@ process_file <- function(url) {
     return(df)
 }
 
-files <- "https://datos.ins.gob.pe/dataset/47daea44-df80-4120-bca3-88a5174bfa50/resource/2121e060-c2ea-47ca-90c6-9a1617334c74/download/pm_18dec_2020.csv"
+files <- "https://datos.ins.gob.pe/dataset/47daea44-df80-4120-bca3-88a5174bfa50/resource/06b7d8f4-cb80-4815-b62d-338ba3a55eb1/download/pm_25dec_2020.csv"
 data <- rbindlist(lapply(files, FUN = process_file))
 df <- data[, .(`Daily change in cumulative total` = .N), Date]
 
