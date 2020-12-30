@@ -13,7 +13,7 @@ URL = "https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv"
 DATASET_NAME = "Google Mobility Trends (2020)"
 
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/gmobility/")
-OUTPUT_PATH = os.path.join(CURRENT_DIR, "../../public/data/gmobility/")
+OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher/")
 TEMP_CSV_PATH = os.path.join(INPUT_PATH, "latest.csv")
 INPUT_CSV_GZIP_PATH = os.path.join(INPUT_PATH, "latest.csv.gz")
 OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
