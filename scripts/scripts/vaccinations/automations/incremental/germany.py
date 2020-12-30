@@ -1,3 +1,4 @@
+import os
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -9,15 +10,23 @@ def main():
     page = requests.get("https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquoten-Tab.html")
     soup = BeautifulSoup(page.content, "html.parser")
 
-    text = soup.find(id="main").find(class_="box").find("strong").text
+    url = soup.find(id="main").find(class_="box").find("ul", class_="links").find("a")["href"]
+    url = "https://www.rki.de" + url
 
-    regex = re.compile(r"Gesamtzahl der Impfungen bis einschl\. (\d\d\.\d\d\.202\d): ([\d\.]+)")
+    with open("automations/tmp/germany.xlsx", "wb") as file:
+        file.write(requests.get(url).content)
 
-    date = regex.match(text).group(1)
-    date = str(pd.to_datetime(date, format="%d.%m.%Y").date())
+    df = pd.ExcelFile("automations/tmp/germany.xlsx")
+    sheet_names = df.sheet_names
+    sheet_names.remove("Erläuterung")
 
-    count = regex.match(text).group(2)
-    count = int(count.replace(".", ""))
+    date = sheet_names[0]
+
+    df = df.parse(date)
+    count = int(df.loc[df["Bundesland"] == "Gesamt", "Impfungen kumulativ"].values[0])
+
+    date = (pd.to_datetime(date, format="%d.%m.%y") - pd.DateOffset(days=1)).date()
+    date = str(date)
 
     vax_utils.increment(
         location="Germany",
@@ -26,6 +35,8 @@ def main():
         source_url="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquoten-Tab.html",
         vaccine="Pfizer/BioNTech"
     )
+
+    os.remove("automations/tmp/germany.xlsx")
 
 
 if __name__ == "__main__":
