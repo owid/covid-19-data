@@ -13,10 +13,10 @@ def main():
     url = soup.find(id="main").find(class_="box").find("ul", class_="links").find("a")["href"]
     url = "https://www.rki.de" + url
 
-    with open("automations/tmp/germany.xlsx", "wb") as file:
+    with open("germany.xlsx", "wb") as file:
         file.write(requests.get(url).content)
 
-    df = pd.ExcelFile("automations/tmp/germany.xlsx")
+    df = pd.ExcelFile("germany.xlsx")
     sheet_names = df.sheet_names
     sheet_names.remove("Erläuterung")
     assert len(sheet_names) == 1
@@ -37,7 +37,7 @@ def main():
         vaccine="Pfizer/BioNTech"
     )
 
-    os.remove("automations/tmp/germany.xlsx")
+    os.remove("germany.xlsx")
 
 
 if __name__ == "__main__":
