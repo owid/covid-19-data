@@ -12,8 +12,8 @@ def main():
     count = data["Doses_Administered"]
 
     date = data["Date"]
-    date = pd.to_datetime(date, format="%m/%d/%Y")
-    date = str(date.date())
+    # date = pd.to_datetime(date, format="%m/%d/%Y")
+    # date = str(date.date())
 
     vax_utils.increment(
         location="United States",
