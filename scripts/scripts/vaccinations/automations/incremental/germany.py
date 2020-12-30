@@ -19,6 +19,7 @@ def main():
     df = pd.ExcelFile("automations/tmp/germany.xlsx")
     sheet_names = df.sheet_names
     sheet_names.remove("Erläuterung")
+    assert len(sheet_names) == 1
 
     date = sheet_names[0]
 
