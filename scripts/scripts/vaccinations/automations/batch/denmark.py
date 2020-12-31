@@ -5,8 +5,10 @@ import urllib.request
 
 
 def main():
+    url = "https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning"
+
     # Locate newest pdf
-    html_page = urllib.request.urlopen("https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning")
+    html_page = urllib.request.urlopen(url)
     soup = BeautifulSoup(html_page, "html.parser")
     pdf_path = soup.find('a', text = "Download her").get("href")  # Get path to newest pdf
 
@@ -23,6 +25,7 @@ def main():
     df = df.groupby("total_vaccinations", as_index = False).min()
     df.loc[:, "location"] = "Denmark"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[:, "source_url"] = url
 
     df.to_csv("automations/output/Denmark.csv", index=False)
 
