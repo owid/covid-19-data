@@ -22,7 +22,7 @@ get_metadata <- function() {
         expr = {metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))},
         when = "RESOURCE_EXHAUSTED",
         max_tries = 5,
-        interval = 100
+        interval = 50
     )
     metadata <- metadata[include == TRUE]
     setorder(metadata, location)
@@ -96,11 +96,10 @@ add_per_capita <- function(df) {
     pop <- rbindlist(list(pop, subnational_pop))
 
     df <- merge(df, pop)
-    for (metric in c("total_vaccinations", "new_vaccinations", "new_vaccinations_smoothed")) {
-        if (metric %in% names(df)) {
-            df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 2)
-        }
-    }
+
+    df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
+    df[, new_vaccinations_smoothed_per_million := round(new_vaccinations_smoothed * 1000000 / population, 2)]
+
     df[, population := NULL]
     return(df)
 }
@@ -124,6 +123,8 @@ generate_locations_file <- function(metadata) {
 }
 
 generate_vaccinations_file <- function(vax) {
+    setnames(vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million"),
+             c("daily_vaccinations", "daily_vaccinations_per_million"))
     fwrite(vax, "../../../public/data/vaccinations/vaccinations.csv", scipen = 999)
 }
 
@@ -163,7 +164,7 @@ vax <- add_world(vax)
 
 # Derived variables
 # vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
-# vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
+vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
 vax <- add_per_capita(vax)
 
 setorder(vax, location, date)
@@ -172,6 +173,6 @@ generate_grapher_file(copy(vax))
 generate_locations_file(metadata)
 generate_html(metadata)
 
-upper_choices <- c(5, 10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
+upper_choices <- c(10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
 message(sprintf("---\nPer capita upper bound: %s",
-                upper_choices[which.min(abs(max(vax$total_vaccinations_per_hundred) - upper_choices))]))
+                upper_choices[which.min(abs(max(vax$total_vaccinations_per_hundred, na.rm = T) - upper_choices))]))
