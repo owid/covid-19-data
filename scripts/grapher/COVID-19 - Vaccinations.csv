@@ -1,123 +1,193 @@
-country,year,total_vaccinations,total_vaccinations_per_hundred
-Argentina,343,700,0
-Austria,344,6000,0.07
-Bahrain,337,38965,2.29
-Bahrain,338,50071,2.94
-Bahrain,339,50543,2.97
-Bahrain,340,51556,3.03
-Bahrain,341,53614,3.15
-Bahrain,342,55014,3.23
-Bahrain,343,56041,3.29
-Bahrain,344,57317,3.37
-Bulgaria,343,1719,0.02
-Bulgaria,344,4608,0.07
-Canada,328,297,0
-Canada,329,1163,0
-Canada,330,3683,0.01
-Canada,331,7201,0.02
-Canada,332,11174,0.03
-Canada,333,11894,0.03
-Canada,334,14492,0.04
-Canada,335,20866,0.06
-Canada,336,26287,0.07
-Canada,337,35204,0.09
-Canada,338,45563,0.12
-Canada,339,45865,0.12
-Canada,340,48884,0.13
-Canada,341,52179,0.14
-Canada,342,58818,0.16
-Canada,343,72473,0.19
-Canada,344,85279,0.23
-Chile,338,420,0
-Chile,339,5192,0.03
-Chile,340,8337,0.04
-Chile,341,8648,0.05
-China,333,1000000,0.07
-Costa Rica,338,55,0
-Croatia,344,7864,0.19
-Denmark,341,5625,0.1
-Denmark,342,7271,0.13
-Denmark,343,13310,0.23
-Denmark,344,13311,0.23
-England,334,521594,0.93
-Estonia,342,207,0.02
-Estonia,343,516,0.04
-Estonia,344,884,0.07
-Finland,345,1767,0.03
-France,344,138,0
-Germany,341,21566,0.03
-Germany,342,41962,0.05
-Germany,343,78109,0.09
-Germany,344,131626,0.16
-Greece,344,1763,0.02
-Hungary,342,1094,0.01
-Hungary,343,2461,0.03
-Hungary,344,3789,0.04
-Iceland,344,4875,1.43
-Israel,334,7700,0.09
-Israel,335,31400,0.36
-Israel,336,74000,0.85
-Israel,337,134500,1.55
-Israel,338,208600,2.41
-Israel,339,247300,2.86
-Israel,340,279300,3.23
-Israel,341,376200,4.35
-Israel,342,491600,5.68
-Israel,343,643600,7.44
-Israel,344,794200,9.18
-Italy,343,8361,0.01
-Italy,344,9803,0.02
-Kuwait,342,2500,0.06
-Latvia,343,573,0.03
-Lithuania,342,2270,0.08
-Luxembourg,344,1200,0.19
-Mexico,338,2924,0
-Mexico,341,6824,0.01
-Mexico,342,9579,0.01
-Mexico,343,18529,0.01
-Mexico,344,24998,0.02
-Northern Ireland,327,3623,0.19
-Northern Ireland,334,16068,0.85
-Oman,343,1717,0.03
-Oman,344,3363,0.07
-Oman,345,5043,0.1
-Poland,342,2000,0.01
-Poland,343,6300,0.02
-Poland,344,36300,0.1
-Portugal,342,4828,0.05
-Portugal,343,16701,0.16
-Romania,342,2066,0.01
-Romania,343,2778,0.01
-Russia,329,28500,0.02
-Russia,336,52000,0.04
-Scotland,327,18800,0.34
-Scotland,334,56676,1.04
-United Kingdom,334,616933,0.91
-United Kingdom,338,800000,1.18
-United States,333,272001,0.08
-United States,334,556208,0.17
-United States,335,614117,0.19
-United States,337,1008025,0.3
-United States,340,1944585,0.59
-United States,342,2127143,0.64
-United States,344,2794588,0.84
-Wales,327,7852,0.25
-Wales,334,22595,0.72
-World,328,297,0
-World,329,29663,0
-World,330,32183,0
-World,331,35701,0
-World,332,39674,0
-World,333,1312395,0.02
-World,334,2223833,0.03
-World,335,2311816,0.03
-World,336,2383337,0.03
-World,337,2885627,0.04
-World,338,3167658,0.04
-World,339,3211904,0.04
-World,340,4187641,0.05
-World,341,4321296,0.06
-World,342,4667055,0.06
-World,343,4916504,0.06
-World,344,5868131,0.08
-World,345,5871578,0.08
+country,year,total_vaccinations,new_vaccinations_smoothed,total_vaccinations_per_hundred,new_vaccinations_smoothed_per_million
+Argentina,343,700,,0,
+Austria,344,6000,,0.07,
+Bahrain,337,38965,,2.29,
+Bahrain,338,50071,,2.94,
+Bahrain,339,50543,,2.97,
+Bahrain,340,51556,,3.03,
+Bahrain,341,53614,,3.15,
+Bahrain,342,55014,,3.23,
+Bahrain,343,56041,,3.29,
+Bahrain,344,57317,2621.714,3.37,1540.75
+Bulgaria,343,1719,,0.02,
+Bulgaria,344,4608,,0.07,
+Canada,328,297,,0,
+Canada,329,1163,,0,
+Canada,330,3683,,0.01,
+Canada,331,7201,,0.02,
+Canada,332,11174,,0.03,
+Canada,333,11894,,0.03,
+Canada,334,14492,,0.04,
+Canada,335,20866,2938.429,0.06,77.86
+Canada,336,26287,3589.143,0.07,95.1
+Canada,337,35204,4503,0.09,119.31
+Canada,338,45563,5480.286,0.12,145.2
+Canada,339,45865,4955.857,0.12,131.31
+Canada,340,48884,5284.286,0.13,140.01
+Canada,341,52179,5383.857,0.14,142.65
+Canada,342,58818,5421.714,0.16,143.65
+Canada,343,72473,6598,0.19,174.82
+Canada,344,85279,7153.571,0.23,189.54
+Chile,338,420,,0,
+Chile,339,5192,,0.03,
+Chile,340,8337,,0.04,
+Chile,341,8648,,0.05,
+China,333,1000000,,0.07,
+Costa Rica,338,55,,0,
+Croatia,344,7864,,0.19,
+Denmark,341,6079,,0.1,
+Denmark,342,7818,,0.13,
+Denmark,343,14879,,0.26,
+Denmark,344,23874,,0.41,
+Denmark,345,23895,,0.41,
+England,334,542961,,0.96,
+England,335,,,,
+England,336,,,,
+England,337,,,,
+England,338,,,,
+England,339,,,,
+England,340,,,,
+England,341,786000,34719.857,1.4,616.84
+Estonia,342,207,,0.02,
+Estonia,343,516,,0.04,
+Estonia,344,884,,0.07,
+Estonia,345,1907,,0.14,
+Finland,345,1767,,0.03,
+France,344,138,,0,
+Germany,341,21566,,0.03,
+Germany,342,41962,,0.05,
+Germany,343,78109,,0.09,
+Germany,344,131626,,0.16,
+Greece,344,1763,,0.02,
+Hungary,342,1094,,0.01,
+Hungary,343,2461,,0.03,
+Hungary,344,3789,,0.04,
+Iceland,344,4875,,1.43,
+Israel,334,7700,,0.09,
+Israel,335,31400,,0.36,
+Israel,336,74000,,0.85,
+Israel,337,134500,,1.55,
+Israel,338,208600,,2.41,
+Israel,339,247300,,2.86,
+Israel,340,279300,,3.23,
+Israel,341,376200,52642.857,4.35,6081.98
+Israel,342,491600,65742.857,5.68,7595.46
+Israel,343,643600,81371.429,7.44,9401.08
+Israel,344,794200,94242.857,9.18,10888.15
+Italy,343,8361,,0.01,
+Italy,344,9803,,0.02,
+Italy,345,14813,,0.02,
+Kuwait,342,2500,,0.06,
+Latvia,343,573,,0.03,
+Lithuania,342,2270,,0.08,
+Luxembourg,344,1200,,0.19,
+Mexico,338,2924,,0,
+Mexico,339,,,,
+Mexico,340,,,,
+Mexico,341,6824,,0.01,
+Mexico,342,9579,,0.01,
+Mexico,343,18529,,0.01,
+Mexico,344,24998,,0.02,
+Northern Ireland,327,3623,,0.19,
+Northern Ireland,328,,,,
+Northern Ireland,329,,,,
+Northern Ireland,330,,,,
+Northern Ireland,331,,,,
+Northern Ireland,332,,,,
+Northern Ireland,333,,,,
+Northern Ireland,334,16068,1777.857,0.85,938.84
+Northern Ireland,335,,1828.939,,965.82
+Northern Ireland,336,,1880.02,,992.79
+Northern Ireland,337,,1931.102,,1019.77
+Northern Ireland,338,,1982.184,,1046.74
+Northern Ireland,339,,2033.265,,1073.72
+Northern Ireland,340,,2084.347,,1100.69
+Northern Ireland,341,31016,2135.429,1.64,1127.67
+Oman,343,1717,,0.03,
+Oman,344,3363,,0.07,
+Oman,345,5043,,0.1,
+Poland,342,2000,,0.01,
+Poland,343,6300,,0.02,
+Poland,344,36300,,0.1,
+Portugal,342,4828,,0.05,
+Portugal,343,16701,,0.16,
+Romania,342,2066,,0.01,
+Romania,343,2778,,0.01,
+Romania,344,,,,
+Romania,345,10829,,0.06,
+Russia,329,28500,,0.02,
+Russia,330,,,,
+Russia,331,,,,
+Russia,332,,,,
+Russia,333,,,,
+Russia,334,,,,
+Russia,335,,,,
+Russia,336,52000,3357.143,0.04,23
+Scotland,327,19132,,0.35,
+Scotland,328,,,,
+Scotland,329,,,,
+Scotland,330,,,,
+Scotland,331,,,,
+Scotland,332,,,,
+Scotland,333,,,,
+Scotland,334,58807,5667.857,1.08,1037.44
+Scotland,335,,5539.408,,1013.93
+Scotland,336,,5410.959,,990.42
+Scotland,337,,5282.51,,966.91
+Scotland,338,,5154.061,,943.4
+Scotland,339,,5025.612,,919.89
+Scotland,340,,4897.163,,896.37
+Scotland,341,92188,4768.714,1.69,872.86
+United Kingdom,334,641116,,0.94,
+United Kingdom,335,,,,
+United Kingdom,336,,,,
+United Kingdom,337,,,,
+United Kingdom,338,,,,
+United Kingdom,339,,,,
+United Kingdom,340,,,,
+United Kingdom,341,944539,43346.143,1.39,638.51
+United States,333,272001,,0.08,
+United States,334,556208,,0.17,
+United States,335,614117,,0.19,
+United States,336,,,,
+United States,337,1008025,,0.3,
+United States,338,,,,
+United States,339,,,,
+United States,340,1944585,238940.571,0.59,721.87
+United States,341,,211379.429,,638.6
+United States,342,2127143,216146.571,0.64,653.01
+United States,343,,235684.929,,712.03
+United States,344,2794588,255223.286,0.84,771.06
+Wales,327,8143,,0.26,
+Wales,328,,,,
+Wales,329,,,,
+Wales,330,,,,
+Wales,331,,,,
+Wales,332,,,,
+Wales,333,,,,
+Wales,334,23280,2162.429,0.74,685.86
+Wales,335,,2099.531,,665.91
+Wales,336,,2036.633,,645.96
+Wales,337,,1973.735,,626.01
+Wales,338,,1910.837,,606.06
+Wales,339,,1847.939,,586.11
+Wales,340,,1785.041,,566.16
+Wales,341,35335,1722.143,1.12,546.21
+World,328,297,,0,
+World,329,29663,,0,
+World,330,32183,,0,
+World,331,35701,,0,
+World,332,39674,,0,
+World,333,1312395,,0.02,
+World,334,2248016,,0.03,
+World,335,2335999,333671.714,0.03,42.81
+World,336,2407520,339693.857,0.03,43.58
+World,337,2909810,411089.571,0.04,52.74
+World,338,3008774,424724.714,0.04,54.49
+World,339,3053020,430478,0.04,55.23
+World,340,4028757,388051.714,0.05,49.78
+World,341,4466289,316896.143,0.06,40.65
+World,342,4812141,353734.571,0.06,45.38
+World,343,5062612,379298.857,0.06,48.66
+World,344,6023233,444774.714,0.08,57.06
+World,345,6040785,433144.429,0.08,55.57
