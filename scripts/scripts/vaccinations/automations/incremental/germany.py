@@ -26,8 +26,7 @@ def main():
     df = df.parse(date)
     count = int(df.loc[df["Bundesland"] == "Gesamt", "Impfungen kumulativ"].values[0])
 
-    date = (pd.to_datetime(date, format="%d.%m.%y") - pd.DateOffset(days=1)).date()
-    date = str(date)
+    date = str(pd.to_datetime(date, format="%d.%m.%y").date())
 
     vaxutils.increment(
         location="Germany",
