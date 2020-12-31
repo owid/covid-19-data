@@ -1,4 +1,5 @@
 country,year,total_vaccinations,total_vaccinations_per_hundred
+Argentina,343,700,0
 Austria,344,6000,0.07
 Bahrain,337,38965,2.29
 Bahrain,338,50071,2.94
@@ -10,6 +11,7 @@ Bahrain,343,56041,3.29
 Bahrain,344,57317,3.37
 Bulgaria,343,1719,0.02
 Bulgaria,344,3844,0.06
+Bulgaria,345,4608,0.07
 Canada,328,297,0
 Canada,329,1163,0
 Canada,330,3683,0.01
@@ -20,15 +22,17 @@ Canada,334,14492,0.04
 Canada,335,20866,0.06
 Canada,336,26287,0.07
 Canada,337,35204,0.09
-Canada,338,45865,0.12
+Canada,338,45563,0.12
+Canada,339,45865,0.12
 Canada,340,48884,0.13
 Canada,341,52179,0.14
 Canada,342,58818,0.16
-Canada,343,71725,0.19
+Canada,343,72473,0.19
+Canada,344,85279,0.23
 Chile,338,420,0
 Chile,339,5192,0.03
-Chile,340,8336,0.04
-Chile,341,8647,0.05
+Chile,340,8337,0.04
+Chile,341,8648,0.05
 China,333,1000000,0.07
 Costa Rica,338,55,0
 Croatia,344,7864,0.19
@@ -40,6 +44,7 @@ England,334,521594,0.93
 Estonia,342,207,0.02
 Estonia,343,516,0.04
 Estonia,344,884,0.07
+France,344,138,0
 Germany,341,21566,0.03
 Germany,342,41962,0.05
 Germany,343,78109,0.09
@@ -47,6 +52,7 @@ Greece,344,1763,0.02
 Hungary,342,1094,0.01
 Hungary,343,2461,0.03
 Hungary,344,3789,0.04
+Iceland,344,4875,1.43
 Israel,334,7700,0.09
 Israel,335,31400,0.36
 Israel,336,74000,0.85
@@ -57,6 +63,7 @@ Israel,340,279300,3.23
 Israel,341,376200,4.35
 Israel,342,491600,5.68
 Israel,343,643600,7.44
+Israel,344,794200,9.18
 Italy,343,8361,0.01
 Italy,344,9803,0.02
 Kuwait,342,2500,0.06
@@ -67,6 +74,7 @@ Mexico,338,2924,0
 Mexico,341,6824,0.01
 Mexico,342,9579,0.01
 Mexico,343,18529,0.01
+Mexico,344,24998,0.02
 Northern Ireland,327,3623,0.19
 Northern Ireland,334,16068,0.85
 Oman,343,1717,0.03
@@ -90,7 +98,7 @@ United States,335,614117,0.19
 United States,337,1008025,0.3
 United States,340,1944585,0.59
 United States,342,2127143,0.64
-United States,344,2589125,0.78
+United States,344,2794588,0.84
 Wales,327,7852,0.25
 Wales,334,22595,0.72
 World,328,297,0
@@ -103,10 +111,11 @@ World,334,2223833,0.03
 World,335,2311816,0.03
 World,336,2383337,0.03
 World,337,2885627,0.04
-World,338,3167960,0.04
+World,338,3167658,0.04
 World,339,3211904,0.04
-World,340,4187640,0.05
-World,341,4321295,0.06
-World,342,4667054,0.06
-World,343,4915055,0.06
-World,344,5409750,0.07
+World,340,4187641,0.05
+World,341,4321296,0.06
+World,342,4667055,0.06
+World,343,4916504,0.06
+World,344,5791550,0.07
+World,345,5792314,0.07
