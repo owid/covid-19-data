@@ -3,7 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-import vax_utils
+import vaxutils
 
 def main():
      
@@ -29,7 +29,7 @@ def main():
     date = (pd.to_datetime(date, format="%d.%m.%y") - pd.DateOffset(days=1)).date()
     date = str(date)
 
-    vax_utils.increment(
+    vaxutils.increment(
         location="Germany",
         total_vaccinations=count,
         date=date,

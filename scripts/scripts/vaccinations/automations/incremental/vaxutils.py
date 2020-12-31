@@ -18,16 +18,21 @@ def increment(location, total_vaccinations, date, vaccine, source_url):
 
     prev = pd.read_csv(f"automations/output/{location}.csv")
 
-    if date <= prev["date"].max() or total_vaccinations <= prev["total_vaccinations"].max():
+    if total_vaccinations <= prev["total_vaccinations"].max():
         return None
 
-    new = pd.DataFrame({
-        "location": location,
-        "date": date,
-        "vaccine": vaccine,
-        "total_vaccinations": [total_vaccinations],
-        "source_url": source_url,
-    })
+    elif date == prev["date"].max():
+        df = prev.copy()
+        df.loc[df["date"] == date, "total_vaccinations"] = total_vaccinations
 
-    df = pd.concat([prev, new]).sort_values("date")
+    else:
+        new = pd.DataFrame({
+            "location": location,
+            "date": date,
+            "vaccine": vaccine,
+            "total_vaccinations": [total_vaccinations],
+            "source_url": source_url,
+        })
+        df = pd.concat([prev, new]).sort_values("date")
+
     df.to_csv(f"automations/output/{location}.csv", index=False)
