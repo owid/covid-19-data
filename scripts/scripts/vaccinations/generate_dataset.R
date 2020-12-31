@@ -21,8 +21,8 @@ get_metadata <- function() {
     retry(
         expr = {metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))},
         when = "RESOURCE_EXHAUSTED",
-        max_tries = 5,
-        interval = 50
+        max_tries = 10,
+        interval = 20
     )
     metadata <- metadata[include == TRUE]
     setorder(metadata, location)
@@ -74,8 +74,8 @@ process_location <- function(location_name) {
         retry(
             expr = {df <- suppressMessages(read_sheet(GSHEET_KEY, sheet = location_name))},
             when = "RESOURCE_EXHAUSTED",
-            max_tries = 5,
-            interval = 100
+            max_tries = 10,
+            interval = 20
         )
         setDT(df)
     }
@@ -168,7 +168,7 @@ vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
 vax <- add_per_capita(vax)
 
 setorder(vax, location, date)
-generate_vaccinations_file(vax)
+generate_vaccinations_file(copy(vax))
 generate_grapher_file(copy(vax))
 generate_locations_file(metadata)
 generate_html(metadata)
