@@ -1,5 +1,7 @@
+import datetime
 import re
 import pandas as pd
+
 
 def clean_count(count):
     count = count.replace(",", "")
@@ -13,6 +15,7 @@ def increment(location, total_vaccinations, date, vaccine, source_url):
     assert type(total_vaccinations) == int
     assert type(date) == str
     assert re.match(r"\d{4}-\d{2}-\d{2}", date)
+    assert date <= str(datetime.date.today())
     assert type(vaccine) == str
     assert type(source_url) == str
 
