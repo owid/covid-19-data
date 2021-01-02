@@ -17,7 +17,7 @@ def main():
     df = df.groupby("total_vaccinations", as_index=False).min()
     
     df.loc[:, "location"] = "Canada"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[:, "vaccine"] = "Moderna, Pfizer/BioNTech"
     df.loc[:, "source_url"] = "https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv"
 
     df.to_csv("automations/output/Canada.csv", index=False)
