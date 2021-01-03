@@ -9,6 +9,12 @@ def clean_count(count):
     return count
 
 
+def clean_date(date, fmt):
+    date = pd.to_datetime(date, format=fmt)
+    date = str(date.date())
+    return date
+
+
 def increment(location, total_vaccinations, date, vaccine, source_url):
 
     assert type(location) == str
