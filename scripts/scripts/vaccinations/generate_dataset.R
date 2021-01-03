@@ -51,15 +51,17 @@ add_daily <- function(df) {
 }
 
 add_smoothed <- function(df) {
+    if (df$location[1] == "World") return(df)
     setorder(df, date)
     date_seq <- seq.Date(from = min(df$date), to = max(df$date), by = "day")
     time_series <- data.table(date = date_seq, location = df$location[1])
     if ("vaccine" %in% names(df)) time_series[, vaccine := df$vaccine[1]]
-    df <- merge(df, time_series, all = TRUE)
+    df <- merge(df, time_series, all = TRUE, c("date", "location"))
     setorder(df, date)
     df[, total_interpolated := na_interpolation(total_vaccinations, option = "linear")]
     df[, new_interpolated := total_interpolated - shift(total_interpolated, 1)]
-    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, 7), 3)]
+    windows <- head(c(0:6, rep(7, 1e4)), nrow(df))
+    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE), 3)]
     df[, c("total_interpolated", "new_interpolated") := NULL]
     return(df)
 }
@@ -164,7 +166,7 @@ vax <- add_world(vax)
 
 # Derived variables
 # vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
-vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
+vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
 vax <- add_per_capita(vax)
 
 setorder(vax, location, date)
