@@ -106,6 +106,12 @@ add_per_capita <- function(df) {
     return(df)
 }
 
+add_iso <- function(df) {
+    iso_codes <- fread("../../input/iso/iso3166_1_alpha_3_codes.csv")
+    df <- merge(iso_codes, df, by = "location", all.y = TRUE)
+    return(df)
+}
+
 improve_metadata <- function(metadata, vax) {
     setorder(vax, date)
     vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(unlist(str_split(vaccine, ", ")))), collapse = ", ")), location]
@@ -114,17 +120,17 @@ improve_metadata <- function(metadata, vax) {
     metadata[is.na(source_website), source_website := source_url]
     setnames(metadata, "date", "last_observation_date")
     metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url") := NULL]
+    metadata <- add_iso(metadata)
     return(metadata)
 }
 
 generate_locations_file <- function(metadata) {
-    iso_codes <- fread("../../input/iso/iso3166_1_alpha_3_codes.csv")
-    metadata <- merge(iso_codes, metadata, by = "location", all.y = TRUE)
     metadata <- metadata[, c("location", "iso_code", "source_name", "source_website", "vaccines", "last_observation_date")]
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
 }
 
 generate_vaccinations_file <- function(vax) {
+    vax <- add_iso(vax)
     setnames(vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million"),
              c("daily_vaccinations", "daily_vaccinations_per_million"))
     fwrite(vax, "../../../public/data/vaccinations/vaccinations.csv", scipen = 999)
