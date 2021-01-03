@@ -101,7 +101,13 @@ add_iso <- function(df) {
     return(df)
 }
 
-improve_metadata <- function(metadata, vax) {
+generate_automation_file <- function(metadata) {
+    auto <- metadata[, c("location", "automated")]
+    setorder(auto, -automated, location)
+    fwrite(auto, "automations/automation_state.csv")
+}
+
+generate_locations_file <- function(metadata, vax) {
     setorder(vax, date)
     vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(unlist(str_split(vaccine, ", ")))), collapse = ", ")), location]
     latest_meta <- vax[, .SD[.N], location]
@@ -110,12 +116,9 @@ improve_metadata <- function(metadata, vax) {
     setnames(metadata, "date", "last_observation_date")
     metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url") := NULL]
     metadata <- add_iso(metadata)
-    return(metadata)
-}
-
-generate_locations_file <- function(metadata) {
     metadata <- metadata[, c("location", "iso_code", "source_name", "source_website", "vaccines", "last_observation_date")]
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
+    return(metadata)
 }
 
 generate_vaccinations_file <- function(vax) {
@@ -151,7 +154,9 @@ metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
 vax <- rbindlist(vax, use.names=TRUE)
 
-metadata <- improve_metadata(metadata, vax)
+# Metadata
+generate_automation_file(metadata)
+metadata <- generate_locations_file(metadata, vax)
 
 # Aggregate across all vaccines
 vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "location")]
@@ -166,5 +171,4 @@ vax <- add_per_capita(vax)
 setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
 generate_grapher_file(copy(vax))
-generate_locations_file(metadata)
 generate_html(metadata)
