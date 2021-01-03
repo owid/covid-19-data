@@ -43,13 +43,6 @@ add_world <- function(df) {
     return(df)
 }
 
-add_daily <- function(df) {
-    setorder(df, date)
-    df[, new_vaccinations := (total_vaccinations - shift(total_vaccinations, 1))]
-    df[date != shift(date, 1) + 1, new_vaccinations := NA_integer_]
-    return(df)
-}
-
 add_smoothed <- function(df) {
     if (df$location[1] == "World") return(df)
     setorder(df, date)
@@ -83,10 +76,6 @@ process_location <- function(location_name) {
     }
     df <- df[, c("location", "date", "vaccine", "total_vaccinations", "source_url")]
     df[, date := date(date)]
-
-    # Derived variables
-    # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
-    # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_smoothed))
 
     setorder(df, date)
     fwrite(df, sprintf("../../../public/data/vaccinations/country_data/%s.csv", location_name), scipen = 999)
@@ -171,7 +160,6 @@ vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "locatio
 vax <- add_world(vax)
 
 # Derived variables
-# vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
 vax <- add_per_capita(vax)
 
@@ -180,7 +168,3 @@ generate_vaccinations_file(copy(vax))
 generate_grapher_file(copy(vax))
 generate_locations_file(metadata)
 generate_html(metadata)
-
-upper_choices <- c(10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
-message(sprintf("---\nPer capita upper bound: %s",
-                upper_choices[which.min(abs(max(vax$total_vaccinations_per_hundred, na.rm = T) - upper_choices))]))
