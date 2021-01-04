@@ -16,6 +16,7 @@ import numpy as np
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
+GRAPHER_DIR = os.path.join(CURRENT_DIR, "../grapher/")
 DATA_DIR = os.path.join(CURRENT_DIR, "../../public/data/")
 
 
@@ -105,7 +106,7 @@ def get_reprod():
 
 
 def get_hosp():
-    hosp = pd.read_csv(os.path.join(DATA_DIR, "ecdc/COVID-2019 - Hospital & ICU.csv"))
+    hosp = pd.read_csv(os.path.join(GRAPHER_DIR, "COVID-2019 - Hospital & ICU.csv"))
     hosp = hosp.rename(columns={
         "entity": "location",
         "year": "date",
@@ -231,10 +232,7 @@ def get_cgrt():
         cgrt {dataframe}
     """
 
-    cgrt = pd.read_csv(
-        "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest_combined.csv",
-        low_memory=False
-    )
+    cgrt = pd.read_csv(os.path.join(INPUT_DIR, "bsg/latest.csv"), low_memory=False)
 
     if "RegionCode" in cgrt.columns:
         cgrt = cgrt[cgrt.RegionCode.isnull()]

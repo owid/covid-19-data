@@ -5,14 +5,14 @@ page <- read_html(url)
 count <- page %>%
     html_node(".page_content") %>%
     html_text() %>%
-    str_extract("Do [^\\d]+testira[^\\d]+[\\d.]+") %>%
+    str_extract("Do [^\\d]+testira[^\\d]+[\\d.,]+") %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
 
 date <- page %>%
     html_node(".time_info") %>%
     html_text() %>%
-    str_extract("\\d.*2020") %>%
+    str_extract("\\d.*202\\d") %>%
     dmy()
 
 add_snapshot(

@@ -36,8 +36,12 @@ def main():
 
     df = pd.read_csv("input/data.csv")
     df.columns = ["Date", "Daily change in cumulative total"]
+
+    idx_2021 = df[df.Date == "01-Ene"].index.values
+    df.loc[:, "Date"] = df["Date"] + "-2020"
+    df.loc[df.index.values >= idx_2021, "Date"] = df["Date"].str.replace("-2020", "-2021")
     df.loc[:, "Date"] = pd.to_datetime(
-        (df.Date + "-2020")
+        df["Date"]
         .str.replace("Ene", "Jan")
         .str.replace("Abr", "Apr")
         .str.replace("Ago", "Aug")

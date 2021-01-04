@@ -1,21 +1,26 @@
 import json
 import requests
 import pandas as pd
-import vax_utils
+import vaxutils
 
 def main():
     
     url = "https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=vaccination_data"
     data = requests.get(url).json()
-    data = data["vaccination_data"][0]
+    data = data["vaccination_data"]
+
+    for d in data:
+        if d["ShortName"] == "USA":
+            data = d
+            break
 
     count = data["Doses_Administered"]
 
     date = data["Date"]
-    date = pd.to_datetime(date, format="%m/%d/%Y")
-    date = str(date.date())
+    # date = pd.to_datetime(date, format="%m/%d/%Y")
+    # date = str(date.date())
 
-    vax_utils.increment(
+    vaxutils.increment(
         location="United States",
         total_vaccinations=count,
         date=date,
