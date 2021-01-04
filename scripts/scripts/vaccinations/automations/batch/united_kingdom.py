@@ -15,6 +15,7 @@ def main():
     df = df[["date", "location", "total_vaccinations"]]
     df.loc[:, "source_url"] = "https://coronavirus.data.gov.uk/"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[df["date"] >= "2021-01-04", "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
 
     for loc in set(df["location"]):
         df[df["location"] == loc].to_csv(f"automations/output/{loc}.csv", index=False)
