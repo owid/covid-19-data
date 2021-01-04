@@ -29,5 +29,7 @@ def main():
 
     df.to_csv("automations/output/Germany.csv", index=False)
 
+    os.remove("germany.xlsx")
+
 if __name__ == "__main__":
     main()
