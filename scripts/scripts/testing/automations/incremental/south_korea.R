@@ -14,6 +14,7 @@ date <- page %>%
     html_text() %>%
     str_extract(" on [A-Za-z]+ \\d+, 202\\d") %>%
     str_replace(" on ", "") %>%
+    str_replace("Jaunary", "January") %>%
     mdy()
 
 add_snapshot(
