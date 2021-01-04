@@ -5,7 +5,8 @@ page <- read_html(url)
 date <- page %>%
     html_node(".main-section .field-value p") %>%
     html_text() %>%
-    str_replace("Information as of", "2020") %>%
+    str_replace("Information as of", as.character(year(today()))) %>%
+    str_replace("Janyary", "January") %>%
     ymd()
 
 count <-  page %>%

@@ -41,8 +41,8 @@ key <- CONFIG$covid_time_series_gsheet
 retry(
     expr = {metadata <- read_sheet(key, sheet = "METADATA", range = "A2:L300") %>% filter(Collate == TRUE)},
     when = "RESOURCE_EXHAUSTED",
-    max_tries = 5,
-    interval = 100
+    max_tries = 10,
+    interval = 20
 )
 stopifnot("Detailed description" %in% names(metadata))
 fwrite(metadata, sprintf("%s/backups/METADATA.csv", CONFIG$internal_shared_folder))
@@ -58,7 +58,7 @@ setnames(confirmed_cases, c("date", "location"), c("Date", "Country"))
 confirmed_cases[, Date := ymd(Date)]
 
 # Exclude countries from positive rate calculations
-positive_rate_exclusions <- c("Peru", "Ecuador", "Brazil", "Costa Rica")
+positive_rate_exclusions <- c("Ecuador", "Brazil", "Costa Rica")
 
 # Process each country's data
 parse_country <- function(sheet_name) {
@@ -74,8 +74,8 @@ parse_country <- function(sheet_name) {
         retry(
             expr = {collated <- suppressMessages(read_sheet(key, sheet = sheet_name))},
             when = "RESOURCE_EXHAUSTED",
-            max_tries = 5,
-            interval = 100
+            max_tries = 10,
+            interval = 20
         )
     }
 

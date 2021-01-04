@@ -9,7 +9,7 @@ url <- read_html(url) %>%
     html_attr("href")
 
 date <- str_extract(url, "\\d+-\\d+_BULETIN") %>%
-    str_replace("BULETIN", "2020") %>%
+    str_replace("BULETIN", as.character(year(today()))) %>%
     dmy()
 if (is.na(date)) date <- today()
 
