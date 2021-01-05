@@ -17,7 +17,7 @@ def main():
 
     df = pd.read_excel("germany.xlsx", sheet_name="Impfungen_proTag")
     df = df.rename(columns={
-        "Datum der Impfung": "date",
+        "Datum": "date",
         "Gesamtzahl Impfungen": "total_vaccinations"
     })
     df = df.sort_values("date")
