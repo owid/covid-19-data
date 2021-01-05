@@ -54,7 +54,7 @@ add_smoothed <- function(df) {
     df[, total_interpolated := na_interpolation(total_vaccinations, option = "linear")]
     df[, new_interpolated := total_interpolated - shift(total_interpolated, 1)]
     windows <- head(c(0:6, rep(7, 1e4)), nrow(df))
-    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE), 3)]
+    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE))]
     df[, c("total_interpolated", "new_interpolated") := NULL]
     return(df)
 }
