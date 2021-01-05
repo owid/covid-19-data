@@ -1,7 +1,7 @@
 location,iso_code,vaccines,last_observation_date,source_name,source_website
 Argentina,ARG,Sputnik V,2020-12-31,Government of Argentina,https://www.argentina.gob.ar/sites/default/files/informe_seguridad_en_vacunas_31_12_2020.pdf
-Austria,AUT,Pfizer/BioNTech,2020-12-30,Federal Ministry for Social Affairs and Health,https://www.sozialministerium.at/Informationen-zum-Coronavirus/COVID-19-Impfung.html
-Bahrain,BHR,Sinopharm,2021-01-04,Ministry of Health,https://twitter.com/MOH_Bahrain
+Austria,AUT,Pfizer/BioNTech,2020-12-30,Federal Ministry for Social Affairs and Health,https://www.sozialministerium.at/Corona-Schutzimpfung/Corona-Schutzimpfung.html
+Bahrain,BHR,Sinopharm,2021-01-05,Ministry of Health,https://twitter.com/MOH_Bahrain/status/1346544909399044096
 Belgium,BEL,Pfizer/BioNTech,2021-01-02,Government vaccination taskforce,https://www.lecho.be/dossiers/coronavirus/coronavirus-700-personnes-deja-vaccinees-en-belgique-dans-les-maisons-de-repos/10274812.html
 Bulgaria,BGR,Pfizer/BioNTech,2021-01-01,Ministry of Health,https://coronavirus.bg/bg/statistika
 Canada,CAN,"Moderna, Pfizer/BioNTech",2021-01-04,COVID-19 Canada Open Data Working Group,https://github.com/ishaberry/Covid19Canada
@@ -12,11 +12,11 @@ Croatia,HRV,Pfizer/BioNTech,2021-01-05,Ministry of Health,https://vlada.gov.hr/v
 Czechia,CZE,Pfizer/BioNTech,2021-01-04,Ministry of Health,https://ct24.ceskatelevize.cz/domaci/3250118-zive-brifink-ke-strategii-ockovani-a-novemu-vypoctu-pes
 Denmark,DNK,Pfizer/BioNTech,2021-01-04,Statens Serum Institut,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning
 England,,Pfizer/BioNTech,2020-12-27,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
-Estonia,EST,Pfizer/BioNTech,2021-01-05,National Health Board,https://www.terviseamet.ee/et/uudised/covid-19-blogi-5-jaanuar-oopaevaga-lisandus-429-positiivset-testi
-Finland,FIN,Pfizer/BioNTech,2021-01-05,Department of Health and Welfare,https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/situation-update-on-coronavirus
+Estonia,EST,Pfizer/BioNTech,2021-01-05,National Health Board,https://www.terviseamet.ee/et/uudised
+Finland,FIN,Pfizer/BioNTech,2021-01-05,Department of Health and Welfare,https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/tilannekatsaus-koronaviruksesta
 France,FRA,Pfizer/BioNTech,2021-01-05,Ministry of Health,https://twitter.com/olivierveran/status/1346529841701662722
 Germany,DEU,Pfizer/BioNTech,2021-01-04,Robert Koch Institut,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquoten-Tab.html
-Greece,GRC,Pfizer/BioNTech,2021-01-04,Ministry of Health,https://www.reuters.com/article/health-coronavirus-greece-nursing-home-idUSL1N2JF19V
+Greece,GRC,Pfizer/BioNTech,2021-01-05,Ministry of Health,https://www.data.gov.gr/datasets/mdg_emvolio/
 Hungary,HUN,Pfizer/BioNTech,2021-01-05,Government of Hungary,https://koronavirus.gov.hu/cikkek/orszagos-tisztifoorvos-mar-valamennyi-egeszsegugyben-dolgozonak-gyogyszeresznek-elerheto
 Iceland,ISL,Pfizer/BioNTech,2020-12-30,Directorate of Health,https://www.ruv.is/frett/2020/12/30/4875-landsmenn-fengu-bolusetningu
 Ireland,IRL,Pfizer/BioNTech,2021-01-04,Ministry of Health,https://www.thejournal.ie/covid-19-vaccine-rollout-in-nursing-homes-gets-under-way-this-week-5315501-Jan2021/
@@ -37,9 +37,9 @@ Romania,ROU,Pfizer/BioNTech,2021-01-05,Government of Romania,https://vaccinare-c
 Russia,RUS,Sputnik V,2021-01-02,Government of Russia,https://tass.com/society/1241979
 Scotland,,Pfizer/BioNTech,2020-12-27,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
 Slovakia,SVK,Pfizer/BioNTech,2021-01-04,Ministry of Health,https://korona.gov.sk/koronavirus-na-slovensku-v-cislach/
-Slovenia,SVN,Pfizer/BioNTech,2020-12-28,"National Institute of Public Health, via Sledilnik",https://covid-19.sledilnik.org/en/stats
+Slovenia,SVN,Pfizer/BioNTech,2020-12-28,"National Institute of Public Health, via Sledilnik",https://covid-19.sledilnik.org/en/
 Spain,ESP,Pfizer/BioNTech,2021-01-05,Ministry of Health,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-United Arab Emirates,ARE,Sinopharm,2021-01-05,National Emergency Crisis and Disaster Management Authority,https://twitter.com/NCEMAUAE
-United Kingdom,GBR,Pfizer/BioNTech,2020-12-27,Government of the United Kingdom,https://coronavirus.data.gov.uk/
+United Arab Emirates,ARE,Sinopharm,2021-01-05,National Emergency Crisis and Disaster Management Authority,https://twitter.com/NCEMAUAE/status/1346479134617206785
+United Kingdom,GBR,Pfizer/BioNTech,2020-12-27,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
 United States,USA,"Moderna, Pfizer/BioNTech",2021-01-05,Centers for Disease Control and Prevention,https://covid.cdc.gov/covid-data-tracker/#vaccinations
 Wales,,Pfizer/BioNTech,2020-12-27,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
