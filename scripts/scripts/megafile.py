@@ -16,6 +16,7 @@ import numpy as np
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
+GRAPHER_DIR = os.path.join(CURRENT_DIR, "../grapher/")
 DATA_DIR = os.path.join(CURRENT_DIR, "../../public/data/")
 
 
@@ -105,7 +106,7 @@ def get_reprod():
 
 
 def get_hosp():
-    hosp = pd.read_csv(os.path.join(DATA_DIR, "ecdc/COVID-2019 - Hospital & ICU.csv"))
+    hosp = pd.read_csv(os.path.join(GRAPHER_DIR, "COVID-2019 - Hospital & ICU.csv"))
     hosp = hosp.rename(columns={
         "entity": "location",
         "year": "date",

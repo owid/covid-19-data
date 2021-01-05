@@ -18,6 +18,7 @@ def main():
     
     df.loc[:, "location"] = "Canada"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[df["date"] >= "2020-12-31", "vaccine"] = "Moderna, Pfizer/BioNTech"
     df.loc[:, "source_url"] = "https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv"
 
     df.to_csv("automations/output/Canada.csv", index=False)

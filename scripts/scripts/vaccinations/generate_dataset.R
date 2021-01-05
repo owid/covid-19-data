@@ -21,8 +21,8 @@ get_metadata <- function() {
     retry(
         expr = {metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))},
         when = "RESOURCE_EXHAUSTED",
-        max_tries = 5,
-        interval = 100
+        max_tries = 10,
+        interval = 20
     )
     metadata <- metadata[include == TRUE]
     setorder(metadata, location)
@@ -43,23 +43,18 @@ add_world <- function(df) {
     return(df)
 }
 
-add_daily <- function(df) {
-    setorder(df, date)
-    df[, new_vaccinations := (total_vaccinations - shift(total_vaccinations, 1))]
-    df[date != shift(date, 1) + 1, new_vaccinations := NA_integer_]
-    return(df)
-}
-
 add_smoothed <- function(df) {
+    if (df$location[1] == "World") return(df)
     setorder(df, date)
     date_seq <- seq.Date(from = min(df$date), to = max(df$date), by = "day")
     time_series <- data.table(date = date_seq, location = df$location[1])
     if ("vaccine" %in% names(df)) time_series[, vaccine := df$vaccine[1]]
-    df <- merge(df, time_series, all = TRUE)
+    df <- merge(df, time_series, all = TRUE, c("date", "location"))
     setorder(df, date)
     df[, total_interpolated := na_interpolation(total_vaccinations, option = "linear")]
     df[, new_interpolated := total_interpolated - shift(total_interpolated, 1)]
-    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, 7), 3)]
+    windows <- head(c(0:6, rep(7, 1e4)), nrow(df))
+    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE), 3)]
     df[, c("total_interpolated", "new_interpolated") := NULL]
     return(df)
 }
@@ -74,17 +69,13 @@ process_location <- function(location_name) {
         retry(
             expr = {df <- suppressMessages(read_sheet(GSHEET_KEY, sheet = location_name))},
             when = "RESOURCE_EXHAUSTED",
-            max_tries = 5,
-            interval = 100
+            max_tries = 10,
+            interval = 20
         )
         setDT(df)
     }
     df <- df[, c("location", "date", "vaccine", "total_vaccinations", "source_url")]
     df[, date := date(date)]
-
-    # Derived variables
-    # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_daily))
-    # df <- rbindlist(lapply(split(df, by = "vaccine"), FUN = add_smoothed))
 
     setorder(df, date)
     fwrite(df, sprintf("../../../public/data/vaccinations/country_data/%s.csv", location_name), scipen = 999)
@@ -96,16 +87,27 @@ add_per_capita <- function(df) {
     pop <- rbindlist(list(pop, subnational_pop))
 
     df <- merge(df, pop)
-    for (metric in c("total_vaccinations", "new_vaccinations", "new_vaccinations_smoothed")) {
-        if (metric %in% names(df)) {
-            df[[sprintf("%s_per_hundred", metric)]] <- round(df[[metric]] * 100 / df$population, 2)
-        }
-    }
+
+    df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
+    df[, new_vaccinations_smoothed_per_million := round(new_vaccinations_smoothed * 1000000 / population, 2)]
+
     df[, population := NULL]
     return(df)
 }
 
-improve_metadata <- function(metadata, vax) {
+add_iso <- function(df) {
+    iso_codes <- fread("../../input/iso/iso3166_1_alpha_3_codes.csv")
+    df <- merge(iso_codes, df, by = "location", all.y = TRUE)
+    return(df)
+}
+
+generate_automation_file <- function(metadata) {
+    auto <- metadata[, c("location", "automated")]
+    setorder(auto, -automated, location)
+    fwrite(auto, "automations/automation_state.csv")
+}
+
+generate_locations_file <- function(metadata, vax) {
     setorder(vax, date)
     vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(unlist(str_split(vaccine, ", ")))), collapse = ", ")), location]
     latest_meta <- vax[, .SD[.N], location]
@@ -113,14 +115,16 @@ improve_metadata <- function(metadata, vax) {
     metadata[is.na(source_website), source_website := source_url]
     setnames(metadata, "date", "last_observation_date")
     metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url") := NULL]
+    metadata <- add_iso(metadata)
+    metadata <- metadata[, c("location", "iso_code", "source_name", "source_website", "vaccines", "last_observation_date")]
+    fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
     return(metadata)
 }
 
-generate_locations_file <- function(metadata) {
-    fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
-}
-
 generate_vaccinations_file <- function(vax) {
+    vax <- add_iso(vax)
+    setnames(vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million"),
+             c("daily_vaccinations", "daily_vaccinations_per_million"))
     fwrite(vax, "../../../public/data/vaccinations/vaccinations.csv", scipen = 999)
 }
 
@@ -128,7 +132,7 @@ generate_grapher_file <- function(grapher) {
     setnames(grapher, c("date", "location"), c("year", "country"))
     setcolorder(grapher, c("country", "year"))
     grapher[, year := as.integer(year - ymd("2020-01-21"))]
-    fwrite(grapher, "../../../public/data/vaccinations/COVID-19 - Vaccinations.csv", scipen = 999)
+    fwrite(grapher, "../../grapher/COVID-19 - Vaccinations.csv", scipen = 999)
 }
 
 generate_html <- function(metadata) {
@@ -150,7 +154,9 @@ metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
 vax <- rbindlist(vax, use.names=TRUE)
 
-metadata <- improve_metadata(metadata, vax)
+# Metadata
+generate_automation_file(metadata)
+metadata <- generate_locations_file(metadata, vax)
 
 # Aggregate across all vaccines
 vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "location")]
@@ -159,16 +165,10 @@ vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "locatio
 vax <- add_world(vax)
 
 # Derived variables
-# vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily))
-# vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
+vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
 vax <- add_per_capita(vax)
 
 setorder(vax, location, date)
-generate_vaccinations_file(vax)
+generate_vaccinations_file(copy(vax))
 generate_grapher_file(copy(vax))
-generate_locations_file(metadata)
 generate_html(metadata)
-
-upper_choices <- c(3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 70, 75, 80, 90, 100)
-message(sprintf("---\nPer capita upper bound: %s",
-                upper_choices[which.min(abs(max(vax$total_vaccinations_per_hundred) - upper_choices))]))

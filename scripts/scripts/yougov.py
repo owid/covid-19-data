@@ -8,7 +8,7 @@ import pandas as pd
 
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/yougov")
-OUTPUT_PATH = os.path.join(CURRENT_DIR, "../../public/data/yougov")
+OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher")
 MAPPING = pd.read_csv(os.path.join(INPUT_PATH, "mapping.csv"), na_values=None)
 
 MAPPED_VALUES = {

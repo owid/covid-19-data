@@ -1,4 +1,9 @@
-attempts <- read_sheet(CONFIG$attempted_countries_ghseet, sheet = "Sources – country by country")
+retry(
+    expr = {attempts <- read_sheet(CONFIG$attempted_countries_ghseet, sheet = "Sources – country by country")},
+    when = "RESOURCE_EXHAUSTED",
+    max_tries = 10,
+    interval = 20
+)
 setDT(attempts)
 attempts <- attempts[Outcome == "We know there's no data"]
 attempts <- attempts[!Entity %in% grapher$country]

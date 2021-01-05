@@ -53,6 +53,11 @@ df[Date == "2020-03-25" & Discarded == 5, `Source URL` := "https://www.ministeri
 df[Date == "2020-03-15", Discarded := Discarded + 72]
 
 df[, `Daily change in cumulative total` := Confirmed + Discarded]
+
+# Mistakes in data reported by El Observador
+df[Date == "2020-09-06", `Daily change in cumulative total` := 2142]
+df[Date == "2020-09-07", `Daily change in cumulative total` := 1556]
+
 df[, c("Confirmed", "Discarded") := NULL]
 df <- df[!is.na(`Daily change in cumulative total`)]
 

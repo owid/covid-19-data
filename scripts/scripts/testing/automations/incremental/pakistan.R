@@ -10,7 +10,7 @@ count <- page %>%
 date <- page %>%
     html_node(".update-time") %>%
     html_text() %>%
-    str_extract("^.*2020") %>%
+    str_extract("^.*202\\d") %>%
     dmy()
 
 add_snapshot(

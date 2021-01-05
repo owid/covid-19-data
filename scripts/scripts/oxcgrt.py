@@ -13,7 +13,7 @@ URL = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data
 DATASET_NAME = 'COVID Government Response (OxBSG)'
 
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/bsg/")
-OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/bsg/')
+OUTPUT_PATH = os.path.join(CURRENT_DIR, '../grapher/')
 INPUT_CSV_PATH = os.path.join(INPUT_PATH, 'latest.csv')
 OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
 

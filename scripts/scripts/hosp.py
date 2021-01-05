@@ -8,7 +8,7 @@ import pandas as pd
 SOURCE_URL = "https://opendata.ecdc.europa.eu/covid19/hospitalicuadmissionrates/csv/data.csv"
 CURRENT_DIR = os.path.dirname(__file__)
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/")
-OUTPUT_PATH = os.path.join(CURRENT_DIR, "../../public/data/ecdc/")
+OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher/")
 POPULATION = pd.read_csv(
     os.path.join(INPUT_PATH, "un/population_2020.csv"),
     usecols=["iso_code", "entity", "population"]

@@ -148,12 +148,17 @@ def check_data_correctness(df_merged):
     return True if errors == 0 else False
 
 def discard_rows(df):
+    # Set artefact in new_cases for Turkey on 2020-12-10 to NA
+    df.loc[
+        (df["location"] == "Turkey") & (df["date"].astype(str) == "2020-12-10"),
+        "new_cases"
+    ] = np.nan
     return df
 
 def load_standardized(df):
     df = df[["date", "location", "new_cases", "new_deaths", "total_cases", "total_deaths"]]
-    df = inject_owid_aggregates(df)
     df = discard_rows(df)
+    df = inject_owid_aggregates(df)
     df = inject_weekly_growth(df)
     df = inject_biweekly_growth(df)
     df = inject_doubling_days(df)

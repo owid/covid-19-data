@@ -1,4 +1,4 @@
-df <- fread("https://opendata.arcgis.com/datasets/538b7bd574594daa86fefd16509cbc36_0.csv",
+df <- fread("https://opendata.arcgis.com/datasets/07dce7d43ba04a5b93abbbbe1d20d9ea_0.csv",
             select = c("test_performed_date", "tests_total_cumulative"), showProgress = FALSE)
 
 setnames(df, "test_performed_date", "Date")

@@ -21,7 +21,6 @@ data <- graph %>%
     str_split(",")
 
 dates <- sapply(data, "[", 1) %>%
-    paste0(".2020") %>%
     dmy()
 
 df <- data.table(Date = dates, stringsAsFactors = FALSE)
