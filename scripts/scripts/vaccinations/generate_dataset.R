@@ -116,7 +116,7 @@ generate_locations_file <- function(metadata, vax) {
     setnames(metadata, "date", "last_observation_date")
     metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url") := NULL]
     metadata <- add_iso(metadata)
-    metadata <- metadata[, c("location", "iso_code", "source_name", "source_website", "vaccines", "last_observation_date")]
+    metadata <- metadata[, c("location", "iso_code", "vaccines", "last_observation_date", "source_name", "source_website")]
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
     return(metadata)
 }
