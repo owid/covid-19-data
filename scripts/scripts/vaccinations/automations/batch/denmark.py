@@ -23,6 +23,7 @@ def main():
     df["date"] = pd.to_datetime(vaccinated_df["Vaccinationsdato"], format = "%d-%m-%Y")
     df["total_vaccinations"] = vaccinated_df["Antal personer som har\rpåbegyndt covid-19 vaccination"].apply(lambda x: x.replace(".", "")).astype(int)
     df = df.groupby("total_vaccinations", as_index = False).min()
+    
     df.loc[:, "location"] = "Denmark"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[:, "source_url"] = pdf_path

@@ -20,6 +20,7 @@ def main():
         "Datum": "date",
         "Gesamtzahl Impfungen": "total_vaccinations"
     })
+    df = df[-df["date"].isna()]
     df = df.sort_values("date")
     df["total_vaccinations"] = df["total_vaccinations"].cumsum()
 
