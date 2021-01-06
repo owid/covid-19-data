@@ -7,8 +7,9 @@ setnames(df, c("month", "day", "PCR", "Antigen"))
 df[, `Daily change in cumulative total` := PCR + Antigen]
 df[, c("PCR", "Antigen") := NULL]
 
-df[, month := zoo::na.locf(month)]
-df[, Date := dmy(sprintf("%s %s 2020", day, month))]
+start_date <- dmy(sprintf("%s %s 2020", df$day[1], df$month[1]))
+seq_date <- seq.Date(from = start_date, by = "1 day", length.out = nrow(df))
+df$Date <- seq_date
 
 df[, c("day", "month") := NULL]
 
