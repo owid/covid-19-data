@@ -4,25 +4,25 @@ import pandas as pd
 
 def main():
 
-    url = "http://www.vmnvd.gov.lv/lv/covid-19/1486-vakcinacija-pret-covid-19"
+    url = "https://data.gov.lv/dati/eng/dataset/covid19-vakcinacijas"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    url = soup.find(id="text1").find("a")["href"]
-    url = "http://www.vmnvd.gov.lv" + url
+    file_url = soup.find("a", class_="resource-url-analytics")["href"]
     
-    df = pd.read_excel(url, skiprows=2)
-    df = df[df["Slimnīcas kods"] == "Kopā:"]
-    df = df.drop(columns=["Slimnīcas kods", "Slimnīca", "Kopā"])
-    df = df.melt(var_name="date")
+    df = pd.read_excel(file_url, usecols=["Vakcinācijas datums", "Vakcinēto personu skaits"])
 
-    df["date"] = pd.to_datetime(df["date"], format="%d.%m.%Y.").dt.date.astype(str)
+    df = df.rename(columns={
+        "Vakcinācijas datums": "date",
+        "Vakcinēto personu skaits": "total_vaccinations"
+    })
+
+    df = df.groupby("date", as_index=False).sum()
     df = df.sort_values("date")
-    df["total_vaccinations"] = df["value"].cumsum().astype(int)
-    df = df.drop(columns=["value"])
+    df["total_vaccinations"] = df["total_vaccinations"].cumsum()
 
     df.loc[:, "location"] = "Latvia"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
-    df.loc[:, "source_url"] = "http://www.vmnvd.gov.lv/lv/covid-19/1486-vakcinacija-pret-covid-19"
+    df.loc[:, "source_url"] = url
 
     df.to_csv("automations/output/Latvia.csv", index=False)
 
