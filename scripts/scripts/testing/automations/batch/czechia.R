@@ -15,7 +15,7 @@ df[, `Daily change in cumulative total` := pcr + antigen]
 df[, `Positive rate` := round(frollsum(positive, 7) / frollsum(`Daily change in cumulative total`, 7), 3)]
 df[, `Cumulative total` := NA_integer_]
 
-df <- df[, c("Date", "Daily change in cumulative total", "Positive rate")]
+df <- df[, c("Date", "Daily change in cumulative total", "Positive rate", "Cumulative total")]
 
 df[, Country := "Czechia"]
 df[, Units := "tests performed"]
