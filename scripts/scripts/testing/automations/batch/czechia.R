@@ -11,10 +11,11 @@ setnames(df, c("Datum", "Počet PCR testů celkem", "Počet antigenních testů 
 df[, Date := date(Date)]
 setorder(df, Date)
 
-df[, `Cumulative total` := pcr + antigen]
-df[, `Positive rate` := round(frollsum(positive, 7) / frollsum(`Cumulative total`, 7), 3)]
+df[, `Daily change in cumulative total` := pcr + antigen]
+df[, `Positive rate` := round(frollsum(positive, 7) / frollsum(`Daily change in cumulative total`, 7), 3)]
+df[, `Cumulative total` := NA_integer_]
 
-df <- df[, c("Date", "Cumulative total", "Positive rate")]
+df <- df[, c("Date", "Daily change in cumulative total", "Positive rate")]
 
 df[, Country := "Czechia"]
 df[, Units := "tests performed"]
