@@ -31,8 +31,9 @@ def libya_get_tests_snapshot():
     # retrieves the date that the data was updated.
     span = soup.find('div', {'class': 'wptb-table-container-matrix'}).find('td').find('strong')
     assert span is not None, "Failed to find span containing the date."
-    regex_res = re.search(r'\d.*2020', span.text)
-    date = str(dateparser.parse(regex_res[0], languages=["ar"]).date())
+    regex_res = re.search(r'\d.*2020', span.text)[0]
+    regex_res = regex_res.replace("2020", "2021") # Date is updated but year is stuck to 2020
+    date = str(dateparser.parse(regex_res, languages=["ar"]).date())
     return date, tests_today
 
 

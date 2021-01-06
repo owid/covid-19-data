@@ -8,17 +8,13 @@ setnames(df, "date", "Date")
 df <- df[, .(`Daily change in cumulative total` = sum(new_results_reported)), Date]
 setorder(df, Date)
 
-# Data presented might not represent the most current counts for the most recent 3 days
-# due to the time it takes to report testing information.
-df <- df[Date <= today() - 3]
-
 # Positive rate
 url <- read_html("https://www.cdc.gov/coronavirus/2019-ncov/covid-data/covidview/index.html") %>%
     html_nodes(".syndicate a") %>%
     html_attr("href") %>%
     str_subset("csv$") %>%
     paste0("https://www.cdc.gov", .)
-positive_rate <- fread(url, skip = 6, select = c("Week", "% of Specimens Positive for SARS-CoV-2"))
+positive_rate <- fread(url, skip = 5, select = c("Week", "% of Specimens Positive for SARS-CoV-2"))
 positive_rate[, year := str_sub(Week, 1, 4)]
 positive_rate[, week_no := as.integer(str_sub(Week, 5, 6))]
 positive_rate[, Date := ymd(sprintf("%s0101", year))]
