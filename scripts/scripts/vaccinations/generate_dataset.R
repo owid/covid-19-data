@@ -54,7 +54,7 @@ add_smoothed <- function(df) {
     df[, total_interpolated := na_interpolation(total_vaccinations, option = "linear")]
     df[, new_interpolated := total_interpolated - shift(total_interpolated, 1)]
     windows <- head(c(0:6, rep(7, 1e4)), nrow(df))
-    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE), 3)]
+    df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE))]
     df[, c("total_interpolated", "new_interpolated") := NULL]
     return(df)
 }
@@ -116,7 +116,7 @@ generate_locations_file <- function(metadata, vax) {
     setnames(metadata, "date", "last_observation_date")
     metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url") := NULL]
     metadata <- add_iso(metadata)
-    metadata <- metadata[, c("location", "iso_code", "source_name", "source_website", "vaccines", "last_observation_date")]
+    metadata <- metadata[, c("location", "iso_code", "vaccines", "last_observation_date", "source_name", "source_website")]
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
     return(metadata)
 }

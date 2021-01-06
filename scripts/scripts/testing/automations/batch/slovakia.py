@@ -4,16 +4,17 @@ import pandas as pd
 
 
 def main():
-
-    resp = requests.get("https://mapa.covid.chat/map_data")
-    data = json.loads(resp.content)
-    data = [(elem["date"], elem["tested_daily"]) for elem in data["chart"]]
     
-    df = pd.DataFrame(data, columns=["Date", "Daily change in cumulative total"])
+    df = pd.read_csv(
+        "https://github.com/Institut-Zdravotnych-Analyz/covid19-data/raw/main/OpenData_Slovakia_Covid_DailyStats.csv",
+        sep=";",
+        usecols=["Datum", "Dennych.testov"]
+    )
 
-    df.loc[:, "Date"] = pd.to_datetime(df["Date"], format="%d-%m-%Y")
-    df.loc[:, "Source URL"] = "https://www.korona.gov.sk"
-    df.loc[:, "Source label"] = "National Health Information Centre"
+    df = df.rename(columns={"Datum": "Date", "Dennych.testov": "Daily change in cumulative total"})
+
+    df.loc[:, "Source URL"] = "https://github.com/Institut-Zdravotnych-Analyz/covid19-data"
+    df.loc[:, "Source label"] = "Ministry of Health"
     df.loc[:, "Country"] = "Slovakia"
     df.loc[:, "Units"] = "tests performed"
     df.loc[:, "Testing type"] = "PCR only"

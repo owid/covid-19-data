@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def clean_count(count):
-    count = count.replace(",", "")
+    count = re.sub(r"[,*\.]", "", count)
     count = int(count)
     return count
 

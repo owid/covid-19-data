@@ -6,21 +6,18 @@ import vaxutils
 
 def main():
 
-    url = "https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/tilannekatsaus-koronaviruksesta"
+    url = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/situation-update-on-coronavirus"
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
 
-    for p in soup.find(class_="journal-content-article").find_all("p"):
-        if "Annetut rokoteannokset" in p.text:
+    for tr in soup.find(class_="journal-content-article").find("table").find_all("tr"):
+        if "Nationwide total" in tr.text:
             break
 
-    count = p.find("strong").text
+    count = tr.find_all("td")[1].text
     count = vaxutils.clean_count(count)
 
-    date = soup.find(class_="thl-image-caption").text
-    date = re.compile(r"Tiedot on päivitetty (\d+)\.(\d+)").search(date)
-    date = datetime.date(year=2021, month=int(date.group(2)), day=int(date.group(1)))
-    date = str(date)
+    date = str(datetime.date.today())
 
     vaxutils.increment(
         location="Finland",
