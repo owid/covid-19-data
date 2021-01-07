@@ -110,9 +110,40 @@ def add_canada(df):
     return df
 
 
+def add_uk(df):
+    url = "https://api.coronavirus.data.gov.uk/v2/data?areaType=overview&metric=hospitalCases&metric=newAdmissions&metric=covidOccupiedMVBeds&format=csv"
+    uk = pd.read_csv(url, usecols=["date", "hospitalCases", "newAdmissions", "covidOccupiedMVBeds"])
+    uk.loc[:, "date"] = pd.to_datetime(uk["date"])
+
+    stock = uk[["date", "hospitalCases", "covidOccupiedMVBeds"]].copy()
+    stock = stock.melt("date", var_name="indicator")
+    stock.loc[:, "date"] = stock["date"].dt.date
+
+    flow = uk[["date", "newAdmissions"]].copy()
+    flow.loc[:, "date"] = (flow["date"] + pd.to_timedelta(6 - flow["date"].dt.dayofweek, unit="d")).dt.date
+    flow = flow[flow["date"] <= datetime.date.today()]
+    flow = flow.groupby("date", as_index=False).sum()
+    flow = flow.melt("date", var_name="indicator")
+
+    uk = pd.concat([stock, flow]).dropna(subset=["value"])
+    uk.loc[:, "indicator"] = uk["indicator"].replace({
+        "hospitalCases": "Daily hospital occupancy",
+        "covidOccupiedMVBeds": "Daily ICU occupancy",
+        "newAdmissions": "Weekly new hospital admissions",
+    })
+
+    uk.loc[:, "entity"] = "United Kingdom"
+    uk.loc[:, "iso_code"] = "GBR"
+    uk.loc[:, "population"] = 67886004
+
+    df = pd.concat([df, uk])
+    return df
+
+
 def add_countries(df):
     df = add_united_states(df)
     df = add_canada(df)
+    df = add_uk(df)
     return df
 
 
