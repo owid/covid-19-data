@@ -1,4 +1,5 @@
 import datetime
+import pytz
 import requests
 from bs4 import BeautifulSoup
 import vaxutils
@@ -11,10 +12,12 @@ def main():
     count = soup.find(class_="banner-vacunas").find(class_="cifra").text
     count = vaxutils.clean_count(count)
 
+    date = str(datetime.datetime.now(pytz.timezone("Europe/Madrid")).date())
+
     vaxutils.increment(
         location="Spain",
         total_vaccinations=count,
-        date=str(datetime.date.today()),
+        date=date,
         source_url=url,
         vaccine="Pfizer/BioNTech"
     )

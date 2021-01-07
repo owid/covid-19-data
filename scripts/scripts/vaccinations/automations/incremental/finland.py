@@ -1,4 +1,5 @@
 import datetime
+import pytz
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -17,7 +18,7 @@ def main():
     count = tr.find_all("td")[1].text
     count = vaxutils.clean_count(count)
 
-    date = str(datetime.date.today())
+    date = str(datetime.datetime.now(pytz.timezone("Europe/Helsinki")).date())
 
     vaxutils.increment(
         location="Finland",

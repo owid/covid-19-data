@@ -10,7 +10,7 @@ def main():
 
     count = soup.find(class_="doses").find(class_="counter").text
     count = vaxutils.clean_count(count)
-    date = str(datetime.datetime.now(pytz.timezone('Asia/Dubai')).date())
+    date = str(datetime.datetime.now(pytz.timezone("Asia/Dubai")).date())
 
     vaxutils.increment(
         location="United Arab Emirates",
