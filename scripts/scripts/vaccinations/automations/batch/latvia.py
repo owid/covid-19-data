@@ -7,7 +7,7 @@ def main():
     url = "https://data.gov.lv/dati/eng/dataset/covid19-vakcinacijas"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    file_url = soup.find("a", class_="resource-url-analytics")["href"]
+    file_url = soup.find_all("a", class_="resource-url-analytics")[-1]["href"]
     
     df = pd.read_excel(file_url, usecols=["Vakcinācijas datums", "Vakcinēto personu skaits"])
 
