@@ -41,7 +41,6 @@ def main():
         "Category": "date"
     })
 
-    df["date"] = df["date"].str.replace("2021", "21")
     df["date"] = pd.to_datetime(df["date"], format="%d.%m.%y")
 
     df = df.groupby("total_vaccinations", as_index=False).min()
