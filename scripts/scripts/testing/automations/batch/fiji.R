@@ -5,7 +5,11 @@ df <- read_html(url) %>%
     html_table() %>%
     data.table()
 
-df[, Date := dmy(paste(Date, "2020"))]
+start_2021_idx <- which(df$Date == "01-Jan")
+
+df[, Date := paste(Date, "2020")]
+df[start_2021_idx:nrow(df), Date := str_replace(Date, "2020$", "2021")]
+df[, Date := dmy(Date)]
 df[, `Tests per day` := NULL]
 setnames(df, "Cumulative", "Cumulative total")
 
