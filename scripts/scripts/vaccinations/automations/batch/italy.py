@@ -13,6 +13,7 @@ def main():
 
     df = df.rename(columns={"data_somministrazione": "date", "totale": "total_vaccinations"})
     df = df.drop(columns=["area"])
+    df = df[df["date"] >= "2020-01-01"]
 
     df.loc[:, "location"] = "Italy"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
