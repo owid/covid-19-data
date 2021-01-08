@@ -283,8 +283,7 @@ copy_paste_annotation <- paste(copy_paste_annotation$country, copy_paste_annotat
 writeLines(copy_paste_annotation, sprintf("%s/copy_paste_annotation.txt", CONFIG$internal_shared_folder))
 
 # Write grapher file
-fwrite(grapher, sprintf("%s/grapher-latest/COVID testing time series data.csv", CONFIG$internal_shared_folder))
-fwrite(grapher, sprintf("%s/grapher-history/grapher-%s.csv", CONFIG$internal_shared_folder, ts))
+fwrite(grapher, sprintf("../../grapher/COVID testing time series data.csv", CONFIG$internal_shared_folder))
 
 # Make public version
 public <- copy(collated)
@@ -313,17 +312,6 @@ fwrite(public_latest, "../../../public/data/testing/covid-testing-latest-data-so
 rio::export(public_latest, "../../../public/data/testing/covid-testing-latest-data-source-details.xlsx")
 fwrite(public, "../../../public/data/testing/covid-testing-all-observations.csv")
 rio::export(public, "../../../public/data/testing/covid-testing-all-observations.xlsx")
-
-# For each day if >1 version then delete old versions
-clean_folder <- function(path) {
-    filename <- list.files(path = path, full.names = TRUE)
-    versions <- data.table(filename)
-    versions[, date := str_extract(filename, "2020\\d{4}")]
-    latest <- versions[, max(filename), date]$V1
-    to_delete <- versions[!filename %in% latest]$filename
-    file.remove(to_delete)
-}
-clean_folder(sprintf("%s/grapher-history/", CONFIG$internal_shared_folder))
 
 # Make sanity check graph
 sanity_plot <- ggplot(data = public[!is.na(`Cumulative total`)],

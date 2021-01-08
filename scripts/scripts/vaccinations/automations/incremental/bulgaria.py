@@ -1,4 +1,5 @@
 import datetime
+import pytz
 import requests
 from bs4 import BeautifulSoup
 import vaxutils
@@ -18,10 +19,12 @@ def main():
     )
     count = vaxutils.clean_count(count)
 
+    date = str(datetime.datetime.now(pytz.timezone("Europe/Sofia")).date())
+
     vaxutils.increment(
         location="Bulgaria",
         total_vaccinations=count,
-        date=str(datetime.date.today()),
+        date=date,
         source_url=url,
         vaccine="Pfizer/BioNTech"
     )

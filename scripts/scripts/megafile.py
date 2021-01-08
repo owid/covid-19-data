@@ -128,8 +128,19 @@ def get_hosp():
 def get_vax():
     vax = pd.read_csv(
         os.path.join(DATA_DIR, "vaccinations/vaccinations.csv"),
-        usecols=["location", "date", "total_vaccinations", "total_vaccinations_per_hundred"]
+        usecols=[
+            "location",
+            "date",
+            "total_vaccinations",
+            "total_vaccinations_per_hundred",
+            "daily_vaccinations",
+            "daily_vaccinations_per_million"
+        ]
     )
+    vax = vax.rename(columns={
+        "daily_vaccinations": "new_vaccinations",
+        "daily_vaccinations_per_million": "new_vaccinations_per_million"
+    })
     vax["total_vaccinations_per_hundred"] = vax["total_vaccinations_per_hundred"].round(3)
     return vax
 
