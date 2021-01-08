@@ -298,7 +298,7 @@ def df_to_json(complete_dataset, output_path, static_columns):
             megajson[row_iso]["data"].append(row_dict_dynamic)
 
     with open(output_path, "w") as file:
-        file.write(json.dumps(megajson, indent=4))
+        file.write(json.dumps(megajson, separators=(",", ":")))
 
 
 def create_latest(df):
