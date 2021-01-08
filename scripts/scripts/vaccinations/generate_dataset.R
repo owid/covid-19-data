@@ -89,7 +89,7 @@ add_per_capita <- function(df) {
     df <- merge(df, pop)
 
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
-    df[, new_vaccinations_smoothed_per_million := round(new_vaccinations_smoothed * 1000000 / population, 2)]
+    df[, new_vaccinations_smoothed_per_million := round(new_vaccinations_smoothed * 1000000 / population)]
 
     df[, population := NULL]
     return(df)
