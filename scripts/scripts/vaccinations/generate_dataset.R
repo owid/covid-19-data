@@ -38,6 +38,7 @@ add_world <- function(df) {
     world[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
     world <- world[, .(total_vaccinations = sum(total_vaccinations, na.rm = TRUE)), date]
     world <- world[, .(date = min(date)), total_vaccinations]
+    world <- world[date < today()]
     world[, location := "World"]
     df <- rbindlist(list(df, world), use.names = TRUE)
     return(df)
