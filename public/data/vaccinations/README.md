@@ -1,15 +1,15 @@
 # Data on COVID-19 (coronavirus) vaccinations by _Our World in Data_
 
-## `locations.csv`
+### `locations.csv`
 
 * `location`: name of the country (or region within a country).
 * `iso_code`: ISO 3166-1 alpha-3 – three-letter country codes.
 * `vaccines`: list of vaccines administered in the country up to the current date.
 * `last_observation_date`: date of the last observation in our data.
 * `source_name`: name of our source for data collection.
-* `source_website`: URL to our source. It can be a standard URL if numbers are consistently reported on a given page; otherwise it will be the URL for the last data point.
+* `source_website`: web location of our source. It can be a standard URL if numbers are consistently reported on a given page; otherwise it will be the source for the last data point.
 
-## `vaccinations.csv`
+### `vaccinations.csv`
 
 * `location`: name of the country (or region within a country).
 * `iso_code`: ISO 3166-1 alpha-3 – three-letter country codes.
