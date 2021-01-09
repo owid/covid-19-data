@@ -2,7 +2,7 @@
 
 ## `locations.csv`
 
-* `location`: name of the country (or region within a country for the United Kingdom).
+* `location`: name of the country (or region within a country).
 * `iso_code`: ISO 3166-1 alpha-3 – three-letter country codes.
 * `vaccines`: list of vaccines administered in the country up to the current date.
 * `last_observation_date`: date of the last observation in our data.
@@ -11,7 +11,7 @@
 
 ## `vaccinations.csv`
 
-* `location`: name of the country (or region within a country for the United Kingdom).
+* `location`: name of the country (or region within a country).
 * `iso_code`: ISO 3166-1 alpha-3 – three-letter country codes.
 * `date`: date of the observation.
 * `total_vaccinations`: total number of vaccination doses administered. This is counted as a single dose, and may not equal the total number of people vaccinated, depending on the specific dose regime (e.g. people receive multiple doses).
