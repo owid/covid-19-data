@@ -25,13 +25,14 @@ def main():
         command_result = driver.execute("send_command", params)
 
         driver.get(url)
+        time.sleep(1)
         driver.execute_script("window.scrollTo(0, 750)")
         driver.find_element_by_class_name("highcharts-exporting-group").click()
 
         for item in driver.find_elements_by_class_name("highcharts-menu-item"):
             if item.text == "Last ned CSV":
                 item.click()
-                time.sleep(1)
+                time.sleep(2)
                 break
 
     df = pd.read_csv("automations/antall-personer-vaksiner.csv", sep=";", usecols=["Category", "Totalt personer vaksinert med 1. dose"])

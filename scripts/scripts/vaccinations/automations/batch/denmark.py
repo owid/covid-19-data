@@ -21,7 +21,7 @@ def main():
 
     # Manipulate data
     df["date"] = pd.to_datetime(vaccinated_df["Vaccinationsdato"], format = "%d-%m-%Y")
-    vaccinated_df.columns = vaccinated_df.columns.str.replace(r"\s", " ")
+    vaccinated_df.columns = vaccinated_df.columns.str.replace(r"\s", " ", regex=True)
     df["total_vaccinations"] = vaccinated_df["Antal personer som har påbegyndt covid-19 vaccination"].apply(lambda x: x.replace(".", "")).astype(int)
     df = df.groupby("total_vaccinations", as_index = False).min()
     
