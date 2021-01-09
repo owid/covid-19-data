@@ -7,10 +7,11 @@ def main():
 
     df = pd.concat([uk, subnational])
 
-    df = df.rename(columns={
-        "areaName": "location",
-        "cumPeopleReceivingFirstDose": "total_vaccinations"
-    })
+    df = df.rename(columns={"areaName": "location"})
+
+    df["total_vaccinations"] = df["cumPeopleReceivingFirstDose"] + df["cumPeopleReceivingSecondDose"]
+
+    df = df.drop(columns=["cumPeopleReceivingFirstDose", "cumPeopleReceivingSecondDose"])
 
     df = df[["date", "location", "total_vaccinations"]]
     df.loc[:, "source_url"] = "https://coronavirus.data.gov.uk/"
