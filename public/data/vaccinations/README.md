@@ -1,5 +1,7 @@
 # Data on COVID-19 (coronavirus) vaccinations by _Our World in Data_
 
+For more general information on our COVID-19 data, see our main README file in [`/public/data`](https://github.com/owid/covid-19-data/tree/master/public/data).
+
 ### `locations.csv`
 
 * `location`: name of the country (or region within a country).
