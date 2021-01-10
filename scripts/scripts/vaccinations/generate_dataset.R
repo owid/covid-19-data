@@ -129,7 +129,7 @@ generate_vaccinations_file <- function(vax) {
 }
 
 generate_grapher_file <- function(grapher) {
-    setnames(grapher, c("date", "location"), c("year", "country"))
+    setnames(grapher, c("date", "location"), c("Year", "Country"))
     setcolorder(grapher, c("country", "year"))
     grapher[, year := as.integer(year - ymd("2020-01-21"))]
     fwrite(grapher, "../../grapher/COVID-19 - Vaccinations.csv", scipen = 999)
