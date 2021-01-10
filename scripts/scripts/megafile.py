@@ -305,7 +305,7 @@ def create_latest(df):
 
     latest = [df[df.location == loc].ffill().tail(1).round(3) for loc in set(df.location)]
     latest = pd.concat(latest)
-    latest = latest.sort_values("location").drop(columns="date")
+    latest = latest.sort_values("location").rename(columns={"date": "last_updated_date"})
 
     print("Writing latest version…")
     latest.to_csv(os.path.join(DATA_DIR, "latest/owid-covid-latest.csv"), index=False)
