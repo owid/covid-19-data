@@ -4,7 +4,7 @@ import pandas as pd
 
 def main():
 
-    url = "https://data.gov.gr/api/v1/query/mdg_emvolio?date_from=2020-12-29&date_to=2021-01-05"
+    url = "https://data.gov.gr/api/v1/query/mdg_emvolio"
 
     with open("vax_dataset_config.json", "rb") as file:
         config = json.loads(file.read())

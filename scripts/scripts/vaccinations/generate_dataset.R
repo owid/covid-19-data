@@ -89,7 +89,7 @@ add_per_capita <- function(df) {
     df <- merge(df, pop)
 
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
-    df[, new_vaccinations_smoothed_per_million := round(new_vaccinations_smoothed * 1000000 / population, 2)]
+    df[, new_vaccinations_smoothed_per_million := round(new_vaccinations_smoothed * 1000000 / population)]
 
     df[, population := NULL]
     return(df)
@@ -129,9 +129,9 @@ generate_vaccinations_file <- function(vax) {
 }
 
 generate_grapher_file <- function(grapher) {
-    setnames(grapher, c("date", "location"), c("year", "country"))
-    setcolorder(grapher, c("country", "year"))
-    grapher[, year := as.integer(year - ymd("2020-01-21"))]
+    setnames(grapher, c("date", "location"), c("Year", "Country"))
+    setcolorder(grapher, c("Country", "Year"))
+    grapher[, Year := as.integer(Year - ymd("2020-01-21"))]
     fwrite(grapher, "../../grapher/COVID-19 - Vaccinations.csv", scipen = 999)
 }
 

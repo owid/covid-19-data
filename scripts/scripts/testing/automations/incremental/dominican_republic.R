@@ -10,8 +10,8 @@ url <- read_html(GET(
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE, method = "curl", extra = "-k")
 
 date <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract("Boletín.*\n +[\\d/]{9,10}") %>%
-    str_extract("[\\d/]{9,10}$") %>%
+    str_extract("Boletín.*\n +[\\d/]{8,10}") %>%
+    str_extract("[\\d/]{8,10}$") %>%
     dmy() %>%
     head(1)
 
@@ -32,3 +32,5 @@ add_snapshot(
     source_url = url,
     source_label = "Ministry of Public Health and Social Assistance"
 )
+
+file.remove("tmp/tmp.pdf")

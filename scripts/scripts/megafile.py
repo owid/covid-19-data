@@ -285,20 +285,17 @@ def df_to_json(complete_dataset, output_path, static_columns):
 
     complete_dataset = complete_dataset.dropna(axis="rows", subset=["iso_code"])
 
-    for _, row in complete_dataset.iterrows():
-
-        row_iso = row["iso_code"]
-        row_dict_static = row.drop("iso_code")[static_columns].dropna().to_dict()
-        row_dict_dynamic = row.drop("iso_code").drop(static_columns).dropna().to_dict()
-
-        if row_iso not in megajson:
-            megajson[row_iso] = row_dict_static
-            megajson[row_iso]["data"] = [row_dict_dynamic]
-        else:
-            megajson[row_iso]["data"].append(row_dict_dynamic)
+    for iso in complete_dataset.iso_code.unique():
+        country_df = complete_dataset[complete_dataset.iso_code == iso].drop(columns=["iso_code"])
+        static_data = country_df.head(1)[static_columns].to_dict("records")[0]
+        megajson[iso] = {k:v for k,v in static_data.items() if pd.notnull(v)}
+        megajson[iso]["data"] = [
+           {k:v for k,v in r.items() if pd.notnull(v)}
+           for r in country_df.drop(columns=static_columns).to_dict("records")
+        ]
 
     with open(output_path, "w") as file:
-        file.write(json.dumps(megajson, indent=4))
+        file.write(json.dumps(megajson, separators=(",", ":")))
 
 
 def create_latest(df):
@@ -308,7 +305,7 @@ def create_latest(df):
 
     latest = [df[df.location == loc].ffill().tail(1).round(3) for loc in set(df.location)]
     latest = pd.concat(latest)
-    latest = latest.sort_values("location").drop(columns="date")
+    latest = latest.sort_values("location").rename(columns={"date": "last_updated_date"})
 
     print("Writing latest version…")
     latest.to_csv(os.path.join(DATA_DIR, "latest/owid-covid-latest.csv"), index=False)
@@ -416,7 +413,7 @@ def generate_megafile():
     all_covid.to_csv(os.path.join(DATA_DIR, "owid-covid-data.csv"), index=False)
 
     print("Writing to XLSX…")
-    all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False)
+    all_covid.to_excel(os.path.join(DATA_DIR, "owid-covid-data.xlsx"), index=False, engine="xlsxwriter")
 
     print("Writing to JSON…")
     df_to_json(all_covid, os.path.join(DATA_DIR, "owid-covid-data.json"), macro_variables.keys())

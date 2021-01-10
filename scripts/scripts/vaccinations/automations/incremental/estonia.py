@@ -20,7 +20,7 @@ def main():
     date = vaxutils.clean_date(date, "%d.%m.%Y")
 
     count = soup.find(string=re.compile(r"Eestis on COVID-19 vastu vaktsineerimisi"))
-    count = re.search(r"tehtud (\d+) inimesele", count).group(1)
+    count = re.search(r"tehtud ([\d\s]+) inimesele", count).group(1)
     count = vaxutils.clean_count(count)
 
     vaxutils.increment(
