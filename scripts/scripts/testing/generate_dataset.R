@@ -266,7 +266,7 @@ grapher <- rbindlist(list(
 
 # Convert date to fake year format for OWID grapher
 grapher[, date := as.integer(difftime(date, origin_date, units = "days"))]
-setnames(grapher, "date", "year")
+setnames(grapher, c("date", "country"), c("Year", "Country"))
 
 # Remove secondary series
 secondary_series <- fread("../../input/owid/secondary_testing_series.csv")
@@ -274,12 +274,12 @@ for (i in 1:nrow(secondary_series)) {
     sec_country <- secondary_series[i, location]
     sec_annotation <- secondary_series[i, tests_units]
     concatenated <- sprintf("%s, %s", sec_country, sec_annotation)
-    grapher[country == sec_country & annotation == sec_annotation, country := concatenated]
-    grapher[country == concatenated, annotation := NA_character_]
+    grapher[Country == sec_country & annotation == sec_annotation, Country := concatenated]
+    grapher[Country == concatenated, annotation := NA_character_]
 }
 
-copy_paste_annotation <- unique(grapher[!is.na(annotation), .(country, annotation)])
-copy_paste_annotation <- paste(copy_paste_annotation$country, copy_paste_annotation$annotation, sep = ": ")
+copy_paste_annotation <- unique(grapher[!is.na(annotation), .(Country, annotation)])
+copy_paste_annotation <- paste(copy_paste_annotation$Country, copy_paste_annotation$annotation, sep = ": ")
 writeLines(copy_paste_annotation, sprintf("%s/copy_paste_annotation.txt", CONFIG$internal_shared_folder))
 
 # Write grapher file
