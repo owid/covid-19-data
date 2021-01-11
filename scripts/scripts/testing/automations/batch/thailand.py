@@ -4,6 +4,7 @@ import pandas as pd
 from glob import glob
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 SOURCE_URL = "https://www3.dmsc.moph.go.th/"
@@ -12,6 +13,9 @@ SOURCE_URL = "https://www3.dmsc.moph.go.th/"
 def main():
 
     # Options for Chrome WebDriver
+    caps = DesiredCapabilities().CHROME
+    caps["pageLoadStrategy"] = "none"
+
     op = Options()
     op.add_argument("--disable-notifications")
     op.add_experimental_option("prefs",{
@@ -20,7 +24,7 @@ def main():
         "safebrowsing.enabled": True 
     })
 
-    with webdriver.Chrome(options=op) as driver:
+    with webdriver.Chrome(desired_capabilities=caps, options=op) as driver:
 
         # Setting Chrome to trust downloads
         driver.command_executor._commands["send_command"] = ("POST", "/session/$sessionId/chromium/send_command")
@@ -28,11 +32,14 @@ def main():
         command_result = driver.execute("send_command", params)
 
         driver.get(SOURCE_URL)
-        nextcloud = (
-            driver.find_elements_by_css_selector(".app-body .bg-white .container center a")[-1]
-            .get_attribute("href")
-        )
+        time.sleep(5)
+        links = driver.find_elements_by_css_selector(".app-body .bg-white .container center a")
+        for link in links:
+            if "Raw Data" in link.text:
+                nextcloud = link.get_attribute("href")
+                break
         driver.get(nextcloud)
+        time.sleep(5)
         driver.find_element_by_css_selector(".directDownload a").click()
         time.sleep(2)
 

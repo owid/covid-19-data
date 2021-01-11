@@ -10,7 +10,7 @@ def get_tests():
     )
 
     # Occasional errors where some lab inserts data before 2020
-    df["fecha"] = df.fecha.str.replace("^20[01][0-9]", "2020")
+    df["fecha"] = df.fecha.str.replace(r"^20[01][0-9]", "2020", regex=True)
     
     df = df.groupby("fecha", as_index=False).sum()
 
@@ -34,7 +34,7 @@ def get_people():
     df = df[-df.fecha_diagnostico.isnull()]
 
     # Occasional errors where some lab inserts data before 2020
-    df["fecha_diagnostico"] = df.fecha_diagnostico.str.replace("^20[01][0-9]", "2020")
+    df["fecha_diagnostico"] = df.fecha_diagnostico.str.replace(r"^20[01][0-9]", "2020", regex=True)
     
     df = (
         df
