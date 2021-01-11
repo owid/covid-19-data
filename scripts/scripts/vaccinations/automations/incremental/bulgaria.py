@@ -1,6 +1,8 @@
 import datetime
 import pytz
+import re
 import requests
+import pandas as pd
 from bs4 import BeautifulSoup
 import vaxutils
 
@@ -10,14 +12,11 @@ def main():
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
 
-    count = (
-        soup
-        .find(class_="statistics-label", text="Ваксинирани")
-        .parent
-        .find(class_="statistics-value")
-        .text
-    )
-    count = vaxutils.clean_count(count)
+    table = soup.find("p", string=re.compile("Ваксинирани лица по")).parent.find("table")
+    df = pd.read_html(str(table))[0]
+
+    count = df.loc[df["Област"] == "Общо", "Общо"].values[0]
+    count = int(count)
 
     date = str(datetime.datetime.now(pytz.timezone("Europe/Sofia")).date())
 
