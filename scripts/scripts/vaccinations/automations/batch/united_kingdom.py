@@ -11,9 +11,11 @@ def main():
 
     df["total_vaccinations"] = df["cumPeopleReceivingFirstDose"] + df["cumPeopleReceivingSecondDose"]
 
+    df["people_fully_vaccinated"] = df["cumPeopleReceivingSecondDose"].replace({0: pd.NA})
+
     df = df.drop(columns=["cumPeopleReceivingFirstDose", "cumPeopleReceivingSecondDose"])
 
-    df = df[["date", "location", "total_vaccinations"]]
+    df = df[["date", "location", "total_vaccinations", "people_fully_vaccinated"]]
     df.loc[:, "source_url"] = "https://coronavirus.data.gov.uk/"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[df["date"] >= "2021-01-04", "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
