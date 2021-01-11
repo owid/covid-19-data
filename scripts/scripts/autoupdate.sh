@@ -141,19 +141,3 @@ fi
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 run_python 'import oxcgrt; oxcgrt.update_db()'
-
-# =====================================================================
-# Vaccination data
-
-# Always run the database update.
-# The script itself contains a check against the database
-# to make sure it doesn't run unnecessarily.
-run_python 'import vaccinations; vaccinations.update_db()'
-
-# =====================================================================
-# Testing data
-
-# Always run the database update.
-# The script itself contains a check against the database
-# to make sure it doesn't run unnecessarily.
-run_python 'import testing; testing.update_db()'

@@ -1,5 +1,6 @@
-date,location,total_vaccinations,source_url,vaccine
-2021-01-03,Wales,49428,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-27,Wales,35543,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-20,Wales,23461,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-13,Wales,8177,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+date,location,total_vaccinations,people_fully_vaccinated,source_url,vaccine
+2021-01-11,Wales,86118,,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-01-03,Wales,49428,25,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2020-12-27,Wales,35543,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2020-12-20,Wales,23461,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2020-12-13,Wales,8177,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
