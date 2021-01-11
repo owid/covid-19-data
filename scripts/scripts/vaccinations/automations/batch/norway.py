@@ -35,14 +35,17 @@ def main():
                 time.sleep(2)
                 break
 
-    df = pd.read_csv("automations/antall-personer-vaksiner.csv", sep=";", usecols=["DateTime", "Totalt personer vaksinert med 1. dose"])
+    df = pd.read_csv("automations/antall-personer-vaksiner.csv", sep=";", usecols=["Category", "Totalt personer vaksinert med 1. dose"])
 
-    df = df.rename(columns={
-        "Totalt personer vaksinert med 1. dose": "total_vaccinations",
-        "DateTime": "date"
-    })
+    df = df.rename(columns={"Totalt personer vaksinert med 1. dose": "total_vaccinations"})
 
-    df["date"] = pd.to_datetime(df["date"])
+    if "Category" in df.columns:
+        df = df.rename(columns={"Category": "date"})
+        df["date"] = pd.to_datetime(df["date"], format="%d.%m.%Y")
+    elif "DateTime" in df.columns:
+        df = df.rename(columns={"DateTime": "date"})
+        df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
+
 
     df = df.groupby("total_vaccinations", as_index=False).min()
     
