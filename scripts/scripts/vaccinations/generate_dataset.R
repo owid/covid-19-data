@@ -198,7 +198,7 @@ vax <- vax[, .(
 vax <- add_world(vax)
 
 # Derived variables
-vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
+vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
 vax <- add_per_capita(vax)
 vax[people_fully_vaccinated == 0, people_fully_vaccinated := NA]
 vax[is.na(people_fully_vaccinated), people_fully_vaccinated_per_hundred := NA]
