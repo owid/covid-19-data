@@ -18,8 +18,7 @@ def main():
     uk = get_metrics(metrics, "overview")
     subnational = get_metrics(metrics, "nation")
 
-    # df = pd.concat([uk, subnational])
-    df = uk.copy()
+    df = pd.concat([uk, subnational]).reset_index(drop=True)
     df = df.rename(columns={"areaName": "location"})
 
     df["dose1"] = df.cumPeopleVaccinatedFirstDoseByPublishDate
