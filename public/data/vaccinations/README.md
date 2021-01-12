@@ -3,7 +3,7 @@
 For more general information on our COVID-19 data, see our main README file in [`/public/data`](https://github.com/owid/covid-19-data/tree/master/public/data).
 
 
-### Country metadata
+## Country metadata
 
 Stored in [`locations.csv`](locations.csv)
 
@@ -15,7 +15,7 @@ Stored in [`locations.csv`](locations.csv)
 * `source_website`: web location of our source. It can be a standard URL if numbers are consistently reported on a given page; otherwise it will be the source for the last data point.
 
 
-### Vaccination data
+## Vaccination data
 
 Stored in [`vaccinations.csv`](vaccinations.csv)
 
@@ -34,7 +34,7 @@ Stored in [`vaccinations.csv`](vaccinations.csv)
 Note: for `people_vaccinated` and `people_fully_vaccinated` we are dependent on the necessary data being made available, so we may not be able to make these metrics available for some countries.
 
 
-#### An example of how we calculate our metrics
+### An example of how we calculate our metrics
 
 4 people take part in a vaccination program, to be given a vaccine that requires 2 doses to be effective against the disease.
 
