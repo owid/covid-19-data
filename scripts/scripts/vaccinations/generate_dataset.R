@@ -168,6 +168,10 @@ vax <- add_world(vax)
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
 vax <- add_per_capita(vax)
 
+# Sanity checks
+stopifnot(all(vax$total_vaccinations >= 0, na.rm = TRUE))
+stopifnot(all(vax$new_vaccinations_smoothed >= 0, na.rm = TRUE))
+
 setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
 generate_grapher_file(copy(vax))
