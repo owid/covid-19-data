@@ -1,7 +1,7 @@
 import os
+import json
 import datetime
 import time
-from glob import glob
 from tqdm import tqdm
 import pandas as pd
 
@@ -10,57 +10,8 @@ CURRENT_DIR = os.path.dirname(__file__)
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/yougov")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher")
 MAPPING = pd.read_csv(os.path.join(INPUT_PATH, "mapping.csv"), na_values=None)
-
-MAPPED_VALUES = {
-    "binary": {"No": 0, "Yes": 100},
-    "frequency": {"Not at all": 0, "Rarely": 0, "Sometimes": 0, "Frequently": 100, "Always": 100},
-    "easiness": {
-        "Very easy": 0,
-        "Somewhat easy": 0,
-        "Neither easy nor difficult": 0,
-        "Somewhat difficult": 100,
-        "Very difficult": 100
-    },
-    "willingness": {
-        "Very unwilling": 0,
-        "Somewhat unwilling": 0,
-        "Neither willing nor unwilling": 0,
-        "Somewhat willing": 100,
-        "Very willing": 100
-    },
-    "scariness": {
-        "I am not at all scared that I will contract the Coronavirus (COVID-19)": 0,
-        "I am not very scared that I will contract the Coronavirus (COVID-19)": 0,
-        "I am fairly scared that I will contract the Coronavirus (COVID-19)": 100,
-        "I am very scared that I will contract the Coronavirus (COVID-19)": 100
-    },
-    "happiness": {
-        "Much less happy now": 0,
-        "Somewhat less happy now": 0,
-        "About the same": 0,
-        "Somewhat more happy now": 100,
-        "Much more happy now": 100
-    },
-    "handling": {"Very badly": 0, "Somewhat badly": 0, "Somewhat well": 100, "Very well": 100},
-    "agreement": {"1 – Disagree": 0, "2": 0, "3": 0, "4": 0, "5": 100, "6": 100, "7 - Agree": 100},
-    "trustworthiness": {
-        "1 - Not at all trustworthy": 0,
-        "2": 0,
-        "3": 0,
-        "4": 100,
-        "5 - Completely trustworthy": 100
-    },
-    "efficiency": {
-        "1 - Not efficient at all": 0,
-        "2": 0,
-        "3": 0,
-        "4": 100,
-        "5 - Extremely efficient": 100
-    },
-    "unity": {"More divided": 0, "No change": 0, "More united": 100},
-    "strength": {"Very weak": 0, "Somewhat weak": 0, "Somewhat strong": 100, "Very strong": 100},
-    "increase": {"Decreased": 0, "No change": 0, "Increased": 100}
-}
+with open(os.path.join(INPUT_PATH, 'mapped_values.json'), 'r') as f:
+    MAPPED_VALUES = json.load(f)
 
 
 def read_country_data(country, extension):
