@@ -181,7 +181,7 @@ generate_html <- function(metadata) {
 
 metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
-vax <- rbindlist(vax, use.names = TRUE, fill = TRUE)
+vax <- rbindlist(vax, use.names = TRUE)
 
 # Metadata
 generate_automation_file(metadata)
@@ -198,7 +198,7 @@ vax <- vax[, .(
 vax <- add_world(vax)
 
 # Derived variables
-vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed))
+vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
 vax <- add_per_capita(vax)
 vax[people_fully_vaccinated == 0, people_fully_vaccinated := NA]
 vax[is.na(people_fully_vaccinated), people_fully_vaccinated_per_hundred := NA]
