@@ -1,5 +1,5 @@
-location,date,vaccine,total_vaccinations,source_url
-Argentina,2020-12-29,Sputnik V,700,https://www.argentina.gob.ar/noticias/ministros-de-salud-del-pais-celebran-el-inicio-de-la-vacunacion-contra-la-covid-19
-Argentina,2020-12-31,Sputnik V,32013,https://www.argentina.gob.ar/sites/default/files/informe_seguridad_en_vacunas_31_12_2020.pdf
-Argentina,2021-01-04,Sputnik V,39599,https://www.argentina.gob.ar/sites/default/files/informe_seguridad_en_vacunas_04_01_2021.pdf
-Argentina,2021-01-08,Sputnik V,107542,https://www.argentina.gob.ar/noticias/ya-se-aplicaron-107542-dosis-de-la-vacuna-contra-covid-19-en-el-pais
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Argentina,2020-12-29,Sputnik V,https://www.argentina.gob.ar/noticias/ministros-de-salud-del-pais-celebran-el-inicio-de-la-vacunacion-contra-la-covid-19,700,700,0
+Argentina,2020-12-31,Sputnik V,https://www.argentina.gob.ar/sites/default/files/informe_seguridad_en_vacunas_31_12_2020.pdf,32013,32013,0
+Argentina,2021-01-04,Sputnik V,https://www.argentina.gob.ar/sites/default/files/informe_seguridad_en_vacunas_04_01_2021.pdf,39599,39599,0
+Argentina,2021-01-08,Sputnik V,https://www.argentina.gob.ar/noticias/ya-se-aplicaron-107542-dosis-de-la-vacuna-contra-covid-19-en-el-pais,107542,107542,0

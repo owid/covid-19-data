@@ -1,6 +1,6 @@
-location,date,vaccine,total_vaccinations,source_url
-France,2021-01-05,Pfizer/BioNTech,5000,https://twitter.com/olivierveran/status/1346529841701662722
-France,2021-01-06,Pfizer/BioNTech,17500,https://twitter.com/nicolasberrod/status/1347272372555022337
-France,2021-01-07,Pfizer/BioNTech,45000,https://twitter.com/Le_Figaro/status/1347239178484985858
-France,2021-01-08,Pfizer/BioNTech,80000,https://twitter.com/olivierveran/status/1347616253490450433
-France,2021-01-11,Pfizer/BioNTech,138351,https://solidarites-sante.gouv.fr/actualites/presse/communiques-de-presse/article/vaccination-contre-la-covid-en-france-au-11-janvier-2021
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+France,2021-01-05,Pfizer/BioNTech,https://twitter.com/olivierveran/status/1346529841701662722,5000,5000,0
+France,2021-01-06,Pfizer/BioNTech,https://twitter.com/nicolasberrod/status/1347272372555022337,17500,17500,0
+France,2021-01-07,Pfizer/BioNTech,https://twitter.com/Le_Figaro/status/1347239178484985858,45000,45000,0
+France,2021-01-08,Pfizer/BioNTech,https://twitter.com/olivierveran/status/1347616253490450433,80000,80000,0
+France,2021-01-11,Pfizer/BioNTech,https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19/,138351,138351,0

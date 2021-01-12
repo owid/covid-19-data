@@ -1,3 +1,3 @@
-location,date,vaccine,total_vaccinations,source_url
-Czechia,2021-01-04,Pfizer/BioNTech,13000,https://ct24.ceskatelevize.cz/domaci/3250118-zive-brifink-ke-strategii-ockovani-a-novemu-vypoctu-pes
-Czechia,2021-01-06,Pfizer/BioNTech,19918,https://onemocneni-aktualne.mzcr.cz/covid-19
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Czechia,2021-01-04,Pfizer/BioNTech,https://ct24.ceskatelevize.cz/domaci/3250118-zive-brifink-ke-strategii-ockovani-a-novemu-vypoctu-pes,13000,13000,0
+Czechia,2021-01-06,Pfizer/BioNTech,https://onemocneni-aktualne.mzcr.cz/covid-19,19918,19918,0

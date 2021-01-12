@@ -1,4 +1,4 @@
-location,date,vaccine,total_vaccinations,source_url
-Russia,2020-12-15,Sputnik V,28500,http://government.ru/news/41122/
-Russia,2020-12-22,Sputnik V,52000,https://tass.com/society/1238521
-Russia,2021-01-02,Sputnik V,800000,https://tass.com/society/1241979
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Russia,2020-12-15,Sputnik V,http://government.ru/news/41122/,28500,28500,0
+Russia,2020-12-22,Sputnik V,https://tass.com/society/1238521,52000,52000,0
+Russia,2021-01-02,Sputnik V,https://tass.com/society/1241979,800000,800000,0
