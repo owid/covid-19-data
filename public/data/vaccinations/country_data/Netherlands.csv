@@ -1,7 +1,8 @@
-location,date,vaccine,total_vaccinations,source_url
-Netherlands,2021-01-06,Pfizer/BioNTech,6000,https://www.telegraaf.nl/nieuws/677008065/acute-zorg-verwacht-inenten-maandag-af-te-ronden
-Netherlands,2021-01-07,Pfizer/BioNTech,15000,https://www.lnaz.nl/nieuws/inmiddels-15000-medewerkers-in-de-acute-zorg-gevaccineerd
-Netherlands,2021-01-08,Pfizer/BioNTech,27000,https://twitter.com/hugodejonge/status/1347629157946167297?s=20
-Netherlands,2021-01-09,Pfizer/BioNTech,30000,https://www.zeelandnet.nl/nieuws/inmiddels-30000-medewerkers-acute-zorg-gevaccineerd
-Netherlands,2021-01-10,Pfizer/BioNTech,31000,https://www.lnaz.nl/nieuws/31000-medewerkers-acute-zorg-gevaccineerd
-Netherlands,2021-01-11,Pfizer/BioNTech,35500,https://twitter.com/hugodejonge/status/1348725466010628098?s=20
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Netherlands,2021-01-06,Pfizer/BioNTech,https://www.telegraaf.nl/nieuws/677008065/acute-zorg-verwacht-inenten-maandag-af-te-ronden,6000,6000,0
+Netherlands,2021-01-07,Pfizer/BioNTech,https://www.lnaz.nl/nieuws/inmiddels-15000-medewerkers-in-de-acute-zorg-gevaccineerd,15000,15000,0
+Netherlands,2021-01-08,Pfizer/BioNTech,https://twitter.com/hugodejonge/status/1347629157946167297,27000,27000,0
+Netherlands,2021-01-09,Pfizer/BioNTech,https://www.zeelandnet.nl/nieuws/inmiddels-30000-medewerkers-acute-zorg-gevaccineerd,30000,30000,0
+Netherlands,2021-01-10,Pfizer/BioNTech,https://www.lnaz.nl/nieuws/31000-medewerkers-acute-zorg-gevaccineerd,31000,31000,0
+Netherlands,2021-01-11,Pfizer/BioNTech,https://twitter.com/hugodejonge/status/1348725466010628098,35500,35500,0
+Netherlands,2021-01-12,Pfizer/BioNTech,https://www.youtube.com/watch?v=HJyszQXZIqA,45000,45000,0

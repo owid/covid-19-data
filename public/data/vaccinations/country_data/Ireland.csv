@@ -1,5 +1,5 @@
-location,date,vaccine,total_vaccinations,source_url
-Ireland,2020-12-31,Pfizer/BioNTech,1800,https://twitter.com/RobOHanrahan/status/1344932276128411648
-Ireland,2021-01-04,Pfizer/BioNTech,4000,https://www.thejournal.ie/covid-19-vaccine-rollout-in-nursing-homes-gets-under-way-this-week-5315501-Jan2021/
-Ireland,2021-01-07,Pfizer/BioNTech,15314,https://twitter.com/newschambers/status/1347187910961999873
-Ireland,2021-01-11,Pfizer/BioNTech,35000,https://twitter.com/newschambers/status/1348701763776503808
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Ireland,2020-12-31,Pfizer/BioNTech,https://twitter.com/RobOHanrahan/status/1344932276128411648,1800,1800,0
+Ireland,2021-01-04,Pfizer/BioNTech,https://www.thejournal.ie/covid-19-vaccine-rollout-in-nursing-homes-gets-under-way-this-week-5315501-Jan2021/,4000,4000,0
+Ireland,2021-01-07,Pfizer/BioNTech,https://twitter.com/newschambers/status/1347187910961999873,15314,15314,0
+Ireland,2021-01-11,Pfizer/BioNTech,https://twitter.com/newschambers/status/1348701763776503808,35000,35000,0

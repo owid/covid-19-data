@@ -1,3 +1,3 @@
-location,date,vaccine,total_vaccinations,source_url
-Belgium,2021-01-02,Pfizer/BioNTech,700,https://www.lecho.be/dossiers/coronavirus/coronavirus-700-personnes-deja-vaccinees-en-belgique-dans-les-maisons-de-repos/10274812.html
-Belgium,2021-01-07,Pfizer/BioNTech,8000,https://www.lalibre.be/belgique/societe/vaccins-en-belgique-5ff9a1dc9978e227df5eb4ec
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Belgium,2021-01-02,Pfizer/BioNTech,https://www.lecho.be/dossiers/coronavirus/coronavirus-700-personnes-deja-vaccinees-en-belgique-dans-les-maisons-de-repos/10274812.html,700,700,0
+Belgium,2021-01-07,Pfizer/BioNTech,https://www.lalibre.be/belgique/societe/vaccins-en-belgique-5ff9a1dc9978e227df5eb4ec,8000,8000,0

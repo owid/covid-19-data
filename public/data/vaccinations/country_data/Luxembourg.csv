@@ -1,2 +1,2 @@
-location,date,vaccine,total_vaccinations,source_url
-Luxembourg,2020-12-30,Pfizer/BioNTech,1200,https://covid19.public.lu/fr/actualite-covid-19/communiques/2020/12/30-vaccination.html
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Luxembourg,2020-12-30,Pfizer/BioNTech,https://covid19.public.lu/fr/actualite-covid-19/communiques/2020/12/30-vaccination.html,1200,1200,0

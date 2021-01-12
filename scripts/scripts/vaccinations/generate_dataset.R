@@ -29,18 +29,34 @@ get_metadata <- function() {
     return(metadata)
 }
 
-add_world <- function(df) {
-    world <- df[!location %in% subnational_pop$location]
-    world <- spread(world, location, total_vaccinations)
-    world <- gather(world, location, total_vaccinations, 2:ncol(world))
-    setDT(world)
+add_world <- function(vax) {
+    world <- vax[!location %in% subnational_pop$location]
+
+    locations <- unique(world[, "location"])
+    locations[, id := 1]
+    dates <- unique(world[, "date"])
+    dates[, id := 1]
+    product <- merge(locations, dates, by = "id", allow.cartesian = TRUE)
+    product[, id := NULL]
+
+    world <- merge(product, world, by = c("date", "location"), all = TRUE)
+
     setorder(world, location, date)
+
     world[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
-    world <- world[, .(total_vaccinations = sum(total_vaccinations, na.rm = TRUE)), date]
-    world <- world[, .(date = min(date)), total_vaccinations]
+    world[, people_vaccinated := na_locf(people_vaccinated, na_remaining = "keep"), location]
+    world[, people_fully_vaccinated := na_locf(people_fully_vaccinated, na_remaining = "keep"), location]
+
+    world <- world[, .(
+        total_vaccinations = sum(total_vaccinations, na.rm = TRUE),
+        people_vaccinated = sum(people_vaccinated, na.rm = TRUE),
+        people_fully_vaccinated = sum(people_fully_vaccinated, na.rm = TRUE)
+    ), date]
+
     world[, location := "World"]
-    df <- rbindlist(list(df, world), use.names = TRUE)
-    return(df)
+    world <- world[date < today()]
+    vax <- rbindlist(list(vax, world), use.names = TRUE)
+    return(vax)
 }
 
 add_smoothed <- function(df) {
@@ -74,7 +90,19 @@ process_location <- function(location_name) {
         )
         setDT(df)
     }
-    df <- df[, c("location", "date", "vaccine", "total_vaccinations", "source_url")]
+
+    if (!"people_vaccinated" %in% names(df)) {
+        df[, people_vaccinated := total_vaccinations]
+    }
+
+    if (!"people_fully_vaccinated" %in% names(df)) {
+        df[, people_fully_vaccinated := 0]
+    } else {
+        df[is.na(people_fully_vaccinated), people_fully_vaccinated := 0]
+    }
+
+    df <- df[, c("location", "date", "vaccine", "source_url", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
+
     df[, date := date(date)]
 
     setorder(df, date)
@@ -89,6 +117,8 @@ add_per_capita <- function(df) {
     df <- merge(df, pop)
 
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
+    df[, people_vaccinated_per_hundred := round(people_vaccinated * 100 / population, 2)]
+    df[, people_fully_vaccinated_per_hundred := round(people_fully_vaccinated * 100 / population, 2)]
     df[, new_vaccinations_smoothed_per_million := round(new_vaccinations_smoothed * 1000000 / population)]
 
     df[, population := NULL]
@@ -114,7 +144,6 @@ generate_locations_file <- function(metadata, vax) {
     metadata <- merge(merge(metadata, vax_per_loc, "location"), latest_meta, "location")
     metadata[is.na(source_website), source_website := source_url]
     setnames(metadata, "date", "last_observation_date")
-    metadata[, c("automated", "include", "total_vaccinations", "vaccine", "source_url") := NULL]
     metadata <- add_iso(metadata)
     metadata <- metadata[, c("location", "iso_code", "vaccines", "last_observation_date", "source_name", "source_website")]
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
@@ -152,14 +181,18 @@ generate_html <- function(metadata) {
 
 metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
-vax <- rbindlist(vax, use.names=TRUE)
+vax <- rbindlist(vax, use.names = TRUE)
 
 # Metadata
 generate_automation_file(metadata)
 metadata <- generate_locations_file(metadata, vax)
 
 # Aggregate across all vaccines
-vax <- vax[, .(total_vaccinations = sum(total_vaccinations)), c("date", "location")]
+vax <- vax[, .(
+    total_vaccinations = sum(total_vaccinations),
+    people_vaccinated = sum(people_vaccinated),
+    people_fully_vaccinated = sum(people_fully_vaccinated)
+), c("date", "location")]
 
 # Global figures
 vax <- add_world(vax)
@@ -167,6 +200,12 @@ vax <- add_world(vax)
 # Derived variables
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
 vax <- add_per_capita(vax)
+vax[people_fully_vaccinated == 0, people_fully_vaccinated := NA]
+vax[is.na(people_fully_vaccinated), people_fully_vaccinated_per_hundred := NA]
+
+# Sanity checks
+stopifnot(all(vax$total_vaccinations >= 0, na.rm = TRUE))
+stopifnot(all(vax$new_vaccinations_smoothed >= 0, na.rm = TRUE))
 
 setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))

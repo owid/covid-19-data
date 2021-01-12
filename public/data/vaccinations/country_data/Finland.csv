@@ -1,7 +1,8 @@
-location,date,vaccine,total_vaccinations,source_url
-Finland,2020-12-31,Pfizer/BioNTech,1767,https://github.com/HS-Datadesk/koronavirus-avoindata
-Finland,2021-01-04,Pfizer/BioNTech,3604,https://github.com/HS-Datadesk/koronavirus-avoindata
-Finland,2021-01-05,Pfizer/BioNTech,5445,https://github.com/HS-Datadesk/koronavirus-avoindata
-Finland,2021-01-07,Pfizer/BioNTech,8155,https://github.com/HS-Datadesk/koronavirus-avoindata
-Finland,2021-01-08,Pfizer/BioNTech,11135,https://github.com/HS-Datadesk/koronavirus-avoindata
-Finland,2021-01-11,Pfizer/BioNTech,14196,https://github.com/HS-Datadesk/koronavirus-avoindata
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Finland,2020-12-31,Pfizer/BioNTech,https://github.com/HS-Datadesk/koronavirus-avoindata,1767,1767,0
+Finland,2021-01-04,Pfizer/BioNTech,https://github.com/HS-Datadesk/koronavirus-avoindata,3604,3604,0
+Finland,2021-01-05,Pfizer/BioNTech,https://github.com/HS-Datadesk/koronavirus-avoindata,5445,5445,0
+Finland,2021-01-07,Pfizer/BioNTech,https://github.com/HS-Datadesk/koronavirus-avoindata,8155,8155,0
+Finland,2021-01-08,Pfizer/BioNTech,https://github.com/HS-Datadesk/koronavirus-avoindata,11135,11135,0
+Finland,2021-01-11,Pfizer/BioNTech,https://github.com/HS-Datadesk/koronavirus-avoindata,14196,14196,0
+Finland,2021-01-12,Pfizer/BioNTech,https://github.com/HS-Datadesk/koronavirus-avoindata,17617,17617,0

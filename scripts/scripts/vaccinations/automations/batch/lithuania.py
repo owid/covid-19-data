@@ -25,10 +25,10 @@ def main():
 
     df["date"] = pd.to_datetime(df["date"], unit="ms")
 
-    df = df.sort_values("date")
+    df = df.groupby("date", as_index=False)["vaccinated"].sum().sort_values("date")
     df["total_vaccinations"] = df["vaccinated"].cumsum()
 
-    df = df.drop(columns=["vaccinated", "municipality_name"])
+    df = df.drop(columns=["vaccinated"])
 
     df.loc[:, "location"] = "Lithuania"
     df.loc[:, "source_url"] = "https://ls-osp-sdg.maps.arcgis.com/apps/opsdashboard/index.html#/b7063ad3f8c149d394be7f043dfce460"

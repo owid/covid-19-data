@@ -1,2 +1,2 @@
-location,date,vaccine,total_vaccinations,source_url
-Iceland,2020-12-30,Pfizer/BioNTech,4875,https://www.ruv.is/frett/2020/12/30/4875-landsmenn-fengu-bolusetningu
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Iceland,2020-12-30,Pfizer/BioNTech,https://www.ruv.is/frett/2020/12/30/4875-landsmenn-fengu-bolusetningu,4875,4875,0
