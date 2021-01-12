@@ -6,7 +6,7 @@ i5a_health,binary,contact_symptomatic_person_before_own_symptoms,"Thinking about
 i6_health,frequency,isolated_with_symptoms,"Since developing those symptoms, have you self-isolated yourself on each of the following 7 days?"
 i7b_health,binary,doctor_visit_last_week_with_symptoms,"And in the last 7 days, have you physically been to the premises of a doctor, nurse, pharmacy or hospital as a result of having those symptoms?"
 i8_health,binary,visited_covid_location_before_symptoms,"And thinking about the 7 days before your symptoms started, did you travel to a location where coronavirus has been reported?"
-i9_health,binary,willingness_isolate_if_symptoms,"Thinking about the next 7 days… would you isolate yourself after feeling unwell or having any of the following new symptoms: a dry cough, fever, loss of sense of smell, loss of sense of taste, shortness of breath or difficulty breathing?"
+i9_health,binary,willingness_isolate_if_symptoms,"Thinking about the next 7 days... would you isolate yourself after feeling unwell or having any of the following new symptoms: a dry cough, fever, loss of sense of smell, loss of sense of taste, shortness of breath or difficulty breathing?"
 i10_health,easiness,difficult_to_isolate,"If you were advised to do so by a healthcare professional or public health authority, would it be difficult for you to self-isolate for 7 days?"
 i11_health,willingness,willingness_isolate_if_advised,"If you were advised to do so by a healthcare professional or public health authority, would you be willing to self-isolate for 7 days?"
 i12_health_1,frequency,mask_outside_home,"Worn a face mask outside your home (e.g. when on public transport, going to a supermarket, going to a main road)"
@@ -29,7 +29,7 @@ i12_health_17,frequency,slept_separate_bedrooms,"Slept in separate bedrooms at h
 i12_health_18,frequency,eaten_separately,"Eaten separately at home, when normally you would eat a meal with others"
 i12_health_19,frequency,cleaned_surfaces_home,"Cleaned frequently touched surfaces in the home (e.g. doorknobs, toilets, taps)"
 i12_health_20,frequency,avoided_objects_public,Avoided touching objects in public (e.g. elevator buttons or doors)
-i13_health,,handwashing_yesterday,"Thinking about yesterday… about how many times, would you say you washed your hands with soap or used hand sanitiser?"
+i13_health,,handwashing_yesterday,"Thinking about yesterday... about how many times, would you say you washed your hands with soap or used hand sanitiser?"
 WCRV_4,scariness,scared_contracting_covid,Scared that I will contract the Coronavirus (COVID-19)
 CORE_B2_4,happiness,happier_two_weeks_ago,"Compared with two weeks ago, would you say you are more happy now?"
 WCRex1,handling,government_responded_well,Do you think the Government are handling the issue of the Coronavirus (COVID-19) well?
@@ -55,3 +55,13 @@ w1,unity,country_united,Is your country now more united than before the coronavi
 w2,strength,sense_of_belonging_community,Do you have a strong sense of belonging to your local community?
 w3,increase,sense_belonging_increased,Has your sense of belonging to your local community increased during the coronavirus (COVID-19) outbreak?
 w6,binary,community_care_last_month,"In your opinion, in the past month, have other people in your community provided assistance to others, such as a friend, neighbour or co-worker, for example childcare or running errands, without expecting anything in return?"
+vac_1,agreement5_reverse,willingness_covid_vaccinate_this_week,"If a COVID-19 vaccine were made available to me this week, I would definitely get it"
+vac_2,agreement5_reverse,willingness_covid_vaccinate_2021,"If a COVID-19 vaccine becomes available to me in 2021, I definitely intend to get it"
+vac2_2,agreement5_reverse,worried_covid_vaccine_side_effects,"I am worried about potential side effects of a COVID-19 vaccine"
+vac2_3,agreement5_reverse,govt_will_provide_effective_covid_vaccine,"I believe government health authorities in my country will provide me with an effective COVID-19 vaccine"
+vac2_4,agreement5_reverse,covid_vaccine_will_protect_health,"A vaccine will completely protect those who receive it from possible health effects of COVID-19"
+vac2_5,agreement5_reverse,covid_vaccine_will_prevent_transmission,"A vaccine will completely prevent those who receive it from transmitting COVID-19 to others"
+vac_3,agreement5_reverse,willingness_covid_vaccinate_next_year,"If a COVID-19 vaccine becomes available to me a year from now, I definitely intend to get it"
+vac4,importance,covid_vaccine_important_health,"How important do you think getting a COVID-19 vaccine is for your health?"
+vac5,binary,willingness_covid_vaccinate,"If a COVID-19 vaccine is available to you, will you get it?"
+vac7,quantity,trust_covid_vaccines,"How much do you trust COVID-19 vaccines?"

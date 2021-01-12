@@ -30,6 +30,7 @@
     },
     "handling": {"Very badly": 0, "Somewhat badly": 0, "Somewhat well": 100, "Very well": 100},
     "agreement": {"1 – Disagree": 0, "2": 0, "3": 0, "4": 0, "5": 100, "6": 100, "7 - Agree": 100},
+    "agreement5_reverse": {"1 - Strongly agree": 100, "2": 100, "3": 0, "4": 0, "5 – Strongly disagree": 0},
     "trustworthiness": {
         "1 - Not at all trustworthy": 0,
         "2": 0,
@@ -46,5 +47,17 @@
     },
     "unity": {"More divided": 0, "No change": 0, "More united": 100},
     "strength": {"Very weak": 0, "Somewhat weak": 0, "Somewhat strong": 100, "Very strong": 100},
-    "increase": {"Decreased": 0, "No change": 0, "Increased": 100}
+    "increase": {"Decreased": 0, "No change": 0, "Increased": 100},
+    "importance": {
+        "Not at all important": 0,
+        "A little important": 0,
+        "Moderately important": 100,
+        "Very important": 100
+    },
+    "quantity": {
+        "Not at all": 0,
+        "A little": 0,
+        "Moderately": 100,
+        "Very much": 100
+    }
 }
