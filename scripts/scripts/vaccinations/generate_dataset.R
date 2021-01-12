@@ -54,6 +54,7 @@ add_world <- function(vax) {
     ), date]
 
     world[, location := "World"]
+    world <- world[date < today()]
     vax <- rbindlist(list(vax, world), use.names = TRUE)
     return(vax)
 }
