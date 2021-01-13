@@ -1,2 +1,2 @@
-location,date,vaccine,total_vaccinations,source_url
-Serbia,2021-01-10,Pfizer/BioNTech,9300,https://www.srbija.gov.rs/vest/en/166035/preconditions-for-beginning-of-mass-vaccination-provided.php
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Serbia,2021-01-10,Pfizer/BioNTech,https://www.srbija.gov.rs/vest/en/166035/preconditions-for-beginning-of-mass-vaccination-provided.php,9300,9300,0

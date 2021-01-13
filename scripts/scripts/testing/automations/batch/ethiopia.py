@@ -81,8 +81,7 @@ def get_data() -> pd.DataFrame:
     df.sort_values(['Date', SERIES_TYPE], inplace=True)
     df.drop_duplicates(subset=['Date'], keep='last', inplace=True)
     df = df[df['Date'] != '2020-03-18']
-    df.loc[:, 'Source URL'] = None
-    df = df[['Date', SERIES_TYPE, 'Source URL']]
+    df = df[['Date', SERIES_TYPE]]
     if len(hardcoded_data) > 0:
         # removes rows from df that are hardcoded
         hardcoded_dates = [d['Date'] for d in hardcoded_data]
@@ -98,6 +97,7 @@ def get_data() -> pd.DataFrame:
     df = df[df["Cumulative total"] > 0]
     df = df.groupby("Cumulative total", as_index=False).min()
     df = df.groupby("Date", as_index=False).min()
+    df.loc[:, 'Source URL'] = None
     return df
 
 

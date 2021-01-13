@@ -1,2 +1,3 @@
-location,date,vaccine,total_vaccinations,source_url
-Cyprus,2021-01-06,Pfizer/BioNTech,3901,https://cyprus-mail.com/2021/01/06/coronavirus-almost-4000-got-the-jab-since-december-27/
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Cyprus,2021-01-06,Pfizer/BioNTech,https://cyprus-mail.com/2021/01/06/coronavirus-almost-4000-got-the-jab-since-december-27/,3901,3901,0
+Cyprus,2021-01-10,Pfizer/BioNTech,https://gr.euronews.com/2021/01/11/kypros-pyli-emvoliasmou-oles-plirofories-diathesima-kia-alla-rantevou-gia-emvoliasmous,6035,6035,0

@@ -1,10 +1,10 @@
-df <- suppressMessages(rio::import("input/DATA PORTUGAL.xlsx"))
+df <- readxl::read_excel("input/DATA PORTUGAL.xlsx", sheet = "CUMULATIVE")
 setDT(df)
 df <- df[, 1:4]
 
 setnames(df, c("month", "day", "PCR", "Antigen"))
 
-df[, `Daily change in cumulative total` := PCR + Antigen]
+df[, `Cumulative total` := PCR + Antigen]
 df[, c("PCR", "Antigen") := NULL]
 
 start_date <- dmy(sprintf("%s %s 2020", df$day[1], df$month[1]))
@@ -13,7 +13,7 @@ df$Date <- seq_date
 
 df[, c("day", "month") := NULL]
 
-df <- df[!is.na(`Daily change in cumulative total`)]
+df <- df[!is.na(`Cumulative total`)]
 
 df[, Country := "Portugal"]
 df[, Units := "tests performed"]

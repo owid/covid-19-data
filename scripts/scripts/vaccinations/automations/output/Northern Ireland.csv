@@ -1,5 +1,7 @@
-date,location,total_vaccinations,source_url,vaccine
-2021-01-03,Northern Ireland,41956,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-27,Northern Ireland,31016,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-20,Northern Ireland,16068,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-13,Northern Ireland,3623,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+date,location,total_vaccinations,people_vaccinated,people_fully_vaccinated,source_url,vaccine
+2020-12-13,Northern Ireland,3623.0,3623.0,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2020-12-20,Northern Ireland,16068.0,16068.0,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2020-12-27,Northern Ireland,31016.0,31016.0,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2021-01-03,Northern Ireland,41956.0,40685.0,1271.0,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2021-01-10,Northern Ireland,91954.0,78005.0,13949.0,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-01-11,Northern Ireland,99475.0,84187.0,15288.0,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"

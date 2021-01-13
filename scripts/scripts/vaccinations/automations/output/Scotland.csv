@@ -1,5 +1,7 @@
-date,location,total_vaccinations,source_url,vaccine
-2021-01-03,Scotland,113495,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-27,Scotland,92324,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-20,Scotland,58800,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-2020-12-13,Scotland,18734,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+date,location,total_vaccinations,people_vaccinated,people_fully_vaccinated,source_url,vaccine
+2020-12-13,Scotland,18734.0,18734.0,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2020-12-20,Scotland,58800.0,58800.0,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2020-12-27,Scotland,92324.0,92324.0,,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2021-01-03,Scotland,113495.0,113459.0,36.0,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
+2021-01-10,Scotland,166135.0,163377.0,2758.0,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-01-11,Scotland,178799.0,175942.0,2857.0,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"

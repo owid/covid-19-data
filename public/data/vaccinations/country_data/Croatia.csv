@@ -1,7 +1,8 @@
-location,date,vaccine,total_vaccinations,source_url
-Croatia,2020-12-30,Pfizer/BioNTech,7864,https://vlada.gov.hr/news/government-approves-120-million-hrk-aid-for-areas-hit-by-earthquakes/31169
-Croatia,2021-01-03,Pfizer/BioNTech,12285,https://vlada.gov.hr/vijesti/u-hrvatskoj-361-novozarazeni-koronavirusom-stiglo-novih-17-550-doza-cjepiva-protiv-covida-19/31209
-Croatia,2021-01-05,Pfizer/BioNTech,13798,https://vlada.gov.hr/vijesti/nece-biti-popustanja-strogih-epidemioloskih-mjera-cetvero-clanova-stozera-javno-se-cijepili-protiv-koronavirusa/31223
-Croatia,2021-01-07,Pfizer/BioNTech,20603,https://www.jutarnji.hr/vijesti/hrvatska/capak-otkrio-kakve-su-nuspojave-prijavljene-u-hrvatskoj-beros-koliko-se-ljudi-cijepilo-do-sada-15022029
-Croatia,2021-01-08,Pfizer/BioNTech,24985,https://vlada.gov.hr/vijesti/epidemioloske-mjere-radi-sprjecavanja-sirenja-koronavirusa-ostaju-na-snazi-do-kraja-sijecnja/31251
-Croatia,2021-01-09,Pfizer/BioNTech,30000,https://www.jutarnji.hr/vijesti/hrvatska/cijela-posiljka-modernina-cjepiva-ide-na-baniju-pitali-smo-capaka-o-sve-povoljnijim-brojkama-jos-je-prerano-15022931
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Croatia,2020-12-30,Pfizer/BioNTech,https://vlada.gov.hr/news/government-approves-120-million-hrk-aid-for-areas-hit-by-earthquakes/31169,7864,7864,0
+Croatia,2021-01-03,Pfizer/BioNTech,https://vlada.gov.hr/vijesti/u-hrvatskoj-361-novozarazeni-koronavirusom-stiglo-novih-17-550-doza-cjepiva-protiv-covida-19/31209,12285,12285,0
+Croatia,2021-01-05,Pfizer/BioNTech,https://vlada.gov.hr/vijesti/nece-biti-popustanja-strogih-epidemioloskih-mjera-cetvero-clanova-stozera-javno-se-cijepili-protiv-koronavirusa/31223,13798,13798,0
+Croatia,2021-01-07,Pfizer/BioNTech,https://www.jutarnji.hr/vijesti/hrvatska/capak-otkrio-kakve-su-nuspojave-prijavljene-u-hrvatskoj-beros-koliko-se-ljudi-cijepilo-do-sada-15022029,20603,20603,0
+Croatia,2021-01-08,Pfizer/BioNTech,https://vlada.gov.hr/vijesti/epidemioloske-mjere-radi-sprjecavanja-sirenja-koronavirusa-ostaju-na-snazi-do-kraja-sijecnja/31251,24985,24985,0
+Croatia,2021-01-09,Pfizer/BioNTech,https://www.jutarnji.hr/vijesti/hrvatska/cijela-posiljka-modernina-cjepiva-ide-na-baniju-pitali-smo-capaka-o-sve-povoljnijim-brojkama-jos-je-prerano-15022931,30000,30000,0
+Croatia,2021-01-13,Pfizer/BioNTech,https://vlada.gov.hr/vijesti/nove-mjere-za-ulazak-u-hrvatsku-iz-drzava-s-novim-sojem-virusa/31290,34553,34553,0

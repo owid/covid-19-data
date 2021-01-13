@@ -1,29 +1,31 @@
-location,date,vaccine,total_vaccinations,source_url
-Canada,2020-12-14,Pfizer/BioNTech,297,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-15,Pfizer/BioNTech,1163,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-16,Pfizer/BioNTech,3683,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-17,Pfizer/BioNTech,7201,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-18,Pfizer/BioNTech,10615,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-19,Pfizer/BioNTech,11894,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-20,Pfizer/BioNTech,14492,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-21,Pfizer/BioNTech,20866,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-22,Pfizer/BioNTech,26287,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-23,Pfizer/BioNTech,35089,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-24,Pfizer/BioNTech,45398,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-25,Pfizer/BioNTech,45700,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-26,Pfizer/BioNTech,48719,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-27,Pfizer/BioNTech,52280,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-28,Pfizer/BioNTech,59449,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-29,Pfizer/BioNTech,70749,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-30,Pfizer/BioNTech,84381,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2020-12-31,"Moderna, Pfizer/BioNTech",98153,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-01,"Moderna, Pfizer/BioNTech",108376,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-02,"Moderna, Pfizer/BioNTech",116503,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-03,"Moderna, Pfizer/BioNTech",122159,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-04,"Moderna, Pfizer/BioNTech",143260,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-05,"Moderna, Pfizer/BioNTech",163418,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-06,"Moderna, Pfizer/BioNTech",194277,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-07,"Moderna, Pfizer/BioNTech",234396,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-08,"Moderna, Pfizer/BioNTech",275673,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-09,"Moderna, Pfizer/BioNTech",296241,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
-Canada,2021-01-10,"Moderna, Pfizer/BioNTech",319938,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv
+location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
+Canada,2020-12-14,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,297,297,0
+Canada,2020-12-15,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,1163,1163,0
+Canada,2020-12-16,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,3683,3683,0
+Canada,2020-12-17,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,7201,7201,0
+Canada,2020-12-18,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,10615,10615,0
+Canada,2020-12-19,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,11894,11894,0
+Canada,2020-12-20,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,14492,14492,0
+Canada,2020-12-21,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,20866,20866,0
+Canada,2020-12-22,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,26287,26287,0
+Canada,2020-12-23,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,35089,35089,0
+Canada,2020-12-24,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,45398,45398,0
+Canada,2020-12-25,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,45700,45700,0
+Canada,2020-12-26,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,48719,48719,0
+Canada,2020-12-27,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,52280,52280,0
+Canada,2020-12-28,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,59449,59449,0
+Canada,2020-12-29,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,70749,70749,0
+Canada,2020-12-30,Pfizer/BioNTech,https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,79482,79482,0
+Canada,2020-12-31,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,95832,95832,0
+Canada,2021-01-01,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,104347,104347,0
+Canada,2021-01-02,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,112425,112425,0
+Canada,2021-01-03,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,117727,117727,0
+Canada,2021-01-04,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,136759,136759,0
+Canada,2021-01-05,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,155527,155527,0
+Canada,2021-01-06,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,183690,183690,0
+Canada,2021-01-07,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,219464,219464,0
+Canada,2021-01-08,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,261234,261234,0
+Canada,2021-01-09,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,297352,297352,0
+Canada,2021-01-10,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,321049,321049,0
+Canada,2021-01-11,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,360160,360160,0
+Canada,2021-01-12,"Moderna, Pfizer/BioNTech",https://github.com/ishaberry/Covid19Canada/blob/master/timeseries_canada/vaccine_administration_timeseries_canada.csv,388493,388493,0

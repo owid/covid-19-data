@@ -198,6 +198,11 @@ parse_country <- function(sheet_name) {
 # Process all countries
 collated <- lapply(sheet_names, FUN = parse_country)
 collated <- rbindlist(collated, use.names = TRUE, fill = TRUE)
+
+# Data corrections
+source("testing_data_corrections.R")
+
+# Prepare data for post-processing
 collated[, Entity := paste(Country, "-", Units)]
 setorder(collated, Country, Units, Date)
 
