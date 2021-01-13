@@ -33,6 +33,8 @@ def main():
     df.loc[:, "Units"] = "tests performed"
     df.loc[:, "Notes"] = pd.NA
 
+    df = df[df["Daily change in cumulative total"] != 0]
+
     df.to_csv("automated_sheets/Slovenia.csv", index=False)
 
 
