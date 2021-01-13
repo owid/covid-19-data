@@ -60,6 +60,7 @@ add_world <- function(vax) {
 }
 
 add_daily <- function(df) {
+    if (df$location[1] == "World") return(df)
     setorder(df, date)
     df$new_vaccinations <- df$total_vaccinations - lag(df$total_vaccinations, 1)
     df[date != lag(date, 1) + 1, new_vaccinations := NA]
