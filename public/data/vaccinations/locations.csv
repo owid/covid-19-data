@@ -1,10 +1,10 @@
 location,iso_code,vaccines,last_observation_date,source_name,source_website
 Argentina,ARG,Sputnik V,2021-01-08,Government of Argentina,https://www.argentina.gob.ar/noticias/ya-se-aplicaron-107542-dosis-de-la-vacuna-contra-covid-19-en-el-pais
-Austria,AUT,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://info.gesundheitsministerium.gv.at/?lang=en
+Austria,AUT,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://info.gesundheitsministerium.gv.at/data/national.csv
 Bahrain,BHR,"Pfizer/BioNTech, Sinopharm",2021-01-12,Ministry of Health,https://twitter.com/MOH_Bahrain/status/1349090704123949062
 Belgium,BEL,Pfizer/BioNTech,2021-01-07,Government vaccination taskforce,https://www.lalibre.be/belgique/societe/vaccins-en-belgique-5ff9a1dc9978e227df5eb4ec
-Bulgaria,BGR,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://coronavirus.bg/bg/statistika
-Canada,CAN,"Moderna, Pfizer/BioNTech",2021-01-11,COVID-19 Canada Open Data Working Group,https://github.com/ishaberry/Covid19Canada
+Bulgaria,BGR,Pfizer/BioNTech,2021-01-13,Ministry of Health,https://coronavirus.bg/bg/statistika
+Canada,CAN,"Moderna, Pfizer/BioNTech",2021-01-12,COVID-19 Canada Open Data Working Group,https://github.com/ishaberry/Covid19Canada
 Chile,CHL,Pfizer/BioNTech,2021-01-06,Department of Statistics and Health Information,https://deis.minsal.cl/
 China,CHN,"CNBG, Sinovac",2021-01-09,National Health Commission,http://www.scio.gov.cn/xwfbh/xwbfbh/wqfbh/44687/44700/zy44704/Document/1696668/1696668.htm
 Costa Rica,CRI,Pfizer/BioNTech,2021-01-08,National Health Commission,https://www.ccss.sa.cr/noticias/servicios_noticia?9-751-personas-recibieron-primera-dosis-de-vacuna-para-evitar-la-covid19
@@ -19,22 +19,22 @@ France,FRA,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://www.data.gouv.f
 Germany,DEU,Pfizer/BioNTech,2021-01-11,Robert Koch Institut,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquoten-Tab.html
 Greece,GRC,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://www.data.gov.gr/datasets/mdg_emvolio/
 Guinea,GIN,Sputnik V,2020-12-30,National Health Security Agency,https://apnews.com/article/cabinets-health-guinea-coronavirus-pandemic-africa-de2adf7f939e1bb3eeedcd25aa6c4aa4
-Hungary,HUN,Pfizer/BioNTech,2021-01-12,Government of Hungary,https://koronavirus.gov.hu/cikkek/696-fovel-emelkedett-beazonositott-fertozottek-szama-es-elhunyt-128-beteg
+Hungary,HUN,Pfizer/BioNTech,2021-01-13,Government of Hungary,https://koronavirus.gov.hu/cikkek/1358-fovel-emelkedett-beazonositott-fertozottek-szama-es-elhunyt-95-beteg
 Iceland,ISL,Pfizer/BioNTech,2020-12-30,Directorate of Health,https://www.ruv.is/frett/2020/12/30/4875-landsmenn-fengu-bolusetningu
 Ireland,IRL,Pfizer/BioNTech,2021-01-11,Health Service Executive,https://twitter.com/newschambers/status/1348701763776503808
-Israel,ISR,Pfizer/BioNTech,2021-01-12,Government of Israel,https://datadashboard.health.gov.il/COVID-19/general
+Israel,ISR,Pfizer/BioNTech,2021-01-13,Government of Israel,https://datadashboard.health.gov.il/COVID-19/general
 Italy,ITA,Pfizer/BioNTech,2021-01-12,Extraordinary commissioner for the Covid-19 emergency,https://github.com/italia/covid19-opendata-vaccini
 Kuwait,KWT,Pfizer/BioNTech,2020-12-28,Ministry of Health,https://alqabas.com/article/5828928-2500-شخص-حصلوا-على-لقاح-كورونا-في-يومين?id=5828928
-Latvia,LVA,Pfizer/BioNTech,2021-01-11,National Health Service,http://www.vmnvd.gov.lv/lv/covid-19/1486-vakcinacija-pret-covid-19
-Lithuania,LTU,Pfizer/BioNTech,2021-01-11,Ministry of Health,https://ls-osp-sdg.maps.arcgis.com/apps/opsdashboard/index.html#/b7063ad3f8c149d394be7f043dfce460
+Latvia,LVA,Pfizer/BioNTech,2021-01-12,National Health Service,http://www.vmnvd.gov.lv/lv/covid-19/1486-vakcinacija-pret-covid-19
+Lithuania,LTU,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://ls-osp-sdg.maps.arcgis.com/apps/opsdashboard/index.html#/b7063ad3f8c149d394be7f043dfce460
 Luxembourg,LUX,Pfizer/BioNTech,2021-01-11,Government of Luxembourg,https://download.data.public.lu/resources/covid-19-rapports-journaliers/20210112-174656/coronavirus-rapport-journalier-12012021.pdf
 Malta,MLT,Pfizer/BioNTech,2021-01-03,Ministry of Health,https://timesofmalta.com/articles/view/1400-receive-vaccine-herd-immunity-by-the-summer.842421
-Mexico,MEX,Pfizer/BioNTech,2021-01-11,Secretary of Health,https://www.gob.mx/salud/prensa/010-mexico-podria-adquirir-hasta-24-millones-de-dosis-de-vacuna-rusa-sputnik-v-contra-covid-19?idiom=es
+Mexico,MEX,Pfizer/BioNTech,2021-01-12,Secretary of Health,https://twitter.com/NTelevisa_com/status/1349164374582308865
 Netherlands,NLD,Pfizer/BioNTech,2021-01-12,National Institute for Public Health and the Environment,https://www.youtube.com/watch?v=HJyszQXZIqA
 Northern Ireland,,"Oxford/AstraZeneca, Pfizer/BioNTech",2021-01-11,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
 Norway,NOR,Pfizer/BioNTech,2021-01-11,Norwegian Institute of Public Health,https://www.fhi.no/sv/vaksine/koronavaksinasjonsprogrammet/koronavaksinasjonsstatistikk/
-Oman,OMN,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://twitter.com/OmaniMOH/status/1348903015416287233
-Poland,POL,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://twitter.com/szczepimysie/status/1348930712859242496
+Oman,OMN,Pfizer/BioNTech,2021-01-13,Ministry of Health,https://twitter.com/OmaniMOH/status/1349258028709781507
+Poland,POL,Pfizer/BioNTech,2021-01-13,Ministry of Health,https://twitter.com/szczepimysie/status/1349284555627388928
 Portugal,PRT,Pfizer/BioNTech,2021-01-08,National Health Service,https://esriportugal.maps.arcgis.com/apps/opsdashboard/index.html#/acf023da9a0b4f9dbb2332c13f635829
 Romania,ROU,Pfizer/BioNTech,2021-01-12,Government of Romania,https://vaccinare-covid.gov.ro/comunicate-oficiale/
 Russia,RUS,Sputnik V,2021-01-02,Government of Russia,https://tass.com/society/1241979
