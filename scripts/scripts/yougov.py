@@ -74,11 +74,22 @@ def merge_files():
     return df
 
 
+def subset_columns(df):
+    """keeps only the survey questions with keep=True in mapping.csv.
+    """
+    index_cols = ['country', 'date']
+    assert MAPPING.keep.isin([True, False]).all(), 'All values in "keep" column of `MAPPING` must be True or False.'
+    questions_keep = MAPPING.label[MAPPING.keep].tolist()
+    df = df[index_cols + questions_keep]
+    return df
+
+
 def preprocess_cols(df):
-    for row in MAPPING[-MAPPING.preprocess.isna()].itertuples():
-        df[row.label] = df[row.label].replace(MAPPED_VALUES[row.preprocess])
-        uniq_values = set(MAPPED_VALUES[row.preprocess].values())
-        assert df[row.label].drop_duplicates().dropna().isin(uniq_values).all(), f"One or more non-NaN values in {row.label} are not in {uniq_values}"
+    for row in MAPPING[MAPPING.preprocess.notnull()].itertuples():
+        if row.label in df.columns:
+            df[row.label] = df[row.label].replace(MAPPED_VALUES[row.preprocess])
+            uniq_values = set(MAPPED_VALUES[row.preprocess].values())
+            assert df[row.label].drop_duplicates().dropna().isin(uniq_values).all(), f"One or more non-NaN values in {row.label} are not in {uniq_values}"
     return df
 
 
@@ -121,7 +132,7 @@ def standardize_entities(df):
 def aggregate(df):
     s_period = df["date"].dt.to_period(FREQ)
     df.loc[:, "date_end"] = s_period.dt.end_time.dt.date
-    questions = MAPPING.label.tolist()
+    questions = [q for q in MAPPING.label.tolist() if q in df.columns]
 
     # computes the mean for each country-date-question observation
     # (returned in long format)
@@ -160,9 +171,13 @@ def aggregate(df):
 
 def rename_columns(df):
     suffixes = ['mean', 'num_responses']
-    df = df.rename(
-        columns={f'{row.label}__{sfx}': f'{row.code_name}__{sfx}' for row in MAPPING.itertuples() for sfx in suffixes}
-    )
+    rename_dict = {}
+    for row in MAPPING.itertuples():
+        for sfx in suffixes:
+            key = f'{row.label}__{sfx}'
+            if key in df.columns:
+                rename_dict[key] = f'{row.code_name}__{sfx}'
+    df = df.rename(columns=rename_dict)
     return df
 
 
@@ -172,8 +187,10 @@ def reorder_columns(df):
     df = df[index_cols + data_cols]
     return df
 
+
 def main():
     df = merge_files()
+    df = subset_columns(df)
     df = preprocess_cols(df)
     df = standardize_entities(df)
     df = aggregate(df)
