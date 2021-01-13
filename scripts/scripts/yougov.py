@@ -132,6 +132,10 @@ def standardize_entities(df):
 def aggregate(df):
     s_period = df["date"].dt.to_period(FREQ)
     df.loc[:, "date_end"] = s_period.dt.end_time.dt.date
+    today = datetime.datetime.utcnow().date()
+    if df['date_end'].max() > today:
+        df.loc[:, "date_end"] = df['date_end'].replace({df['date_end'].max(): today})
+    
     questions = [q for q in MAPPING.label.tolist() if q in df.columns]
 
     # computes the mean for each country-date-question observation
