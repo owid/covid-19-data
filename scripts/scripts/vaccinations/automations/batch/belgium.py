@@ -9,7 +9,7 @@ def main():
     df = pd.read_json("vaccines-administered.json")
 
     df = df.sort_values(["date", "cumulative"]).groupby("date", as_index=False).tail(1)
-    df = df.drop(columns=["amount"])
+    df = df.drop(columns=["amount"]).rename(columns={"cumulative": "total_vaccinations"})
 
     df.loc[:, "location"] = "Belgium"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
