@@ -59,6 +59,13 @@ add_world <- function(vax) {
     return(vax)
 }
 
+add_daily <- function(df) {
+    setorder(df, date)
+    df$new_vaccinations <- df$total_vaccinations - lag(df$total_vaccinations, 1)
+    df[date != lag(date, 1) + 1, new_vaccinations := NA]
+    return(df)
+}
+
 add_smoothed <- function(df) {
     if (df$location[1] == "World") return(df)
     setorder(df, date)
@@ -152,8 +159,8 @@ generate_locations_file <- function(metadata, vax) {
 
 generate_vaccinations_file <- function(vax) {
     vax <- add_iso(vax)
-    setnames(vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million"),
-             c("daily_vaccinations", "daily_vaccinations_per_million"))
+    setnames(vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million", "new_vaccinations"),
+             c("daily_vaccinations", "daily_vaccinations_per_million", "daily_vaccinations_raw"))
     fwrite(vax, "../../../public/data/vaccinations/vaccinations.csv", scipen = 999)
 }
 
@@ -198,6 +205,7 @@ vax <- vax[, .(
 vax <- add_world(vax)
 
 # Derived variables
+vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily), fill = TRUE)
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
 vax <- add_per_capita(vax)
 vax[people_fully_vaccinated == 0, people_fully_vaccinated := NA]
