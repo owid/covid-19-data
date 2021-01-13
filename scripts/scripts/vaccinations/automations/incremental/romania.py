@@ -22,14 +22,10 @@ def main():
     date = soup.find(class_="post-date").find(class_="meta-text").text.strip()
     date = vaxutils.clean_date(date, "%b %d, %Y")
     
-    paragraphs = soup.find(class_="entry-content").find_all("li")
+    main_text = soup.find(class_="entry-content-text").text
 
-    for paragraph in paragraphs:
-        if "Număr total de persoane vaccinate" in paragraph.text:
-            count = paragraph.text
-            break
-
-    count = re.search(r"[\d\.]+$", count).group(0)
+    count = re.search(r"Număr total de persoane vaccinate împotriva COVID-19 cu vaccinul Pfizer BioNTech \(începând cu data de 27 decembrie 2020\) – ([\d\.]+)", main_text)
+    count = count.group(1)
     count = vaxutils.clean_count(count)
 
     vaxutils.increment(
