@@ -33,8 +33,8 @@ def main():
         # Build dataframe
         df = df.drop(columns=('country')).cumsum(axis=1).T.reset_index()
         df = df.rename(columns={
-                "index": "date",
-                "0": "total_vaccinations"
+            "index": "date",
+            0: "total_vaccinations"
         })
         df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
         df.loc[:, "location"] = "Chile"
