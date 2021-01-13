@@ -32,7 +32,7 @@ def main():
         command_result = driver.execute("send_command", params)
 
         driver.get(SOURCE_URL)
-        time.sleep(5)
+        time.sleep(10)
         links = driver.find_elements_by_css_selector(".app-body .bg-white .container center a")
         for link in links:
             if "Raw Data" in link.text:

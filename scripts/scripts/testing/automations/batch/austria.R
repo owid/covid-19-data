@@ -10,6 +10,8 @@ df <- df[, sum(TestGesamt), Meldedat]
 
 setnames(df, c("Date", "Cumulative total"))
 
+df <- df[, .(Date = min(Date)), `Cumulative total`]
+
 df[, Date := dmy(Date)]
 df[, Country := "Austria"]
 df[, Units := "tests performed"]

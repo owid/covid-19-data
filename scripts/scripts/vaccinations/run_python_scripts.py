@@ -17,7 +17,7 @@ if len(SKIP) > 0:
     scripts = [s for s in scripts if not bool(re.search(pattern=SKIP, string=s))]
 
 for script_name in scripts:
-    if "vaxutils.py" in script_name:
+    if "vaxutils.py" in script_name or "/archived/" in script_name:
         continue
     print(f"{datetime.datetime.now().replace(microsecond=0)} - {script_name}")
     os.system(f"python3 {script_name}")

@@ -24,24 +24,25 @@ weekly_icu_admissions,European CDC for European countries / UK Government / COVI
 weekly_icu_admissions_per_million,European CDC for European countries / UK Government / COVID Tracking Project for the United States,"Number of COVID-19 patients newly admitted to intensive care units (ICUs) in a given week per 1,000,000 people"
 weekly_hosp_admissions,European CDC for European countries / UK Government / COVID Tracking Project for the United States,Number of COVID-19 patients newly admitted to hospitals in a given week
 weekly_hosp_admissions_per_million,European CDC for European countries / UK Government / COVID Tracking Project for the United States,"Number of COVID-19 patients newly admitted to hospitals in a given week per 1,000,000 people"
+new_tests,National government reports,New tests for COVID-19 (only calculated for consecutive days)
 total_tests,National government reports,Total tests for COVID-19
-new_tests,National government reports,New tests for COVID-19
-new_tests_smoothed,National government reports,"New tests for COVID-19 (7-day smoothed). For countries that don't report testing data on a daily basis, we assume that testing changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window"
 total_tests_per_thousand,National government reports,"Total tests for COVID-19 per 1,000 people"
 new_tests_per_thousand,National government reports,"New tests for COVID-19 per 1,000 people"
+new_tests_smoothed,National government reports,"New tests for COVID-19 (7-day smoothed). For countries that don't report testing data on a daily basis, we assume that testing changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window"
 new_tests_smoothed_per_thousand,National government reports,"New tests for COVID-19 (7-day smoothed) per 1,000 people"
-tests_per_case,National government reports,"Tests conducted per new confirmed case of COVID-19, given as a rolling 7-day average (this is the inverse of positive_rate)"
 positive_rate,National government reports,"The share of COVID-19 tests that are positive, given as a rolling 7-day average (this is the inverse of tests_per_case)"
+tests_per_case,National government reports,"Tests conducted per new confirmed case of COVID-19, given as a rolling 7-day average (this is the inverse of positive_rate)"
 tests_units,National government reports,Units used by the location to report its testing data
 total_vaccinations,National government reports,Number of COVID-19 vaccination doses administered
+new_vaccinations,National government reports,New COVID-19 vaccination doses administered (only calculated for consecutive days)
+new_vaccinations_smoothed,National government reports,"New COVID-19 vaccination doses administered (7-day smoothed). For countries that don't report vaccination data on a daily basis, we assume that vaccination changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window"
 total_vaccinations_per_hundred,National government reports,Number of COVID-19 vaccination doses administered per 100 people in the total population
-new_vaccinations,National government reports,"New COVID-19 vaccination doses administered (7-day smoothed). For countries that don't report vaccination data on a daily basis, we assume that vaccination changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window"
-new_vaccinations_per_million,National government reports,"New COVID-19 vaccination doses administered (7-day smoothed) per 1,000,000 people in the total population"
+new_vaccinations_smoothed_per_million,National government reports,"New COVID-19 vaccination doses administered (7-day smoothed) per 1,000,000 people in the total population"
 stringency_index,"Oxford COVID-19 Government Response Tracker, Blavatnik School of Government","Government Response Stringency Index: composite measure based on 9 response indicators including school closures, workplace closures, and travel bans, rescaled to a value from 0 to 100 (100 = strictest response)"
 population,"United Nations, Department of Economic and Social Affairs, Population Division, World Population Prospects 2019 Revision",Population in 2020
 population_density,"World Bank World Development Indicators, sourced from Food and Agriculture Organization and World Bank estimates","Number of people divided by land area, measured in square kilometers, most recent year available"
 median_age,"UN Population Division, World Population Prospects, 2017 Revision","Median age of the population, UN projection for 2020"
-aged_65_older,"World Bank World Development Indicators based on age/sex distributions of United Nations World Population Prospects 2017 Revision","Share of the population that is 65 years and older, most recent year available"
+aged_65_older,World Bank World Development Indicators based on age/sex distributions of United Nations World Population Prospects 2017 Revision,"Share of the population that is 65 years and older, most recent year available"
 aged_70_older,"United Nations, Department of Economic and Social Affairs, Population Division (2017), World Population Prospects 2017 Revision",Share of the population that is 70 years and older in 2015
 gdp_per_capita,"World Bank World Development Indicators, source from World Bank, International Comparison Program database","Gross domestic product at purchasing power parity (constant 2011 international dollars), most recent year available"
 extreme_poverty,"World Bank World Development Indicators, sourced from World Bank Development Research Group","Share of the population living in extreme poverty, most recent year available since 2010"

@@ -1,4 +1,3 @@
-import json
 import requests
 import pandas as pd
 import vaxutils
@@ -17,7 +16,10 @@ def main():
     count = data["Doses_Administered"]
 
     date = data["Date"]
-    date = pd.to_datetime(date, format="%m/%d/%Y")
+    try:
+        date = pd.to_datetime(date, format="%m/%d/%Y")
+    except:
+        date = pd.to_datetime(date, format="%Y-%m-%d")
     date = str(date.date())
 
     vaxutils.increment(

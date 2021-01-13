@@ -17,6 +17,8 @@ def main():
         "vaccinated_seconde_dose_cum": "people_fully_vaccinated"
     })
 
+    df = df.groupby(["people_vaccinated", "people_fully_vaccinated"], as_index=False).min()
+
     df["total_vaccinations"] = df["people_vaccinated"].add(df["people_fully_vaccinated"])
 
     df["date"] = df["date"].str.slice(0, 10)
