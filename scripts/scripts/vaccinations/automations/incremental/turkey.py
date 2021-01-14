@@ -19,7 +19,7 @@ def main():
         total_vaccinations=count,
         date=date,
         source_url="https://covid19asi.saglik.gov.tr/",
-        vaccine="Sinopharm"
+        vaccine="Sinovac"
     )
 
 
