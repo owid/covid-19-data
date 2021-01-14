@@ -24,9 +24,9 @@ def main():
     table = soup.find("div", id="content-primary").find("table")
     df = pd.read_html(str(table))[0]
 
-    df = df[df["Vecka, år"] != "Totalt"]
+    df = df[df["År, vecka"] != "Totalt"]
 
-    df[["week", "year"]] = df["Vecka, år"].str.split(", ", expand=True).astype(int)
+    df[["year", "week"]] = df["År, vecka"].str.split(", v. ", expand=True).astype(int)
     df["date"] = df.apply(week_to_date, axis=1)
     df = df.sort_values("date")
 
