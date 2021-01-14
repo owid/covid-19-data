@@ -1,30 +1,37 @@
 import os
+import sys
+import pytz
 import json
 import datetime
 import time
 from tqdm import tqdm
 import pandas as pd
 
+from utils.db_imports import import_dataset
 
-# MIN_RESPONSES: country-date-question observations with less than
-# this many valid responses will be dropped. If "None", no observations will
+
+DATASET_NAME = 'YouGov-Imperial COVID-19 Behavior Tracker'
+
+# MIN_RESPONSES: country-date-question observations with less than this
+# many valid responses will be dropped. If "None", no observations will
 # be dropped.
 MIN_RESPONSES = 500
 
 # FREQ: temporal level at which to aggregate the individual survey
-# responses, passed as the `freq` argument to pandas.Series.dt.to_period. Must
-# conform to a valid Pandas offset string (e.g. 'M' = "month", "W" =
-# "week").
+# responses, passed as the `freq` argument to
+# pandas.Series.dt.to_period. Must conform to a valid Pandas offset
+# string (e.g. 'M' = "month", "W" = "week").
 FREQ = 'M'
 
-# INTERNAL_REF_DATE: reference date for internal Grapher usage.
-INTERNAL_REF_DATE = datetime.datetime(2020, 1, 21)
-
+# ZERO_DAY: reference date for internal yearIsDay Grapher usage.
+ZERO_DAY = "2020-01-21"
 
 CURRENT_DIR = os.path.dirname(__file__)
+sys.path.append(CURRENT_DIR)
+
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/yougov")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher")
-OUTPUT_FNAME = "YouGov-Imperial COVID-19 Behavior Tracker.csv"
+OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
 
 MAPPING = pd.read_csv(os.path.join(INPUT_PATH, "mapping.csv"), na_values=None)
 MAPPING['label'] = MAPPING['label'].str.lower()
@@ -32,7 +39,34 @@ with open(os.path.join(INPUT_PATH, 'mapped_values.json'), 'r') as f:
     MAPPED_VALUES = json.load(f)
 
 
-def read_country_data(country, extension):
+def update_csv():
+    df = _merge_files()
+    df = _subset_columns(df)
+    df = _preprocess_cols(df)
+    df = _standardize_entities(df)
+    df = _aggregate(df)
+    df = _rename_columns(df)
+    df = _reorder_columns(df)
+    df.to_csv(OUTPUT_CSV_PATH, index=False)
+
+
+def update_db():
+    time_str = datetime.datetime.now().astimezone(pytz.timezone('Europe/London')).strftime("%-d %B %Y, %H:%M")
+    source_name = f"Imperial College London YouGov Covid 19 Behaviour Tracker Data Hub – Last updated {time_str} (London time)"
+    import_dataset(
+        dataset_name=DATASET_NAME,
+        namespace='owid',
+        csv_path=OUTPUT_CSV_PATH,
+        default_variable_display={
+            'yearIsDay': True,
+            'zeroDay': ZERO_DAY
+        },
+        source_name=source_name,
+        slack_notifications=False
+    )
+
+
+def _read_country_data(country, extension):
     df = pd.read_csv(
         f"https://github.com/YouGov-Data/covid-19-tracker/raw/master/data/{country}.{extension}",
         low_memory=False,
@@ -45,7 +79,7 @@ def read_country_data(country, extension):
     return df
 
 
-def merge_files():
+def _merge_files():
 
     all_data = []
 
@@ -56,9 +90,9 @@ def merge_files():
     for country in tqdm(countries):
         tqdm.write(country)
         try:
-            df = read_country_data(country, "csv")
+            df = _read_country_data(country, "csv")
         except:
-            df = read_country_data(country, "zip")
+            df = _read_country_data(country, "zip")
         try:
             df.loc[:, "date"] = pd.to_datetime(df.endtime, format="%d/%m/%Y %H:%M")
         except:
@@ -74,7 +108,7 @@ def merge_files():
     return df
 
 
-def subset_columns(df):
+def _subset_columns(df):
     """keeps only the survey questions with keep=True in mapping.csv.
     """
     index_cols = ['country', 'date']
@@ -84,7 +118,7 @@ def subset_columns(df):
     return df
 
 
-def preprocess_cols(df):
+def _preprocess_cols(df):
     for row in MAPPING[MAPPING.preprocess.notnull()].itertuples():
         if row.label in df.columns:
             df[row.label] = df[row.label].replace(MAPPED_VALUES[row.preprocess])
@@ -93,7 +127,7 @@ def preprocess_cols(df):
     return df
 
 
-def standardize_entities(df):
+def _standardize_entities(df):
     df["entity"] = df.country.replace({
         "australia": "Australia",
         "brazil": "Brazil",
@@ -129,7 +163,7 @@ def standardize_entities(df):
     return df
 
 
-def aggregate(df):
+def _aggregate(df):
     s_period = df["date"].dt.to_period(FREQ)
     df.loc[:, "date_end"] = s_period.dt.end_time.dt.date
     today = datetime.datetime.utcnow().date()
@@ -168,40 +202,37 @@ def aggregate(df):
     df_agg.rename(columns={'date_end': 'date'}, inplace=True)
 
     # constructs date variable for internal Grapher usage.
-    df_agg.loc[:, "date_internal_use"] = (df_agg['date'] - INTERNAL_REF_DATE).dt.days
+    df_agg.loc[:, "date_internal_use"] = (df_agg['date'] - datetime.datetime.strptime(ZERO_DAY, '%Y-%m-%d')).dt.days
+    df_agg.drop('date', axis=1, inplace=True)
 
     return df_agg
 
 
-def rename_columns(df):
+def _rename_columns(df):
     suffixes = ['mean', 'num_responses']
     rename_dict = {}
     for row in MAPPING.itertuples():
         for sfx in suffixes:
             key = f'{row.label}__{sfx}'
             if key in df.columns:
-                rename_dict[key] = f'{row.code_name}__{sfx}'
+                if sfx == 'mean':
+                    val = row.code_name
+                else:
+                    val = f'{row.code_name}__{sfx}'
+                rename_dict[key] = val
     df = df.rename(columns=rename_dict)
+
+    # renames index columns for use in `update_db`.
+    df = df.rename(columns={'entity': 'Country', 'date_internal_use': 'Year'})
     return df
 
 
-def reorder_columns(df):
-    index_cols = ['entity', 'date', 'date_internal_use']
+def _reorder_columns(df):
+    index_cols = ['Country', 'Year']
     data_cols = sorted([col for col in df.columns if col not in index_cols])
     df = df[index_cols + data_cols]
     return df
 
 
-def main():
-    df = merge_files()
-    df = subset_columns(df)
-    df = preprocess_cols(df)
-    df = standardize_entities(df)
-    df = aggregate(df)
-    df = rename_columns(df)
-    df = reorder_columns(df)
-    df.to_csv(os.path.join(OUTPUT_PATH, OUTPUT_FNAME), index=False)
-
-
 if __name__ == "__main__":
-    main()
+    update_csv()
