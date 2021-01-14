@@ -1,16 +1,24 @@
 import datetime
-import json
 import pytz
 import requests
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import vaxutils
 
 
 def main():
 
-    url = "https://covid19asi.saglik.gov.tr/covid19asisayisi?getir=asiYapilanKisiSayisi"
-    data = json.loads(requests.get(url).content)
+    url = "https://covid19asi.saglik.gov.tr/"
 
-    count = data["asisayisi"]
+    # Options for Chrome WebDriver
+    op = Options()
+    op.add_argument("--headless")
+
+    with webdriver.Chrome(options=op) as driver:
+        driver.get(url)
+        count = driver.find_element_by_class_name("count-nums1").text
+
+    count = vaxutils.clean_count(count)
 
     date = str(datetime.datetime.now(pytz.timezone("Asia/Istanbul")).date())
 
@@ -18,7 +26,7 @@ def main():
         location="Turkey",
         total_vaccinations=count,
         date=date,
-        source_url="https://covid19asi.saglik.gov.tr/",
+        source_url=url,
         vaccine="Sinovac"
     )
 
