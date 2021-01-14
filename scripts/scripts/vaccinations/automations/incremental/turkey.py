@@ -1,23 +1,17 @@
 import datetime
 import pytz
+import re
 import requests
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from bs4 import BeautifulSoup
 import vaxutils
 
 
 def main():
 
     url = "https://covid19asi.saglik.gov.tr/"
+    soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    # Options for Chrome WebDriver
-    op = Options()
-    op.add_argument("--headless")
-
-    with webdriver.Chrome(options=op) as driver:
-        driver.get(url)
-        count = driver.find_element_by_class_name("count-nums1").text
-
+    count = re.search(r"var asiyapilankisisayisi = (\d+);", str(soup)).group(1)
     count = vaxutils.clean_count(count)
 
     date = str(datetime.datetime.now(pytz.timezone("Asia/Istanbul")).date())
