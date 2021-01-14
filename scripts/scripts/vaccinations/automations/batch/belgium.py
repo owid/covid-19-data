@@ -4,7 +4,7 @@ import pandas as pd
 
 def main():
 
-    os.system("curl -O https://covid-vaccinatie.be/api/vaccines-administered.json")
+    os.system("curl -s -O https://covid-vaccinatie.be/api/vaccines-administered.json")
 
     df = pd.read_json("vaccines-administered.json")
 
