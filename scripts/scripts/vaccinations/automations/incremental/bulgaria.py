@@ -18,7 +18,7 @@ def main():
     count = df.loc[df["Област"] == "Общо", "Общо"].values[0]
     count = int(count)
 
-    date = str(datetime.datetime.now(pytz.timezone("Europe/Sofia")).date())
+    date = str(datetime.datetime.now(pytz.timezone("Europe/Sofia")).date() - datetime.timedelta(days=1))
 
     vaxutils.increment(
         location="Bulgaria",
