@@ -45,3 +45,5 @@ def increment(location, total_vaccinations, date, vaccine, source_url):
         df = pd.concat([prev, new]).sort_values("date")
 
     df.to_csv(f"automations/output/{location}.csv", index=False)
+
+    print(f"NEW: {total_vaccinations} doses on {date}")

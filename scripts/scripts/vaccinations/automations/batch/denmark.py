@@ -26,10 +26,13 @@ def main():
     df = df.groupby("total_vaccinations", as_index = False).min()
     
     df.loc[:, "location"] = "Denmark"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[:, "source_url"] = pdf_path
 
+    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[df.date >= "2021-01-13", "vaccine"] = "Moderna, Pfizer/BioNTech"
+
     df.to_csv("automations/output/Denmark.csv", index=False)
+
 
 if __name__ == "__main__":
     main()
