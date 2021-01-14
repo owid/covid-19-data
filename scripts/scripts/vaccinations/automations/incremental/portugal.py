@@ -1,42 +1,24 @@
-import re
-import time
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import datetime
+import json
+import pytz
+import requests
 import vaxutils
 
 
 def main():
 
-    url = "https://esriportugal.maps.arcgis.com/apps/opsdashboard/index.html#/acf023da9a0b4f9dbb2332c13f635829"
+    url = "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=50&resultType=standard&cacheHint=true"
+    data = json.loads(requests.get(url).content)
 
-    # Options for Chrome WebDriver
-    op = Options()
-    # op.add_argument("--headless")
+    count = data["features"][0]["attributes"]["Vacinados_Ac"]
 
-    with webdriver.Chrome(options=op) as driver:
-
-        driver.get(url)
-        time.sleep(4)
-
-        for box in driver.find_elements_by_class_name("indicator-top-text"):
-
-            if "Total de Vacinas Administradas" in box.text:
-                count_text = box.find_element_by_xpath("..").text
-
-            elif "Dados relativos ao boletim da DGS de" in box.text:
-                date_text = box.find_element_by_xpath("..").text
-
-    count = re.search(r"\n([\d\s]+$)", count_text).group(1)
-    count = vaxutils.clean_count(count)
-
-    date = re.search(r"\n([\d/]+$)", date_text).group(1)
-    date = vaxutils.clean_date(date, "%d/%m/%Y")
+    date = str(datetime.datetime.now(pytz.timezone("Europe/Lisbon")).date())
 
     vaxutils.increment(
         location="Portugal",
         total_vaccinations=count,
         date=date,
-        source_url=url,
+        source_url="https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/",
         vaccine="Pfizer/BioNTech"
     )
 
