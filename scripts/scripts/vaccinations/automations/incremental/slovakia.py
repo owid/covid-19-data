@@ -9,12 +9,12 @@ def main():
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
 
-    count = soup.find(string=re.compile("Počet zaočkovaných osôb")).parent.parent.parent.find("h3").text
+    count = soup.find(string=re.compile("Počet zaočkovaných")).parent.parent.parent.find("h3").text
     count = vaxutils.clean_count(count)
 
-    date = soup.find(string=re.compile("Počet zaočkovaných osôb")).parent.parent.text
-    date = re.search(r"\d+\.\d+\.\d+", date).group(0)
-    date = vaxutils.clean_date(date, "%d.%m.%Y")
+    date = soup.find(class_="govuk-hint").text
+    date = re.search(r"\d+\. \d+\. \d+", date).group(0)
+    date = vaxutils.clean_date(date, "%d. %m. %Y")
 
     vaxutils.increment(
         location="Slovakia",

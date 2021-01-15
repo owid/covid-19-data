@@ -99,6 +99,10 @@ process_location <- function(location_name) {
         setDT(df)
     }
 
+    # Sanity checks
+    stopifnot(length(unique(df$date)) == nrow(df))
+    stopifnot(length(unique(df$total_vaccinations)) == nrow(df))
+
     if (!"people_vaccinated" %in% names(df)) {
         df[, people_vaccinated := total_vaccinations]
     }
