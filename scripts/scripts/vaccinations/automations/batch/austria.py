@@ -17,7 +17,7 @@ def main():
     df = df.groupby("total_vaccinations", as_index=False).min()
 
     df.loc[:, "location"] = "Austria"
-    df.loc[:, "source_url"] = "https://datadashboard.health.gov.il/COVID-19/general"
+    df.loc[:, "source_url"] = "https://info.gesundheitsministerium.gv.at/opendata.html"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
 
     df.to_csv("automations/output/Austria.csv", index=False)
