@@ -15,17 +15,20 @@ def get_vaccine_name(df):
     Returns:
         str or array: String if value is constant or array if different values are present.
     """
-    return "Pfizer/BioNTech"
+    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    return df
 
 
 def main():
     """Main function."""
     # Define URL of potential last release file
     date_str = datetime.now(pytz.timezone("America/Santiago")).date().strftime("%Y-%m-%d")
+    date_str = "2021-01-14"
     url = f"https://github.com/juancri/covid19-vaccination/releases/download/{date_str}/output.csv"
-
+    print(url)
     # Verify release file exists
     status_code = requests.get(url).status_code
+    print(status_code)
     if status_code == 200:
         # Load data
         df = pd.read_csv(url)
@@ -34,11 +37,13 @@ def main():
         df = df.drop(columns=('country')).cumsum(axis=1).T.reset_index()
         df = df.rename(columns={
             "index": "date",
-            0: "total_vaccinations"
+            0: "people_vaccinated",
+            1: "people_fully_vaccinated"
         })
+        df.loc[:, "total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
         df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
         df.loc[:, "location"] = "Chile"
-        df.loc[:, "vaccine"] = get_vaccine_name(df)
+        df = get_vaccine_name(df)
         df.loc[:, "source_url"] = "https://github.com/juancri/covid19-vaccination/releases/"
 
         # Save
