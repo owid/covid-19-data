@@ -23,7 +23,6 @@ def main():
     """Main function."""
     # Define URL of potential last release file
     date_str = datetime.now(pytz.timezone("America/Santiago")).date().strftime("%Y-%m-%d")
-    date_str = "2021-01-14"
     url = f"https://github.com/juancri/covid19-vaccination/releases/download/{date_str}/output.csv"
     print(url)
     # Verify release file exists
