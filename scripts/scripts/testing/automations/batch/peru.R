@@ -9,7 +9,7 @@ files <- c(
     "https://datos.ins.gob.pe/dataset/1d94b98b-cc3a-41b6-a8a4-ff4622878528/resource/11e6b1a0-b200-47f9-a3b4-dc89d358a927/download/pm_oct_2020.csv", # Oct 2020
     "https://datos.ins.gob.pe/dataset/666d1d60-a737-4729-a649-a8ad9ecd235a/resource/2e8d3d4e-4815-4dcc-950d-4619b49e179d/download/pm_nov_2020.csv", # Nov 2020
     "https://datos.ins.gob.pe/dataset/47daea44-df80-4120-bca3-88a5174bfa50/resource/d8468594-383b-422c-9812-3d1f3de87574/download/pm_dic_2020.csv", # Dec 2020
-    "https://datos.ins.gob.pe/dataset/910e9c26-4744-4287-87db-c1d91b01b7ff/resource/29990ca6-f242-4a62-93d8-0314ad7c2f3e/download/pm_04jan_2021.csv" # Jan 2021
+    "https://datos.ins.gob.pe/dataset/910e9c26-4744-4287-87db-c1d91b01b7ff/resource/09e2bc6b-1200-46bf-9974-9ce4aec323b7/download/pm_08jan_2021.csv" # Jan 2021
 )
 
 process_file <- function(url) {
