@@ -158,7 +158,7 @@ def add_per_million(df):
 def owid_format(df):
     df.loc[:, "value"] = df["value"].round(3)
     df = df.drop(columns="iso_code")
-    # df = df.groupby(["entity", "date", "indicator"], as_index=False).max()
+    df = df.groupby(["entity", "date", "indicator"], as_index=False).max()
     df = df.pivot(index=["entity", "date"], columns="indicator").value.reset_index()
     return df
 
