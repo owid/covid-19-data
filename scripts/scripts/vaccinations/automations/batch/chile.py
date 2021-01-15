@@ -24,10 +24,8 @@ def main():
     # Define URL of potential last release file
     date_str = datetime.now(pytz.timezone("America/Santiago")).date().strftime("%Y-%m-%d")
     url = f"https://github.com/juancri/covid19-vaccination/releases/download/{date_str}/output.csv"
-    print(url)
     # Verify release file exists
     status_code = requests.get(url).status_code
-    print(status_code)
     if status_code == 200:
         # Load data
         df = pd.read_csv(url)
