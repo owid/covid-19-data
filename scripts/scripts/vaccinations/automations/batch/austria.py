@@ -1,3 +1,4 @@
+import datetime
 import pandas as pd
 
 
@@ -13,7 +14,7 @@ def main():
 
     df = df.rename(columns={"Datum": "date", "Auslieferungen": "total_vaccinations"})
 
-    df = df[(df["total_vaccinations"].notnull()) & (df["total_vaccinations"] > 0)]
+    df = df[(df["total_vaccinations"].notnull()) & (df["total_vaccinations"] > 0) & (df["date"] <= str(datetime.date.today()))]
     df = df.groupby("total_vaccinations", as_index=False).min()
 
     df.loc[:, "location"] = "Austria"
