@@ -79,11 +79,11 @@ for (c in countries) {
                          str_replace_all(activate_links(row$`Detailed description`), "\n", "<br>")))
     }
 
-    if (any(country_rows$`Number of observations` > 7)) {
-        html_add(paste0(
-            '<iframe src="https://ourworldindata.org/grapher/daily-tests-per-thousand-people-smoothed-7-day?tab=chart&country=',
-            ccode, '" style="width: 100%; height: 600px; border: 0px none;"></iframe>'))
-    }
+    # if (any(country_rows$`Number of observations` > 7)) {
+    #     html_add(paste0(
+    #         '<iframe src="https://ourworldindata.org/grapher/daily-tests-per-thousand-people-smoothed-7-day?tab=chart&country=',
+    #         ccode, '" style="width: 100%; height: 600px; border: 0px none;"></iframe>'))
+    # }
 
     html_add("")
 
