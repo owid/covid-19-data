@@ -27,10 +27,19 @@ def main():
     # Manipulate data
     df["date"] = pd.to_datetime(vaccinated_df["Vaccinationsdato"], format="%d-%m-%Y")
     vaccinated_df.columns = vaccinated_df.columns.str.replace(r"\s", " ", regex=True)
-    df["people_vaccinated"] = vaccinated_df["Antal personer som har påbegyndt covid-19- vaccination"].apply(lambda x: x.replace(".", "")).astype(int)
-    df["people_fully_vaccinated"] = vaccinated_df["Antal personer som er færdigvaccineret pr. dag"].apply(lambda x: x.replace(".", "").replace("-", "0")).astype(int)
+    df["people_vaccinated"] = (
+        vaccinated_df["Antal personer som har påbegyndt covid-19- vaccination"]
+        .apply(lambda x: x.replace(".", ""))
+        .astype(int)
+    )
+    df["people_fully_vaccinated"] = (
+        vaccinated_df["Antal personer som er færdigvaccineret pr. dag"]
+        .apply(lambda x: x.replace(".", "").replace("-", "0"))
+        .astype(int)
+        .cumsum()
+    )
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
-    df = df.groupby("total_vaccinations", as_index=False).min()
+    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].replace(0, pd.NA)
     
     df.loc[:, "location"] = "Denmark"
     df.loc[:, "source_url"] = pdf_path
