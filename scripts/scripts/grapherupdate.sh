@@ -43,3 +43,11 @@ run_python 'import testing; testing.update_db()'
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 run_python 'import yougov; yougov.update_db()'
+
+# =====================================================================
+# COVID-19 - United States vaccination data
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+run_python 'import us_vaccinations; us_vaccinations.update_db()'
