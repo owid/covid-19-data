@@ -5,6 +5,7 @@ import os
 import requests
 import sys
 import pandas as pd
+import pytz
 
 
 CURRENT_DIR = os.path.dirname(__file__)
