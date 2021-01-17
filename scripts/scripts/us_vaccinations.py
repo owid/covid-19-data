@@ -114,9 +114,9 @@ def export_to_public(df):
 
 
 def export_to_grapher(df):
-    df = df.rename(columns={"date": "year", "location": "entity"})
-    df["year"] = (pd.to_datetime(df["year"], format="%Y-%m-%d") - datetime(2021, 1, 1)).dt.days
-    df.insert(0, "entity", df.pop("entity"))
+    df = df.rename(columns={"date": "Year", "location": "Country"})
+    df["Year"] = (pd.to_datetime(df["Year"], format="%Y-%m-%d") - datetime(2021, 1, 1)).dt.days
+    df.insert(0, "Country", df.pop("Country"))
     df.to_csv(os.path.join(GRAPHER_PATH, "COVID-19 - United States vaccinations.csv"), index=False)
 
 
