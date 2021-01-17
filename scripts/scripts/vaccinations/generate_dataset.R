@@ -101,7 +101,6 @@ process_location <- function(location_name) {
 
     # Sanity checks
     stopifnot(length(unique(df$date)) == nrow(df))
-    stopifnot(length(unique(df$total_vaccinations)) == nrow(df))
     stopifnot(max(df$date) <= today())
 
     if (!"people_vaccinated" %in% names(df)) {
@@ -220,6 +219,7 @@ vax[is.na(people_fully_vaccinated), people_fully_vaccinated_per_hundred := NA]
 # Sanity checks
 stopifnot(all(vax$total_vaccinations >= 0, na.rm = TRUE))
 stopifnot(all(vax$new_vaccinations_smoothed >= 0, na.rm = TRUE))
+stopifnot(all(vax$new_vaccinations_smoothed_per_million <= 50000, na.rm = TRUE))
 
 setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
