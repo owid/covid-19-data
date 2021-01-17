@@ -11,7 +11,7 @@ Costa Rica,CRI,Pfizer/BioNTech,2021-01-15,National Health Commission,https://www
 Croatia,HRV,Pfizer/BioNTech,2021-01-15,Ministry of Health,https://vlada.gov.hr/vijesti/unatoc-povoljnijoj-epidemioloskoj-situaciji-aktualne-mjere-nece-se-mijenjati-do-31-sijecnja/31315
 Cyprus,CYP,Pfizer/BioNTech,2021-01-15,Ministry of Health,https://www.pio.gov.cy/%CE%B1%CE%BD%CE%B1%CE%BA%CE%BF%CE%B9%CE%BD%CF%89%CE%B8%CE%AD%CE%BD%CF%84%CE%B1-%CE%AC%CF%81%CE%B8%CF%81%CE%BF.html?id=17908#flat
 Czechia,CZE,Pfizer/BioNTech,2021-01-13,Ministry of Health,https://onemocneni-aktualne.mzcr.cz/covid-19
-Denmark,DNK,"Moderna, Pfizer/BioNTech",2021-01-15,Statens Serum Institut,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning
+Denmark,DNK,"Moderna, Pfizer/BioNTech",2021-01-16,Statens Serum Institut,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning
 England,,"Oxford/AstraZeneca, Pfizer/BioNTech",2021-01-15,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
 Estonia,EST,Pfizer/BioNTech,2021-01-17,National Health Board,https://www.terviseamet.ee/et/uudised
 Finland,FIN,Pfizer/BioNTech,2021-01-15,THL via Helsingin Sanomat,https://github.com/HS-Datadesk/koronavirus-avoindata
@@ -24,8 +24,8 @@ Hungary,HUN,Pfizer/BioNTech,2021-01-16,Government of Hungary,https://koronavirus
 Iceland,ISL,Pfizer/BioNTech,2020-12-30,Directorate of Health,https://www.ruv.is/frett/2020/12/30/4875-landsmenn-fengu-bolusetningu
 India,IND,"Covaxin, Covishield",2021-01-16,Ministry of Health,https://twitter.com/MoHFW_INDIA/status/1350459098203004928
 Ireland,IRL,Pfizer/BioNTech,2021-01-13,Heath Service Executive,https://covid19ireland-geohive.hub.arcgis.com/
-Israel,ISR,Pfizer/BioNTech,2021-01-16,Government of Israel,https://datadashboard.health.gov.il/COVID-19/general
-Italy,ITA,Pfizer/BioNTech,2021-01-16,Extraordinary commissioner for the Covid-19 emergency,https://github.com/italia/covid19-opendata-vaccini
+Israel,ISR,Pfizer/BioNTech,2021-01-17,Government of Israel,https://datadashboard.health.gov.il/COVID-19/general
+Italy,ITA,Pfizer/BioNTech,2021-01-17,Extraordinary commissioner for the Covid-19 emergency,https://github.com/italia/covid19-opendata-vaccini
 Kuwait,KWT,Pfizer/BioNTech,2020-12-28,Ministry of Health,https://alqabas.com/article/5828928-2500-شخص-حصلوا-على-لقاح-كورونا-في-يومين?id=5828928
 Latvia,LVA,Pfizer/BioNTech,2021-01-16,National Health Service,http://www.vmnvd.gov.lv/lv/covid-19/1486-vakcinacija-pret-covid-19
 Lithuania,LTU,Pfizer/BioNTech,2021-01-16,Ministry of Health,https://ls-osp-sdg.maps.arcgis.com/apps/opsdashboard/index.html#/b7063ad3f8c149d394be7f043dfce460
@@ -35,8 +35,8 @@ Mexico,MEX,Pfizer/BioNTech,2021-01-16,Secretary of Health,https://www.gob.mx/sal
 Netherlands,NLD,Pfizer/BioNTech,2021-01-15,National Institute for Public Health and the Environment,https://twitter.com/hugodejonge/status/1350157336988561411?s=20
 Northern Ireland,,"Oxford/AstraZeneca, Pfizer/BioNTech",2021-01-15,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
 Norway,NOR,Pfizer/BioNTech,2021-01-14,Norwegian Institute of Public Health,https://www.fhi.no/sv/vaksine/koronavaksinasjonsprogrammet/koronavaksinasjonsstatistikk/
-Oman,OMN,Pfizer/BioNTech,2021-01-14,Ministry of Health,https://twitter.com/OmaniMOH/status/1349991401686241280
-Poland,POL,Pfizer/BioNTech,2021-01-15,Ministry of Health,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19
+Oman,OMN,Pfizer/BioNTech,2021-01-15,Ministry of Health,https://twitter.com/OmaniMOH/status/1350752004906377217
+Poland,POL,Pfizer/BioNTech,2021-01-16,Ministry of Health,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19
 Portugal,PRT,Pfizer/BioNTech,2021-01-15,National Health Service,https://esriportugal.maps.arcgis.com/apps/opsdashboard/index.html#/acf023da9a0b4f9dbb2332c13f635829
 Romania,ROU,Pfizer/BioNTech,2021-01-16,Government of Romania,https://vaccinare-covid.gov.ro/comunicate-oficiale/
 Russia,RUS,Sputnik V,2021-01-13,Russian Direct Investment Fund,https://twitter.com/redouad/status/1350030539944820736
@@ -44,13 +44,13 @@ Saudi Arabia,SAU,Pfizer/BioNTech,2021-01-11,Saudi Health Council,https://coronam
 Scotland,,"Oxford/AstraZeneca, Pfizer/BioNTech",2021-01-15,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
 Serbia,SRB,Pfizer/BioNTech,2021-01-14,Government of Serbia,https://www.srbija.gov.rs/vest/en/166230/18136-citizens-vaccinated-to-date.php
 Singapore,SGP,Pfizer/BioNTech,2021-01-12,Ministry of Health,https://www.moh.gov.sg/news-highlights/details/covid-19-vaccination-centres-set-up-to-support-singapore's-vaccination-programme
-Slovakia,SVK,Pfizer/BioNTech,2021-01-16,Ministry of Health,https://korona.gov.sk/koronavirus-na-slovensku-v-cislach/
-Slovenia,SVN,Pfizer/BioNTech,2021-01-15,"National Institute of Public Health, via Sledilnik",https://covid-19.sledilnik.org/en/
+Slovakia,SVK,Pfizer/BioNTech,2021-01-17,Ministry of Health,https://korona.gov.sk/koronavirus-na-slovensku-v-cislach/
+Slovenia,SVN,Pfizer/BioNTech,2021-01-16,"National Institute of Public Health, via Sledilnik",https://covid-19.sledilnik.org/en/
 Spain,ESP,"Moderna, Pfizer/BioNTech",2021-01-15,Ministry of Health,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
 Sweden,SWE,Pfizer/BioNTech,2021-01-10,Public Health Agency of Sweden,https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik-over-vaccinerade-mot-covid-19/
 Switzerland,CHE,Pfizer/BioNTech,2021-01-14,Federal Office of Public Health,https://twitter.com/srfnews/status/1349727241391857670
 Turkey,TUR,Sinovac,2021-01-17,COVID-19 Vaccine Information Platform,https://covid19asi.saglik.gov.tr/
-United Arab Emirates,ARE,"Pfizer/BioNTech, Sinopharm",2021-01-16,National Emergency Crisis and Disaster Management Authority,https://twitter.com/NCEMAUAE
+United Arab Emirates,ARE,"Pfizer/BioNTech, Sinopharm",2021-01-17,National Emergency Crisis and Disaster Management Authority,https://twitter.com/NCEMAUAE
 United Kingdom,GBR,"Oxford/AstraZeneca, Pfizer/BioNTech",2021-01-15,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
 United States,USA,"Moderna, Pfizer/BioNTech",2021-01-15,Centers for Disease Control and Prevention,https://covid.cdc.gov/covid-data-tracker/#vaccinations
 Wales,,"Oxford/AstraZeneca, Pfizer/BioNTech",2021-01-15,Government of the United Kingdom,https://coronavirus.data.gov.uk/details/healthcare
