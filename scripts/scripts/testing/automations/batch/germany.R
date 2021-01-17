@@ -2,15 +2,14 @@ url <- "https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Testz
 
 df <- rio::import(url, sheet = "Testzahlen")
 setDT(df)
-df <- df[!is.na(`Anzahl Testungen`) & `Kalenderwoche 2020` != "Summe"]
 
-# Date parsing will stop working in 2021
-stopifnot(year(today()) == 2020)
-
-df[, week_number := as.integer(str_extract(`Kalenderwoche 2020`, "\\d+"))]
-df[, Date := ymd("2020-01-01")]
-week(df$Date) <- df$week_number
-df[, Date := Date + 4]
+df <- df[str_detect(Kalenderwoche, "^\\d+/\\d+\\*?$")]
+df[, Kalenderwoche := str_replace_all(Kalenderwoche, "\\*", "")]
+df[, week_number := as.integer(str_extract(Kalenderwoche, "^\\d+"))]
+df[, year := as.integer(str_extract(Kalenderwoche, "\\d+$"))]
+stopifnot(max(df$year) == 2021)
+df[year == 2020, Date := ymd("2019-12-29") + week_number * 7]
+df[year == 2021, Date := ymd("2021-01-03") + week_number * 7]
 
 setorder(df, Date)
 df[, `Cumulative total` := cumsum(`Anzahl Testungen`)]

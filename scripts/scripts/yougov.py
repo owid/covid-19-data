@@ -1,69 +1,72 @@
 import os
+import sys
+import pytz
+import json
 import datetime
 import time
-from glob import glob
 from tqdm import tqdm
 import pandas as pd
 
+from utils.db_imports import import_dataset
+
+
+DATASET_NAME = 'YouGov-Imperial COVID-19 Behavior Tracker'
+
+# MIN_RESPONSES: country-date-question observations with less than this
+# many valid responses will be dropped. If "None", no observations will
+# be dropped.
+MIN_RESPONSES = 500
+
+# FREQ: temporal level at which to aggregate the individual survey
+# responses, passed as the `freq` argument to
+# pandas.Series.dt.to_period. Must conform to a valid Pandas offset
+# string (e.g. 'M' = "month", "W" = "week").
+FREQ = 'M'
+
+# ZERO_DAY: reference date for internal yearIsDay Grapher usage.
+ZERO_DAY = "2020-01-21"
 
 CURRENT_DIR = os.path.dirname(__file__)
+sys.path.append(CURRENT_DIR)
+
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/yougov")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher")
+OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
+
 MAPPING = pd.read_csv(os.path.join(INPUT_PATH, "mapping.csv"), na_values=None)
-
-MAPPED_VALUES = {
-    "binary": {"No": 0, "Yes": 100},
-    "frequency": {"Not at all": 0, "Rarely": 0, "Sometimes": 0, "Frequently": 100, "Always": 100},
-    "easiness": {
-        "Very easy": 0,
-        "Somewhat easy": 0,
-        "Neither easy nor difficult": 0,
-        "Somewhat difficult": 100,
-        "Very difficult": 100
-    },
-    "willingness": {
-        "Very unwilling": 0,
-        "Somewhat unwilling": 0,
-        "Neither willing nor unwilling": 0,
-        "Somewhat willing": 100,
-        "Very willing": 100
-    },
-    "scariness": {
-        "I am not at all scared that I will contract the Coronavirus (COVID-19)": 0,
-        "I am not very scared that I will contract the Coronavirus (COVID-19)": 0,
-        "I am fairly scared that I will contract the Coronavirus (COVID-19)": 100,
-        "I am very scared that I will contract the Coronavirus (COVID-19)": 100
-    },
-    "happiness": {
-        "Much less happy now": 0,
-        "Somewhat less happy now": 0,
-        "About the same": 0,
-        "Somewhat more happy now": 100,
-        "Much more happy now": 100
-    },
-    "handling": {"Very badly": 0, "Somewhat badly": 0, "Somewhat well": 100, "Very well": 100},
-    "agreement": {"1 – Disagree": 0, "2": 0, "3": 0, "4": 0, "5": 100, "6": 100, "7 - Agree": 100},
-    "trustworthiness": {
-        "1 - Not at all trustworthy": 0,
-        "2": 0,
-        "3": 0,
-        "4": 100,
-        "5 - Completely trustworthy": 100
-    },
-    "efficiency": {
-        "1 - Not efficient at all": 0,
-        "2": 0,
-        "3": 0,
-        "4": 100,
-        "5 - Extremely efficient": 100
-    },
-    "unity": {"More divided": 0, "No change": 0, "More united": 100},
-    "strength": {"Very weak": 0, "Somewhat weak": 0, "Somewhat strong": 100, "Very strong": 100},
-    "increase": {"Decreased": 0, "No change": 0, "Increased": 100}
-}
+MAPPING['label'] = MAPPING['label'].str.lower()
+with open(os.path.join(INPUT_PATH, 'mapped_values.json'), 'r') as f:
+    MAPPED_VALUES = json.load(f)
 
 
-def read_country_data(country, extension):
+def update_csv():
+    df = _merge_files()
+    df = _subset_columns(df)
+    df = _preprocess_cols(df)
+    df = _standardize_entities(df)
+    df = _aggregate(df)
+    df = _rename_columns(df)
+    df = _reorder_columns(df)
+    df.to_csv(OUTPUT_CSV_PATH, index=False)
+
+
+def update_db():
+    time_str = datetime.datetime.now().astimezone(pytz.timezone('Europe/London')).strftime("%-d %B %Y, %H:%M")
+    source_name = f"Imperial College London YouGov Covid 19 Behaviour Tracker Data Hub – Last updated {time_str} (London time)"
+    import_dataset(
+        dataset_name=DATASET_NAME,
+        namespace='owid',
+        csv_path=OUTPUT_CSV_PATH,
+        default_variable_display={
+            'yearIsDay': True,
+            'zeroDay': ZERO_DAY
+        },
+        source_name=source_name,
+        slack_notifications=False
+    )
+
+
+def _read_country_data(country, extension):
     df = pd.read_csv(
         f"https://github.com/YouGov-Data/covid-19-tracker/raw/master/data/{country}.{extension}",
         low_memory=False,
@@ -76,7 +79,7 @@ def read_country_data(country, extension):
     return df
 
 
-def merge_files():
+def _merge_files():
 
     all_data = []
 
@@ -87,43 +90,45 @@ def merge_files():
     for country in tqdm(countries):
         tqdm.write(country)
         try:
-            df = read_country_data(country, "csv")
+            df = _read_country_data(country, "csv")
         except:
-            df = read_country_data(country, "zip")
+            df = _read_country_data(country, "zip")
         try:
-            df.loc[:, "Date"] = pd.to_datetime(df.endtime, format="%d/%m/%Y %H:%M")
+            df.loc[:, "date"] = pd.to_datetime(df.endtime, format="%d/%m/%Y %H:%M")
         except:
-            df.loc[:, "Date"] = pd.to_datetime(df.endtime, format="%Y-%m-%d %H:%M:%S")
+            df.loc[:, "date"] = pd.to_datetime(df.endtime, format="%Y-%m-%d %H:%M:%S")
         df.loc[:, "country"] = country
         all_data.append(df)
 
     df = pd.concat(all_data)
+
+    df.columns = df.columns.str.lower()
+    assert df.columns.nunique() == df.columns.shape[0], 'There are one or more duplicate columns, which may cause unexpected errors.'
+    
     return df
 
 
-def make_weekly(df):
-    df.loc[:, "Date"] = df["Date"].dt.to_period("W").apply(lambda r: r.start_time)
-    df.loc[:, "Date"] = (df.Date - datetime.datetime(2020, 1, 21)).dt.days
-    df = df.drop(columns=["endtime", "RecordNo"])
+def _subset_columns(df):
+    """keeps only the survey questions with keep=True in mapping.csv.
+    """
+    index_cols = ['country', 'date']
+    assert MAPPING.keep.isin([True, False]).all(), 'All values in "keep" column of `MAPPING` must be True or False.'
+    questions_keep = MAPPING.label[MAPPING.keep].tolist()
+    df = df[index_cols + questions_keep]
     return df
 
 
-def remove_small_samples(df):
-    samples = df.groupby(["country", "Date"], as_index=False).size()
-    low_samples = samples[samples["size"] < 30]
-    low_samples = zip(low_samples.country, low_samples.Date)
-    df = df[-pd.Series(list(zip(df.country, df.Date)), index=df.index).isin(low_samples)]
+def _preprocess_cols(df):
+    for row in MAPPING[MAPPING.preprocess.notnull()].itertuples():
+        if row.label in df.columns:
+            df[row.label] = df[row.label].replace(MAPPED_VALUES[row.preprocess])
+            uniq_values = set(MAPPED_VALUES[row.preprocess].values())
+            assert df[row.label].drop_duplicates().dropna().isin(uniq_values).all(), f"One or more non-NaN values in {row.label} are not in {uniq_values}"
     return df
 
 
-def preprocess_cols(df):
-    for row in MAPPING[-MAPPING.preprocess.isna()].itertuples():
-        df[row.label] = df[row.label].replace(MAPPED_VALUES[row.preprocess])
-    return df
-
-
-def standardize_entities(df):
-    df["Entity"] = df.country.replace({
+def _standardize_entities(df):
+    df["entity"] = df.country.replace({
         "australia": "Australia",
         "brazil": "Brazil",
         "canada": "Canada",
@@ -158,29 +163,76 @@ def standardize_entities(df):
     return df
 
 
-def aggregate(df):
-    df = df.groupby(["Entity", "Date"], as_index=False).mean().round(1)
-    return df
-
-
-def rename_columns(df):
-    df = df[["Entity", "Date"] + list(MAPPING.label)]
-    df = df.rename(columns=dict(zip(MAPPING.label, MAPPING.code_name)))
-    return df
-
-
-def main():
-    df = merge_files()
-    df = make_weekly(df)
-    df = remove_small_samples(df)
-    df = preprocess_cols(df)
-    df = standardize_entities(df)
-    df = aggregate(df)
-    df = rename_columns(df)
-    df.to_csv(
-        os.path.join(OUTPUT_PATH, "YouGov-Imperial COVID-19 Behavior Tracker.csv"), index=False
-    )
+def _aggregate(df):
+    s_period = df["date"].dt.to_period(FREQ)
+    df.loc[:, "date_end"] = s_period.dt.end_time.dt.date
+    today = datetime.datetime.utcnow().date()
+    if df['date_end'].max() > today:
+        df.loc[:, "date_end"] = df['date_end'].replace({df['date_end'].max(): today})
     
+    questions = [q for q in MAPPING.label.tolist() if q in df.columns]
+
+    # computes the mean for each country-date-question observation
+    # (returned in long format)
+    df_means = df.groupby(["entity", "date_end"])[questions] \
+                 .mean() \
+                 .round(1) \
+                 .rename_axis('question', axis=1) \
+                 .stack() \
+                 .rename('mean') \
+                 .to_frame()
+    
+    # counts the number of non-NaN responses for each country-date-question
+    # observation (returned in long format)
+    df_counts = df.groupby(["entity", "date_end"])[questions] \
+                  .apply(lambda gp: gp.notnull().sum()) \
+                  .rename_axis('question', axis=1) \
+                  .stack() \
+                  .rename('num_responses') \
+                  .to_frame()
+    
+    df_agg = pd.merge(df_means, df_counts, left_index=True, right_index=True, how='outer', validate='1:1')
+    
+    if MIN_RESPONSES:
+        df_agg = df_agg[df_agg['num_responses'] >= MIN_RESPONSES]
+    
+    # converts dataframe back to wide format.
+    df_agg = df_agg.unstack().reset_index()
+    df_agg.columns = [f'{lvl1}__{lvl0}' if lvl1 else lvl0 for lvl0, lvl1 in df_agg.columns]
+    df_agg.rename(columns={'date_end': 'date'}, inplace=True)
+
+    # constructs date variable for internal Grapher usage.
+    df_agg.loc[:, "date_internal_use"] = (df_agg['date'] - datetime.datetime.strptime(ZERO_DAY, '%Y-%m-%d')).dt.days
+    df_agg.drop('date', axis=1, inplace=True)
+
+    return df_agg
+
+
+def _rename_columns(df):
+    suffixes = ['mean', 'num_responses']
+    rename_dict = {}
+    for row in MAPPING.itertuples():
+        for sfx in suffixes:
+            key = f'{row.label}__{sfx}'
+            if key in df.columns:
+                if sfx == 'mean':
+                    val = row.code_name
+                else:
+                    val = f'{row.code_name}__{sfx}'
+                rename_dict[key] = val
+    df = df.rename(columns=rename_dict)
+
+    # renames index columns for use in `update_db`.
+    df = df.rename(columns={'entity': 'Country', 'date_internal_use': 'Year'})
+    return df
+
+
+def _reorder_columns(df):
+    index_cols = ['Country', 'Year']
+    data_cols = sorted([col for col in df.columns if col not in index_cols])
+    df = df[index_cols + data_cols]
+    return df
+
 
 if __name__ == "__main__":
-    main()
+    update_csv()

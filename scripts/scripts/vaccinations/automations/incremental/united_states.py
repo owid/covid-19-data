@@ -13,7 +13,9 @@ def main():
             data = d
             break
 
-    count = data["Doses_Administered"]
+    total_vaccinations = data["Doses_Administered"]
+    people_vaccinated = data["Administered_Dose1"]
+    people_fully_vaccinated = data["Administered_Dose2"]
 
     date = data["Date"]
     try:
@@ -24,7 +26,9 @@ def main():
 
     vaxutils.increment(
         location="United States",
-        total_vaccinations=count,
+        total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://covid.cdc.gov/covid-data-tracker/#vaccinations",
         vaccine="Moderna, Pfizer/BioNTech"

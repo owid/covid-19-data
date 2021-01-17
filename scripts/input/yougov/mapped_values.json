@@ -1,0 +1,63 @@
+{
+    "binary": {"No": 0, "Yes": 100},
+    "frequency": {"Not at all": 0, "Rarely": 0, "Sometimes": 0, "Frequently": 100, "Always": 100},
+    "easiness": {
+        "Very easy": 0,
+        "Somewhat easy": 0,
+        "Neither easy nor difficult": 0,
+        "Somewhat difficult": 100,
+        "Very difficult": 100
+    },
+    "willingness": {
+        "Very unwilling": 0,
+        "Somewhat unwilling": 0,
+        "Neither willing nor unwilling": 0,
+        "Somewhat willing": 100,
+        "Very willing": 100
+    },
+    "scariness": {
+        "I am not at all scared that I will contract the Coronavirus (COVID-19)": 0,
+        "I am not very scared that I will contract the Coronavirus (COVID-19)": 0,
+        "I am fairly scared that I will contract the Coronavirus (COVID-19)": 100,
+        "I am very scared that I will contract the Coronavirus (COVID-19)": 100
+    },
+    "happiness": {
+        "Much less happy now": 0,
+        "Somewhat less happy now": 0,
+        "About the same": 0,
+        "Somewhat more happy now": 100,
+        "Much more happy now": 100
+    },
+    "handling": {"Very badly": 0, "Somewhat badly": 0, "Somewhat well": 100, "Very well": 100},
+    "agreement": {"1 – Disagree": 0, "2": 0, "3": 0, "4": 0, "5": 100, "6": 100, "7 - Agree": 100},
+    "agreement5_reverse": {"1 - Strongly agree": 100, "2": 100, "3": 0, "4": 0, "5 – Strongly disagree": 0},
+    "trustworthiness": {
+        "1 - Not at all trustworthy": 0,
+        "2": 0,
+        "3": 0,
+        "4": 100,
+        "5 - Completely trustworthy": 100
+    },
+    "efficiency": {
+        "1 - Not efficient at all": 0,
+        "2": 0,
+        "3": 0,
+        "4": 100,
+        "5 - Extremely efficient": 100
+    },
+    "unity": {"More divided": 0, "No change": 0, "More united": 100},
+    "strength": {"Very weak": 0, "Somewhat weak": 0, "Somewhat strong": 100, "Very strong": 100},
+    "increase": {"Decreased": 0, "No change": 0, "Increased": 100},
+    "importance": {
+        "Not at all important": 0,
+        "A little important": 0,
+        "Moderately important": 100,
+        "Very important": 100
+    },
+    "quantity": {
+        "Not at all": 0,
+        "A little": 0,
+        "Moderately": 100,
+        "Very much": 100
+    }
+}
