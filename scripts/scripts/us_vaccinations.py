@@ -139,7 +139,7 @@ def update_db():
     import_dataset(
         dataset_name=DATASET_NAME,
         namespace='owid',
-        csv_path=OUTPUT_CSV_PATH,
+        csv_path=GRAPHER_PATH,
         default_variable_display={
             'yearIsDay': True,
             'zeroDay': ZERO_DAY
