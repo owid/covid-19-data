@@ -1,6 +1,8 @@
 from datetime import datetime
 from glob import glob
+import json
 import os
+import requests
 import sys
 import pandas as pd
 
@@ -15,6 +17,14 @@ INPUT_PATH = os.path.join(CURRENT_DIR, "vaccinations/us_states/input/")
 GRAPHER_PATH = os.path.join(CURRENT_DIR, "../grapher/")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, "../../public/data/vaccinations/")
 ZERO_DAY = "2021-01-01"
+
+
+def download_data():
+    url = "https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=vaccination_data"
+    data = json.loads(requests.get(url).content)
+    df = pd.DataFrame.from_records(data["vaccination_data"])
+    assert len(df) > 0
+    df.to_csv(os.path.join(INPUT_PATH, f"cdc_data_{df.Date.max()}.csv"), index=False)
 
 
 def read_file(path):
@@ -138,4 +148,5 @@ def update_db():
 
 
 if __name__ == '__main__':
+    download_data()
     generate_dataset()
