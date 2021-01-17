@@ -141,3 +141,26 @@ fi
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 run_python 'import oxcgrt; oxcgrt.update_db()'
+
+# =====================================================================
+# US vaccinations
+
+# Attempt to download CDC data
+run_python 'import us_vaccinations; us_vaccinations.download_data()'
+
+# If there are any unstaged changes in the repo, then one of
+# the CSVs has changed, and we need to run the update script.
+if has_changed './scripts/scripts/vaccinations/us_states/input/*'; then
+  echo "Generating US vaccination file..."
+  run_python 'import us_vaccinations; us_vaccinations.generate_dataset()'
+  git add .
+  git commit -m "Automated US vaccination update"
+  git push
+else
+  echo "US vaccination export is up to date"
+fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+run_python 'import us_vaccinations; us_vaccinations.update_db()'
