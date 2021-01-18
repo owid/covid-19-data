@@ -17,6 +17,11 @@ GSHEET_KEY <- CONFIG$vax_time_series_gsheet
 
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
 
+AGGREGATES <- list(
+    "World" = list("excluded_locs" = subnational_pop$location, "included_locs" = NULL),
+    "European Union" = list("excluded_locs" = NULL, "included_locs" = fread("../../input/owid/eu_countries.csv")$Country)
+)
+
 get_metadata <- function() {
     retry(
         expr = {metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))},
@@ -29,38 +34,42 @@ get_metadata <- function() {
     return(metadata)
 }
 
-add_world <- function(vax) {
-    world <- vax[!location %in% subnational_pop$location]
+add_aggregate <- function(vax, aggregate_name, included_locs, excluded_locs) {
 
-    locations <- unique(world[, "location"])
+    agg <- copy(vax)
+    agg <- agg[!location %in% names(AGGREGATES)]
+    if (!is.null(included_locs)) agg <- agg[location %in% included_locs]
+    if (!is.null(excluded_locs)) agg <- agg[!location %in% excluded_locs]
+
+    locations <- unique(agg[, "location"])
     locations[, id := 1]
-    dates <- unique(world[, "date"])
+    dates <- unique(agg[, "date"])
     dates[, id := 1]
     product <- merge(locations, dates, by = "id", allow.cartesian = TRUE)
     product[, id := NULL]
 
-    world <- merge(product, world, by = c("date", "location"), all = TRUE)
+    agg <- merge(product, agg, by = c("date", "location"), all = TRUE)
 
-    setorder(world, location, date)
+    setorder(agg, location, date)
 
-    world[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
-    world[, people_vaccinated := na_locf(people_vaccinated, na_remaining = "keep"), location]
-    world[, people_fully_vaccinated := na_locf(people_fully_vaccinated, na_remaining = "keep"), location]
+    agg[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
+    agg[, people_vaccinated := na_locf(people_vaccinated, na_remaining = "keep"), location]
+    agg[, people_fully_vaccinated := na_locf(people_fully_vaccinated, na_remaining = "keep"), location]
 
-    world <- world[, .(
+    agg <- agg[, .(
         total_vaccinations = sum(total_vaccinations, na.rm = TRUE),
         people_vaccinated = sum(people_vaccinated, na.rm = TRUE),
         people_fully_vaccinated = sum(people_fully_vaccinated, na.rm = TRUE)
     ), date]
 
-    world[, location := "World"]
-    world <- world[date < today()]
-    vax <- rbindlist(list(vax, world), use.names = TRUE)
+    agg[, location := aggregate_name]
+    agg <- agg[date < today()]
+    vax <- rbindlist(list(vax, agg), use.names = TRUE)
     return(vax)
 }
 
 add_daily <- function(df) {
-    if (df$location[1] == "World") return(df)
+    if (df$location[1] %in% names(AGGREGATES)) return(df)
     setorder(df, date)
     df$new_vaccinations <- df$total_vaccinations - shift(df$total_vaccinations, 1)
     df[date != shift(date, 1) + 1, new_vaccinations := NA]
@@ -68,7 +77,7 @@ add_daily <- function(df) {
 }
 
 add_smoothed <- function(df) {
-    if (df$location[1] == "World") return(df)
+    if (df$location[1] %in% names(AGGREGATES)) return(df)
     setorder(df, date)
     date_seq <- seq.Date(from = min(df$date), to = max(df$date), by = "day")
     time_series <- data.table(date = date_seq, location = df$location[1])
@@ -124,7 +133,8 @@ process_location <- function(location_name) {
 
 add_per_capita <- function(df) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
-    pop <- rbindlist(list(pop, subnational_pop))
+    eu_pop <- data.table(location = "European Union", population = pop[location %in% fread("../../input/owid/eu_countries.csv")$Country, sum(population)])
+    pop <- rbindlist(list(pop, subnational_pop, eu_pop))
 
     df <- merge(df, pop)
 
@@ -206,8 +216,12 @@ vax <- vax[, .(
     people_fully_vaccinated = sum(people_fully_vaccinated)
 ), c("date", "location")]
 
-# Global figures
-vax <- add_world(vax)
+# Add regional aggregates
+for (agg_name in names(AGGREGATES)) {
+    vax <- add_aggregate(vax, aggregate_name = agg_name,
+                         included_locs = AGGREGATES[[agg_name]][["included_locs"]],
+                         excluded_locs = AGGREGATES[[agg_name]][["excluded_locs"]])
+}
 
 # Derived variables
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily), fill = TRUE)
