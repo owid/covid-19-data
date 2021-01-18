@@ -1,4 +1,4 @@
-df <- readxl::read_excel("input/DATA PORTUGAL.xlsx", sheet = "CUMULATIVE")
+df <- suppressMessages(readxl::read_excel("input/DATA PORTUGAL.xlsx", sheet = "CUMULATIVE"))
 setDT(df)
 df <- df[, 1:4]
 
