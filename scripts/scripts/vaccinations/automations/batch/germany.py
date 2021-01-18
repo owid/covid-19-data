@@ -25,7 +25,7 @@ def main():
     df = df.sort_values("date")
 
     df["people_vaccinated"] = df["people_vaccinated"].cumsum()
-    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].cumsum()
+    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].cumsum().fillna(0)
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
 
     df.loc[:, "location"] = "Germany"
