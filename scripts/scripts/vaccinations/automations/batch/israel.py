@@ -1,3 +1,4 @@
+import datetime
 import json
 import requests
 import pandas as pd
@@ -28,6 +29,9 @@ def main():
     df.loc[:, "location"] = "Israel"
     df.loc[:, "source_url"] = "https://datadashboard.health.gov.il/COVID-19/general"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+
+    if datetime.datetime.now().hour < 12:
+        df = df[df["date"] <= str(datetime.date.today())]
 
     df.to_csv("automations/output/Israel.csv", index=False)
 
