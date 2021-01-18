@@ -44,7 +44,7 @@ def main():
         "Totalt personer vaksinert med 2. dose": "people_fully_vaccinated"
     })
 
-    df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
+    df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"].fillna(0)
 
     if "Category" in df.columns:
         df = df.rename(columns={"Category": "date"})
