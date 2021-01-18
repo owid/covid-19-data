@@ -16,8 +16,8 @@ def main():
 
     df = pd.read_excel(url)
 
-    total_vaccinations = df.loc[df["Unnamed: 0"] == "Totales", "Dosis administradas (2)"].values[0]
-    people_fully_vaccinated = df.loc[df["Unnamed: 0"] == "Totales", "Nº Personas vacunadas(pauta completada)"].values[0]
+    total_vaccinations = int(df.loc[df["Unnamed: 0"] == "Totales", "Dosis administradas (2)"].values[0])
+    people_fully_vaccinated = int(df.loc[df["Unnamed: 0"] == "Totales", "Nº Personas vacunadas(pauta completada)"].values[0])
     people_vaccinated = total_vaccinations - people_fully_vaccinated
 
     date = str(datetime.datetime.now(pytz.timezone("Europe/Madrid")).date())
