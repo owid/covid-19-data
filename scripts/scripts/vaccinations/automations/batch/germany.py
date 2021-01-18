@@ -17,12 +17,16 @@ def main():
     df = pd.read_excel("germany.xlsx", sheet_name="Impfungen_proTag")
     df = df.rename(columns={
         "Datum": "date",
-        "Gesamtzahl Impfungen": "total_vaccinations"
+        "Erstimpfung": "people_vaccinated",
+        "Zweitimpfung": "people_fully_vaccinated"
     })
     df = df[(-df["date"].isna()) & (df["date"] != "Impfungen gesamt")].copy()
     df["date"] = df["date"].astype(str).str.slice(0, 10)
     df = df.sort_values("date")
-    df["total_vaccinations"] = df["total_vaccinations"].cumsum()
+
+    df["people_vaccinated"] = df["people_vaccinated"].cumsum()
+    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].cumsum()
+    df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
 
     df.loc[:, "location"] = "Germany"
     df.loc[:, "source_url"] = url
