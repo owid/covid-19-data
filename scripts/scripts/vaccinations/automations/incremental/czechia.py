@@ -23,7 +23,7 @@ def main():
         total_vaccinations=count,
         date=date,
         source_url=url,
-        vaccine="Pfizer/BioNTech"
+        vaccine="Moderna, Pfizer/BioNTech"
     )
 
 if __name__ == '__main__':
