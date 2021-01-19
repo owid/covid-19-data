@@ -27,14 +27,18 @@ def main():
     df["dose2"] = df.cumPeopleVaccinatedSecondDoseByPublishDate
     df.loc[df["dose2"].isna(), "dose2"] = df.cumPeopleVaccinatedSecondDoseByVaccinationDate
 
-    df["total_vaccinations"] = (df["dose1"].add(df["dose2"])).replace({0: pd.NA})
+    df["total_vaccinations"] = (df["dose1"].add(df["dose2"]))
 
-    df["people_vaccinated"] = df["dose1"].replace({0: pd.NA})
+    df["people_vaccinated"] = df["dose1"]
 
-    df["people_fully_vaccinated"] = df["dose2"].replace({0: pd.NA})
+    df["people_fully_vaccinated"] = df["dose2"]
 
-    df = df[["date", "location", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]]
-    df = df.sort_values("date")
+    df = (
+        df
+        .groupby(["location", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated"], as_index=False)
+        [["date"]].min()
+        .replace(0, pd.NA)
+    )
 
     df.loc[:, "source_url"] = "https://coronavirus.data.gov.uk/"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
