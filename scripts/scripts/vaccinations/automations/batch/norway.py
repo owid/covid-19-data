@@ -35,7 +35,7 @@ def main():
                 time.sleep(2)
                 break
 
-    df = pd.read_csv("automations/antall-personer-vaksiner.csv", sep=";", usecols=[
+    df = pd.read_csv("automations/antall-vaksinasjoner-med.csv", sep=";", usecols=[
         "Category", "Totalt personer vaksinert med 1. dose", "Totalt personer vaksinert med 2. dose"]
     )
 
@@ -59,7 +59,7 @@ def main():
 
     df.to_csv("automations/output/Norway.csv", index=False)
 
-    os.remove("automations/antall-personer-vaksiner.csv")
+    os.remove("automations/antall-vaksinasjoner-med.csv")
 
 if __name__ == "__main__":
     main()
