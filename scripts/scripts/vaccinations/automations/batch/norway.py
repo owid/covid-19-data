@@ -35,9 +35,16 @@ def main():
                 time.sleep(2)
                 break
 
-    df = pd.read_csv("automations/antall-personer-vaksiner.csv", sep=";", usecols=["Category", "Totalt personer vaksinert med 1. dose"])
+    df = pd.read_csv("automations/antall-vaksinasjoner-med.csv", sep=";", usecols=[
+        "Category", "Totalt personer vaksinert med 1. dose", "Totalt personer vaksinert med 2. dose"]
+    )
 
-    df = df.rename(columns={"Totalt personer vaksinert med 1. dose": "total_vaccinations"})
+    df = df.rename(columns={
+        "Totalt personer vaksinert med 1. dose": "people_vaccinated",
+        "Totalt personer vaksinert med 2. dose": "people_fully_vaccinated"
+    })
+
+    df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"].fillna(0)
 
     if "Category" in df.columns:
         df = df.rename(columns={"Category": "date"})
@@ -46,16 +53,13 @@ def main():
         df = df.rename(columns={"DateTime": "date"})
         df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
 
-
-    df = df.groupby("total_vaccinations", as_index=False).min()
-    
     df.loc[:, "location"] = "Norway"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[:, "source_url"] = url
 
     df.to_csv("automations/output/Norway.csv", index=False)
 
-    os.remove("automations/antall-personer-vaksiner.csv")
+    os.remove("automations/antall-vaksinasjoner-med.csv")
 
 if __name__ == "__main__":
     main()

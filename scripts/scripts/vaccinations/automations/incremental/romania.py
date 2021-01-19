@@ -23,15 +23,17 @@ def main():
     
     main_text = soup.find(class_="entry-content-text").text
 
-    counts = re.search(r"Număr total de persoane vaccinate împotriva COVID-19 cu vaccinul Pfizer BioNTech \(începând cu data de 27 decembrie 2020\): ([\d\.]+) persoane vaccinate, din care ([\d\.]+) persoane vaccinate cu rapel;", main_text)
+    regex = r"Număr total de doze administrate de vaccin împotriva COVID-19 Pfizer BioNTech \(începând cu data de 27 decembrie 2020\): ([\d\.]+), la un număr de [\d\.]+ persoane din care:\n– [\d\.]+ persoane vaccinate cu 1 doză;\n– ([\d\.]+) persoane vaccinate cu 2 doze"
+    
+    counts = re.search(regex, main_text)
 
-    people_vaccinated = counts.group(1)
-    people_vaccinated = vaxutils.clean_count(people_vaccinated)
+    total_vaccinations = counts.group(1)
+    total_vaccinations = vaxutils.clean_count(total_vaccinations)
 
     people_fully_vaccinated = counts.group(2)
     people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
 
-    total_vaccinations = people_vaccinated + people_fully_vaccinated
+    people_vaccinated = total_vaccinations - people_fully_vaccinated
 
     vaxutils.increment(
         location="Romania",

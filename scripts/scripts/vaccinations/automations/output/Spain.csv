@@ -1,10 +1,12 @@
-location,date,vaccine,total_vaccinations,source_url
-Spain,2021-01-04,Pfizer/BioNTech,82834,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-05,Pfizer/BioNTech,139339,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-07,Pfizer/BioNTech,207323,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-08,Pfizer/BioNTech,277976,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-11,Pfizer/BioNTech,406091,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-12,Pfizer/BioNTech,488122,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-13,Pfizer/BioNTech,581638,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-14,Pfizer/BioNTech,676186,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
-Spain,2021-01-15,"Moderna, Pfizer/BioNTech",768950,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm
+location,date,vaccine,total_vaccinations,source_url,people_vaccinated,people_fully_vaccinated
+Spain,2021-01-04,Pfizer/BioNTech,82834,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,82834.0,
+Spain,2021-01-05,Pfizer/BioNTech,139339,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,139339.0,
+Spain,2021-01-07,Pfizer/BioNTech,207323,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,207323.0,
+Spain,2021-01-08,Pfizer/BioNTech,277976,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,277976.0,
+Spain,2021-01-11,Pfizer/BioNTech,406091,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,406091.0,
+Spain,2021-01-12,Pfizer/BioNTech,488122,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,488122.0,
+Spain,2021-01-13,Pfizer/BioNTech,581638,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,581638.0,
+Spain,2021-01-14,Pfizer/BioNTech,676186,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,676186.0,
+Spain,2021-01-15,"Moderna, Pfizer/BioNTech",768950,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,768950.0,
+Spain,2021-01-18,"Moderna, Pfizer/BioNTech",897942,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210118.ods,895627.0,2315.0
+Spain,2021-01-19,"Moderna, Pfizer/BioNTech",966097,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210119.ods,956756.0,9341.0

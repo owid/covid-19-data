@@ -12,18 +12,22 @@ def main():
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
 
-    table = soup.find("p", string=re.compile("Ваксинирани лица по")).parent.find("table")
+    table = soup.find("p", string=re.compile("Поставени ваксини по")).parent.find("table")
     df = pd.read_html(str(table))[0]
     df = df.droplevel(level=0, axis=1)
+    df = df[df["Област"] == "Общо"]
 
-    count = df.loc[df["Област"] == "Общо", "Общо"].values[0]
-    count = int(count)
+    total_vaccinations = int(df["Общо поставени дози"].values[0])
+    people_fully_vaccinated = int(df["Общо ваксинирани лица с втора доза"].values[0])
+    people_vaccinated = total_vaccinations - people_fully_vaccinated
 
     date = str(datetime.datetime.now(pytz.timezone("Europe/Sofia")).date() - datetime.timedelta(days=1))
 
     vaxutils.increment(
         location="Bulgaria",
-        total_vaccinations=count,
+        total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
         vaccine="Moderna, Pfizer/BioNTech"

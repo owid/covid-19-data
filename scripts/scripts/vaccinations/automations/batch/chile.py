@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 import pandas as pd
 import requests
@@ -22,7 +22,7 @@ def get_vaccine_name(df):
 def main():
     """Main function."""
     # Define URL of potential last release file
-    date_str = datetime.now(pytz.timezone("America/Santiago")).date().strftime("%Y-%m-%d")
+    date_str = (datetime.now(pytz.timezone("America/Santiago")).date() - timedelta(days=1)).strftime("%Y-%m-%d")
     url = f"https://github.com/juancri/covid19-vaccination/releases/download/{date_str}/output.csv"
     # Verify release file exists
     status_code = requests.get(url).status_code
@@ -38,6 +38,7 @@ def main():
             1: "people_fully_vaccinated"
         })
         df.loc[:, "total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
+        df["people_fully_vaccinated"] = df["people_fully_vaccinated"].replace({0: pd.NA})
         df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
         df.loc[:, "location"] = "Chile"
         df = get_vaccine_name(df)

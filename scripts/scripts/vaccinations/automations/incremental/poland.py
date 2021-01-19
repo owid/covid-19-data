@@ -12,6 +12,8 @@ def main():
     data = json.loads(requests.get(url).content)
 
     total_vaccinations = data["features"][0]["attributes"]["SZCZEPIENIA_SUMA"]
+    people_fully_vaccinated = data["features"][0]["attributes"]["DAWKA_2_SUMA"]
+    people_vaccinated = total_vaccinations - people_fully_vaccinated
 
     date = data["features"][0]["attributes"]["Data"]
     date = str((pd.to_datetime(date, unit="ms").date() - pd.DateOffset(days=1)).date())
@@ -19,6 +21,8 @@ def main():
     vaxutils.increment(
         location="Poland",
         total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19",
         vaccine="Pfizer/BioNTech"

@@ -1,3 +1,4 @@
+import datetime
 import json
 import requests
 import pandas as pd
@@ -20,6 +21,7 @@ def main():
     df = df.groupby(["people_vaccinated", "people_fully_vaccinated"], as_index=False).min()
 
     df["total_vaccinations"] = df["people_vaccinated"].add(df["people_fully_vaccinated"])
+    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].replace(0, pd.NA)
 
     df["date"] = df["date"].str.slice(0, 10)
 
@@ -28,6 +30,9 @@ def main():
     df.loc[:, "location"] = "Israel"
     df.loc[:, "source_url"] = "https://datadashboard.health.gov.il/COVID-19/general"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+
+    if datetime.datetime.now().hour < 12:
+        df = df[df["date"] <= str(datetime.date.today())]
 
     df.to_csv("automations/output/Israel.csv", index=False)
 
