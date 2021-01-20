@@ -1,4 +1,9 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Gibraltar,2021-01-10,Pfizer/BioNTech,https://www.gibraltar.gov.gi/press-releases/day-one-of-gibraltars-covid-19-vaccination-programme-is-complete-332021-6576,420,420,0
-Gibraltar,2021-01-11,Pfizer/BioNTech,https://www.gibraltar.gov.gi/press-releases/day-2-of-the-gibraltars-covid-19-vaccination-programme-382021-6578,1445,1445,0
-Gibraltar,2021-01-12,Pfizer/BioNTech,https://www.gibraltar.gov.gi/press-releases/day-3-of-the-gibraltars-covid-19-vaccination-programme-462021-6588,2501,2501,0
+Gibraltar,2021-01-10,Pfizer/BioNTech,https://www.gibraltar.gov.gi/press-releases/day-one-of-gibraltars-covid-19-vaccination-programme-is-complete-332021-6576,420,420,FALSE
+Gibraltar,2021-01-11,Pfizer/BioNTech,https://www.gibraltar.gov.gi/press-releases/day-2-of-the-gibraltars-covid-19-vaccination-programme-382021-6578,1445,1445,FALSE
+Gibraltar,2021-01-12,Pfizer/BioNTech,https://www.gibraltar.gov.gi/press-releases/day-3-of-the-gibraltars-covid-19-vaccination-programme-462021-6588,2501,2501,FALSE
+Gibraltar,2021-01-15,Pfizer/BioNTech,https://twitter.com/GibraltarGov/status/1350435849012391936,5135,5135,FALSE
+Gibraltar,2021-01-16,Pfizer/BioNTech,https://twitter.com/GibraltarGov/status/1350843052223561728,5847,5847,FALSE
+Gibraltar,2021-01-17,Pfizer/BioNTech,https://twitter.com/GibraltarGov/status/1351199624216907783,5847,5847,FALSE
+Gibraltar,2021-01-18,Pfizer/BioNTech,https://twitter.com/GibraltarGov/status/1351524538664824832,6435,6435,FALSE
+Gibraltar,2021-01-19,Pfizer/BioNTech,https://twitter.com/GibraltarGov/status/1351951485366632450,7017,7017,FALSE
