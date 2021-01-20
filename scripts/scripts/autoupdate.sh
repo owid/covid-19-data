@@ -156,11 +156,7 @@ if has_changed './public/data/vaccinations/us_state_vaccinations.csv'; then
   git add .
   git commit -m "Automated US vaccination update"
   git push
+  run_python 'import us_vaccinations; us_vaccinations.update_db()'
 else
   echo "US vaccination export is up to date"
 fi
-
-# Always run the database update.
-# The script itself contains a check against the database
-# to make sure it doesn't run unnecessarily.
-run_python 'import us_vaccinations; us_vaccinations.update_db()'
