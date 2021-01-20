@@ -119,7 +119,7 @@ process_location <- function(location_name) {
     if (!"people_fully_vaccinated" %in% names(df)) {
         df[, people_fully_vaccinated := 0]
     } else {
-        df[is.na(people_fully_vaccinated), people_fully_vaccinated := 0]
+        df[, people_fully_vaccinated := nafill(as.integer(people_fully_vaccinated), fill = 0)]
     }
 
     df <- df[, c("location", "date", "vaccine", "source_url", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
