@@ -16,7 +16,7 @@ def main():
     column_string = {'dtype': str , 'header': None}  # Force dtype to be object because of thousand separator in Europe
     kwargs = {'pandas_options': column_string,}
     dfs_from_pdf = tabula.read_pdf(pdf_path, pages="all", **kwargs)
-    df = pd.DataFrame(dfs_from_pdf[1])  # Hardcoded table location
+    df = pd.DataFrame(dfs_from_pdf[0])  # Hardcoded table location
     header = (
         df[0:3]
         .astype(str)
