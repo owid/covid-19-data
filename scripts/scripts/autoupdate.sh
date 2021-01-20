@@ -150,9 +150,9 @@ run_python 'import us_vaccinations; us_vaccinations.download_data()'
 
 # If there are any unstaged changes in the repo, then one of
 # the CSVs has changed, and we need to run the update script.
-if has_changed './scripts/scripts/vaccinations/us_states/input/*'; then
-  echo "Generating US vaccination file..."
-  run_python 'import us_vaccinations; us_vaccinations.generate_dataset()'
+echo "Generating US vaccination file..."
+run_python 'import us_vaccinations; us_vaccinations.generate_dataset()'
+if has_changed './public/data/vaccinations/us_state_vaccinations.csv'; then
   git add .
   git commit -m "Automated US vaccination update"
   git push
