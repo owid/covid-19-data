@@ -1,25 +1,26 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Germany,2020-12-27,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,24225,24225,0
-Germany,2020-12-28,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,43813,43813,0
-Germany,2020-12-29,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,86674,86674,0
-Germany,2020-12-30,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,143940,143940,0
-Germany,2020-12-31,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,181835,181835,0
-Germany,2021-01-01,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,212415,212415,0
-Germany,2021-01-02,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,257299,257299,0
-Germany,2021-01-03,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,281844,281844,0
-Germany,2021-01-04,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,330370,330370,0
-Germany,2021-01-05,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,381146,381146,0
-Germany,2021-01-06,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,437198,437198,0
-Germany,2021-01-07,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,494452,494452,0
-Germany,2021-01-08,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,552255,552255,0
-Germany,2021-01-09,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,605706,605706,0
-Germany,2021-01-10,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,637903,637903,0
-Germany,2021-01-11,Pfizer/BioNTech,https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,703474,703474,0
-Germany,2021-01-12,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,783258,783258,0
-Germany,2021-01-13,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,876893,876893,0
-Germany,2021-01-14,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,976103,976056,47
-Germany,2021-01-15,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,1065283,1064991,292
-Germany,2021-01-16,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,1119931,1119341,590
-Germany,2021-01-17,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,1161228,1149455,11773
-Germany,2021-01-18,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,1225106,1200419,24687
-Germany,2021-01-19,"Moderna, Pfizer/BioNTech",https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Impfquotenmonitoring.xlsx?__blob=publicationFile,1297430,1254760,42670
+Germany,2020-12-27,Pfizer/BioNTech,https://impfdashboard.de/,24249,24249,0
+Germany,2020-12-28,Pfizer/BioNTech,https://impfdashboard.de/,43893,43893,0
+Germany,2020-12-29,Pfizer/BioNTech,https://impfdashboard.de/,86814,86814,0
+Germany,2020-12-30,Pfizer/BioNTech,https://impfdashboard.de/,144184,144184,0
+Germany,2020-12-31,Pfizer/BioNTech,https://impfdashboard.de/,182096,182096,0
+Germany,2021-01-01,Pfizer/BioNTech,https://impfdashboard.de/,212677,212677,0
+Germany,2021-01-02,Pfizer/BioNTech,https://impfdashboard.de/,257561,257561,0
+Germany,2021-01-03,Pfizer/BioNTech,https://impfdashboard.de/,282106,282106,0
+Germany,2021-01-04,Pfizer/BioNTech,https://impfdashboard.de/,330703,330703,0
+Germany,2021-01-05,Pfizer/BioNTech,https://impfdashboard.de/,381606,381606,0
+Germany,2021-01-06,Pfizer/BioNTech,https://impfdashboard.de/,437689,437689,0
+Germany,2021-01-07,Pfizer/BioNTech,https://impfdashboard.de/,495115,495115,0
+Germany,2021-01-08,Pfizer/BioNTech,https://impfdashboard.de/,552968,552968,0
+Germany,2021-01-09,Pfizer/BioNTech,https://impfdashboard.de/,606419,606419,0
+Germany,2021-01-10,Pfizer/BioNTech,https://impfdashboard.de/,638617,638617,0
+Germany,2021-01-11,Pfizer/BioNTech,https://impfdashboard.de/,704246,704246,0
+Germany,2021-01-12,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,784226,784226,0
+Germany,2021-01-13,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,877989,877989,0
+Germany,2021-01-14,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,977375,977330,45
+Germany,2021-01-15,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1066625,1066362,263
+Germany,2021-01-16,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1121298,1120737,561
+Germany,2021-01-17,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1162720,1150977,11743
+Germany,2021-01-18,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1227580,1202542,25038
+Germany,2021-01-19,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1304752,1259314,45438
+Germany,2021-01-20,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1401693,1324091,77602
