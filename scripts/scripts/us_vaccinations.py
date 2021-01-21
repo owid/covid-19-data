@@ -136,7 +136,7 @@ def generate_dataset():
 
 
 def update_db():
-    time_str = datetime.now().astimezone(pytz.timezone("US/Eastern")).strftime("%B %-d, %H:%M")
+    time_str = (datetime.now() - timedelta(minutes=10)).astimezone(pytz.timezone("US/Eastern")).strftime("%B %-d, %H:%M")
     source_name = f"Centers for Disease Control and Prevention – Last updated {time_str} (Eastern Time)"
     import_dataset(
         dataset_name=DATASET_NAME,

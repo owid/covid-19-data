@@ -14,7 +14,7 @@ OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
 ZERO_DAY = "2020-01-21"
 
 def update_db():
-    time_str = datetime.now().astimezone(pytz.timezone('Europe/London')).strftime("%-d %B, %H:%M")
+    time_str = (datetime.now() - timedelta(minutes=10)).astimezone(pytz.timezone('Europe/London')).strftime("%-d %B, %H:%M")
     source_name = f"Official data collated by Our World in Data – Last updated {time_str} (London time)"
     import_dataset(
         dataset_name=DATASET_NAME,
