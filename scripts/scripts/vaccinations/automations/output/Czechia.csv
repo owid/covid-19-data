@@ -1,6 +1,26 @@
-location,date,vaccine,total_vaccinations,source_url
-Czechia,2021-01-04,Pfizer/BioNTech,13000,https://ct24.ceskatelevize.cz/domaci/3250118-zive-brifink-ke-strategii-ockovani-a-novemu-vypoctu-pes
-Czechia,2021-01-06,Pfizer/BioNTech,19918,https://onemocneni-aktualne.mzcr.cz/covid-19
-Czechia,2021-01-13,Pfizer/BioNTech,70680,https://onemocneni-aktualne.mzcr.cz/covid-19
-Czechia,2021-01-16,Pfizer/BioNTech,105167,https://ct24.ceskatelevize.cz/domaci/3255542-pes-zustava-na-ctvrtem-stupni-reprodukcni-cislo-mirne-kleslo
-Czechia,2021-01-17,"Moderna, Pfizer/BioNTech",108239,https://www.lidovky.cz/domov/cesko-ma-podle-babise-objednanych-20-milionu-vakcin-proti-covidu-zatim-jsme-obdrzeli-necelych-170-ti.A210117_215054_ln_domov_sed
+date,total_vaccinations,location,source_url,vaccine
+2020-12-27,1244,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2020-12-28,3465,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2020-12-29,6826,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2020-12-30,10194,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2020-12-31,11301,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-01,11563,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-02,12788,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-03,13677,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-04,17105,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-05,21384,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-06,26939,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-07,34513,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-08,43988,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-09,45865,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-10,47496,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-11,56863,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-12,69505,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-13,82490,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-14,96735,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-15,109674,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-16,112885,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,Pfizer/BioNTech
+2021-01-17,115914,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,"Moderna, Pfizer/BioNTech"
+2021-01-18,128930,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,"Moderna, Pfizer/BioNTech"
+2021-01-19,142719,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,"Moderna, Pfizer/BioNTech"
+2021-01-20,154989,Czechia,https://onemocneni-aktualne.mzcr.cz/vakcinace-cr,"Moderna, Pfizer/BioNTech"
