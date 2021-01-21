@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
+
 def main():
      
     url = "https://onemocneni-aktualne.mzcr.cz/vakcinace-cr"
@@ -23,11 +24,10 @@ def main():
     df.loc[:, "source_url"] = url
 
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
-    # there isn't a breakdown of vaccine types, but we know Moderna rollout
-    # started around mid January
-    # df.loc[df["date"] >= "2021-01-12", "vaccine"] = "Moderna, Pfizer/BioNTech"
+    df.loc[df.date >= "2021-01-17", "vaccine"] = "Moderna, Pfizer/BioNTech"
 
     df.to_csv("automations/output/Czechia.csv", index=False)
+
 
 if __name__ == "__main__":
     main()
