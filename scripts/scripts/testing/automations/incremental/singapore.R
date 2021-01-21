@@ -2,10 +2,12 @@ url <- "https://www.moh.gov.sg/covid-19"
 
 page <- read_html(url)
 
-date <- page %>% html_nodes("h3") %>% html_text()
-date <- date[str_detect(date, "Tested")] %>%
+date <- page %>% html_nodes("h3") %>%
+    html_text() %>%
+    str_subset("Tested") %>%
     str_extract("as .. [^)]+") %>%
     str_replace("as .. ", "") %>%
+    na.omit() %>%
     dmy()
 
 # count <- page %>%
@@ -26,7 +28,7 @@ date <- date[str_detect(date, "Tested")] %>%
 # )
 
 count <- page %>%
-    html_nodes("#ContentPlaceHolder_contentPlaceholder_C095_Col00 td") %>%
+    html_nodes("#ContentPlaceHolder_contentPlaceholder_C124_Col00 td") %>%
     html_text() %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()

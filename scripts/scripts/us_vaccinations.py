@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from glob import glob
 import json
 import os
@@ -86,8 +86,10 @@ def rename_cols(df):
 
 
 def add_smoothed_state(df):
-    df = df.set_index("date").resample("1D").ffill().reset_index().sort_values("date")
-    df["daily_vaccinations_raw"] = df["total_vaccinations"] - df["total_vaccinations"].shift(1)
+    df = df.set_index("date").resample("1D").asfreq().reset_index().sort_values("date")
+    df[["location", "Census2019"]] = df[["location", "Census2019"]].ffill()
+    interpolated_totals = df["total_vaccinations"].interpolate("linear")
+    df["daily_vaccinations_raw"] = interpolated_totals - interpolated_totals.shift(1)
     df["daily_vaccinations"] = df["daily_vaccinations_raw"].rolling(7, min_periods=1).mean().round()
     df["daily_vaccinations_per_million"] = df["daily_vaccinations"].mul(1000000).div(df["Census2019"]).round()
     return df
@@ -127,14 +129,14 @@ def generate_dataset():
     df = rename_cols(df)
     df = add_smoothed(df)
     df = add_usage(df)
-    df = df.drop(columns=["Census2019"]).sort_values(["date", "location"])
+    df = df.drop(columns=["Census2019"]).sort_values(["location", "date"])
     sanity_checks(df)
     export_to_public(df.copy())
     export_to_grapher(df.copy())
 
 
 def update_db():
-    time_str = datetime.now().astimezone(pytz.timezone("US/Eastern")).strftime("%B %-d, %H:%M")
+    time_str = (datetime.now() - timedelta(minutes=10)).astimezone(pytz.timezone("US/Eastern")).strftime("%B %-d, %H:%M")
     source_name = f"Centers for Disease Control and Prevention – Last updated {time_str} (Eastern Time)"
     import_dataset(
         dataset_name=DATASET_NAME,

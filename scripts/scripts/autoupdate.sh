@@ -84,29 +84,6 @@ fi
 run_python 'import jhu; jhu.update_db()'
 
 # =====================================================================
-# Google Mobility
-
-# Download CSV
-run_python 'import gmobility; gmobility.download_csv()'
-
-# If there are any unstaged changes in the repo, then the
-# CSV has changed, and we need to run the update script.
-if has_changed_gzip ./scripts/input/gmobility/latest.csv.gz; then
-  echo "Generating Google Mobility export..."
-  run_python 'import gmobility; gmobility.export_grapher()'
-  git add .
-  git commit -m "Automated Google Mobility update"
-  git push
-else
-  echo "Google Mobility export is up to date"
-fi
-
-# Always run the database update.
-# The script itself contains a check against the database
-# to make sure it doesn't run unnecessarily.
-run_python 'import gmobility; gmobility.update_db()'
-
-# =====================================================================
 # Policy responses
 
 # The policy update files change far too often (every hour or so).
@@ -150,17 +127,36 @@ run_python 'import us_vaccinations; us_vaccinations.download_data()'
 
 # If there are any unstaged changes in the repo, then one of
 # the CSVs has changed, and we need to run the update script.
-if has_changed './scripts/scripts/vaccinations/us_states/input/*'; then
-  echo "Generating US vaccination file..."
-  run_python 'import us_vaccinations; us_vaccinations.generate_dataset()'
+echo "Generating US vaccination file..."
+run_python 'import us_vaccinations; us_vaccinations.generate_dataset()'
+if has_changed './public/data/vaccinations/us_state_vaccinations.csv'; then
   git add .
   git commit -m "Automated US vaccination update"
   git push
+  run_python 'import us_vaccinations; us_vaccinations.update_db()'
 else
   echo "US vaccination export is up to date"
+fi
+
+# =====================================================================
+# Google Mobility
+
+# Download CSV
+run_python 'import gmobility; gmobility.download_csv()'
+
+# If there are any unstaged changes in the repo, then the
+# CSV has changed, and we need to run the update script.
+if has_changed_gzip ./scripts/input/gmobility/latest.csv.gz; then
+  echo "Generating Google Mobility export..."
+  run_python 'import gmobility; gmobility.export_grapher()'
+  git add .
+  git commit -m "Automated Google Mobility update"
+  git push
+else
+  echo "Google Mobility export is up to date"
 fi
 
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-run_python 'import us_vaccinations; us_vaccinations.update_db()'
+run_python 'import gmobility; gmobility.update_db()'

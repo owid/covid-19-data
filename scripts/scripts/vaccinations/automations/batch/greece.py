@@ -13,9 +13,18 @@ def main():
 
     df = pd.DataFrame.from_records(response.json())
 
-    df = df.groupby("referencedate", as_index=False)[["referencedate", "totalvaccinations"]].sum()
+    df = (
+        df.groupby("referencedate", as_index=False)
+        [["referencedate", "totalvaccinations", "totaldistinctpersons"]].sum()
+    )
 
-    df = df.rename(columns={"referencedate": "date", "totalvaccinations": "total_vaccinations"})
+    df = df.rename(columns={
+        "referencedate": "date",
+        "totalvaccinations": "total_vaccinations",
+        "totaldistinctpersons": "people_vaccinated",
+    })
+
+    df["people_fully_vaccinated"] = (df["total_vaccinations"] - df["people_vaccinated"]).replace(0, pd.NA)
 
     df.loc[:, "date"] = df["date"].str.slice(0, 10)
     df.loc[:, "location"] = "Greece"

@@ -119,7 +119,7 @@ process_location <- function(location_name) {
     if (!"people_fully_vaccinated" %in% names(df)) {
         df[, people_fully_vaccinated := 0]
     } else {
-        df[is.na(people_fully_vaccinated), people_fully_vaccinated := 0]
+        df[, people_fully_vaccinated := nafill(as.integer(people_fully_vaccinated), fill = 0)]
     }
 
     df <- df[, c("location", "date", "vaccine", "source_url", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
@@ -131,11 +131,22 @@ process_location <- function(location_name) {
     return(df)
 }
 
-add_per_capita <- function(df) {
+get_population <- function(subnational_pop) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
     eu_pop <- data.table(location = "European Union", population = pop[location %in% fread("../../input/owid/eu_countries.csv")$Country, sum(population)])
     pop <- rbindlist(list(pop, subnational_pop, eu_pop))
 
+    # Add up population of French oversea territories, which are reported as part of France
+    pop[location %in% c(
+        "Guadeloupe", "Martinique", "French Guiana", "Mayotte", "Reunion", "French Polynesia", "Saint Martin (French part)"
+    ), location := "France"]
+    pop <- pop[, .(population = sum(population)), location]
+
+    return(pop)
+}
+
+add_per_capita <- function(df, subnational_pop) {
+    pop <- get_population(subnational_pop)
     df <- merge(df, pop)
 
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
@@ -226,7 +237,7 @@ for (agg_name in names(AGGREGATES)) {
 # Derived variables
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_daily), fill = TRUE)
 vax <- rbindlist(lapply(split(vax, by = "location"), FUN = add_smoothed), fill = TRUE)
-vax <- add_per_capita(vax)
+vax <- add_per_capita(vax, subnational_pop)
 vax[people_fully_vaccinated == 0, people_fully_vaccinated := NA]
 vax[is.na(people_fully_vaccinated), people_fully_vaccinated_per_hundred := NA]
 

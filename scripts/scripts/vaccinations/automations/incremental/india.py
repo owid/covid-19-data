@@ -15,7 +15,8 @@ def main():
 
     date = soup.find(id="site-dashboard").find("h5").text
     date = re.search(r"\d+\s\w+\s+202\d", date).group(0)
-    date = vaxutils.clean_date(date, "%d %B %Y")
+    date = datetime.datetime.strptime(date, "%d %B %Y") - datetime.timedelta(days=1)
+    date = str(date.date())
 
     vaxutils.increment(
         location="India",
