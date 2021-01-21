@@ -131,11 +131,22 @@ process_location <- function(location_name) {
     return(df)
 }
 
-add_per_capita <- function(df) {
+get_population <- function(subnational_pop) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
     eu_pop <- data.table(location = "European Union", population = pop[location %in% fread("../../input/owid/eu_countries.csv")$Country, sum(population)])
     pop <- rbindlist(list(pop, subnational_pop, eu_pop))
 
+    # Add up population of French oversea territories, which are reported as part of France
+    pop[location %in% c(
+        "Guadeloupe", "Martinique", "French Guiana", "Mayotte", "Reunion", "French Polynesia", "Saint Martin (French part)"
+    ), location := "France"]
+    pop <- pop[, .(population = sum(population)), location]
+
+    return(pop)
+}
+
+add_per_capita <- function(df, subnational_pop) {
+    pop <- get_population(subnational_pop)
     df <- merge(df, pop)
 
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
