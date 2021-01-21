@@ -16,7 +16,10 @@ def main():
     column_string = {'dtype': str , 'header': None}  # Force dtype to be object because of thousand separator in Europe
     kwargs = {'pandas_options': column_string,}
     dfs_from_pdf = tabula.read_pdf(pdf_path, pages="all", **kwargs)
-    df = pd.DataFrame(dfs_from_pdf[0])  # Hardcoded table location
+    for tbl in dfs_from_pdf:
+        if "Vaccinationsdato" in tbl[0].values:
+            df = pd.DataFrame(tbl)
+            break
     header = (
         df[0:3]
         .astype(str)
