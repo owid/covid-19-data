@@ -10,6 +10,7 @@ def main():
     data_link = soup.find("a", text="Data ke stažení").attrs["href"]
 
     df = pd.read_csv(data_link, parse_dates=["datum_vakcinace"])
+    assert df.columns.tolist() == ["datum_vakcinace", "vykázaná očkování"]
     df = df.rename(columns={
         "datum_vakcinace": "date",
         "vykázaná očkování": "total_vaccinations",
@@ -17,6 +18,7 @@ def main():
     df["date"] = df["date"].astype(str).str.slice(0, 10)
     df = df.sort_values("date")
 
+    assert (df["total_vaccinations"] > 0).all()
     df["total_vaccinations"] = df["total_vaccinations"].cumsum()
 
     df.loc[:, "location"] = "Czechia"
