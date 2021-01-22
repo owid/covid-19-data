@@ -26,7 +26,7 @@ def main():
         total_vaccinations=total_vaccinations,
         date=date,
         source_url=url,
-        vaccine="Pfizer/BioNTech"
+        vaccine="Moderna, Pfizer/BioNTech"
     )
 
 

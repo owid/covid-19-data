@@ -3,7 +3,7 @@ import pandas as pd
 
 def main():
 
-    url = "https://epistat.sciensano.be/Data/COVID19BE_VACC.csv"
+    url = "https://github.com/bmesuere/covid/raw/master/data/VACC.csv"
     df = pd.read_csv(url, usecols=["Date", "PartlyVaccinated", "FullyVaccinated"])
 
     df = df.rename(columns={
