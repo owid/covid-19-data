@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import requests
+import numpy as np
 import pandas as pd
 
 
@@ -144,10 +145,45 @@ def add_uk(df):
     return df
 
 
+def add_israel(df):
+    print("Downloading Israel data…")
+    url = "https://datadashboardapi.health.gov.il/api/queries/patientsPerDate"
+    israel = pd.read_json(url)
+    israel.loc[:, "date"] = pd.to_datetime(israel["date"])
+
+    stock = israel[["date", "Counthospitalized", "CountCriticalStatus"]].copy()
+    stock.loc[:, "date"] = stock["date"].dt.date
+    stock.loc[stock["date"].astype(str) < "2020-08-17", "CountCriticalStatus"] = np.nan
+    stock = stock.melt("date", var_name="indicator")
+
+    flow = israel[["date", "new_hospitalized", "serious_critical_new"]].copy()
+    flow.loc[:, "date"] = (flow["date"] + pd.to_timedelta(6 - flow["date"].dt.dayofweek, unit="d")).dt.date
+    flow = flow[flow["date"] <= datetime.date.today()]
+    flow = flow.groupby("date", as_index=False).sum()
+    flow = flow.melt("date", var_name="indicator")
+
+    israel = pd.concat([stock, flow]).dropna(subset=["value"])
+    israel.loc[:, "indicator"] = israel["indicator"].replace({
+        "Counthospitalized": "Daily hospital occupancy",
+        "CountCriticalStatus": "Daily ICU occupancy",
+        "new_hospitalized": "Weekly new hospital admissions",
+        "serious_critical_new": "Weekly new ICU admissions"
+    })
+
+    israel.loc[:, "entity"] = "Israel"
+    israel.loc[:, "iso_code"] = "ISR"
+    israel.loc[:, "population"] = 8655541
+
+    df = pd.concat([df, israel])
+    return df
+
+
+
 def add_countries(df):
     df = add_united_states(df)
     df = add_canada(df)
     df = add_uk(df)
+    df = add_israel(df)
     return df
 
 
