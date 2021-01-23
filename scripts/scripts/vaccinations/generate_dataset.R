@@ -229,9 +229,11 @@ vax <- vax[, .(
 
 # Add regional aggregates
 for (agg_name in names(AGGREGATES)) {
-    vax <- add_aggregate(vax, aggregate_name = agg_name,
-                         included_locs = AGGREGATES[[agg_name]][["included_locs"]],
-                         excluded_locs = AGGREGATES[[agg_name]][["excluded_locs"]])
+    vax <- add_aggregate(
+        vax, aggregate_name = agg_name,
+        included_locs = AGGREGATES[[agg_name]][["included_locs"]],
+        excluded_locs = AGGREGATES[[agg_name]][["excluded_locs"]]
+    )
 }
 
 # Derived variables
