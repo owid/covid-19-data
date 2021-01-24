@@ -18,7 +18,7 @@ def main():
     dfs_from_pdf = tabula.read_pdf(pdf_path, pages="all")
     df = pd.DataFrame(dfs_from_pdf[2])  # Hardcoded table location
     
-    total_vaccinations = df.loc[df["Unnamed: 0"] == "Nombre de personnes", "Unnamed: 1"].values[0]
+    total_vaccinations = df.loc[df["Unnamed: 0"] == "Nombre de doses administrées", "Unnamed: 1"].values[0]
     total_vaccinations = vaxutils.clean_count(total_vaccinations)
     
     date = re.search(r"\d\d\.\d\d\.202\d", df.columns[1]).group(0)
