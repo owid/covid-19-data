@@ -1,7 +1,4 @@
-from datetime import datetime, timedelta
-import pytz
 import pandas as pd
-import requests
 
 
 def get_vaccine_name(df):
@@ -20,32 +17,32 @@ def get_vaccine_name(df):
 
 
 def main():
-    """Main function."""
-    # Define URL of potential last release file
-    date_str = (datetime.now(pytz.timezone("America/Santiago")).date() - timedelta(days=1)).strftime("%Y-%m-%d")
-    url = f"https://github.com/juancri/covid19-vaccination/releases/download/{date_str}/output.csv"
-    # Verify release file exists
-    status_code = requests.get(url).status_code
-    if status_code == 200:
-        # Load data
-        df = pd.read_csv(url)
+    # Load data
+    url = "https://github.com/juancri/covid19-vaccination/raw/master/output/chile-vaccination.csv"
+    df = pd.read_csv(url)
 
-        # Build dataframe
-        df = df.drop(columns=('country')).cumsum(axis=1).T.reset_index()
-        df = df.rename(columns={
-            "index": "date",
-            0: "people_vaccinated",
-            1: "people_fully_vaccinated"
-        })
-        df.loc[:, "total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
-        df["people_fully_vaccinated"] = df["people_fully_vaccinated"].replace({0: pd.NA})
-        df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
-        df.loc[:, "location"] = "Chile"
-        df = get_vaccine_name(df)
-        df.loc[:, "source_url"] = "https://github.com/juancri/covid19-vaccination/releases/"
+    # Process data
+    df = df.loc[df["Region"] == "Total"].T.drop(["Region", "Dose"]).astype(int)
+    df = df.reset_index().rename(columns={
+        "index": "date",
+        0: "people_vaccinated",
+        1: "people_fully_vaccinated"
+    })
+    df = df.groupby(
+        by=["people_vaccinated", "people_fully_vaccinated"]
+    ).min().reset_index()
 
-        # Save
-        df.to_csv("automations/output/Chile.csv", index=False)
+    # Add columns
+    df.loc[:, "total_vaccinations"] = df.loc[:, "people_vaccinated"] + df.loc[:, "people_fully_vaccinated"]
+    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].replace({0: pd.NA})
+    df.loc[:, "location"] = "Chile"
+    df = get_vaccine_name(df)
+    df.loc[:, "source_url"] = url.replace("raw", "blob")
+
+    # Save
+    df = df[["location", "date", "people_vaccinated", "people_fully_vaccinated", "total_vaccinations", 
+             "vaccine", "source_url"]]
+    df.to_csv("automations/output/Chile.csv", index=False)
 
 
 if __name__ == "__main__":
