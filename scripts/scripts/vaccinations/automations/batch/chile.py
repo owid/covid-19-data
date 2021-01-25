@@ -28,6 +28,9 @@ def main():
         0: "people_vaccinated",
         1: "people_fully_vaccinated"
     })
+    df = df.groupby(
+        by=["people_vaccinated", "people_fully_vaccinated"]
+    ).min().reset_index()
 
     # Add columns
     df.loc[:, "total_vaccinations"] = df.loc[:, "people_vaccinated"] + df.loc[:, "people_fully_vaccinated"]
