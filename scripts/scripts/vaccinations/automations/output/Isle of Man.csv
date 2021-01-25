@@ -1,3 +1,4 @@
-date,total_vaccinations,location,vaccine,source_url
-2021-01-21,3558,Isle of Man,Pfizer/BioNTech,https://covid19.gov.im/general-information/latest-updates/
-2021-01-22,3648,Isle of Man,Pfizer/BioNTech,https://covid19.gov.im/general-information/latest-updates/
+date,total_vaccinations,people_vaccinated,people_fully_vaccinated,location,vaccine,source_url
+2021-01-21,3558,,,Isle of Man,Pfizer/BioNTech,https://covid19.gov.im/general-information/latest-updates/
+2021-01-22,3648,,,Isle of Man,Pfizer/BioNTech,https://covid19.gov.im/general-information/latest-updates/
+2021-01-25,4209,3897,312,Isle of Man,Pfizer/BioNTech,https://covid19.gov.im/general-information/latest-updates/
