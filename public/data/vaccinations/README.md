@@ -18,7 +18,9 @@ Stored in [`locations.csv`](locations.csv)
 
 ### Vaccination data
 
-Country-by-country data on global COVID-19 vaccinations. We only rely on figures that are verifiable based on public official sources. Stored in [`vaccinations.csv`](vaccinations.csv).
+Stored in [`vaccinations.csv`](vaccinations.csv). Country-by-country data on global COVID-19 vaccinations. We only rely on figures that are verifiable based on public official sources.
+
+The population estimates we use to calculate per-capita metrics are all based on the last revision of the [United Nations World Population Prospects](https://population.un.org/wpp/). The exact values can be viewed [here](https://github.com/owid/covid-19-data/blob/master/scripts/input/un/population_2020.csv).
 
 * `location`: name of the country (or region within a country).
 * `iso_code`: ISO 3166-1 alpha-3 – three-letter country codes.
@@ -36,9 +38,10 @@ Country-by-country data on global COVID-19 vaccinations. We only rely on figures
 Note: for `people_vaccinated` and `people_fully_vaccinated` we are dependent on the necessary data being made available, so we may not be able to make these metrics available for some countries.
 
 
+
 ## United States vaccination data
 
-State-by-state data on United States COVID-19 vaccinations. We rely on the data updated daily by the [United States Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#vaccinations). Stored in [`us_state_vaccinations.csv`](us_state_vaccinations.csv).
+Stored in [`us_state_vaccinations.csv`](us_state_vaccinations.csv). State-by-state data on United States COVID-19 vaccinations. We rely on the data updated daily by the [United States Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#vaccinations).
 
 * `location`: name of the state or federal entity.
 * `date`: date of the observation.
