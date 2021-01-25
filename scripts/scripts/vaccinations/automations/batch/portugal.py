@@ -10,6 +10,8 @@ def main():
 
     df = pd.DataFrame.from_records([elem["attributes"] for elem in data["features"]])
 
+    assert len(df) > 1
+
     df = df[["Data", "Inoculacao1_Ac", "Inoculacao2_Ac", "Vacinados_Ac"]].rename(columns={
         "Data": "date",
         "Inoculacao1_Ac": "people_vaccinated",
