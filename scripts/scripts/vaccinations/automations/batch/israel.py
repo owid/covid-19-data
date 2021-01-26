@@ -33,9 +33,6 @@ def main():
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[df["date"] >= "2021-01-07", "vaccine"] = "Moderna, Pfizer/BioNTech"
 
-    if datetime.datetime.now().hour < 12:
-        df = df[df["date"] <= str(datetime.date.today())]
-
     df.to_csv("automations/output/Israel.csv", index=False)
 
 
