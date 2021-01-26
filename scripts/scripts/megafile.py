@@ -135,7 +135,11 @@ def get_vax():
             "total_vaccinations_per_hundred",
             "daily_vaccinations_raw",
             "daily_vaccinations",
-            "daily_vaccinations_per_million"
+            "daily_vaccinations_per_million",
+            "people_vaccinated",
+            "people_vaccinated_per_hundred",
+            "people_fully_vaccinated",
+            "people_fully_vaccinated_per_hundred",
         ]
     )
     vax = vax.rename(columns={
@@ -144,6 +148,8 @@ def get_vax():
         "daily_vaccinations_per_million": "new_vaccinations_smoothed_per_million"
     })
     vax["total_vaccinations_per_hundred"] = vax["total_vaccinations_per_hundred"].round(3)
+    vax["people_vaccinated_per_hundred"] = vax["people_vaccinated_per_hundred"].round(3)
+    vax["people_fully_vaccinated_per_hundred"] = vax["people_fully_vaccinated_per_hundred"].round(3)
     return vax
 
 

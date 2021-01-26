@@ -8,6 +8,8 @@ import vaxutils
 
 def main():
 
+    assert False, "Swedish collection temporarily disabled while reporting format stabilizes."
+
     url = "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik-over-vaccinerade-mot-covid-19/"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 

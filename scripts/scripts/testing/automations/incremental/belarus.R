@@ -1,34 +1,27 @@
-release <- read_html("http://minzdrav.gov.by/ru/sobytiya/index.php") %>%
-    html_nodes(".paragraph .news-list-page")
-
-url <- release %>%
-    html_node("a") %>%
-    html_attr("href")
-
-idx <- min(which(str_detect(url, "pats[yi]ent")))
-
-release <- release[idx]
-
-url <- release %>%
-    html_node("a") %>%
+reports <- read_html("https://www.belarus.by/en/press-center/press-release/?page=1") %>%
+    html_nodes(".news_text a") %>%
     html_attr("href") %>%
-    paste0("http://minzdrav.gov.by", .)
+    paste0("https://www.belarus.by", .)
 
-date <- release %>%
-    html_node("header") %>%
+for (url in reports) {
+    message(url)
+    page <- read_html(url)
+
+    content <- page %>%
+        html_node(".ic") %>%
+        html_text()
+
+    count <- content %>%
+        str_extract("Belarus (has )?performed [\\d,]+ tests") %>%
+        str_replace_all("[^\\d]", "") %>%
+        as.integer()
+    if (!is.na(count)) break
+}
+
+date <- page %>%
+    html_node(".pages_header_inner") %>%
     html_text() %>%
     dmy()
-
-page <- read_html(url)
-
-count <- page %>%
-    html_node(".content") %>%
-    html_text() %>%
-    str_extract("Всего проведено [\\d ]+ (млн.? \\d+ тыс. \\d+ ?)?тест") %>%
-    str_replace_all("[^\\d]", "") %>%
-    as.integer()
-
-stopifnot(!is.na(count))
 
 add_snapshot(
     count = count,
@@ -38,6 +31,6 @@ add_snapshot(
     units = "tests performed",
     source_url = url,
     testing_type = "PCR only",
-    source_label = "Belarus Ministry of Health"
+    source_label = "Government of Belarus"
 )
 

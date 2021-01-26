@@ -1,10 +1,9 @@
 import pandas as pd
 
 def get_metrics(metrics, area):
-    metrics = "".join([f"&metric={m}" for m in metrics])
+    metrics = "".join(f"&metric={m}" for m in metrics)
     url = f"https://api.coronavirus.data.gov.uk/v2/data?areaType={area}&format=csv{metrics}"
-    df = pd.read_csv(url)
-    return df
+    return pd.read_csv(url)
 
 def main():
 

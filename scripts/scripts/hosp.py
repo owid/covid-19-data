@@ -174,8 +174,7 @@ def add_israel(df):
     israel.loc[:, "iso_code"] = "ISR"
     israel.loc[:, "population"] = 8655541
 
-    df = pd.concat([df, israel])
-    return df
+    return pd.concat([df, israel])
 
 
 

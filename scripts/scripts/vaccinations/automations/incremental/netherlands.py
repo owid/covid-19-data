@@ -1,31 +1,32 @@
-import re
-import requests
-from bs4 import BeautifulSoup
 import dateparser
-import pandas as pd
+from bs4 import BeautifulSoup
+import requests
 import vaxutils
 
 
 def main():
 
-    url = "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    baseurl = 'https://coronadashboard.rijksoverheid.nl'
 
-    table = soup.find(id="main-content").parent.find("table")
-    df = pd.read_html(str(table), thousands=".")[0]
+    page = requests.get(baseurl + '/landelijk/vaccinaties')
+    soup = BeautifulSoup(page.text, "html.parser")
 
-    total_vaccinations = df.loc[df["Doelgroep"] == "Totaal", "Aantal personen bij wie de vaccinatie gestart is"].values[0]
-    total_vaccinations = int(total_vaccinations)
+    for p in soup.find_all('p'):
+        if 'Laatste waardes verkregen op' in p.text:
+            date = p.text.split('.')[0].split('op')[1]
+            date = str(dateparser.parse(date, languages=["nl"]).date())
 
-    date = soup.find(string=re.compile("Vaccinatiecijfers.*202\\d"))
-    date = re.search(r"\d+\s\w+\s+202\d", date).group(0)
-    date = str(dateparser.parse(date, languages=["nl"]).date())
+    for article in soup.find_all('article'):
+        for h3 in article.find_all('h3'):
+            text = h3.text.strip()
+            if 'Aantal toegediende vaccins' in text:
+                total_vaccinations = int(article.select('[class*="kpi-value_"]')[0].text.replace('.', ''))
 
     vaxutils.increment(
         location="Netherlands",
         total_vaccinations=total_vaccinations,
         date=date,
-        source_url=url,
+        source_url="https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties",
         vaccine="Moderna, Pfizer/BioNTech"
     )
 

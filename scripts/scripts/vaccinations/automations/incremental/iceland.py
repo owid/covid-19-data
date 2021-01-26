@@ -19,8 +19,9 @@ def main():
 
     df = pd.DataFrame(data[1:], columns=data[0])
 
-    people_vaccinated = int(df["Bólusetning hafin"].astype(int).sum())
+    only_1dose_people = int(df["Bólusetning hafin"].astype(int).sum())
     people_fully_vaccinated = int(df["Bólusetningu lokið"].astype(int).sum())
+    people_vaccinated = only_1dose_people + people_fully_vaccinated
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
     date = js_data["updatedAt"][:10]

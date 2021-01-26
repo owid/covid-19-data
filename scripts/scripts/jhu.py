@@ -90,8 +90,7 @@ def get_metric(metric, region):
 def load_data():
     global_cases = get_metric("confirmed", "global")
     global_deaths = get_metric("deaths", "global")
-    jhu = pd.merge(global_cases, global_deaths, on=["date", "Country/Region"], how="outer")
-    return jhu
+    return pd.merge(global_cases, global_deaths, on=["date", "Country/Region"], how="outer")
 
 def load_locations():
     return pd.read_csv(
@@ -138,14 +137,14 @@ def check_data_correctness(df_merged):
         print("\n" + WARNING + " These entities were not found in the population dataset:")
         print(pop_entity_diff)
         print()
-        formatted_msg = ", ".join([f"`{entity}`" for entity in pop_entity_diff])
+        formatted_msg = ", ".join(f"`{entity}`" for entity in pop_entity_diff)
         send_warning(
             channel="corona-data-updates",
             title="Some entities are missing from the population dataset",
             message=formatted_msg
         )
 
-    return True if errors == 0 else False
+    return errors == 0
 
 def discard_rows(df):
     # Set artefact in new_cases for Turkey on 2020-12-10 to NA

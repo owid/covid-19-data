@@ -75,7 +75,7 @@ def main() -> None:
 
 def get_data() -> pd.DataFrame:
     options = Options()
-    options.add_argument("--headless") 
+    options.add_argument("--headless")
     caps = DesiredCapabilities.CHROME
     caps['goog:loggingPrefs'] = {'performance': 'ALL'}
     try:
@@ -106,7 +106,7 @@ def get_data() -> pd.DataFrame:
         events = [json.loads(entry['message'])['message'] for entry in browser_log]
         ws_events_recv = [e for e in events if e['method'] == 'Network.webSocketFrameReceived']
         found_testing_data = False
-        while (not found_testing_data) and (len(ws_events_recv) > 0):
+        while not found_testing_data and ws_events_recv::
             e = ws_events_recv.pop(0)
             resp_data = json.loads(e['params']['response']['payloadData'])
             try:
@@ -143,8 +143,6 @@ def get_data() -> pd.DataFrame:
         df.sort_values('Date', inplace=True)
         df.dropna(subset=['Date', SERIES_TYPE], how='any', inplace=True)
         df[SERIES_TYPE] = df[SERIES_TYPE].astype(int)
-        # with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None):
-        #     print(df)
     except Exception as e:
         df = None
         print(f'Error in retrieving testing data: {e}')

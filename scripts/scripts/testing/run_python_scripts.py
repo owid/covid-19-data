@@ -11,7 +11,7 @@ scripts_path = "automations/incremental/*.py" if execution_mode == "quick" else 
 
 scripts = glob(scripts_path)
 
-if len(SKIP) > 0:
+if SKIP:
     print(f"Warning message:\nSkipping the following countries: {', '.join(SKIP)}")
     SKIP = "|".join(SKIP)
     scripts = [s for s in scripts if not bool(re.search(pattern=SKIP, string=s))]
