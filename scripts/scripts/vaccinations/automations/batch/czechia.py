@@ -30,6 +30,7 @@ def main():
     })
     df["date"] = df["date"].astype(str).str.slice(0, 10)
     df = df.sort_values("date")
+    assert df["date"].min() == "2020-12-27"
 
     for col in ["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]:
         df[col] = df[col].cumsum()
