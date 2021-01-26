@@ -1,19 +1,26 @@
-import re
-import requests
-from bs4 import BeautifulSoup
 import dateparser
-import pandas as pd
+from bs4 import BeautifulSoup
+import requests
 import vaxutils
 
 
 def main():
 
-    url = "https://github.com/mzelst/covid-19/raw/master/data/all_data.csv"
-    df = pd.read_csv(url, usecols=["date", "vaccines_administered"])
-    df = df.dropna().sort_values("date").tail(1)
+    baseurl = 'https://coronadashboard.rijksoverheid.nl'
 
-    total_vaccinations = int(df["vaccines_administered"].values[0])
-    date = df["date"].values[0]
+    page = requests.get(baseurl + '/landelijk/vaccinaties')
+    soup = BeautifulSoup(page.text, "html.parser")
+
+    for p in soup.find_all('p'):
+        if 'Laatste waardes verkregen op' in p.text:
+            date = p.text.split('.')[0].split('op')[1]
+            date = str(dateparser.parse(date, languages=["nl"]).date())
+
+    for article in soup.find_all('article'):
+        for h3 in article.find_all('h3'):
+            text = h3.text.strip()
+            if 'Aantal toegediende vaccins' in text:
+                total_vaccinations = int(article.select('[class*="kpi-value_"]')[0].text.replace('.', ''))
 
     vaxutils.increment(
         location="Netherlands",
