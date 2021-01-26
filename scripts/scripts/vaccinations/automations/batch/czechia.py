@@ -12,6 +12,9 @@ def main():
 
     # since we need to translate vaccine names, we'll check that no new
     # manufacturers were added, so that we can maintain control over this
+    # IMPORTANT: If a new vaccine is added, see if it requires a single dose
+    # or two doses. If it's a single-dose one, make sure to fix the calculation
+    # of `people_fully_vaccinated` and an assertion about basic arithmetics
     assert set(df["vakcina"].unique()) == {"Comirnaty", "COVID-19 Vaccine Moderna"}
     df = df.replace({
         "Comirnaty": "Pfizer/BioNTech",
@@ -22,8 +25,12 @@ def main():
         vaccine=("vakcina", lambda x: ", ".join(sorted(list(set(x))))),
         total_vaccinations=("celkem_davek", "sum"),
         people_vaccinated=("prvnich_davek", "sum"),
+        # the following holds only because all vaccines used so far require two doses
         people_fully_vaccinated=("druhych_davek", "sum"),
     ).reset_index()
+
+    # this holds as long as all vaccines require two doses
+    assert (df["total_vaccinations"] == df["people_vaccinated"] + df["people_fully_vaccinated"]).all()
 
     df = df.rename(columns={
          "datum": "date",
