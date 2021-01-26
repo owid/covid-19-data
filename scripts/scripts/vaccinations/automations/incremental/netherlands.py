@@ -8,24 +8,18 @@ import vaxutils
 
 def main():
 
-    url = "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    url = "https://github.com/mzelst/covid-19/raw/master/data/all_data.csv"
+    df = pd.read_csv(url, usecols=["date", "vaccines_administered"])
+    df = df.dropna().sort_values("date").tail(1)
 
-    table = soup.find(id="main-content").parent.find("table")
-    df = pd.read_html(str(table), thousands=".")[0]
-
-    total_vaccinations = df.loc[df["Doelgroep"] == "Totaal", "Aantal personen bij wie de vaccinatie gestart is"].values[0]
-    total_vaccinations = int(total_vaccinations)
-
-    date = soup.find(string=re.compile("Vaccinatiecijfers.*202\\d"))
-    date = re.search(r"\d+\s\w+\s+202\d", date).group(0)
-    date = str(dateparser.parse(date, languages=["nl"]).date())
+    total_vaccinations = int(df["vaccines_administered"].values[0])
+    date = df["date"].values[0]
 
     vaxutils.increment(
         location="Netherlands",
         total_vaccinations=total_vaccinations,
         date=date,
-        source_url=url,
+        source_url="https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties",
         vaccine="Moderna, Pfizer/BioNTech"
     )
 
