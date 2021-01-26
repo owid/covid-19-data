@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def main():
-     
+
     source_url = "https://onemocneni-aktualne.mzcr.cz/covid-19"
     data_url = "https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/ockovani.csv"
 
@@ -22,7 +22,7 @@ def main():
     })
 
     df = df.groupby("datum").agg(
-        vaccine=("vakcina", lambda x: ", ".join(sorted(list(set(x))))),
+        vaccine=("vakcina", lambda x: ", ".join(sorted(set(x)))),
         total_vaccinations=("celkem_davek", "sum"),
         people_vaccinated=("prvnich_davek", "sum"),
         # the following holds only because all vaccines used so far require two doses
@@ -44,6 +44,7 @@ def main():
 
     df.loc[:, "location"] = "Czechia"
     df.loc[:, "source_url"] = source_url
+
     df.to_csv("automations/output/Czechia.csv", index=False)
 
 
