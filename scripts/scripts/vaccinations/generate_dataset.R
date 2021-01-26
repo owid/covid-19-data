@@ -112,6 +112,9 @@ process_location <- function(location_name) {
     stopifnot(length(unique(df$date)) == nrow(df))
     stopifnot(max(df$date) <= today())
 
+    # Morning updates: exclude current day data to avoid incompleteness
+    if (hour(now(tzone = "CET")) < 12) df <- df[date < today()]
+
     if (!"people_vaccinated" %in% names(df)) {
         df[, people_vaccinated := total_vaccinations]
     }
