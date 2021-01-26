@@ -34,14 +34,12 @@ def read_file(path):
         "Admin_Per_100K", "Administered_Dose1", "Administered_Dose1_Per_100K",
         "Administered_Dose2", "Administered_Dose2_Per_100K", "Census2019"
     ]
-    df = pd.read_csv(path, na_values=[0.0, 0], usecols=cols)
-    return df
+    return pd.read_csv(path, na_values=[0.0, 0], usecols=cols)
 
 
 def read_data():
     files = glob(os.path.join(INPUT_PATH, "cdc_data_*.csv"))
-    df = pd.concat(map(read_file, files)).reset_index(drop=True)
-    return df
+    return pd.concat(map(read_file, files)).reset_index(drop=True)
 
 
 def change_capita_base(df, from_base, to_base, from_suffix, to_suffix):

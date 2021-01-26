@@ -8,14 +8,13 @@ import vaxutils
 
 def main():
 
-    url = "https://datastudio.google.com/embed/u/0/reporting/2f2537fa-ac23-4f08-8741-794cdbedca03/page/CPFTB"
-
     # Options for Chrome WebDriver
     op = Options()
     op.add_argument("--headless")
 
     with webdriver.Chrome(options=op) as driver:
 
+        url = "https://datastudio.google.com/embed/u/0/reporting/2f2537fa-ac23-4f08-8741-794cdbedca03/page/CPFTB"
         driver.get(url)
         time.sleep(5)
         for elem in driver.find_elements_by_class_name("kpimetric"):

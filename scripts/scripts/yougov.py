@@ -67,7 +67,7 @@ def update_db():
 
 
 def _read_country_data(country, extension):
-    df = pd.read_csv(
+    return pd.read_csv(
         f"https://github.com/YouGov-Data/covid-19-tracker/raw/master/data/{country}.{extension}",
         low_memory=False,
         na_values=[
@@ -76,7 +76,6 @@ def _read_country_data(country, extension):
             "Not applicable - I have already contracted Coronavirus"
         ]
     )
-    return df
 
 
 def _merge_files():
@@ -215,10 +214,7 @@ def _rename_columns(df):
         for sfx in suffixes:
             key = f'{row.label}__{sfx}'
             if key in df.columns:
-                if sfx == 'mean':
-                    val = row.code_name
-                else:
-                    val = f'{row.code_name}__{sfx}'
+                val = row.code_name if sfx == 'mean' else f'{row.code_name}__{sfx}'
                 rename_dict[key] = val
     df = df.rename(columns=rename_dict)
 

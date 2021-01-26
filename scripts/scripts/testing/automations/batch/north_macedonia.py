@@ -143,11 +143,10 @@ def _construct_df(json_data: dict) -> dict:
                     break
         i += 1
     assert len(data_json) == 2, 'Expected only two data columns -- retrieved data is probably not the "cumulative tests" time series you are expecting'
-    df = pd.DataFrame({'Date': data_json[0]['stringColumn']['values'],
-                        'Cumulative total': data_json[1]['doubleColumn']['values']})
-    # with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.max_colwidth', None, 'display.width', None):
-    #     print(df)
-    return df
+    return pd.DataFrame({
+        'Date': data_json[0]['stringColumn']['values'],
+        'Cumulative total': data_json[1]['doubleColumn']['values'],
+    })
 
 
 def _clean_df(df: pd.DataFrame) -> pd.DataFrame:
