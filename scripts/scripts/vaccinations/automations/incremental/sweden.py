@@ -8,16 +8,17 @@ import vaxutils
 
 def main():
 
-    assert False, "Swedish collection temporarily disabled while reporting format stabilizes."
-
     url = "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik-over-vaccinerade-mot-covid-19/"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    table = soup.find(id="content-primary").find("table")
-    df = pd.read_html(str(table))[0]
-    assert len(df) == 1
+    # table = soup.find(id="content-primary").find("table")
+    # df = pd.read_html(str(table))[0]
+    # assert len(df) == 1
+    # total_vaccinations = df["Alla vacciner"].values[0]
+    # total_vaccinations = vaxutils.clean_count(total_vaccinations)
 
-    total_vaccinations = df["Alla vacciner"].values[0]
+    total_vaccinations = soup.find(id="content-primary").find("p").text
+    total_vaccinations = re.search(r"har ([\d\s]+) vaccinationer mot covid-19 rapporterats till det Nationella vaccinationsregistret", total_vaccinations).group(1)
     total_vaccinations = vaxutils.clean_count(total_vaccinations)
 
     date = soup.find(id="content-primary").find("h2").text
