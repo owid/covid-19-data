@@ -52,6 +52,15 @@ add_aggregate <- function(vax, aggregate_name, included_locs, excluded_locs) {
 
     setorder(agg, location, date)
 
+    for (loc in unique(agg$location)) {
+        if (all(is.na(agg[location == loc, people_vaccinated]))) {
+            agg[location == loc, people_vaccinated := 0]
+        }
+        if (all(is.na(agg[location == loc, people_fully_vaccinated]))) {
+            agg[location == loc, people_fully_vaccinated := 0]
+        }
+    }
+
     agg[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
     agg[, people_vaccinated := na_locf(people_vaccinated, na_remaining = "keep"), location]
     agg[, people_fully_vaccinated := na_locf(people_fully_vaccinated, na_remaining = "keep"), location]
@@ -113,15 +122,8 @@ process_location <- function(location_name) {
     # Morning updates: exclude current day data to avoid incompleteness
     if (hour(now(tzone = "CET")) < 12) df <- df[date < today()]
 
-    if (!"people_vaccinated" %in% names(df)) {
-        df[, people_vaccinated := total_vaccinations]
-    }
-
-    if (!"people_fully_vaccinated" %in% names(df)) {
-        df[, people_fully_vaccinated := 0]
-    } else {
-        df[, people_fully_vaccinated := nafill(as.integer(people_fully_vaccinated), fill = 0)]
-    }
+    if (!"people_vaccinated" %in% names(df)) df[, people_vaccinated := NA_integer_]
+    if (!"people_fully_vaccinated" %in% names(df)) df[, people_fully_vaccinated := NA_integer_]
 
     df <- df[, c("location", "date", "vaccine", "source_url", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
 

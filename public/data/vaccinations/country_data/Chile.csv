@@ -1,11 +1,11 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Chile,2020-12-24,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,420,420,0
-Chile,2020-12-25,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,5191,5191,0
-Chile,2020-12-26,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,8335,8335,0
-Chile,2020-12-27,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,8646,8646,0
-Chile,2021-01-04,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,9051,9051,0
-Chile,2021-01-05,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,10494,10494,0
-Chile,2021-01-06,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,10699,10699,0
+Chile,2020-12-24,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,420,420,
+Chile,2020-12-25,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,5191,5191,
+Chile,2020-12-26,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,8335,8335,
+Chile,2020-12-27,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,8646,8646,
+Chile,2021-01-04,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,9051,9051,
+Chile,2021-01-05,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,10494,10494,
+Chile,2021-01-06,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,10699,10699,
 Chile,2021-01-13,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,14612,11743,2869
 Chile,2021-01-14,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,18526,12787,5739
 Chile,2021-01-15,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,21876,13755,8121
@@ -18,3 +18,4 @@ Chile,2021-01-21,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/
 Chile,2021-01-22,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,63047,54683,8364
 Chile,2021-01-23,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,63939,55575,8364
 Chile,2021-01-25,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,64286,55798,8488
+Chile,2021-01-26,Pfizer/BioNTech,https://github.com/juancri/covid19-vaccination/blob/master/output/chile-vaccination.csv,66569,56551,10018

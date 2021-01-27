@@ -4,7 +4,6 @@ reports <- read_html("https://www.belarus.by/en/press-center/press-release/?page
     paste0("https://www.belarus.by", .)
 
 for (url in reports) {
-    message(url)
     page <- read_html(url)
 
     content <- page %>%

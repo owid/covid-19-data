@@ -84,7 +84,7 @@ def get_data() -> pd.DataFrame:
         driver.get(URL)
         # retrieves browser logs.
         wait = 5
-        time.sleep(wait*3)  # the dashboard tends to be slow to load.
+        time.sleep(wait*5)  # the dashboard tends to be slow to load.
         t = wait*3
         browser_log = []
         n_new_logs = 0
@@ -106,7 +106,7 @@ def get_data() -> pd.DataFrame:
         events = [json.loads(entry['message'])['message'] for entry in browser_log]
         ws_events_recv = [e for e in events if e['method'] == 'Network.webSocketFrameReceived']
         found_testing_data = False
-        while not found_testing_data and ws_events_recv::
+        while not found_testing_data and ws_events_recv:
             e = ws_events_recv.pop(0)
             resp_data = json.loads(e['params']['response']['payloadData'])
             try:

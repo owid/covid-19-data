@@ -1,13 +1,13 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Spain,2021-01-04,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,82834,82834,0
-Spain,2021-01-05,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,139339,139339,0
-Spain,2021-01-07,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,207323,207323,0
-Spain,2021-01-08,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,277976,277976,0
-Spain,2021-01-11,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,406091,406091,0
-Spain,2021-01-12,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,488122,488122,0
-Spain,2021-01-13,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,581638,581638,0
-Spain,2021-01-14,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,676186,676186,0
-Spain,2021-01-15,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,768950,768950,0
+Spain,2021-01-04,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,82834,82834,
+Spain,2021-01-05,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,139339,139339,
+Spain,2021-01-07,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,207323,207323,
+Spain,2021-01-08,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,277976,277976,
+Spain,2021-01-11,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,406091,406091,
+Spain,2021-01-12,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,488122,488122,
+Spain,2021-01-13,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,581638,581638,
+Spain,2021-01-14,Pfizer/BioNTech,https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,676186,676186,
+Spain,2021-01-15,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm,768950,768950,
 Spain,2021-01-18,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210118.ods,897942,895627,2315
 Spain,2021-01-19,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210119.ods,966097,956756,9341
 Spain,2021-01-20,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210120.ods,1025937,1010295,15642
@@ -15,3 +15,4 @@ Spain,2021-01-21,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesional
 Spain,2021-01-22,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210122.ods,1165825,1097369,68456
 Spain,2021-01-25,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210125.ods,1237593,1148895,88698
 Spain,2021-01-26,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210126.ods,1291216,1167519,123697
+Spain,2021-01-27,"Moderna, Pfizer/BioNTech",https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/Informe_Comunicacion_20210127.ods,1356461,1183395,173066

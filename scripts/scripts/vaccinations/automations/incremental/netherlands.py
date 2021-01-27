@@ -1,26 +1,18 @@
-import dateparser
-from bs4 import BeautifulSoup
+import json
 import requests
+import pandas as pd
 import vaxutils
 
 
 def main():
 
-    baseurl = 'https://coronadashboard.rijksoverheid.nl'
+    url = "https://coronadashboard.government.nl/_next/data/5jBzTJhaZyTn2juMr4Cna/index.json"
+    data = json.loads(requests.get(url).content)
 
-    page = requests.get(baseurl + '/landelijk/vaccinaties')
-    soup = BeautifulSoup(page.text, "html.parser")
+    total_vaccinations = int(data["pageProps"]["text"]["vaccinaties"]["data"]["kpi_total"]["value"])
 
-    for p in soup.find_all('p'):
-        if 'Laatste waardes verkregen op' in p.text:
-            date = p.text.split('.')[0].split('op')[1]
-            date = str(dateparser.parse(date, languages=["nl"]).date())
-
-    for article in soup.find_all('article'):
-        for h3 in article.find_all('h3'):
-            text = h3.text.strip()
-            if 'Aantal toegediende vaccins' in text:
-                total_vaccinations = int(article.select('[class*="kpi-value_"]')[0].text.replace('.', ''))
+    date = data["pageProps"]["text"]["vaccinaties"]["data"]["kpi_total"]["date_of_report_unix"]
+    date = str(pd.to_datetime(date, unit="s").date())
 
     vaxutils.increment(
         location="Netherlands",

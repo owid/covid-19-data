@@ -43,6 +43,32 @@ def download_csv():
         print(file)
         os.system(f"curl --silent -f -o {INPUT_PATH}/{file} -L https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/{file}")
 
+def replace_swedish_data(df, metric):
+    assert metric in ("total_cases", "total_deaths")
+    url = "https://www.arcgis.com/sharing/rest/content/items/b5e7488e117749c19881cce45db13f7e/data"
+
+    if metric == "total_deaths":
+        swe = pd.read_excel(url, sheet_name="Antal avlidna per dag").rename(columns={
+            "Datum_avliden": "date", "Antal_avlidna": "daily_val"
+        })
+
+    elif metric == "total_cases":
+        swe = pd.read_excel(url, sheet_name="Antal per dag region").rename(columns={
+            "Statistikdatum": "date", "Totalt_antal_fall": "daily_val"
+        })
+
+    swe = swe[swe["date"] != "Uppgift saknas"].sort_values("date")
+    swe[metric] = swe["daily_val"].cumsum()
+    swe = swe[["date", metric]]
+    swe["date"] = pd.to_datetime(swe["date"]).dt.date
+    swe["Country/Region"] = "Sweden"
+    assert len(swe) > 100
+
+    df = df[df["Country/Region"] != "Sweden"]
+    df = pd.concat([df, swe]).reset_index(drop=True)
+    return df
+
+
 def get_metric(metric, region):
     file_path = os.path.join(INPUT_PATH, f"time_series_covid19_{metric}_{region}.csv")
     df = pd.read_csv(file_path).drop(columns=["Lat", "Long"])
@@ -83,6 +109,9 @@ def get_metric(metric, region):
     )
     df = df.merge(cutoff, on="Country/Region", how="left")
     df = df[(df.date >= df.cutoff) | (df.cutoff.isna())].drop(columns="cutoff")
+
+    # Replace time series for Sweden by official data
+    df = replace_swedish_data(df, metric)
 
     df.loc[:, metric.replace("total_", "new_")] = df[metric] - df.groupby("Country/Region")[metric].shift(1)
     return df
