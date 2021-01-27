@@ -11,11 +11,17 @@ def main():
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
     for script in soup.find_all("script"):
-        if "infographicData" in script.text:
-            js_data = json.loads(script.text.replace("window.infographicData=", "")[:-1])
+        if "infographicData" in str(script):
+            json_data = (
+                str(script)
+                .replace("<script>window.infographicData=", "")
+                .replace(";</script>", "")
+            )
+            json_data = json.loads(json_data)
+            import pdb; pdb.set_trace()
             break
-    
-    data = js_data["elements"]["content"]["content"]["entities"]["39ac25a9-8af7-4d26-bd19-62a3696920a2"]["props"]["chartData"]["data"][0]
+
+    data = json_data["elements"]["content"]["content"]["entities"]["39ac25a9-8af7-4d26-bd19-62a3696920a2"]["props"]["chartData"]["data"][0]
 
     df = pd.DataFrame(data[1:], columns=data[0])
 
@@ -24,7 +30,7 @@ def main():
     people_vaccinated = only_1dose_people + people_fully_vaccinated
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
-    date = js_data["updatedAt"][:10]
+    date = json_data["updatedAt"][:10]
 
     vaxutils.increment(
         location="Iceland",
