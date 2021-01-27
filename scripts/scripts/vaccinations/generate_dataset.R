@@ -52,20 +52,24 @@ add_aggregate <- function(vax, aggregate_name, included_locs, excluded_locs) {
 
     setorder(agg, location, date)
 
+    for (loc in unique(agg$location)) {
+        if (all(is.na(agg[location == loc, people_vaccinated]))) {
+            agg[location == loc, people_vaccinated := 0]
+        }
+        if (all(is.na(agg[location == loc, people_fully_vaccinated]))) {
+            agg[location == loc, people_fully_vaccinated := 0]
+        }
+    }
+
     agg[, total_vaccinations := na_locf(total_vaccinations, na_remaining = "keep"), location]
-    agg[, people_vaccinated := 0]
-    agg[, people_fully_vaccinated := 0]
-    # agg[, people_vaccinated := na_locf(people_vaccinated, na_remaining = "keep"), location]
-    # agg[, people_fully_vaccinated := na_locf(people_fully_vaccinated, na_remaining = "keep"), location]
+    agg[, people_vaccinated := na_locf(people_vaccinated, na_remaining = "keep"), location]
+    agg[, people_fully_vaccinated := na_locf(people_fully_vaccinated, na_remaining = "keep"), location]
 
     agg <- agg[, .(
         total_vaccinations = sum(total_vaccinations, na.rm = TRUE),
         people_vaccinated = sum(people_vaccinated, na.rm = TRUE),
         people_fully_vaccinated = sum(people_fully_vaccinated, na.rm = TRUE)
     ), date]
-
-    agg[, people_vaccinated := NA_integer_]
-    agg[, people_fully_vaccinated := NA_integer_]
 
     agg[, location := aggregate_name]
     agg <- agg[date < today()]
