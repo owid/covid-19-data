@@ -18,7 +18,6 @@ def main():
                 .replace(";</script>", "")
             )
             json_data = json.loads(json_data)
-            import pdb; pdb.set_trace()
             break
 
     data = json_data["elements"]["content"]["content"]["entities"]["39ac25a9-8af7-4d26-bd19-62a3696920a2"]["props"]["chartData"]["data"][0]
