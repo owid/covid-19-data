@@ -25,7 +25,7 @@ As of 26 January 2021, the data columns are:
 - `p_scores_85plus`: P-scores for ages 85 and above
 - `deaths_2021_all_ages`: number of weekly deaths from all causes for all ages in 2021
 - `deaths_2020_all_ages`: number of weekly deaths from all causes for all ages in 2020
-- `avg_deaths_2015_2019`: average number of weekly deaths from all causes for all ages over the years 2015–2019
+- `average_deaths_2015_2019_all_ages`: average number of weekly deaths from all causes for all ages over the years 2015–2019
 - `deaths_2019_all_ages`: number of weekly deaths from all causes for all ages in 2019
 - `deaths_2018_all_ages`: number of weekly deaths from all causes for all ages in 2018
 - `deaths_2017_all_ages`: number of weekly deaths from all causes for all ages in 2017
