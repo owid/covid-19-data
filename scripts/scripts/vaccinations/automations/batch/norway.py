@@ -26,7 +26,7 @@ def main():
 
         driver.get(url)
         time.sleep(1)
-        driver.execute_script("window.scrollTo(0, 1000)")
+        driver.execute_script("window.scrollTo(0, 1500)")
         driver.find_element_by_class_name("highcharts-exporting-group").click()
 
         for item in driver.find_elements_by_class_name("highcharts-menu-item"):

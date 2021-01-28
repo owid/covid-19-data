@@ -37,7 +37,7 @@ def main():
     df["people_fully_vaccinated"] = df["people_fully_vaccinated"].replace({0: pd.NA})
     df.loc[:, "location"] = "Chile"
     df = get_vaccine_name(df)
-    df.loc[:, "source_url"] = url.replace("raw", "blob")
+    df.loc[:, "source_url"] = "https://informesdeis.minsal.cl/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F1a8cc7ff-7df0-474f-a147-929ee45d1900&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false"
 
     # Save
     df = df[["location", "date", "people_vaccinated", "people_fully_vaccinated", "total_vaccinations", 

@@ -6,12 +6,12 @@ import vaxutils
 
 def main():
 
-    url = "https://coronadashboard.government.nl/_next/data/5jBzTJhaZyTn2juMr4Cna/index.json"
+    url = "https://raw.githubusercontent.com/minvws/nl-covid19-data-dashboard/develop/packages/app/src/locale/nl.json"
     data = json.loads(requests.get(url).content)
 
-    total_vaccinations = int(data["pageProps"]["text"]["vaccinaties"]["data"]["kpi_total"]["value"])
+    total_vaccinations = int(data["vaccinaties"]["data"]["sidebar"]["last_value"]["total_vaccinated"])
 
-    date = data["pageProps"]["text"]["vaccinaties"]["data"]["kpi_total"]["date_of_report_unix"]
+    date = data["vaccinaties"]["data"]["sidebar"]["last_value"]["date_unix"]
     date = str(pd.to_datetime(date, unit="s").date())
 
     vaxutils.increment(

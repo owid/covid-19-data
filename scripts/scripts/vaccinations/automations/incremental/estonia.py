@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import vaxutils
 
+
 def main():
 
     url = "https://www.terviseamet.ee/et/uudised"
@@ -15,20 +16,31 @@ def main():
 
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
+    text = soup.find(class_="node-published").text
+
+    total_vaccinations, people_fully_vaccinated = re.search(
+        r"Eestis on COVID-19 vastu vaktsineerimisi tehtud kokku ([\d\s]+), kaks doosi on saanud ([\d\s]+) inimest",
+        text
+    ).groups()
+
+    total_vaccinations = vaxutils.clean_count(total_vaccinations)
+    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
+
+    people_vaccinated = total_vaccinations - people_fully_vaccinated
+
     date = soup.find(class_="field-name-post-date").text
     date = vaxutils.clean_date(date, "%d.%m.%Y")
 
-    count = soup.find(string=re.compile(r"Eestis on COVID-19 vastu vaktsineerimisi"))
-    count = re.search(r"tehtud ([\d\s]+) inimesele", count).group(1)
-    count = vaxutils.clean_count(count)
-
     vaxutils.increment(
         location="Estonia",
-        total_vaccinations=count,
+        total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
         vaccine="Pfizer/BioNTech"
     )
+
 
 if __name__ == "__main__":
     main()
