@@ -121,8 +121,8 @@ process_location <- function(location_name) {
     stopifnot(length(unique(df$date)) == nrow(df))
     stopifnot(max(df$date) <= today())
 
-    # Morning updates: exclude current day data to avoid incompleteness
-    if (hour(now(tzone = "CET")) < 12) df <- df[date < today()]
+    # Early updates: exclude current day data to avoid incompleteness
+    if (hour(now(tzone = "CET")) < 16) df <- df[date < today()]
 
     # Default columns for second doses
     early_phase <- (today() - ymd(min(df$date))) <= 21
