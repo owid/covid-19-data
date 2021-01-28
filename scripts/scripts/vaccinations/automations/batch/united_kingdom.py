@@ -39,7 +39,7 @@ def main():
         .replace(0, pd.NA)
     )
 
-    df.loc[:, "source_url"] = "https://coronavirus.data.gov.uk/"
+    df.loc[:, "source_url"] = "https://coronavirus.data.gov.uk/details/healthcare"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[df["date"] >= "2021-01-04", "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
 

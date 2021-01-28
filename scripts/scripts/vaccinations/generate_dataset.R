@@ -182,8 +182,7 @@ generate_locations_file <- function(metadata, vax) {
     vax_per_loc <- vax[, .(vaccines = paste0(sort(unique(unlist(str_split(vaccine, ", ")))), collapse = ", ")), location]
     latest_meta <- vax[, .SD[.N], location]
     metadata <- merge(merge(metadata, vax_per_loc, "location"), latest_meta, "location")
-    metadata[is.na(source_website), source_website := source_url]
-    setnames(metadata, "date", "last_observation_date")
+    setnames(metadata, c("source_url", "date"), c("source_website", "last_observation_date"))
     metadata <- add_iso(metadata)
     metadata <- metadata[, c("location", "iso_code", "vaccines", "last_observation_date", "source_name", "source_website")]
     fwrite(metadata, "../../../public/data/vaccinations/locations.csv")
