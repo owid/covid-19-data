@@ -1,22 +1,23 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Northern Ireland,2020-12-13,Pfizer/BioNTech,https://coronavirus.data.gov.uk/,3623,3623,
-Northern Ireland,2020-12-20,Pfizer/BioNTech,https://coronavirus.data.gov.uk/,16068,16068,
-Northern Ireland,2020-12-27,Pfizer/BioNTech,https://coronavirus.data.gov.uk/,31016,31016,
-Northern Ireland,2021-01-03,Pfizer/BioNTech,https://coronavirus.data.gov.uk/,41956,40685,1271
-Northern Ireland,2021-01-10,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,91954,78005,13949
-Northern Ireland,2021-01-11,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,99475,84187,15288
-Northern Ireland,2021-01-12,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,109257,91417,17840
-Northern Ireland,2021-01-13,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,121711,102701,19010
-Northern Ireland,2021-01-14,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,133831,114567,19264
-Northern Ireland,2021-01-15,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,137380,117906,19474
-Northern Ireland,2021-01-16,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,140561,120387,20174
-Northern Ireland,2021-01-17,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,146733,125717,21016
-Northern Ireland,2021-01-18,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,154436,132857,21579
-Northern Ireland,2021-01-19,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,160396,138436,21960
-Northern Ireland,2021-01-20,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,166538,144212,22326
-Northern Ireland,2021-01-21,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,173549,151039,22510
-Northern Ireland,2021-01-22,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,177026,154366,22660
-Northern Ireland,2021-01-23,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,178331,155644,22687
-Northern Ireland,2021-01-24,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,182355,159642,22713
-Northern Ireland,2021-01-25,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,186112,163317,22795
-Northern Ireland,2021-01-26,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/,191050,168140,22910
+Northern Ireland,2020-12-13,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,3623,3623,
+Northern Ireland,2020-12-20,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,16068,16068,
+Northern Ireland,2020-12-27,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,31016,31016,
+Northern Ireland,2021-01-03,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,41956,40685,1271
+Northern Ireland,2021-01-10,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,91954,78005,13949
+Northern Ireland,2021-01-11,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,99475,84187,15288
+Northern Ireland,2021-01-12,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,109257,91417,17840
+Northern Ireland,2021-01-13,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,121711,102701,19010
+Northern Ireland,2021-01-14,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,133831,114567,19264
+Northern Ireland,2021-01-15,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,137380,117906,19474
+Northern Ireland,2021-01-16,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,140561,120387,20174
+Northern Ireland,2021-01-17,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,146733,125717,21016
+Northern Ireland,2021-01-18,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,154436,132857,21579
+Northern Ireland,2021-01-19,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,160396,138436,21960
+Northern Ireland,2021-01-20,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,166538,144212,22326
+Northern Ireland,2021-01-21,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,173549,151039,22510
+Northern Ireland,2021-01-22,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,177026,154366,22660
+Northern Ireland,2021-01-23,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,178331,155644,22687
+Northern Ireland,2021-01-24,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,182355,159642,22713
+Northern Ireland,2021-01-25,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,186112,163317,22795
+Northern Ireland,2021-01-26,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,191050,168140,22910
+Northern Ireland,2021-01-27,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,199211,175284,23927

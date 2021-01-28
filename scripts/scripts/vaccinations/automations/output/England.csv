@@ -1,21 +1,22 @@
 location,total_vaccinations,people_vaccinated,people_fully_vaccinated,date,source_url,vaccine
-England,568044.0,568044.0,,2020-12-20,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-England,831416.0,831416.0,,2020-12-27,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-England,1174592.0,1154306.0,20286.0,2021-01-03,https://coronavirus.data.gov.uk/,Pfizer/BioNTech
-England,2333764.0,1959151.0,374613.0,2021-01-10,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,2474205.0,2080280.0,393925.0,2021-01-11,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,2661850.0,2254556.0,407294.0,2021-01-12,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,2910027.0,2494371.0,415656.0,2021-01-13,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,3189674.0,2769164.0,420510.0,2021-01-14,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,3514385.0,3090058.0,424327.0,2021-01-15,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,3791594.0,3365492.0,426102.0,2021-01-16,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,3947442.0,3520056.0,427386.0,2021-01-17,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,4118342.0,3687206.0,431136.0,2021-01-18,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,4419704.0,3985579.0,434125.0,2021-01-19,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,4740578.0,4303730.0,436848.0,2021-01-20,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,5100475.0,4661293.0,439182.0,2021-01-21,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,5526071.0,5085771.0,440300.0,2021-01-22,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,5970175.0,5529101.0,441074.0,2021-01-23,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,6169377.0,5727693.0,441684.0,2021-01-24,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,6405554.0,5962544.0,443010.0,2021-01-25,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
-England,6665861.0,6221850.0,444011.0,2021-01-26,https://coronavirus.data.gov.uk/,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,570199.0,570199.0,,2020-12-20,https://coronavirus.data.gov.uk/details/healthcare,Pfizer/BioNTech
+England,835475.0,835475.0,,2020-12-27,https://coronavirus.data.gov.uk/details/healthcare,Pfizer/BioNTech
+England,1182209.0,1161742.0,20467.0,2021-01-03,https://coronavirus.data.gov.uk/details/healthcare,Pfizer/BioNTech
+England,2333764.0,1959151.0,374613.0,2021-01-10,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,2474205.0,2080280.0,393925.0,2021-01-11,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,2661850.0,2254556.0,407294.0,2021-01-12,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,2910027.0,2494371.0,415656.0,2021-01-13,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,3189674.0,2769164.0,420510.0,2021-01-14,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,3514385.0,3090058.0,424327.0,2021-01-15,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,3791594.0,3365492.0,426102.0,2021-01-16,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,3947442.0,3520056.0,427386.0,2021-01-17,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,4118342.0,3687206.0,431136.0,2021-01-18,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,4419704.0,3985579.0,434125.0,2021-01-19,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,4740578.0,4303730.0,436848.0,2021-01-20,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,5100475.0,4661293.0,439182.0,2021-01-21,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,5526071.0,5085771.0,440300.0,2021-01-22,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,5970175.0,5529101.0,441074.0,2021-01-23,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,6169377.0,5727693.0,441684.0,2021-01-24,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,6405554.0,5962544.0,443010.0,2021-01-25,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,6665861.0,6221850.0,444011.0,2021-01-26,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
+England,6918853.0,6473752.0,445101.0,2021-01-27,https://coronavirus.data.gov.uk/details/healthcare,"Oxford/AstraZeneca, Pfizer/BioNTech"
