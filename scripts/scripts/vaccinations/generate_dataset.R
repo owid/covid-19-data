@@ -86,7 +86,8 @@ add_daily <- function(df) {
 
 add_smoothed <- function(df) {
     setorder(df, date)
-    date_seq <- seq.Date(from = min(df$date), to = max(df$date), by = "day")
+    complete_total_vax <- df[!is.na(total_vaccinations)]
+    date_seq <- seq.Date(from = min(complete_total_vax$date), to = max(complete_total_vax$date), by = "day")
     time_series <- data.table(date = date_seq, location = df$location[1])
     if ("vaccine" %in% names(df)) time_series[, vaccine := df$vaccine[1]]
     df <- merge(df, time_series, all = TRUE, c("date", "location"))
@@ -95,6 +96,7 @@ add_smoothed <- function(df) {
     df[, new_interpolated := total_interpolated - shift(total_interpolated, 1)]
     windows <- head(c(0:6, rep(7, 1e4)), nrow(df))
     df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE))]
+    df[new_vaccinations_smoothed == 0, new_vaccinations_smoothed := NA_integer_]
     df[, c("total_interpolated", "new_interpolated") := NULL]
     return(df)
 }
