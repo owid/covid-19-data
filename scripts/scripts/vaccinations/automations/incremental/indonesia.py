@@ -13,12 +13,19 @@ def main():
     date = soup.find(class_="covid-case-container").find(class_="info-date").text.replace("Kondisi ", "")
     date = str(dateparser.parse(date, languages=["id"]).date())
 
-    total_vaccinations = soup.find(class_="description", text="Divaksin").parent.find(class_="case").text
-    total_vaccinations = vaxutils.clean_count(total_vaccinations)
+    people_vaccinated = soup.find(class_="description", text="Vaksinasi-1").parent.find(class_="case").text
+    people_vaccinated = vaxutils.clean_count(people_vaccinated)
+
+    people_fully_vaccinated = soup.find(class_="description", text="Vaksinasi-2").parent.find(class_="case").text
+    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
+
+    total_vaccinations = people_vaccinated + people_fully_vaccinated
 
     vaxutils.increment(
         location="Indonesia",
         total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
         vaccine="Sinovac"
