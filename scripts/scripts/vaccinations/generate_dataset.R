@@ -125,23 +125,11 @@ process_location <- function(location_name) {
     if (hour(now(tzone = "CET")) < 16) df <- df[date < today()]
 
     # Default columns for second doses
-    early_phase <- (today() - ymd(min(df$date))) <= 21
-    if (!"people_vaccinated" %in% names(df)) {
-        if (early_phase) {
-            df[, people_vaccinated := total_vaccinations]
-        } else {
-            df[, people_vaccinated := NA_integer_]
-        }
-    }
-    if (!"people_fully_vaccinated" %in% names(df)) {
-        if (early_phase) {
-            df[, people_fully_vaccinated := 0]
-        } else {
-            df[, people_fully_vaccinated := NA_integer_]
-        }
-    }
+    if (!"people_vaccinated" %in% names(df)) df[, people_vaccinated := NA_integer_]
+    if (!"people_fully_vaccinated" %in% names(df)) df[, people_fully_vaccinated := NA_integer_]
 
-    df <- df[, c("location", "date", "vaccine", "source_url", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
+    df <- df[, c("location", "date", "vaccine", "source_url",
+                 "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
 
     df[, date := date(date)]
 
