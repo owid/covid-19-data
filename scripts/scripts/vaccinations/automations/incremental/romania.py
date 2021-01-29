@@ -23,7 +23,7 @@ def main():
     
     main_text = soup.find(class_="entry-content-text").text
 
-    regex = r"Număr total de doze administrate de vaccin împotriva COVID-19 Pfizer BioNTech \(începând cu data de 27 decembrie 2020\): ([\d\.]+), la un număr de [\d\.]+ persoane din care:\n.\s*[\d\.]+\s+persoane vaccinate cu 1 doză;\n.\s*([\d\.]+)\s+persoane vaccinate cu 2 doze"
+    regex = r"Număr total de doze administrate de vaccin împotriva COVID-19 Pfizer BioNTech \(începând cu data de 27 decembrie 2020\): ([\d\.]+), la un număr de [a-z]* ?[\d\.]+ [a-z]* ?din care:\n.\s*[\d\.]+\s+persoane vaccinate cu 1 doză;\n.\s*([\d\.]+)\s+persoane vaccinate cu 2 doze"
     
     counts = re.search(regex, main_text)
 
