@@ -3,18 +3,16 @@ import pandas as pd
 
 def main():
 
-    url = "https://www.data.gouv.fr/fr/datasets/r/96db2c1a-8c0c-413c-9a07-f6f62f3d4daf"
-    df = pd.read_csv(url, usecols=["jour", "n_dose1", "n_dose2", "sexe"], sep=";")
+    url = "https://www.data.gouv.fr/fr/datasets/r/efe23314-67c4-45d3-89a2-3faef82fae90"
+    df = pd.read_csv(url, sep=";")
+    assert df.shape[1] == 3
 
-    df = df[df["sexe"] == 0].drop(columns="sexe")
-
-    df = df.groupby("jour", as_index=False).sum().sort_values("jour").rename(columns={
-        "n_dose1": "people_vaccinated", "n_dose2": "people_fully_vaccinated", "jour": "date"
+    df = df.sort_values("jour").drop(columns="fra").rename(columns={
+        "n_dose1": "people_vaccinated", "jour": "date"
     })
 
     df.loc[:, "people_vaccinated"] = df["people_vaccinated"].cumsum()
-    df.loc[:, "people_fully_vaccinated"] = df["people_fully_vaccinated"].cumsum()
-    df.loc[:, "total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
+    df.loc[:, "total_vaccinations"] = df["people_vaccinated"]
 
     df.loc[:, "location"] = "France"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
