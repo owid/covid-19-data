@@ -160,3 +160,26 @@ fi
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 run_python 'import gmobility; gmobility.update_db()'
+
+# =====================================================================
+# JHU US County data
+
+# Download CSV
+run_python 'import jhu_US_county; jhu_US_county.download_csv()'
+
+# If there are any unstaged changes in the repo, then the
+# CSV has changed, and we need to run the update script.
+if has_changed_gzip ./scripts/input/jhucounty/jhucountylatest.csv.gz; then
+  echo "Generating JHU US County export..."
+  run_python 'import jhu_US_county; jhu_US_county.export_grapher()'
+  git add .
+  git commit -m "Automated JHU US County update"
+  git push
+else
+  echo "JHU US County export is up to date"
+fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+run_python 'import jhu_US_county; jhu_US_county.update_db()'
