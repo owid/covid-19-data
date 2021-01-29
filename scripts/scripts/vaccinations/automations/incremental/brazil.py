@@ -22,12 +22,14 @@ def main():
                 total_vaccinations = elem.find_element_by_class_name("valueLabel").text
 
     total_vaccinations = vaxutils.clean_count(total_vaccinations)
+    people_vaccinated = total_vaccinations
 
     date = str(datetime.datetime.now(pytz.timezone("Brazil/East")).date())
 
     vaxutils.increment(
         location="Brazil",
         total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
         date=date,
         source_url="https://coronavirusbra1.github.io/",
         vaccine="Sinovac"
