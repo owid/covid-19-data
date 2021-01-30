@@ -24,6 +24,7 @@ def main():
     df["people_fully_vaccinated"] = df["people_fully_vaccinated"].replace(0, pd.NA)
 
     df["date"] = df["date"].str.slice(0, 10)
+    df = df[df["date"] < str(datetime.date.today())]
 
     df = df[["date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]]
 
