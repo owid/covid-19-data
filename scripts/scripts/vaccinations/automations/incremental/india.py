@@ -23,7 +23,7 @@ def main():
         total_vaccinations=total_vaccinations,
         date=date,
         source_url=url,
-        vaccine="Covaxin, Covishield"
+        vaccine="Covaxin, Oxford/AstraZeneca"
     )
 
 
