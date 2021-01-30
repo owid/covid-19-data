@@ -1,5 +1,3 @@
-import datetime
-import pytz
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -20,7 +18,7 @@ def main():
     people_fully_vaccinated = int(df.loc[df["Unnamed: 0"] == "Totales", "Nº Personas vacunadas(pauta completada)"].values[0])
     people_vaccinated = total_vaccinations - people_fully_vaccinated
 
-    date = str(datetime.datetime.now(pytz.timezone("Europe/Madrid")).date())
+    date = str(df["Fecha de la última vacuna registrada (2)"].max().date())
 
     vaxutils.increment(
         location="Spain",
