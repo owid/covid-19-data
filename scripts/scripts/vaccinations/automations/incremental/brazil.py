@@ -32,7 +32,7 @@ def main():
         people_vaccinated=people_vaccinated,
         date=date,
         source_url="https://coronavirusbra1.github.io/",
-        vaccine="Sinovac"
+        vaccine="Oxford/AstraZeneca, Sinovac"
     )
 
 

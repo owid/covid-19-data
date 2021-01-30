@@ -61,4 +61,4 @@ def increment(
 
     df.to_csv(f"automations/output/{location}.csv", index=False)
 
-    print(f"NEW: {total_vaccinations} doses on {date}")
+    #print(f"NEW: {total_vaccinations} doses on {date}")
