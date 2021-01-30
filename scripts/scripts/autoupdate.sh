@@ -160,3 +160,26 @@ fi
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 run_python 'import gmobility; gmobility.update_db()'
+
+# =====================================================================
+# Apple Mobility Trends
+
+# Download CSV
+run_python 'import amobility; amobility.download_csv()'
+
+# If there are any unstaged changes in the repo, then the
+# CSV has changed, and we need to run the update script.
+if has_changed_gzip ./scripts/input/amobility/amobilitylatest.csv.gz; then
+  echo "Generating Apple Mobility Trends export..."
+  run_python 'import amobility; amobility.export_grapher()'
+  git add .
+  git commit -m "Automated Apple Mobility Trends update"
+  git push
+else
+  echo "Apple Mobility Trends export is up to date"
+fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+run_python 'import amobility; amobility.update_db()'
