@@ -1,6 +1,5 @@
 import os
 import sys
-import gzip
 from datetime import datetime
 import pandas as pd
 import pytz
@@ -14,8 +13,7 @@ DATASET_NAME = "Google Mobility Trends (2020)"
 
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/gmobility/")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher/")
-TEMP_CSV_PATH = os.path.join(INPUT_PATH, "latest.csv")
-INPUT_CSV_GZIP_PATH = os.path.join(INPUT_PATH, "latest.csv.gz")
+INPUT_CSV_PATH = os.path.join(INPUT_PATH, "latest.csv")
 OUTPUT_CSV_PATH = os.path.join(OUTPUT_PATH, f"{DATASET_NAME}.csv")
 
 ZERO_DAY = "2020-01-01"
@@ -23,11 +21,7 @@ zero_day = datetime.strptime(ZERO_DAY, "%Y-%m-%d")
 
 def download_csv():
     # Download the latest CSV
-    os.system(f"curl --silent -f -o {TEMP_CSV_PATH} -L {URL}")
-    # gzip in order to not exceed GitHub"s 100MB file limit
-    with open(TEMP_CSV_PATH, "rb") as f_csv, gzip.open(INPUT_CSV_GZIP_PATH, "wb") as f_csv_gz:
-        f_csv_gz.writelines(f_csv)
-    os.remove(TEMP_CSV_PATH)
+    os.system(f"curl --silent -f -o {INPUT_CSV_PATH} -L {URL}")
 
 def export_grapher():
 
@@ -47,7 +41,7 @@ def export_grapher():
         "residential_percent_change_from_baseline"
     ]
 
-    mobility = pd.read_csv(INPUT_CSV_GZIP_PATH, usecols=cols, compression="gzip", low_memory=False)
+    mobility = pd.read_csv(INPUT_CSV_PATH, usecols=cols, low_memory=False)
 
     # Convert date column to days since zero_day
     mobility["date"] = pd.to_datetime(
