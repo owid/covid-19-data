@@ -149,7 +149,7 @@ run_python 'import gmobility; gmobility.download_csv()'
 if has_changed './scripts/grapher/Google Mobility Trends (2020).csv'; then
   echo "Generating Google Mobility export..."
   run_python 'import gmobility; gmobility.export_grapher()'
-  rm ./scripts/input/gmobility/latest.csv.gz
+  rm ./scripts/input/gmobility/latest.csv
   git add .
   git commit -m "Automated Google Mobility update"
   git push
