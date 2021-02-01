@@ -7,9 +7,10 @@ df <- page %>%
     data.table()
 df[, Weekly := as.integer(str_replace_all(`NukleinsyrapåvisningGenomförda tester`, "\\s", ""))]
 
-df <- df[str_detect(Vecka, "vecka")]
-df[, Vecka := as.integer(str_replace(Vecka, "vecka ", ""))]
-df[, Date := ymd("2019-12-29") + 7 * Vecka]
+df <- df[str_detect(Vecka, "Vecka")]
+df[, Vecka := as.integer(str_replace(Vecka, "Vecka ", ""))]
+df <- df[Vecka < 52]
+df[, Date := ymd("2021-01-03") + 7 * Vecka]
 
 df <- df[, c("Date", "Weekly")]
 setorder(df, Date)
