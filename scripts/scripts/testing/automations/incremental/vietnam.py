@@ -62,7 +62,7 @@ def _get_newsletter_urls() -> List[dict]:
     res = requests.get(url)
     soup = BeautifulSoup(res.content, 'html.parser')
     records = []
-    list_h2_headings = soup.find('div', {'class': 'lotusWidgetBody1'}).find_all('h2')[:5]
+    list_h2_headings = soup.find('div', {'class': 'lotusWidgetBody1'}).find_all('h2')[:10]
     for h2 in list_h2_headings:
         regex_res = re.search(r'covid-19', h2.text, re.IGNORECASE)
         if regex_res:
