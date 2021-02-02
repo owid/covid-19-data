@@ -120,6 +120,7 @@ process_location <- function(location_name) {
     # Sanity checks
     stopifnot(length(unique(df$date)) == nrow(df))
     stopifnot(max(df$date) <= today())
+    stopifnot(min(df$date) >= "2020-12-01")
 
     # Early updates: exclude current day data to avoid incompleteness
     if (hour(now(tzone = "CET")) < 16) df <- df[date < today()]
