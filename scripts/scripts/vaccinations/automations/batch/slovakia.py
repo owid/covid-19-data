@@ -41,8 +41,10 @@ def import_dashboard():
 
     df = pd.DataFrame.from_records(data["tiles"]["k31"]["data"]["d"])
     df = df[["d", "v", "v1"]].rename(columns={
-        "d": "date", "v": "people_vaccinated", "v1": "people_fully_vaccinated"
+        "d": "date", "v": "first_dose_only", "v1": "people_fully_vaccinated"
     })
+    df["people_vaccinated"] = df["first_dose_only"] + df["people_fully_vaccinated"]
+    df = df.drop(columns=["first_dose_only"])
     df["date"] = pd.to_datetime(df["date"], format="%y%m%d").dt.date.astype(str)
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
     df["source_url"] = "https://covid-19.nczisk.sk"
