@@ -120,6 +120,7 @@ process_location <- function(location_name) {
     # Sanity checks
     stopifnot(length(unique(df$date)) == nrow(df))
     stopifnot(max(df$date) <= today())
+    stopifnot(min(df$date) >= "2020-12-01")
 
     # Early updates: exclude current day data to avoid incompleteness
     if (hour(now(tzone = "CET")) < 16) df <- df[date < today()]
@@ -144,9 +145,11 @@ get_population <- function(subnational_pop) {
     pop <- rbindlist(list(pop, subnational_pop, eu_pop))
 
     # Add up population of French oversea territories, which are reported as part of France
-    pop[location %in% c(
-        "Guadeloupe", "Martinique", "French Guiana", "Mayotte", "Reunion", "French Polynesia", "Saint Martin (French part)"
-    ), location := "France"]
+    pop[location %in% c("Guadeloupe", "Martinique", "French Guiana", "Mayotte", "Reunion", "French Polynesia", "Saint Martin (French part)"), location := "France"]
+    pop <- pop[, .(population = sum(population)), location]
+
+    # Add up population of US territories, which are reported as part of the US
+    pop[location %in% c("American Samoa", "Micronesia (country)", "Guam", "Marshall Islands", "Northern Mariana Islands", "Puerto Rico", "Palau", "United States Virgin Islands"), location := "United States"]
     pop <- pop[, .(population = sum(population)), location]
 
     return(pop)

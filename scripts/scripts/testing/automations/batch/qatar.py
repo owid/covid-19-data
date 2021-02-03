@@ -74,6 +74,7 @@ def get_data() -> pd.DataFrame:
     df.rename(columns={'number_of_new_tests_in_last_24_hrs': 'Daily change in cumulative total',
                        'total_number_of_tests_to_date': 'Cumulative total', 
                        DATE_COL: 'Date'}, inplace=True)
+    df = df.groupby("Date", as_index=False).min()
     df['Source URL'] = None
     df = df[['Date', SERIES_TYPE, 'Source URL']]
     if len(hardcoded_data) > 0:

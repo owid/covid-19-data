@@ -18,15 +18,14 @@ def main():
 
     text = soup.find(class_="node-published").text
 
-    total_vaccinations, people_fully_vaccinated = re.search(
-        r"Eestis on COVID-19 vastu vaktsineerimisi tehtud kokku ([\d\s]+), kaks doosi on saanud ([\d\s]+) inimest",
+    people_vaccinated, people_fully_vaccinated = re.search(
+        r"Eestis on COVID-19 vastu vaktsineerimisi tehtud ([\d\s]+) inimesele, kaks doosi on saanud ([\d\s]+) inimest",
         text
     ).groups()
 
-    total_vaccinations = vaxutils.clean_count(total_vaccinations)
+    people_vaccinated = vaxutils.clean_count(people_vaccinated)
     people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
-
-    people_vaccinated = total_vaccinations - people_fully_vaccinated
+    total_vaccinations = people_vaccinated + people_fully_vaccinated
 
     date = soup.find(class_="field-name-post-date").text
     date = vaxutils.clean_date(date, "%d.%m.%Y")

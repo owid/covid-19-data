@@ -16,13 +16,12 @@ def main():
     dfs_from_pdf = tabula.read_pdf(pdf_path, pages="all")
     df = pd.DataFrame(dfs_from_pdf[2])  # Hardcoded table location
 
-    people_vaccinated = df.loc[df["Unnamed: 0"] == "Personnes vaccinées - Dose 1", "Unnamed: 2"].values[0]
-    people_vaccinated = vaxutils.clean_count(people_vaccinated)
+    values = sorted(pd.to_numeric(df["Unnamed: 2"].str.replace(r"[^\d]", "", regex=True)).dropna().astype(int))
+    assert len(values) == 3
 
-    people_fully_vaccinated = df.loc[df["Unnamed: 0"] == "Personnes vaccinées - Dose 2", "Unnamed: 2"].values[0]
-    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
-
-    total_vaccinations = people_vaccinated + people_fully_vaccinated
+    total_vaccinations = values[2]
+    people_vaccinated = values[1]
+    people_fully_vaccinated = values[0]
     
     date = df["Unnamed: 1"].str.replace("Journée du ", "").values[0]
     date = vaxutils.clean_date(date, "%d.%m.%Y")

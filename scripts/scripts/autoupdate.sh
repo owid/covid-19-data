@@ -146,9 +146,10 @@ run_python 'import gmobility; gmobility.download_csv()'
 
 # If there are any unstaged changes in the repo, then the
 # CSV has changed, and we need to run the update script.
-if has_changed_gzip ./scripts/input/gmobility/latest.csv.gz; then
+if has_changed './scripts/input/gmobility/latest.csv'; then
   echo "Generating Google Mobility export..."
   run_python 'import gmobility; gmobility.export_grapher()'
+  rm ./scripts/input/gmobility/latest.csv
   git add .
   git commit -m "Automated Google Mobility update"
   git push
