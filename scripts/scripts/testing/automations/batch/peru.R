@@ -34,8 +34,6 @@ df <- data[, .(
     `Positive` = sum(Result == "POSITIVO")
 ), Date]
 
-stopifnot(max(df$Date) >= today() - 10)
-
 setorder(df, Date)
 df[, `Positive rate` := round(frollsum(Positive, 7) / frollsum(`Daily change in cumulative total`, 7), 3)]
 df[, Positive := NULL]
