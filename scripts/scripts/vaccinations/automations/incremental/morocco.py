@@ -11,7 +11,7 @@ def main():
     url_date = date.strftime("%-d.%-m.%y")
     url = f"http://www.covidmaroc.ma/Documents/BULLETIN/{url_date}.COVID-19.pdf"
     
-    os.system("curl http://www.covidmaroc.ma/Documents/BULLETIN/1.2.21.COVID-19.pdf -o morocco.pdf -s")
+    os.system(f"curl {url} -o morocco.pdf -s")
 
     with open("morocco.pdf", "rb") as pdfFileObj:
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
