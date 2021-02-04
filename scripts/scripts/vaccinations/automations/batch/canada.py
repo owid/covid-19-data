@@ -35,7 +35,7 @@ def main():
         .reset_index(drop=True)
         .sort_values("date")
     )
-    #df.loc[df["total_vaccinations"].isna(), "total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
+    df.loc[df["people_fully_vaccinated"] == 0, "total_vaccinations"] = df["people_vaccinated"]
 
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[df["date"] >= "2020-12-31", "vaccine"] = "Moderna, Pfizer/BioNTech"

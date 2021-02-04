@@ -30,8 +30,6 @@ def main():
     people_fully_vaccinated = data["results"][0]["result"]["data"]["dsr"]["DS"][0]["PH"][0]["DM0"][1]["C"][1]
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
-    import pdb; pdb.set_trace()
-
     date = str(datetime.datetime.now(pytz.timezone("Europe/Isle_of_Man")).date())
 
     vaxutils.increment(
