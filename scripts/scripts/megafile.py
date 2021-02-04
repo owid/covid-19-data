@@ -318,7 +318,9 @@ def create_latest(df):
     print("Writing latest version…")
     latest.to_csv(os.path.join(DATA_DIR, "latest/owid-covid-latest.csv"), index=False)
     latest.to_excel(os.path.join(DATA_DIR, "latest/owid-covid-latest.xlsx"), index=False)
-    latest.set_index("iso_code").to_json(os.path.join(DATA_DIR, "latest/owid-covid-latest.json"), orient="index")
+    latest.dropna(subset=["iso_code"]).set_index("iso_code").to_json(
+        os.path.join(DATA_DIR, "latest/owid-covid-latest.json"), orient="index"
+    )
 
 
 def generate_megafile():

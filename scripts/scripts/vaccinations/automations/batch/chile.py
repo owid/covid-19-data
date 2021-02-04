@@ -13,6 +13,7 @@ def get_vaccine_name(df):
         str or array: String if value is constant or array if different values are present.
     """
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[df["date"] >= "2021-02-03", "vaccine"] = "Pfizer/BioNTech, Sinovac"
     return df
 
 

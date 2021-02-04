@@ -1,6 +1,5 @@
 import datetime
 import json
-import pytz
 import requests
 import pandas as pd
 import vaxutils
