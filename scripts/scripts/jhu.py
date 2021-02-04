@@ -17,8 +17,8 @@ from shared import load_population, load_owid_continents, inject_total_daily_col
     inject_rolling_avg, inject_exemplars, inject_doubling_days, inject_weekly_growth, \
     inject_biweekly_growth, standard_export, ZERO_DAY
 
-from utils.slack_client import send_warning, send_success
-from utils.db_imports import import_dataset
+# from utils.slack_client import send_warning, send_success
+# from utils.db_imports import import_dataset
 
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/jhu/")
 OUTPUT_PATH = os.path.join(CURRENT_DIR, "../../public/data/jhu/")
