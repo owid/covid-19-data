@@ -72,6 +72,7 @@ If you are interested in the individual files that make up the complete dataset,
 - On 6 January 2021, we added two variables for daily vaccinations to our complete dataset.
 - On 7 January 2021, we replaced the United Kingdom's hospital and ICU data previously gathered by the European CDC with [the official data published by the British government](https://coronavirus.data.gov.uk/details/healthcare).
 - On 26 January 2021, we added 4 variables on people vaccinated & people fully vaccinated to our complete dataset.
+- On 4 February 2021, we added rows for Africa, Asia, Europe, European Union, North America, Oceania, and South America to our complete dataset. The `iso_code` column for these rows is blank.
 
 
 ## Data alterations

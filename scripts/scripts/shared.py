@@ -591,8 +591,11 @@ def standard_export(df, output_path, grapher_name):
         .to_csv(os.path.join(output_path, '%s.csv' % grapher_name), index=False)
 
     # Table & public extracts for external users
-    # Excludes most aggregates
-    excluded_aggregates = list(set(aggregates_spec.keys()) - set(['World']))
+    # Excludes aggregates
+    excluded_aggregates = list(set(aggregates_spec.keys()) - set([
+        'World', 'North America', 'South America', 'Europe', 'Africa', 'Asia', 'Oceania',
+        'European Union'
+    ]))
     df_table = df[~df['location'].isin(excluded_aggregates)]
     # full_data.csv
     full_data_cols = existsin(FULL_DATA_COLS, df_table.columns)
