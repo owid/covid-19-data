@@ -161,3 +161,17 @@ fi
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
 run_python 'import gmobility; gmobility.update_db()'
+
+# =====================================================================
+# Swedish Public Health Agency
+
+echo "Generating Swedish Public Health Agency file..."
+run_python 'import sweden; sweden.generate_dataset()'
+if has_changed './scripts/grapher/COVID-19 - Swedish Public Health Agency.csv'; then
+  git add .
+  git commit -m "Automated Swedish Public Health Agency update"
+  git push
+  run_python 'import sweden; sweden.update_db()'
+else
+  echo "Swedish Public Health Agency export is up to date"
+fi
