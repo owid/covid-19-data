@@ -23,8 +23,10 @@ def main():
     df = df[df["date"] >= "2020-01-01"]
 
     df.loc[:, "location"] = "Italy"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[:, "source_url"] = "https://github.com/italia/covid19-opendata-vaccini/blob/master/dati/somministrazioni-vaccini-summary-latest.csv"
+
+    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[df["date"] >= "2021-01-14", "vaccine"] = "Moderna, Pfizer/BioNTech"
 
     df.to_csv("automations/output/Italy.csv", index=False)
 

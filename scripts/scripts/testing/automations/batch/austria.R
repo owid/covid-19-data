@@ -19,9 +19,6 @@ df[, `Source URL` := "https://www.data.gv.at/katalog/dataset/846448a5-a26e-4297-
 df[, `Source label` := "Federal Ministry for Social Affairs, Health, Care and Consumer Protection"]
 df[, Notes := NA_character_]
 
-# ggplot(data = df[Date >= "2020-12-01"], aes(x = Date, y=`Cumulative total`)) + geom_line() + geom_point()
-stop("Check if cumulative tests in Austria are fixed.")
-
 setorder(df, -Date)
 
 fwrite(df, "automated_sheets/Austria.csv")

@@ -11,12 +11,16 @@ def main():
     data = json.loads(requests.get(url).content)
 
     total_vaccinations = data["features"][0]["attributes"]["Vacinados_Ac"]
+    people_vaccinated = data["features"][0]["attributes"]["Inoculacao1_Ac"]
+    people_fully_vaccinated = data["features"][0]["attributes"]["Inoculacao2_Ac"]
 
     date = str(datetime.datetime.now(pytz.timezone("Europe/Lisbon")).date())
 
     vaxutils.increment(
         location="Portugal",
         total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/",
         vaccine="Pfizer/BioNTech"

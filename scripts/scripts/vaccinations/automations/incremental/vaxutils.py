@@ -43,6 +43,8 @@ def increment(
     elif date == prev["date"].max():
         df = prev.copy()
         df.loc[df["date"] == date, "total_vaccinations"] = total_vaccinations
+        df.loc[df["date"] == date, "people_vaccinated"] = people_vaccinated
+        df.loc[df["date"] == date, "people_fully_vaccinated"] = people_fully_vaccinated
         df.loc[df["date"] == date, "source_url"] = source_url
 
     else:
