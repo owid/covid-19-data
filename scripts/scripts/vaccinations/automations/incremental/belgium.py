@@ -5,8 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import vaxutils
 
-def main():
 
+def main():
     # Options for Chrome WebDriver
     op = Options()
     op.add_argument("--headless")
@@ -37,7 +37,7 @@ def main():
         location="Belgium",
         total_vaccinations=total_vaccinations,
         people_vaccinated=people_vaccinated,
-	people_fully_vaccinated=people_fully_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
         vaccine="Moderna, Pfizer/BioNTech"
