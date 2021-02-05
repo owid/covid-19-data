@@ -15,7 +15,7 @@ def main():
         "LongName": "location",
         "Administered_Cumulative": "total_vaccinations",
         "Admin_Dose_1_Cumulative": "people_vaccinated",
-        "Admin_Dose_2_Cumulative": "people_fully_vaccinatede",
+        "Admin_Dose_2_Cumulative": "people_fully_vaccinated",
         "Date": "date"  
     })
 
