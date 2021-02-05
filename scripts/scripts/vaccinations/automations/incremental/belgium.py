@@ -22,6 +22,7 @@ def main():
                 doseArr.append(elem.find_element_by_class_name("valueLabel").text)
     total_vaccinations = vaxutils.clean_count(doseArr[0]) + vaxutils.clean_count(doseArr[1])
     people_vaccinated = vaxutils.clean_count(doseArr[0])
+    people_fully_vaccinated = vaxutils.clean_count(doseArr[1])
 
     regex = r"numbers of  (.*?),"
     dateStr = re.findall(regex, page_source)
@@ -36,6 +37,7 @@ def main():
         location="Belgium",
         total_vaccinations=total_vaccinations,
         people_vaccinated=people_vaccinated,
+	people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
         vaccine="Moderna, Pfizer/BioNTech"
