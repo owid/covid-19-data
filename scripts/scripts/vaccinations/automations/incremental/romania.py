@@ -1,6 +1,7 @@
-import re
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
+import tabula
 import vaxutils
 
 
@@ -20,17 +21,20 @@ def main():
 
     date = soup.find(class_="post-date").find(class_="meta-text").text.strip()
     date = vaxutils.clean_date(date, "%b %d, %Y")
-    
-    main_text = soup.find(class_="entry-content-text").text
 
-    people_fully_vaccinated = re.findall(r"[\d.]+ persoane vaccinate cu 2 doz", main_text)[1]
-    people_fully_vaccinated = people_fully_vaccinated.replace(" persoane vaccinate cu 2 doz", "")
-    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
+    url = soup.find(class_="entry-content-text").find_all("a")[-1]["href"]
 
-    people_vaccinated = re.findall(r"[\d.]+ persoane vaccinate cu 1 doz", main_text)[1]
-    people_vaccinated = people_vaccinated.replace(" persoane vaccinate cu 1 doz", "")
-    people_vaccinated = vaxutils.clean_count(people_vaccinated) + people_fully_vaccinated
+    kwargs = {'pandas_options': {'dtype': str , 'header': None}}
+    dfs_from_pdf = tabula.read_pdf(url, pages="all", **kwargs)
+    df = dfs_from_pdf[0]
 
+    values = df[df[0] == "Total"].dropna()[2].str.split(" ")
+    values = [vaxutils.clean_count(val) for val in pd.core.common.flatten(values)]
+    values = sorted(values)
+    assert len(values) == 3
+
+    people_fully_vaccinated = values[0]
+    people_vaccinated = values[2]
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
     vaxutils.increment(
