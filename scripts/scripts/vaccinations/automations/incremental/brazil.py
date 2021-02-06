@@ -17,12 +17,16 @@ def main():
         url = "https://datastudio.google.com/embed/u/0/reporting/2f2537fa-ac23-4f08-8741-794cdbedca03/page/CPFTB"
         driver.get(url)
         time.sleep(5)
-        for elem in driver.find_elements_by_class_name("kpimetric"):
-            if "Vacinados" in elem.text:
-                total_vaccinations = elem.find_element_by_class_name("valueLabel").text
 
-    total_vaccinations = vaxutils.clean_count(total_vaccinations)
-    people_vaccinated = total_vaccinations
+        for elem in driver.find_elements_by_class_name("kpimetric"):
+            if "1ª Dose" in elem.text:
+                people_vaccinated = elem.find_element_by_class_name("valueLabel").text
+            elif "2ª Dose" in elem.text:
+                people_fully_vaccinated = elem.find_element_by_class_name("valueLabel").text
+
+    people_vaccinated = vaxutils.clean_count(people_vaccinated)
+    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
+    total_vaccinations = people_vaccinated + people_fully_vaccinated
 
     date = str(datetime.datetime.now(pytz.timezone("Brazil/East")).date())
 
@@ -30,6 +34,7 @@ def main():
         location="Brazil",
         total_vaccinations=total_vaccinations,
         people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://coronavirusbra1.github.io/",
         vaccine="Oxford/AstraZeneca, Sinovac"
