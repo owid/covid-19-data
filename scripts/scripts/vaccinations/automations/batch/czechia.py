@@ -1,5 +1,10 @@
 import pandas as pd
 
+vaccine_mapping = {
+    "Comirnaty": "Pfizer/BioNTech",
+    "COVID-19 Vaccine Moderna": "Moderna",
+    # "AstraZeneca Custom Name (TODO)": "Oxford/AstraZeneca",
+}
 
 def main():
 
@@ -15,11 +20,8 @@ def main():
     # IMPORTANT: If a new vaccine is added, see if it requires a single dose
     # or two doses. If it's a single-dose one, make sure to fix the calculation
     # of `people_fully_vaccinated` and an assertion about basic arithmetics
-    assert set(df["vakcina"].unique()) == {"Comirnaty", "COVID-19 Vaccine Moderna"}
-    df = df.replace({
-        "Comirnaty": "Pfizer/BioNTech",
-        "COVID-19 Vaccine Moderna": "Moderna",
-    })
+    assert set(df["vakcina"].unique()) == set(vaccine_mapping.keys())
+    df = df.replace(vaccine_mapping)
 
     df = df.groupby("datum").agg(
         vaccine=("vakcina", lambda x: ", ".join(sorted(set(x)))),
