@@ -27,6 +27,7 @@ def main():
     total_vaccinations = total_vaccinations
 
     date = datetime.date.today() - datetime.timedelta(days=1)
+    date = str(date)
 
     vaxutils.increment(
         location="Western Sahara",
