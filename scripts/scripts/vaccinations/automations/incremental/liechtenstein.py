@@ -14,6 +14,7 @@ def main():
     df = pd.read_html(str(table))[0]
 
     total_vaccinations = df.loc[df["per 100 inhabitants"] == "Administered vaccines", "absolute numbers"].values[0]
+    total_vaccinations = int(total_vaccinations)
 
     date = soup.find(class_="detail-card__source").find("span").text
     date = re.search(r"[\d\.]{10}", date).group(0)
