@@ -30,12 +30,11 @@ def main():
 
     values = df[df[0] == "Total"].dropna()[2].str.split(" ")
     values = [vaxutils.clean_count(val) for val in pd.core.common.flatten(values)]
-    values = sorted(values)
-    assert len(values) == 3
+    assert len(values) == 2
 
-    people_fully_vaccinated = values[0]
-    people_vaccinated = values[2]
-    total_vaccinations = people_vaccinated + people_fully_vaccinated
+    people_fully_vaccinated = min(values)
+    people_vaccinated = max(values)
+    total_vaccinations = 2 * people_fully_vaccinated + people_vaccinated
 
     vaxutils.increment(
         location="Romania",
