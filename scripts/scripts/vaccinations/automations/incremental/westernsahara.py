@@ -26,7 +26,7 @@ def main():
     people_vaccinated = people_vaccinated
     total_vaccinations = total_vaccinations
 
-    date = datetime.date.today() - datetime.timedelta(days=1)
+    date = datetime.date.today()
     date = str(date)
 
     vaxutils.increment(
