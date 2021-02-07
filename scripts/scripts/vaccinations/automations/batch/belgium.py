@@ -1,15 +1,17 @@
+import os
 import pandas as pd
 
 
 def main():
 
-    url = "https://github.com/bmesuere/covid/raw/master/data/VACC.csv"
-    df = pd.read_csv(url, usecols=["Date", "PartlyVaccinated", "FullyVaccinated"])
+    url = "https://covid-vaccinatie.be/api/v1/administered.csv"
+    os.system(f"curl -O {url} -s")
+
+    df = pd.read_csv("administered.csv", usecols=["date", "first_dose", "second_dose"])
 
     df = df.rename(columns={
-        "Date": "date",
-        "PartlyVaccinated": "people_vaccinated",
-        "FullyVaccinated": "people_fully_vaccinated"
+        "first_dose": "people_vaccinated",
+        "second_dose": "people_fully_vaccinated"
     })
 
     df = df.groupby("date", as_index=False).sum().sort_values("date")
@@ -19,9 +21,12 @@ def main():
 
     df.loc[:, "location"] = "Belgium"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
-    df.loc[:, "source_url"] = "https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB"
+    df.loc[df["date"] >= "2021-01-17", "vaccine"] = "Moderna, Pfizer/BioNTech"
+    df.loc[:, "source_url"] = "https://covid-vaccinatie.be/en"
 
     df.to_csv("automations/output/Belgium.csv", index=False)
+
+    os.remove("administered.csv")
 
 
 if __name__ == '__main__':

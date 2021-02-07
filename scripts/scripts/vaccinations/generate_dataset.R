@@ -107,6 +107,7 @@ process_location <- function(location_name) {
     if (is_automated) {
         filepath <- sprintf("automations/output/%s.csv", location_name)
         df <- data.table(suppressMessages(read_csv(filepath)))
+        stopifnot(all(names(df) %in% c("location", "source_url", "vaccine", "date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")))
     } else {
         retry(
             expr = {df <- suppressMessages(read_sheet(GSHEET_KEY, sheet = location_name))},
@@ -122,8 +123,8 @@ process_location <- function(location_name) {
     stopifnot(max(df$date) <= today())
     stopifnot(min(df$date) >= "2020-12-01")
 
-    # Early updates: exclude current day data to avoid incompleteness
-    if (hour(now(tzone = "CET")) < 16) df <- df[date < today()]
+    # Only report up to previous day to avoid partial reporting
+    df <- df[date < today()]
 
     # Default columns for second doses
     if (!"people_vaccinated" %in% names(df)) df[, people_vaccinated := NA_integer_]

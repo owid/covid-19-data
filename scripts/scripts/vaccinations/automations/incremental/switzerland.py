@@ -7,7 +7,7 @@ import vaxutils
 
 def main():
 
-    url = "https://www.covid19.admin.ch/en/epidemiologic/vacc-doses"
+    url = "https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=CH"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
     table = soup.find(class_="geo-unit-vacc-doses-data__table")

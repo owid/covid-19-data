@@ -141,16 +141,25 @@ fi
 # =====================================================================
 # Swedish Public Health Agency
 
-# echo "Generating Swedish Public Health Agency file..."
-# run_python 'import sweden; sweden.generate_dataset()'
-# if has_changed './scripts/grapher/COVID-19 - Swedish Public Health Agency.csv'; then
-#   git add .
-#   git commit -m "Automated Swedish Public Health Agency update"
-#   git push
-#   run_python 'import sweden; sweden.update_db()'
-# else
-#   echo "Swedish Public Health Agency export is up to date"
-# fi
+# Attempt to download data
+run_python 'import sweden; sweden.download_data()'
+
+# If there are any unstaged changes in the repo, then one of
+# the CSVs has changed, and we need to run the update script.
+if has_changed './scripts/input/sweden/sweden_deaths_per_day.csv'; then
+  echo "Generating Swedish Public Health Agency dataset..."
+  run_python 'import sweden; sweden.generate_dataset()'
+  git add .
+  git commit -m "Automated Swedish Public Health Agency update"
+  git push
+else
+  echo "Swedish Public Health Agency export is up to date"
+fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+run_python 'import sweden; sweden.update_db()'
 
 # =====================================================================
 # Google Mobility

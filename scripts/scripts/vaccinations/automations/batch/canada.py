@@ -4,10 +4,10 @@ import pandas as pd
 def get_coverage():
 
     url = "https://health-infobase.canada.ca/src/data/covidLive/vaccination-coverage-map.csv"
-    df = pd.read_csv(url, usecols=["week_end", "numtotal_atleast1dose", "numtotal_2doses", "prname"])
-    df = df[df["prname"] == "Canada"]
+    df = pd.read_csv(url, usecols=["week_end", "numtotal_atleast1dose", "numtotal_2doses", "prename"])
+    df = df[df["prename"] == "Canada"]
     df = df.rename(columns={
-        "prname": "location",
+        "prename": "location",
         "week_end": "date",
         "numtotal_atleast1dose": "people_vaccinated",
         "numtotal_2doses": "people_fully_vaccinated",

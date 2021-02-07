@@ -1,21 +1,24 @@
-location,date,total_vaccinations,people_vaccinated,vaccine,source_url
-Brazil,2021-01-16,0,0,Sinovac,https://g1.globo.com/sp/sao-paulo/noticia/2021/01/17/apos-aprovacao-da-anvisa-governo-de-sp-aplica-1a-dose-da-coronavac-antes-do-inicio-do-plano-nacional-de-vacinacao.ghtml
-Brazil,2021-01-17,112,112,Sinovac,https://g1.globo.com/sp/sao-paulo/noticia/2021/01/17/apos-aprovacao-da-anvisa-governo-de-sp-aplica-1a-dose-da-coronavac-antes-do-inicio-do-plano-nacional-de-vacinacao.ghtml
-Brazil,2021-01-18,1109,1109,Sinovac,https://coronavirusbra1.github.io/
-Brazil,2021-01-19,11470,11470,Sinovac,https://coronavirusbra1.github.io/
-Brazil,2021-01-20,28543,28543,Sinovac,https://coronavirusbra1.github.io/
-Brazil,2021-01-21,136519,136519,Sinovac,https://coronavirusbra1.github.io/
-Brazil,2021-01-22,245877,245877,Sinovac,https://coronavirusbra1.github.io/
-Brazil,2021-01-23,537774,537774,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-24,604722,604722,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-25,700608,700608,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-26,848883,848883,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-27,1129885,1129885,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-28,1450900,1450900,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-29,1668032,1656851,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-30,2003211,1923813,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-01-31,2074059,2046523,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-02-01,2124307,2107624,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-02-02,2292551,2292551,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-02-03,2521704,2521704,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
-Brazil,2021-02-04,2802134,2802134,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/
+location,date,total_vaccinations,people_vaccinated,vaccine,source_url,people_fully_vaccinated
+Brazil,2021-01-16,0,0,Sinovac,https://g1.globo.com/sp/sao-paulo/noticia/2021/01/17/apos-aprovacao-da-anvisa-governo-de-sp-aplica-1a-dose-da-coronavac-antes-do-inicio-do-plano-nacional-de-vacinacao.ghtml,
+Brazil,2021-01-17,112,112,Sinovac,https://g1.globo.com/sp/sao-paulo/noticia/2021/01/17/apos-aprovacao-da-anvisa-governo-de-sp-aplica-1a-dose-da-coronavac-antes-do-inicio-do-plano-nacional-de-vacinacao.ghtml,
+Brazil,2021-01-18,1109,1109,Sinovac,https://coronavirusbra1.github.io/,
+Brazil,2021-01-19,11470,11470,Sinovac,https://coronavirusbra1.github.io/,
+Brazil,2021-01-20,28543,28543,Sinovac,https://coronavirusbra1.github.io/,
+Brazil,2021-01-21,136519,136519,Sinovac,https://coronavirusbra1.github.io/,
+Brazil,2021-01-22,245877,245877,Sinovac,https://coronavirusbra1.github.io/,
+Brazil,2021-01-23,537774,537774,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-24,604722,604722,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-25,700608,700608,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-26,848883,848883,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-27,1129885,1129885,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-28,1450900,1450900,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-29,1668032,1656851,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-30,2003211,1923813,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-01-31,2074059,2046523,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-02-01,2124307,2107624,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-02-02,2292551,2292551,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-02-03,2521704,2521704,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-02-04,3073057,3073057,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-02-05,3074906,3074906,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,
+Brazil,2021-02-06,3401383,3399421,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,1962.0
+Brazil,2021-02-07,3553681,3534004,"Oxford/AstraZeneca, Sinovac",https://coronavirusbra1.github.io/,19677.0

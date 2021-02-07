@@ -2,8 +2,9 @@ import requests
 import pandas as pd
 import vaxutils
 
+
 def main():
-    
+
     url = "https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=vaccination_data"
     data = requests.get(url).json()
     data = data["vaccination_data"]
@@ -33,6 +34,7 @@ def main():
         source_url="https://covid.cdc.gov/covid-data-tracker/#vaccinations",
         vaccine="Moderna, Pfizer/BioNTech"
     )
+
 
 if __name__ == "__main__":
     main()

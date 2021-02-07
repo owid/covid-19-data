@@ -1,7 +1,8 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-England,2020-12-20,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,570199,570199,
-England,2020-12-27,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,835475,835475,
-England,2021-01-03,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,1182209,1161742,20467
+England,2020-12-13,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,55295,55295,
+England,2020-12-20,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,573306,573306,
+England,2020-12-27,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,840349,840349,
+England,2021-01-03,Pfizer/BioNTech,https://coronavirus.data.gov.uk/details/healthcare,1189212,1168717,20495
 England,2021-01-10,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,2333764,1959151,374613
 England,2021-01-11,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,2474205,2080280,393925
 England,2021-01-12,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,2661850,2254556,407294
@@ -26,3 +27,6 @@ England,2021-01-30,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.dat
 England,2021-01-31,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,8543262,8082355,460907
 England,2021-02-01,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,8825371,8362868,462503
 England,2021-02-02,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,9126930,8663041,463889
+England,2021-02-03,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,9508006,9041835,466171
+England,2021-02-04,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,9899043,9430261,468782
+England,2021-02-05,"Oxford/AstraZeneca, Pfizer/BioNTech",https://coronavirus.data.gov.uk/details/healthcare,10302620,9831897,470723

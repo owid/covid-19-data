@@ -1,25 +1,40 @@
 date,people_vaccinated,people_fully_vaccinated,total_vaccinations,location,vaccine,source_url
-2020-12-28,298,0,298,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2020-12-29,299,0,299,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2020-12-30,766,0,766,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2020-12-31,775,0,775,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-01,784,0,784,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-04,785,0,785,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-05,2283,0,2283,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-06,5916,0,5916,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-07,13757,0,13757,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-08,22723,0,22723,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-09,25830,0,25830,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-10,26223,0,26223,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-11,31573,0,31573,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-12,46271,0,46271,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-13,65822,0,65822,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-14,85996,0,85996,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-15,106885,0,106885,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-16,111552,0,111552,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-17,114298,0,114298,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-18,123408,109,123517,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-19,137068,211,137279,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-20,151080,295,151375,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-21,163410,373,163783,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
-2021-01-22,173899,408,174307,Belgium,Pfizer/BioNTech,https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
+2020-12-28,298,0,298,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2020-12-29,299,0,299,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2020-12-30,778,0,778,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2020-12-31,787,0,787,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-01,794,0,794,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-04,795,0,795,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-05,2354,0,2354,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-06,6218,0,6218,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-07,14340,0,14340,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-08,23484,0,23484,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-09,26671,0,26671,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-10,27067,0,27067,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-11,32518,0,32518,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-12,47987,0,47987,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-13,68572,0,68572,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-14,91110,0,91110,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-15,113563,0,113563,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-16,118543,0,118543,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
+2021-01-17,121674,0,121674,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-18,131979,109,132088,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-19,150335,290,150625,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-20,170192,712,170904,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-21,199444,712,200156,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-22,228030,743,228773,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-23,235816,750,236566,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-24,237661,750,238411,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-25,248163,750,248913,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-26,258186,2108,260294,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-27,270994,5208,276202,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-28,285223,12079,297302,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-29,295847,19674,315521,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-30,297382,22313,319695,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-01-31,297946,22619,320565,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-02-01,301533,25864,327397,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-02-02,310140,37253,347393,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-02-03,317651,53343,370994,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-02-04,323239,70782,394021,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-02-05,327026,85915,412941,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+2021-02-06,327531,88944,416475,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
