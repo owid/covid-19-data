@@ -123,8 +123,8 @@ process_location <- function(location_name) {
     stopifnot(max(df$date) <= today())
     stopifnot(min(df$date) >= "2020-12-01")
 
-    # Early updates: exclude current day data to avoid incompleteness
-    if (hour(now(tzone = "CET")) < 16) df <- df[date < today()]
+    # Only report up to previous day to avoid partial reporting
+    df <- df[date < today()]
 
     # Default columns for second doses
     if (!"people_vaccinated" %in% names(df)) df[, people_vaccinated := NA_integer_]
