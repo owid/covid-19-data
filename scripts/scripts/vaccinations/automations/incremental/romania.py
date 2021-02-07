@@ -33,8 +33,8 @@ def main():
     assert len(values) == 2
 
     people_fully_vaccinated = min(values)
-    people_vaccinated = max(values)
-    total_vaccinations = 2 * people_fully_vaccinated + people_vaccinated
+    people_vaccinated = sum(values)
+    total_vaccinations = people_fully_vaccinated + people_vaccinated
 
     vaxutils.increment(
         location="Romania",
