@@ -56,7 +56,7 @@ def main():
     df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
 
     df.loc[:, "location"] = "Norway"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[:, "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     df.loc[:, "source_url"] = url
 
     df.to_csv("automations/output/Norway.csv", index=False)

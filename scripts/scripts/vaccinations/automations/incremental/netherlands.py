@@ -21,7 +21,7 @@ def main():
         total_vaccinations=total_vaccinations,
         date=date,
         source_url="https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties",
-        vaccine="Moderna, Pfizer/BioNTech"
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     )
 
 

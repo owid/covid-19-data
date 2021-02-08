@@ -35,7 +35,7 @@ def main():
     df = df.drop(columns=["1.pote", "2.pote"])
 
     df.loc[:, "location"] = "Latvia"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[:, "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     df.loc[:, "source_url"] = url
 
     df.to_csv("automations/output/Latvia.csv", index=False)

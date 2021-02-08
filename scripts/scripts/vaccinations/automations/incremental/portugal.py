@@ -23,7 +23,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/",
-        vaccine="Pfizer/BioNTech"
+        vaccine="Moderna, Pfizer/BioNTech"
     )
 
 
