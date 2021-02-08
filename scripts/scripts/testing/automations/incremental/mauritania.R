@@ -17,6 +17,7 @@ process_article <- function(url) {
     if (str_detect(url, "/2\\d{5}-")) date <- str_extract(url, "2\\d{5}") %>% ymd()
     if (str_detect(url, "/\\d{4}2\\d-")) date <- str_extract(url, "/\\d{4}2\\d-") %>% dmy()
     if (str_detect(url, "/2\\d{6}-")) date <- str_extract(url, "2\\d{6}") %>% str_sub(c(1, 6), c(4, 7)) %>% str_flatten() %>% ymd()
+    if (str_detect(url, "\\d+-\\d+-202\\d")) date <- str_extract(url, "\\d+-\\d+-202\\d") %>% dmy()
     stopifnot(!is.na(date))
 
     count <- pdf_text("tmp/tmp.pdf") %>%
