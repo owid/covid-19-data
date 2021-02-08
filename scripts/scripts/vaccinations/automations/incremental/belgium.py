@@ -1,48 +1,34 @@
-import datetime
-import re
-import time
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import vaxutils
+import os
+import pandas as pd
 
 
 def main():
-    # Options for Chrome WebDriver
-    op = Options()
-    op.add_argument("--headless")
 
-    with webdriver.Chrome(options=op) as driver:
-        doseArr = []
-        url = "https://datastudio.google.com/embed/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB"
-        driver.get(url)
-        time.sleep(10)
-        page_source = driver.page_source
-        for elem in driver.find_elements_by_class_name("kpimetric"):
-            if "%" not in str(elem.find_element_by_class_name("valueLabel").text):
-                doseArr.append(elem.find_element_by_class_name("valueLabel").text)
-    total_vaccinations = vaxutils.clean_count(doseArr[0]) + vaxutils.clean_count(doseArr[1])
-    people_vaccinated = vaxutils.clean_count(doseArr[0])
-    people_fully_vaccinated = vaxutils.clean_count(doseArr[1])
+    url = "https://covid-vaccinatie.be/api/v1/administered.csv"
+    os.system(f"curl -O {url} -s")
 
-    regex = r"numbers of  (.*?),"
-    dateStr = re.findall(regex, page_source)
-    dateStr = dateStr[0]
-    date_month = datetime.datetime.strptime(str(dateStr.split()[1]), "%B")
-    month_number = date_month.month
+    df = pd.read_csv("administered.csv", usecols=["date", "first_dose", "second_dose"])
 
-    date = str(month_number) + "-" + str(dateStr.split()[0]) + "-" + str(datetime.date.today().year)
-    date = vaxutils.clean_date(date, "%m-%d-%Y")
+    df = df.rename(columns={
+        "first_dose": "people_vaccinated",
+        "second_dose": "people_fully_vaccinated"
+    })
 
-    vaxutils.increment(
-        location="Belgium",
-        total_vaccinations=total_vaccinations,
-        people_vaccinated=people_vaccinated,
-        people_fully_vaccinated=people_fully_vaccinated,
-        date=date,
-        source_url=url,
-        vaccine="Moderna, Pfizer/BioNTech"
-    )
+    df = df.groupby("date", as_index=False).sum().sort_values("date")
+    df["people_vaccinated"] = df["people_vaccinated"].cumsum()
+    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].cumsum()
+    df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
+
+    df.loc[:, "location"] = "Belgium"
+    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[df["date"] >= "2021-01-17", "vaccine"] = "Moderna, Pfizer/BioNTech"
+    df.loc[df["date"] >= "2021-02-07", "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+    df.loc[:, "source_url"] = "https://covid-vaccinatie.be/en"
+
+    df.to_csv("automations/output/Belgium.csv", index=False)
+
+    os.remove("administered.csv")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
