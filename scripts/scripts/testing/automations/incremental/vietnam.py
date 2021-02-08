@@ -58,19 +58,19 @@ def _get_newsletter_urls() -> List[dict]:
     update newsletter.
     """
     domain = 'http://vncdc.gov.vn'
-    url = os.path.join(domain, 'vi/search?page=1&keyword=COVID-19')
+    url = os.path.join(domain, 'tim-kiem.html?q=COVID-19')
     res = requests.get(url)
     soup = BeautifulSoup(res.content, 'html.parser')
     records = []
-    list_h2_headings = soup.find('div', {'class': 'lotusWidgetBody1'}).find_all('h2')[:10]
-    for h2 in list_h2_headings:
-        regex_res = re.search(r'covid-19', h2.text, re.IGNORECASE)
+    list_h3_headings = soup.find('div', {'class': 'list_news_v2'}).find_all('h3')
+    for h3 in list_h3_headings:
+        regex_res = re.search(r'covid-19', h3.text, re.IGNORECASE)
         if regex_res:
-            date_regex_res = re.search(r"[\d/]{8,10}", h2.text.strip())
+            date_regex_res = re.search(r"[\d/]{8,10}", h3.text.strip())
             if date_regex_res:
                 dd, mm, yyyy = re.findall(r"\d+", date_regex_res.group(0))
                 date = datetime.datetime(int(yyyy), int(mm), int(dd))
-                url = f"{domain}{h2.find('a').get('href')}"
+                url = f"{domain}{h3.find('a').get('href')}"
                 # print(date)
                 records.append({'url': url, 'date': date})
     return records
@@ -83,7 +83,7 @@ def _extract_samples_tested(url: str) -> int:
     samples_cumul = None
     res = requests.get(url)
     soup = BeautifulSoup(res.content, 'html.parser')
-    text = soup.find('div', {'class': 'detail_new'}).text
+    text = soup.find('div', {'class': 'content_news'}).text
     regex1 = re.compile(r"([\d,\.]+) xét nghiệm Realtime RT-PCR", re.IGNORECASE)
     regex2 = re.compile(r"Tổng số mẫu đã xét nghiệm cộng dồn:?\s*([\d,\.]+)", re.IGNORECASE)
     regex3 = re.compile(r"Tổng số mẫu bệnh phẩm đã xét nghiệm cộng dồn:?\s*([\d,\.]+)", re.IGNORECASE)
