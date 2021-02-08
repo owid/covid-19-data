@@ -58,7 +58,7 @@ setnames(confirmed_cases, c("date", "location"), c("Date", "Country"))
 confirmed_cases[, Date := ymd(Date)]
 
 # Exclude countries from positive rate calculations
-positive_rate_exclusions <- c("Ecuador", "Brazil", "Costa Rica")
+positive_rate_exclusions <- c("Brazil", "Costa Rica")
 
 # Process each country's data
 parse_country <- function(sheet_name) {
