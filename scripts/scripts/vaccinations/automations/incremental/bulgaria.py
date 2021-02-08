@@ -18,7 +18,7 @@ def main():
     df = df[df["Област"] == "Общо"]
 
     total_vaccinations = int(df["Общо поставени дози"].values[0])
-    people_fully_vaccinated = int(df["Общо ваксинирани лица с втора доза"].values[0])
+    people_fully_vaccinated = int(df["Общо ваксинирани лицас втора доза"].values[0])
     people_vaccinated = total_vaccinations - people_fully_vaccinated
 
     date = str(datetime.datetime.now(pytz.timezone("Europe/Sofia")).date() - datetime.timedelta(days=1))
