@@ -1,7 +1,7 @@
 import pandas as pd
 
-def main():
 
+def get_country_data():
     df = pd.read_csv(
         "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-summary-latest.csv",
         usecols=["data_somministrazione", "area", "totale", "prima_dose", "seconda_dose"]
@@ -31,5 +31,23 @@ def main():
 
     df.to_csv("automations/output/Italy.csv", index=False)
 
+
+def get_vaccine_data():
+
+    url = "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
+    df = pd.read_csv(url, usecols=["data_somministrazione", "fornitore", "prima_dose", "seconda_dose"])
+    df["total_vaccinations"] = df["prima_dose"] + df["seconda_dose"]
+    df = (
+        df.groupby(["data_somministrazione", "fornitore"], as_index=False)["total_vaccinations"]
+        .sum()
+        .rename(columns={"data_somministrazione": "date", "fornitore": "vaccine"})
+        .sort_values("date")
+    )
+    df["total_vaccinations"] = df.groupby("vaccine")["total_vaccinations"].cumsum()
+    df["location"] = "Italy"
+    df.to_csv("automations/output/by_vaccine/Italy.csv", index=False)
+
+
 if __name__ == "__main__":
-    main()
+    get_country_data()
+    get_vaccine_data()
