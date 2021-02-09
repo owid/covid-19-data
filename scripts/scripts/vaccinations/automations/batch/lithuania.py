@@ -45,6 +45,7 @@ def main():
 
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
     df.loc[df["date"] >= "2021-01-13", "vaccine"] = "Moderna, Pfizer/BioNTech"
+    df.loc[df["date"] >= "2021-02-07", "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 
     df.to_csv("automations/output/Lithuania.csv", index=False)
 

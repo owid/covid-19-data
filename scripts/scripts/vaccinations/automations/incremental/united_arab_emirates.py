@@ -16,7 +16,7 @@ def main():
 
     people_vaccinated = total_vaccinations - people_fully_vaccinated
 
-    date = str(datetime.datetime.now(pytz.timezone("Asia/Dubai")).date())
+    date = str(datetime.datetime.now(pytz.timezone("Asia/Dubai")).date() - datetime.timedelta(days=1))
 
     vaxutils.increment(
         location="United Arab Emirates",
@@ -25,7 +25,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
-        vaccine="Pfizer/BioNTech, Sinopharm"
+        vaccine="Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinopharm/Wuhan, Sputnik V"
     )
 
 

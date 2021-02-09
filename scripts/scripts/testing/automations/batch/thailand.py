@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-SOURCE_URL = "https://www3.dmsc.moph.go.th/"
+SOURCE_URL = "https://service.dmsc.moph.go.th/labscovid19/"
 
 
 def main():
@@ -32,8 +32,8 @@ def main():
         command_result = driver.execute("send_command", params)
 
         driver.get(SOURCE_URL)
-        time.sleep(10)
-        links = driver.find_elements_by_css_selector(".app-body .bg-white .container center a")
+        time.sleep(5)
+        links = driver.find_elements_by_css_selector(".services a")
         for link in links:
             if "Raw Data" in link.text:
                 nextcloud = link.get_attribute("href")

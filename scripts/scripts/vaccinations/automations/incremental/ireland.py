@@ -1,3 +1,4 @@
+
 import datetime
 import json
 import requests
@@ -24,7 +25,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://covid19ireland-geohive.hub.arcgis.com/",
-        vaccine="Pfizer/BioNTech"
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     )
 
 

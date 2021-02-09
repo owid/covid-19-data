@@ -21,7 +21,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/",
-        vaccine="Pfizer/BioNTech"
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     )
 
 

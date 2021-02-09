@@ -29,7 +29,7 @@ def main():
         total_vaccinations=total_vaccinations,
         date=date,
         source_url=url,
-        vaccine="Oxford/AstraZeneca, Sinopharm"
+        vaccine="Oxford/AstraZeneca, Sinopharm/Beijing"
     )
 
     os.remove("morocco.pdf")

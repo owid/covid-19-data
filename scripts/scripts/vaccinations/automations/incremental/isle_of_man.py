@@ -39,7 +39,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://covid19.gov.im/general-information/covid-19-vaccination-statistics/",
-        vaccine="Pfizer/BioNTech"
+        vaccine="Oxford/AstraZeneca, Pfizer/BioNTech"
     )
 
 
