@@ -33,7 +33,6 @@ def main():
     # the following holds only because all vaccines used so far require two doses
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
 
-
     df = df.rename(columns={
          "datum": "date",
     })
