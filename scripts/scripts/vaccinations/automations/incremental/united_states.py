@@ -1,9 +1,10 @@
 import requests
+from glob import glob
 import pandas as pd
 import vaxutils
 
 
-def main():
+def get_country_data():
 
     url = "https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=vaccination_data"
     data = requests.get(url).json()
@@ -36,5 +37,28 @@ def main():
     )
 
 
+def get_vaccine_data():
+    dfs = []
+    for file in glob("us_states/input/cdc_data_*.csv"):
+        try:
+            df = pd.read_csv(file, usecols=[
+                "Date", "LongName", "Administered_Pfizer", "Administered_Moderna", "Administered_Unk_Manuf"
+            ])
+            dfs.append(df)
+        except:
+            pass
+    df = pd.concat(dfs)
+    df = df[df.LongName == "United States"].sort_values("Date").rename(columns={
+        "Date": "date",
+        "LongName": "location",
+        "Administered_Pfizer": "Pfizer/BioNTech",
+        "Administered_Moderna": "Moderna",
+        "Administered_Unk_Manuf": "Other",
+    })
+    df = df.melt(["date", "location"], var_name="vaccine", value_name="total_vaccinations")
+    df.to_csv("automations/output/by_vaccine/United States.csv", index=False)
+
+
 if __name__ == "__main__":
-    main()
+    get_country_data()
+    get_vaccine_data()
