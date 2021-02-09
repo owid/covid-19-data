@@ -34,8 +34,14 @@ def get_country_data():
 
 def get_vaccine_data():
 
+    vaccine_mapping = {
+        "Pfizer/BioNTech": "Pfizer/BioNTech",
+        "Moderna": "Moderna",
+    }
     url = "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
     df = pd.read_csv(url, usecols=["data_somministrazione", "fornitore", "prima_dose", "seconda_dose"])
+    assert set(df["fornitore"].unique()) == set(vaccine_mapping.keys())
+    df = df.replace(vaccine_mapping)
     df["total_vaccinations"] = df["prima_dose"] + df["seconda_dose"]
     df = (
         df.groupby(["data_somministrazione", "fornitore"], as_index=False)["total_vaccinations"]
