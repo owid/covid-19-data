@@ -25,7 +25,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19",
-        vaccine="Pfizer/BioNTech"
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     )
 
 

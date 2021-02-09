@@ -17,7 +17,7 @@ def main():
 
     df.loc[:, "location"] = "Slovenia"
     df.loc[:, "source_url"] = "https://covid-19.sledilnik.org/en/stats"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[:, "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
 
     df.to_csv("automations/output/Slovenia.csv", index=False)
 
