@@ -22,26 +22,25 @@ def main():
     # of `total_vaccinations`
     assert set(df["vakcina"].unique()) == set(vaccine_mapping.keys())
     df = df.replace(vaccine_mapping)
+    df = (
+        df.groupby(["datum", "vakcina", "poradi_davky"])
+        .size().unstack().reset_index()
+        .rename(columns={
+            "datum": "date",
+            "vakcina": "vaccine",
+            1: "people_vaccinated",
+            2: "people_fully_vaccinated",
+        })
+    )
 
-    df = df.groupby(["datum", "vakcina", "poradi_davky"]).size().unstack().reset_index()
-    df = df.groupby("datum").agg(
-        vaccine=("vakcina", lambda x: ", ".join(sorted(set(x)))),
-        people_vaccinated=(1, "sum"),  # 1 means 1st dose
-        people_fully_vaccinated=(2, "sum"),
-    ).reset_index()
+    df["total_vaccinations"] = df["people_vaccinated"].fillna(0) + df["people_fully_vaccinated"].fillna(0)
 
-    # the following holds only because all vaccines used so far require two doses
-    df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
-
-    df = df.rename(columns={
-         "datum": "date",
-    })
     df["date"] = df["date"].astype(str).str.slice(0, 10)
-    df = df.sort_values("date")
+    df = df.sort_values(["date", "vaccine"])
     assert df["date"].min() == "2020-12-27"
 
     for col in ["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]:
-        df[col] = df[col].cumsum().astype(int)
+        df[col] = df.groupby("vaccine", as_index=False)[col].cumsum()
 
     df.loc[:, "location"] = "Czechia"
     df.loc[:, "source_url"] = source_url
