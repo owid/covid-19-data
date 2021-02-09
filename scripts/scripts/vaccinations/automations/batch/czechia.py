@@ -23,6 +23,13 @@ def main():
     assert set(df["vakcina"].unique()) == set(vaccine_mapping.keys())
     df = df.replace(vaccine_mapping)
 
+    # Data by vaccine
+    vax = df.groupby(["datum", "vakcina"], as_index=False).size().sort_values("datum")
+    vax["size"] = vax.groupby("vakcina", as_index=False)["size"].cumsum()
+    vax = vax.rename(columns={"datum": "date", "vakcina": "vaccine", "size": "total_vaccinations"})
+    vax["location"] = "Czechia"
+    vax.to_csv("automations/output/by_vaccine/Czechia.csv", index=False)
+
     df = df.groupby(["datum", "vakcina", "poradi_davky"]).size().unstack().reset_index()
     df = df.groupby("datum").agg(
         vaccine=("vakcina", lambda x: ", ".join(sorted(set(x)))),
