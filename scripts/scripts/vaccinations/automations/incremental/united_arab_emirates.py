@@ -25,7 +25,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
-        vaccine="Pfizer/BioNTech, Sinopharm/Beijing, Sinopharm/Wuhan"
+        vaccine="Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinopharm/Wuhan, Sputnik V"
     )
 
 
