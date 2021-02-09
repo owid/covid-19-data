@@ -262,3 +262,5 @@ setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
 generate_grapher_file(copy(vax))
 generate_html(metadata)
+
+source("generate_dataset_by_manufacturer.R")

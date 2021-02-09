@@ -28,7 +28,7 @@ def main():
     vax["size"] = vax.groupby("vakcina", as_index=False)["size"].cumsum()
     vax = vax.rename(columns={"datum": "date", "vakcina": "vaccine", "size": "total_vaccinations"})
     vax["location"] = "Czechia"
-    vax.to_csv("automations/output/by_vaccine/Czechia.csv", index=False)
+    vax.to_csv("automations/output/by_manufacturer/Czechia.csv", index=False)
 
     df = df.groupby(["datum", "vakcina", "poradi_davky"]).size().unstack().reset_index()
     df = df.groupby("datum").agg(

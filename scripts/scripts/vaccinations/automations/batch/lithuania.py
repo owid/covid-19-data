@@ -39,7 +39,7 @@ def main():
     )
     vax["total_vaccinations"] = vax.groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
     vax["location"] = "Lithuania"
-    vax.to_csv("automations/output/by_vaccine/Lithuania.csv", index=False)
+    vax.to_csv("automations/output/by_manufacturer/Lithuania.csv", index=False)
 
     df = (
         df

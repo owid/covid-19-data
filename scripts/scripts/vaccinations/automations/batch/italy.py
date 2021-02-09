@@ -51,7 +51,7 @@ def get_vaccine_data():
     )
     df["total_vaccinations"] = df.groupby("vaccine")["total_vaccinations"].cumsum()
     df["location"] = "Italy"
-    df.to_csv("automations/output/by_vaccine/Italy.csv", index=False)
+    df.to_csv("automations/output/by_manufacturer/Italy.csv", index=False)
 
 
 if __name__ == "__main__":

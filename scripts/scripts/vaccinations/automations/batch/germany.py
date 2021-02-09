@@ -23,7 +23,7 @@ def main():
     vax = df[["date", "Pfizer/BioNTech", "Moderna", "Oxford/AstraZeneca"]]
     vax = vax.melt("date", var_name="vaccine", value_name="total_vaccinations")
     vax["location"] = "Germany"
-    vax.to_csv("automations/output/by_vaccine/Germany.csv", index=False)
+    vax.to_csv("automations/output/by_manufacturer/Germany.csv", index=False)
 
     # Country data
     df = df[["date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]]

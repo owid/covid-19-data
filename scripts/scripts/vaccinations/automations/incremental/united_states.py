@@ -55,7 +55,7 @@ def get_vaccine_data():
         "Administered_Moderna": "Moderna",
     })
     df = df.melt(["date", "location"], var_name="vaccine", value_name="total_vaccinations")
-    df.to_csv("automations/output/by_vaccine/United States.csv", index=False)
+    df.to_csv("automations/output/by_manufacturer/United States.csv", index=False)
 
 
 if __name__ == "__main__":
