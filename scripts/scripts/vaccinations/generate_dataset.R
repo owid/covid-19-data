@@ -7,6 +7,7 @@ library(retry)
 library(rjson)
 library(stringr)
 library(tidyr)
+library(zoo)
 rm(list = ls())
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
@@ -119,7 +120,6 @@ process_location <- function(location_name) {
     }
 
     # Sanity checks
-    stopifnot(length(unique(df$date)) == nrow(df))
     stopifnot(max(df$date) <= today())
     stopifnot(min(df$date) >= "2020-12-01")
 
@@ -130,12 +130,33 @@ process_location <- function(location_name) {
     if (!"people_vaccinated" %in% names(df)) df[, people_vaccinated := NA_integer_]
     if (!"people_fully_vaccinated" %in% names(df)) df[, people_fully_vaccinated := NA_integer_]
 
+    # If the input data is broken down by vaccine, aggregate across all vaccines
+    if (length(unique(df$vaccine)) > 1 & all(!str_detect(df$vaccine, ", "))) {
+        outer_part <- data.table(expand(df, date, vaccine))
+        df <- merge(df, outer_part, all = TRUE, c("date", "vaccine"))
+        setorder(df, "date")
+        df[, total_vaccinations := zoo::na.locf(total_vaccinations, na.rm = FALSE), vaccine]
+        df[, people_vaccinated := zoo::na.locf(people_vaccinated, na.rm = FALSE), vaccine]
+        df[, people_fully_vaccinated := zoo::na.locf(people_fully_vaccinated, na.rm = FALSE), vaccine]
+        df <- df[!is.na(total_vaccinations)]
+        df[, location := min(df$location, na.rm = TRUE)]
+        df[, source_url := min(df$source_url, na.rm = TRUE)]
+        df <- df[, .(
+            total_vaccinations = sum(total_vaccinations, na.rm = T),
+            people_vaccinated = sum(people_vaccinated, na.rm = T),
+            people_fully_vaccinated = sum(people_fully_vaccinated, na.rm = T),
+            vaccine = paste0(sort(unique(vaccine)), collapse = ", "),
+            source_url = min(source_url)
+        ), c("date", "location")]
+    }
+
     df <- df[, c("location", "date", "vaccine", "source_url",
                  "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
 
     df[, date := date(date)]
-
     setorder(df, date)
+    stopifnot(length(unique(df$date)) == nrow(df))
+
     fwrite(df, sprintf("../../../public/data/vaccinations/country_data/%s.csv", location_name), scipen = 999)
     return(df)
 }
@@ -230,12 +251,8 @@ vax <- rbindlist(vax, use.names = TRUE)
 generate_automation_file(metadata)
 metadata <- generate_locations_file(metadata, vax)
 
-# Aggregate across all vaccines
-vax <- vax[, .(
-    total_vaccinations = sum(total_vaccinations),
-    people_vaccinated = sum(people_vaccinated),
-    people_fully_vaccinated = sum(people_fully_vaccinated)
-), c("date", "location")]
+# Reduce to metrics only
+vax <- vax[, c("date", "location", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
 
 # Add regional aggregates
 for (agg_name in names(AGGREGATES)) {
