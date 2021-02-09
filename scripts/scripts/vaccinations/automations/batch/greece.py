@@ -28,7 +28,7 @@ def main():
 
     df.loc[:, "date"] = df["date"].str.slice(0, 10)
     df.loc[:, "location"] = "Greece"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[:, "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     df.loc[:, "source_url"] = "https://www.data.gov.gr/datasets/mdg_emvolio/"
 
     df.to_csv("automations/output/Greece.csv", index=False)

@@ -30,7 +30,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
-        vaccine="Moderna, Pfizer/BioNTech"
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     )
 
 

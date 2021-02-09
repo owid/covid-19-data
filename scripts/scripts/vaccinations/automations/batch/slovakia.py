@@ -9,7 +9,7 @@ def import_iza():
     # Previous data is collected from the repo maintained by IZA:
     # https://github.com/Institut-Zdravotnych-Analyz/covid19-data
     iza = pd.read_csv(
-        "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_Vaccination_Regions.csv",
+        "https://github.com/Institut-Zdravotnych-Analyz/covid19-data/raw/main/Vaccination/OpenData_Slovakia_Vaccination_Regions.csv",
         usecols=["Date", "first_dose", "second_dose"],
         sep=";"
     )
@@ -29,7 +29,7 @@ def import_iza():
     iza["people_fully_vaccinated"] = iza["people_fully_vaccinated"].cumsum()
     iza["total_vaccinations"] = iza["people_vaccinated"] + iza["people_fully_vaccinated"]
     iza["people_fully_vaccinated"] = iza["people_fully_vaccinated"].replace(0, pd.NA)
-    iza["source_url"] = "https://github.com/Institut-Zdravotnych-Analyz/covid19-data/blob/main/OpenData_Slovakia_Vaccination_Regions.csv"
+    iza["source_url"] = "https://github.com/Institut-Zdravotnych-Analyz/covid19-data"
 
     return iza
 
@@ -57,7 +57,7 @@ def main():
     iza = import_iza()
     dashboard = import_dashboard()
 
-    iza = iza[iza["date"] < dashboard["date"].min()]
+    dashboard = dashboard[dashboard["date"] > iza["date"].max()]
     df = pd.concat([iza, dashboard]).sort_values("date")
 
     df.loc[:, "location"] = "Slovakia"

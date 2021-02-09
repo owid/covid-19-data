@@ -11,10 +11,12 @@ def main():
     url = "https://www.exploregov.ky/coronavirus-statistics#vaccine-dashboard"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    regex = r"The total number of COVID-19 vaccines administered to date is ([\d,]+), of which ([\d,]+) represent second doses"
+    total_vaccinations = re.search(r"The total number of COVID-19 vaccines administered to date is ([\d,]+)", soup.text)
+    total_vaccinations = vaxutils.clean_count(total_vaccinations.group(1))
 
-    total_vaccinations = vaxutils.clean_count(re.search(regex, soup.text).group(1))
-    people_fully_vaccinated = vaxutils.clean_count(re.search(regex, soup.text).group(2))
+    people_fully_vaccinated = re.search(r"The total number of people completing the two-dose course is ([\d,]+)", soup.text)
+    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated.group(1))
+
     people_vaccinated = total_vaccinations - people_fully_vaccinated
 
     date = str(datetime.datetime.now(pytz.timezone("America/Cayman")).date())

@@ -45,9 +45,9 @@ run_python 'import testing; testing.update_db()'
 run_python 'import yougov; yougov.update_db()'
 
 # =====================================================================
-# COVID-19 - United States vaccination data
+# COVID-19 - Vaccinations by manufacturer
 
 # Always run the database update.
 # The script itself contains a check against the database
 # to make sure it doesn't run unnecessarily.
-# run_python 'import us_vaccinations; us_vaccinations.update_db()'
+run_python 'import vax_by_manufacturer; vax_by_manufacturer.update_db()'

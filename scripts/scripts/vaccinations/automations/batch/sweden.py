@@ -49,7 +49,7 @@ def main():
     df = pd.concat([daily, weekly]).sort_values("date").reset_index(drop=True)
 
     df.loc[:, "location"] = "Sweden"
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
+    df.loc[:, "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
     df.loc[:, "source_url"] = "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/"
 
     df.to_csv("automations/output/Sweden.csv", index=False)
