@@ -42,7 +42,7 @@ def get_vaccine_data():
     for file in glob("us_states/input/cdc_data_*.csv"):
         try:
             df = pd.read_csv(file, usecols=[
-                "Date", "LongName", "Administered_Pfizer", "Administered_Moderna", "Administered_Unk_Manuf"
+                "Date", "LongName", "Administered_Pfizer", "Administered_Moderna"
             ])
             dfs.append(df)
         except:
@@ -53,7 +53,6 @@ def get_vaccine_data():
         "LongName": "location",
         "Administered_Pfizer": "Pfizer/BioNTech",
         "Administered_Moderna": "Moderna",
-        "Administered_Unk_Manuf": "Other",
     })
     df = df.melt(["date", "location"], var_name="vaccine", value_name="total_vaccinations")
     df.to_csv("automations/output/by_vaccine/United States.csv", index=False)
