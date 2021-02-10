@@ -28,6 +28,7 @@ def main():
     vaccine_mapping = {
         "Pfizer-BioNTech": "Pfizer/BioNTech",
         "Moderna": "Moderna",
+        "AstraZeneca": "AstraZeneca",
     }
     assert set(df["vaccine_name"].unique()) == set(vaccine_mapping.keys())
     df = df.replace(vaccine_mapping)
