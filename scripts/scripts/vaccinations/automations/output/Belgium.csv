@@ -1,41 +1,42 @@
-date,people_vaccinated,people_fully_vaccinated,total_vaccinations,location,vaccine,source_url
-2020-12-28,298,0,298,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2020-12-29,299,0,299,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2020-12-30,778,0,778,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2020-12-31,787,0,787,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-01,794,0,794,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-04,795,0,795,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-05,2354,0,2354,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-06,6218,0,6218,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-07,14340,0,14340,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-08,23484,0,23484,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-09,26671,0,26671,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-10,27067,0,27067,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-11,32518,0,32518,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-12,47987,0,47987,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-13,68578,0,68578,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-14,91122,0,91122,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-15,113580,0,113580,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-16,118563,0,118563,Belgium,Pfizer/BioNTech,https://covid-vaccinatie.be/en
-2021-01-17,121705,0,121705,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-18,132010,109,132119,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-19,150367,290,150657,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-20,170224,712,170936,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-21,199623,712,200335,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-22,228267,743,229010,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-23,236053,750,236803,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-24,237898,750,238648,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-25,248400,750,249150,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-26,258499,2108,260607,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-27,271307,5208,276515,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-28,285536,12079,297615,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-29,296182,19774,315956,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-30,297717,22413,320130,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-01-31,298281,22719,321000,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-02-01,301868,25964,327832,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-02-02,310480,37801,348281,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-02-03,318185,54502,372687,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-02-04,323874,72412,396286,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-02-05,327924,87952,415876,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-02-06,328568,91372,419940,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
-2021-02-07,328623,93303,421926,Belgium,"Moderna, Pfizer/BioNTech",https://covid-vaccinatie.be/en
+date,people_vaccinated,people_fully_vaccinated,total_vaccinations,vaccine,location,source_url
+2020-12-28,298,0,298,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2020-12-29,299,0,299,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2020-12-30,778,0,778,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2020-12-31,787,0,787,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-01,794,0,794,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-04,795,0,795,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-05,2354,0,2354,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-06,6218,0,6218,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-07,14341,0,14341,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-08,23488,0,23488,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-09,26675,0,26675,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-10,27071,0,27071,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-11,32521,0,32521,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-12,48036,0,48036,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-13,68628,0,68628,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-14,91180,0,91180,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-15,113768,0,113768,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-16,118791,0,118791,Pfizer/BioNTech,Belgium,https://covid-vaccinatie.be/en
+2021-01-17,121933,0,121933,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-18,132274,109,132383,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-19,150631,290,150921,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-20,170582,712,171294,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-21,199981,712,200693,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-22,228643,743,229386,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-23,236492,750,237242,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-24,238338,750,239088,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-25,248880,750,249630,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-26,258955,2108,261063,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-27,271713,5208,276921,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-28,286354,12240,298594,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-29,297356,19948,317304,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-30,298891,22588,321479,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-01-31,299454,22916,322370,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-01,303043,26161,329204,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-02,312091,38530,350621,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-03,321042,56222,377264,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-04,328671,76327,404998,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-05,334629,95070,429699,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-06,335541,99247,434788,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-07,335772,101400,437172,"Moderna, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
+2021-02-08,336331,104340,440671,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",Belgium,https://covid-vaccinatie.be/en
