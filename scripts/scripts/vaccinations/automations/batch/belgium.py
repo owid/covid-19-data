@@ -2,6 +2,8 @@ import os
 import pandas as pd
 import tempfile
 
+from utils.pipeline import enrich_total_vaccinations
+
 
 def read(source: str) -> pd.DataFrame:
     """Reading directly with `pd.read_csv` doesn’t work for some reason.
@@ -27,9 +29,7 @@ def add_totals(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
         people_vaccinated=input.people_vaccinated.cumsum(),
         people_fully_vaccinated=input.people_fully_vaccinated.cumsum(),
-    ).assign(
-        total_vaccinations=lambda df: df.people_vaccinated + df.people_fully_vaccinated
-    )
+    ).pipe(enrich_total_vaccinations)
 
 
 def aggregate(input: pd.DataFrame) -> pd.DataFrame:

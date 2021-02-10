@@ -1,6 +1,9 @@
 import pandas as pd
 
 
+from utils.pipeline import enrich_total_vaccinations
+
+
 def read(source: str) -> pd.DataFrame:
     source = "https://github.com/juancri/covid19-vaccination/raw/master/output/chile-vaccination.csv"
     return pd.read_csv(source)
@@ -64,12 +67,6 @@ def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
         return "Pfizer/BioNTech"
 
     return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
-
-
-def enrich_total_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        total_vaccinations=input.people_vaccinated + input.people_fully_vaccinated
-    )
 
 
 def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
