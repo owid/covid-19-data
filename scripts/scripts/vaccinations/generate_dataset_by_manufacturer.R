@@ -1,3 +1,4 @@
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 rm(list = ls())
 
 files <- list.files("automations/output/by_manufacturer/", pattern = "*.csv", full.names = TRUE)
