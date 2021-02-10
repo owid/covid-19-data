@@ -25,7 +25,7 @@ def main():
     df = pd.DataFrame(data[1:], columns=data[0])
 
     only_1dose_people = int(df["Bólusetning hafin"].astype(int).sum())
-    people_fully_vaccinated = int(df["Bólusetningu lokið"].astype(int).sum())
+    people_fully_vaccinated = int(df["Fullbólusettir"].astype(int).sum())
     people_vaccinated = only_1dose_people + people_fully_vaccinated
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
@@ -40,6 +40,26 @@ def main():
         source_url="https://www.covid.is/tolulegar-upplysingar-boluefni",
         vaccine="Moderna, Pfizer/BioNTech"
     )
+
+    # By manufacturer
+    data = json_data["elements"]["content"]["content"]["entities"]["e329559c-c3cc-48e9-8b7b-1a5f87ea7ad3"]["props"]["chartData"]["data"][0]
+    df = pd.DataFrame(data[1:]).reset_index(drop=True)
+    df.columns = ["date"] + data[0][1:]
+
+    df = df.melt("date", var_name="vaccine", value_name="total_vaccinations")
+
+    df["date"] = pd.to_datetime(df["date"], format="%d.%m.%y")
+    df["total_vaccinations"] = df.sort_values("date").groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
+    df["location"] = "Iceland"
+
+    vaccine_mapping = {
+        "Pfizer": "Pfizer/BioNTech",
+        "Moderna": "Moderna",
+    }
+    assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys())
+    df = df.replace(vaccine_mapping)
+
+    df.to_csv("automations/output/by_manufacturer/Iceland.csv", index=False)
 
 
 if __name__ == '__main__':

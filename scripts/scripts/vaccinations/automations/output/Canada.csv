@@ -1,7 +1,7 @@
 date,location,people_vaccinated,people_fully_vaccinated,total_vaccinations,vaccine,source_url
-2020-12-19,Canada,8734.0,0.0,8734.0,Pfizer/BioNTech,https://health-infobase.canada.ca/covid-19/vaccination-coverage/
-2020-12-26,Canada,33734.0,0.0,33734.0,Pfizer/BioNTech,https://health-infobase.canada.ca/covid-19/vaccination-coverage/
-2021-01-02,Canada,77521.0,0.0,77521.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
+2020-12-19,Canada,8734.0,0.0,,Pfizer/BioNTech,https://health-infobase.canada.ca/covid-19/vaccination-coverage/
+2020-12-26,Canada,33734.0,0.0,,Pfizer/BioNTech,https://health-infobase.canada.ca/covid-19/vaccination-coverage/
+2021-01-02,Canada,77521.0,0.0,,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
 2021-01-09,Canada,213147.0,3613.0,,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
 2021-01-12,Canada,,,267078.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
 2021-01-13,Canada,,,288488.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
@@ -25,4 +25,5 @@ date,location,people_vaccinated,people_fully_vaccinated,total_vaccinations,vacci
 2021-02-03,Canada,,,999253.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
 2021-02-04,Canada,,,1015083.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
 2021-02-05,Canada,,,1042171.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
-2021-02-08,Canada,,,1096225.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
+2021-02-08,Canada,,,1096929.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/
+2021-02-09,Canada,,,1119294.0,"Moderna, Pfizer/BioNTech",https://health-infobase.canada.ca/covid-19/vaccination-coverage/

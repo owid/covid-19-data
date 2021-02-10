@@ -1,47 +1,109 @@
+from typing import List
+
 import pandas as pd
 
 
+def ensure_integers(input: pd.DataFrame, columns: List[str]) -> pd.DataFrame:
+    return input.assign(**{col: input[col].astype(int) for col in columns})
+
+
+def read_coverage(source: str) -> pd.DataFrame:
+    return pd.read_csv(
+        source,
+        usecols=["week_end", "numtotal_atleast1dose", "numtotal_2doses", "prename"],
+    )
+
+
+def filter_canada(input: pd.DataFrame) -> pd.DataFrame:
+    return input[input["prename"] == "Canada"]
+
+
+def coverage_rename_columns(input: pd.DataFrame) -> pd.DataFrame:
+    return input.rename(
+        columns={
+            "prename": "location",
+            "week_end": "date",
+            "numtotal_atleast1dose": "people_vaccinated",
+            "numtotal_2doses": "people_fully_vaccinated",
+        }
+    )
+
+
+def coverage_pipeline(input: pd.DataFrame) -> pd.DataFrame:
+    return (
+        input.pipe(filter_canada)
+        .pipe(coverage_rename_columns)
+        .pipe(ensure_integers, ["people_vaccinated", "people_fully_vaccinated"])
+    )
+
+
 def get_coverage():
-
-    url = "https://health-infobase.canada.ca/src/data/covidLive/vaccination-coverage-map.csv"
-    df = pd.read_csv(url, usecols=["week_end", "numtotal_atleast1dose", "numtotal_2doses", "prename"])
-    df = df[df["prename"] == "Canada"]
-    df = df.rename(columns={
-        "prename": "location",
-        "week_end": "date",
-        "numtotal_atleast1dose": "people_vaccinated",
-        "numtotal_2doses": "people_fully_vaccinated",
-    })
-    df[["people_vaccinated", "people_fully_vaccinated"]] = df[["people_vaccinated", "people_fully_vaccinated"]].astype(int)
-    return df
+    source = "https://health-infobase.canada.ca/src/data/covidLive/vaccination-coverage-map.csv"
+    return read_coverage(source).pipe(coverage_pipeline)
 
 
-def get_doses():
-
-    url = "https://health-infobase.canada.ca/src/data/covidLive/vaccination-administration.csv"
-    df = pd.read_csv(url, usecols=["report_date", "numtotal_all_administered", "prename"])
-    df = df[df["prename"] == "Canada"]
-    df = df.rename(columns={
-        "prename": "location",
-        "report_date": "date",
-        "numtotal_all_administered": "total_vaccinations",
-    })
-    return df
+def read_doses(source: str) -> pd.DataFrame:
+    return pd.read_csv(
+        source, usecols=["report_date", "numtotal_all_administered", "prename"]
+    )
 
 
-def main():
-    df = (
+def doses_rename_columns(input: pd.DataFrame) -> pd.DataFrame:
+    return input.rename(
+        columns={
+            "prename": "location",
+            "report_date": "date",
+            "numtotal_all_administered": "total_vaccinations",
+        }
+    )
+
+
+def doses_pipeline(input: pd.DataFrame) -> pd.DataFrame:
+    return input.pipe(filter_canada).pipe(doses_rename_columns)
+
+
+def get_doses() -> pd.DataFrame:
+    source = "https://health-infobase.canada.ca/src/data/covidLive/vaccination-administration.csv"
+    return read_doses(source).pipe(doses_pipeline)
+
+
+def read() -> pd.DataFrame:
+    return (
         pd.merge(get_coverage(), get_doses(), on=["location", "date"], how="outer")
         .reset_index(drop=True)
         .sort_values("date")
     )
-    df.loc[df["people_fully_vaccinated"] == 0, "total_vaccinations"] = df["people_vaccinated"]
 
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
-    df.loc[df["date"] >= "2020-12-31", "vaccine"] = "Moderna, Pfizer/BioNTech"
-    df.loc[:, "source_url"] = "https://health-infobase.canada.ca/covid-19/vaccination-coverage/"
 
-    df.to_csv("automations/output/Canada.csv", index=False)
+def rectify_total_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(
+        total_vaccinations=input.total_vaccinations.where(
+            input.people_fully_vaccinated == 0, input.total_vaccinations
+        )
+    )
+
+
+def set_vaccine(input: pd.DataFrame) -> pd.DataFrame:
+    def _set_vaccine(date: str) -> str:
+        if date >= "2020-12-31":
+            return "Moderna, Pfizer/BioNTech"
+        return "Pfizer/BioNTech"
+
+    return input.assign(vaccine=input.date.apply(_set_vaccine))
+
+
+def set_source(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(
+        source_url="https://health-infobase.canada.ca/covid-19/vaccination-coverage/"
+    )
+
+
+def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+    return input.pipe(rectify_total_vaccinations).pipe(set_vaccine).pipe(set_source)
+
+
+def main():
+    read().pipe(pipeline).to_csv("automations/output/Canada.csv", index=False)
 
 
 if __name__ == "__main__":

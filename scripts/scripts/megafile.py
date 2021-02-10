@@ -351,7 +351,7 @@ def generate_megafile():
 
     print("\nFetching vaccination dataset…")
     vax = get_vax()
-    vax = vax[vax.location.isin(jhu.location)]
+    vax = vax[-vax.location.isin(["England", "Northern Ireland", "Scotland", "Wales"])]
 
     print("\nFetching OxCGRT dataset…")
     cgrt = get_cgrt()
