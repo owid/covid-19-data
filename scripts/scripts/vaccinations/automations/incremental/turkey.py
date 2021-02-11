@@ -11,14 +11,22 @@ def main():
     url = "https://covid19asi.saglik.gov.tr/"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    count = re.search(r"var asiyapilankisisayisi = (\d+);", str(soup)).group(1)
-    count = vaxutils.clean_count(count)
+    total_vaccinations = re.search(r"var yapilanasisayisi = (\d+);", str(soup)).group(1)
+    total_vaccinations = vaxutils.clean_count(total_vaccinations)
+
+    people_vaccinated = re.search(r"var asiyapilankisisayisi1Doz = (\d+);", str(soup)).group(1)
+    people_vaccinated = vaxutils.clean_count(people_vaccinated)
+
+    people_fully_vaccinated = re.search(r"var asiyapilankisisayisi2Doz = (\d+);", str(soup)).group(1)
+    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
 
     date = str(datetime.datetime.now(pytz.timezone("Asia/Istanbul")).date())
 
     vaxutils.increment(
         location="Turkey",
-        total_vaccinations=count,
+        total_vaccinations=total_vaccinations,
+        people_vaccinated=people_vaccinated,
+        people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url=url,
         vaccine="Sinovac"
