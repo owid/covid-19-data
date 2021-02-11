@@ -83,13 +83,13 @@ def rectify_total_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def set_vaccine(input: pd.DataFrame) -> pd.DataFrame:
-    def _set_vaccine(date: str) -> str:
+def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
+    def _enrich_vaccine_name(date: str) -> str:
         if date >= "2020-12-31":
             return "Moderna, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
 
-    return input.assign(vaccine=input.date.apply(_set_vaccine))
+    return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
 
 
 def set_source(input: pd.DataFrame) -> pd.DataFrame:
@@ -99,7 +99,11 @@ def set_source(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def pipeline(input: pd.DataFrame) -> pd.DataFrame:
-    return input.pipe(rectify_total_vaccinations).pipe(set_vaccine).pipe(set_source)
+    return (
+        input.pipe(rectify_total_vaccinations)
+        .pipe(enrich_vaccine_name)
+        .pipe(set_source)
+    )
 
 
 def main():
