@@ -32,7 +32,7 @@ def main():
         command_result = driver.execute("send_command", params)
 
         driver.get(SOURCE_URL)
-        time.sleep(5)
+        time.sleep(10)
         links = driver.find_elements_by_css_selector(".services a")
         for link in links:
             if "Raw Data" in link.text:
@@ -46,11 +46,11 @@ def main():
     file = glob("tmp/Thailand*")[0]
     df = pd.read_excel(file)
     df.loc[:, "Date"] = pd.to_datetime(df["Date"], errors="coerce")
-    df = df[["Date", "Total"]].dropna()
-    df = df[df["Total"] > 0]
-    df = df.rename(columns={"Total": "Daily change in cumulative total"})
+    df = df[["Date", "Pos", "Total"]].dropna().sort_values("Date")
+    df["Positive rate"] = (df.Pos.rolling(7).mean() / df.Total.rolling(7).mean()).round(3)
+    df = df.rename(columns={"Total": "Daily change in cumulative total"}).drop(columns="Pos")
+    df = df[df["Daily change in cumulative total"] > 0]
 
-    df.loc[:, "Daily change in cumulative total"] = df["Daily change in cumulative total"].astype(int)
     df.loc[:, "Country"] = "Thailand"
     df.loc[:, "Source URL"] = SOURCE_URL
     df.loc[:, "Source label"] = "Ministry of Public Health"
