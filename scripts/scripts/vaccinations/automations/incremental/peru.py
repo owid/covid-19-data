@@ -5,11 +5,6 @@ import pytz
 import vaxutils
 
 
-def get_data():
-    url = "https://gis.minsa.gob.pe/WebApiProd/api/ActVacunasResumen/ResumenFasePublico"
-    return json.loads(requests.get(url, headers={'Content-type': 'application/json', 'Accept': '*/*'}).content)
-
-
 def main():
 
     headers = {'Content-type': 'application/json', 'Accept': '*/*'}
@@ -23,7 +18,7 @@ def main():
     }
 
     request = requests.post(
-        'https://gis.minsa.gob.pe/WebApiProd/api/ActVacunasResumen/ResumenFasePublico', 
+        "https://gis.minsa.gob.pe/WebApiProd/api/ActVacunasResumen/ResumenFasePublico",
         json=json,
         headers=headers
     )
