@@ -13,7 +13,10 @@ def main():
     people_fully_vaccinated = int(df["segunda_dosis_cantidad"].sum())
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
-    date = str(datetime.datetime.now(pytz.timezone("America/Argentina/Buenos_Aires")).date())
+    local_time = datetime.datetime.now(pytz.timezone("America/Argentina/Buenos_Aires"))
+    if local_time.hour < 8:
+        local_time = local_time - datetime.timedelta(days=1)
+    date = str(local_time.date())
 
     vaxutils.increment(
         location="Argentina",
