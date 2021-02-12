@@ -37,6 +37,7 @@ def get_vaccine_data():
     vaccine_mapping = {
         "Pfizer/BioNTech": "Pfizer/BioNTech",
         "Moderna": "Moderna",
+        "AstraZeneca": "Oxford/AstraZeneca",
     }
     url = "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
     df = pd.read_csv(url, usecols=["data_somministrazione", "fornitore", "prima_dose", "seconda_dose"])
