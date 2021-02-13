@@ -1,37 +1,76 @@
 import json
+from typing import Dict
+
 import requests
 import pandas as pd
 
-def main():
 
-    url = "https://data.gov.gr/api/v1/query/mdg_emvolio"
-
+def get_access_token() -> str:
     with open("vax_dataset_config.json", "rb") as file:
-        config = json.loads(file.read())
+        config = json.load(file)
+        return config["greece_api_token"]
 
-    response = requests.get(url, headers={"Authorization": f"Token {config['greece_api_token']}"})
 
-    df = pd.DataFrame.from_records(response.json())
+def read(source: str) -> pd.DataFrame:
+    access_token = get_access_token()
+    response = requests.get(source, headers={"Authorization": f"Token {access_token}"})
+    return pd.DataFrame.from_records(response.json())
 
-    df = (
-        df.groupby("referencedate", as_index=False)
-        [["referencedate", "totalvaccinations", "totaldistinctpersons"]].sum()
+
+def format_columns(input: pd.DataFrame, translations: Dict[str, str]) -> pd.DataFrame:
+    return input.rename(
+        columns={
+            "referencedate": "date",
+            "totalvaccinations": "total_vaccinations",
+            "totaldistinctpersons": "people_vaccinated",
+        }
     )
 
-    df = df.rename(columns={
-        "referencedate": "date",
-        "totalvaccinations": "total_vaccinations",
-        "totaldistinctpersons": "people_vaccinated",
-    })
 
-    df["people_fully_vaccinated"] = (df["total_vaccinations"] - df["people_vaccinated"]).replace(0, pd.NA)
+def aggregate(input: pd.DataFrame) -> pd.DataFrame:
+    return input.groupby(by="date", as_index=False)[
+        ["total_vaccinations", "people_vaccinated"]
+    ].sum()
 
-    df.loc[:, "date"] = df["date"].str.slice(0, 10)
-    df.loc[:, "location"] = "Greece"
-    df.loc[:, "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-    df.loc[:, "source_url"] = "https://www.data.gov.gr/datasets/mdg_emvolio/"
 
-    df.to_csv("automations/output/Greece.csv", index=False)
+def enrich_people_fully_vaccinated(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(
+        people_fully_vaccinated=input.total_vaccinations - input.people_vaccinated
+    )
 
-if __name__ == '__main__':
+
+def replace_nulls_with_nans(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(input.people_fully_vaccinated.replace(0, pd.NA))
+
+
+def format_date(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(date=input.date.str.slice(0, 10))
+
+
+def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(
+        location="Greece",
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",
+        source_url="https://www.data.gov.gr/datasets/mdg_emvolio/",
+    )
+
+
+def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+    return (
+        input.pipe(format_columns)
+        .pipe(enrich_people_fully_vaccinated)
+        .pipe(replace_nulls_with_nans)
+        .pipe(format_date)
+        .pipe(enrich_metadata)
+    )
+
+
+def main():
+    source = "https://data.gov.gr/api/v1/query/mdg_emvolio"
+    destination = "automations/output/Greece.csv"
+
+    read(source).pipe(pipeline).to_csv(destination, index=False)
+
+
+if __name__ == "__main__":
     main()
