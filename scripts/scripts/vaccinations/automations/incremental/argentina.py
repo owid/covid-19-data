@@ -3,54 +3,63 @@ import vaxutils
 import datetime
 import pytz
 
-date = None
+
+def read(source: str) -> pd.Series:
+    df = pd.read_csv(source, usecols=["primera_dosis_cantidad", "segunda_dosis_cantidad"])
+    return df.sum(level=0, axis=1).sum()
 
 
-def read(source: str) -> pd.DataFrame:
-    return pd.read_csv(source, usecols=["primera_dosis_cantidad", "segunda_dosis_cantidad"])
+def add_totals(input: pd.Series) -> pd.Series:
+    input.rename(
+        index={'primera_dosis_cantidad': 'people_vaccinated', 'segunda_dosis_cantidad': 'people_fully_vaccinated'},
+        inplace=True)
+
+    total_vaccinations = input['people_vaccinated'] + input['people_fully_vaccinated']
+    return vaxutils.enrich_data(input, 'total_vaccinations', total_vaccinations)
 
 
-def add_totals(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        people_vaccinated=int(input["primera_dosis_cantidad"].sum()),
-        people_fully_vaccinated=int(input["segunda_dosis_cantidad"].sum()),
-    ).assign(
-        total_vaccinations=lambda df: df.people_vaccinated + df.people_fully_vaccinated,
-    )
+def format_date(input: pd.Series) -> pd.Series:
+    local_time = datetime.datetime.now(pytz.timezone("America/Argentina/Buenos_Aires"))
+    if local_time.hour < 8:
+        local_time = local_time - datetime.timedelta(days=1)
+    date = str(local_time.date())
+    return vaxutils.enrich_data(input, 'date', date)
 
 
-def format_date(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(date=str(datetime.datetime.now(pytz.timezone("America/Argentina/Buenos_Aires")).date()))
+def enrich_location(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'location', "Argentina")
 
 
-def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        location="Argentina",
-        vaccine="Sputnik V",
-        source_url="http://datos.salud.gob.ar/dataset/vacunas-contra-covid-19-dosis-aplicadas-en-la-republica-argentina",
-    )
+def enrich_vaccine(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'vaccine', "Sputnik V")
 
 
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+def enrich_source(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'source_url',
+                                "http://datos.salud.gob.ar/dataset/vacunas-contra-covid-19-dosis-aplicadas-en-la-republica-argentina")
+
+
+def pipeline(input: pd.Series) -> pd.Series:
     return (
         input.pipe(add_totals)
             .pipe(format_date)
-            .pipe(enrich_columns)
+            .pipe(enrich_location)
+            .pipe(enrich_vaccine)
+            .pipe(enrich_source)
     )
 
 
 def main():
     source = "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19VacunasAgrupadas.csv"
     data = read(source).pipe(pipeline)
-
     vaxutils.increment(
-        location=str(data['location'].values[0]),
-        total_vaccinations=int(data['total_vaccinations'].values[0]),
-        people_vaccinated=int(data['people_vaccinated'].values[0]),
-        people_fully_vaccinated=int(data['people_fully_vaccinated'].values[0]),
-        date=str(data['date'].values[0]),
-        source_url=str(data['source_url'].values[0]),
-        vaccine=str(data['vaccine'].values[0])
+        location=str(data['location']),
+        total_vaccinations=int(data['total_vaccinations']),
+        people_vaccinated=int(data['people_vaccinated']),
+        people_fully_vaccinated=int(data['people_fully_vaccinated']),
+        date=str(data['date']),
+        source_url=str(data['source_url']),
+        vaccine=str(data['vaccine'])
     )
 
 
