@@ -5,55 +5,59 @@ import vaxutils
 import pandas as pd
 
 
-def read(source: str) -> pd.DataFrame:
-    return pd.read_json(requests.get(source).content)
+def read(source: str) -> pd.Series:
+    return pd.read_json(requests.get(source).content).pipe(lambda ds: pd.DataFrame.from_records(ds["stats"]).iloc[0])
 
 
-def add_totals(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        people_vaccinated=int(input["stats"][0]["first_vaccine_number"]),
-        people_fully_vaccinated=int(input["stats"][0]["second_vaccine_number"]),
-    ).assign(
-        total_vaccinations=lambda df: df.people_vaccinated + df.people_fully_vaccinated,
-    )
+def add_totals(input: pd.Series) -> pd.Series:
+    input.rename(index=
+                 {'first_vaccine_number': 'people_vaccinated', 'second_vaccine_number': 'people_fully_vaccinated'},
+                 inplace=True)
+    total_vaccinations = int(input['people_vaccinated']) + int(input['people_fully_vaccinated'])
+    return vaxutils.enrich_data(input, 'total_vaccinations', total_vaccinations)
 
 
-def format_date(input: pd.DataFrame) -> pd.DataFrame:
-    date = input["stats"][0]["vaccine_last_update"]
+def format_date(input: pd.Series) -> pd.Series:
+    date = input["vaccine_last_update"]
     date = re.search(r"\d+\. \w+", date).group(0)
     date = str(dateparser.parse(date, languages=["da"]).date())
     date = vaxutils.clean_date(date, "%Y-%m-%d")
-    return input.assign(date=date)
+    return vaxutils.enrich_data(input, 'date', date)
 
 
-def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        location="Faeroe Islands",
-        vaccine="Pfizer/BioNTech",
-        source_url="https://corona.fo/api",
-    )
+def enrich_location(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'location', "Faeroe Islands")
 
 
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+def enrich_vaccine(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'vaccine', "Pfizer/BioNTech")
+
+
+def enrich_source(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'source_url', "https://corona.fo/api")
+
+
+def pipeline(input: pd.Series) -> pd.Series:
     return (
         input.pipe(add_totals)
             .pipe(format_date)
-            .pipe(enrich_columns)
+            .pipe(enrich_location)
+            .pipe(enrich_vaccine)
+            .pipe(enrich_source)
     )
 
 
 def main():
     source = "https://corona.fo/json/stats"
     data = read(source).pipe(pipeline)
-
     vaxutils.increment(
-        location=str(data['location'].values[0]),
-        total_vaccinations=int(data['total_vaccinations'].values[0]),
-        people_vaccinated=int(data['people_vaccinated'].values[0]),
-        people_fully_vaccinated=int(data['people_fully_vaccinated'].values[0]),
-        date=str(data['date'].values[0]),
-        source_url=str(data['source_url'].values[0]),
-        vaccine=str(data['vaccine'].values[0])
+        location=str(data['location']),
+        total_vaccinations=int(data['total_vaccinations']),
+        people_vaccinated=int(data['people_vaccinated']),
+        people_fully_vaccinated=int(data['people_fully_vaccinated']),
+        date=str(data['date']),
+        source_url=str(data['source_url']),
+        vaccine=str(data['vaccine'])
     )
 
 
