@@ -2,6 +2,8 @@ import os
 import pandas as pd
 import tempfile
 
+from utils.pipeline import enrich_total_vaccinations
+
 
 def read(source: str) -> pd.DataFrame:
     """Reading directly with `pd.read_csv` doesn’t work for some reason.
@@ -27,24 +29,22 @@ def add_totals(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
         people_vaccinated=input.people_vaccinated.cumsum(),
         people_fully_vaccinated=input.people_fully_vaccinated.cumsum(),
-    ).assign(
-        total_vaccinations=lambda df: df.people_vaccinated + df.people_fully_vaccinated
-    )
+    ).pipe(enrich_total_vaccinations)
 
 
 def aggregate(input: pd.DataFrame) -> pd.DataFrame:
     return input.groupby("date", as_index=False).sum().sort_values("date")
 
 
-def set_vaccine(input: pd.DataFrame) -> pd.DataFrame:
-    def _set_vaccine(date: str) -> str:
+def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
+    def _enrich_vaccine_name(date: str) -> str:
         if date >= "2021-02-08":
             return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
         if date >= "2021-01-17":
             return "Moderna, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
 
-    return input.assign(vaccine=input.date.apply(_set_vaccine))
+    return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
 
 
 def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
@@ -56,7 +56,7 @@ def pipeline(input: pd.DataFrame) -> pd.DataFrame:
         input.pipe(rename_columns)
         .pipe(aggregate)
         .pipe(add_totals)
-        .pipe(set_vaccine)
+        .pipe(enrich_vaccine_name)
         .pipe(enrich_columns)
     )
 

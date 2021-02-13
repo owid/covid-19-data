@@ -1,5 +1,7 @@
-location,date,vaccine,total_vaccinations,source_url
-Bermuda,2021-01-10,Pfizer/BioNTech,0,https://www.gov.bm/articles/covid-19-update-minister-health%E2%80%99s-remarks-19-january-2021
-Bermuda,2021-01-16,Pfizer/BioNTech,1665,https://www.gov.bm/articles/covid-19-update-minister-health%E2%80%99s-remarks-19-january-2021
-Bermuda,2021-01-23,Pfizer/BioNTech,2932,https://www.gov.bm/articles/covid-19-update-minister-health-remarks-26-january-2021
-Bermuda,2021-01-30,Pfizer/BioNTech,4897,https://www.gov.bm/sites/default/files/COVID-19%20Vaccination%20Updates.pdf
+location,date,vaccine,total_vaccinations,people_vaccinated,people_fully_vaccinated,source_url
+Bermuda,2021-01-10,Pfizer/BioNTech,0,0,0,https://www.gov.bm/articles/covid-19-update-minister-health%E2%80%99s-remarks-19-january-2021
+Bermuda,2021-01-16,Pfizer/BioNTech,1665,1665,0,https://www.gov.bm/articles/covid-19-update-minister-health%E2%80%99s-remarks-19-january-2021
+Bermuda,2021-01-23,Pfizer/BioNTech,2932,2932,0,https://www.gov.bm/articles/covid-19-update-minister-health-remarks-26-january-2021
+Bermuda,2021-01-30,Pfizer/BioNTech,4897,4897,0,https://www.gov.bm/sites/default/files/COVID-19%20Vaccination%20Updates.pdf
+Bermuda,2021-02-06,Pfizer/BioNTech,9095,7504,1591,https://www.gov.bm/articles/covid-19-update-minister-health-remarks-9-february
+Bermuda,2021-02-09,Pfizer/BioNTech,10000,8400,1600,https://www.gov.bm/articles/covid-19-update-premiers-remarks-9-february-2021

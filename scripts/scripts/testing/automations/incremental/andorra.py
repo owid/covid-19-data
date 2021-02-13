@@ -58,7 +58,7 @@ def get_count(soup):
         int: Count of tests (PCR + TMA)
     """
     tag_id = "capacidtat"  # CHECK ON THIS! It is a typo on their side, correct spelling should be "capacitat"
-    values = soup.find(id=tag_id).findAll("div", class_="text-primary text-3xl font-bold pb-4")
+    values = [elem.find("span") for elem in soup.find(id=tag_id).find_all("div", class_="text-primary")]
     values = [int(x.text.replace(".", "")) for x in values]
     titles = [x.text.strip() for x in soup.find(id=tag_id).findAll("h3")]
     

@@ -38,7 +38,7 @@ def main():
         people_fully_vaccinated=people_fully_vaccinated,
         date=date,
         source_url="https://www.covid.is/tolulegar-upplysingar-boluefni",
-        vaccine="Moderna, Pfizer/BioNTech"
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     )
 
     # By manufacturer
@@ -55,6 +55,7 @@ def main():
     vaccine_mapping = {
         "Pfizer": "Pfizer/BioNTech",
         "Moderna": "Moderna",
+        "AstraZeneca": "Oxford/AstraZeneca",
     }
     assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys())
     df = df.replace(vaccine_mapping)

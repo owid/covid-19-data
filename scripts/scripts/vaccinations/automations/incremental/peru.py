@@ -5,11 +5,6 @@ import pytz
 import vaxutils
 
 
-def get_data():
-    url = "https://gis.minsa.gob.pe/WebApiProd/api/ActVacunasResumen/ResumenFasePublico"
-    return json.loads(requests.get(url, headers={'Content-type': 'application/json', 'Accept': '*/*'}).content)
-
-
 def main():
 
     headers = {'Content-type': 'application/json', 'Accept': '*/*'}
@@ -23,7 +18,7 @@ def main():
     }
 
     request = requests.post(
-        'https://gis.minsa.gob.pe/WebApiProd/api/ActVacunasResumen/ResumenFasePublico', 
+        "https://gis.minsa.gob.pe/WebApiProd/api/ActVacunasResumen/ResumenFasePublico",
         json=json,
         headers=headers
     )
@@ -37,7 +32,10 @@ def main():
     people_fully_vaccinated = int(df[df['NroDosis'] == 2]['Vacunados'].values[0])
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
-    date = str(datetime.datetime.now(pytz.timezone("America/Lima")).date())
+    local_time = datetime.datetime.now(pytz.timezone("America/Lima"))
+    if local_time.hour < 8:
+        local_time = local_time - datetime.timedelta(days=1)
+    date = str(local_time.date())
 
     vaxutils.increment(
         location="Peru",
