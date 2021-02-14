@@ -17,7 +17,7 @@ def read(source: str) -> pd.DataFrame:
     return pd.DataFrame.from_records(response.json())
 
 
-def format_columns(input: pd.DataFrame, translations: Dict[str, str]) -> pd.DataFrame:
+def format_columns(input: pd.DataFrame) -> pd.DataFrame:
     return input.rename(
         columns={
             "referencedate": "date",
@@ -40,7 +40,7 @@ def enrich_people_fully_vaccinated(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def replace_nulls_with_nans(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(input.people_fully_vaccinated.replace(0, pd.NA))
+    return input.assign(people_fully_vaccinated=input.people_fully_vaccinated.replace(0, pd.NA))
 
 
 def format_date(input: pd.DataFrame) -> pd.DataFrame:
@@ -58,6 +58,7 @@ def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
 def pipeline(input: pd.DataFrame) -> pd.DataFrame:
     return (
         input.pipe(format_columns)
+        .pipe(aggregate)
         .pipe(enrich_people_fully_vaccinated)
         .pipe(replace_nulls_with_nans)
         .pipe(format_date)
