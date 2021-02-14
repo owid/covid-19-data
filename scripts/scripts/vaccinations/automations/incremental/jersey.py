@@ -7,23 +7,28 @@ import vaxutils
 
 def read(source: str) -> pd.Series:
     soup = BeautifulSoup(requests.get(source).content, "html.parser")
+    date = parse_date(soup)
+    return parse_data(soup).pipe(vaxutils.enrich_data, 'date', date)
+
+
+def parse_data(soup: BeautifulSoup) -> pd.Series:
     table = soup.find(class_="govstyleTable-default")
-    df = pd.read_html(str(table))[0]
-    df.set_index(df.columns[0], inplace=True)
-    ds = df.T.squeeze()
-    dt = re.search(r"Data applies to: Week ending (\d[\w\s]+\d{4})", soup.text).group(1)
-    dt = str(dt)
-    dt = vaxutils.clean_date(dt, "%d %B %Y")
-    return ds.append(pd.Series([dt], index=['date']))
+    data = pd.read_html(str(table))[0]
+    return data.set_index(data.columns[0]).T.squeeze()
 
 
-def enrich_columns(input: pd.Series) -> pd.Series:
-    input.rename(
-        index={'Total number of first dose vaccinations': 'people_vaccinated',
-               'Total number of second dose vaccinations': 'people_fully_vaccinated',
-               'Total number of doses': 'total_vaccinations'},
-        inplace=True)
-    return input
+def parse_date(soup: BeautifulSoup) -> str:
+    date = re.search(r"Data applies to: Week ending (\d[\w\s]+\d{4})", soup.text).group(1)
+    date = str(date)
+    return vaxutils.clean_date(date, "%d %B %Y")
+
+
+def translate_index(input: pd.Series) -> pd.Series:
+    return input.rename({
+        'Total number of first dose vaccinations': 'people_vaccinated',
+        'Total number of second dose vaccinations': 'people_fully_vaccinated',
+        'Total number of doses': 'total_vaccinations',
+    })
 
 
 def enrich_location(input: pd.Series) -> pd.Series:
@@ -41,7 +46,7 @@ def enrich_source(input: pd.Series) -> pd.Series:
 
 def pipeline(input: pd.Series) -> pd.Series:
     return (
-        input.pipe(enrich_columns)
+        input.pipe(translate_index)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)
             .pipe(enrich_source)
