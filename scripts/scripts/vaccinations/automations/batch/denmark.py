@@ -138,7 +138,7 @@ def main():
     source = "https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning"
     destination = "automations/output/Denmark.csv"
 
-    read(source).pipe(pipeline).to_csv(destination index=False)
+    read(source).pipe(pipeline).to_csv(destination, index=False)
 
 
 if __name__ == "__main__":
