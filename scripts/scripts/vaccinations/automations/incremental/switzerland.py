@@ -5,27 +5,59 @@ from bs4 import BeautifulSoup
 import vaxutils
 
 
-def main():
+def read(source: str) -> pd.Series:
+    soup = BeautifulSoup(requests.get(source).content, "html.parser")
+    return parse_data(soup)
 
-    url = "https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=CH"
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    table = soup.find(class_="geo-unit-vacc-doses-data__table")
-    df = pd.read_html(str(table))[0]
+def parse_data(soup: BeautifulSoup) -> pd.Series:
+    data = {'date': parse_date(soup), 'total_vaccinations': parse_total_vaccinations(soup)}
+    return pd.Series(data=data)
 
-    total_vaccinations = df.loc[df["per 100 inhabitants"] == "Administered vaccines", "absolute numbers"].values[0]
-    total_vaccinations = vaxutils.clean_count(total_vaccinations)
 
+def parse_date(soup: BeautifulSoup) -> str:
     date = soup.find(class_="detail-card__source").find("span").text
     date = re.search(r"[\d\.]{10}", date).group(0)
-    date = vaxutils.clean_date(date, "%d.%m.%Y")
+    date = str(date)
+    return vaxutils.clean_date(date, "%d.%m.%Y")
 
+
+def parse_total_vaccinations(soup: BeautifulSoup) -> str:
+    table = soup.find(class_="geo-unit-vacc-doses-data__table")
+    total_vaccinations = pd.read_html(str(table))[0].loc[1]['absolute numbers']
+    return vaxutils.clean_count(total_vaccinations)
+
+
+def enrich_location(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'location', "Switzerland")
+
+
+def enrich_vaccine(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'vaccine', "Moderna, Pfizer/BioNTech")
+
+
+def enrich_source(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'source_url',
+                                  "https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=CH")
+
+
+def pipeline(input: pd.Series) -> pd.Series:
+    return (
+        input.pipe(enrich_location)
+            .pipe(enrich_vaccine)
+            .pipe(enrich_source)
+    )
+
+
+def main():
+    source = "https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=CH"
+    data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location="Switzerland",
-        total_vaccinations=total_vaccinations,
-        date=date,
-        source_url=url,
-        vaccine="Moderna, Pfizer/BioNTech"
+        location=str(data['location']),
+        total_vaccinations=int(data['total_vaccinations']),
+        date=str(data['date']),
+        source_url=str(data['source_url']),
+        vaccine=str(data['vaccine'])
     )
 
 

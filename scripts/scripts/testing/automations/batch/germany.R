@@ -1,6 +1,6 @@
 url <- "https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Daten/Testzahlen-gesamt.xlsx?__blob=publicationFile"
 
-df <- rio::import(url, sheet = "Testzahlen")
+df <- rio::import(url, sheet = "1_Testzahlerfassung")
 setDT(df)
 
 df <- df[str_detect(Kalenderwoche, "^\\d+/\\d+\\*?$")]
@@ -14,7 +14,7 @@ df[year == 2021, Date := ymd("2021-01-03") + week_number * 7]
 setorder(df, Date)
 df[, `Cumulative total` := cumsum(`Anzahl Testungen`)]
 
-df[, `Positive rate` := round(`Positiven-quote (%)` / 100, 3)]
+df[, `Positive rate` := round(`Positivenquote (%)` / 100, 3)]
 
 df <- df[, c("Date", "Cumulative total", "Positive rate")]
 df[, Country := "Germany"]

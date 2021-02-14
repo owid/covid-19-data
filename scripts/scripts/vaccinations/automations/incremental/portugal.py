@@ -1,7 +1,6 @@
-import datetime
 import json
-import pytz
 import requests
+import pandas as pd
 import vaxutils
 
 
@@ -14,7 +13,8 @@ def main():
     people_vaccinated = data["features"][0]["attributes"]["Inoculacao1_Ac"]
     people_fully_vaccinated = data["features"][0]["attributes"]["Inoculacao2_Ac"]
 
-    date = str(datetime.datetime.now(pytz.timezone("Europe/Lisbon")).date())
+    date = data["features"][0]["attributes"]["Data"]
+    date = str(pd.to_datetime(date, unit="ms").date())
 
     vaxutils.increment(
         location="Portugal",

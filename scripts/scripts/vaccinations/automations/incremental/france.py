@@ -5,8 +5,7 @@ import vaxutils
 def main():
 
     url = "https://www.data.gouv.fr/fr/datasets/r/131c6b39-51b5-40a7-beaa-0eafc4b88466"
-    df = pd.read_csv(url, sep=",")
-    assert df.shape[1] == 4
+    df = pd.read_csv(url, sep=",", usecols=["fra", "jour", "n_tot_dose1", "n_tot_dose2"])
     assert df.shape[0] == 1
 
     people_vaccinated = int(df["n_tot_dose1"].values[0])

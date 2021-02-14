@@ -252,11 +252,11 @@ ZAF,South Africa
 ZMB,Zambia
 ZWE,Zimbabwe
 OWID_WRL,World
-,International
-,North America
-,South America
-,Europe
-,Africa
-,Asia
-,Oceania
-,European Union
+OWID_INT,International
+OWID_NAM,North America
+OWID_SAM,South America
+OWID_EUR,Europe
+OWID_AFR,Africa
+OWID_ASI,Asia
+OWID_OCE,Oceania
+OWID_EUN,European Union

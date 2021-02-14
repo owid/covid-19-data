@@ -15,6 +15,10 @@ def clean_date(date, fmt):
     return date
 
 
+def enrich_data(input: pd.Series, row, value) -> pd.Series:
+    return input.append(pd.Series({row: value}))
+
+
 def increment(
         location,
         total_vaccinations,

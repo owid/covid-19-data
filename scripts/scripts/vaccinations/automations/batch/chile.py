@@ -1,72 +1,60 @@
 import pandas as pd
 
 
-from utils.pipeline import enrich_total_vaccinations
-
-
 def read(source: str) -> pd.DataFrame:
-    source = "https://github.com/juancri/covid19-vaccination/raw/master/output/chile-vaccination.csv"
     return pd.read_csv(source)
 
 
-def filter_totals(input: pd.DataFrame) -> pd.DataFrame:
-    return input[input.Region == "Total"]
+def melt(input: pd.DataFrame) -> pd.DataFrame:
+    return input.melt(["Type", "Dose"], var_name="date", value_name="value")
 
 
-def transpose(input: pd.DataFrame) -> pd.DataFrame:
-    """The dataset is provided with new entries as new columns.
-    It’s more standard to deal with new entries as new rows.
-    """
+def filter_rows(input: pd.DataFrame) -> pd.DataFrame:
+    return input[(input.Type != "Total") & (input.value > 0)]
+
+
+def pivot(input: pd.DataFrame) -> pd.DataFrame:
+    return input.pivot(index=["Type", "date"], columns="Dose", values="value").reset_index()
+
+
+def enrich_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.T.drop(["Region", "Dose"])
-        .astype(int)
-        .reset_index()
-        .rename(
-            columns={
-                "index": "date",
-                0: "people_vaccinated",
-                1: "people_fully_vaccinated",
-            }
-        )
-        .groupby(by=["people_vaccinated", "people_fully_vaccinated"])
-        .min()
-        .reset_index()
+        input.assign(total_vaccinations=input.First.fillna(0) + input.Second.fillna(0))
+        .rename(columns={"First": "people_vaccinated", "Second": "people_fully_vaccinated"})
     )
 
 
-def select_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input[
-        [
-            "location",
-            "date",
-            "people_vaccinated",
-            "people_fully_vaccinated",
-            "total_vaccinations",
-            "vaccine",
-            "source_url",
-        ]
-    ]
+def rename_vaccines(input: pd.DataFrame) -> pd.DataFrame:
+    vaccine_mapping = {
+        "Pfizer": "Pfizer/BioNTech",
+        "Sinovac": "Sinovac",
+    }
+    assert set(input["Type"].unique()) == set(vaccine_mapping.keys())
+    return input.replace(vaccine_mapping)
 
 
-def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
-    """Return vaccine names.
+def preprocess(input: pd.DataFrame) -> pd.DataFrame:
+    return (
+        input.pipe(melt)
+        .pipe(filter_rows)
+        .pipe(pivot)
+        .pipe(enrich_vaccinations)
+        .pipe(rename_vaccines)
+    )
 
-    Add logic here if different vaccines were in use in different periods.
 
-    Args:
-        input (pandas.DataFrame): Data. Must contain a column named 'date'
-          with date information.
-
-    Returns:
-        A data frame with a column for the vaccinations.
-    """
-
-    def _enrich_vaccine_name(date: str) -> str:
-        if date >= "2021-02-03":
-            return "Pfizer/BioNTech, Sinovac"
-        return "Pfizer/BioNTech"
-
-    return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
+def aggregate(input: pd.DataFrame) -> pd.DataFrame:
+    return (
+        input
+        .sort_values("Type")
+        .groupby("date", as_index=False)
+        .agg(
+            people_vaccinated=("people_vaccinated", "sum"),
+            people_fully_vaccinated=("people_fully_vaccinated", "sum"),
+            total_vaccinations=("total_vaccinations", "sum"),
+            vaccine=("Type", ", ".join),
+        )
+    )
 
 
 def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
@@ -84,36 +72,28 @@ def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def replace_zeroes_with_nans(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        people_fully_vaccinated=input.people_fully_vaccinated.replace({0: pd.NA})
-    )
-
-
-def preprocess(input: pd.DataFrame) -> pd.DataFrame:
-    return input.pipe(filter_totals).pipe(transpose)
-
-
-def enrich(input: pd.DataFrame) -> pd.DataFrame:
+def postprocess_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.pipe(enrich_vaccine_name)
-        .pipe(enrich_total_vaccinations)
+        input.pipe(aggregate)
         .pipe(enrich_metadata)
     )
 
 
-def post_process(input: pd.DataFrame) -> pd.DataFrame:
-    return input.pipe(replace_zeroes_with_nans).pipe(select_columns)
-
-
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
-    return input.pipe(preprocess).pipe(enrich).pipe(post_process)
+def postprocess_manufacturer(input: pd.DataFrame) -> pd.DataFrame:
+    return (
+        input[["Type", "date", "total_vaccinations"]]
+        .rename(columns={"Type": "vaccine"})
+        .assign(location="Chile")
+    )
 
 
 def main():
-    source = "https://github.com/juancri/covid19-vaccination/raw/master/output/chile-vaccination.csv"
+    source = "https://github.com/juancri/covid19-vaccination/raw/master/output/chile-vaccination-type.csv"
     destination = "automations/output/Chile.csv"
-    read(source).pipe(pipeline).to_csv(destination, index=False)
+    data = read(source).pipe(preprocess)
+
+    data.pipe(postprocess_vaccinations).to_csv(destination, index=False)
+    data.pipe(postprocess_manufacturer).to_csv(destination.replace("output", "output/by_manufacturer"), index=False)
 
 
 if __name__ == "__main__":
