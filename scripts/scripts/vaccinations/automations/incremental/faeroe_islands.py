@@ -1,18 +1,21 @@
 import re
-import requests
 import dateparser
 import vaxutils
 import pandas as pd
 
 
 def read(source: str) -> pd.Series:
-    return pd.read_json(requests.get(source).content).pipe(lambda ds: pd.DataFrame.from_records(ds["stats"]).iloc[0])
+    return pd.read_json(source).pipe(lambda ds: pd.DataFrame.from_records(ds["stats"]).iloc[0])
+
+
+def translate_index(input: pd.Series) -> pd.Series:
+    return input.rename({
+        'first_vaccine_number': 'people_vaccinated',
+        'second_vaccine_number': 'people_fully_vaccinated',
+    })
 
 
 def add_totals(input: pd.Series) -> pd.Series:
-    input.rename(index=
-                 {'first_vaccine_number': 'people_vaccinated', 'second_vaccine_number': 'people_fully_vaccinated'},
-                 inplace=True)
     total_vaccinations = int(input['people_vaccinated']) + int(input['people_fully_vaccinated'])
     return vaxutils.enrich_data(input, 'total_vaccinations', total_vaccinations)
 
@@ -39,7 +42,8 @@ def enrich_source(input: pd.Series) -> pd.Series:
 
 def pipeline(input: pd.Series) -> pd.Series:
     return (
-        input.pipe(add_totals)
+        input.pipe(translate_index)
+            .pipe(add_totals)
             .pipe(format_date)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)
