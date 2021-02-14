@@ -16,8 +16,7 @@ def clean_date(date, fmt):
 
 
 def enrich_data(input: pd.Series, row, value) -> pd.Series:
-    input = input.append(pd.Series(value, index=[row]))
-    return input
+    return input.append(pd.Series({row: value}))
 
 
 def increment(
