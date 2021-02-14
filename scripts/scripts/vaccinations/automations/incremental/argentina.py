@@ -9,11 +9,14 @@ def read(source: str) -> pd.Series:
     return df.sum(level=0, axis=1).sum()
 
 
-def add_totals(input: pd.Series) -> pd.Series:
-    input.rename(
-        index={'primera_dosis_cantidad': 'people_vaccinated', 'segunda_dosis_cantidad': 'people_fully_vaccinated'},
-        inplace=True)
+def translate_index(input: pd.Series) -> pd.Series:
+    return input.rename({
+        'primera_dosis_cantidad': 'people_vaccinated',
+        'segunda_dosis_cantidad': 'people_fully_vaccinated',
+    })
 
+
+def add_totals(input: pd.Series) -> pd.Series:
     total_vaccinations = input['people_vaccinated'] + input['people_fully_vaccinated']
     return vaxutils.enrich_data(input, 'total_vaccinations', total_vaccinations)
 
@@ -41,7 +44,8 @@ def enrich_source(input: pd.Series) -> pd.Series:
 
 def pipeline(input: pd.Series) -> pd.Series:
     return (
-        input.pipe(add_totals)
+        input.pipe(translate_index)
+            .pipe(add_totals)
             .pipe(format_date)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)
