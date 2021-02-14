@@ -7,13 +7,25 @@ import vaxutils
 
 def read(source: str) -> pd.Series:
     soup = BeautifulSoup(requests.get(source).content, "html.parser")
-    table = soup.find(class_="geo-unit-vacc-doses-data__table")
+    return parse_data(soup)
+
+
+def parse_data(soup: BeautifulSoup) -> pd.Series:
+    data = {'date': parse_date(soup), 'total_vaccinations': parse_total_vaccinations(soup)}
+    return pd.Series(data=data)
+
+
+def parse_date(soup: BeautifulSoup) -> str:
     date = soup.find(class_="detail-card__source").find("span").text
     date = re.search(r"[\d\.]{10}", date).group(0)
     date = str(date)
-    date = vaxutils.clean_date(date, "%d.%m.%Y")
+    return vaxutils.clean_date(date, "%d.%m.%Y")
+
+
+def parse_total_vaccinations(soup: BeautifulSoup) -> str:
+    table = soup.find(class_="geo-unit-vacc-doses-data__table")
     total_vaccinations = pd.read_html(str(table))[0].loc[1]['absolute numbers']
-    return pd.Series([total_vaccinations], index=['total_vaccinations']).append(pd.Series([date], index=['date']))
+    return total_vaccinations
 
 
 def enrich_location(input: pd.Series) -> pd.Series:
