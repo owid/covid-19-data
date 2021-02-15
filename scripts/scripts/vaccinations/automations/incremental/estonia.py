@@ -19,7 +19,7 @@ def main():
     text = soup.find(class_="node-published").text
 
     people_vaccinated, people_fully_vaccinated = re.search(
-        r"Eestis on COVID-19 vastu vaktsineerimisi tehtud ([\d\s]+) inimesele, kaks doosi on saanud ([\d\s]+) inimest",
+        r"COVID-19 vastu vaktsineerimisi on tehtud ([\d\s]+) inimesele, kellest ([\d\s]+) inimest on saanud mõlemad doosid",
         text
     ).groups()
 
