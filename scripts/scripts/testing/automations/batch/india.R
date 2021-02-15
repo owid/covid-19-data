@@ -22,22 +22,3 @@ samples <- data.table(
     `Source URL` = "https://github.com/datameet/covid19",
     Notes = "Made available by DataMeet on GitHub"
 )
-
-# Fix wrong figures in repo file
-samples[Date == "2020-11-20", `Cumulative total` := 129591786]
-
-samples <- samples[!is.na(`Cumulative total`)]
-fwrite(samples, "automated_sheets/India - Samples tested.csv")
-
-people <- data.table(
-    Date = df$Date,
-    `Cumulative total` = df$Individuals,
-    Country = "India",
-    Units = "people tested",
-    `Source label` = "Indian Council of Medical Research",
-    `Source URL` = "https://github.com/datameet/covid19",
-    Notes = "Made available by DataMeet on GitHub"
-)
-
-people <- people[!is.na(`Cumulative total`)]
-fwrite(people, "automated_sheets/India - People tested.csv")
