@@ -40,4 +40,6 @@ urls <- c("http://mcp.gov.ba/publication/read/epidemioloska-slika-covid-19?pageI
 df <- rbindlist(lapply(urls, FUN = process_page))
 setorder(df, Date)
 
+df <- df[, .SD[1], Date]
+
 fwrite(df, "automated_sheets/Bosnia and Herzegovina.csv")
