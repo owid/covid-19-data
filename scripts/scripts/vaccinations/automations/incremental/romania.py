@@ -32,8 +32,9 @@ def main():
     values = [vaxutils.clean_count(val) for val in pd.core.common.flatten(values)]
     assert len(values) == 2
 
-    people_fully_vaccinated = min(values)
-    people_vaccinated = sum(values)
+    people_fully_vaccinated = values[1]
+    one_dose_only = values[0]
+    people_vaccinated = one_dose_only + people_fully_vaccinated
     total_vaccinations = people_fully_vaccinated + people_vaccinated
 
     vaxutils.increment(

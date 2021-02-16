@@ -10,7 +10,8 @@ setorder(df, location, date, vaccine)
 approved <- c(
     "Moderna",
     "Oxford/AstraZeneca",
-    "Pfizer/BioNTech"
+    "Pfizer/BioNTech",
+    "Sinovac"
 )
 stopifnot(sort(unique(df$vaccine)) == approved)
 

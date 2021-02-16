@@ -49,6 +49,7 @@ def main():
     df = df.melt("date", var_name="vaccine", value_name="total_vaccinations")
 
     df["date"] = pd.to_datetime(df["date"], format="%d.%m.%y")
+    df["total_vaccinations"] = df["total_vaccinations"].astype(float)
     df["total_vaccinations"] = df.sort_values("date").groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
     df["location"] = "Iceland"
 
