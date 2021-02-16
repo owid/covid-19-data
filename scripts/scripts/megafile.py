@@ -87,7 +87,7 @@ def get_jhu():
 
 def get_reprod():
     reprod = pd.read_csv(
-        os.path.join(INPUT_DIR, "reproduction/database.csv"),
+        "https://github.com/crondonm/TrackingR/raw/main/Estimates-Database/database.csv",
         usecols=["Country/Region", "Date", "R", "days_infectious"]
     )
     reprod = (
