@@ -1,37 +1,78 @@
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+import vaxutils
 import datetime
 import pytz
 import re
-import requests
-from bs4 import BeautifulSoup
-import vaxutils
 
 
-def main():
+def read(source: str) -> pd.Series:
+    soup = BeautifulSoup(requests.get(source).content, "html.parser")
+    return parse_data(soup)
 
-    url = "https://covid19asi.saglik.gov.tr/"
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
+def parse_data(soup: BeautifulSoup) -> pd.Series:
+    data = {'total_vaccinations': parse_total_vaccinations(soup), 'people_vaccinated': parse_people_vaccinated(soup),
+            'people_fully_vaccinated': parse_people_fully_vaccinated(soup)}
+    return pd.Series(data=data)
+
+
+def parse_total_vaccinations(soup: BeautifulSoup) -> str:
     total_vaccinations = re.search(r"var yapilanasisayisi = (\d+);", str(soup)).group(1)
-    total_vaccinations = vaxutils.clean_count(total_vaccinations)
+    return vaxutils.clean_count(total_vaccinations)
 
-    people_vaccinated = re.search(r"var asiyapilankisisayisi1Doz = (\d+);", str(soup)).group(1)
-    people_vaccinated = vaxutils.clean_count(people_vaccinated)
 
+def parse_people_fully_vaccinated(soup: BeautifulSoup) -> str:
     people_fully_vaccinated = re.search(r"var asiyapilankisisayisi2Doz = (\d+);", str(soup)).group(1)
-    people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
+    return vaxutils.clean_count(people_fully_vaccinated)
 
+
+def parse_people_vaccinated(soup: BeautifulSoup) -> str:
+    people_vaccinated = re.search(r"var asiyapilankisisayisi1Doz = (\d+);", str(soup)).group(1)
+    return vaxutils.clean_count(people_vaccinated)
+
+
+def format_date(input: pd.Series) -> pd.Series:
     date = str(datetime.datetime.now(pytz.timezone("Asia/Istanbul")).date())
+    return vaxutils.enrich_data(input, 'date', date)
 
-    vaxutils.increment(
-        location="Turkey",
-        total_vaccinations=total_vaccinations,
-        people_vaccinated=people_vaccinated,
-        people_fully_vaccinated=people_fully_vaccinated,
-        date=date,
-        source_url=url,
-        vaccine="Sinovac"
+
+def enrich_location(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'location', "Turkey")
+
+
+def enrich_vaccine(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'vaccine', "Sinovac")
+
+
+def enrich_source(input: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(input, 'source_url',
+                                "https://covid19asi.saglik.gov.tr/")
+
+
+def pipeline(input: pd.Series) -> pd.Series:
+    return (
+        input.pipe(format_date)
+            .pipe(enrich_location)
+            .pipe(enrich_vaccine)
+            .pipe(enrich_source)
     )
 
 
-if __name__ == '__main__':
+def main():
+    source = "https://covid19asi.saglik.gov.tr/"
+    data = read(source).pipe(pipeline)
+    vaxutils.increment(
+        location=str(data['location']),
+        total_vaccinations=int(data['total_vaccinations']),
+        people_vaccinated=int(data['people_vaccinated']),
+        people_fully_vaccinated=int(data['people_fully_vaccinated']),
+        date=str(data['date']),
+        source_url=str(data['source_url']),
+        vaccine=str(data['vaccine'])
+    )
+
+
+if __name__ == "__main__":
     main()
