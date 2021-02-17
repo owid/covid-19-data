@@ -57,13 +57,13 @@ def main():
     source = "https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
+        location=data['location'],
         total_vaccinations=int(data['total_vaccinations']),
         people_vaccinated=int(data['people_vaccinated']),
         people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
