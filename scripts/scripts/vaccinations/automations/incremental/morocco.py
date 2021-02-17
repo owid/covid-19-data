@@ -15,11 +15,14 @@ def parse_data(source: str) -> pd.Series:
     with open("morocco.pdf", "rb") as pdfFileObj:
         pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
         text = pdfReader.getPage(0).extractText()
-    data = {'source_url': source, 'total_vaccinations': parse_total_vaccinations(text)}
+
+    keys = ("source_url", "total_vaccinations")
+    values = (source, parse_total_vaccinations(text))
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
-def parse_total_vaccinations(text: str) -> str:
+def parse_total_vaccinations(text: str) -> int:
     regex = r"Bénéficiaires de la vaccination\s+Cumul global([\d\s]+)Situation épidémiologique"
     total_vaccinations = re.search(regex, text)
     total_vaccinations = vaxutils.clean_count(total_vaccinations.group(1))
@@ -59,11 +62,11 @@ def main():
     source = f"http://www.covidmaroc.ma/Documents/BULLETIN/{url_date}.COVID-19.pdf"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
     os.remove("morocco.pdf")
 
