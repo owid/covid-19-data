@@ -12,7 +12,9 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
-    data = {'date': parse_date(soup), 'total_vaccinations': parse_total_vaccinations(soup)}
+    keys = ("date", "total_vaccinations")
+    values = (parse_date(soup), parse_total_vaccinations(soup))
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
@@ -24,7 +26,7 @@ def parse_date(soup: BeautifulSoup) -> str:
     return date
 
 
-def parse_total_vaccinations(soup: BeautifulSoup) -> str:
+def parse_total_vaccinations(soup: BeautifulSoup) -> int:
     total_vaccinations = soup.find(class_="coviddata").text
     return vaxutils.clean_count(total_vaccinations)
 
@@ -53,11 +55,11 @@ def main():
     source = "https://www.mohfw.gov.in/"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
