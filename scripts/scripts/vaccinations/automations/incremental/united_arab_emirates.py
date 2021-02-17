@@ -6,6 +6,17 @@ import datetime
 import pytz
 
 
+def read(source: str) -> pd.Series:
+    soup = BeautifulSoup(requests.get(source).content, "html.parser")
+    return parse_data(soup)
+
+
+def parse_data(soup: BeautifulSoup) -> pd.Series:
+    data = {'total_vaccinations': parse_total_vaccinations(soup)}
+    return pd.Series(data=data)
+
+
+def parse_total_vaccinations(soup: BeautifulSoup) -> int:
     total_vaccinations = soup.find(class_="doses").find(class_="counter").text
     return vaxutils.clean_count(total_vaccinations)
 
@@ -42,11 +53,11 @@ def main():
     source = "http://covid19.ncema.gov.ae/en"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
+        location=data['location'],
         total_vaccinations=int(data['total_vaccinations']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
