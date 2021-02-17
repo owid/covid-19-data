@@ -13,22 +13,24 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
-    data = {'total_vaccinations': parse_total_vaccinations(soup), 'people_vaccinated': parse_people_vaccinated(soup),
-            'people_fully_vaccinated': parse_people_fully_vaccinated(soup)}
+    keys = ("total_vaccinations", "people_vaccinated", "people_fully_vaccinated")
+    values = (parse_total_vaccinations(soup),
+              parse_people_vaccinated(soup), parse_people_fully_vaccinated(soup))
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
-def parse_total_vaccinations(soup: BeautifulSoup) -> str:
+def parse_total_vaccinations(soup: BeautifulSoup) -> int:
     total_vaccinations = re.search(r"var yapilanasisayisi = (\d+);", str(soup)).group(1)
     return vaxutils.clean_count(total_vaccinations)
 
 
-def parse_people_fully_vaccinated(soup: BeautifulSoup) -> str:
+def parse_people_fully_vaccinated(soup: BeautifulSoup) -> int:
     people_fully_vaccinated = re.search(r"var asiyapilankisisayisi2Doz = (\d+);", str(soup)).group(1)
     return vaxutils.clean_count(people_fully_vaccinated)
 
 
-def parse_people_vaccinated(soup: BeautifulSoup) -> str:
+def parse_people_vaccinated(soup: BeautifulSoup) -> int:
     people_vaccinated = re.search(r"var asiyapilankisisayisi1Doz = (\d+);", str(soup)).group(1)
     return vaxutils.clean_count(people_vaccinated)
 
@@ -64,13 +66,13 @@ def main():
     source = "https://covid19asi.saglik.gov.tr/"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        people_vaccinated=int(data['people_vaccinated']),
-        people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
