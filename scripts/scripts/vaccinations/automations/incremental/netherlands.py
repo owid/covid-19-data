@@ -9,17 +9,19 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(data: pd.DataFrame) -> pd.Series:
-    data = {'date': parse_date(data), 'total_vaccinations': parse_total_vaccinations(data)}
+    keys = ("date", "total_vaccinations")
+    values = (parse_date(data), parse_total_vaccinations(data))
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
-def parse_date(data: pd.DataFrame) -> str:
+def parse_date(data: dict) -> str:
     date = data["date_of_report_unix"]
     date = str(pd.to_datetime(date, unit="s").date())
     return date
 
 
-def parse_total_vaccinations(data: pd.DataFrame) -> str:
+def parse_total_vaccinations(data: dict) -> int:
     total_vaccinations = data["value"]
     return vaxutils.clean_count(total_vaccinations)
 
@@ -56,11 +58,11 @@ def main():
     source = "https://raw.githubusercontent.com/minvws/nl-covid19-data-dashboard/master/packages/app/src/locale/en.json"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
