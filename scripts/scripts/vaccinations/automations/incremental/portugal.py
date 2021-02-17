@@ -10,31 +10,29 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(data: pd.DataFrame) -> pd.Series:
-    data = {'date': parse_date(data), 'total_vaccinations': parse_total_vaccinations(data),
-            'people_vaccinated': parse_people_vaccinated(data),
-            'people_fully_vaccinated': parse_people_fully_vaccinated(data)}
+    keys = ("date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")
+    values = (parse_date(data), parse_total_vaccinations(data), parse_people_vaccinated(data),
+              parse_people_fully_vaccinated(data))
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
-def parse_date(data: pd.DataFrame) -> str:
+def parse_date(data: dict) -> str:
     date = data["Data"]
     date = str(pd.to_datetime(date, unit="ms").date())
     return date
 
 
-def parse_total_vaccinations(data: pd.DataFrame) -> str:
-    total_vaccinations = data["Vacinados_Ac"]
-    return total_vaccinations
+def parse_total_vaccinations(data: dict) -> int:
+    return int(data["Vacinados_Ac"])
 
 
-def parse_people_fully_vaccinated(data: pd.DataFrame) -> str:
-    people_fully_vaccinated = data["Inoculacao2_Ac"]
-    return people_fully_vaccinated
+def parse_people_fully_vaccinated(data: dict) -> int:
+    return int(data["Inoculacao2_Ac"])
 
 
-def parse_people_vaccinated(data: pd.DataFrame) -> str:
-    people_vaccinated = data["Inoculacao1_Ac"]
-    return people_vaccinated
+def parse_people_vaccinated(data: dict) -> int:
+    return int(data["Inoculacao1_Ac"])
 
 
 def enrich_location(input: pd.Series) -> pd.Series:
@@ -61,13 +59,13 @@ def main():
     source = "https://services5.arcgis.com/eoFbezv6KiXqcnKq/arcgis/rest/services/Covid19_Total_Vacinados/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=50&resultType=standard&cacheHint=true"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        people_vaccinated=int(data['people_vaccinated']),
-        people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
