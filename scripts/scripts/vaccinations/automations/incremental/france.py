@@ -47,13 +47,13 @@ def main():
     source = "https://www.data.gouv.fr/fr/datasets/r/131c6b39-51b5-40a7-beaa-0eafc4b88466"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
+        location=data['location'],
         total_vaccinations=int(data['total_vaccinations']),
         people_vaccinated=int(data['people_vaccinated']),
         people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
