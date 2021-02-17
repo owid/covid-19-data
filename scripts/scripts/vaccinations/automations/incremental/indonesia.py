@@ -11,8 +11,9 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
-    data = {'date': parse_date(soup), 'people_vaccinated': parse_people_vaccinated(soup),
-            'people_fully_vaccinated': parse_people_fully_vaccinated(soup)}
+    keys = ("date", "people_vaccinated", "people_fully_vaccinated")
+    values = (parse_date(soup), parse_people_vaccinated(soup), parse_people_fully_vaccinated(soup))
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
@@ -22,18 +23,18 @@ def parse_date(soup: BeautifulSoup) -> str:
     return date
 
 
-def parse_people_fully_vaccinated(soup: BeautifulSoup) -> str:
+def parse_people_fully_vaccinated(soup: BeautifulSoup) -> int:
     people_fully_vaccinated = soup.find(class_="description", text="Vaksinasi-2").parent.find(class_="case").text
     return vaxutils.clean_count(people_fully_vaccinated)
 
 
-def parse_people_vaccinated(soup: BeautifulSoup) -> str:
+def parse_people_vaccinated(soup: BeautifulSoup) -> int:
     people_vaccinated = soup.find(class_="description", text="Vaksinasi-1").parent.find(class_="case").text
     return vaxutils.clean_count(people_vaccinated)
 
 
 def add_totals(input: pd.Series) -> pd.Series:
-    total_vaccinations = int(input['people_vaccinated']) + int(input['people_fully_vaccinated'])
+    total_vaccinations = input['people_vaccinated'] + input['people_fully_vaccinated']
     return vaxutils.enrich_data(input, 'total_vaccinations', total_vaccinations)
 
 
@@ -63,13 +64,13 @@ def main():
     source = "https://www.kemkes.go.id/"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        people_vaccinated=int(data['people_vaccinated']),
-        people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
