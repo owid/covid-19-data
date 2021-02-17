@@ -24,18 +24,19 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(df: pd.DataFrame) -> pd.Series:
-    data = {'people_vaccinated': parse_people_vaccinated(df),
-            'people_fully_vaccinated': parse_people_fully_vaccinated(df)}
+    keys = ("people_vaccinated", "people_fully_vaccinated")
+    values = (parse_people_vaccinated(df), parse_people_fully_vaccinated(df))
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
-def parse_people_fully_vaccinated(df: pd.DataFrame) -> str:
-    people_fully_vaccinated = df[0]["C"][1]
+def parse_people_fully_vaccinated(df: dict) -> int:
+    people_fully_vaccinated = int(df[0]["C"][1])
     return people_fully_vaccinated
 
 
-def parse_people_vaccinated(df: pd.DataFrame) -> str:
-    people_vaccinated = df[1]["C"][1]
+def parse_people_vaccinated(df: dict) -> int:
+    people_vaccinated = int(df[1]["C"][1])
     return people_vaccinated
 
 
@@ -75,13 +76,13 @@ def main():
     source = 'https://wabi-west-europe-b-primary-api.analysis.windows.net/public/reports/querydata?synchronous=true'
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        people_vaccinated=int(data['people_vaccinated']),
-        people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
