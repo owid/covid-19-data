@@ -24,9 +24,10 @@ def connect_parse_data(source: str) -> pd.Series:
             elif "2ª Dose" in elem.text:
                 people_fully_vaccinated = elem.find_element_by_class_name("valueLabel").text
 
-    data = {'people_vaccinated': vaxutils.clean_count(people_vaccinated),
-            'people_fully_vaccinated': vaxutils.clean_count(people_fully_vaccinated)}
-    return pd.Series(data=data)
+    return pd.Series({
+        "people_vaccinated": people_vaccinated,
+        "people_fully_vaccinated": people_fully_vaccinated
+    }).transform(vaxutils.clean_count)
 
 
 def format_date(input: pd.Series) -> pd.Series:
@@ -35,7 +36,7 @@ def format_date(input: pd.Series) -> pd.Series:
 
 
 def add_totals(input: pd.Series) -> pd.Series:
-    total_vaccinations = int(input['people_vaccinated']) + int(input['people_fully_vaccinated'])
+    total_vaccinations = input['people_vaccinated'] + input['people_fully_vaccinated']
     return vaxutils.enrich_data(input, 'total_vaccinations', total_vaccinations)
 
 
@@ -65,13 +66,13 @@ def main():
     source = "https://datastudio.google.com/embed/u/0/reporting/2f2537fa-ac23-4f08-8741-794cdbedca03/page/CPFTB"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        people_vaccinated=int(data['people_vaccinated']),
-        people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
