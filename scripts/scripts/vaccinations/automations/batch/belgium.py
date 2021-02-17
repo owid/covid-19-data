@@ -6,34 +6,35 @@ from utils.pipeline import enrich_total_vaccinations
 
 
 def read(source: str) -> pd.DataFrame:
-    """Reading directly with `pd.read_csv` doesn’t work for some reason.
-    cURL manages to get the file so we use it and put the result in a temporary folder.
-    However it would break on a device that doesn’t have it.
-    """
-    with tempfile.TemporaryDirectory() as temp_dir:
-        temp_file = f"{temp_dir}/data.csv"
-        os.system(f"curl {source} -s -o {temp_file}")
-        return pd.read_csv(temp_file, usecols=["date", "first_dose", "second_dose"])
+    return pd.read_csv(source, usecols=["DATE", "DOSE", "COUNT"])
+
+
+def aggregate(input: pd.DataFrame) -> pd.DataFrame:
+    return (
+        input.groupby(["DATE", "DOSE"], as_index=False)
+        .sum()
+        .sort_values("DATE")
+        .pivot(index="DATE", columns="DOSE", values="COUNT")
+        .reset_index()
+    )
 
 
 def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
+    import pdb; pdb.set_trace()
     return input.rename(
         columns={
-            "first_dose": "people_vaccinated",
-            "second_dose": "people_fully_vaccinated",
+            "DATE": "date",
+            "A": "people_vaccinated",
+            "B": "people_fully_vaccinated",
         }
     )
 
 
 def add_totals(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
-        people_vaccinated=input.people_vaccinated.cumsum(),
-        people_fully_vaccinated=input.people_fully_vaccinated.cumsum(),
+        people_vaccinated=input.people_vaccinated.cumsum().ffill().fillna(0).astype(int),
+        people_fully_vaccinated=input.people_fully_vaccinated.cumsum().ffill().fillna(0).astype(int),
     ).pipe(enrich_total_vaccinations)
-
-
-def aggregate(input: pd.DataFrame) -> pd.DataFrame:
-    return input.groupby("date", as_index=False).sum().sort_values("date")
 
 
 def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
@@ -48,13 +49,16 @@ def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(location="Belgium", source_url="https://covid-vaccinatie.be/en")
+    return input.assign(
+        location="Belgium",
+        source_url="https://epistat.wiv-isp.be/covid/"
+    )
 
 
 def pipeline(input: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.pipe(rename_columns)
-        .pipe(aggregate)
+        input.pipe(aggregate)
+        .pipe(rename_columns)
         .pipe(add_totals)
         .pipe(enrich_vaccine_name)
         .pipe(enrich_columns)
@@ -62,7 +66,7 @@ def pipeline(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    source = "https://covid-vaccinatie.be/api/v1/administered.csv"
+    source = "https://epistat.sciensano.be/Data/COVID19BE_VACC.csv"
     destination = "automations/output/Belgium.csv"
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
