@@ -16,31 +16,30 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     df = pd.DataFrame(dfs_from_pdf[2])  # Hardcoded table location
     values = sorted(pd.to_numeric(df["Unnamed: 2"].str.replace(r"[^\d]", "", regex=True)).dropna().astype(int))
     assert len(values) == 3
-    data = {'date': parse_date(df), 'total_vaccinations': parse_total_vaccinations(values),
-            'people_vaccinated': parse_people_vaccinated(values),
-            'people_fully_vaccinated': parse_people_fully_vaccinated(values), 'source_url': pdf_path}
-
+    keys = ("date", "people_fully_vaccinated", "people_vaccinated", "total_vaccinations", "source_url")
+    values = (parse_date(df), *values, pdf_path)
+    data = dict(zip(keys, values))
     return pd.Series(data=data)
 
 
-def parse_date(df: pd.DataFrame) -> str:
+def parse_date(df: dict) -> str:
     date = df["Unnamed: 1"].str.replace("Journée du ", "").values[0]
     date = vaxutils.clean_date(date, "%d.%m.%Y")
     return date
 
 
-def parse_total_vaccinations(values: pd.DataFrame) -> str:
-    total_vaccinations = values[2]
+def parse_total_vaccinations(values: dict) -> int:
+    total_vaccinations = int(values[2])
     return total_vaccinations
 
 
-def parse_people_fully_vaccinated(values: pd.DataFrame) -> str:
-    people_fully_vaccinated = values[0]
+def parse_people_fully_vaccinated(values: dict) -> int:
+    people_fully_vaccinated = int(values[0])
     return people_fully_vaccinated
 
 
-def parse_people_vaccinated(values: pd.DataFrame) -> str:
-    people_vaccinated = values[1]
+def parse_people_vaccinated(values: dict) -> int:
+    people_vaccinated = int(values[1])
     return people_vaccinated
 
 
@@ -63,13 +62,13 @@ def main():
     source = "https://data.public.lu/fr/datasets/covid-19-rapports-journaliers/#_"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=str(data['location']),
-        total_vaccinations=int(data['total_vaccinations']),
-        people_vaccinated=int(data['people_vaccinated']),
-        people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=str(data['date']),
-        source_url=str(data['source_url']),
-        vaccine=str(data['vaccine'])
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
