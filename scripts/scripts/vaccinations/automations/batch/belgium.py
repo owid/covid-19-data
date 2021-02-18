@@ -20,7 +20,6 @@ def aggregate(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
-    import pdb; pdb.set_trace()
     return input.rename(
         columns={
             "DATE": "date",
