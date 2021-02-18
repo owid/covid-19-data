@@ -16,14 +16,14 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 
 def parse_date(soup: BeautifulSoup) -> str:
-    date = soup.find(class_="detail-card__source").find("span").text
+    date = soup.find(class_="detail-card__source").text
     date = re.search(r"[\d\.]{10}", date).group(0)
     date = str(date)
     return vaxutils.clean_date(date, "%d.%m.%Y")
 
 
 def parse_total_vaccinations(soup: BeautifulSoup) -> str:
-    table = soup.find(class_="geo-unit-vacc-doses-data__table")
+    table = soup.find(class_="geo-unit-vaccination-data__table")
     total_vaccinations = pd.read_html(str(table))[0].loc[1]['absolute numbers']
     return total_vaccinations
 
