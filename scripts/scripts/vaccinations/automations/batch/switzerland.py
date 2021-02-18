@@ -62,10 +62,10 @@ def translate_country_code(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def enrich(input: pd.DataFrame) -> pd.DataFrame:
+def enrich(input: pd.DataFrame, country_code: str) -> pd.DataFrame:
     return input.assign(
-        people_vaccinated=input.total_vaccinations + input.people_fully_vaccinated,
-        source_url="https://www.covid19.admin.ch/en/epidemiologic/vacc-doses",
+        people_vaccinated=input.total_vaccinations - input.people_fully_vaccinated,
+        source_url=f"https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo={country_code}",
     )
 
 
@@ -85,7 +85,7 @@ def pipeline(input: pd.DataFrame, country_code: str) -> pd.DataFrame:
         .pipe(pivot)
         .pipe(rename_columns)
         .pipe(translate_country_code)
-        .pipe(enrich)
+        .pipe(enrich, country_code)
         .pipe(enrich_vaccine)
     )
 
