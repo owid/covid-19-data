@@ -164,23 +164,22 @@ run_python 'import sweden; sweden.update_db()'
 # =====================================================================
 # Google Mobility
 
-# Download CSV
-run_python 'import gmobility; gmobility.download_csv()'
+hour=$(date +%H)
+if [ $hour == 15 ] ; then 
 
-# If there are any unstaged changes in the repo, then the
-# CSV has changed, and we need to run the update script.
-if has_changed './scripts/input/gmobility/latest.csv'; then
+  # Download CSV
+  run_python 'import gmobility; gmobility.download_csv()'
+
   echo "Generating Google Mobility export..."
   run_python 'import gmobility; gmobility.export_grapher()'
   rm ./scripts/input/gmobility/latest.csv
   git add .
   git commit -m "Automated Google Mobility update"
   git push
-else
-  echo "Google Mobility export is up to date"
-fi
 
-# Always run the database update.
-# The script itself contains a check against the database
-# to make sure it doesn't run unnecessarily.
-run_python 'import gmobility; gmobility.update_db()'
+  # Always run the database update.
+  # The script itself contains a check against the database
+  # to make sure it doesn't run unnecessarily.
+  run_python 'import gmobility; gmobility.update_db()'
+
+fi

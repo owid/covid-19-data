@@ -59,15 +59,7 @@ def aggregate(input: pd.DataFrame) -> pd.DataFrame:
 
 def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
-        source_url=(
-            "https://informesdeis.minsal.cl/SASVisualAnalytics/"
-            "?reportUri=%2Freports%2Freports%2F1a8cc7ff-7df0-474f-a147-929ee45d1900"
-            "&sectionIndex=0"
-            "&sso_guest=true"
-            "&reportViewOnly=true"
-            "&reportContextBar=false"
-            "&sas-welcome=false"
-        ),
+        source_url="https://www.gob.cl/yomevacuno/",
         location="Chile",
     )
 

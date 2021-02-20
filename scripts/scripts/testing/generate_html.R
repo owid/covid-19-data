@@ -71,7 +71,7 @@ for (c in countries) {
         html_add(sprintf('<p><strong>Positive rate: </strong>%s</p>',
                          plyr::mapvalues(row$pr_method, warn_missing = FALSE,
                                          from = c("official", "OWID", NA),
-                                         to = c("collected directly from the source.",
+                                         to = c("collected directly from the source. This means that the number of cases that can be deduced based on the number of tests and the positivity rate, is not necessarily equal to the number of cases visible in the rest of our COVID-19 data, which we import from Johns Hopkins University.",
                                          "calculated by Our World in Data as the 7-day rolling average of daily cases, divided by the 7-day rolling average of daily tests.",
                                          "not calculated (see detailed description)."))))
 
