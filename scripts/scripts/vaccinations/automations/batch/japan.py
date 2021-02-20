@@ -35,7 +35,7 @@ def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def calculate_metrics(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
+    return input.sort_values("date").assign(
         total_vaccinations=input.total_vaccinations.astype(int).cumsum(),
         people_vaccinated=input.people_vaccinated.astype(int).cumsum(),
         people_fully_vaccinated=input.people_fully_vaccinated.astype(int).cumsum(),
