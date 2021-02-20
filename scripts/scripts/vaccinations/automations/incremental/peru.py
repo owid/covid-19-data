@@ -11,14 +11,10 @@ def main():
     json = {
         "DisaCodigo": 0,
         "IdDepartamento": "",
-        "IdDistrito": "",
-        "IdEstablecimiento": 0,
-        "IdFase": 1,
-        "IdProvincia": "",
     }
 
     request = requests.post(
-        "https://gis.minsa.gob.pe/WebApiProd/api/ActVacunasResumen/ResumenFasePublico",
+        "https://gis.minsa.gob.pe/WebApiRep2/api/Departamento/ListarVacunadosPublico",
         json=json,
         headers=headers
     )
@@ -26,11 +22,10 @@ def main():
 
     data = request.json()
 
-    df = pd.DataFrame(data['Data'][0]['Vacunas'])
+    df = pd.DataFrame.from_records(data['Data'])
 
-    people_vaccinated = int(df[df['NroDosis'] == 1]['Vacunados'].values[0])
-    people_fully_vaccinated = int(df[df['NroDosis'] == 2]['Vacunados'].values[0])
-    total_vaccinations = people_vaccinated + people_fully_vaccinated
+    total_vaccinations = int(df.Vacunados.sum())
+    people_vaccinated = total_vaccinations
 
     local_time = datetime.datetime.now(pytz.timezone("America/Lima"))
     if local_time.hour < 8:
@@ -41,7 +36,7 @@ def main():
         location="Peru",
         total_vaccinations=total_vaccinations,
         people_vaccinated=people_vaccinated,
-        people_fully_vaccinated=people_fully_vaccinated,
+        people_fully_vaccinated=None,
         date=date,
         source_url="https://gis.minsa.gob.pe/GisVisorVacunados/",
         vaccine="Sinopharm/Beijing"
