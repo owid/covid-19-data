@@ -2,7 +2,7 @@ import datetime
 import json
 import requests
 import pandas as pd
-from .utils.pipeline import enrich_total_vaccinations
+from utils.pipeline import enrich_total_vaccinations
 
 
 def read(source: str) -> pd.DataFrame:
@@ -21,11 +21,11 @@ def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def format_date(df: pd.DataFrame) -> pd.DataFrame:
-    return df["date"].str.slice(0, 10)
+    return df.assign(date=df.date.str.slice(0, 10))
 
 
 def filter_date(df: pd.DataFrame) -> pd.DataFrame:
-    return df[df["date"] < str(datetime.date.today())]
+    return df[df.date < str(datetime.date.today())]
 
 
 def select_distinct(df: pd.DataFrame) -> pd.DataFrame:
@@ -104,7 +104,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     source = "https://datadashboardapi.health.gov.il/api/queries/vaccinated"
-    destination = "automations/output/Israel.csv"
+    destination = "automations/output/Israel2.csv"
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 
