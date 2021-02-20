@@ -7,8 +7,7 @@ from .utils.pipeline import enrich_total_vaccinations
 
 def read(source: str) -> pd.DataFrame:
     data = json.loads(requests.get(source).content)
-    df = pd.DataFrame.from_records(data)
-    return df
+    return pd.DataFrame.from_records(data)
 
 
 def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -22,14 +21,15 @@ def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def format_date(df: pd.DataFrame) -> pd.DataFrame:
-    df["date"] = df["date"].str.slice(0, 10)
-    df = df[df["date"] < str(datetime.date.today())]
-    return df
+    return df["date"].str.slice(0, 10)
+
+
+def filter_date(df: pd.DataFrame) -> pd.DataFrame:
+    return df[df["date"] < str(datetime.date.today())]
 
 
 def select_distinct(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.groupby(["people_vaccinated", "people_fully_vaccinated"], as_index=False).min()
-    return df
+    return df.groupby(["people_vaccinated", "people_fully_vaccinated"], as_index=False).min()
 
 
 def enrich_source(df: pd.DataFrame) -> pd.DataFrame:
