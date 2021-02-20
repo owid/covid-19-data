@@ -10,7 +10,7 @@ def read(source: str) -> pd.DataFrame:
     df = pd.read_html(str(table))[0]
     df.columns = df.iloc[0, :]
     df = df[df["日付"].str.contains(r"[\d/]{10}", regex=True)]
-    df = df.drop(columns=["施設数※"])
+    df = df.drop(columns=["施設数(*)"])
     return df
 
 
@@ -34,6 +34,14 @@ def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
     })
 
 
+def calculate_metrics(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(
+        total_vaccinations=input.total_vaccinations.astype(int).cumsum(),
+        people_vaccinated=input.people_vaccinated.astype(int).cumsum(),
+        people_fully_vaccinated=input.people_fully_vaccinated.astype(int).cumsum(),
+    )
+
+
 def format_date(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(date=pd.to_datetime(input.date, format="%Y/%m/%d").dt.date)
 
@@ -51,6 +59,7 @@ def pipeline(input: pd.DataFrame) -> pd.DataFrame:
         input
         .pipe(check_columns, expected=4)
         .pipe(rename_columns)
+        .pipe(calculate_metrics)
         .pipe(format_date)
         .pipe(enrich_columns)
     )
