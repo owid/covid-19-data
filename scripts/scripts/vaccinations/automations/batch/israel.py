@@ -73,6 +73,7 @@ def pre_process(df: pd.DataFrame) -> pd.DataFrame:
     return (
         df.pipe(rename_columns)
         .pipe(format_date)
+        .pipe(filter_date)
         .pipe(select_distinct)
     )
 
