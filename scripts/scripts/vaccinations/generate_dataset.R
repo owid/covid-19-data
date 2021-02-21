@@ -7,6 +7,7 @@ library(retry)
 library(rjson)
 library(stringr)
 library(tidyr)
+library(jsonlite)
 rm(list = ls())
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
@@ -221,6 +222,59 @@ generate_html <- function(metadata) {
     writeLines(html_table, "automations/source_table.html")
 }
 
+
+generate_vaccination_json_file <- function(vax) {
+    #' Generate JSON dataset
+    #' Places the file in 
+    vax_json <- jsonify_vax_data(vax)
+    write(vax_json, "../../../public/data/vaccinations/vaccinations.json")
+}
+
+jsonify_vax_data <- function(vax) {
+    #' Given data frame, jsonify it, i.e. suitable for API.
+    #' More details, see https://github.com/owid/covid-19-data/issues/500
+    countries <- get_list_countries_and_iso(vax)
+    vax_json <- list()
+    for (row in seq(nrow(countries))) {
+        location <- countries[row, "location"][[1]]
+        location_iso  <- countries[row, "iso_code"][[1]]
+        vax_json[[row]] <- get_country_as_dix(
+            vax, location = location, location_iso = location_iso
+        )
+    }
+    # JSON format
+    vax_json <- jsonlite::toJSON(vax_json, pretty = TRUE, auto_unbox = TRUE)
+    return(vax_json)
+}
+
+
+get_list_countries_and_iso <- function(vax) {
+    #' Get list of countries and iso codes (discard empty/NA codes)
+    countries <- unique(vax[, c("location", "iso_code")])
+    countries <- countries[
+        !(is.na(countries$iso_code) | countries$iso_code == "" |
+        countries$iso_code == "OWID_WRL"),
+    ]
+    return(countries)
+}
+
+
+get_country_as_dix <- function(vax, location, location_iso, fillna="") {
+    #' Get country data as a dictionary, API-friendly
+    vax_country <- subset(vax, iso_code == location_iso & location == location)
+    country_data <- list()
+    country_data$country <- location
+    country_data$iso_code <- location_iso
+    # Get data field (list, each element refers to one date)
+    data <- vax_country[, -c("location", "iso_code")]
+    data <- data[order(-data$date), ]
+    data[is.na(data)] <- fillna
+    country_data$data <- data
+
+    return(country_data)
+}
+
+
 metadata <- get_metadata()
 vax <- lapply(metadata$location, FUN = process_location)
 vax <- rbindlist(vax, use.names = TRUE)
@@ -259,6 +313,7 @@ stopifnot(all(vax$new_vaccinations_smoothed_per_million <= 50000, na.rm = TRUE))
 
 setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
+generate_vaccination_json_file(copy(vac))
 generate_grapher_file(copy(vax))
 generate_html(metadata)
 
