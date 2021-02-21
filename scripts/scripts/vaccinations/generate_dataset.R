@@ -313,7 +313,7 @@ stopifnot(all(vax$new_vaccinations_smoothed_per_million <= 50000, na.rm = TRUE))
 
 setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
-generate_vaccination_json_file(copy(vac))
+generate_vaccination_json_file(copy(vax))
 generate_grapher_file(copy(vax))
 generate_html(metadata)
 
