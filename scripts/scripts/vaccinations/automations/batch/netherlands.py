@@ -1,3 +1,5 @@
+import datetime
+
 import pandas as pd
 
 
@@ -54,7 +56,12 @@ def main():
     # Using @Sikerdebaard's scraped data for now - official JSONs are too unstable
     source = "https://github.com/Sikerdebaard/netherlands-vaccinations-scraper/raw/main/vaccine_administered_total.csv"
     destination = "automations/output/Netherlands.csv"
-    read(source).pipe(pipeline).to_csv(destination, index=False)
+    data = read(source).pipe(pipeline)
+
+    assert (datetime.datetime.now() - pd.to_datetime(data.date.max())).days < 3, \
+    "External repository is not up to date"
+
+    data.to_csv(destination, index=False)
 
 
 if __name__ == "__main__":
