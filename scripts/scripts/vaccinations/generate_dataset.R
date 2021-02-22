@@ -11,7 +11,7 @@ library(jsonlite)
 rm(list = ls())
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-CONFIG <- fromJSON(file = "vax_dataset_config.json")
+CONFIG <- rjson::fromJSON(file = "vax_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
 gs4_auth(email = CONFIG$google_credentials_email)
 GSHEET_KEY <- CONFIG$vax_time_series_gsheet
@@ -198,6 +198,7 @@ generate_vaccinations_file <- function(vax) {
     setnames(vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million", "new_vaccinations"),
              c("daily_vaccinations", "daily_vaccinations_per_million", "daily_vaccinations_raw"))
     fwrite(vax, "../../../public/data/vaccinations/vaccinations.csv", scipen = 999)
+    generate_vaccination_json_file(copy(vax))
 }
 
 generate_grapher_file <- function(grapher) {
@@ -225,7 +226,6 @@ generate_html <- function(metadata) {
 
 generate_vaccination_json_file <- function(vax) {
     #' Generate JSON dataset
-    #' Places the file in 
     vax_json <- jsonify_vax_data(vax)
     write(vax_json, "../../../public/data/vaccinations/vaccinations.json")
 }
@@ -235,10 +235,10 @@ jsonify_vax_data <- function(vax) {
     #' More details, see https://github.com/owid/covid-19-data/issues/500
     countries <- get_list_countries_and_iso(vax)
     vax_json <- list()
-    for (row in seq(nrow(countries))) {
-        location <- countries[row, "location"][[1]]
-        location_iso  <- countries[row, "iso_code"][[1]]
-        vax_json[[row]] <- get_country_as_dix(
+    for (i in seq(nrow(countries))) {
+        location <- countries[i, location]
+        location_iso  <- countries[i, iso_code]
+        vax_json[[i]] <- get_country_as_dix(
             vax, location = location, location_iso = location_iso
         )
     }
@@ -251,26 +251,22 @@ jsonify_vax_data <- function(vax) {
 get_list_countries_and_iso <- function(vax) {
     #' Get list of countries and iso codes (discard empty/NA codes)
     countries <- unique(vax[, c("location", "iso_code")])
-    countries <- countries[
-        !(is.na(countries$iso_code) | countries$iso_code == "" |
-        countries$iso_code == "OWID_WRL"),
-    ]
+    countries <- countries[!(is.na(countries$iso_code) | countries$iso_code %in% c("", "OWID_WRL"))]
     return(countries)
 }
 
 
-get_country_as_dix <- function(vax, location, location_iso, fillna="") {
+get_country_as_dix <- function(vax, location, location_iso) {
     #' Get country data as a dictionary, API-friendly
-    vax_country <- subset(vax, iso_code == location_iso & location == location)
-    country_data <- list()
-    country_data$country <- location
-    country_data$iso_code <- location_iso
+    vax_country <- vax[iso_code == location_iso & location == location]
+    country_data <- list(
+        "country" = location,
+        "iso_code" = location_iso
+    )
     # Get data field (list, each element refers to one date)
     data <- vax_country[, -c("location", "iso_code")]
-    data <- data[order(-data$date), ]
-    data[is.na(data)] <- fillna
+    setorder(data, date)
     country_data$data <- data
-
     return(country_data)
 }
 
@@ -313,7 +309,6 @@ stopifnot(all(vax$new_vaccinations_smoothed_per_million <= 100000, na.rm = TRUE)
 
 setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
-generate_vaccination_json_file(copy(vax))
 generate_grapher_file(copy(vax))
 generate_html(metadata)
 
