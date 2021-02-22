@@ -112,7 +112,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     source = "https://datadashboardapi.health.gov.il/api/queries/vaccinated"
-    destination = "automations/output/Israel2.csv"
+    destination = "automations/output/Israel.csv"
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 
