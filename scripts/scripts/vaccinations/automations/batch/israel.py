@@ -6,7 +6,15 @@ from utils.pipeline import enrich_total_vaccinations
 
 
 def read(source: str) -> pd.DataFrame:
-    data = json.loads(requests.get(source).content)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:85.0) Gecko/20100101 Firefox/85.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Pragma': 'no-cache',
+        'Cache-Control': 'no-cache',
+    }
+    data = json.loads(requests.get(source, headers=headers).content)
     return pd.DataFrame.from_records(data)
 
 
