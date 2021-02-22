@@ -4,52 +4,60 @@ For more general information on our COVID-19 data, see our main README file in [
 
 ## Data sources
 
-The data is from the [Human Mortality Database](https://www.mortality.org/) (HMD) Short-term Mortality Fluctuations project for all countries, except the United Kingdom (HMD has data for England & Wales, Scotland, and Northern Ireland separately, but not the UK as a whole). The UK data is sourced from the [UK Office for National Statistics](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/januarytojune2020) (ONS).
+The all-cause mortality data is from the [Human Mortality Database](https://www.mortality.org/) (HMD) Short-term Mortality Fluctuations project and the [World Mortality Dataset](https://github.com/akarlinsky/world_mortality) (WMD). Both sources are updated weekly.
+
+WMD sources some of its data from HMD, but we use the data from HMD directly. We do not use the data from 14 countries in WMD because they fail to meet all three of the following data quality criteria: 1) estimated coverage of at least 85% of deaths; 2) at least four years of historical data; and 3) data published either weekly or monthly. These countries are: Albania, Bolivia, Bosnia & Herzegovina, Colombia, Ecuador, Iran, Ireland, Kazakhstan, Kosovo, Malaysia, Mexico, Peru, South Africa, and Uruguay.
+
+We calculate the number of weekly deaths for the United Kingdom by summing the weekly deaths from England & Wales, Scotland, and Northern Ireland.
 
 For a more detailed description of the HMD data, including week date definitions, the coverage (of individuals, locations, and time), whether dates are for death occurrence or registration, the original national source information, and important caveats, [see the HMD metadata file](https://www.mortality.org/Public/STMF_DOC/STMFmetadata.pdf).
 
-For a more detailed description of the UK ONS data, [see the full report](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/comparisonsofallcausemortalitybetweeneuropeancountriesandregions/januarytojune2020).
+For a more detailed description of the WMD data, including original source information, [see their GitHub page](https://github.com/akarlinsky/world_mortality).
 
 ## Excess mortality data
 
 Stored in [`excess_mortality.csv`](https://github.com/owid/covid-19-data/blob/master/public/data/excess_mortality/excess_mortality.csv).
 
-As of 26 January 2021, the data columns are:
+As of 20 February 2021, the data columns are:
 
-- `location`: name of the country
-- `date`: date on which a week ended according to ISO 8601; see note below for details
+- `location`: name of the country or region
+- `date`: date on which a month or week ended (week dates according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_week_date))
 - `p_scores_all_ages`: P-scores for all ages; see note below for the definition of the P-score and how we calculate it
 - `p_scores_15_64`: P-scores for ages 15–64
 - `p_scores_65_74`: P-scores for ages 65–74
 - `p_scores_75_84`: P-scores for ages 75–84
 - `p_scores_85plus`: P-scores for ages 85 and above
-- `deaths_2021_all_ages`: number of weekly deaths from all causes for all ages in 2021
-- `deaths_2020_all_ages`: number of weekly deaths from all causes for all ages in 2020
-- `average_deaths_2015_2019_all_ages`: average number of weekly deaths from all causes for all ages over the years 2015–2019
-- `deaths_2019_all_ages`: number of weekly deaths from all causes for all ages in 2019
-- `deaths_2018_all_ages`: number of weekly deaths from all causes for all ages in 2018
-- `deaths_2017_all_ages`: number of weekly deaths from all causes for all ages in 2017
-- `deaths_2016_all_ages`: number of weekly deaths from all causes for all ages in 2016
-- `deaths_2015_all_ages`: number of weekly deaths from all causes for all ages in 2015
-- `deaths_2014_all_ages`: number of weekly deaths from all causes for all ages in 2014
-- `deaths_2013_all_ages`: number of weekly deaths from all causes for all ages in 2013
-- `deaths_2012_all_ages`: number of weekly deaths from all causes for all ages in 2012
-- `deaths_2011_all_ages`: number of weekly deaths from all causes for all ages in 2011
-- `deaths_2010_all_ages`: number of weekly deaths from all causes for all ages in 2010
-- `Week`: week number in the year; see note below for details
+- `deaths_2021_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2021
+- `deaths_2020_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2020
+- `avg_deaths_2015_2019`: average number of weekly or monthly deaths from all causes for all ages over the years 2015–2019
+- `deaths_2019_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2019
+- `deaths_2018_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2018
+- `deaths_2017_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2017
+- `deaths_2016_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2016
+- `deaths_2015_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2015
+- `deaths_2014_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2014
+- `deaths_2013_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2013
+- `deaths_2012_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2012
+- `deaths_2011_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2011
+- `deaths_2010_all_ages`: number of weekly or monthly deaths from all causes for all ages in 2010
+- `time`: week or month number in the year
+- `time_unit`: denotes whether the “time” column values are weekly or monthly
 
-## Additional notes about the data
+## How P-scores are defined and calculated
 
-### Week numbering and dates
+We used the raw weekly or monthly death data from HMD and WMD to calculate P-scores. The P-score is the percentage difference between the number of weekly or monthly deaths in 2020–2021 and the average number of deaths in the same period over the years 2015–2019 (for a small minority of countries only 2016–2019 are available). For Week 53 2020, which ended on 3 January 2021, we compare the number of deaths to the average deaths in Week 52 over the years 2015–2019, because only one previous year (2015) had a Week 53.
 
-Death data is typically reported by countries on a weekly basis and numbered from Week 1 to Week 52 (or 53) over the course of a year. But countries define the start and end days of the week differently. Most countries use [international standard ISO 8601](https://en.wikipedia.org/wiki/ISO_week_date), which defines the week as from Monday to Sunday, but not all countries follow this standard. For instance, England & Wales define the week as from Saturday to Friday. This means the dates of any particular reporting week might differ slightly between countries. In our excess mortality data we use the ISO 8601 week end dates.
+## Important points about the data
 
-### How P-scores are defined and calculated
+For more details see our page on [Excess mortality during the Coronavirus pandemic (COVID-19)](https://ourworldindata.org/excess-mortality-covid).
 
-We used the raw weekly death data from HMD to calculate P-scores. The P-score is the percentage difference between the number of weekly deaths in 2020–2021 and the average number of deaths in the same week over the years 2015–2019 (when available; for a small minority of countries fewer previous years are available, usually 2016–2019). For the UK P-scores were calculated by the ONS.
+**The reported number of deaths might not count all deaths that occurred.** This is the case for two reasons:
 
-For Week 53 2020, which ended on 3 January 2021, we compare the number of deaths to the average deaths in Week 52 over the years 2015–2019, because only one previous year (2015) had a Week 53.
+- First, not all countries have the infrastructure and capacity to register and report all deaths. Here we only include countries that are [estimated to register at least 85% of deaths](https://unstats.un.org/unsd/demographic-social/crvs/#coverage) — though the actual coverage might be lower due to the burden of the pandemic, and significant differences in coverage between countries likely remain.
+- Second, there are delays in death reporting that make mortality data provisional and incomplete in the weeks, months, and even years after a death occurs. The extent of the delay varies by country. For some, the most recent data points are clearly very incomplete and therefore inaccurate — we do not include these clearly incomplete data points. (For a detailed list of the data we exclude for each country [see this spreadsheet](https://docs.google.com/spreadsheets/d/1Z_mnVOvI9GVLiJRG1_3ond-Vs1GTseHVv1w-pF2o6Bs/edit?usp=sharing).)
 
-### We exclude the most recent weeks of data because it is incomplete
+**The date associated with a death might refer to when the death _occurred_ or to when it was _registered_.** This varies by country. Death counts by date of registration can vary significantly irrespectively of any actual variation in deaths, such as from registration delays or the closure of registration offices on weekends and holidays. It can also happen that deaths are registered, but the date of death is unknown — those deaths are not included in the weekly or monthly data here.
 
-We do not show the most recent weeks of countries’ data series. The decision about how many weeks to exclude is made individually for each country based on when the reported number of deaths in a given week changes by less than ~3% relative to the number previously reported for that week, implying that the reports have reached a high level of completeness. The exclusion of data based on this threshold varies from zero weeks (for countries that quickly reach a high level of reporting completeness) to four weeks. For a detailed list of the data we exclude for each country [see the spreadsheet here](https://docs.google.com/spreadsheets/d/1Z_mnVOvI9GVLiJRG1_3ond-Vs1GTseHVv1w-pF2o6Bs/edit?usp=sharing).
+**The dates of any particular reporting week might differ slightly between countries.** This is because countries that report weekly data define the start and end days of the week differently. Most follow international standard [ISO 8601](https://en.wikipedia.org/wiki/ISO_week_date), which defines the week as from Monday to Sunday, but not all countries follow this standard. We use the ISO 8601 week end dates from 2020-2021.
+
+**Deaths reported weekly might not be directly comparable to deaths reported monthly.** For instance, because excess mortality calculated from monthly data tends to be lower than the excess calculated from weekly data.
