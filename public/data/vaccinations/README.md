@@ -18,7 +18,7 @@ Stored in [`locations.csv`](locations.csv)
 
 ### Vaccination data
 
-Stored in [`vaccinations.csv`](vaccinations.csv). Country-by-country data on global COVID-19 vaccinations. We only rely on figures that are verifiable based on public official sources.
+Stored in [`vaccinations.csv`](vaccinations.csv) and [`vaccinations.json`](vaccinations.json). Country-by-country data on global COVID-19 vaccinations. We only rely on figures that are verifiable based on public official sources.
 
 The population estimates we use to calculate per-capita metrics are all based on the last revision of the [United Nations World Population Prospects](https://population.un.org/wpp/). The exact values can be viewed [here](https://github.com/owid/covid-19-data/blob/master/scripts/input/un/population_2020.csv).
 
