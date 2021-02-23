@@ -1,108 +1,37 @@
-from typing import Dict
-
-import tabula
-import pandas as pd
 import requests
-from bs4 import BeautifulSoup
 
-from utils.pipeline import enrich_total_vaccinations
-
-
-TRANSLATIONS = {
-    "Vaccinationsdato": "date",
-    "Antal personer som har påbegyndt vaccination": "people_vaccinated",
-    "Antal personer som er færdigvaccineret": "people_fully_vaccinated",
-}
+import pandas as pd
 
 
-def read_datasets_download_link(source: str) -> str:
-    page = requests.get(source).content
-    soup = BeautifulSoup(page, "html.parser")
-    return soup.find("a", text="Download her").get("href")
+def read(source: str) -> str:
+    data = requests.get(source).json()
+    return pd.DataFrame.from_records(elem["attributes"] for elem in data["features"])
 
 
-def read_vaccination_dataset(source: str) -> pd.DataFrame:
-    """This PDF contains 13 datasets.
-    We are interested in the one that has vaccination data.
-    It’s identified because it has `Vaccinationsdato` timeseries data."""
-
-    datasets = tabula.read_pdf(
-        source, pages="all", pandas_options={"dtype": str, "header": None}
-    )
-    matching = [
-        dataset for dataset in datasets if "Vaccinationsdato" in dataset[0].values
-    ]
-    return matching[0]
-
-
-def format_header(input: pd.DataFrame) -> pd.DataFrame:
-    """The way the table is parsed from the PDF makes it seem like
-    the header is three consecutive rows.
-
-    The rest is fine, but we need to format this properly.
-
-    It looks like this:
-    | 0 | 'Vaccinationsdato' | 'Antal personer som har' | 'Antal personer som har' |
-    | 1 | nan                | 'påbegyndt vaccination'  | 'påbegyndt vaccination'  |
-    | 2 | nan                | 'pr. dag'                |  nan                     |
-    """
-    header_rows = (list(row) for row in input[0:3].values)
-    header_items = zip(*header_rows)  # (('Vaccinationsdato', nan, nan), (...))
-
-    header = [" ".join([x for x in h if not pd.isna(x)]) for h in header_items]
-    return input[3:].set_axis(header, axis="columns")
-
-
-def read(source: str) -> pd.DataFrame:
-    download_link = read_datasets_download_link(source)
-    return (
-        read_vaccination_dataset(download_link)
-        .pipe(format_header)
-        .assign(source_url=download_link)
-    )
-
-
-def translate(input: str, translations: Dict[str, str]) -> pd.DataFrame:
-    return input.rename(columns=translations)
+def rename_columns(input: pd.DataFrame, colname: str) -> pd.DataFrame:
+    input.columns = ("date", colname)
+    return input
 
 
 def format_date(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(date=pd.to_datetime(input.date, format="%d-%m-%Y"))
+    return input.assign(date=pd.to_datetime(input.date, unit="ms"))
 
 
-def parse_number(number: str) -> int:
-    return int(number.replace(".", "").replace("-", "0"))
-
-
-def parse_number_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        people_vaccinated=input.people_vaccinated.apply(parse_number),
-        people_fully_vaccinated=input.people_fully_vaccinated.apply(parse_number),
+def aggregate(input: pd.DataFrame) -> pd.DataFrame:
+    return (
+        input
+        .groupby("date")
+        .sum()
+        .sort_values("date")
+        .cumsum()
+        .reset_index()
     )
 
 
-def format_nulls_as_nans(input: pd.DataFrame) -> pd.DataFrame:
+def enrich_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
-        people_fully_vaccinated=input.people_fully_vaccinated.replace(0, pd.NA)
+        total_vaccinations=input.people_vaccinated.fillna(0) + input.people_fully_vaccinated.fillna(0)
     )
-
-
-def select_output_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input[
-        [
-            "date",
-            "people_vaccinated",
-            "people_fully_vaccinated",
-            "total_vaccinations",
-            "location",
-            "source_url",
-            "vaccine",
-        ]
-    ]
-
-
-def enrich_location(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(location="Denmark")
 
 
 def enrich_vaccine(input: pd.DataFrame) -> pd.DataFrame:
@@ -110,35 +39,47 @@ def enrich_vaccine(input: pd.DataFrame) -> pd.DataFrame:
         if date >= "2021-01-13":
             return "Moderna, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
-
     return input.assign(vaccine=input.date.astype(str).apply(_enrich_vaccine))
 
 
-def pre_process(input: pd.DataFrame) -> pd.DataFrame:
-    return (
-        input.pipe(translate, TRANSLATIONS).pipe(format_date).pipe(parse_number_columns)
+def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
+    return input.assign(
+        location="Denmark",
+        source_url="https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning"
     )
 
 
-def enrich(input: pd.DataFrame) -> pd.DataFrame:
+def pipeline(input: pd.DataFrame, colname: str) -> pd.DataFrame:
     return (
-        input.pipe(enrich_total_vaccinations).pipe(enrich_location).pipe(enrich_vaccine)
+        input
+        .pipe(rename_columns, colname)
+        .pipe(format_date)
+        .pipe(aggregate)
     )
 
 
 def post_process(input: pd.DataFrame) -> pd.DataFrame:
-    return input.pipe(format_nulls_as_nans).pipe(select_output_columns)
-
-
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
-    return input.pipe(pre_process).pipe(enrich).pipe(post_process)
+    return (
+        input
+        .pipe(enrich_vaccinations)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_metadata)
+    )
 
 
 def main():
-    source = "https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning"
+    source_dose1 = "https://services5.arcgis.com/Hx7l9qUpAnKPyvNz/ArcGIS/rest/services/Vaccine_REG_linelist_gdb/FeatureServer/19/query?where=1%3D1&objectIds=&time=&resultType=none&outFields=first_vaccinedate%2Cantal_foerste_vacc&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token="
+    source_dose2 = "https://services5.arcgis.com/Hx7l9qUpAnKPyvNz/ArcGIS/rest/services/Vaccine_REG_linelist_gdb/FeatureServer/20/query?where=1%3D1&objectIds=&time=&resultType=none&outFields=second_vaccinedate%2Cantal_faerdig_vacc&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token="
     destination = "automations/output/Denmark.csv"
 
-    read(source).pipe(pipeline).to_csv(destination, index=False)
+    dose1 = read(source_dose1).pipe(pipeline, colname="people_vaccinated")
+    dose2 = read(source_dose2).pipe(pipeline, colname="people_fully_vaccinated")
+
+    (
+        pd.merge(dose1, dose2, how="outer", on="date")
+        .pipe(post_process)
+        .to_csv(destination, index=False)
+    )
 
 
 if __name__ == "__main__":
