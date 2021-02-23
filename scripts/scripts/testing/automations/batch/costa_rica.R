@@ -1,3 +1,6 @@
+library(dplyr)
+library(zoo)
+
 minus <- function(x) sum(x[1],na.rm=T) - sum(x[2],na.rm=T)
 
 date <- Sys.Date() - 3
