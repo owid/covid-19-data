@@ -1,34 +1,59 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Portugal,2020-12-28,Pfizer/BioNTech,https://www.sns.gov.pt/noticias/2020/12/28/covid-19-vacinacao-de-profissionais/,4828,4828,0
-Portugal,2020-12-29,Pfizer/BioNTech,https://www.sns.gov.pt/noticias/2020/12/29/quase-17-mil-profissionais-ja-receberam-a-vacina/,16701,16701,0
-Portugal,2020-12-30,Pfizer/BioNTech,https://ionline.sapo.pt/artigo/719646/marta-temido-anunciou-que-ja-foram-vacinados-quase-27-mil-profissionais-de-sa-de-?seccao=Portugal_i,26850,26850,0
-Portugal,2021-01-03,Pfizer/BioNTech,https://expresso.pt/sociedade/2021-01-04-Covid-19.-32-mil-vacinados-em-Portugal-quase-um-milhao-no-Reino-Unido--onde-a-espera-pela-2.-dose-e-de-12-semanas--322-em-Franca,32000,32000,0
-Portugal,2021-01-06,Pfizer/BioNTech,https://www.portugal.gov.pt/pt/gc22/comunicacao/noticia?i=servico-nacional-de-saude-ja-administrou-mais-de-32-mil-doses-de-vacina,42035,42035,0
-Portugal,2021-01-08,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,70000,70000,0
-Portugal,2021-01-15,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,106000,106000,0
-Portugal,2021-01-22,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,212000,,
-Portugal,2021-01-23,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,232725,,
-Portugal,2021-01-26,Pfizer/BioNTech,https://www.publico.pt/2021/01/26/sociedade/noticia/160-mil-utentes-profissionais-lares-ja-receberam-menos-primeira-dose-vacina-1948066,263499,225499,38000
-Portugal,2021-01-27,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,278413,,
-Portugal,2021-01-28,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,296004,,
-Portugal,2021-01-29,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,315737,,
-Portugal,2021-01-30,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,330233,,
-Portugal,2021-01-31,Pfizer/BioNTech,https://www.sns.gov.pt/monitorizacao-do-sns/vacinas-covid-19/,336771,268386,68385
-Portugal,2021-02-01,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,338566,269814,68755
-Portugal,2021-02-03,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,350945,275093,75852
-Portugal,2021-02-04,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,364211,279236,84975
-Portugal,2021-02-06,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,379378,284462,94916
-Portugal,2021-02-07,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,394088,290302,103786
-Portugal,2021-02-08,Pfizer/BioNTech,https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,395904,291378,104526
-Portugal,2021-02-09,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,396371,291758,104613
-Portugal,2021-02-10,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,400190,294135,106055
-Portugal,2021-02-11,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,436220,303142,133078
-Portugal,2021-02-12,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,468319,310715,157604
-Portugal,2021-02-13,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,505371,320677,184694
-Portugal,2021-02-14,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,523349,328819,194530
-Portugal,2021-02-15,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,529021,331321,197700
-Portugal,2021-02-16,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,539786,336500,203286
-Portugal,2021-02-17,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,556331,347013,209318
-Portugal,2021-02-18,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,618636,388661,229975
-Portugal,2021-02-19,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,656411,413482,242929
-Portugal,2021-02-21,"Moderna, Pfizer/BioNTech",https://covid19.min-saude.pt/ponto-de-situacao-atual-em-portugal/,675453,429020,246433
+Portugal,2020-12-27,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,4963,4963,0
+Portugal,2020-12-28,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,7754,7754,0
+Portugal,2020-12-29,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,20368,20368,0
+Portugal,2020-12-30,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,30543,30543,0
+Portugal,2020-12-31,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,32749,32749,0
+Portugal,2021-01-01,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,32749,32749,0
+Portugal,2021-01-02,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,32750,32750,0
+Portugal,2021-01-03,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,32750,32750,0
+Portugal,2021-01-04,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,33670,33670,0
+Portugal,2021-01-05,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,46433,46433,0
+Portugal,2021-01-06,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,61454,61454,0
+Portugal,2021-01-07,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,71751,71751,0
+Portugal,2021-01-08,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,74254,74254,0
+Portugal,2021-01-09,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,74352,74352,0
+Portugal,2021-01-10,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,74392,74392,0
+Portugal,2021-01-11,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,75280,75280,0
+Portugal,2021-01-12,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,86162,86162,0
+Portugal,2021-01-13,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,99961,99961,0
+Portugal,2021-01-14,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,111111,111111,0
+Portugal,2021-01-15,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,118597,118597,0
+Portugal,2021-01-16,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,120132,120132,0
+Portugal,2021-01-17,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,121300,120139,1161
+Portugal,2021-01-18,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,124704,122879,1825
+Portugal,2021-01-19,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,148434,138991,9443
+Portugal,2021-01-20,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,177367,158749,18618
+Portugal,2021-01-21,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,210471,186879,23592
+Portugal,2021-01-22,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,236730,210734,25996
+Portugal,2021-01-23,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,251524,221488,30036
+Portugal,2021-01-24,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,255699,225146,30553
+Portugal,2021-01-25,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,,,
+Portugal,2021-01-26,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,263499,,
+Portugal,2021-01-27,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,278413,,
+Portugal,2021-01-28,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,296004,,
+Portugal,2021-01-29,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,315737,,
+Portugal,2021-01-30,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,330233,264772,65461
+Portugal,2021-01-31,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,336771,268386,68385
+Portugal,2021-02-01,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,338566,269814,68752
+Portugal,2021-02-02,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,342119,271424,70695
+Portugal,2021-02-03,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,350945,275093,75852
+Portugal,2021-02-04,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,364211,279236,84975
+Portugal,2021-02-05,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,379378,284462,94916
+Portugal,2021-02-06,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,394088,290302,103786
+Portugal,2021-02-07,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,395904,291378,104526
+Portugal,2021-02-08,Pfizer/BioNTech,https://github.com/dssg-pt/covid19pt-data,396371,291758,104613
+Portugal,2021-02-09,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,400190,294135,106055
+Portugal,2021-02-10,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,415283,298724,116559
+Portugal,2021-02-11,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,436220,303142,133078
+Portugal,2021-02-12,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,468319,310715,157604
+Portugal,2021-02-13,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,505371,320677,184694
+Portugal,2021-02-14,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,523349,328819,194530
+Portugal,2021-02-15,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,529021,331321,197700
+Portugal,2021-02-16,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,539786,336500,203286
+Portugal,2021-02-17,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,556331,347013,209318
+Portugal,2021-02-18,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,578702,361431,217271
+Portugal,2021-02-19,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,618636,388661,229975
+Portugal,2021-02-20,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,656411,413482,242929
+Portugal,2021-02-21,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,675453,429020,246433
+Portugal,2021-02-22,"Moderna, Pfizer/BioNTech",https://github.com/dssg-pt/covid19pt-data,680257,432414,247843
