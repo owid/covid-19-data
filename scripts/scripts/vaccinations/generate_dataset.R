@@ -11,6 +11,7 @@ library(jsonlite)
 rm(list = ls())
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+system("git pull")
 CONFIG <- rjson::fromJSON(file = "vax_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
 gs4_auth(email = CONFIG$google_credentials_email)
