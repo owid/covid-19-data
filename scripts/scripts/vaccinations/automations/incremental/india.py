@@ -51,13 +51,14 @@ def main():
     else:
         vaxutils.increment(
             location="India",
-            total_vaccinations=total_vaccinations,
-            people_vaccinated=people_vaccinated,
-            people_fully_vaccinated=people_fully_vaccinated,
-            date=date,
+            total_vaccinations=int(total_vaccinations),
+            people_vaccinated=int(people_vaccinated),
+            people_fully_vaccinated=int(people_fully_vaccinated),
+            date=str(date),
             source_url=url,
             vaccine="Covaxin, Oxford/AstraZeneca",
         )
+        os.remove("AllReleasem.aspx#")
 
 
 if __name__ == '__main__':
