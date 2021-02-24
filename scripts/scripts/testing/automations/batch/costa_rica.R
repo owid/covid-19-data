@@ -30,4 +30,4 @@ df[, Notes := NA_character_]
 
 setorder(df, -Date)
 
-fwrite(df, "automated_sheets/Costa_Rica.csv")
+fwrite(df, "automated_sheets/Costa Rica.csv")
