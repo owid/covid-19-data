@@ -252,7 +252,7 @@ jsonify_vax_data <- function(vax) {
 get_list_countries_and_iso <- function(vax) {
     #' Get list of countries and iso codes (discard empty/NA codes)
     countries <- unique(vax[, c("location", "iso_code")])
-    countries <- countries[!(is.na(countries$iso_code) | countries$iso_code %in% c("", "OWID_WRL"))]
+    countries <- countries[!(is.na(countries$iso_code) | countries$iso_code %in% c(""))]
     return(countries)
 }
 
