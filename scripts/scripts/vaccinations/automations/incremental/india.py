@@ -38,7 +38,7 @@ def main():
 
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-        if "Beneficiaries vaccinated" in soup.text:
+        if "Beneficiaries vaccinated" in soup.text or "Beneficiariesvaccinated" in soup.text:
             table = soup.find(class_="Table")
             df = pd.read_html(str(table))[0]
             df = df[df[1] == "Total"]
