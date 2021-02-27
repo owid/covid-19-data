@@ -13,10 +13,10 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
-    keys = ("total_vaccinations", "people_fully_vaccinated")
-    values = (parse_total_vaccinations(soup), parse_people_fully_vaccinated(soup))
-    data = dict(zip(keys, values))
-    return pd.Series(data=data)
+    return pd.Series({
+        "total_vaccinations": parse_total_vaccinations(soup),
+        "people_fully_vaccinated": parse_people_fully_vaccinated(soup),
+    })
 
 
 def parse_total_vaccinations(soup: BeautifulSoup) -> int:
