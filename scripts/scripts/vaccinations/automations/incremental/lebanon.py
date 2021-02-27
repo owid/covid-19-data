@@ -33,13 +33,11 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(df: pd.DataFrame) -> pd.Series:
-    data = {'total_vaccinations': parse_total_vaccinations(df)}
-    return pd.Series(data=data)
+    return pd.Series({'total_vaccinations': parse_total_vaccinations(df)})
 
 
 def parse_total_vaccinations(df: pd.DataFrame) -> int:
-    total_vaccinations = int(df["hits"]["total"])
-    return total_vaccinations
+    return int(df["hits"]["total"])
 
 
 def format_date(ds: pd.Series) -> pd.Series:
