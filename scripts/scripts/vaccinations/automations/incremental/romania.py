@@ -29,11 +29,12 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     values = [vaxutils.clean_count(val) for val in pd.core.common.flatten(values)]
     assert len(values) == 2
 
-    keys = ("date", "people_vaccinated", "people_fully_vaccinated", "source_url")
-    values = (parse_date(soup), parse_people_vaccinated(values), parse_people_fully_vaccinated(values), url)
-    data = dict(zip(keys, values))
-
-    return pd.Series(data=data)
+    return pd.Series({
+        "date": parse_date(soup),
+        "people_vaccinated": parse_people_vaccinated(values),
+        "people_fully_vaccinated": parse_people_fully_vaccinated(values),
+        "source_url": url,
+    })
 
 
 def parse_date(soup: BeautifulSoup) -> str:
@@ -43,13 +44,11 @@ def parse_date(soup: BeautifulSoup) -> str:
 
 
 def parse_people_vaccinated(values: pd.DataFrame) -> int:
-    people_vaccinated = values[0] + values[1]
-    return people_vaccinated
+    return values[0] + values[1]
 
 
 def parse_people_fully_vaccinated(values: pd.DataFrame) -> int:
-    people_fully_vaccinated = values[1]
-    return people_fully_vaccinated
+    return values[1]
 
 
 def add_totals(ds: pd.Series) -> pd.Series:
