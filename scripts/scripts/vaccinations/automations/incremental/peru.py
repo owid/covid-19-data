@@ -24,20 +24,18 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(df: pd.DataFrame) -> pd.Series:
-    keys = ("people_vaccinated", "total_vaccinations")
-    values = (parse_people_vaccinated(df), parse_total_vaccinations(df))
-    data = dict(zip(keys, values))
-    return pd.Series(data=data)
+    return pd.Series({
+        "people_vaccinated": parse_people_vaccinated(df),
+        "total_vaccinations": parse_total_vaccinations(df),
+    })
 
 
 def parse_total_vaccinations(df: pd.DataFrame) -> int:
-    total_vaccinations = int(df.Vacunados.sum())
-    return total_vaccinations
+    return int(df.Vacunados.sum())
 
 
 def parse_people_vaccinated(df: pd.DataFrame) -> int:
-    people_vaccinated = int(df.Vacunados.sum())
-    return people_vaccinated
+    return int(df.Vacunados.sum())
 
 
 def format_date(ds: pd.Series) -> pd.Series:
