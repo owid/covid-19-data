@@ -18,10 +18,12 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    keys = ("date", "people_vaccinated", "people_fully_vaccinated", "source_url")
-    values = (parse_date(soup), parse_people_vaccinated(soup), parse_people_fully_vaccinated(soup), url)
-    data = dict(zip(keys, values))
-    return pd.Series(data=data)
+    return pd.Series({
+        "date": parse_date(soup),
+        "people_vaccinated": parse_people_vaccinated(soup),
+        "people_fully_vaccinated": parse_people_fully_vaccinated(soup),
+        "source_url": url,
+    })
 
 
 def parse_date(soup: BeautifulSoup) -> str:
