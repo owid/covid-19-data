@@ -212,7 +212,7 @@ generate_grapher_file <- function(grapher) {
 generate_html <- function(metadata) {
     html <- copy(metadata)
     html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
-    html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%B %e, %Y")), "</td>")]
+    html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%b. %e, %Y")), "</td>")]
     html[, vaccines := paste0("<td>", vaccines, "</td></tr>")]
     html[, source := paste0('<td><a href="', source_website, '">', source_name, '</a></td>')]
     html <- html[, c("location", "source", "last_observation_date", "vaccines")]
