@@ -20,7 +20,7 @@ from slack_client import send_success
 sys.path.append(os.path.join(CURRENT_DIR, ".."))
 
 # ID of user who imports the data
-USER_ID = 29
+USER_ID = 46
 
 # Dataset namespace
 NAMESPACE = 'owid'
