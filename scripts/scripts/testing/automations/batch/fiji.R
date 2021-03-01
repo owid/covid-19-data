@@ -10,8 +10,11 @@ df[, Date := dmy(Date)]
 df[, `Tests per day` := NULL]
 setnames(df, "Cumulative", "Cumulative total")
 
+df <- df[!is.na(Date)]
+
 setorder(df, "Cumulative total", "Date")
 df <- df[, .SD[1], `Cumulative total`]
+df <- df[, .SD[1], Date]
 
 df[, Country := "Fiji"]
 df[, Units := "tests performed"]
