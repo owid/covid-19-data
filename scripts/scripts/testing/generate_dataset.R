@@ -15,7 +15,7 @@ rm(list = ls())
 
 TESTING_FOLDER <- dirname(rstudioapi::getSourceEditorContext()$path)
 setwd(TESTING_FOLDER)
-CONFIG <- fromJSON(file = "testing_dataset_config.json")
+CONFIG <- rjson::fromJSON(file = "testing_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
 
 # Utils
