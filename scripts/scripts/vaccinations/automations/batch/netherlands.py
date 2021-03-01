@@ -54,7 +54,7 @@ def pipeline(input: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     # Using @Sikerdebaard's scraped data for now - official JSONs are too unstable
-    source = "https://github.com/Sikerdebaard/netherlands-vaccinations-scraper/raw/main/vaccine_administered_total.csv"
+    source = "https://github.com/Sikerdebaard/netherlands-vaccinations-scraper/raw/main/augmented/doses_administered_raw.csv"
     destination = "automations/output/Netherlands.csv"
     data = read(source).pipe(pipeline)
 

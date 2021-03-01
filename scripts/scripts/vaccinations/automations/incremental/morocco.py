@@ -14,7 +14,7 @@ def parse_data(source: str) -> pd.Series:
     os.system(f"curl {source} -o morocco.pdf -s")
     dfs = tabula.read_pdf("morocco.pdf", pages=1, pandas_options={"dtype": str, "header": None})
 
-    df = dfs[2]
+    df = dfs[0]
     data = {
         "people_fully_vaccinated": vaxutils.clean_count(df[0].values[-1]),
         "people_vaccinated": vaxutils.clean_count(df[1].values[-1]),

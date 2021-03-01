@@ -1,4 +1,11 @@
-location,date,vaccine,total_vaccinations,source_url
-Lebanon,2021-02-13,Pfizer/BioNTech,0,https://www.reuters.com/article/us-health-coronavirus-lebanon-vaccine-idUSKBN2AE08B
-Lebanon,2021-02-20,Pfizer/BioNTech,12677,https://impact.cib.gov.lb/home/dashboard/vaccine
-Lebanon,2021-02-21,Pfizer/BioNTech,12718,https://impact.cib.gov.lb/home/dashboard/vaccine
+location,date,vaccine,total_vaccinations,source_url,people_vaccinated,people_fully_vaccinated
+Lebanon,2021-02-13,Pfizer/BioNTech,0,https://www.reuters.com/article/us-health-coronavirus-lebanon-vaccine-idUSKBN2AE08B,,
+Lebanon,2021-02-20,Pfizer/BioNTech,12677,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-21,Pfizer/BioNTech,12718,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-22,Pfizer/BioNTech,14905,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-23,Pfizer/BioNTech,19394,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-24,Pfizer/BioNTech,21355,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-25,Pfizer/BioNTech,23833,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-26,Pfizer/BioNTech,24637,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-27,Pfizer/BioNTech,26376,https://impact.cib.gov.lb/home/dashboard/vaccine,,
+Lebanon,2021-02-28,Pfizer/BioNTech,26400,https://impact.cib.gov.lb/home/dashboard/vaccine,,
