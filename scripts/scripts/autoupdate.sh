@@ -165,7 +165,7 @@ run_python 'import sweden; sweden.update_db()'
 # Google Mobility
 
 hour=$(date +%H)
-if [ $hour == 15 ] ; then 
+if [ $hour == 15 ] ; then
 
   # Download CSV
   run_python 'import gmobility; gmobility.download_csv()'
@@ -174,11 +174,6 @@ if [ $hour == 15 ] ; then
   run_python 'import gmobility; gmobility.export_grapher()'
   rm ./scripts/input/gmobility/latest.csv
 
-  # Always run the database update.
-  # The script itself contains a check against the database
-  # to make sure it doesn't run unnecessarily.
-  run_python 'import gmobility; gmobility.update_db()'
-
   if has_changed './scripts/grapher/Google Mobility Trends (2020).csv'; then
     git add .
     git commit -m "Automated Google Mobility update"
@@ -186,3 +181,8 @@ if [ $hour == 15 ] ; then
   fi
 
 fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+run_python 'import gmobility; gmobility.update_db()'
