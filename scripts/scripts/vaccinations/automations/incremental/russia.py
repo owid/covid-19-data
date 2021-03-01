@@ -3,35 +3,35 @@ import pytz
 from bs4 import BeautifulSoup
 import vaxutils
 import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import time
+import requests
+
 
 
 def read(source: str) -> pd.Series:
-    return connect_parse_data(source)
 
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:86.0) Gecko/20100101 Firefox/86.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache",
+    }
+    soup = BeautifulSoup(requests.get(source, headers=headers).content, 'html.parser')
 
-def connect_parse_data(source: str) -> pd.Series:
-    op = Options()
-    op.add_argument("--headless")
-
-    with webdriver.Chrome(options=op) as driver:
-        driver.get(source)
-        time.sleep(10)
-
-        html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
-        div = soup.find(id='m-table')
-        table = pd.read_html(str(div))[0]
-        table = table.fillna(0)
-        table = table.rename(
-            columns={'привито, чел.': 'people_vaccinated', 'привито двумя комп., чел.': 'people_fully_vaccinated'})
-
-        return pd.Series({
-            "people_vaccinated": parse_people_vaccinated(table),
-            "people_fully_vaccinated": parse_people_fully_vaccinated(table),
-        })
+    div = soup.find(id='m-table')
+    table = pd.read_html(str(div))[0]
+    table = table.fillna(0)
+    table = table.rename(columns={
+        'привито, чел.': 'people_vaccinated',
+        'привито двумя комп., чел.': 'people_fully_vaccinated'
+    })
+    return pd.Series({
+        "people_vaccinated": parse_people_vaccinated(table),
+        "people_fully_vaccinated": parse_people_fully_vaccinated(table),
+    })
 
 
 def parse_people_vaccinated(df: pd.DataFrame) -> int:
