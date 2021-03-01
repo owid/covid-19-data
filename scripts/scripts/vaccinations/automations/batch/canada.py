@@ -94,7 +94,7 @@ def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
 
 def set_source(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
-        source_url="https://health-infobase.canada.ca/covid-19/vaccination-coverage/"
+        source_url="https://health-infobase.canada.ca/covid-19/vaccination-administration/"
     )
 
 
