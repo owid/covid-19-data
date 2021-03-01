@@ -5,11 +5,8 @@ import tabula
 import vaxutils
 
 
-def main():
-
-    url = "https://vaccinare-covid.gov.ro/comunicate-oficiale/"
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
-
+def read(source: str) -> pd.Series:
+    soup = BeautifulSoup(requests.get(source).content, "html.parser")
     links = soup.find(class_="display-posts-listing").find_all("a", class_="title")
 
     for link in links:
@@ -18,13 +15,13 @@ def main():
             break
 
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    return parse_data(soup)
 
-    date = soup.find(class_="post-date").find(class_="meta-text").text.strip()
-    date = vaxutils.clean_date(date, "%b %d, %Y")
 
+def parse_data(soup: BeautifulSoup) -> pd.Series:
     url = soup.find(class_="entry-content-text").find_all("a")[-1]["href"]
 
-    kwargs = {'pandas_options': {'dtype': str , 'header': None}}
+    kwargs = {'pandas_options': {'dtype': str, 'header': None}}
     dfs_from_pdf = tabula.read_pdf(url, pages="all", **kwargs)
     df = dfs_from_pdf[0]
 
@@ -32,19 +29,64 @@ def main():
     values = [vaxutils.clean_count(val) for val in pd.core.common.flatten(values)]
     assert len(values) == 2
 
-    people_fully_vaccinated = values[1]
-    one_dose_only = values[0]
-    people_vaccinated = one_dose_only + people_fully_vaccinated
-    total_vaccinations = people_fully_vaccinated + people_vaccinated
+    return pd.Series({
+        "date": parse_date(soup),
+        "people_vaccinated": parse_people_vaccinated(values),
+        "people_fully_vaccinated": parse_people_fully_vaccinated(values),
+        "source_url": url,
+    })
 
+
+def parse_date(soup: BeautifulSoup) -> str:
+    date = soup.find(class_="post-date").find(class_="meta-text").text.strip()
+    date = vaxutils.clean_date(date, "%b %d, %Y")
+    return date
+
+
+def parse_people_vaccinated(values: pd.DataFrame) -> int:
+    return values[0] + values[1]
+
+
+def parse_people_fully_vaccinated(values: pd.DataFrame) -> int:
+    return values[1]
+
+
+def add_totals(ds: pd.Series) -> pd.Series:
+    total_vaccinations = int(ds['people_fully_vaccinated']) + int(ds['people_vaccinated'])
+    return vaxutils.enrich_data(ds, 'total_vaccinations', total_vaccinations)
+
+
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(ds, 'location', "Romania")
+
+
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(ds, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+
+
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(ds, 'source_url', "https://vaccinare-covid.gov.ro/comunicate-oficiale/")
+
+
+def pipeline(ds: pd.Series) -> pd.Series:
+    return (
+        ds.pipe(add_totals)
+            .pipe(enrich_location)
+            .pipe(enrich_vaccine)
+    )
+
+
+def main():
+    source = "https://vaccinare-covid.gov.ro/comunicate-oficiale/"
+    data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location="Romania",
-        total_vaccinations=total_vaccinations,
-        people_vaccinated=people_vaccinated,
-        people_fully_vaccinated=people_fully_vaccinated,
-        date=date,
-        source_url=url,
-        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+        location=data['location'],
+        total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
+        date=data['date'],
+        source_url=data['source_url'],
+        vaccine=data['vaccine']
     )
 
 
