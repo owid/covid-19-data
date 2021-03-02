@@ -8,8 +8,8 @@ def read(source: str) -> pd.DataFrame:
     return (
         pd.DataFrame.from_dict(data["historicalData"], orient="index")
         .reset_index()
-        [["index", "vaccines"]]
-        .rename(columns={"index": "date"})
+        [["index", "vaccines", "numberTotalDosesAdministered"]]
+        .rename(columns={"index": "date", "numberTotalDosesAdministered": "total_vaccinations"})
         .dropna()
         .sort_values("date")
         .assign(location="Romania")
@@ -23,7 +23,6 @@ def parse_nested_json(row, metric: str) -> int:
 
 def process_vaccine_data(df: pd.DataFrame) -> pd.DataFrame:
 
-    df["total_vaccinations"] = df.apply(parse_nested_json, metric="total_administered", axis=1).cumsum()
     df["people_fully_vaccinated"] = df.apply(parse_nested_json, metric="immunized", axis=1).cumsum()
     df["people_vaccinated"] = df.total_vaccinations - df.people_fully_vaccinated
 
