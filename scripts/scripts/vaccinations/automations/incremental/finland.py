@@ -1,69 +1,75 @@
+import datetime
 import re
 import requests
+
 import pandas as pd
-from bs4 import BeautifulSoup
+import pytz
+
 import vaxutils
 
 
 def read(source: str) -> pd.Series:
-    soup = BeautifulSoup(requests.get(source, headers={'User-Agent': 'Mozilla/5.0'}).content, "html.parser")
-    return parse_data(soup).pipe(vaxutils.enrich_data, 'date', parse_date(soup))
+    data = pd.read_csv(source, sep=";")
+    return parse_data(data).pipe(vaxutils.enrich_data, "date", get_date())
 
 
-def parse_data(soup: BeautifulSoup) -> pd.Series:
-    table = soup.find("table")
-    data = pd.read_html(str(table))[0]
-    data = data[data["Sairaanhoitopiiri"] == "Kaikki"]
-    return data.set_index(data.columns[0]).T.squeeze()
+def parse_data(df: pd.DataFrame) -> pd.Series:
 
+    people_vaccinated = df.loc[
+        (df.Measure == "Administered doses") & (df["Vaccination dose"] == "First dose"), "val"
+    ].item()
 
-def parse_date(soup: BeautifulSoup) -> str:
-    date = soup.find(class_="date").text
-    date = re.search(r"[\d-]{10}", date).group(0)
-    return date
+    people_fully_vaccinated = df.loc[
+        (df.Measure == "Administered doses") & (df["Vaccination dose"] == "Second dose"), "val"
+    ].item()
 
-
-def translate_index(input: pd.Series) -> pd.Series:
-    return input.rename({
-        'Ensimmäisen annoksen saaneet': 'people_vaccinated',
-        'Toisen annoksen saaneet': 'people_fully_vaccinated',
-        'Annetut annokset yhteensä': 'total_vaccinations',
+    return pd.Series({
+        "people_vaccinated": int(people_vaccinated),
+        "people_fully_vaccinated": int(people_fully_vaccinated),
+        "total_vaccinations": int(people_vaccinated + people_fully_vaccinated),
     })
 
 
+def get_date() -> str:
+    return str(datetime.datetime.now(pytz.timezone("Europe/Helsinki")).date())
+
+
 def enrich_location(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'location', "Finland")
+    return vaxutils.enrich_data(input, "location", "Finland")
 
 
 def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+    return vaxutils.enrich_data(input, "vaccine", "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
 def enrich_source(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'source_url',
-                                "https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html")
+    return vaxutils.enrich_data(
+        input,
+        "source_url",
+        "https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L"
+    )
 
 
 def pipeline(input: pd.Series) -> pd.Series:
     return (
-        input.pipe(translate_index)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        input
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 
 def main():
-    source = "https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html"
+    source = "https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov.csv?row=cov_vac_dose-533174L&column=measure-533185.533172.433796.533175&"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=data['location'],
-        total_vaccinations=int(data['total_vaccinations']),
-        people_vaccinated=int(data['people_vaccinated']),
-        people_fully_vaccinated=int(data['people_fully_vaccinated']),
-        date=data['date'],
-        source_url=data['source_url'],
-        vaccine=data['vaccine']
+        location=data["location"],
+        total_vaccinations=int(data["total_vaccinations"]),
+        people_vaccinated=int(data["people_vaccinated"]),
+        people_fully_vaccinated=int(data["people_fully_vaccinated"]),
+        date=data["date"],
+        source_url=data["source_url"],
+        vaccine=data["vaccine"]
     )
 
 
