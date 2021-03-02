@@ -1,64 +1,65 @@
-location,date,vaccine,total_vaccinations,source_url,people_vaccinated,people_fully_vaccinated
-Romania,2020-12-28,Pfizer/BioNTech,2066,https://vaccinare-covid.gov.ro/actualizare-zilnica-evidenta-persoanele-vaccinate-impotriva-covid-19/,2066.0,
-Romania,2020-12-29,Pfizer/BioNTech,2778,https://vaccinare-covid.gov.ro/actualizare-zilnica-evidenta-persoanelor-vaccinate-impotriva-covid-19/,2778.0,
-Romania,2020-12-30,Pfizer/BioNTech,5666,https://vaccinare-covid.gov.ro/actualizare-zilnica-evidenta-persoanelor-vaccinate-impotriva-covid-19-2/,5666.0,
-Romania,2020-12-31,Pfizer/BioNTech,10289,https://vaccinare-covid.gov.ro/actualizare-zilnica-31-12-evidenta-persoanelor-vaccinate-impotriva-covid-19/,10289.0,
-Romania,2021-01-01,Pfizer/BioNTech,11656,https://vaccinare-covid.gov.ro/actualizare-zilnica-01-01-2021-evidenta-persoanelor-vaccinate-impotriva-covid-19/,11656.0,
-Romania,2021-01-02,Pfizer/BioNTech,13242,https://vaccinare-covid.gov.ro/actualizare-zilnica-02-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,13242.0,
-Romania,2021-01-03,Pfizer/BioNTech,13596,https://vaccinare-covid.gov.ro/actualizare-zilnica-03-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,13596.0,
-Romania,2021-01-04,Pfizer/BioNTech,25508,https://vaccinare-covid.gov.ro/actualizare-zilnica-04-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,25508.0,
-Romania,2021-01-05,Pfizer/BioNTech,41609,https://vaccinare-covid.gov.ro/actualizare-zilnica-05-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,41609.0,
-Romania,2021-01-06,Pfizer/BioNTech,58554,https://vaccinare-covid.gov.ro/actualizare-zilnica-06-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,58554.0,
-Romania,2021-01-07,Pfizer/BioNTech,76400,https://vaccinare-covid.gov.ro/actualizare-zilnica-07-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,76400.0,
-Romania,2021-01-08,Pfizer/BioNTech,92706,https://vaccinare-covid.gov.ro/actualizare-zilnica-08-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,92706.0,
-Romania,2021-01-09,Pfizer/BioNTech,102301,https://vaccinare-covid.gov.ro/actualizare-zilnica-09-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,102301.0,
-Romania,2021-01-10,Pfizer/BioNTech,108294,https://vaccinare-covid.gov.ro/actualizare-zilnica-10-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,108294.0,
-Romania,2021-01-11,Pfizer/BioNTech,125190,https://vaccinare-covid.gov.ro/actualizare-zilnica-11-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,125190.0,
-Romania,2021-01-12,Pfizer/BioNTech,140447,https://vaccinare-covid.gov.ro/actualizare-zilnica-evidenta-persoanelor-vaccinate-impotriva-covid-19-3/,140447.0,
-Romania,2021-01-13,Pfizer/BioNTech,154268,https://vaccinare-covid.gov.ro/actualizare-zilnica-13-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,154268.0,
-Romania,2021-01-14,Pfizer/BioNTech,167612,https://vaccinare-covid.gov.ro/actualizare-zilnica-14-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,167612.0,
-Romania,2021-01-15,Pfizer/BioNTech,183669,https://vaccinare-covid.gov.ro/actualizare-zilnica-15-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,183669.0,
-Romania,2021-01-16,Pfizer/BioNTech,196090,https://vaccinare-covid.gov.ro/actualizare-zilnica-16-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,196090.0,
-Romania,2021-01-17,Pfizer/BioNTech,205060,https://vaccinare-covid.gov.ro/actualizare-zilnica-17-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,204185.0,875.0
-Romania,2021-01-18,Pfizer/BioNTech,235239,https://vaccinare-covid.gov.ro/actualizare-zilnica-18-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,233288.0,1951.0
-Romania,2021-01-19,Pfizer/BioNTech,270046,https://vaccinare-covid.gov.ro/actualizare-zilnica-evidenta-persoanelor-vaccinate-impotriva-covid-19-4/,267424.0,2622.0
-Romania,2021-01-20,Pfizer/BioNTech,308384,https://vaccinare-covid.gov.ro/actualizare-zilnica-20-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,302570.0,5814.0
-Romania,2021-01-21,Pfizer/BioNTech,348096,https://vaccinare-covid.gov.ro/actualizare-zilnica-21-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,338252.0,9844.0
-Romania,2021-01-22,Pfizer/BioNTech,385936,https://vaccinare-covid.gov.ro/actualizare-zilnica-22-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,374681.0,11255.0
-Romania,2021-01-23,Pfizer/BioNTech,418885,https://vaccinare-covid.gov.ro/actualizare-zilnica-23-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,406006.0,12879.0
-Romania,2021-01-24,Pfizer/BioNTech,446285,https://vaccinare-covid.gov.ro/actualizare-zilnica-24-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,433129.0,13156.0
-Romania,2021-01-25,Pfizer/BioNTech,484631,https://vaccinare-covid.gov.ro/actualizare-zilnica-25-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,459567.0,25064.0
-Romania,2021-01-26,Pfizer/BioNTech,528378,https://vaccinare-covid.gov.ro/actualizare-zilnica-evidenta-persoanelor-vaccinate-impotriva-covid-19-5/,487711.0,40667.0
-Romania,2021-01-27,Pfizer/BioNTech,570704,https://vaccinare-covid.gov.ro/actualizare-zilnica-25-01-evidenta-persoanelor-vaccinate-impotriva-covid-19-2/,513429.0,57275.0
-Romania,2021-01-28,Pfizer/BioNTech,609396,https://vaccinare-covid.gov.ro/ctualizare-zilnica-28-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,534346.0,75050.0
-Romania,2021-01-29,Pfizer/BioNTech,647000,https://vaccinare-covid.gov.ro/actualizare-zilnica-29-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,554924.0,92076.0
-Romania,2021-01-30,Pfizer/BioNTech,672396,https://vaccinare-covid.gov.ro/actualizare-zilnica-30-01-evidenta-persoanelor-vaccinate-impotriva-covid-19/,571091.0,101305.0
-Romania,2021-01-31,Pfizer/BioNTech,691415,https://vaccinare-covid.gov.ro/7411-2/,585218.0,106197.0
-Romania,2021-02-01,Pfizer/BioNTech,721184,https://vaccinare-covid.gov.ro/actualizare-zilnica-01-02-evidenta-persoanelor-vaccinate-impotriva-covid-19/,598135.0,123049.0
-Romania,2021-02-02,Pfizer/BioNTech,748732,https://vaccinare-covid.gov.ro/actualizare-zilnica-02-02-evidenta-persoanelor-vaccinate-impotriva-covid-19/,610383.0,138349.0
-Romania,2021-02-03,Pfizer/BioNTech,772202,https://vaccinare-covid.gov.ro/actualizare-zilnica-03-02-evidenta-persoanelor-vaccinate-impotriva-covid-19/,620176.0,152026.0
-Romania,2021-02-04,Pfizer/BioNTech,794795,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/04.02.21-Tabel-situatie-vaccinari-2.pdf,629279.0,165516.0
-Romania,2021-02-05,Pfizer/BioNTech,821552,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/05.02.21-Tabel-situatie-vaccinari-actualizat.pdf,638886.0,182666.0
-Romania,2021-02-06,Pfizer/BioNTech,840812,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/06.02.21-Tabel-situatie-vaccinari-actualizat.pdf,647690.0,193122.0
-Romania,2021-02-07,Pfizer/BioNTech,856322,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/07.02.21-Tabel-situatie-vaccinari-actualizat.pdf,656177.0,200145.0
-Romania,2021-02-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",891348,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/08.02.21-Tabel-situatie-vaccinari-actualizat.pdf,661062.0,230286.0
-Romania,2021-02-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",930155,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/09.02.21-Tabel-situatie-vaccinari-actualizat.pdf,666942.0,263213.0
-Romania,2021-02-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",970967,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/10.02.21-Tabel-situatie-vaccinari-actualizat.pdf,671448.0,299519.0
-Romania,2021-02-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1009422,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/11.02.21-Tabel-situatie-vaccinari-actualizat.pdf,675234.0,334188.0
-Romania,2021-02-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1048798,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/12.02.21-Tabel-situatie-vaccinari-actualizat-1.pdf,679333.0,369465.0
-Romania,2021-02-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1084096,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/13.02.21-Tabel-situatie-vaccinari.pdf,683346.0,400750.0
-Romania,2021-02-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1113975,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/14.02.21-Tabel-situatie-vaccinari.pdf,686634.0,427341.0
-Romania,2021-02-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1151112,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/15.02.2021-Situatia-vaccinarilor-tabel-3-vaccinuri.pdf,696943.0,454169.0
-Romania,2021-02-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1197089,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/16.02.2021-Situatia-vaccinarilor-tabel-3-vaccinuri.pdf,715748.0,481341.0
-Romania,2021-02-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1240408,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/17.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,734928.0,505480.0
-Romania,2021-02-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1280228,https://vaccinare-covid.gov.ro/actualizare-zilnica-18-02-evidenta-persoanelor-vaccinate-impotriva-covid-19/,753753.0,526476.0
-Romania,2021-02-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1318356,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/19.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,771240.0,547116.0
-Romania,2021-02-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1351280,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/20.02.2021-Tabel-situatie-vaccinari-3-vaccinuri-1.pdf,788508.0,562772.0
-Romania,2021-02-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1379224,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/21.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,803098.0,576126.0
-Romania,2021-02-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1409088,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/22.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,819447.0,589641.0
-Romania,2021-02-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1438433,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/23.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,836860.0,601573.0
-Romania,2021-02-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1466650,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/24.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,855097.0,611553.0
-Romania,2021-02-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1486908,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/25.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,872361.0,614547.0
-Romania,2021-02-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1506033,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/26.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,890068.0,615965.0
-Romania,2021-02-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1521737,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/27.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,905142.0,616595.0
-Romania,2021-02-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1532873,https://vaccinare-covid.gov.ro/wp-content/uploads/2021/02/28.02.2021-Tabel-situatie-vaccinari-3-vaccinuri.pdf,915761.0,617112.0
+date,location,total_vaccinations,people_fully_vaccinated,people_vaccinated,vaccine,source_url
+2020-12-27,Romania,965,0,965,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2020-12-28,Romania,2066,0,2066,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2020-12-29,Romania,2778,0,2778,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2020-12-30,Romania,5666,0,5666,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2020-12-31,Romania,10289,0,10289,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-01,Romania,11656,0,11656,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-02,Romania,13242,0,13242,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-03,Romania,13596,0,13596,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-04,Romania,25508,0,25508,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-05,Romania,41609,0,41609,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-06,Romania,58554,0,58554,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-07,Romania,76400,0,76400,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-08,Romania,92706,0,92706,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-09,Romania,102301,0,102301,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-10,Romania,108294,0,108294,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-11,Romania,125190,0,125190,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-12,Romania,140447,0,140447,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-13,Romania,154268,0,154268,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-14,Romania,168089,0,168089,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-15,Romania,184146,0,184146,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-16,Romania,196567,0,196567,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-17,Romania,204662,875,203787,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-18,Romania,234899,1950,232949,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-19,Romania,269706,2621,267085,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-20,Romania,308044,5813,302231,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-21,Romania,347756,9843,337913,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-22,Romania,385596,11254,374342,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-23,Romania,418545,12878,405667,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-24,Romania,445945,13155,432790,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-25,Romania,484291,25063,459228,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-26,Romania,528038,40666,487372,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-27,Romania,570364,57274,513090,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-28,Romania,609056,75049,534007,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-29,Romania,646660,92075,554585,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-30,Romania,672056,101304,570752,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-01-31,Romania,691075,106196,584879,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-01,Romania,720844,123048,597796,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-02,Romania,748392,138348,610044,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-03,Romania,771862,152025,619837,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-04,Romania,794455,165515,628940,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-05,Romania,821212,182665,638547,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-06,Romania,840472,193121,647351,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-07,Romania,855982,200144,655838,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-08,Romania,891008,230285,660723,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-09,Romania,929815,263212,666603,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-10,Romania,968622,296139,672483,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-11,Romania,1007076,330808,676268,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-12,Romania,1046451,366085,680366,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-13,Romania,1081750,397370,684380,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-14,Romania,1111629,423961,687668,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-15,Romania,1148766,450789,697977,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-16,Romania,1186668,477961,708707,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-17,Romania,1229987,502100,727887,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-18,Romania,1269807,523096,746711,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-19,Romania,1307935,543736,764199,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-20,Romania,1340859,559392,781467,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-21,Romania,1368803,572746,796057,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-22,Romania,1398668,586261,812407,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-23,Romania,1428012,598193,829819,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-24,Romania,1456229,608173,848056,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-25,Romania,1476487,611167,865320,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-26,Romania,1495612,612585,883027,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-27,Romania,1511316,613215,898101,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/
+2021-02-28,Romania,1522452,613732,908720,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://datelazi.ro/

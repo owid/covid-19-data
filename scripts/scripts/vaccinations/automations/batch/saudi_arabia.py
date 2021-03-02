@@ -15,6 +15,8 @@ def main():
     df.loc[df.date >= "2021-02-18", "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
     df.loc[:, "source_url"] = "https://coronamap.sa"
 
+    df = df[df.total_vaccinations > 0]
+
     df.to_csv("automations/output/Saudi Arabia.csv", index=False)
 
 
