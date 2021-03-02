@@ -35,7 +35,7 @@ def parse_data(url: str) -> pd.Series:
     total_vaccinations = vaxutils.clean_count(df[3].item())
 
     return pd.Series({
-        "date": str(datetime.datetime.now(pytz.timezone("Asia/Kolkata")).date()),
+        "date": str((datetime.datetime.now(pytz.timezone("Asia/Kolkata")) - datetime.timedelta(days=1)).date()),
         "people_vaccinated": people_vaccinated,
         "people_fully_vaccinated": people_fully_vaccinated,
         "total_vaccinations": total_vaccinations,
