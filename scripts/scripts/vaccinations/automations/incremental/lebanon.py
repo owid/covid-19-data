@@ -19,7 +19,7 @@ def read(source: str) -> pd.Series:
         "Cache-Control": "no-cache",
     }
     js = json.loads('''
-        {"aggs":{},"size":0,"stored_fields":["*"],"script_fields":{},"docvalue_fields":[{"field":"@timestamp","format":"date_time"},{"field":"event_creation_date","format":"date_time"},{"field":"event_start_date_time","format":"date_time"},{"field":"event_stop_date_time","format":"date_time"},{"field":"patient_create_date","format":"date_time"},{"field":"patient_date_of_birth","format":"date_time"}],"_source":{"excludes":[]},"query":{"bool":{"must":[],"filter":[{"match_all":{}},{"bool":{"must_not":{"bool":{"should":[{"match":{"vaccine_registration_is_duplicate":1}}],"minimum_should_match":1}}}},{"match_phrase":{"event_stage.keyword":"2.DONE"}},{"range":{"patient_create_date":{"gte":"2021-01-22T08:01:29.561Z","lte":"2021-02-21T08:01:29.561Z","format":"strict_date_optional_time"}}}],"should":[],"must_not":[]}}}
+        {"aggs":{"2":{"filters":{"filters":{"Healthcare workers":{"bool":{"must":[],"filter":[{"bool":{"should":[{"match":{"patient_health_care_worker":true}}],"minimum_should_match":1}}],"should":[],"must_not":[]}},"Other categories":{"bool":{"must":[],"filter":[{"bool":{"should":[{"match":{"patient_health_care_worker":false}}],"minimum_should_match":1}}],"should":[],"must_not":[]}}}}}},"size":0,"stored_fields":["*"],"script_fields":{},"docvalue_fields":[{"field":"@timestamp","format":"date_time"},{"field":"event_creation_date","format":"date_time"},{"field":"event_start_date_time","format":"date_time"},{"field":"event_stop_date_time","format":"date_time"},{"field":"patient_create_date","format":"date_time"},{"field":"patient_date_of_birth","format":"date_time"}],"_source":{"excludes":[]},"query":{"bool":{"must":[],"filter":[{"match_all":{}},{"bool":{"must_not":{"bool":{"should":[{"match":{"vaccine_registration_is_duplicate":1}}],"minimum_should_match":1}}}},{"match_phrase":{"event_stage.keyword":"2.DONE"}},{"range":{"event_creation_date":{"gte":"2021-01-31T14:57:04.378Z","lte":"2021-03-02T14:57:04.378Z","format":"strict_date_optional_time"}}}],"should":[],"must_not":[]}}}
     ''')
 
     request = requests.post(
@@ -28,16 +28,16 @@ def read(source: str) -> pd.Series:
         headers=headers
     )
     request.raise_for_status()
-    df = request.json()
-    return parse_data(df)
+    data = request.json()
+    return parse_data(data)
 
 
-def parse_data(df: pd.DataFrame) -> pd.Series:
-    return pd.Series({'total_vaccinations': parse_total_vaccinations(df)})
+def parse_data(data: dict) -> pd.Series:
+    return pd.Series({'total_vaccinations': parse_total_vaccinations(data)})
 
 
-def parse_total_vaccinations(df: pd.DataFrame) -> int:
-    return int(df["hits"]["total"])
+def parse_total_vaccinations(data: dict) -> int:
+    return int(data["hits"]["total"])
 
 
 def format_date(ds: pd.Series) -> pd.Series:
