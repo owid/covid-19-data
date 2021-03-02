@@ -38793,6 +38793,25 @@
     ]
   },
   {
+    "country": "Uruguay",
+    "iso_code": "URY",
+    "data": [
+      {
+        "date": "2021-02-28",
+        "total_vaccinations": 0,
+        "total_vaccinations_per_hundred": 0
+      },
+      {
+        "date": "2021-03-01",
+        "total_vaccinations": 16505,
+        "daily_vaccinations_raw": 16505,
+        "daily_vaccinations": 16505,
+        "total_vaccinations_per_hundred": 0.48,
+        "daily_vaccinations_per_million": 4751
+      }
+    ]
+  },
+  {
     "country": "Venezuela",
     "iso_code": "VEN",
     "data": [
@@ -39738,15 +39757,15 @@
       },
       {
         "date": "2021-03-01",
-        "total_vaccinations": 249245278,
+        "total_vaccinations": 249261783,
         "people_vaccinated": 150045928,
         "people_fully_vaccinated": 53964427,
-        "daily_vaccinations_raw": 4337530,
-        "daily_vaccinations": 5178002,
+        "daily_vaccinations_raw": 4354035,
+        "daily_vaccinations": 5180360,
         "total_vaccinations_per_hundred": 3.2,
         "people_vaccinated_per_hundred": 1.92,
         "people_fully_vaccinated_per_hundred": 0.69,
-        "daily_vaccinations_per_million": 664
+        "daily_vaccinations_per_million": 665
       }
     ]
   },
