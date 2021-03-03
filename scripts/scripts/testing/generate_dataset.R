@@ -15,7 +15,7 @@ rm(list = ls())
 
 TESTING_FOLDER <- dirname(rstudioapi::getSourceEditorContext()$path)
 setwd(TESTING_FOLDER)
-CONFIG <- fromJSON(file = "testing_dataset_config.json")
+CONFIG <- rjson::fromJSON(file = "testing_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
 
 # Utils
@@ -58,7 +58,7 @@ setnames(confirmed_cases, c("date", "location"), c("Date", "Country"))
 confirmed_cases[, Date := ymd(Date)]
 
 # Exclude countries from positive rate calculations
-positive_rate_exclusions <- c("Brazil", "Costa Rica")
+positive_rate_exclusions <- c("Brazil")
 
 # Process each country's data
 parse_country <- function(sheet_name) {

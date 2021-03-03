@@ -1,53 +1,61 @@
-import re
 import datetime
-import pandas as pd
 import requests
+
 from bs4 import BeautifulSoup
+import pandas as pd
+import pytz
+import tabula
+
 import vaxutils
 
 
 def read(source: str) -> pd.Series:
+
     soup = BeautifulSoup(requests.get(source).content, "html.parser")
-    return parse_data(soup)
+
+    for img in soup.find(id="site-dashboard").find_all("img"):
+        if img["alt"] == "Vaccination State Data":
+            url = img.parent["href"]
+            break
+
+    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    return parse_data(url)
 
 
-def parse_data(soup: BeautifulSoup) -> pd.Series:
-    keys = ("date", "total_vaccinations")
-    values = (parse_date(soup), parse_total_vaccinations(soup))
-    data = dict(zip(keys, values))
-    return pd.Series(data=data)
+def parse_data(url: str) -> pd.Series:
+    
+    kwargs = {"pandas_options": {"dtype": str, "header": None}}
+    dfs_from_pdf = tabula.read_pdf(url, pages="all", **kwargs)
+    assert len(dfs_from_pdf) == 1
+    df = dfs_from_pdf[0]
+    df = df[df[0] == "India"]
+
+    people_vaccinated = vaxutils.clean_count(df[1].item())
+    people_fully_vaccinated = vaxutils.clean_count(df[2].item())
+    total_vaccinations = vaxutils.clean_count(df[3].item())
+
+    return pd.Series({
+        "date": str((datetime.datetime.now(pytz.timezone("Asia/Kolkata")) - datetime.timedelta(days=1)).date()),
+        "people_vaccinated": people_vaccinated,
+        "people_fully_vaccinated": people_fully_vaccinated,
+        "total_vaccinations": total_vaccinations,
+        "source_url": url,
+    })
 
 
-def parse_date(soup: BeautifulSoup) -> str:
-    date = soup.find(id="site-dashboard").find("h5").text
-    date = re.search(r"\d+\s\w+\s+202\d", date).group(0)
-    date = datetime.datetime.strptime(date, "%d %B %Y") - datetime.timedelta(days=1)
-    date = str(date.date())
-    return date
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(ds, "location", "India")
 
 
-def parse_total_vaccinations(soup: BeautifulSoup) -> int:
-    total_vaccinations = soup.find(class_="coviddata").text
-    return vaxutils.clean_count(total_vaccinations)
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return vaxutils.enrich_data(ds, "vaccine", "Covaxin, Oxford/AstraZeneca")
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'location', "India")
-
-
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'vaccine', "Covaxin, Oxford/AstraZeneca")
-
-
-def enrich_source(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'source_url', "https://www.mohfw.gov.in/")
-
-
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
     )
 
 
@@ -55,11 +63,13 @@ def main():
     source = "https://www.mohfw.gov.in/"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=data['location'],
-        total_vaccinations=data['total_vaccinations'],
-        date=data['date'],
-        source_url=data['source_url'],
-        vaccine=data['vaccine']
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
+        date=data["date"],
+        source_url=data["source_url"],
+        vaccine=data["vaccine"]
     )
 
 

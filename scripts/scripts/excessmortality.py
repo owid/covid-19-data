@@ -10,7 +10,7 @@ OUTPUT_PATH = os.path.join(CURRENT_DIR, '../../public/data/excess_mortality/')
 
 def update_dataset():
 
-    df = pd.read_csv("https://github.com/owid/owid-datasets/raw/master/datasets/Excess%20Mortality%20Data%20%E2%80%93%20HMD%20(2021)/Excess%20Mortality%20Data%20%E2%80%93%20HMD%20(2021).csv")
+    df = pd.read_csv("https://github.com/owid/owid-datasets/raw/master/datasets/Excess%20Mortality%20Data%20%E2%80%93%20OWID%20(2021)/Excess%20Mortality%20Data%20%E2%80%93%20OWID%20(2021).csv")
     
     df = df.rename(columns={
         "Entity": "location",
@@ -22,7 +22,7 @@ def update_dataset():
         "Excess mortality P-scores, ages 75–84": "p_scores_75_84",
         "Excess mortality P-scores, ages 85+": "p_scores_85plus",
         "Deaths, 2020, all ages": "deaths_2020_all_ages",
-        "Average deaths, 2015–2019, all ages": "avg_deaths_2015_2019"
+        "Average deaths, 2015–2019, all ages": "average_deaths_2015_2019_all_ages"
     })
 
     df.loc[:, "date"] = [pd.to_datetime("2020-01-01") + datetime.timedelta(days=d) for d in df.date]

@@ -1,74 +1,75 @@
-import pandas as pd
-import vaxutils
-import datetime
-import os
 import re
-import PyPDF2
+import requests
+
+from bs4 import BeautifulSoup
+import pandas as pd
+
+import vaxutils
 
 
 def read(source: str) -> pd.Series:
-    return parse_data(source)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:86.0) Gecko/20100101 Firefox/86.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache",
+    }
+    soup = BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
+    return parse_data(soup)
 
 
-def parse_data(source: str) -> pd.Series:
-    os.system(f"curl {source} -o morocco.pdf -s")
-    with open("morocco.pdf", "rb") as pdfFileObj:
-        pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-        text = pdfReader.getPage(0).extractText()
+def parse_data(soup: BeautifulSoup) -> pd.Series:
 
-    keys = ("source_url", "total_vaccinations")
-    values = (source, parse_total_vaccinations(text))
-    data = dict(zip(keys, values))
-    return pd.Series(data=data)
+    data = pd.Series(dtype="int")
 
+    spans = soup.find("table").find_all("span")
 
-def parse_total_vaccinations(text: str) -> int:
-    regex = r"Bénéficiaires de la vaccination\s+Cumul global([\d\s]+)Situation épidémiologique"
-    total_vaccinations = re.search(regex, text)
-    total_vaccinations = vaxutils.clean_count(total_vaccinations.group(1))
-    return total_vaccinations
+    data["people_vaccinated"] = int(re.sub(r"[^\d]", "", spans[-3].text))
+    data["people_fully_vaccinated"] = int(re.sub(r"[^\d]", "", spans[-2].text))
+    data["total_vaccinations"] = data["people_vaccinated"] + data["people_fully_vaccinated"]
 
+    date = re.search(r"[\d-]{10}", spans[0].text).group(0)
+    data["date"] = vaxutils.clean_date(date, "%d-%m-%Y")
 
-def format_date(input: pd.Series) -> pd.Series:
-    date = datetime.date.today() - datetime.timedelta(days=1)
-    date = str(date)
-    return vaxutils.enrich_data(input, 'date', date)
+    return data
 
 
 def enrich_location(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'location', "Morocco")
+    return vaxutils.enrich_data(input, "location", "Morocco")
 
 
 def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'vaccine', "Oxford/AstraZeneca, Sinopharm/Beijing")
+    return vaxutils.enrich_data(input, "vaccine", "Oxford/AstraZeneca, Sinopharm/Beijing")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'source_url',
-                                "https://www.gov.bm/sites/default/files/COVID-19%20Vaccination%20Updates.pdf")
+def enrich_source(input: pd.Series, source: str) -> pd.Series:
+    return vaxutils.enrich_data(input, "source_url", source)
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(input: pd.Series, source: str) -> pd.Series:
     return (
-        input.pipe(format_date)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
+        input
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source, source)
     )
 
 
 def main():
-    dt = datetime.date.today() - datetime.timedelta(days=1)
-    url_date = dt.strftime("%-d.%-m.%y")
-    source = f"http://www.covidmaroc.ma/Documents/BULLETIN/{url_date}.COVID-19.pdf"
-    data = read(source).pipe(pipeline)
+    source = "http://www.covidmaroc.ma/pages/Accueilfr.aspx"
+    data = read(source).pipe(pipeline, source)
     vaxutils.increment(
-        location=data['location'],
-        total_vaccinations=data['total_vaccinations'],
-        date=data['date'],
-        source_url=data['source_url'],
-        vaccine=data['vaccine']
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
+        date=data["date"],
+        source_url=data["source_url"],
+        vaccine=data["vaccine"]
     )
-    os.remove("morocco.pdf")
 
 
 if __name__ == "__main__":

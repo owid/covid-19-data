@@ -27,7 +27,7 @@ def download_data():
 def generate_dataset():
     df = pd.read_csv(INPUT_FILE_PATH, usecols=["Datum_avliden", "Antal_avlidna"])
     df = df.rename(columns={"Datum_avliden": "Date", "Antal_avlidna": "Deaths"})
-    df = df[df["Date"] != "Uppgift saknas"]
+    df = df[-df["Date"].str.contains("ppgift saknas")]
     df["Date"] = pd.to_datetime(df["Date"])
     assert len(df) > 100
 
