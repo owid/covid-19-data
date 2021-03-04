@@ -1,8 +1,10 @@
+import datetime
 import re
 import requests
 
 from bs4 import BeautifulSoup
 import pandas as pd
+import pytz
 
 import vaxutils
 
@@ -32,11 +34,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
-    date = re.search(
-        r"\d{4}\.\d{1,2}\.\d{1,2}",
-        soup.find(class_="status").find(class_="t_info").text
-    )
-    date = vaxutils.clean_date(date.group(0), "%Y.%m.%d")
+    date = str((datetime.datetime.now(pytz.timezone("Asia/Seoul")) - datetime.timedelta(days=1)).date())
 
     data = {
         "date": date,
