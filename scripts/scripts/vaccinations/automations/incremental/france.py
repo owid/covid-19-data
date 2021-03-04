@@ -3,7 +3,7 @@ import vaxutils
 
 
 def read(source: str) -> pd.Series:
-    data = pd.read_csv(source, sep=",", usecols=["fra", "jour", "n_tot_dose1", "n_tot_dose2"])
+    data = pd.read_csv(source, sep=";", usecols=["fra", "jour", "n_tot_dose1", "n_tot_dose2"])
     return data.set_index(data.columns[0]).T.squeeze()
 
 
