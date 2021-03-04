@@ -65,7 +65,8 @@ def add_united_states(df):
         "previous_day_admission_pediatric_covid_confirmed",
     ])
 
-    usa.loc["date"] = pd.to_datetime(usa.date)
+    usa = usa[usa.date >= "2020-07-15"]
+    usa.loc[:, "date"] = pd.to_datetime(usa.date)
     usa = usa.groupby("date", as_index=False).sum()
 
     stock = usa[[
