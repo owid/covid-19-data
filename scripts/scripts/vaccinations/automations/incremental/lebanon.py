@@ -41,9 +41,7 @@ def parse_total_vaccinations(data: dict) -> int:
 
 
 def format_date(ds: pd.Series) -> pd.Series:
-    local_time = datetime.datetime.now(pytz.timezone("Asia/Beirut"))
-    if local_time.hour < 8:
-        local_time = local_time - datetime.timedelta(days=1)
+    local_time = datetime.datetime.now(pytz.timezone("Asia/Beirut")) - datetime.timedelta(days=1)
     date = str(local_time.date())
     return vaxutils.enrich_data(ds, 'date', date)
 
