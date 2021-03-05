@@ -31,7 +31,7 @@ def parse_data(df: pd.DataFrame) -> pd.Series:
 
 
 def get_date() -> str:
-    return str(datetime.datetime.now(pytz.timezone("Europe/Helsinki")).date())
+    return str((datetime.datetime.now(pytz.timezone("Europe/Helsinki")) - datetime.timedelta(days=1)).date())
 
 
 def enrich_location(input: pd.Series) -> pd.Series:

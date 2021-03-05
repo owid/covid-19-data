@@ -51,38 +51,60 @@ def week_to_date(df):
 
 def add_united_states(df):
     print("Downloading US data…")
-    usa = pd.read_csv(
-        "https://covidtracking.com/data/download/national-history.csv",
-        usecols=[
-            "date", "hospitalizedCurrently", "inIcuCurrently", "hospitalizedIncrease", "inIcuCumulative"
-        ]
+
+    url = "https://healthdata.gov/api/3/action/package_show?id=83b4a668-9321-4d8c-bc4f-2bef66c49050"
+    metadata = requests.get(url).json()
+    url = metadata["result"][0]["resources"][0]["url"]
+
+    usa = pd.read_csv(url, usecols=[
+        "date",
+        "total_adult_patients_hospitalized_confirmed_covid",
+        "total_pediatric_patients_hospitalized_confirmed_covid",
+        "staffed_icu_adult_patients_confirmed_covid",
+        "previous_day_admission_adult_covid_confirmed",
+        "previous_day_admission_pediatric_covid_confirmed",
+    ])
+
+    usa = usa[usa.date >= "2020-07-15"]
+    usa.loc[:, "date"] = pd.to_datetime(usa.date)
+    usa = usa.groupby("date", as_index=False).sum()
+
+    stock = usa[[
+        "date",
+        "total_adult_patients_hospitalized_confirmed_covid",
+        "total_pediatric_patients_hospitalized_confirmed_covid",
+        "staffed_icu_adult_patients_confirmed_covid",
+    ]].copy()
+    stock.loc[:, "Daily hospital occupancy"] = (
+        stock.total_adult_patients_hospitalized_confirmed_covid
+        .add(stock.total_pediatric_patients_hospitalized_confirmed_covid)
     )
-
-    usa.loc[:, "date"] = pd.to_datetime(usa["date"])
-    usa = usa.sort_values("date")
-    usa = usa[usa["date"] >= "2020-03-02"]
-
-    usa.loc[:, "icuIncrease"] = usa["inIcuCumulative"].sub(usa["inIcuCumulative"].shift(1))
-    usa = usa.drop(columns=["inIcuCumulative"])
-
-    stock = usa[["date", "hospitalizedCurrently", "inIcuCurrently"]]
-    stock = stock.melt("date", ["hospitalizedCurrently", "inIcuCurrently"])
+    stock = stock.rename(columns={
+        "staffed_icu_adult_patients_confirmed_covid": "Daily ICU occupancy"
+    })
+    stock = stock[["date", "Daily hospital occupancy", "Daily ICU occupancy"]]
+    stock = stock.melt(id_vars="date", var_name="indicator")
     stock.loc[:, "date"] = stock["date"].dt.date
 
-    flow = usa[["date", "hospitalizedIncrease", "icuIncrease"]].copy()
-    flow.loc[:, "date"] = (flow["date"] + pd.to_timedelta(6 - flow["date"].dt.dayofweek, unit="d")).dt.date
+    flow = usa[[
+        "date",
+        "previous_day_admission_adult_covid_confirmed",
+        "previous_day_admission_pediatric_covid_confirmed",
+    ]].copy()
+    flow.loc[:, "value"] = (
+        flow.previous_day_admission_adult_covid_confirmed
+        .add(flow.previous_day_admission_pediatric_covid_confirmed)
+    )
+    flow.loc[:, "date"] = (
+        (flow["date"] + pd.to_timedelta(6 - flow["date"].dt.dayofweek, unit="d")).dt.date
+    )
     flow = flow[flow["date"] <= datetime.date.today()]
+    flow = flow[["date", "value"]]
     flow = flow.groupby("date", as_index=False).sum()
-    flow = flow.melt("date", ["hospitalizedIncrease", "icuIncrease"])
+    flow.loc[:, "indicator"] = "Weekly new hospital admissions"
 
-    usa = pd.concat([stock, flow]).dropna(subset=["value"])
-    usa = usa.rename(columns={"variable": "indicator"})
-    usa.loc[:, "indicator"] = usa["indicator"].replace({
-        "hospitalizedCurrently": "Daily hospital occupancy",
-        "inIcuCurrently": "Daily ICU occupancy",
-        "hospitalizedIncrease": "Weekly new hospital admissions",
-        "icuIncrease": "Weekly new ICU admissions"
-    })
+    # Merge all subframes
+    usa = pd.concat([stock, flow])
 
     usa.loc[:, "entity"] = "United States"
     usa.loc[:, "iso_code"] = "USA"

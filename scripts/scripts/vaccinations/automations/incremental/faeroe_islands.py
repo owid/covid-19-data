@@ -1,8 +1,10 @@
+import datetime
 import re
-import dateparser
-import vaxutils
-import pandas as pd
 
+import pandas as pd
+import pytz
+
+import vaxutils
 
 def read(source: str) -> pd.Series:
     return pd.read_json(source).pipe(lambda ds: pd.DataFrame.from_records(ds["stats"]).iloc[0])
@@ -21,10 +23,7 @@ def add_totals(input: pd.Series) -> pd.Series:
 
 
 def format_date(input: pd.Series) -> pd.Series:
-    date = input["vaccine_last_update"]
-    date = re.search(r"\d+\. \w+", date).group(0)
-    date = str(dateparser.parse(date, languages=["da"]).date())
-    date = vaxutils.clean_date(date, "%Y-%m-%d")
+    date = str(datetime.datetime.now(pytz.timezone("Atlantic/Faeroe")).date() - datetime.timedelta(days=1))
     return vaxutils.enrich_data(input, 'date', date)
 
 

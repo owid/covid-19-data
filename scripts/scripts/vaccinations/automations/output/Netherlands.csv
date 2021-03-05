@@ -1,50 +1,8 @@
-date,total_vaccinations,location,source_url,vaccine
-2021-01-06,6000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-07,15000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-08,27000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-09,30000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-10,34000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-11,35500,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-12,45000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-13,47000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-15,55000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-17,77000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-20,100000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,Pfizer/BioNTech
-2021-01-22,135000,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-24,163931,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-25,173638,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-26,185356,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-27,203450,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-28,215498,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-29,226298,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-30,176286,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-01-31,248055,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-01,277275,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-02,303702,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-03,330494,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-04,356517,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-05,382975,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-06,414198,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-07,414858,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Pfizer/BioNTech"
-2021-02-08,434417,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-09,460252,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-10,489558,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-11,518710,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-12,548430,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-13,577620,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-14,606861,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-15,623539,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-16,654186,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-17,687306,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-18,719632,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-19,750899,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-20,779889,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-21,806744,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-22,835554,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-23,862964,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-24,891621,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-25,915793,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-26,934595,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-27,952919,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-02-28,968765,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-2021-03-01,990389,Netherlands,https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+date,location,vaccine,total_vaccinations,people_vaccinated,people_fully_vaccinated,source_url
+2021-01-17,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",77000,77000,0,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
+2021-01-24,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",146612,146612,0,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
+2021-01-31,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",343526,327834,15692,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
+2021-02-07,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",571145,504736,66409,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
+2021-02-14,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",783438,628993,154445,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
+2021-02-21,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1014039,795326,218713,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
+2021-02-28,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1336428,1004757,331671,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
