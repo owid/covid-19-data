@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests, pytesseract, pytz, sys
+import requests, pytesseract, pytz, sys, re
 import pandas as pd
 from datetime import datetime
 try:
