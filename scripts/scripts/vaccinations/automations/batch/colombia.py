@@ -31,14 +31,7 @@ def main():
     appliedDoses = imgText[(b + 17):(b + 27)]
 
     # Eliminates all the involved strings if there's any
-    new_vaccinations = []
-    for character in appliedDoses:
-        try:
-            new_vaccinations.append(int(character))
-        except: # easiest way to detect if it's an integer or not, am i right?
-            continue
-    new_vaccinations = int([''.join(str(num) for num in new_vaccinations)][0])
-    # print("Vaccinated: %i" % (new_vaccinations))
+    new_vaccinations = int(re.sub("[^\d]", "", appliedDoses))
 
     # Open CSV file
     df = pd.read_csv('Colombia.csv')
