@@ -35702,6 +35702,123 @@
     ]
   },
   {
+    "country": "Rwanda",
+    "iso_code": "RWA",
+    "data": [
+      {
+        "date": "2021-02-15",
+        "total_vaccinations": 0,
+        "people_vaccinated": 0,
+        "total_vaccinations_per_hundred": 0,
+        "people_vaccinated_per_hundred": 0
+      },
+      {
+        "date": "2021-02-16",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-17",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-18",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-19",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-20",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-21",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-22",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-23",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-24",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-25",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-26",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-27",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-02-28",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-03-01",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-03-02",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-03-03",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-03-04",
+        "daily_vaccinations": 4170,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-03-05",
+        "total_vaccinations": 75056,
+        "people_vaccinated": 75056,
+        "daily_vaccinations": 4170,
+        "total_vaccinations_per_hundred": 0.58,
+        "people_vaccinated_per_hundred": 0.58,
+        "daily_vaccinations_per_million": 322
+      },
+      {
+        "date": "2021-03-06",
+        "total_vaccinations": 158898,
+        "people_vaccinated": 158898,
+        "daily_vaccinations_raw": 83842,
+        "daily_vaccinations": 15552,
+        "total_vaccinations_per_hundred": 1.23,
+        "people_vaccinated_per_hundred": 1.23,
+        "daily_vaccinations_per_million": 1201
+      }
+    ]
+  },
+  {
     "country": "Saint Helena",
     "iso_code": "SHN",
     "data": [
@@ -45093,27 +45210,27 @@
       },
       {
         "date": "2021-03-05",
-        "total_vaccinations": 293319347,
-        "people_vaccinated": 173207284,
+        "total_vaccinations": 293394403,
+        "people_vaccinated": 173282340,
         "people_fully_vaccinated": 63286360,
-        "daily_vaccinations_raw": 7903642,
-        "daily_vaccinations": 8297286,
+        "daily_vaccinations_raw": 7978698,
+        "daily_vaccinations": 8308009,
         "total_vaccinations_per_hundred": 3.76,
         "people_vaccinated_per_hundred": 2.22,
         "people_fully_vaccinated_per_hundred": 0.81,
-        "daily_vaccinations_per_million": 1064
+        "daily_vaccinations_per_million": 1066
       },
       {
         "date": "2021-03-06",
-        "total_vaccinations": 300031036,
-        "people_vaccinated": 177455507,
+        "total_vaccinations": 300189934,
+        "people_vaccinated": 177614405,
         "people_fully_vaccinated": 65405366,
-        "daily_vaccinations_raw": 6711689,
-        "daily_vaccinations": 8491372,
+        "daily_vaccinations_raw": 6795531,
+        "daily_vaccinations": 8514072,
         "total_vaccinations_per_hundred": 3.85,
         "people_vaccinated_per_hundred": 2.28,
         "people_fully_vaccinated_per_hundred": 0.84,
-        "daily_vaccinations_per_million": 1089
+        "daily_vaccinations_per_million": 1092
       }
     ]
   },
