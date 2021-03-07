@@ -24,6 +24,9 @@ def main():
 
     df["date"] = pd.to_datetime(df["date"], unit="ms")
 
+    # Correction for vaccinations wrongly attributed to early December 2020
+    df.loc[df.date < "2020-12-27", "date"] = pd.to_datetime("2020-12-27")
+
     # Data by vaccine
     vaccine_mapping = {
         "Pfizer-BioNTech": "Pfizer/BioNTech",
