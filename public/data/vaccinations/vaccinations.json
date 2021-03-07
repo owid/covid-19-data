@@ -13491,170 +13491,71 @@
     "iso_code": "OWID_EUN",
     "data": [
       {
-        "date": "2020-12-08",
-        "total_vaccinations": 1,
-        "people_vaccinated": 1,
-        "total_vaccinations_per_hundred": 0,
-        "people_vaccinated_per_hundred": 0
-      },
-      {
-        "date": "2020-12-09",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-10",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-11",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-12",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-13",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-14",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-15",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-16",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-17",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-18",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-19",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-20",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-21",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-22",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-23",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-24",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-25",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
-        "date": "2020-12-26",
-        "daily_vaccinations": 2876,
-        "daily_vaccinations_per_million": 6
-      },
-      {
         "date": "2020-12-27",
         "total_vaccinations": 54637,
         "people_vaccinated": 54637,
-        "daily_vaccinations": 2876,
         "total_vaccinations_per_hundred": 0.01,
-        "people_vaccinated_per_hundred": 0.01,
-        "daily_vaccinations_per_million": 6
+        "people_vaccinated_per_hundred": 0.01
       },
       {
         "date": "2020-12-28",
         "total_vaccinations": 91392,
         "people_vaccinated": 90686,
         "daily_vaccinations_raw": 36755,
-        "daily_vaccinations": 7715,
+        "daily_vaccinations": 36755,
         "total_vaccinations_per_hundred": 0.02,
         "people_vaccinated_per_hundred": 0.02,
-        "daily_vaccinations_per_million": 17
+        "daily_vaccinations_per_million": 83
       },
       {
         "date": "2020-12-29",
         "total_vaccinations": 173205,
         "people_vaccinated": 171696,
         "daily_vaccinations_raw": 81813,
-        "daily_vaccinations": 18992,
+        "daily_vaccinations": 59284,
         "total_vaccinations_per_hundred": 0.04,
         "people_vaccinated_per_hundred": 0.04,
-        "daily_vaccinations_per_million": 43
+        "daily_vaccinations_per_million": 133
       },
       {
         "date": "2020-12-30",
         "total_vaccinations": 310711,
         "people_vaccinated": 308297,
         "daily_vaccinations_raw": 137506,
-        "daily_vaccinations": 38225,
+        "daily_vaccinations": 85358,
         "total_vaccinations_per_hundred": 0.07,
         "people_vaccinated_per_hundred": 0.07,
-        "daily_vaccinations_per_million": 86
+        "daily_vaccinations_per_million": 192
       },
       {
         "date": "2020-12-31",
         "total_vaccinations": 408753,
         "people_vaccinated": 400428,
         "daily_vaccinations_raw": 98042,
-        "daily_vaccinations": 51820,
+        "daily_vaccinations": 88529,
         "total_vaccinations_per_hundred": 0.09,
         "people_vaccinated_per_hundred": 0.09,
-        "daily_vaccinations_per_million": 116
+        "daily_vaccinations_per_million": 199
       },
       {
         "date": "2021-01-01",
         "total_vaccinations": 449643,
         "people_vaccinated": 440738,
         "daily_vaccinations_raw": 40890,
-        "daily_vaccinations": 57251,
+        "daily_vaccinations": 79001,
         "total_vaccinations_per_hundred": 0.1,
         "people_vaccinated_per_hundred": 0.1,
-        "daily_vaccinations_per_million": 129
+        "daily_vaccinations_per_million": 178
       },
       {
         "date": "2021-01-02",
         "total_vaccinations": 555564,
         "people_vaccinated": 546659,
         "daily_vaccinations_raw": 105921,
-        "daily_vaccinations": 71972,
+        "daily_vaccinations": 83488,
         "total_vaccinations_per_hundred": 0.12,
         "people_vaccinated_per_hundred": 0.12,
-        "daily_vaccinations_per_million": 162
+        "daily_vaccinations_per_million": 188
       },
       {
         "date": "2021-01-03",
@@ -25956,160 +25857,61 @@
     "iso_code": "LTU",
     "data": [
       {
-        "date": "2020-12-08",
-        "total_vaccinations": 1,
-        "people_vaccinated": 1,
-        "total_vaccinations_per_hundred": 0,
-        "people_vaccinated_per_hundred": 0
-      },
-      {
-        "date": "2020-12-09",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-10",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-11",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-12",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-13",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-14",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-15",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-16",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-17",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-18",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-19",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-20",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-21",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-22",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-23",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-24",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-25",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
-        "date": "2020-12-26",
-        "daily_vaccinations": 127,
-        "daily_vaccinations_per_million": 47
-      },
-      {
         "date": "2020-12-27",
         "total_vaccinations": 2420,
         "people_vaccinated": 2420,
-        "daily_vaccinations": 127,
         "total_vaccinations_per_hundred": 0.09,
-        "people_vaccinated_per_hundred": 0.09,
-        "daily_vaccinations_per_million": 47
+        "people_vaccinated_per_hundred": 0.09
       },
       {
         "date": "2020-12-28",
         "total_vaccinations": 5207,
         "people_vaccinated": 5207,
         "daily_vaccinations_raw": 2787,
-        "daily_vaccinations": 507,
+        "daily_vaccinations": 2787,
         "total_vaccinations_per_hundred": 0.19,
         "people_vaccinated_per_hundred": 0.19,
-        "daily_vaccinations_per_million": 186
+        "daily_vaccinations_per_million": 1024
       },
       {
         "date": "2020-12-29",
         "total_vaccinations": 8194,
         "people_vaccinated": 8194,
         "daily_vaccinations_raw": 2987,
-        "daily_vaccinations": 916,
+        "daily_vaccinations": 2887,
         "total_vaccinations_per_hundred": 0.3,
         "people_vaccinated_per_hundred": 0.3,
-        "daily_vaccinations_per_million": 336
+        "daily_vaccinations_per_million": 1061
       },
       {
         "date": "2020-12-30",
         "total_vaccinations": 9726,
         "people_vaccinated": 9726,
         "daily_vaccinations_raw": 1532,
-        "daily_vaccinations": 1116,
+        "daily_vaccinations": 2435,
         "total_vaccinations_per_hundred": 0.36,
         "people_vaccinated_per_hundred": 0.36,
-        "daily_vaccinations_per_million": 410
+        "daily_vaccinations_per_million": 894
       },
       {
         "date": "2020-12-31",
         "total_vaccinations": 9751,
         "people_vaccinated": 9751,
         "daily_vaccinations_raw": 25,
-        "daily_vaccinations": 1102,
+        "daily_vaccinations": 1833,
         "total_vaccinations_per_hundred": 0.36,
         "people_vaccinated_per_hundred": 0.36,
-        "daily_vaccinations_per_million": 405
+        "daily_vaccinations_per_million": 673
       },
       {
         "date": "2021-01-01",
-        "daily_vaccinations": 1084,
-        "daily_vaccinations_per_million": 398
+        "daily_vaccinations": 1466,
+        "daily_vaccinations_per_million": 539
       },
       {
         "date": "2021-01-02",
-        "daily_vaccinations": 1066,
-        "daily_vaccinations_per_million": 392
+        "daily_vaccinations": 1222,
+        "daily_vaccinations_per_million": 449
       },
       {
         "date": "2021-01-03",
@@ -44241,105 +44043,76 @@
     "iso_code": "OWID_WRL",
     "data": [
       {
-        "date": "2020-12-08",
-        "total_vaccinations": 1,
-        "people_vaccinated": 1,
+        "date": "2020-12-13",
+        "total_vaccinations": 86465,
+        "people_vaccinated": 86465,
         "total_vaccinations_per_hundred": 0,
         "people_vaccinated_per_hundred": 0
       },
       {
-        "date": "2020-12-09",
-        "daily_vaccinations": 17293,
-        "daily_vaccinations_per_million": 2
-      },
-      {
-        "date": "2020-12-10",
-        "daily_vaccinations": 17293,
-        "daily_vaccinations_per_million": 2
-      },
-      {
-        "date": "2020-12-11",
-        "daily_vaccinations": 17293,
-        "daily_vaccinations_per_million": 2
-      },
-      {
-        "date": "2020-12-12",
-        "daily_vaccinations": 17293,
-        "daily_vaccinations_per_million": 2
-      },
-      {
-        "date": "2020-12-13",
-        "total_vaccinations": 86466,
-        "people_vaccinated": 86466,
-        "daily_vaccinations": 17293,
-        "total_vaccinations_per_hundred": 0,
-        "people_vaccinated_per_hundred": 0,
-        "daily_vaccinations_per_million": 2
-      },
-      {
         "date": "2020-12-14",
-        "total_vaccinations": 86471,
-        "people_vaccinated": 86466,
+        "total_vaccinations": 86470,
+        "people_vaccinated": 86465,
         "daily_vaccinations_raw": 5,
-        "daily_vaccinations": 14412,
+        "daily_vaccinations": 5,
         "total_vaccinations_per_hundred": 0,
         "people_vaccinated_per_hundred": 0,
-        "daily_vaccinations_per_million": 2
+        "daily_vaccinations_per_million": 0
       },
       {
         "date": "2020-12-15",
-        "total_vaccinations": 1615689,
-        "people_vaccinated": 114966,
+        "total_vaccinations": 1615688,
+        "people_vaccinated": 114965,
         "daily_vaccinations_raw": 1529218,
-        "daily_vaccinations": 230813,
+        "daily_vaccinations": 764612,
         "total_vaccinations_per_hundred": 0.02,
         "people_vaccinated_per_hundred": 0,
-        "daily_vaccinations_per_million": 30
+        "daily_vaccinations_per_million": 98
       },
       {
         "date": "2020-12-16",
-        "total_vaccinations": 1617989,
-        "people_vaccinated": 114966,
+        "total_vaccinations": 1617988,
+        "people_vaccinated": 114965,
         "daily_vaccinations_raw": 2300,
-        "daily_vaccinations": 228671,
+        "daily_vaccinations": 510508,
         "total_vaccinations_per_hundred": 0.02,
         "people_vaccinated_per_hundred": 0,
-        "daily_vaccinations_per_million": 29
+        "daily_vaccinations_per_million": 65
       },
       {
         "date": "2020-12-17",
-        "total_vaccinations": 1622168,
-        "people_vaccinated": 114966,
+        "total_vaccinations": 1622167,
+        "people_vaccinated": 114965,
         "daily_vaccinations_raw": 4179,
-        "daily_vaccinations": 226797,
+        "daily_vaccinations": 383926,
         "total_vaccinations_per_hundred": 0.02,
         "people_vaccinated_per_hundred": 0,
-        "daily_vaccinations_per_million": 29
+        "daily_vaccinations_per_million": 49
       },
       {
         "date": "2020-12-18",
-        "total_vaccinations": 1626140,
-        "people_vaccinated": 114966,
+        "total_vaccinations": 1626139,
+        "people_vaccinated": 114965,
         "daily_vaccinations_raw": 3972,
-        "daily_vaccinations": 224894,
+        "daily_vaccinations": 307935,
         "total_vaccinations_per_hundred": 0.02,
         "people_vaccinated_per_hundred": 0,
-        "daily_vaccinations_per_million": 29
+        "daily_vaccinations_per_million": 40
       },
       {
         "date": "2020-12-19",
-        "total_vaccinations": 1626923,
-        "people_vaccinated": 115029,
+        "total_vaccinations": 1626922,
+        "people_vaccinated": 115028,
         "daily_vaccinations_raw": 783,
-        "daily_vaccinations": 222536,
+        "daily_vaccinations": 256743,
         "total_vaccinations_per_hundred": 0.02,
         "people_vaccinated_per_hundred": 0,
-        "daily_vaccinations_per_million": 29
+        "daily_vaccinations_per_million": 33
       },
       {
         "date": "2020-12-20",
-        "total_vaccinations": 2780162,
-        "people_vaccinated": 1267424,
+        "total_vaccinations": 2780161,
+        "people_vaccinated": 1267423,
         "daily_vaccinations_raw": 1153239,
         "daily_vaccinations": 384814,
         "total_vaccinations_per_hundred": 0.04,
@@ -44348,8 +44121,8 @@
       },
       {
         "date": "2020-12-21",
-        "total_vaccinations": 2871087,
-        "people_vaccinated": 1350221,
+        "total_vaccinations": 2871086,
+        "people_vaccinated": 1350220,
         "daily_vaccinations_raw": 90925,
         "daily_vaccinations": 397802,
         "total_vaccinations_per_hundred": 0.04,
@@ -44358,8 +44131,8 @@
       },
       {
         "date": "2020-12-22",
-        "total_vaccinations": 2944977,
-        "people_vaccinated": 1418374,
+        "total_vaccinations": 2944976,
+        "people_vaccinated": 1418373,
         "daily_vaccinations_raw": 73890,
         "daily_vaccinations": 189898,
         "total_vaccinations_per_hundred": 0.04,
@@ -44368,8 +44141,8 @@
       },
       {
         "date": "2020-12-23",
-        "total_vaccinations": 3449326,
-        "people_vaccinated": 1914237,
+        "total_vaccinations": 3449325,
+        "people_vaccinated": 1914236,
         "daily_vaccinations_raw": 504349,
         "daily_vaccinations": 261620,
         "total_vaccinations_per_hundred": 0.04,
@@ -44378,8 +44151,8 @@
       },
       {
         "date": "2020-12-24",
-        "total_vaccinations": 3547741,
-        "people_vaccinated": 2002288,
+        "total_vaccinations": 3547740,
+        "people_vaccinated": 2002287,
         "daily_vaccinations_raw": 98415,
         "daily_vaccinations": 275082,
         "total_vaccinations_per_hundred": 0.05,
@@ -44388,8 +44161,8 @@
       },
       {
         "date": "2020-12-25",
-        "total_vaccinations": 3591752,
-        "people_vaccinated": 2046299,
+        "total_vaccinations": 3591751,
+        "people_vaccinated": 2046298,
         "daily_vaccinations_raw": 44011,
         "daily_vaccinations": 280802,
         "total_vaccinations_per_hundred": 0.05,
@@ -44398,8 +44171,8 @@
       },
       {
         "date": "2020-12-26",
-        "total_vaccinations": 4568357,
-        "people_vaccinated": 3019885,
+        "total_vaccinations": 4568356,
+        "people_vaccinated": 3019884,
         "daily_vaccinations_raw": 976605,
         "daily_vaccinations": 420205,
         "total_vaccinations_per_hundred": 0.06,
@@ -44410,7 +44183,7 @@
         "date": "2020-12-27",
         "total_vaccinations": 5068033,
         "people_vaccinated": 3515698,
-        "daily_vaccinations_raw": 499676,
+        "daily_vaccinations_raw": 499677,
         "daily_vaccinations": 326839,
         "total_vaccinations_per_hundred": 0.07,
         "people_vaccinated_per_hundred": 0.05,
@@ -44461,7 +44234,7 @@
         "total_vaccinations": 10115986,
         "people_vaccinated": 5468723,
         "daily_vaccinations_raw": 119965,
-        "daily_vaccinations": 932033,
+        "daily_vaccinations": 932034,
         "total_vaccinations_per_hundred": 0.13,
         "people_vaccinated_per_hundred": 0.07,
         "daily_vaccinations_per_million": 120
