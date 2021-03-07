@@ -15,21 +15,18 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
-
     people_vaccinated = vaxutils.clean_count(
         soup
-        .find(class_="status_infoArea")
-        .find(class_="round1")
-        .find(class_="big")
-        .text
+            .find(class_="tab_content round1")
+            .find(class_="round_box")
+            .find_all(class_="num")[1].get_text()
     )
 
     people_fully_vaccinated = vaxutils.clean_count(
         soup
-        .find(class_="status_infoArea")
-        .find(class_="round2")
-        .find(class_="big")
-        .text
+            .find(class_="tab_content round2")
+            .find(class_="round_box")
+            .find_all(class_="num")[1].get_text()
     )
 
     total_vaccinations = people_vaccinated + people_fully_vaccinated
@@ -50,7 +47,7 @@ def enrich_location(input: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, "vaccine", "Oxford/AstraZeneca")
+    return vaxutils.enrich_data(input, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
 def enrich_source(input: pd.Series) -> pd.Series:
@@ -60,9 +57,9 @@ def enrich_source(input: pd.Series) -> pd.Series:
 def pipeline(input: pd.Series) -> pd.Series:
     return (
         input
-        .pipe(enrich_location)
-        .pipe(enrich_vaccine)
-        .pipe(enrich_source)
+            .pipe(enrich_location)
+            .pipe(enrich_vaccine)
+            .pipe(enrich_source)
     )
 
 
