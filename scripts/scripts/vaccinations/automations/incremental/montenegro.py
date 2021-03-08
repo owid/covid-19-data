@@ -23,7 +23,7 @@ def enrich_location(input: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, "vaccine", "Sputnik V")
+    return vaxutils.enrich_data(input, "vaccine", "Sinopharm/Beijing, Sputnik V")
 
 
 def enrich_source(input: pd.Series) -> pd.Series:
