@@ -30,6 +30,7 @@ date <- page %>% html_nodes("h3") %>%
 count <- page %>%
     html_nodes("#ContentPlaceHolder_contentPlaceholder_C124_Col00 td") %>%
     html_text() %>%
+    tail(1) %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
 

@@ -6,7 +6,7 @@ For more general information on our COVID-19 data, see our main README file in [
 
 The all-cause mortality data is from the [Human Mortality Database](https://www.mortality.org/) (HMD) Short-term Mortality Fluctuations project and the [World Mortality Dataset](https://github.com/akarlinsky/world_mortality) (WMD). Both sources are updated weekly.
 
-WMD sources some of its data from HMD, but we use the data from HMD directly. We do not use the data from 14 countries in WMD because they fail to meet all three of the following data quality criteria: 1) estimated coverage of at least 85% of deaths; 2) at least four years of historical data; and 3) data published either weekly or monthly. These countries are: Albania, Bolivia, Bosnia & Herzegovina, Colombia, Ecuador, Iran, Ireland, Kazakhstan, Kosovo, Malaysia, Mexico, Peru, South Africa, and Uruguay.
+WMD sources some of its data from HMD, but we use the data from HMD directly. We do not use the data from some countries in WMD because they fail to meet all three of the following data quality criteria: 1) estimated coverage of at least 85% of deaths; 2) at least four years of historical data; and 3) data published either weekly or monthly. The full list of excluded countries and reasons for exclusion can be found [in this spreadsheet](https://docs.google.com/spreadsheets/d/1JPMtzsx-smO3_K4ReK_HMeuVLEzVZ71qHghSuAfG788/edit?usp=sharing).
 
 We calculate the number of weekly deaths for the United Kingdom by summing the weekly deaths from England & Wales, Scotland, and Northern Ireland.
 

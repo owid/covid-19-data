@@ -22,7 +22,7 @@ execution_mode <- args[1]
 if (length(SKIP) > 0) warning("Skipping the following countries: ", paste0(SKIP, collapse = ", "))
 
 setwd("~/Git/covid-19-data/scripts/scripts/testing")
-CONFIG <- fromJSON(file = "testing_dataset_config.json")
+CONFIG <- rjson::fromJSON(file = "testing_dataset_config.json")
 `_` <- Sys.setlocale("LC_TIME", "en_US")
 
 add_snapshot <- function(count, sheet_name, country, units, date = today(),
