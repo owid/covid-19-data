@@ -1,20 +1,30 @@
+import datetime
+import re
+import sys
+import requests
+
+import imutils
+import cv2
+import pytesseract
 from bs4 import BeautifulSoup
-import pytz, sys, re
-import requests, imutils, cv2, pytesseract
+import pytz
 from pytesseract import image_to_string as getImgText
 import numpy as np
 import pandas as pd
-from datetime import datetime
 try:
     from PIL import Image
 except ImportError:
     import Image
+
+import vaxutils
+
 
 def getImageURL(hostname, path):
     url = hostname + path
     url_request = requests.get(url)
     soup = BeautifulSoup(url_request.text, features="lxml")
     return hostname + soup.find("div", {"class": "interSec1Lchikun left"}).find('img')['src']
+
 
 def processImg(url):
     img = imutils.url_to_image(url)
@@ -32,7 +42,16 @@ def processImg(url):
     # cv2.imwrite("img.jpeg", img)
     return getImgText(img)
 
+
 def main():
+
+    data = pd.Series({
+        "location": "Colombia",
+        "date": str(datetime.datetime.now(pytz.timezone("America/Bogota")).date() - datetime.timedelta(days=1)),
+        "source_url": "https://www.minsalud.gov.co/salud/publica/Vacunacion/Paginas/Vacunacion-covid-19.aspx",
+        "vaccine": "Pfizer/BioNTech, Sinovac",
+    })
+
     # Obtains both Image URL and text in Image via tesseract.
     hostname, path = "https://www.minsalud.gov.co", "/salud/publica/Vacunacion/Paginas/Vacunacion-covid-19.aspx"
     imgURL = getImageURL(hostname, path)
@@ -42,37 +61,18 @@ def main():
 
     # Eliminates all the involved strings if there's any
     # print(imgText)
-    new_vaccinations = int(re.sub("[^\d]", "", imgText))
-    # print("Vaccinated: %i" % (new_vaccinations))
+    total_vaccinations = int(re.sub(r"[^\d]", "", imgText))
+    # print("Vaccinated: %i" % (total_vaccinations))
+    data["total_vaccinations"] = total_vaccinations
 
-    # Open CSV file
-    df = pd.read_csv('Colombia.csv')
-    # print(df)
-    old_vaccinations = df['total_vaccinations'][df.index.stop - 1]
+    vaxutils.increment(
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        date=data["date"],
+        source_url=data["source_url"],
+        vaccine=data["vaccine"]
+    )
 
-    # Check if the obtained vaccinations are the same as before
-    if new_vaccinations == old_vaccinations:
-        print("Obtained vaccinations already in csv file. Please try again later.")
-        sys.exit()
-    
-    # Process data
-    date = datetime.now(pytz.timezone("America/Bogota")).date().strftime("%Y-%m-%d")
-    newRow = {
-        "location": "Colombia",
-        "date": date,
-        "vaccine": "Pfizer/BioNTech, Sinovac",
-        "source_url": hostname + path,
-        "total_vaccinations": new_vaccinations,
-        "people_vaccinated": new_vaccinations
-        # People fully vaccinated hasn't been counted... yet.
-    }
-
-    # Adds row
-    df = df.append(newRow, ignore_index=True)
-    # print(df)
-    df.to_csv("automations/output/Colombia.csv", index=False)
-
-    # print(new_vaccinations)
 
 if __name__ == '__main__':
     main()
