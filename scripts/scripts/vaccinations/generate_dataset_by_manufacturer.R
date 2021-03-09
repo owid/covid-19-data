@@ -11,9 +11,10 @@ approved <- c(
     "Moderna",
     "Oxford/AstraZeneca",
     "Pfizer/BioNTech",
-    "Sinovac"
+    "Sinovac",
+    "Johnson&Johnson"
 )
-stopifnot(sort(unique(df$vaccine)) == approved)
+stopifnot(sort(unique(df$vaccine)) == sort(approved))
 
 # Generate public file
 fwrite(df, "../../../public/data/vaccinations/vaccinations-by-manufacturer.csv")
