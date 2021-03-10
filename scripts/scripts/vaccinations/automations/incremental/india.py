@@ -26,7 +26,7 @@ def parse_data(url: str) -> pd.Series:
     
     kwargs = {"pandas_options": {"dtype": str, "header": None}}
     dfs_from_pdf = tabula.read_pdf(url, pages="all", **kwargs)
-    df = dfs_from_pdf[0]
+    df = dfs_from_pdf[1]
     df = df[df[0] == "India"]
 
     people_vaccinated = vaxutils.clean_count(df[1].item())
