@@ -20,7 +20,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 
 def get_date(soup: BeautifulSoup) -> str:
-    return str(datetime.datetime.now(pytz.timezone("Africa/Johannesburg")).date())
+    return str((datetime.datetime.now(pytz.timezone("Africa/Johannesburg")) - datetime.timedelta(days=1)).date())
 
 
 def parse_total_vaccinations(soup: BeautifulSoup) -> str:
