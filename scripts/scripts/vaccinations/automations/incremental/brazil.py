@@ -17,62 +17,65 @@ def connect_parse_data(source: str) -> pd.Series:
 
     with webdriver.Chrome(options=op) as driver:
         driver.get(source)
-        time.sleep(10)
-        for elem in driver.find_elements_by_class_name("kpimetric"):
-            if "1ª Dose" in elem.text:
-                people_vaccinated = elem.find_element_by_class_name("valueLabel").text
-            elif "2ª Dose" in elem.text:
-                people_fully_vaccinated = elem.find_element_by_class_name("valueLabel").text
+        time.sleep(15)
+        data_blocks = driver.find_elements_by_class_name("kpi-data")
+
+        for block in data_blocks:
+
+            block_title = block.find_element_by_class_name("measure-title").get_attribute("title")
+
+            if block_title == "Pessoas Vacinadas (Dose 1)":
+                people_vaccinated = block.find_element_by_class_name("kpi-value").text
+            elif block_title == "Pessoas Vacinadas (Dose 2)":
+                people_fully_vaccinated = block.find_element_by_class_name("kpi-value").text
+            elif block_title == "Doses Aplicadas":
+                total_vaccinations = block.find_element_by_class_name("kpi-value").text
 
     return pd.Series({
+        "total_vaccinations": total_vaccinations,
         "people_vaccinated": people_vaccinated,
-        "people_fully_vaccinated": people_fully_vaccinated
+        "people_fully_vaccinated": people_fully_vaccinated,
     }).transform(vaxutils.clean_count)
 
 
-def format_date(input: pd.Series) -> pd.Series:
-    date = str(datetime.datetime.now(pytz.timezone("Brazil/East")).date())
-    return vaxutils.enrich_data(input, 'date', date)
-
-
-def add_totals(input: pd.Series) -> pd.Series:
-    total_vaccinations = input['people_vaccinated'] + input['people_fully_vaccinated']
-    return vaxutils.enrich_data(input, 'total_vaccinations', total_vaccinations)
+def set_date(input: pd.Series) -> pd.Series:
+    date = str((datetime.datetime.now(pytz.timezone("Brazil/East")) - datetime.timedelta(days=1)).date())
+    return vaxutils.enrich_data(input, "date", date)
 
 
 def enrich_location(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'location', "Brazil")
+    return vaxutils.enrich_data(input, "location", "Brazil")
 
 
 def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'vaccine', "Oxford/AstraZeneca, Sinovac")
+    return vaxutils.enrich_data(input, "vaccine", "Oxford/AstraZeneca, Sinovac")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(input, 'source_url', "https://coronavirusbra1.github.io/")
+def enrich_source(input: pd.Series, source: str) -> pd.Series:
+    return vaxutils.enrich_data(input, "source_url", source)
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(input: pd.Series, source: str) -> pd.Series:
     return (
-        input.pipe(format_date)
-            .pipe(add_totals)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        input
+        .pipe(set_date)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source, source)
     )
 
 
 def main():
-    source = "https://datastudio.google.com/embed/u/0/reporting/2f2537fa-ac23-4f08-8741-794cdbedca03/page/CPFTB"
-    data = read(source).pipe(pipeline)
+    source = "https://viz.saude.gov.br/extensions/DEMAS_C19Vacina/DEMAS_C19Vacina.html"
+    data = read(source).pipe(pipeline, source)
     vaxutils.increment(
-        location=data['location'],
-        total_vaccinations=data['total_vaccinations'],
-        people_vaccinated=data['people_vaccinated'],
-        people_fully_vaccinated=data['people_fully_vaccinated'],
-        date=data['date'],
-        source_url=data['source_url'],
-        vaccine=data['vaccine']
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
+        date=data["date"],
+        source_url=data["source_url"],
+        vaccine=data["vaccine"]
     )
 
 
