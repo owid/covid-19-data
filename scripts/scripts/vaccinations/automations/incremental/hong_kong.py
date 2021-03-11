@@ -26,7 +26,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 
 def parse_people_vaccinated(soup: BeautifulSoup) -> int:
-    regex = r"a cumulative total of about ([\d\s]+) persons have received the first dose of vaccination"
+    regex = r"a cumulative total of about ([\d\s]+) persons have received the(ir)? first"
     people_vaccinated = re.search(regex, soup.find(id="pressrelease").text).group(1)
     return vaxutils.clean_count(people_vaccinated)
 
