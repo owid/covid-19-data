@@ -19,7 +19,7 @@ def main():
         driver.get(data["source_url"])
         time.sleep(2)
         driver.find_element_by_class_name("fa-syringe").click()
-        time.sleep(2)
+        time.sleep(4)
         date = driver.find_element_by_class_name("logo").text
         tbl = driver.find_element_by_class_name("dataTables_scrollBody").get_attribute("innerHTML")
 
