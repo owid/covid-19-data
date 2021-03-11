@@ -29,57 +29,56 @@ def download_data():
 
 
 def read_file(path):
-    cols = [
-        "Date", "LongName", "Doses_Distributed", "Doses_Administered", "Dist_Per_100K",
-        "Admin_Per_100K", "Administered_Dose1", "Administered_Dose1_Per_100K",
-        "Administered_Dose2", "Administered_Dose2_Per_100K", "Census2019"
-    ]
-    return pd.read_csv(path, na_values=[0.0, 0], usecols=cols)
+    df = pd.read_csv(path, na_values=[0.0, 0])
+
+    # Each variable present in VARIABLE_MATCHING.keys() will be created based on the variables in
+    # VARIABLE_MATCHING.values() by order of priority. If none of the vars can be found, the variable
+    # is created as pd.NA
+    variable_matching = {
+        "total_distributed": ["Doses_Distributed"],
+        "total_vaccinations": ["Doses_Administered"],
+        "people_vaccinated": ["Administered_Dose1", "Administered_Dose1_Recip"],
+        "people_fully_vaccinated": ["Series_Complete_Yes", "Administered_Dose2", "Administered_Dose2_Recip"],
+    }
+
+    for k,v in variable_matching.items():
+        for cdc_variable in v:
+            if cdc_variable in df.columns:
+                df = df.rename(columns={cdc_variable: k})
+                break
+        if k not in df.columns:
+            df[k] = pd.NA
+
+    df = df[["Date", "LongName", "Census2019"] + [*variable_matching.keys()]]
+
+    return df
 
 
 def read_data():
     files = glob(os.path.join(INPUT_PATH, "cdc_data_*.csv"))
-    return pd.concat(map(read_file, files)).reset_index(drop=True)
-
-
-def change_capita_base(df, from_base, to_base, from_suffix, to_suffix):
-    for col in df.columns:
-        if from_suffix in col:
-            df[col] = df[col].div(from_base).mul(to_base).round(2)
-            df = df.rename(columns={col: col.replace(from_suffix, to_suffix)})
-    return df
-
-
-def fill_missing_values(df):
-    df.loc[(df["Dist_per_hundred"].isna()) & (df["Census2019"].notnull()), "Dist_per_hundred"] = (
-        df["Doses_Distributed"].div(df["Census2019"]).mul(100).round(2)
-    )
-    df.loc[(df["Admin_per_hundred"].isna()) & (df["Census2019"].notnull()), "Admin_per_hundred"] = (
-        df["Doses_Administered"].div(df["Census2019"]).mul(100).round(2)
-    )
-    df.loc[(df["Administered_Dose1_per_hundred"].isna()) & (df["Census2019"].notnull()), "Administered_Dose1_per_hundred"] = (
-        df["Administered_Dose1"].div(df["Census2019"]).mul(100).round(2)
-    )
-    df.loc[(df["Administered_Dose2_per_hundred"].isna()) & (df["Census2019"].notnull()), "Administered_Dose2_per_hundred"] = (
-        df["Administered_Dose2"].div(df["Census2019"]).mul(100).round(2)
-    )
-    return df
+    data = [*map(read_file, files)]
+    return pd.concat(data, ignore_index=True)
 
 
 def rename_cols(df):
     col_dict = {
         "Date": "date",
         "LongName": "location",
-        "Doses_Distributed": "total_distributed",
-        "Doses_Administered": "total_vaccinations",
-        "Dist_per_hundred": "distributed_per_hundred",
-        "Admin_per_hundred": "total_vaccinations_per_hundred",
-        "Administered_Dose1": "people_vaccinated",
-        "Administered_Dose1_per_hundred": "people_vaccinated_per_hundred",
-        "Administered_Dose2": "people_fully_vaccinated",
-        "Administered_Dose2_per_hundred": "people_fully_vaccinated_per_hundred",
     }
-    df = df.rename(columns=col_dict)
+    return df.rename(columns=col_dict)
+
+
+def add_per_capita(df):
+    
+    df["people_fully_vaccinated_per_hundred"] = df.people_fully_vaccinated.div(df.Census2019).mul(100)
+    df["total_vaccinations_per_hundred"] = df.total_vaccinations.div(df.Census2019).mul(100)
+    df["people_vaccinated_per_hundred"] = df.people_vaccinated.div(df.Census2019).mul(100)
+    df["distributed_per_hundred"] = df.total_distributed.div(df.Census2019).mul(100)
+
+    for var in df.columns:
+        if "per_hundred" in var:
+            df.loc[df[var].notnull(), var] = df[var].round(2)
+
     return df
 
 
@@ -121,13 +120,23 @@ def export_to_grapher(df):
 
 
 def generate_dataset():
-    df = read_data()
-    df = change_capita_base(df, 100000, 100, "Per_100K", "per_hundred")
-    df = fill_missing_values(df)
-    df = rename_cols(df)
-    df = add_smoothed(df)
-    df = add_usage(df)
-    df = df.drop(columns=["Census2019"]).sort_values(["location", "date"])
+    df = (
+        read_data()
+        .pipe(rename_cols)
+        .pipe(add_per_capita)
+        .pipe(add_smoothed)
+        .pipe(add_usage)
+        .drop(columns=["Census2019"]).sort_values(["location", "date"])
+    )
+
+    df = df[[
+        "date", "location", "total_vaccinations", "total_distributed", "people_vaccinated",
+        "people_fully_vaccinated_per_hundred", "total_vaccinations_per_hundred",
+        "people_fully_vaccinated", "people_vaccinated_per_hundred", "distributed_per_hundred",
+        "daily_vaccinations_raw", "daily_vaccinations", "daily_vaccinations_per_million",
+        "share_doses_used",
+    ]]
+
     sanity_checks(df)
     export_to_public(df.copy())
     export_to_grapher(df.copy())

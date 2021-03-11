@@ -54,11 +54,12 @@ def main():
     df["location"] = "Iceland"
 
     vaccine_mapping = {
-        "Pfizer": "Pfizer/BioNTech",
+        "Pfizer/BioNTech": "Pfizer/BioNTech",
         "Moderna": "Moderna",
-        "AstraZeneca": "Oxford/AstraZeneca",
+        "Oxford/AstraZeneca": "Oxford/AstraZeneca",
     }
-    assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys())
+    assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys()), \
+        f"Vaccines present in data: {df['vaccine'].unique()}"
     df = df.replace(vaccine_mapping)
 
     df.to_csv("automations/output/by_manufacturer/Iceland.csv", index=False)

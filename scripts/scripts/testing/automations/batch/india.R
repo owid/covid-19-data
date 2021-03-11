@@ -1,4 +1,4 @@
-df <- fromJSON(file = "https://raw.githubusercontent.com/datameet/covid19/master/data/icmr_testing_status.json")
+df <- rjson::fromJSON(file = "https://raw.githubusercontent.com/datameet/covid19/master/data/icmr_testing_status.json")
 
 process_entry <- function(entry) {
     entry <- entry$value
@@ -22,3 +22,5 @@ samples <- data.table(
     `Source URL` = "https://github.com/datameet/covid19",
     Notes = "Made available by DataMeet on GitHub"
 )
+
+fwrite(samples, "automated_sheets/India - Samples tested.csv")

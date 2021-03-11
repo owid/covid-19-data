@@ -24,6 +24,7 @@ def get_date(soup):
         "gener": 1,
         "febrer": 2,
         "març": 3,
+        "mar": 3,
         "abril": 4,
         "maig": 5,
         "juny": 6,

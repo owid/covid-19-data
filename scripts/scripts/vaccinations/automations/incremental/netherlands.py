@@ -5,7 +5,6 @@ import requests
 from bs4 import BeautifulSoup
 import dateparser
 import pandas as pd
-import tabula
 
 import vaxutils
 
@@ -13,10 +12,8 @@ import vaxutils
 def read(source: str) -> pd.Series:
     soup = BeautifulSoup(requests.get(source).content, "html.parser")
 
-    pdf_link = soup.find(class_="list-group-item")
-    
-    date = parse_date(pdf_link)
-    total_vaccinations, people_vaccinated, people_fully_vaccinated = parse_data(pdf_link)
+    date = parse_date(soup)
+    total_vaccinations, people_vaccinated, people_fully_vaccinated = parse_data(soup)
 
     return pd.Series({
         "date": date,
@@ -26,24 +23,17 @@ def read(source: str) -> pd.Series:
     })
 
 
-def parse_date(pdf_link):
-    date = re.search(r"\((\d.*202\d)\)", pdf_link.text).group(1)
+def parse_date(soup: BeautifulSoup):
+    date = re.search(r"\d+ \w+ 202\d", soup.h2.text).group(0)
     date = dateparser.parse(date, languages=["nl"])
-    date = date - datetime.timedelta(days=2) # Delay between vaccination and weekly report
     return str(date.date())
 
 
-def parse_data(pdf_link) -> str:
-    url = "https://www.rivm.nl" + pdf_link["href"]
-    kwargs = {"pandas_options": {"dtype": str}}
-    dfs_from_pdf = tabula.read_pdf(url, pages="all", **kwargs)
+def parse_data(soup: BeautifulSoup) -> str:
+    df = pd.read_html(str(soup.find("table")), thousands=".")[0]
 
-    for df in dfs_from_pdf:
-        if "Eerste" in df.columns:
-            break
-
-    people_vaccinated = vaxutils.clean_count(df.loc[df.Doelgroep == "Totaal", "Eerste"].item())
-    people_fully_vaccinated = vaxutils.clean_count(df.loc[df.Doelgroep == "Totaal", "Tweede"].item())
+    people_vaccinated = int(df.loc[df.Doelgroep == "Totaal", "Eerste dosis"].item())
+    people_fully_vaccinated = int(df.loc[df.Doelgroep == "Totaal", "Tweede dosis"].item())
     total_vaccinations = people_vaccinated + people_fully_vaccinated
 
     return total_vaccinations, people_vaccinated, people_fully_vaccinated
@@ -71,7 +61,7 @@ def pipeline(input: pd.Series, source: str) -> pd.Series:
 
 
 def main():
-    source = "https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland"
+    source = "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
     data = read(source).pipe(pipeline, source)
     vaxutils.increment(
         location=data["location"],

@@ -29,10 +29,11 @@ def enrich_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
-    def _enrich_vaccine_name(date: str) -> str:
+    def _enrich_vaccine(date: str) -> str:
+        if date >= "2021-03-08":
+            return "Oxford/AstraZeneca, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
-
-    return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
+    return input.assign(vaccine=input.date.astype(str).apply(_enrich_vaccine))
 
 
 def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
