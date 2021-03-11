@@ -9,12 +9,25 @@ def read(source: str) -> pd.Series:
 
 
 def parse_data(data: dict) -> pd.Series:
-    sheet_id = data["sheetNames"].index("Vakcinisani ukupno")
-    total_vaccinations = vaxutils.clean_count(data["data"][sheet_id][0][0])
 
-    date = vaxutils.clean_date(data["data"][1][0][0], "%d.%m.%Y.")
+    people_vaccinated = int(data["data"][data["sheetNames"].index("1. doza")][0][0])
 
-    data = {"date": date, "total_vaccinations": total_vaccinations}
+    people_fully_vaccinated = data["data"][data["sheetNames"].index("2. doza")]
+    if len(people_fully_vaccinated) > 0:
+        people_fully_vaccinated = int(people_fully_vaccinated[0][0])
+    else:
+        people_fully_vaccinated = 0
+
+    total_vaccinations = people_vaccinated + people_fully_vaccinated
+
+    date = str(pd.to_datetime(data["refreshed"], unit="ms").date())
+
+    data = {
+        "date": date,
+        "total_vaccinations": total_vaccinations,
+        "people_vaccinated": people_vaccinated,
+        "people_fully_vaccinated": people_fully_vaccinated,
+    }
     return pd.Series(data=data)
 
 
@@ -45,7 +58,8 @@ def main():
     vaxutils.increment(
         location=str(data["location"]),
         total_vaccinations=int(data["total_vaccinations"]),
-        people_vaccinated=int(data["total_vaccinations"]),
+        people_vaccinated=int(data["people_vaccinated"]),
+        people_fully_vaccinated=int(data["people_fully_vaccinated"]),
         date=str(data["date"]),
         source_url=str(data["source_url"]),
         vaccine=str(data["vaccine"])
