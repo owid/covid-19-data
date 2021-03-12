@@ -27,9 +27,7 @@ def main():
     quests = requests.get(source_url, headers=headers)
     table = pd.read_html(quests.text, index_col=0)[0]
 
-    total = int(table.loc['Samples Tested'][2].replace("^", ""))
-    pending = int(table.loc['Results Pending'][2].replace("^", ""))
-    cumulative_total = total - pending
+    cumulative_total = int(table.loc['TOTAL TESTS CUMULATIVE', 4])
 
     if cumulative_total > data["Cumulative total"].max() and date > data["Date"].max():
 
