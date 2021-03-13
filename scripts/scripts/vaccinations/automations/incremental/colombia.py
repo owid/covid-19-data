@@ -26,10 +26,7 @@ def getImageURL(hostname, path):
     return hostname + soup.find("div", {"class": "interSec1Lchikun left"}).find('img')['src']
 
 
-def processImg(url):
-    img = imutils.url_to_image(url)
-    img = img[299:389, 105:616] # crops the image to a specific position [y1:y2, x1:x2]
-                                # in this case, it's cropping the image to the amount of applied vaccines position
+def processImg(img):
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     img_gray, img_bin = cv2.threshold(img_gray,128,255,cv2.THRESH_BINARY | cv2.THRESH_OTSU)
     img_gray = cv2.bitwise_not(img_bin)
@@ -39,9 +36,21 @@ def processImg(url):
     # credit to hucker marius for this portion of code. 
     # this literally saved my life since imutils' tools weren't working the way i expected
     # https://towardsdatascience.com/optical-character-recognition-ocr-with-less-than-12-lines-of-code-using-python-48404218cccb
-    # cv2.imwrite("img.jpeg", img)
-    return getImgText(img)
+    
+    return img
 
+def getImages(url):
+    full_img = imutils.url_to_image(url)
+
+    vaccinated = processImg(full_img[249:310, 115:612]) # amount of applied vaccinations
+    second_doses = processImg(full_img[1004:1059, 120:612]) # amount of second doses applied
+    # full_img[y1:y2, x1:x2] crops the image to a specific position
+
+    # cv2.imwrite("vaccinated.jpeg", vaccinated)
+    # cv2.imwrite("second_doses.jpeg", second_doses)
+    ## Only uncomment these to troubleshoot!
+
+    return getImgText(vaccinated), getImgText(second_doses)
 
 def main():
 
@@ -57,17 +66,26 @@ def main():
     imgURL = getImageURL(hostname, path)
 
     # Process Image
-    imgText = processImg(imgURL)
+    imgText = getImages(imgURL)
+    total_vaccinations = imgText[0]
+    people_fully_vaccinated = imgText[1]
+    # print(imgText)
 
     # Eliminates all the involved strings if there's any
-    # print(imgText)
-    total_vaccinations = int(re.sub(r"[^\d]", "", imgText))
-    # print("Vaccinated: %i" % (total_vaccinations))
-    data["total_vaccinations"] = total_vaccinations
+    total_vaccinations = int(re.sub(r"[^\d]", "", total_vaccinations))
+    people_fully_vaccinated = int(re.sub(r"[^\d]", "", people_fully_vaccinated))
+    # print("Total of vaccinations: %i" % (total_vaccinations))
+    # print("Fully vaccinated: %i" % (people_fully_vaccinated))
+    
+    data["total_vaccinations"] = total_vaccinations # the government counts both first AND second doses in total vaccinations
+    data["people_vaccinated"] = total_vaccinations - people_fully_vaccinated
+    data["people_fully_vaccinated"] = people_fully_vaccinated
 
     vaxutils.increment(
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
         date=data["date"],
         source_url=data["source_url"],
         vaccine=data["vaccine"]
