@@ -1,10 +1,10 @@
-location,date,vaccine,total_vaccinations,source_url
-Liechtenstein,2021-02-03,"Moderna, Pfizer/BioNTech",833,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-02-10,"Moderna, Pfizer/BioNTech",1018,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-02-14,"Moderna, Pfizer/BioNTech",1165,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-02-17,"Moderna, Pfizer/BioNTech",1504,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-02-21,"Moderna, Pfizer/BioNTech",1812,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-02-24,"Moderna, Pfizer/BioNTech",2218,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-02-28,"Moderna, Pfizer/BioNTech",2597,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-03-03,"Moderna, Pfizer/BioNTech",2721,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
-Liechtenstein,2021-03-07,"Moderna, Pfizer/BioNTech",3126,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL
+location,date,vaccine,total_vaccinations,source_url,people_vaccinated,people_fully_vaccinated
+Liechtenstein,2021-02-03,"Moderna, Pfizer/BioNTech",833,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-02-10,"Moderna, Pfizer/BioNTech",1018,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-02-14,"Moderna, Pfizer/BioNTech",1165,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-02-17,"Moderna, Pfizer/BioNTech",1504,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-02-21,"Moderna, Pfizer/BioNTech",1812,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-02-24,"Moderna, Pfizer/BioNTech",2218,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-02-28,"Moderna, Pfizer/BioNTech",2597,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-03-03,"Moderna, Pfizer/BioNTech",2721,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
+Liechtenstein,2021-03-07,"Moderna, Pfizer/BioNTech",3536,https://www.covid19.admin.ch/en/epidemiologic/vacc-doses?detGeo=FL,,
