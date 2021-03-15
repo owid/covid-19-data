@@ -3,7 +3,14 @@ rm(list = ls())
 
 files <- list.files("automations/output/by_manufacturer/", pattern = "*.csv", full.names = TRUE)
 
-df <- rbindlist(lapply(files, FUN = fread), use.names = TRUE)
+read_file <- function(filepath) {
+    df <- fread(filepath)
+    df[, date := as.character(date)]
+    return(df)
+}
+
+data <- lapply(files, FUN = read_file)
+df <- rbindlist(data, use.names = TRUE)
 setcolorder(df, c("location", "date", "vaccine", "total_vaccinations"))
 setorder(df, location, date, vaccine)
 
