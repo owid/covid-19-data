@@ -97,11 +97,11 @@ def _merge_files():
         except:
             df.loc[:, "date"] = pd.to_datetime(df.endtime, format="%Y-%m-%d %H:%M:%S")
         df.loc[:, "country"] = country
+        df.columns = df.columns.str.lower()
         all_data.append(df)
 
-    df = pd.concat(all_data)
+    df = pd.concat(all_data, axis=0)
 
-    df.columns = df.columns.str.lower()
     assert df.columns.nunique() == df.columns.shape[0], 'There are one or more duplicate columns, which may cause unexpected errors.'
     
     return df
