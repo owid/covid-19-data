@@ -161,6 +161,14 @@ add_per_capita <- function(df, subnational_pop) {
     pop <- get_population(subnational_pop)
     df <- merge(df, pop)
 
+    world_population <- pop[location == "World", population]
+    covered <- unique(df[
+        !location %in% names(AGGREGATES) & !location %in% subnational_pop$location,
+        c("location", "population")
+    ])
+    COUNTRIES_COVERED <<- nrow(covered)
+    WORLD_POP_COVERED <<- paste0(round(100 * sum(covered$population) / world_population), "%")
+
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
     df[, people_vaccinated_per_hundred := round(people_vaccinated * 100 / population, 2)]
     df[, people_fully_vaccinated_per_hundred := round(people_fully_vaccinated * 100 / population, 2)]
@@ -221,6 +229,13 @@ generate_html <- function(metadata) {
     html[, body := paste0(Location, Source, `Last observation date`, Vaccines)]
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table><tbody>", header, body, "</tbody></table>")
+    coverage_info <- sprintf(
+        "Vaccination against COVID-19 has now started in %s countries, covering %s of the world population.",
+        COUNTRIES_COVERED,
+        WORLD_POP_COVERED
+    )
+    message(coverage_info)
+    html_table <- paste0("<p><strong>", coverage_info, "</strong></p>", html_table)
     writeLines(html_table, "automations/source_table.html")
 }
 
