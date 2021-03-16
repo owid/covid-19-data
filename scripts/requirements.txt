@@ -45,6 +45,7 @@ slack==0.0.2
 slackclient==2.7.2
 soupsieve==2.2
 termcolor==1.1.0
+tqdm==4.59.0
 traitlets==4.3.3
 typing-extensions==3.7.4.3
 Unidecode==1.1.1
