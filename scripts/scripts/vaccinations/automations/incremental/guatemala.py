@@ -21,12 +21,10 @@ def main():
         driver.find_element_by_class_name("fa-syringe").click()
         time.sleep(4)
         date = driver.find_element_by_class_name("logo").text
-        tbl = driver.find_element_by_class_name("dataTables_scrollBody").get_attribute("innerHTML")
+        dose1 = driver.find_element_by_id("dosisaplicadas").find_element_by_tag_name("h3").text
 
-    df = pd.read_html(tbl)[0]
-
-    data["people_vaccinated"] = df["Primera dosis"].tail(1).item()
-    data["people_fully_vaccinated"] = df["Segunda dosis"].tail(1).item()
+    data["people_vaccinated"] = vaxutils.clean_count(dose1)
+    data["people_fully_vaccinated"] = 0
     data["total_vaccinations"] = data["people_vaccinated"] + data["people_fully_vaccinated"]
 
     date = re.search(r"\d+/\d+/202\d", date).group(0)
