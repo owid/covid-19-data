@@ -68,7 +68,7 @@ def main():
     hostname, path = "https://www.minsalud.gov.co", "/salud/publica/Vacunacion/Paginas/Vacunacion-covid-19.aspx"
     imgURL = getImageURL(hostname, path)
 
-    # Process Image via )OpenCV and tesseract.
+    # Process Image via OpenCV and tesseract.
     imgText = getImages(imgURL)
     total_vaccinations = imgText[0]
     people_fully_vaccinated = imgText[1]
