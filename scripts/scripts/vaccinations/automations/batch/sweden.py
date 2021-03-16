@@ -29,10 +29,10 @@ def get_daily_data():
 
     df = pd.read_html("https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/")[1]
 
-    df = df[["Datum", "Antal vaccinerade med minst 1 dos*", "Antal vaccinerade med 2 doser"]].rename(columns={
+    df = df[["Datum", "Antal vaccinerademed minst 1 dos*", "Antal vaccinerademed 2 doser"]].rename(columns={
         "Datum": "date",
-        "Antal vaccinerade med minst 1 dos*": "people_vaccinated",
-        "Antal vaccinerade med 2 doser": "people_fully_vaccinated",
+        "Antal vaccinerademed minst 1 dos*": "people_vaccinated",
+        "Antal vaccinerademed 2 doser": "people_fully_vaccinated",
     })
 
     df["people_vaccinated"] = df["people_vaccinated"].str.replace(r"\s", "", regex=True).astype(int)

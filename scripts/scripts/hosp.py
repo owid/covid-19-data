@@ -51,8 +51,9 @@ def week_to_date(df):
 
 def add_united_states(df):
     print("Downloading US data…")
-
-    url = "https://healthdata.gov/api/3/action/package_show?id=83b4a668-9321-4d8c-bc4f-2bef66c49050"
+    # TODO this API url is being retired. the "legacy" domain name will keep working for a few (2?) weeks and then be shut down
+    # To keep working this code will need to be ported to use the new API (released over the weekend) 
+    url = "https://legacy.healthdata.gov/api/3/action/package_show?id=83b4a668-9321-4d8c-bc4f-2bef66c49050"
     metadata = requests.get(url).json()
     url = metadata["result"][0]["resources"][0]["url"]
 
