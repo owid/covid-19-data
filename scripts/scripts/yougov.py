@@ -62,7 +62,7 @@ def update_db():
             'zeroDay': ZERO_DAY
         },
         source_name=source_name,
-        slack_notifications=False
+        slack_notifications=True
     )
 
 
@@ -86,8 +86,8 @@ def _merge_files():
         "https://github.com/YouGov-Data/covid-19-tracker/raw/master/countries.csv", header=None
     )[0])
 
-    for country in tqdm(countries):
-        tqdm.write(country)
+    for country in countries: # tqdm(countries):
+        # tqdm.write(country)
         try:
             df = _read_country_data(country, "csv")
         except:
