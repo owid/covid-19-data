@@ -20,6 +20,7 @@ import vaxutils
 
 
 def getImageURL(hostname, path):
+    # Scrapes for the image asset
     url = hostname + path
     url_request = requests.get(url)
     soup = BeautifulSoup(url_request.text, features="lxml")
@@ -43,7 +44,9 @@ def getImages(url):
     full_img = imutils.url_to_image(url)
 
     vaccinated = processImg(full_img[253:310, 100:623]) # amount of applied vaccinations
-    second_doses = processImg(full_img[319:367, 100:612]) # amount of second doses applied
+    second_doses = processImg(full_img[344:386, 102:619]) # amount of second doses applied
+    # second_doses = processImg(full_img[319:367, 100:612]) # uncomment if the other one presents problems
+
     # full_img[y1:y2, x1:x2] crops the image to a specific position
 
     # cv2.imwrite("vaccinated.jpeg", vaccinated)
@@ -56,16 +59,16 @@ def main():
 
     data = pd.Series({
         "location": "Colombia",
-        "date": str(datetime.datetime.now(pytz.timezone("America/Bogota")).date() - datetime.timedelta(days=2)),
+        "date": str(datetime.datetime.now(pytz.timezone("America/Bogota")).date() - datetime.timedelta(days=1)),
         "source_url": "https://www.minsalud.gov.co/salud/publica/Vacunacion/Paginas/Vacunacion-covid-19.aspx",
         "vaccine": "Pfizer/BioNTech, Sinovac",
     })
 
-    # Obtains both Image URL and text in Image via tesseract.
+    # Obtains both Image URL and text in Image.
     hostname, path = "https://www.minsalud.gov.co", "/salud/publica/Vacunacion/Paginas/Vacunacion-covid-19.aspx"
     imgURL = getImageURL(hostname, path)
 
-    # Process Image
+    # Process Image via OpenCV and tesseract.
     imgText = getImages(imgURL)
     total_vaccinations = imgText[0]
     people_fully_vaccinated = imgText[1]
