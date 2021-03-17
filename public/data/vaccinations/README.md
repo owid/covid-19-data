@@ -20,6 +20,8 @@ Stored in [`locations.csv`](locations.csv)
 
 Stored in [`vaccinations.csv`](vaccinations.csv) and [`vaccinations.json`](vaccinations.json). Country-by-country data on global COVID-19 vaccinations. We only rely on figures that are verifiable based on public official sources.
 
+This dataset includes some subnational locations (England, Northern Ireland, Scotland, Wales, Northern Cyprus…) and international aggregates (World, continents, European Union…). They can be identified by their `iso_code` that starts with `OWID_`.
+
 The population estimates we use to calculate per-capita metrics are all based on the last revision of the [United Nations World Population Prospects](https://population.un.org/wpp/). The exact values can be viewed [here](https://github.com/owid/covid-19-data/blob/master/scripts/input/un/population_2020.csv).
 
 * `location`: name of the country (or region within a country).
