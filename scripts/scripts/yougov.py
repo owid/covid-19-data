@@ -7,8 +7,6 @@ import time
 from tqdm import tqdm
 import pandas as pd
 
-from utils.db_imports import import_dataset
-
 
 DATASET_NAME = 'YouGov-Imperial COVID-19 Behavior Tracker'
 
@@ -51,6 +49,8 @@ def update_csv():
 
 
 def update_db():
+    from utils.db_imports import import_dataset
+
     time_str = datetime.datetime.now().astimezone(pytz.timezone('Europe/London')).strftime("%-d %B %Y, %H:%M")
     source_name = f"Imperial College London YouGov Covid 19 Behaviour Tracker Data Hub – Last updated {time_str} (London time)"
     import_dataset(
