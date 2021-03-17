@@ -18,11 +18,18 @@ gs4_auth(email = CONFIG$google_credentials_email)
 GSHEET_KEY <- CONFIG$vax_time_series_gsheet
 
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
+continents <- fread("../../input/owid/continents.csv", select = c("Entity", "V4"))
 
 AGGREGATES <- list(
     "World" = list("excluded_locs" = subnational_pop$location, "included_locs" = NULL),
     "European Union" = list("excluded_locs" = NULL, "included_locs" = fread("../../input/owid/eu_countries.csv")$Country)
 )
+for (continent in c("Asia", "Africa", "Europe", "North America", "Oceania", "South America")) {
+    AGGREGATES[[continent]] = list(
+        "excluded_locs" = NULL,
+        "included_locs" = continents[V4 == continent, Entity]
+    )
+}
 
 get_metadata <- function() {
     retry(
