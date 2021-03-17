@@ -162,24 +162,6 @@ fi
 run_python 'import sweden; sweden.update_db()'
 
 # =====================================================================
-# YouGov Imperial COVID-19 behavior tracker data
-
-# Attempt to download data
-run_python 'import yougov; yougov.update_csv()'
-
-# If there are any unstaged changes in the repo, then one of
-# the CSVs has changed, and we need to run the update script.
-echo "Generating YouGov dataset..."
-if has_changed './scripts/grapher/YouGov-Imperial COVID-19 Behavior Tracker.csv'; then
-  git add .
-  git commit -m "Automated YouGov update"
-  git push
-  run_python 'import yougov; yougov.update_db()'
-else
-  echo "YouGov export is up to date"
-fi
-
-# =====================================================================
 # Google Mobility
 
 hour=$(date +%H)
