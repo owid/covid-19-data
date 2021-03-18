@@ -44,8 +44,8 @@ def getImages(url):
     full_img = imutils.url_to_image(url)
 
     vaccinated = processImg(full_img[253:310, 100:623]) # amount of applied vaccinations
-    second_doses = processImg(full_img[344:386, 102:619]) # amount of second doses applied
-    # second_doses = processImg(full_img[319:367, 100:612]) # uncomment if the other one presents problems
+    # second_doses = processImg(full_img[344:386, 102:619]) # amount of second doses applied
+    second_doses = processImg(full_img[319:367, 100:612]) # uncomment if the other one presents problems
 
     # full_img[y1:y2, x1:x2] crops the image to a specific position
 
