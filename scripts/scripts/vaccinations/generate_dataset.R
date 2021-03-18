@@ -153,10 +153,6 @@ get_population <- function(subnational_pop) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
     pop <- rbindlist(list(pop, subnational_pop))
 
-    # Add up population of French oversea territories, which are reported as part of France
-    pop[location %in% c("Guadeloupe", "Martinique", "French Guiana", "Mayotte", "Reunion", "French Polynesia", "Saint Martin (French part)"), location := "France"]
-    pop <- pop[, .(population = sum(population)), location]
-
     # Add up population of US territories, which are reported as part of the US
     pop[location %in% c("American Samoa", "Micronesia (country)", "Guam", "Marshall Islands", "Northern Mariana Islands", "Puerto Rico", "Palau", "United States Virgin Islands"), location := "United States"]
     pop <- pop[, .(population = sum(population)), location]
