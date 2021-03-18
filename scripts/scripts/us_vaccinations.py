@@ -37,8 +37,8 @@ def read_file(path):
     variable_matching = {
         "total_distributed": ["Doses_Distributed"],
         "total_vaccinations": ["Doses_Administered"],
-        "people_vaccinated": ["Administered_Dose1", "Administered_Dose1_Recip"],
-        "people_fully_vaccinated": ["Series_Complete_Yes", "Administered_Dose2", "Administered_Dose2_Recip"],
+        "people_vaccinated": ["Administered_Dose1_Recip", "Administered_Dose1"],
+        "people_fully_vaccinated": ["Series_Complete_Yes", "Administered_Dose2_Recip", "Administered_Dose2"],
     }
 
     for k,v in variable_matching.items():

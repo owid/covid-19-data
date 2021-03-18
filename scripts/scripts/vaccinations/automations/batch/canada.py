@@ -19,7 +19,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
         people_vaccinated=df.total_vaccinations - df.people_fully_vaccinated,
         location="Canada",
         source_url="https://covid19tracker.ca/vaccinationtracker.html",
-        vaccine="Moderna, Pfizer/BioNTech",
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",
     )
     return df
 

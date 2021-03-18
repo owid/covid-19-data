@@ -6,7 +6,15 @@ import vaxutils
 import json
 
 
+def get_api_value(source: str, query: str, headers: dict):
+    query = json.loads(query)
+    data = requests.post(source, json=query, headers=headers).json()
+    value = int(data["hits"]["total"])
+    return value
+
+
 def read(source: str) -> pd.Series:
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:85.0) Gecko/20100101 Firefox/85.0",
         "Accept": "application/json, text/plain, */*",
@@ -18,26 +26,24 @@ def read(source: str) -> pd.Series:
         "Pragma": "no-cache",
         "Cache-Control": "no-cache",
     }
-    js = json.loads('''
-        {"aggs":{"2":{"filters":{"filters":{"Healthcare workers":{"bool":{"must":[],"filter":[{"bool":{"should":[{"match":{"patient_health_care_worker":true}}],"minimum_should_match":1}}],"should":[],"must_not":[]}},"Other categories":{"bool":{"must":[],"filter":[{"bool":{"should":[{"match":{"patient_health_care_worker":false}}],"minimum_should_match":1}}],"should":[],"must_not":[]}}}}}},"size":0,"stored_fields":["*"],"script_fields":{},"docvalue_fields":[{"field":"@timestamp","format":"date_time"},{"field":"event_creation_date","format":"date_time"},{"field":"event_start_date_time","format":"date_time"},{"field":"event_stop_date_time","format":"date_time"},{"field":"patient_create_date","format":"date_time"},{"field":"patient_date_of_birth","format":"date_time"}],"_source":{"excludes":[]},"query":{"bool":{"must":[],"filter":[{"match_all":{}},{"bool":{"must_not":{"bool":{"should":[{"match":{"vaccine_registration_is_duplicate":1}}],"minimum_should_match":1}}}},{"match_phrase":{"event_stage.keyword":"2.DONE"}},{"range":{"event_creation_date":{"gte":"2021-01-31T14:57:04.378Z","lte":"2021-03-02T14:57:04.378Z","format":"strict_date_optional_time"}}}],"should":[],"must_not":[]}}}
-    ''')
 
-    request = requests.post(
-        source,
-        json=js,
-        headers=headers
-    )
-    request.raise_for_status()
-    data = request.json()
-    return parse_data(data)
+    total_vaccinations_query = '''
+        {"aggs":{"2":{"filters":{"filters":{"Healthcare workers":{"bool":{"must":[],"filter":[{"bool":{"should":[{"match":{"patient_health_care_worker":true}}],"minimum_should_match":1}}],"should":[],"must_not":[]}},"Other categories":{"bool":{"must":[],"filter":[{"bool":{"should":[{"match":{"patient_health_care_worker":false}}],"minimum_should_match":1}}],"should":[],"must_not":[]}}}}}},"size":0,"stored_fields":["*"],"script_fields":{},"docvalue_fields":[{"field":"@timestamp","format":"date_time"},{"field":"event_creation_date","format":"date_time"},{"field":"event_post_date","format":"date_time"},{"field":"event_start_date_time","format":"date_time"},{"field":"event_stop_date_time","format":"date_time"},{"field":"patient_create_date","format":"date_time"},{"field":"patient_date_of_birth","format":"date_time"}],"_source":{"excludes":[]},"query":{"bool":{"must":[],"filter":[{"match_all":{}},{"bool":{"must_not":{"bool":{"should":[{"match":{"vaccine_registration_is_duplicate":1}}],"minimum_should_match":1}}}},{"match_phrase":{"event_stage.keyword":"2.DONE"}},{"range":{"event_creation_date":{"gte":"2018-06-01T04:51:47.181Z","lte":"2023-05-01T04:51:23.196Z","format":"strict_date_optional_time"}}}],"should":[],"must_not":[]}}}
+    '''
+    total_vaccinations = get_api_value(source, total_vaccinations_query, headers)
 
+    people_fully_vaccinated_query = '''
+        {"aggs":{},"size":0,"stored_fields":["*"],"script_fields":{},"docvalue_fields":[{"field":"@timestamp","format":"date_time"},{"field":"event_creation_date","format":"date_time"},{"field":"event_post_date","format":"date_time"},{"field":"event_start_date_time","format":"date_time"},{"field":"event_stop_date_time","format":"date_time"},{"field":"patient_create_date","format":"date_time"},{"field":"patient_date_of_birth","format":"date_time"}],"_source":{"excludes":[]},"query":{"bool":{"must":[],"filter":[{"bool":{"should":[{"query_string":{"fields":["event_name"],"query":"*Dose 2*"}}],"minimum_should_match":1}},{"bool":{"must_not":{"bool":{"should":[{"match":{"vaccine_registration_is_duplicate":1}}],"minimum_should_match":1}}}},{"match_phrase":{"event_stage.keyword":"2.DONE"}},{"range":{"event_creation_date":{"gte":"2018-06-01T04:51:47.181Z","lte":"2023-05-01T04:51:23.196Z","format":"strict_date_optional_time"}}}],"should":[],"must_not":[]}}}
+    '''
+    people_fully_vaccinated = get_api_value(source, people_fully_vaccinated_query, headers)
 
-def parse_data(data: dict) -> pd.Series:
-    return pd.Series({'total_vaccinations': parse_total_vaccinations(data)})
-
-
-def parse_total_vaccinations(data: dict) -> int:
-    return int(data["hits"]["total"])
+    people_vaccinated = total_vaccinations - people_fully_vaccinated
+    
+    return pd.Series({
+        "total_vaccinations": total_vaccinations,
+        "people_fully_vaccinated": people_fully_vaccinated,
+        "people_vaccinated": people_vaccinated
+    })
 
 
 def format_date(ds: pd.Series) -> pd.Series:
@@ -73,6 +79,8 @@ def main():
     vaxutils.increment(
         location=data['location'],
         total_vaccinations=data['total_vaccinations'],
+        people_vaccinated=data['people_vaccinated'],
+        people_fully_vaccinated=data['people_fully_vaccinated'],
         date=data['date'],
         source_url=data['source_url'],
         vaccine=data['vaccine']

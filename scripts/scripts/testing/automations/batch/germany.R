@@ -14,7 +14,7 @@ df[year == 2021, Date := ymd("2021-01-03") + week_number * 7]
 setorder(df, Date)
 df[, `Cumulative total` := cumsum(`Anzahl Testungen`)]
 
-df[, `Positive rate` := round(`Positivenquote (%)` / 100, 3)]
+df[, `Positive rate` := round(`Positivenanteil (%)` / 100, 3)]
 
 df <- df[, c("Date", "Cumulative total", "Positive rate")]
 df[, Country := "Germany"]

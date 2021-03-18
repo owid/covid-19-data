@@ -18,11 +18,18 @@ gs4_auth(email = CONFIG$google_credentials_email)
 GSHEET_KEY <- CONFIG$vax_time_series_gsheet
 
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
+continents <- fread("../../input/owid/continents.csv", select = c("Entity", "V4"))
 
 AGGREGATES <- list(
     "World" = list("excluded_locs" = subnational_pop$location, "included_locs" = NULL),
     "European Union" = list("excluded_locs" = NULL, "included_locs" = fread("../../input/owid/eu_countries.csv")$Country)
 )
+for (continent in c("Asia", "Africa", "Europe", "North America", "Oceania", "South America")) {
+    AGGREGATES[[continent]] = list(
+        "excluded_locs" = NULL,
+        "included_locs" = continents[V4 == continent, Entity]
+    )
+}
 
 get_metadata <- function() {
     retry(
@@ -146,10 +153,6 @@ get_population <- function(subnational_pop) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
     pop <- rbindlist(list(pop, subnational_pop))
 
-    # Add up population of French oversea territories, which are reported as part of France
-    pop[location %in% c("Guadeloupe", "Martinique", "French Guiana", "Mayotte", "Reunion", "French Polynesia", "Saint Martin (French part)"), location := "France"]
-    pop <- pop[, .(population = sum(population)), location]
-
     # Add up population of US territories, which are reported as part of the US
     pop[location %in% c("American Samoa", "Micronesia (country)", "Guam", "Marshall Islands", "Northern Mariana Islands", "Puerto Rico", "Palau", "United States Virgin Islands"), location := "United States"]
     pop <- pop[, .(population = sum(population)), location]
@@ -160,6 +163,14 @@ get_population <- function(subnational_pop) {
 add_per_capita <- function(df, subnational_pop) {
     pop <- get_population(subnational_pop)
     df <- merge(df, pop)
+
+    world_population <- pop[location == "World", population]
+    covered <- unique(df[
+        !location %in% names(AGGREGATES) & !location %in% subnational_pop$location,
+        c("location", "population")
+    ])
+    COUNTRIES_COVERED <<- nrow(covered)
+    WORLD_POP_COVERED <<- paste0(round(100 * sum(covered$population) / world_population), "%")
 
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
     df[, people_vaccinated_per_hundred := round(people_vaccinated * 100 / population, 2)]
@@ -221,6 +232,13 @@ generate_html <- function(metadata) {
     html[, body := paste0(Location, Source, `Last observation date`, Vaccines)]
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table><tbody>", header, body, "</tbody></table>")
+    coverage_info <- sprintf(
+        "Vaccination against COVID-19 has now started in %s countries, covering %s of the world population.",
+        COUNTRIES_COVERED,
+        WORLD_POP_COVERED
+    )
+    message(coverage_info)
+    html_table <- paste0("<p><strong>", coverage_info, "</strong></p>", html_table)
     writeLines(html_table, "automations/source_table.html")
 }
 

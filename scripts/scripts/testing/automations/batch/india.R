@@ -4,12 +4,13 @@ process_entry <- function(entry) {
     entry <- entry$value
     return(data.table(
         Date = str_sub(entry$report_time, 1, 10),
-        Samples = entry$samples,
-        Individuals = entry$individuals
+        Samples = entry$samples
     ))
 }
 
 df <- rbindlist(lapply(df$rows, FUN = process_entry), fill = TRUE)
+setorder(df, Samples)
+df <- df[, .SD[1], Samples]
 setorder(df, Date)
 df <- df[, .SD[1], Date]
 
