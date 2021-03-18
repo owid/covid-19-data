@@ -35,15 +35,11 @@ def main():
         df.groupby(["date", "DOSIS"], as_index=False)
         .count()
         .pivot(index="date", columns="DOSIS", values="vaccine")
-        .rename(columns={1: "people_vaccinated"})
+        .rename(columns={1: "people_vaccinated", 2: "people_fully_vaccinated"})
         .cumsum()
         .reset_index()
+        .fillna(0)
     )
-
-    if 2 in df.columns:
-        df = df.rename(columns={2: "people_fully_vaccinated"})
-    else:
-        df["people_fully_vaccinated"] = 0
 
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
 
