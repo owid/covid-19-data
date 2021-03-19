@@ -1,5 +1,6 @@
 url <- read_html("https://covid19.ssi.dk/overvagningsdata/download-fil-med-overvaagningdata") %>%
-    html_node(".factbox") %>%
+    html_node("accordions") %>%
+    html_nodes(".accordion:nth-child(2)") %>%
     html_node("a") %>%
     html_attr("href")
 
