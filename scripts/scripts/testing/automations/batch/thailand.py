@@ -43,7 +43,7 @@ def main():
         driver.find_element_by_css_selector(".directDownload a").click()
         time.sleep(2)
 
-    file = glob("tmp/Thailand*")[0]
+    file = glob("tmp/*Thailand*")[0]
     df = pd.read_excel(file)
     df.loc[:, "Date"] = pd.to_datetime(df["Date"], errors="coerce")
     df = df[["Date", "Pos", "Total"]].dropna().sort_values("Date")
