@@ -233,7 +233,7 @@ generate_html <- function(metadata) {
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table><tbody>", header, body, "</tbody></table>")
     coverage_info <- sprintf(
-        "Vaccination against COVID-19 has now started in %s countries, covering %s of the world population.",
+        "Vaccination against COVID-19 has now started in %s locations, covering %s of the world population.",
         COUNTRIES_COVERED,
         WORLD_POP_COVERED
     )
