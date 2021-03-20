@@ -21,9 +21,9 @@ def connect_parse_data(source: str) -> pd.Series:
         date = vaxutils.clean_date(date, "%d.%m.%Y")
 
         for elem in driver.find_elements_by_class_name("counter_block"):
-            if "ОСІБ ОТРИМАЛИ 1 ДОЗУ" in elem.text:
+            if "ОСОБА ОТРИМАЛА 1 ДОЗУ" in elem.text:
                 people_vaccinated = elem.find_element_by_tag_name("h2").text
-            if "ОСІБ ОТРИМАЛИ 2 ДОЗИ" in elem.text:
+            if "ОСОБА ОТРИМАЛА 2 ДОЗИ" in elem.text:
                 people_fully_vaccinated = elem.find_element_by_tag_name("h2").text
 
     data = {'people_vaccinated': vaxutils.clean_count(people_vaccinated),
