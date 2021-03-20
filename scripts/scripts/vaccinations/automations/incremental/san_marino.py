@@ -15,11 +15,12 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
         if "new Chart" in str(script):
             chart_data = str(script)
             break
-    keys = ("date", "people_vaccinated", "people_fully_vaccinated")
-    values = (parse_date(chart_data),
-              parse_people_vaccinated(chart_data), 0)
-    data = dict(zip(keys, values))
-    return pd.Series(data=data)
+    return pd.Series(data={
+        "date": parse_date(chart_data),
+        "people_vaccinated": parse_people_vaccinated(chart_data),
+        "people_fully_vaccinated": parse_people_fully_vaccinated(chart_data),
+        "total_vaccinations": parse_total_vaccinations(chart_data),
+    })
 
 
 def parse_date(df: pd.DataFrame) -> str:
@@ -27,40 +28,39 @@ def parse_date(df: pd.DataFrame) -> str:
     return vaxutils.clean_date(date, "%d/%m/%Y")
 
 
-def parse_people_fully_vaccinated(soup: BeautifulSoup) -> int:
-    people_fully_vaccinated = re.search(r"var asiyapilankisisayisi2Doz = (\d+);", str(soup)).group(1)
-    return vaxutils.clean_count(people_fully_vaccinated)
-
-
 def parse_people_vaccinated(df: pd.DataFrame) -> int:
-    people_vaccinated = re.search(r"([\d,. ]+) [Vv]accinati", df).group(1)
+    people_vaccinated = re.search(r"([\d,. ]+) [Vv]accinazioni Prima Dose", df).group(1)
     return vaxutils.clean_count(people_vaccinated)
 
 
-def add_totals(ds: pd.Series) -> pd.Series:
-    total_vaccinations = ds['people_vaccinated'] + ds['people_fully_vaccinated']
-    return vaxutils.enrich_data(ds, 'total_vaccinations', total_vaccinations)
+def parse_people_fully_vaccinated(df: pd.DataFrame) -> int:
+    people_fully_vaccinated = re.search(r"([\d,. ]+) [Vv]accinazioni Seconda Dose", df).group(1)
+    return vaxutils.clean_count(people_fully_vaccinated)
+
+
+def parse_total_vaccinations(df: pd.DataFrame) -> int:
+    total_vaccinations = re.search(r"([\d,. ]+) [Vv]accinazioni Totali", df).group(1)
+    return vaxutils.clean_count(total_vaccinations)
 
 
 def enrich_location(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, 'location', "San Marino")
+    return vaxutils.enrich_data(ds, "location", "San Marino")
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, 'vaccine', "Sputnik V")
+    return vaxutils.enrich_data(ds, "vaccine", "Sputnik V")
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, 'source_url',
-                                "https://vaccinocovid.iss.sm/")
+    return vaxutils.enrich_data(ds, "source_url", "https://vaccinocovid.iss.sm/")
 
 
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        ds.pipe(add_totals)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 
@@ -68,13 +68,13 @@ def main():
     source = "https://vaccinocovid.iss.sm/"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=data['location'],
-        total_vaccinations=data['total_vaccinations'],
-        people_vaccinated=data['people_vaccinated'],
-        people_fully_vaccinated=data['people_fully_vaccinated'],
-        date=data['date'],
-        source_url=data['source_url'],
-        vaccine=data['vaccine']
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
+        date=data["date"],
+        source_url=data["source_url"],
+        vaccine=data["vaccine"]
     )
 
 
