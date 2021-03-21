@@ -10,25 +10,27 @@ files <- c(
     "https://datos.ins.gob.pe/dataset/666d1d60-a737-4729-a649-a8ad9ecd235a/resource/2e8d3d4e-4815-4dcc-950d-4619b49e179d/download/pm_nov_2020.csv", # Nov 2020
     "https://datos.ins.gob.pe/dataset/47daea44-df80-4120-bca3-88a5174bfa50/resource/d8468594-383b-422c-9812-3d1f3de87574/download/pm_dic_2020.csv", # Dec 2020
     "https://datos.ins.gob.pe/dataset/910e9c26-4744-4287-87db-c1d91b01b7ff/resource/ff61ee16-df0f-40aa-8f50-a193772eeb54/download/pm_ener_2021.csv", # Jan 2021
-    "https://datos.ins.gob.pe/dataset/a3d9700c-285a-4bea-b88f-40a719115247/resource/3ee3d718-248f-42a1-a242-d657a3ffca91/download/pm_19feb_2021.csv" # Jan/Feb 2021
+    "https://datos.ins.gob.pe/dataset/a3d9700c-285a-4bea-b88f-40a719115247/resource/3ee3d718-248f-42a1-a242-d657a3ffca91/download/pm_19feb_2021.csv", # Feb 2021
+    "https://datos.ins.gob.pe/dataset/40ed2023-2d7e-4cb9-985e-ad163efe23b7/resource/e7de1460-2196-4e74-ae28-5af79e93787b/download/pm12Marzo2021.csv" # Mar 2021
 )
 
 process_file <- function(url) {
     filename <- str_extract(url, "[^/]+\\.csv$")
+    message(filename)
     local_path <- sprintf("input/peru/%s", filename)
     if (!file.exists(local_path)) {
         download.file(url = url, destfile = local_path)
     }
     df <- fread(local_path, showProgress = FALSE, select = c("FECHATOMAMUESTRA", "RESULTADO"))
     setnames(df, c("Date", "Result"))
+    df[, Date := as.character(Date)]
     return(df)
 }
 
-data <- rbindlist(lapply(files, FUN = process_file))
+data <- lapply(files, FUN = process_file)
+data <- rbindlist(data)
 
-data[, Date := str_replace(Date, "^2121", "2021")]
-data[, Date := ymd(Date)]
-data <- data[Date <= today()]
+data <- data[Date <= today() & Date >= "2020-01-01" & !is.na(Date)]
 
 df <- data[, .(
     `Daily change in cumulative total` = .N,

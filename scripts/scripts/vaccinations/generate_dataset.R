@@ -131,6 +131,10 @@ process_location <- function(location_name) {
     stopifnot(length(unique(df$date)) == nrow(df))
     stopifnot(max(df$date) <= today())
     stopifnot(min(df$date) >= "2020-12-01")
+    stopifnot(all(unlist(str_split(df$vaccine, ", ")) %in% c(
+        "Pfizer/BioNTech", "Moderna", "Oxford/AstraZeneca", "Sputnik V", "Sinopharm/Beijing",
+        "Sinopharm/Wuhan", "Johnson&Johnson", "Sinovac", "Covaxin", "EpiVacCorona"
+    )))
 
     # Only report up to previous day to avoid partial reporting
     df <- df[date < today()]
@@ -233,7 +237,7 @@ generate_html <- function(metadata) {
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table><tbody>", header, body, "</tbody></table>")
     coverage_info <- sprintf(
-        "Vaccination against COVID-19 has now started in %s countries, covering %s of the world population.",
+        "Vaccination against COVID-19 has now started in %s locations, covering %s of the world population.",
         COUNTRIES_COVERED,
         WORLD_POP_COVERED
     )
