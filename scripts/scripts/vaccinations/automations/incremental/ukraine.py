@@ -21,32 +21,34 @@ def connect_parse_data(source: str) -> pd.Series:
         date = vaxutils.clean_date(date, "%d.%m.%Y")
 
         for elem in driver.find_elements_by_class_name("counter_block"):
-            if "ОСОБА ОТРИМАЛА 1 ДОЗУ" in elem.text:
+            if "1 ДОЗУ" in elem.text:
                 people_vaccinated = elem.find_element_by_tag_name("h2").text
-            if "ОСОБА ОТРИМАЛА 2 ДОЗИ" in elem.text:
+            if "2 ДОЗИ" in elem.text:
                 people_fully_vaccinated = elem.find_element_by_tag_name("h2").text
 
-    data = {'people_vaccinated': vaxutils.clean_count(people_vaccinated),
-            'people_fully_vaccinated': vaxutils.clean_count(people_fully_vaccinated),
-            'date': date}
+    data = {
+        "people_vaccinated": vaxutils.clean_count(people_vaccinated),
+        "people_fully_vaccinated": vaxutils.clean_count(people_fully_vaccinated),
+        "date": date,
+    }
     return pd.Series(data=data)
 
 
 def add_totals(ds: pd.Series) -> pd.Series:
-    total_vaccinations = ds['people_vaccinated'] + ds['people_fully_vaccinated']
-    return vaxutils.enrich_data(ds, 'total_vaccinations', total_vaccinations)
+    total_vaccinations = ds["people_vaccinated"] + ds["people_fully_vaccinated"]
+    return vaxutils.enrich_data(ds, "total_vaccinations", total_vaccinations)
 
 
 def enrich_location(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, 'location', "Ukraine")
+    return vaxutils.enrich_data(ds, "location", "Ukraine")
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, 'vaccine', "Oxford/AstraZeneca")
+    return vaxutils.enrich_data(ds, "vaccine", "Oxford/AstraZeneca")
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, 'source_url', "https://vaccination.covid19.gov.ua/")
+    return vaxutils.enrich_data(ds, "source_url", "https://vaccination.covid19.gov.ua/")
 
 
 def pipeline(ds: pd.Series) -> pd.Series:
@@ -62,13 +64,13 @@ def main():
     source = "https://vaccination.covid19.gov.ua/"
     data = read(source).pipe(pipeline)
     vaxutils.increment(
-        location=data['location'],
-        total_vaccinations=data['total_vaccinations'],
-        people_vaccinated=data['people_vaccinated'],
-        people_fully_vaccinated=data['people_fully_vaccinated'],
-        date=data['date'],
-        source_url=data['source_url'],
-        vaccine=data['vaccine']
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
+        date=data["date"],
+        source_url=data["source_url"],
+        vaccine=data["vaccine"]
     )
 
 
