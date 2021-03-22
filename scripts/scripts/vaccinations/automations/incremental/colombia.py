@@ -59,7 +59,7 @@ def main():
 
     data = pd.Series({
         "location": "Colombia",
-        "date": str(datetime.datetime.now(pytz.timezone("America/Bogota")).date() - datetime.timedelta(days=1)),
+        "date": str(datetime.datetime.now(pytz.timezone("America/Bogota")).date() - datetime.timedelta(days=2)),
         "source_url": "https://www.minsalud.gov.co/salud/publica/Vacunacion/Paginas/Vacunacion-covid-19.aspx",
         "vaccine": "Pfizer/BioNTech, Sinovac",
     })
