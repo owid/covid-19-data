@@ -32,7 +32,7 @@ def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
         location="Malta",
         source_url="https://github.com/COVID19-Malta/COVID19-Cases",
-        vaccine="Pfizer/BioNTech",
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",
     )
 
 
