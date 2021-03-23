@@ -109,7 +109,7 @@ def export_grapher():
 
 def update_db():
     time_str = datetime.now().astimezone(pytz.timezone('Europe/London')).strftime("%-d %B, %H:%M")
-    source_name = f"Hale, Webster, Petherick, Phillips, and Kira (2020). Oxford COVID-19 Government Response Tracker – Last updated {time_str} (London time)"
+    source_name = f"Hale, Angrist, Goldszmidt, Kira, Petherick, Phillips, Webster, Cameron-Blake, Hallas, Majumdar, and Tatlow (2021). “A global panel database of pandemic policies (Oxford COVID-19 Government Response Tracker).” Nature Human Behaviour. – Last updated {time_str} (London time)"
     import_dataset(
         dataset_name=DATASET_NAME,
         namespace='owid',
