@@ -15,6 +15,7 @@ def main():
         })
 
     df = df.assign(
+        location="Colombia",
         people_vaccinated=df.total_vaccinations - df.people_fully_vaccinated,
         source_url="https://www.minsalud.gov.co/salud/publica/Vacunacion/Paginas/Vacunacion-covid-19.aspx",
         vaccine="Pfizer/BioNTech, Sinovac",
