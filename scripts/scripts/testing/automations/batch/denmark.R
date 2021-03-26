@@ -1,8 +1,8 @@
 url <- read_html("https://covid19.ssi.dk/overvagningsdata/download-fil-med-overvaagningdata") %>%
-    html_node("accordions") %>%
-    html_nodes(".accordion:nth-child(2)") %>%
-    html_node("a") %>%
-    html_attr("href")
+    html_nodes("accordions a") %>%
+    html_attr("href") %>%
+    str_subset("data-epidemiologiske-rapport") %>%
+    head(1)
 
 download.file(url = url, destfile = "tmp/tmp.zip", quiet = TRUE)
 unzip(zipfile = "tmp/tmp.zip", exdir = "tmp")
