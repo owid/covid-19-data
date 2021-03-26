@@ -9,7 +9,6 @@ unzip("tmp/switzerland.zip", exdir = "tmp", files = "data/COVID19Test_geoRegion_
 
 df <- fread("tmp/data/COVID19Test_geoRegion_PCR_Antigen.csv",
             select = c("datum", "entries", "entries_pos", "nachweismethode", "geoRegion"))
-df <- df[nachweismethode == "PCR"]
 df <- df[geoRegion == "CHFL"]
 
 stopifnot(length(unique(df$datum)) == nrow(df))
