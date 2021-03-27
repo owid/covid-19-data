@@ -21,18 +21,25 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
     return pd.Series({
         "people_vaccinated": parse_people_vaccinated(soup),
+        "total_vaccinations": parse_total_vaccinations(soup),
         "source_url": url,
     })
 
 
+def parse_total_vaccinations(soup: BeautifulSoup) -> int:
+    regex = r"a total of about ([\d\s]+) doses of COVID-19 vaccines have been administered"
+    total_vaccinations = re.search(regex, soup.find(id="pressrelease").text).group(1)
+    return vaxutils.clean_count(total_vaccinations)
+
+
 def parse_people_vaccinated(soup: BeautifulSoup) -> int:
-    regex = r"a cumulative total of about ([\d\s]+) persons have received the(ir)? first"
+    regex = r"Among them, about ([\d\s]+) persons received their first dose"
     people_vaccinated = re.search(regex, soup.find(id="pressrelease").text).group(1)
     return vaxutils.clean_count(people_vaccinated)
 
 
 def add_metrics(ds: pd.Series) -> pd.Series:
-    ds["total_vaccinations"] = ds["people_vaccinated"]
+    ds["people_fully_vaccinated"] = ds["total_vaccinations"] - ds["people_vaccinated"]
     return ds
 
 
@@ -61,6 +68,7 @@ def main():
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
         date=str(date),
         source_url=data["source_url"],
         vaccine=data["vaccine"]
