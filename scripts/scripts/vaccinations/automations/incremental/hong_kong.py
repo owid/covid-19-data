@@ -13,7 +13,7 @@ def read(source: str) -> pd.Series:
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
     for link in soup.find_all("a", class_="NEW"):
-        if "Statistics for COVID-19 Vaccination Programme" in link.text:
+        if "COVID-19 Vaccination Programme" in link.text:
             url = "https://www.info.gov.hk" + link["href"]
             break
 
@@ -27,13 +27,13 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 
 def parse_total_vaccinations(soup: BeautifulSoup) -> int:
-    regex = r"a total of about ([\d\s]+) doses of COVID-19 vaccines have been administered"
+    regex = r"about ([\d\s]+) doses of COVID-19 vaccines have been administered"
     total_vaccinations = re.search(regex, soup.find(id="pressrelease").text).group(1)
     return vaxutils.clean_count(total_vaccinations)
 
 
 def parse_people_vaccinated(soup: BeautifulSoup) -> int:
-    regex = r"Among them, about ([\d\s]+) persons received their first dose"
+    regex = r"Among them, about ([\d\s]+) persons (have )?received their first dose"
     people_vaccinated = re.search(regex, soup.find(id="pressrelease").text).group(1)
     return vaxutils.clean_count(people_vaccinated)
 
