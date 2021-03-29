@@ -21,10 +21,11 @@ def main():
         driver.find_element_by_class_name("fa-syringe").click()
         time.sleep(4)
         date = driver.find_element_by_class_name("logo").text
-        dose1 = driver.find_element_by_id("dosisaplicadas").find_element_by_tag_name("h3").text
+        dose1 = driver.find_element_by_id("dosisaplicadas1").find_element_by_tag_name("h3").text
+        dose2 = driver.find_element_by_id("dosisaplicadas2").find_element_by_tag_name("h3").text
 
     data["people_vaccinated"] = vaxutils.clean_count(dose1)
-    data["people_fully_vaccinated"] = 0
+    data["people_fully_vaccinated"] = vaxutils.clean_count(dose2)
     data["total_vaccinations"] = data["people_vaccinated"] + data["people_fully_vaccinated"]
 
     date = re.search(r"\d+/\d+/202\d", date).group(0)
