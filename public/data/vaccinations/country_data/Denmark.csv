@@ -2,14 +2,14 @@ location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_ful
 Denmark,2020-12-27,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,6420,6420,
 Denmark,2020-12-28,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,8409,8409,
 Denmark,2020-12-29,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,17277,17277,
-Denmark,2020-12-30,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,28649,28649,
-Denmark,2020-12-31,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,34753,34753,
-Denmark,2021-01-01,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,37067,37067,
-Denmark,2021-01-02,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,45859,45859,
-Denmark,2021-01-03,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,51791,51791,
-Denmark,2021-01-04,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,54182,54182,
-Denmark,2021-01-05,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,67584,67584,
-Denmark,2021-01-06,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,87165,87165,
+Denmark,2020-12-30,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,28650,28650,
+Denmark,2020-12-31,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,34754,34754,
+Denmark,2021-01-01,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,37068,37068,
+Denmark,2021-01-02,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,45860,45860,
+Denmark,2021-01-03,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,51792,51792,
+Denmark,2021-01-04,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,54183,54183,
+Denmark,2021-01-05,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,67585,67585,
+Denmark,2021-01-06,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,87166,87166,
 Denmark,2021-01-07,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,104492,104492,
 Denmark,2021-01-08,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,112887,112887,
 Denmark,2021-01-09,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,114785,114785,
@@ -17,75 +17,76 @@ Denmark,2021-01-10,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vacci
 Denmark,2021-01-11,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,116255,116255,
 Denmark,2021-01-12,Pfizer/BioNTech,https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,116718,116718,
 Denmark,2021-01-13,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,129401,129401,
-Denmark,2021-01-14,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,147239,147239,
+Denmark,2021-01-14,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,147238,147238,
 Denmark,2021-01-15,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,162385,162380,5
-Denmark,2021-01-16,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,166979,166967,12
-Denmark,2021-01-17,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,170194,169478,716
-Denmark,2021-01-18,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,176173,173337,2836
-Denmark,2021-01-19,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,180728,175809,4919
-Denmark,2021-01-20,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,184107,177309,6798
-Denmark,2021-01-21,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,187969,178827,9142
-Denmark,2021-01-22,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,194275,179490,14785
-Denmark,2021-01-23,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,202186,180254,21932
-Denmark,2021-01-24,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,209329,180866,28463
-Denmark,2021-01-25,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,212102,181135,30967
-Denmark,2021-01-26,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,214052,181348,32704
-Denmark,2021-01-27,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,218612,181553,37059
-Denmark,2021-01-28,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,226947,181783,45164
-Denmark,2021-01-29,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,246360,182912,63448
-Denmark,2021-01-30,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,260505,184125,76380
-Denmark,2021-01-31,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,274019,185366,88653
-Denmark,2021-02-01,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,282644,186117,96527
-Denmark,2021-02-02,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,287701,188151,99550
-Denmark,2021-02-03,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,295428,189692,105736
-Denmark,2021-02-04,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,307758,191126,116632
-Denmark,2021-02-05,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,322796,192709,130087
-Denmark,2021-02-06,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,330589,193746,136843
-Denmark,2021-02-07,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,336134,195658,140476
-Denmark,2021-02-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,345721,198206,147515
-Denmark,2021-02-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,354187,201761,152426
-Denmark,2021-02-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,361381,205043,156338
-Denmark,2021-02-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,369498,210707,158791
-Denmark,2021-02-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,389154,222755,166399
-Denmark,2021-02-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,396686,229313,167373
-Denmark,2021-02-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,403548,235548,168000
-Denmark,2021-02-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,420545,249414,171131
-Denmark,2021-02-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,435108,262642,172466
-Denmark,2021-02-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,446024,273129,172895
-Denmark,2021-02-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,457807,284608,173199
-Denmark,2021-02-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,472697,298531,174166
-Denmark,2021-02-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,483802,309061,174741
-Denmark,2021-02-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,494970,319880,175090
-Denmark,2021-02-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,509587,333410,176177
-Denmark,2021-02-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,525956,347829,178127
-Denmark,2021-02-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,541631,361540,180091
-Denmark,2021-02-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,556742,376014,180728
-Denmark,2021-02-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,593752,412030,181722
-Denmark,2021-02-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,601913,418705,183208
-Denmark,2021-02-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,614338,429702,184636
-Denmark,2021-03-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,635166,449479,185687
-Denmark,2021-03-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,653161,466174,186987
-Denmark,2021-03-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,667182,479172,188010
-Denmark,2021-03-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,686424,496600,189824
-Denmark,2021-03-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,708743,513238,195505
-Denmark,2021-03-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,727377,527861,199516
-Denmark,2021-03-07,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,743798,539920,203878
-Denmark,2021-03-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,759841,549514,210327
-Denmark,2021-03-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,778022,560444,217578
-Denmark,2021-03-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,797381,572516,224865
-Denmark,2021-03-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,810045,577132,232913
-Denmark,2021-03-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,824098,580520,243578
-Denmark,2021-03-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,834620,585061,249559
-Denmark,2021-03-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,845291,586298,258993
-Denmark,2021-03-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,858098,589142,268956
-Denmark,2021-03-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,874384,595944,278440
-Denmark,2021-03-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,894358,606670,287688
-Denmark,2021-03-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,916234,621302,294932
-Denmark,2021-03-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,935825,629066,306759
-Denmark,2021-03-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,943638,632004,311634
-Denmark,2021-03-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,953214,636892,316322
-Denmark,2021-03-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,965168,641011,324157
-Denmark,2021-03-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,978923,647122,331801
-Denmark,2021-03-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,1002270,656983,345287
-Denmark,2021-03-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,1018395,664658,353737
-Denmark,2021-03-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,1032419,670795,361624
+Denmark,2021-01-16,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,166978,166966,12
+Denmark,2021-01-17,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,170193,169477,716
+Denmark,2021-01-18,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,176172,173336,2836
+Denmark,2021-01-19,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,180727,175808,4919
+Denmark,2021-01-20,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,184106,177308,6798
+Denmark,2021-01-21,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,187968,178826,9142
+Denmark,2021-01-22,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,194275,179489,14786
+Denmark,2021-01-23,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,202185,180252,21933
+Denmark,2021-01-24,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,209328,180864,28464
+Denmark,2021-01-25,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,212101,181133,30968
+Denmark,2021-01-26,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,214051,181346,32705
+Denmark,2021-01-27,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,218612,181552,37060
+Denmark,2021-01-28,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,226947,181782,45165
+Denmark,2021-01-29,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,246362,182911,63451
+Denmark,2021-01-30,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,260507,184124,76383
+Denmark,2021-01-31,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,274022,185365,88657
+Denmark,2021-02-01,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,282647,186116,96531
+Denmark,2021-02-02,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,287704,188150,99554
+Denmark,2021-02-03,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,295431,189691,105740
+Denmark,2021-02-04,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,307762,191125,116637
+Denmark,2021-02-05,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,322801,192708,130093
+Denmark,2021-02-06,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,330593,193745,136848
+Denmark,2021-02-07,"Moderna, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,336138,195657,140481
+Denmark,2021-02-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,345725,198205,147520
+Denmark,2021-02-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,354192,201761,152431
+Denmark,2021-02-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,361386,205043,156343
+Denmark,2021-02-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,369503,210707,158796
+Denmark,2021-02-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,389159,222755,166404
+Denmark,2021-02-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,396691,229313,167378
+Denmark,2021-02-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,403553,235548,168005
+Denmark,2021-02-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,420550,249414,171136
+Denmark,2021-02-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,435114,262643,172471
+Denmark,2021-02-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,446030,273130,172900
+Denmark,2021-02-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,457812,284608,173204
+Denmark,2021-02-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,472702,298531,174171
+Denmark,2021-02-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,483807,309061,174746
+Denmark,2021-02-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,494975,319880,175095
+Denmark,2021-02-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,509592,333410,176182
+Denmark,2021-02-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,525961,347829,178132
+Denmark,2021-02-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,541635,361539,180096
+Denmark,2021-02-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,556746,376013,180733
+Denmark,2021-02-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,593756,412029,181727
+Denmark,2021-02-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,601917,418706,183211
+Denmark,2021-02-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,614342,429703,184639
+Denmark,2021-03-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,635172,449482,185690
+Denmark,2021-03-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,653168,466178,186990
+Denmark,2021-03-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,667189,479176,188013
+Denmark,2021-03-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,686434,496607,189827
+Denmark,2021-03-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,708753,513245,195508
+Denmark,2021-03-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,727388,527869,199519
+Denmark,2021-03-07,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,743811,539928,203883
+Denmark,2021-03-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,759855,549522,210333
+Denmark,2021-03-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,778036,560452,217584
+Denmark,2021-03-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,797395,572524,224871
+Denmark,2021-03-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,810059,577140,232919
+Denmark,2021-03-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,824112,580528,243584
+Denmark,2021-03-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,834634,585069,249565
+Denmark,2021-03-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,845305,586306,258999
+Denmark,2021-03-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,858112,589150,268962
+Denmark,2021-03-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,874398,595952,278446
+Denmark,2021-03-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,894373,606679,287694
+Denmark,2021-03-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,916249,621311,294938
+Denmark,2021-03-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,935840,629075,306765
+Denmark,2021-03-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,943653,632013,311640
+Denmark,2021-03-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,953229,636901,316328
+Denmark,2021-03-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,965183,641020,324163
+Denmark,2021-03-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,978938,647131,331807
+Denmark,2021-03-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,1002326,657000,345326
+Denmark,2021-03-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,1018452,664676,353776
+Denmark,2021-03-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,1032493,670825,361668
+Denmark,2021-03-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning,1045626,680828,364798
