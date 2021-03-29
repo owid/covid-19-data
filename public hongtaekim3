@@ -1,0 +1,4 @@
+/data/*
+  Cache-Control: public, max-age=0, s-maxage=300, must-revalidate
+  Access-Control-Allow-Origin: *
+Where does this data come from All data comes from Johns Hopkins University ( JHU )  JHU gathers COVID - 19 data from the World Health Organization the European Centres for Disease Prevention and Control and local health organisations Confirmed cases The total number of people who have been diagnosed with COVID - 19 as defined by the Centers for Disease Control and Prevention ( CDC )  Deaths The total number of people who have died due to a confirmed case of COVID - 19 New cases The number of people diagnosed with COVID - 19 since the previous update 7 - day moving average The average number of new COVID - 19 cases for a given day the three days before that day and the three days after that day This trend line is used to show patterns more clearly
