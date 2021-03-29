@@ -95,18 +95,20 @@ add_daily <- function(df) {
 
 add_smoothed <- function(df) {
     setorder(df, date)
+    original <- copy(df)
     complete_total_vax <- df[!is.na(total_vaccinations)]
     date_seq <- seq.Date(from = min(complete_total_vax$date), to = max(complete_total_vax$date), by = "day")
     time_series <- data.table(date = date_seq, location = df$location[1])
     if ("vaccine" %in% names(df)) time_series[, vaccine := df$vaccine[1]]
-    df <- merge(df, time_series, all = TRUE, c("date", "location"))
+    df <- merge(df, time_series, all.y = TRUE, c("date", "location"))
     setorder(df, date)
     df[, total_interpolated := na_interpolation(total_vaccinations, option = "linear")]
     df[, new_interpolated := total_interpolated - shift(total_interpolated, 1)]
     windows <- head(c(0:6, rep(7, 1e4)), nrow(df))
     df[, new_vaccinations_smoothed := round(frollmean(new_interpolated, n = windows, adaptive = TRUE))]
-    df[new_vaccinations_smoothed == 0, new_vaccinations_smoothed := NA_integer_]
     df[, c("total_interpolated", "new_interpolated") := NULL]
+    original <- original[!date %in% df$date]
+    df <- rbindlist(list(df, original), fill = TRUE)
     return(df)
 }
 
@@ -130,6 +132,7 @@ process_location <- function(location_name) {
     # Sanity checks
     stopifnot(length(unique(df$date)) == nrow(df))
     stopifnot(max(df$date) <= today())
+    stopifnot(all(!is.na(df$location)))
     stopifnot(min(df$date) >= "2020-12-01")
     stopifnot(all(unlist(str_split(df$vaccine, ", ")) %in% c(
         "Pfizer/BioNTech", "Moderna", "Oxford/AstraZeneca", "Sputnik V", "Sinopharm/Beijing",
