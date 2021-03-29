@@ -11,7 +11,10 @@ df <- fread("tmp/data/COVID19Test_geoRegion_PCR_Antigen.csv",
             select = c("datum", "entries", "entries_pos", "nachweismethode", "geoRegion"))
 df <- df[geoRegion == "CHFL"]
 
-stopifnot(length(unique(df$datum)) == nrow(df))
+df <- df[, .(
+    entries = sum(entries, na.rm = TRUE),
+    entries_pos = sum(entries_pos, na.rm = TRUE)
+), datum]
 
 setorder(df, datum)
 df[, pr := round(frollsum(entries_pos, 7) / frollsum(entries, 7), 3)]
@@ -23,6 +26,8 @@ df[, Units := "tests performed"]
 df[, `Source URL` := url]
 df[, `Source label` := "Federal Office of Public Health"]
 df[, Notes := NA_character_]
+
+df <- df[`Daily change in cumulative total` > 0]
 
 fwrite(df, "automated_sheets/Switzerland.csv")
 
