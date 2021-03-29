@@ -1,11 +1,8 @@
-import datetime
 import re
-import time
+import requests
 
+from bs4 import BeautifulSoup
 import pandas as pd
-import pytz
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
 import vaxutils
 
@@ -15,32 +12,33 @@ def read(source: str) -> pd.Series:
 
 
 def connect_parse_data(source: str) -> pd.Series:
-    op = Options()
-    op.add_argument("--headless")
 
-    with webdriver.Chrome(options=op) as driver:
-        driver.get(source)
-        time.sleep(5)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:86.0) Gecko/20100101 Firefox/86.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache",
+    }
+    soup = BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
 
-        arr = []
-        for elem in driver.find_elements_by_class_name("repart-stlucia"):
-            arr.append(elem.text)
+    import pdb; pdb.set_trace()
 
-        for elem in driver.find_elements_by_class_name("h2-blue"):
-            date = re.search(r"\w+ \d+, 202\d", elem.text).group(0)
-            date = vaxutils.clean_date(date, "%B %d, %Y")
+    total_vaccinations = soup.find(class_="repart-stlucia").text
+    total_vaccinations = vaxutils.clean_count(total_vaccinations)
 
-    people_vaccinated = arr[0]
+    date = soup.find(class_="h2-blue").text
+    date = re.search(r"\w+ \d+, 202\d", date).group(0)
+    date = vaxutils.clean_date(date, "%B %d, %Y")
+
     data = {
-        "people_vaccinated": vaxutils.clean_count(people_vaccinated),
+        "total_vaccinations": total_vaccinations,
         "date": date,
     }
     return pd.Series(data=data)
-
-
-def add_totals(ds: pd.Series) -> pd.Series:
-    total_vaccinations = ds["people_vaccinated"]
-    return vaxutils.enrich_data(ds, "total_vaccinations", total_vaccinations)
 
 
 def enrich_location(ds: pd.Series) -> pd.Series:
@@ -58,7 +56,6 @@ def enrich_source(ds: pd.Series) -> pd.Series:
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
         ds
-        .pipe(add_totals)
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source)
@@ -71,7 +68,6 @@ def main():
     vaxutils.increment(
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
-        people_vaccinated=data["people_vaccinated"],
         date=data["date"],
         source_url=data["source_url"],
         vaccine=data["vaccine"]
