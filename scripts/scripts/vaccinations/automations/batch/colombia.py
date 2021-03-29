@@ -26,6 +26,7 @@ def main():
     assert all((df.total_vaccinations - df.total_vaccinations.shift(1)).dropna() > 0)
     assert all((df.people_fully_vaccinated - df.people_fully_vaccinated.shift(1)).dropna() > 0)
 
+    df = df.dropna(subset=["total_vaccinations"])
     df.to_csv("automations/output/Colombia.csv", index=False)
 
 
