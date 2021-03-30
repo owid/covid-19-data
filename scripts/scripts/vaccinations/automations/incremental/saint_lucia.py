@@ -25,8 +25,6 @@ def connect_parse_data(source: str) -> pd.Series:
     }
     soup = BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
 
-    import pdb; pdb.set_trace()
-
     total_vaccinations = soup.find(class_="repart-stlucia").text
     total_vaccinations = vaxutils.clean_count(total_vaccinations)
 
