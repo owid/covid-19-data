@@ -27,16 +27,13 @@ def connect_parse_data(source: str) -> pd.Series:
     }
     soup = BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
 
-    people_vaccinated = \
-        re.findall(r"\d+\.?\d+", re.search(r"De los \d+\.?\d+ vacunados, \d+\.?\d+", soup.text).group(0))[
-            0].replace(".", "")
-    people_fully_vaccinated = \
-        re.findall(r"\d+\.?\d+", re.search(r"De los \d+\.?\d+ vacunados, \d+\.?\d+", soup.text).group(0))[
-            1].replace(".", "")
+    data = re.search(r"De los ([\d\.]+) vacunados, ([\d\.]+)", soup.text)
+    people_vaccinated = vaxutils.clean_count(data.group(1))
+    people_fully_vaccinated = vaxutils.clean_count(data.group(2))
 
     data = {
-        "people_vaccinated": vaxutils.clean_count(people_vaccinated),
-        "people_fully_vaccinated": vaxutils.clean_count(people_fully_vaccinated),
+        "people_vaccinated": people_vaccinated,
+        "people_fully_vaccinated": people_fully_vaccinated,
     }
     return pd.Series(data=data)
 
