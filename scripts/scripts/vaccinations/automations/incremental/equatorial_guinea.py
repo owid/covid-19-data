@@ -1,13 +1,12 @@
 import datetime
 import re
+import requests
 
+from bs4 import BeautifulSoup
+import pandas as pd
 import pytz
 
 import vaxutils
-import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import time
 
 
 def read(source: str) -> pd.Series:
@@ -15,19 +14,25 @@ def read(source: str) -> pd.Series:
 
 
 def connect_parse_data(source: str) -> pd.Series:
-    op = Options()
-    op.add_argument("--headless")
 
-    with webdriver.Chrome(options=op) as driver:
-        driver.get(source)
-        time.sleep(5)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:86.0) Gecko/20100101 Firefox/86.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache",
+    }
+    soup = BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
 
-        people_vaccinated = \
-            re.findall(r"\d+\.?\d+", re.search(r"De los \d+\.?\d+ vacunados, \d+\.?\d+", driver.page_source).group(0))[
-                0].replace(".", "")
-        people_fully_vaccinated = \
-            re.findall(r"\d+\.?\d+", re.search(r"De los \d+\.?\d+ vacunados, \d+\.?\d+", driver.page_source).group(0))[
-                1].replace(".", "")
+    people_vaccinated = \
+        re.findall(r"\d+\.?\d+", re.search(r"De los \d+\.?\d+ vacunados, \d+\.?\d+", soup.text).group(0))[
+            0].replace(".", "")
+    people_fully_vaccinated = \
+        re.findall(r"\d+\.?\d+", re.search(r"De los \d+\.?\d+ vacunados, \d+\.?\d+", soup.text).group(0))[
+            1].replace(".", "")
 
     data = {
         "people_vaccinated": vaxutils.clean_count(people_vaccinated),
