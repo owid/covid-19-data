@@ -1,5 +1,4 @@
 location,automated
-Albania,TRUE
 Argentina,TRUE
 Australia,TRUE
 Austria,TRUE
@@ -28,7 +27,6 @@ Hong Kong,TRUE
 Hungary,TRUE
 Iceland,TRUE
 India,TRUE
-Indonesia,TRUE
 Ireland,TRUE
 Isle of Man,TRUE
 Israel,TRUE
@@ -49,6 +47,7 @@ Netherlands,TRUE
 Northern Cyprus,TRUE
 Northern Ireland,TRUE
 Norway,TRUE
+Palestine,TRUE
 Peru,TRUE
 Poland,TRUE
 Portugal,TRUE
@@ -77,6 +76,7 @@ United States,TRUE
 Uruguay,TRUE
 Wales,TRUE
 Afghanistan,FALSE
+Albania,FALSE
 Algeria,FALSE
 Andorra,FALSE
 Angola,FALSE
@@ -92,6 +92,7 @@ Bermuda,FALSE
 Bhutan,FALSE
 Bolivia,FALSE
 Cambodia,FALSE
+Cape Verde,FALSE
 China,FALSE
 Cote d'Ivoire,FALSE
 Croatia,FALSE
@@ -102,6 +103,7 @@ Egypt,FALSE
 El Salvador,FALSE
 Falkland Islands,FALSE
 Gambia,FALSE
+Georgia,FALSE
 Ghana,FALSE
 Gibraltar,FALSE
 Greenland,FALSE
@@ -110,7 +112,9 @@ Guernsey,FALSE
 Guinea,FALSE
 Guyana,FALSE
 Honduras,FALSE
+Indonesia,FALSE
 Iran,FALSE
+Iraq,FALSE
 Jamaica,FALSE
 Jordan,FALSE
 Kazakhstan,FALSE
@@ -141,6 +145,7 @@ Rwanda,FALSE
 Saint Helena,FALSE
 Saint Kitts and Nevis,FALSE
 Saint Vincent and the Grenadines,FALSE
+Sao Tome and Principe,FALSE
 Senegal,FALSE
 Serbia,FALSE
 Seychelles,FALSE
