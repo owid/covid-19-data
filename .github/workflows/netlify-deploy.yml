@@ -18,8 +18,7 @@ jobs:
     - name: Deploy to Netlify
       uses: netlify/actions/cli@master
       with:
-        args: deploy --dir=./public/
-        # TODO add --prod once we are happy this works
+        args: deploy --dir=./public/ --prod
       env:
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
