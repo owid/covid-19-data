@@ -30,10 +30,11 @@ def parse_data(url: str) -> pd.Series:
         if "Beneficiaries vaccinated" in dfs_from_pdf[0].values.flatten():
             break
     df = df[df[0] == "India"]
+    ncols = df.shape[1]
 
-    people_vaccinated = vaxutils.clean_count(df[2].item())
-    people_fully_vaccinated = vaxutils.clean_count(df[3].item())
-    total_vaccinations = vaxutils.clean_count(df[4].item())
+    people_vaccinated = vaxutils.clean_count(df[ncols-3].item())
+    people_fully_vaccinated = vaxutils.clean_count(df[ncols-2].item())
+    total_vaccinations = vaxutils.clean_count(df[ncols-1].item())
 
     return pd.Series({
         "date": str((datetime.datetime.now(pytz.timezone("Asia/Kolkata")) - datetime.timedelta(days=1)).date()),
