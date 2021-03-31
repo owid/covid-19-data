@@ -2,7 +2,7 @@ url <- "https://onmne.tn"
 
 page <- read_html(url)
 
-values <- page %>%
+count <- page %>%
   html_nodes("span.vcex-milestone-time") %>%
   .[[1]] %>%
   html_attr("data-options") %>%
@@ -11,7 +11,7 @@ values <- page %>%
   as.integer()
 
 add_snapshot(
-  count = values,
+  count = count,
   sheet_name = "Tunisia",
   country = "Tunisia",
   units = "people tested",
