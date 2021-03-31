@@ -11,7 +11,6 @@ import os
 from datetime import datetime, date, timedelta
 from functools import reduce
 import pandas as pd
-import numpy as np
 
 
 CURRENT_DIR = os.path.dirname(__file__)
@@ -337,7 +336,7 @@ def df_to_columnar_json(complete_dataset, output_path):
     columnar_dict = complete_dataset.where(
         pd.notnull(complete_dataset),
         None
-    ).to_dict(orient='list')
+    ).to_dict(orient="list")
     with open(output_path, "w") as file:
         file.write(dict_to_compact_json(columnar_dict))
 
@@ -356,6 +355,115 @@ def create_latest(df):
     latest.dropna(subset=["iso_code"]).set_index("iso_code").to_json(
         os.path.join(DATA_DIR, "latest/owid-covid-latest.json"), orient="index"
     )
+
+internal_files_columns = {
+    "cases-tests": [
+        "location",
+        "date",
+        "total_cases",
+        "new_cases",
+        "new_cases_smoothed",
+        "total_cases_per_million",
+        "new_cases_per_million",
+        "new_cases_smoothed_per_million",
+        "reproduction_rate",
+        "new_tests",
+        "total_tests",
+        "total_tests_per_thousand",
+        "new_tests_per_thousand",
+        "new_tests_smoothed",
+        "new_tests_smoothed_per_thousand",
+        "positive_rate",
+        "tests_per_case",
+        "tests_units",
+        "stringency_index",
+    ],
+    "deaths": [
+        "continent",
+        "location",
+        "date",
+        "total_deaths",
+        "new_deaths",
+        "new_deaths_smoothed",
+        "total_deaths_per_million",
+        "new_deaths_per_million",
+        "new_deaths_smoothed_per_million",
+        "cfr"
+    ],
+    "vaccinations": [
+        "location",
+        "date",
+        "total_vaccinations",
+        "people_vaccinated",
+        "people_fully_vaccinated",
+        "new_vaccinations",
+        "new_vaccinations_smoothed",
+        "total_vaccinations_per_hundred",
+        "people_vaccinated_per_hundred",
+        "people_fully_vaccinated_per_hundred",
+        "new_vaccinations_smoothed_per_million",
+        "population"
+    ],
+    "hospital-admissions": [
+        "location",
+        "date",
+        "icu_patients",
+        "icu_patients_per_million",
+        "hosp_patients",
+        "hosp_patients_per_million",
+        "weekly_icu_admissions",
+        "weekly_icu_admissions_per_million",
+        "weekly_hosp_admissions",
+        "weekly_hosp_admissions_per_million",
+    ],
+    "auxiliary": [
+        "iso_code",
+        "continent",
+        "location",
+        "date",
+        "population_density",
+        "median_age",
+        "aged_65_older",
+        "aged_70_older",
+        "gdp_per_capita",
+        "extreme_poverty",
+        "cardiovasc_death_rate",
+        "diabetes_prevalence",
+        "female_smokers",
+        "male_smokers",
+        "handwashing_facilities",
+        "hospital_beds_per_thousand",
+        "life_expectancy",
+        "human_development_index"
+    ]
+}
+
+def create_internal(df):
+
+    dir_path = os.path.join(DATA_DIR, "internal")
+    # Ensure internal/ dir is created
+    os.makedirs(dir_path, exist_ok=True)
+
+    # These are "key" or "attribute" columns.
+    # These columns are ignored when dropping rows with dropna().
+    non_value_columns = [
+        "iso_code",
+        "continent",
+        "location",
+        "date",
+        "population"
+    ]
+
+    df = df.copy()
+    # Insert CFR column to avoid calculating it on the client, and enable
+    # splitting up into cases & deaths columns.
+    df["cfr"] = (df["total_deaths"] * 100 / df["total_cases"]).round(3)
+
+    for name, columns in internal_files_columns.items():
+        output_path = os.path.join(dir_path, f"megafile--{name}.json")
+        value_columns = list(set(columns) - set(non_value_columns))
+        df_output = df[columns].dropna(subset=value_columns, how="all")
+        df_to_columnar_json(df_output, output_path)
 
 
 def generate_megafile():
@@ -463,8 +571,8 @@ def generate_megafile():
     print("Writing to JSON…")
     df_to_json(all_covid, os.path.join(DATA_DIR, "owid-covid-data.json"), macro_variables.keys())
 
-    print("Writing to columnar JSON…")
-    df_to_columnar_json(all_covid, os.path.join(DATA_DIR, "owid-covid-data.columnar.json"))
+    print("Creating internal files…")
+    create_internal(all_covid)
 
     # Store the last updated time
     timestamp_filename = os.path.join(DATA_DIR, "owid-covid-data-last-updated-timestamp.txt")
