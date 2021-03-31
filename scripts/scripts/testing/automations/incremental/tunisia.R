@@ -11,7 +11,7 @@ values <- page %>%
   as.integer()
 
 add_snapshot(
-  count = count,
+  count = values,
   sheet_name = "Tunisia",
   country = "Tunisia",
   units = "people tested",
