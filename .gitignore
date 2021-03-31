@@ -12,3 +12,6 @@ scripts/scripts/testing/input/*
 testing_dataset_config.json
 Icon[]
 scripts/scripts/vaccinations/vax_dataset_config.json
+
+# Local Netlify folder
+.netlify

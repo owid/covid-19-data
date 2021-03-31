@@ -1,0 +1,25 @@
+name: 'Netlify deploy'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Deploy to Netlify
+      uses: netlify/actions/cli@master
+      with:
+        args: deploy --dir=./public/
+        # TODO add --prod once we are happy this works
+      env:
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
