@@ -27,10 +27,10 @@ def read(source: str) -> pd.Series:
     date = re.search(r"На сегодня \(([\d\.]{8})\)", text).group(1)
     date = vaxutils.clean_date(date, "%d.%m.%y")
 
-    people_vaccinated = re.search(r"([\d\s]+) чел\. \(.*% от населения\) - привито хотя бы одним компонентом вакцины", text).group(1)
+    people_vaccinated = re.search(r"([\d\s]+) чел\. \([\d\.]+% от населения\) - привито хотя бы одним компонентом вакцины", text).group(1)
     people_vaccinated = vaxutils.clean_count(people_vaccinated)
 
-    people_fully_vaccinated = re.search(r"([\d\s]+) чел\. \(.*% от населения\) - полностью привито", text).group(1)
+    people_fully_vaccinated = re.search(r"([\d\s]+) чел\. \([\d\.]+% от населения\) - полностью привито", text).group(1)
     people_fully_vaccinated = vaxutils.clean_count(people_fully_vaccinated)
 
     total_vaccinations = re.search(r"([\d\s]+) шт\. - всего прививок сделано", text).group(1)
