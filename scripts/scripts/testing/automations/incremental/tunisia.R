@@ -15,6 +15,6 @@ add_snapshot(
   country = "Tunisia",
   units = "people tested",
   source_url = url,
-  source_label = "Tunisia Minsitry of Health",
+  source_label = "Tunisia Ministry of Health",
   testing_type = "unclear"
 )
