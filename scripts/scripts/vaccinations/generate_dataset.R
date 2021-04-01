@@ -146,6 +146,10 @@ process_location <- function(location_name) {
     if (!"people_vaccinated" %in% names(df)) df[, people_vaccinated := NA_integer_]
     if (!"people_fully_vaccinated" %in% names(df)) df[, people_fully_vaccinated := NA_integer_]
 
+    # Check that vaccination logic is valid
+    stopifnot(all(df$people_fully_vaccinated <= df$people_vaccinated, na.rm = TRUE))
+    stopifnot(all(df$people_vaccinated <= df$total_vaccinations, na.rm = TRUE))
+
     df <- df[, c("location", "date", "vaccine", "source_url",
                  "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
 
