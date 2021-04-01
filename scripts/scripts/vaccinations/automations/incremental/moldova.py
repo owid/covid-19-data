@@ -42,7 +42,7 @@ def add_totals(ds: pd.Series) -> pd.Series:
 
 
 def format_date(ds: pd.Series) -> pd.Series:
-    date = str(datetime.datetime.now(pytz.timezone("Europe/Chisinau")).date())
+    date = str(datetime.datetime.now(pytz.timezone("Europe/Chisinau")).date() - datetime.timedelta(days=1))
     return vaxutils.enrich_data(ds, "date", date)
 
 
