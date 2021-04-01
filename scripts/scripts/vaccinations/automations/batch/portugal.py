@@ -25,7 +25,7 @@ def format_date(input: pd.DataFrame) -> pd.DataFrame:
 def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine_name(date: str) -> str:
         if date >= "2021-02-09":
-            return "Moderna, Pfizer/BioNTech"
+            return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
 
     return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
