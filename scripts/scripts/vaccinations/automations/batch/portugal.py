@@ -1,57 +1,62 @@
+import requests
+
+from bs4 import BeautifulSoup
 import pandas as pd
 
 
 def read(source: str) -> pd.DataFrame:
-    return pd.read_csv(source, usecols=["data", "doses", "doses1", "doses2"])
+    soup = BeautifulSoup(requests.get(source).content, "html.parser")
+    source = soup.find(class_="wp-block-button__link")["href"]
+    return pd.read_csv(
+        source,
+        usecols=["DATE", "TYPE", "CUMUL", "CUMUL_VAC_1", "CUMUL_VAC_2"],
+        sep=";",
+    )
+
+
+def filter_rows(input: pd.DataFrame) -> pd.DataFrame:
+    return input[input.TYPE == "GENERAL"].drop(columns="TYPE")
 
 
 def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
     return input.rename(
         columns={
-            "data": "date",
-            "doses": "total_vaccinations",
-            "doses1": "people_vaccinated",
-            "doses2": "people_fully_vaccinated",
+            "DATE": "date",
+            "CUMUL": "total_vaccinations",
+            "CUMUL_VAC_1": "people_vaccinated",
+            "CUMUL_VAC_2": "people_fully_vaccinated",
         }
     )
 
 
 def format_date(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
-        date=pd.to_datetime(input.date, format="%d-%m-%Y").astype(str)
+        date=pd.to_datetime(input.date, format="%d/%m/%Y").astype(str)
     )
-
-
-def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
-    def _enrich_vaccine_name(date: str) -> str:
-        if date >= "2021-02-09":
-            return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-        return "Pfizer/BioNTech"
-
-    return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
 
 
 def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
     return input.assign(
         location="Portugal",
-        source_url="https://github.com/dssg-pt/covid19pt-data"
+        source_url="https://covid19.min-saude.pt/relatorio-de-vacinacao/",
+        vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",
     )
 
 
 def pipeline(input: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.pipe(rename_columns)
+        input
+        .pipe(filter_rows)
+        .pipe(rename_columns)
         .pipe(format_date)
-        .pipe(enrich_vaccine_name)
         .pipe(enrich_columns)
         .sort_values("date")
     )
 
 
 def main():
-    source = "https://github.com/dssg-pt/covid19pt-data/raw/master/vacinas.csv"
+    source = "https://covid19.min-saude.pt/relatorio-de-vacinacao/"
     destination = "automations/output/Portugal.csv"
-
     read(source).pipe(pipeline).to_csv(destination, index=False)
 
 
