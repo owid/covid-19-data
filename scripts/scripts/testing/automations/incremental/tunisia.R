@@ -3,11 +3,10 @@ url <- "https://onmne.tn"
 page <- read_html(url)
 
 count <- page %>%
-  html_nodes("span.vcex-milestone-time") %>%
-  .[[1]] %>%
+  html_node("span.vcex-milestone-time") %>%
   html_attr("data-options") %>%
-  str_remove(fixed("{\"startVal\":0,\"endVal\":")) %>%
-  str_remove(fixed(",\"duration\":2,\"decimals\":0,\"separator\":\"\",\"decimal\":\".\"}")) %>%
+  str_extract("endVal..\\d+") %>%
+  str_replace_all("[^\\d]", "") %>%
   as.integer()
 
 add_snapshot(
