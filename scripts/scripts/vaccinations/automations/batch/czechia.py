@@ -15,7 +15,7 @@ from utils.pipeline import enrich_total_vaccinations
 vaccine_mapping = {
     "Comirnaty": "Pfizer/BioNTech",
     "COVID-19 Vaccine Moderna": "Moderna",
-    "COVID-19 Vaccine AstraZeneca": "Oxford/AstraZeneca",
+    "VAXZEVRIA": "Oxford/AstraZeneca",
 }
 
 
