@@ -1,8 +1,5 @@
 # Test counts
-# TODO need to move to the new healthdata.gov API as this is a legacy link which will only be supported for a few weeks more
-meta <- fromJSON(file = "https://legacy.healthdata.gov/api/3/action/package_show?id=c13c00e3-f3d0-4d49-8c43-bf600a6c0a0d")
-url <- meta$result[[1]]$resources[[1]]$url
-
+url <- "https://healthdata.gov/api/views/j8mb-icvb/rows.csv"
 tests <- fread(url, showProgress = FALSE, select = c("date", "new_results_reported"))
 setnames(tests, "date", "Date")
 
@@ -25,7 +22,7 @@ df[, seven_day_avg_new_cases := NULL]
 df[, Country := "United States"]
 df[, Units := "tests performed"]
 df[, `Source label` := "Department of Health & Human Services"]
-df[, `Source URL` := "https://legacy.healthdata.gov/dataset/covid-19-diagnostic-laboratory-testing-pcr-testing-time-series"]
+df[, `Source URL` := "https://healthdata.gov/dataset/COVID-19-Diagnostic-Laboratory-Testing-PCR-Testing/j8mb-icvb"]
 df[, Notes := NA_character_]
 
 fwrite(df, "automated_sheets/United States - tests performed.csv")
