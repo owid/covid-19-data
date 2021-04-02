@@ -17,7 +17,7 @@ def read(source: str) -> pd.Series:
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
 
-    regex = r"The total number of COVID-19 vaccines administered to date is ([\d,]+)\. So far, ([\d,]+) .* have received at least one dose of the Pfizer-BioNTech vaccine"
+    regex = r"The total number of COVID-19 vaccines administered to date is ([\d,]+)\.\sSo far, ([\d,]+) .* have received at least one dose of the Pfizer-BioNTech vaccine"
     matches = re.search(regex, soup.text)
 
     total_vaccinations = vaxutils.clean_count(matches.group(1))
