@@ -48,4 +48,6 @@ df[, `Source label` := "National Institute of Health"]
 df[, `Testing type` := "PCR only"]
 df[, Notes := NA]
 
+stopifnot(max(df$Date) > today() - days(14))
+
 fwrite(df, "automated_sheets/Peru.csv")
