@@ -14,7 +14,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     pdf_path = soup.find("a", class_="btn-primary")["href"]  # Get path to newest pdf
     dfs_from_pdf = tabula.read_pdf(pdf_path, pages="all")
     df = pd.DataFrame(dfs_from_pdf[2])  # Hardcoded table location
-    values = sorted(pd.to_numeric(df["Total"].str.replace(r"[^\d]", "", regex=True)).dropna().astype(int))
+    values = sorted(pd.to_numeric(df["Unnamed: 2"].str.replace(r"[^\d]", "", regex=True)).dropna().astype(int))
     assert len(values) == 3
     keys = ("date", "people_fully_vaccinated", "people_vaccinated", "total_vaccinations", "source_url")
     values = (parse_date(df), *values, pdf_path)
@@ -23,7 +23,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 
 def parse_date(df: dict) -> str:
-    date = df.columns.str.replace("Journée du ", "").values[1]
+    date = df["Unnamed: 1"].str.replace("Journée du ", "").values[0]
     date = vaxutils.clean_date(date, "%d.%m.%Y")
     return date
 
