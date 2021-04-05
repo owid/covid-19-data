@@ -10,8 +10,6 @@ tmp/
 *.log
 scripts/scripts/testing/input/*
 testing_dataset_config.json
-Icon[
-]
 scripts/scripts/vaccinations/vax_dataset_config.json
 
 # Local Netlify folder
@@ -19,3 +17,5 @@ scripts/scripts/vaccinations/vax_dataset_config.json
 
 # temporal folder for rapid tests/debuggings
 scripts/tmp
+Icon[
+]
