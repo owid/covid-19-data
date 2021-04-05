@@ -5,7 +5,7 @@ url <- read_html("https://www.covid19.admin.ch/fr/epidemiologic/test") %>%
     paste0("https://www.covid19.admin.ch", .)
 
 download.file(url, "tmp/liechtenstein.zip", quiet = TRUE)
-unzip("tmp/switzerland.zip", exdir = "tmp", files = "data/COVID19Test_geoRegion_PCR_Antigen.csv")
+unzip("tmp/liechtenstein.zip", exdir = "tmp", files = "data/COVID19Test_geoRegion_PCR_Antigen.csv")
 
 df <- fread("tmp/data/COVID19Test_geoRegion_PCR_Antigen.csv",
             select = c("datum", "entries", "entries_pos", "nachweismethode", "geoRegion"))
