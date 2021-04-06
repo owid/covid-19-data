@@ -10,14 +10,13 @@ url <- read_html(GET(
 download.file(url = url, destfile = "tmp/tmp.pdf", quiet = TRUE, method = "curl", extra = "-k")
 
 date <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract("Boletín.*\n +[\\d/]{8,10}") %>%
-    str_extract("[\\d/]{8,10}$") %>%
+    str_extract_all("\\d+/\\d+/\\d{4}") %>%
+    unlist() %>%
     dmy() %>%
-    head(1)
+    max()
 
-count <- pdf_text("tmp/tmp.pdf") %>%
-    str_extract("TALARIA\n +últimas 24 horas +últimas 24 horas\n +[\\d,]+") %>%
-    na.omit() %>%
+count <- pdf_text("tmp/tmp.pdf")[2] %>%
+    str_extract("Total\\s+[\\d,]+") %>%
     str_extract("[\\d,]+$") %>%
     str_replace_all("[^\\d]", "") %>%
     as.integer()
