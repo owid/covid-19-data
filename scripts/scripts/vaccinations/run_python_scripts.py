@@ -15,5 +15,15 @@ for script_name in scripts:
         failed.append(script_name)
 
 if len(failed) > 0:
+    print("\n---\n\nRetrying:")
+    failed_twice = []
+    
+    for script_name in failed:
+        print(f"{datetime.datetime.now().replace(microsecond=0)} - {script_name}")
+        result = os.system(f"python3 {script_name}")
+        if result != 0:
+            failed_twice.append(script_name)
+
+if len(failed_twice) > 0:
     print("\n---\n\nThe following scripts failed to run:")
-    print("\n".join(failed))
+    print("\n".join(failed_twice))
