@@ -8,12 +8,12 @@ import tempfile
 
 import vaxutils
 
+
 def read(source: str) -> pd.Series:
     yearly_report_page = BeautifulSoup(requests.get(source).content, "html.parser")
     # Get Newest Month Report Page
     monthly_report_link = yearly_report_page.find("div", class_="col-lg-12", id="content-detail").find("a")["href"]
     monthly_report_page = BeautifulSoup(requests.get(monthly_report_link).content, "html.parser")
-
     return parse_data(monthly_report_page)
 
 
@@ -134,3 +134,7 @@ def main():
       )
     except:
       print("An error occurred : Text format might change - need further investigation")
+
+
+if __name__ == "__main__":
+    main()
