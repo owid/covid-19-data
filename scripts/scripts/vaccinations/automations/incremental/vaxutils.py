@@ -83,16 +83,18 @@ def increment(
     filepath_public = f"../../../public/data/vaccinations/country_data/{location}.csv"
     filepath = None
     for filepath in [filepath_automated, filepath_public, None]:  # priority order
-        df = _increment(
-            filepath=filepath,
-            location=location,
-            total_vaccinations=total_vaccinations,
-            date=date,
-            vaccine=vaccine,
-            source_url=source_url,
-            people_vaccinated=people_vaccinated,
-            people_fully_vaccinated=people_fully_vaccinated
-        )
+        if filepath is None or os.path.isfile(filepath):
+            df = _increment(
+                filepath=filepath,
+                location=location,
+                total_vaccinations=total_vaccinations,
+                date=date,
+                vaccine=vaccine,
+                source_url=source_url,
+                people_vaccinated=people_vaccinated,
+                people_fully_vaccinated=people_fully_vaccinated
+            )
+            break
     df.to_csv(f"automations/output/{location}.csv", index=False)
 
     #print(f"NEW: {total_vaccinations} doses on {date}")
