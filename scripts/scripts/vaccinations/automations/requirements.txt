@@ -7,3 +7,6 @@ PyPDF2==1.26.0
 pytz==2020.5
 selenium==3.141.0
 tabula-py==2.2.0
+lxml>=4.6.3
+requests==2.25.1
+openpyxl==3.0.7
