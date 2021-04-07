@@ -18,7 +18,7 @@ def parse_source_url(elem) -> str:
 
 
 def parse_vaccinations(text: str, regex_pattern: str) -> int:
-    return int(re.search(regex_pattern, text).group(1).replace(',', ''))
+    return vaxutils.clean_count(re.search(regex_pattern, text).group(1))
 
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
