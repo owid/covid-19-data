@@ -10,9 +10,7 @@ import vaxutils
 
 def parse_date(elem) -> str:
     date = elem.find_parent(class_="card").find(class_="news--item-date").text.strip()
-    date = date.strip().replace("年", "-").replace("月", "-").replace("日", "")
-    date = datetime.strptime(date, "%Y-%m-%d %H:%M").strftime("%Y-%m-%d")
-    return date
+    return datetime.strptime(date, "%Y年%m月%d日 %H:%M").strftime("%Y-%m-%d")
 
 
 def parse_source_url(elem) -> str:
