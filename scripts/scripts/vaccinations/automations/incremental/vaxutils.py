@@ -83,11 +83,9 @@ def increment(
     filepath_public = f"../../../public/data/vaccinations/country_data/{location}.csv"
     # Move from public to automations/output folder
     if not os.path.isfile(filepath_automated) and os.path.isfile(filepath_public):
-        print("public -> scripts")
         shutil.copy(filepath_public, filepath_automated)
     # Update file in automations/output
     if os.path.isfile(filepath_automated):
-        print("available in scripts")
         df = _increment(
             filepath=filepath_automated,
             location=location,
@@ -100,7 +98,6 @@ def increment(
         )
     # Not available, create new file
     else:
-        print("not available in scripts")
         df = _build_df(
             location=location,
             total_vaccinations=total_vaccinations,
