@@ -3,6 +3,7 @@ import time
 
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 import vaxutils
 
@@ -12,14 +13,15 @@ def main():
     data = {
         "location": "Guatemala",
         "source_url": "https://gtmvigilanciacovid.shinyapps.io/3869aac0fb95d6baf2c80f19f2da5f98",
-        "vaccine": "Moderna",
+        "vaccine": "Moderna, Oxford/AstraZeneca",
     }
 
-    with webdriver.Chrome() as driver:
+    op = Options()
+    op.add_argument("--headless")
+    with webdriver.Chrome(options=op) as driver:
+        driver.implicitly_wait(10)
         driver.get(data["source_url"])
-        time.sleep(2)
         driver.find_element_by_class_name("fa-syringe").click()
-        time.sleep(4)
         date = driver.find_element_by_class_name("logo").text
         dose1 = driver.find_element_by_id("dosisaplicadas1").find_element_by_tag_name("h3").text
         dose2 = driver.find_element_by_id("dosisaplicadas2").find_element_by_tag_name("h3").text
