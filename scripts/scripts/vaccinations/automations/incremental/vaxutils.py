@@ -1,3 +1,5 @@
+import os
+import shutil
 import datetime
 import re
 import requests
@@ -77,32 +79,62 @@ def increment(
     assert type(vaccine) == str
     assert type(source_url) == str
 
-    prev = pd.read_csv(f"automations/output/{location}.csv")
-
-    if total_vaccinations <= prev["total_vaccinations"].max():
-        return None
-
-    elif date == prev["date"].max():
-        df = prev.copy()
-        df.loc[df["date"] == date, "total_vaccinations"] = total_vaccinations
-        df.loc[df["date"] == date, "people_vaccinated"] = people_vaccinated
-        df.loc[df["date"] == date, "people_fully_vaccinated"] = people_fully_vaccinated
-        df.loc[df["date"] == date, "source_url"] = source_url
-
-    else:
-        new = pd.DataFrame({
-            "location": location,
-            "date": date,
-            "vaccine": vaccine,
-            "total_vaccinations": [total_vaccinations],
-            "source_url": source_url,
-        })
-        if people_vaccinated is not None:
-            new["people_vaccinated"] = people_vaccinated
-        if people_fully_vaccinated is not None:
-            new["people_fully_vaccinated"] = people_fully_vaccinated
-        df = pd.concat([prev, new]).sort_values("date")
-
+    filepath_automated = f"automations/output/{location}.csv"
+    filepath_public = f"../../../public/data/vaccinations/country_data/{location}.csv"
+    filepath = None
+    for filepath in [filepath_automated, filepath_public, None]:  # priority order
+        df = _increment(
+            filepath=filepath,
+            location=location,
+            total_vaccinations=total_vaccinations,
+            date=date,
+            vaccine=vaccine,
+            source_url=source_url,
+            people_vaccinated=people_vaccinated,
+            people_fully_vaccinated=people_fully_vaccinated
+        )
     df.to_csv(f"automations/output/{location}.csv", index=False)
 
     #print(f"NEW: {total_vaccinations} doses on {date}")
+
+
+def _increment(location, total_vaccinations, date, vaccine, source_url, people_vaccinated=None,
+               people_fully_vaccinated=None, filepath=None):
+    if filepath is None:
+        df = _build_df(
+            location, total_vaccinations, date, vaccine, source_url, people_vaccinated , people_fully_vaccinated
+        )
+    else:
+        prev = pd.read_csv(filepath)
+        if total_vaccinations <= prev["total_vaccinations"].max():
+            return None
+
+        elif date == prev["date"].max():
+            df = prev.copy()
+            df.loc[df["date"] == date, "total_vaccinations"] = total_vaccinations
+            df.loc[df["date"] == date, "people_vaccinated"] = people_vaccinated
+            df.loc[df["date"] == date, "people_fully_vaccinated"] = people_fully_vaccinated
+            df.loc[df["date"] == date, "source_url"] = source_url
+
+        else:
+            new = _build_df(
+                location, total_vaccinations, date, vaccine, source_url, people_vaccinated , people_fully_vaccinated
+            )
+            df = pd.concat([prev, new])
+    return df.sort_values("date")
+
+
+def _build_df(location, total_vaccinations, date, vaccine, source_url, people_vaccinated=None,
+               people_fully_vaccinated=None):
+    new = pd.DataFrame({
+        "location": location,
+        "date": date,
+        "vaccine": vaccine,
+        "total_vaccinations": [total_vaccinations],
+        "source_url": source_url,
+    })
+    if people_vaccinated is not None:
+        new["people_vaccinated"] = people_vaccinated
+    if people_fully_vaccinated is not None:
+        new["people_fully_vaccinated"] = people_fully_vaccinated
+    return new
