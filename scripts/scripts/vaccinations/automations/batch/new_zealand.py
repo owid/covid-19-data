@@ -86,16 +86,15 @@ class NewZealand(object):
 
 
 if __name__ == "__main__":
-    location = "New Zealand"
     df = NewZealand(
         source_url=(
             "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
         ),
-        location=location,
+        location="New Zealand",
         columns_rename={
             "First dose administered": "people_vaccinated",
             "Second dose administered": "people_fully_vaccinated",
             "Date": "date",
         },
         columns_cumsum=["First dose administered", "Second dose administered"]
-    ).to_csv(output_file=f"automations/output/{location}.csv")
+    ).to_csv()
