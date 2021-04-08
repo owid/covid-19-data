@@ -21,7 +21,7 @@ subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", sel
 continents <- fread("../../input/owid/continents.csv", select = c("Entity", "V4"))
 
 AGGREGATES <- list(
-    "World" = list("excluded_locs" = subnational_pop$location, "included_locs" = NULL),
+    "World" = list("excluded_locs" = c("England", "Northern Ireland", "Scotland", "Wales"), "included_locs" = NULL),
     "European Union" = list("excluded_locs" = NULL, "included_locs" = fread("../../input/owid/eu_countries.csv")$Country)
 )
 for (continent in c("Asia", "Africa", "Europe", "North America", "Oceania", "South America")) {
