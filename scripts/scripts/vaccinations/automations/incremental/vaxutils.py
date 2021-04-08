@@ -22,7 +22,7 @@ def get_soup(source: str):
     return BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
 
 
-def read_xlsx_from_url(url: str, as_series: bool, **kwargs) -> pd.DataFrame:
+def read_xlsx_from_url(url: str, as_series: bool = False, **kwargs) -> pd.DataFrame:
     """Download and load xls file from URL.
 
     Args:
