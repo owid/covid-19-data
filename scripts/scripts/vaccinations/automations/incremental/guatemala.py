@@ -4,7 +4,6 @@ import time
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
 import vaxutils
 
 
@@ -19,7 +18,8 @@ def main():
     op = Options()
     op.add_argument("--headless")
     with webdriver.Chrome(options=op) as driver:
-        driver.implicitly_wait(10)
+        driver.maximize_window()  # For maximizing window
+        driver.implicitly_wait(20)  # gives an implicit wait for 20 seconds
         driver.get(data["source_url"])
         driver.find_element_by_class_name("fa-syringe").click()
         date = driver.find_element_by_class_name("logo").text
