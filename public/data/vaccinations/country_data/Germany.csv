@@ -1,102 +1,104 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Germany,2020-12-27,Pfizer/BioNTech,https://impfdashboard.de/,23998,23861,137
-Germany,2020-12-28,Pfizer/BioNTech,https://impfdashboard.de/,42383,42246,137
-Germany,2020-12-29,Pfizer/BioNTech,https://impfdashboard.de/,90959,90233,726
-Germany,2020-12-30,Pfizer/BioNTech,https://impfdashboard.de/,152131,151401,730
-Germany,2020-12-31,Pfizer/BioNTech,https://impfdashboard.de/,200979,200132,847
-Germany,2021-01-01,Pfizer/BioNTech,https://impfdashboard.de/,220253,219406,847
-Germany,2021-01-02,Pfizer/BioNTech,https://impfdashboard.de/,272863,271800,1063
-Germany,2021-01-03,Pfizer/BioNTech,https://impfdashboard.de/,296950,295887,1063
-Germany,2021-01-04,Pfizer/BioNTech,https://impfdashboard.de/,345291,344228,1063
-Germany,2021-01-05,Pfizer/BioNTech,https://impfdashboard.de/,398645,397559,1086
-Germany,2021-01-06,Pfizer/BioNTech,https://impfdashboard.de/,461428,460341,1087
-Germany,2021-01-07,Pfizer/BioNTech,https://impfdashboard.de/,517411,516320,1091
-Germany,2021-01-08,Pfizer/BioNTech,https://impfdashboard.de/,580077,578687,1390
-Germany,2021-01-09,Pfizer/BioNTech,https://impfdashboard.de/,640961,639521,1440
-Germany,2021-01-10,Pfizer/BioNTech,https://impfdashboard.de/,675942,674496,1446
-Germany,2021-01-11,Pfizer/BioNTech,https://impfdashboard.de/,742080,740587,1493
-Germany,2021-01-12,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,824648,823106,1542
-Germany,2021-01-13,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,935357,933631,1726
-Germany,2021-01-14,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1017852,1015847,2005
-Germany,2021-01-15,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1107752,1105077,2675
-Germany,2021-01-16,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1164828,1161183,3645
-Germany,2021-01-17,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1212231,1191920,20311
-Germany,2021-01-18,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1293394,1257455,35939
-Germany,2021-01-19,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1405595,1337614,67981
-Germany,2021-01-20,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1535812,1417301,118511
-Germany,2021-01-21,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1639771,1481592,158179
-Germany,2021-01-22,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1741308,1548876,192432
-Germany,2021-01-23,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1826592,1589551,237041
-Germany,2021-01-24,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1875742,1614967,260775
-Germany,2021-01-25,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1971615,1673113,298502
-Germany,2021-01-26,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2070643,1724043,346600
-Germany,2021-01-27,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2181182,1775622,405560
-Germany,2021-01-28,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2271965,1820557,451408
-Germany,2021-01-29,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2379534,1871690,507844
-Germany,2021-01-30,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2465250,1906624,558626
-Germany,2021-01-31,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2522215,1933198,589017
-Germany,2021-02-01,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2642263,1991670,650593
-Germany,2021-02-02,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2771231,2054216,717015
-Germany,2021-02-03,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2927844,2117529,810315
-Germany,2021-02-04,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3057632,2177824,879808
-Germany,2021-02-05,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3198612,2243408,955204
-Germany,2021-02-06,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3296410,2289479,1006931
-Germany,2021-02-07,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3349715,2317550,1032165
-Germany,2021-02-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3458868,2370735,1088133
-Germany,2021-02-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3590534,2429863,1160671
-Germany,2021-02-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3738499,2503166,1235333
-Germany,2021-02-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3879873,2576499,1303374
-Germany,2021-02-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4035194,2656292,1378902
-Germany,2021-02-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4142693,2717830,1424863
-Germany,2021-02-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4207488,2757607,1449881
-Germany,2021-02-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4333571,2828009,1505562
-Germany,2021-02-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4467882,2909381,1558501
-Germany,2021-02-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4617340,3003552,1613788
-Germany,2021-02-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4760809,3095375,1665434
-Germany,2021-02-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4912955,3194154,1718801
-Germany,2021-02-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5026907,3270522,1756385
-Germany,2021-02-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5112683,3327406,1785277
-Germany,2021-02-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5272699,3426848,1845851
-Germany,2021-02-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5438438,3533269,1905169
-Germany,2021-02-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5611863,3648139,1963724
-Germany,2021-02-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5799123,3777779,2021344
-Germany,2021-02-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6005042,3920500,2084542
-Germany,2021-02-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6152401,4028371,2124030
-Germany,2021-02-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6260346,4112095,2148251
-Germany,2021-03-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6453884,4256508,2197376
-Germany,2021-03-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6671905,4421007,2250898
-Germany,2021-03-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6912388,4593801,2318587
-Germany,2021-03-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7152667,4771745,2380922
-Germany,2021-03-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7415489,4968625,2446864
-Germany,2021-03-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7617041,5121264,2495777
-Germany,2021-03-07,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7766077,5235805,2530272
-Germany,2021-03-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8002905,5420388,2582517
-Germany,2021-03-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8251715,5614467,2637248
-Germany,2021-03-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8531432,5829014,2702418
-Germany,2021-03-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8809358,6046029,2763329
-Germany,2021-03-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9127709,6292939,2834770
-Germany,2021-03-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9373040,6488936,2884104
-Germany,2021-03-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9543841,6623702,2920139
-Germany,2021-03-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9790233,6811278,2978955
-Germany,2021-03-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9969472,6923512,3045960
-Germany,2021-03-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10172318,7047490,3124828
-Germany,2021-03-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10365213,7165587,3199626
-Germany,2021-03-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10604706,7322994,3281712
-Germany,2021-03-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10822422,7486929,3335493
-Germany,2021-03-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10987829,7613568,3374261
-Germany,2021-03-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,11249445,7798340,3451105
-Germany,2021-03-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,11541640,8007454,3534186
-Germany,2021-03-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,11862138,8240413,3621725
-Germany,2021-03-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,12184703,8483706,3700997
-Germany,2021-03-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,12538744,8749313,3789431
-Germany,2021-03-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,12817534,8965000,3852534
-Germany,2021-03-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,13010655,9105735,3904920
-Germany,2021-03-29,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,13306281,9313301,3992980
-Germany,2021-03-30,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,13615692,9530638,4085054
-Germany,2021-03-31,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,13929377,9743364,4186013
-Germany,2021-04-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14221047,9944647,4276400
-Germany,2021-04-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14445984,10098569,4347415
-Germany,2021-04-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14669348,10256224,4413124
-Germany,2021-04-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14862422,10395989,4466433
-Germany,2021-04-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,15105477,10566549,4538928
-Germany,2021-04-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,15427516,10793677,4633839
+Germany,2020-12-27,Pfizer/BioNTech,https://impfdashboard.de/,24119,23982,137
+Germany,2020-12-28,Pfizer/BioNTech,https://impfdashboard.de/,42503,42366,137
+Germany,2020-12-29,Pfizer/BioNTech,https://impfdashboard.de/,91187,90461,726
+Germany,2020-12-30,Pfizer/BioNTech,https://impfdashboard.de/,152668,151938,730
+Germany,2020-12-31,Pfizer/BioNTech,https://impfdashboard.de/,202026,201179,847
+Germany,2021-01-01,Pfizer/BioNTech,https://impfdashboard.de/,221300,220453,847
+Germany,2021-01-02,Pfizer/BioNTech,https://impfdashboard.de/,273940,272877,1063
+Germany,2021-01-03,Pfizer/BioNTech,https://impfdashboard.de/,298248,297185,1063
+Germany,2021-01-04,Pfizer/BioNTech,https://impfdashboard.de/,346598,345535,1063
+Germany,2021-01-05,Pfizer/BioNTech,https://impfdashboard.de/,399951,398865,1086
+Germany,2021-01-06,Pfizer/BioNTech,https://impfdashboard.de/,462946,461859,1087
+Germany,2021-01-07,Pfizer/BioNTech,https://impfdashboard.de/,519147,518056,1091
+Germany,2021-01-08,Pfizer/BioNTech,https://impfdashboard.de/,582306,580915,1391
+Germany,2021-01-09,Pfizer/BioNTech,https://impfdashboard.de/,643536,642096,1440
+Germany,2021-01-10,Pfizer/BioNTech,https://impfdashboard.de/,678675,677228,1447
+Germany,2021-01-11,Pfizer/BioNTech,https://impfdashboard.de/,745016,743518,1498
+Germany,2021-01-12,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,827947,826399,1548
+Germany,2021-01-13,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,939124,937398,1726
+Germany,2021-01-14,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1022165,1020160,2005
+Germany,2021-01-15,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1112268,1109593,2675
+Germany,2021-01-16,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1169449,1165804,3645
+Germany,2021-01-17,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1216955,1196644,20311
+Germany,2021-01-18,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1298293,1262355,35938
+Germany,2021-01-19,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1410667,1342516,68151
+Germany,2021-01-20,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1541596,1422491,119105
+Germany,2021-01-21,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1645357,1486579,158778
+Germany,2021-01-22,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1747028,1553870,193158
+Germany,2021-01-23,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1832396,1594560,237836
+Germany,2021-01-24,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1881548,1619977,261571
+Germany,2021-01-25,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,1977421,1678123,299298
+Germany,2021-01-26,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2076446,1729052,347394
+Germany,2021-01-27,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2187351,1780630,406721
+Germany,2021-01-28,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2278480,1825736,452744
+Germany,2021-01-29,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2386692,1876897,509795
+Germany,2021-01-30,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2473033,1912185,560848
+Germany,2021-01-31,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2530435,1938805,591630
+Germany,2021-02-01,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2650954,1997664,653290
+Germany,2021-02-02,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2780584,2060697,719887
+Germany,2021-02-03,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,2938001,2124246,813755
+Germany,2021-02-04,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3068728,2184928,883800
+Germany,2021-02-05,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3210829,2250846,959983
+Germany,2021-02-06,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3309678,2297132,1012546
+Germany,2021-02-07,"Moderna, Pfizer/BioNTech",https://impfdashboard.de/,3363196,2325236,1037960
+Germany,2021-02-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3472649,2378517,1094132
+Germany,2021-02-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3604729,2437737,1166992
+Germany,2021-02-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3752987,2511116,1241871
+Germany,2021-02-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,3894359,2584444,1309915
+Germany,2021-02-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4049843,2664261,1385582
+Germany,2021-02-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4157346,2725805,1431541
+Germany,2021-02-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4222142,2765584,1456558
+Germany,2021-02-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4348269,2835985,1512284
+Germany,2021-02-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4482593,2917370,1565223
+Germany,2021-02-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4632203,3011585,1620618
+Germany,2021-02-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4775668,3103403,1672265
+Germany,2021-02-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,4927974,3202216,1725758
+Germany,2021-02-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5042009,3278587,1763422
+Germany,2021-02-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5127780,3335467,1792313
+Germany,2021-02-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5288029,3434929,1853100
+Germany,2021-02-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5454099,3541381,1912718
+Germany,2021-02-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5628023,3656514,1971509
+Germany,2021-02-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,5815676,3786182,2029494
+Germany,2021-02-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6022591,3929348,2093243
+Germany,2021-02-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6170530,4037609,2132921
+Germany,2021-02-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6278626,4121466,2157160
+Germany,2021-03-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6472860,4266386,2206474
+Germany,2021-03-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6691108,4431025,2260083
+Germany,2021-03-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,6931968,4604179,2327789
+Germany,2021-03-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7172880,4782734,2390146
+Germany,2021-03-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7436899,4980657,2456242
+Germany,2021-03-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7638639,5133428,2505211
+Germany,2021-03-07,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,7787852,5247999,2539853
+Germany,2021-03-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8025371,5433214,2592157
+Germany,2021-03-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8275155,5628280,2646875
+Germany,2021-03-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8557037,5844980,2712057
+Germany,2021-03-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,8836944,6063973,2772971
+Germany,2021-03-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9156682,6312264,2844418
+Germany,2021-03-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9402322,6508572,2893750
+Germany,2021-03-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9573154,6643371,2929783
+Germany,2021-03-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,9820325,6831728,2988597
+Germany,2021-03-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10000171,6944574,3055597
+Germany,2021-03-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10203810,7069313,3134497
+Germany,2021-03-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10397610,7188324,3209286
+Germany,2021-03-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10638131,7346747,3291384
+Germany,2021-03-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,10856312,7511149,3345163
+Germany,2021-03-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,11021724,7637795,3383929
+Germany,2021-03-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,11286436,7825572,3460864
+Germany,2021-03-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,11585255,8041101,3544154
+Germany,2021-03-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,11915860,8283894,3631966
+Germany,2021-03-25,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,12248563,8537189,3711374
+Germany,2021-03-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,12615588,8815564,3800024
+Germany,2021-03-27,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,12898106,9034954,3863152
+Germany,2021-03-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,13092316,9176614,3915702
+Germany,2021-03-29,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,13396907,9392851,4004056
+Germany,2021-03-30,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,13722143,9625464,4096679
+Germany,2021-03-31,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14057387,9858932,4198455
+Germany,2021-04-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14374383,10084528,4289855
+Germany,2021-04-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14601918,10240721,4361197
+Germany,2021-04-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,14830652,10403498,4427154
+Germany,2021-04-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,15025425,10544793,4480632
+Germany,2021-04-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,15274466,10720617,4553849
+Germany,2021-04-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,15646972,10995496,4651476
+Germany,2021-04-07,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,16315771,11570563,4745208
+Germany,2021-04-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",https://impfdashboard.de/,17035698,12204176,4831522
