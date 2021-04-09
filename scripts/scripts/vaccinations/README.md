@@ -27,6 +27,18 @@ To update the data make sure you follow
 
 ### 0. Dependencies
 
+#### Python and R
+Make sure you have a working environment with R and python installed. we recommend R >= 4.0.2 and Python >= 3.7. You can
+check:
+
+```
+$ python --version
+```
+
+```
+$ R --version
+```
+
 #### Install python requirements
 Run in your environment (shell):
 
@@ -38,16 +50,30 @@ $ pip install -r automations/requirements.txt
 Run the following within R environment:
 
 ```r
-install.packages(c("data.table", "googlesheets4", "imputeTS", "lubridate", "readr", "retry", "rjson", "stringr", "tidyr", "jsonlite"))
+install.packages(c("data.table", "googlesheets4", "imputeTS", "lubridate", "readr", "retry", "rjson", "stringr", "tidyr", "jsonlite", "bit64"))
 ```
 
-#### Configuration JSON file `vax_dataset_config.json` (internal)
+#### Set up Google credentials
+In your R environment, run the following to set up your credentials:
+
+```r
+library(googlesheets4)
+library(rjson)
+
+CONFIG <- rjson::fromJSON(file = "vax_dataset_config.json")
+googlesheets4::gs4_auth(email = CONFIG$google_credentials_email)
+```
+
+#### Configuration file (internal)
+
+Create a file `vax_dataset_config.json` with all required parameters:
 
 ```json
 {
     "greece_api_token": [GREECE_API_TOKEN],
     "google_credentials_email": [MAIL],
-    "vax_time_series_gsheet": [SPREADHSEET_URL]
+    "vax_time_series_gsheet": [SPREADHSEET_URL],
+    "owid_cloud_table_post": [OWID_CLOUD_TABLE_POST]
 }
 ```
 
@@ -74,6 +100,9 @@ folder](automations/incremental). It will generate individual country files and 
 (e.g. due to source web changes). Try to keep scripts up to date.
 
 ### 3. Dataset generation
+Make sure you succesfully [configured your environment](#0.-dependencies).
+
+Run the following script:
 
 ```
 $ Rscript generate_dataset.R
