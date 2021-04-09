@@ -18,6 +18,7 @@ def main():
         "Comirnaty": "Pfizer/BioNTech",
         "COVID-19 Vaccine Moderna": "Moderna",
         "COVID-19 Vaccine AstraZeneca": "Oxford/AstraZeneca",
+        "Vaxzevria": "Oxford/AstraZeneca",
     }
     df["Preparāts"] = df["Preparāts"].str.strip()
     assert set(df["Preparāts"].unique()) == set(vaccine_mapping.keys())
