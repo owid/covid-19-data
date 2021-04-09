@@ -309,12 +309,8 @@ vax <- rbindlist(vax, use.names = TRUE)
 generate_automation_file(metadata)
 metadata <- generate_locations_file(metadata, vax)
 
-# Aggregate across all vaccines
-vax <- vax[, .(
-    total_vaccinations = sum(total_vaccinations),
-    people_vaccinated = sum(people_vaccinated),
-    people_fully_vaccinated = sum(people_fully_vaccinated)
-), c("date", "location")]
+# Select columns
+vax <- vax[, c("date", "location", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
 
 # Add regional aggregates
 for (agg_name in names(AGGREGATES)) {
