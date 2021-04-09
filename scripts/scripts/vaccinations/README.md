@@ -28,33 +28,34 @@ To update the data make sure you follow
 ### 0. Dependencies
 
 #### Python and R
-Make sure you have a working environment with R and python installed. we recommend R >= 4.0.2 and Python >= 3.7. You can
-check:
+Make sure you have a working environment with R and python installed. We recommend R >= 4.0.2 and Python >= 3.7.
+
+You can check:
 
 ```
 $ python --version
 ```
-
+and
 ```
 $ R --version
 ```
 
 #### Install python requirements
-Run in your environment (shell):
+In your environment (shell), run:
 
 ```
 $ pip install -r automations/requirements.txt
 ```
 
 #### Install R requirements
-Run the following within R environment:
+In your R console, run:
 
 ```r
 install.packages(c("data.table", "googlesheets4", "imputeTS", "lubridate", "readr", "retry", "rjson", "stringr", "tidyr", "jsonlite", "bit64"))
 ```
 
 #### Set up Google credentials
-In your R environment, run the following to set up your credentials:
+In your R console, run the following to set up your credentials:
 
 ```r
 library(googlesheets4)
@@ -70,10 +71,10 @@ Create a file `vax_dataset_config.json` with all required parameters:
 
 ```json
 {
-    "greece_api_token": [GREECE_API_TOKEN],
-    "google_credentials_email": [MAIL],
-    "vax_time_series_gsheet": [SPREADHSEET_URL],
-    "owid_cloud_table_post": [OWID_CLOUD_TABLE_POST]
+    "greece_api_token": "[GREECE_API_TOKEN]",
+    "google_credentials_email": "[MAIL]",
+    "vax_time_series_gsheet": "[SPREADHSEET_URL]",
+    "owid_cloud_table_post": "[OWID_CLOUD_TABLE_POST]"
 }
 ```
 
@@ -81,7 +82,7 @@ Note that your mail needs to have access to the internal spreadsheet. This is cu
 
 ### 1. Manual data updates
 
-Check for new updates and add them in the internal Spreadsheet:
+Check for new updates and manually add them in the internal Spreadsheet:
 - See repo pull requests and issues.
 - Based on previous source urls look for data.
 
@@ -121,7 +122,7 @@ $ python ../megafile.py
 
 ## Add new automated process
 - Create a script and place it in [`automations/batch`](automations/batch) or
-[`automations/incremental`](automations/incremental) depending on whether it is an incremental or batch update (see #250
+[`automations/incremental`](automations/incremental) depending on whether it is an incremental or batch update (see [#250](https://github.com/owid/covid-19-data/issues/250)
 for more details).
 - Test that it is working.
 - Issue a Pull Request and wait for a review.
