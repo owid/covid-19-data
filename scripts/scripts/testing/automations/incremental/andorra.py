@@ -36,10 +36,10 @@ def get_date(soup):
         "desembre": 12
     }
     date_str = soup.find(class_="text-primary tracking-normal text-lg font-bold mb-0").text.lower()
-    match = re.search(r"actualització (\d+) de ([a-z]+)", date_str)
+    match = re.search(r"actualització (\d+) d(e |')([a-z]+)", date_str)
     # Get day and month from website
     day = int(match.group(1))
-    month = int(month_map[match.group(2)])
+    month = int(month_map[match.group(3)])
     # Estimate year and build date
     year = datetime.datetime.now().year
     date = datetime.date(year, month, day)
