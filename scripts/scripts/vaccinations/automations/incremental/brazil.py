@@ -1,10 +1,15 @@
-import vaxutils
-import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import datetime
 import time
 import pytz
+
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+import vaxutils
 
 
 def read(source: str) -> pd.Series:
@@ -17,13 +22,12 @@ def connect_parse_data(source: str) -> pd.Series:
 
     with webdriver.Chrome(options=op) as driver:
         driver.get(source)
-        time.sleep(15)
-        data_blocks = driver.find_elements_by_class_name("kpi-data")
-
+        data_blocks = (
+            WebDriverWait(driver, 20)
+            .until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "kpi-data")))
+        )
         for block in data_blocks:
-
             block_title = block.find_element_by_class_name("measure-title").get_attribute("title")
-
             if block_title == "Pessoas Vacinadas (Dose 1)":
                 people_vaccinated = block.find_element_by_class_name("kpi-value").text
             elif block_title == "Pessoas Vacinadas (Dose 2)":
