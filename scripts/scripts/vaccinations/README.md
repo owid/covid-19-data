@@ -109,7 +109,15 @@ $ Rscript generate_dataset.R
 ```
 
 ### 4. Megafile generation
+> BE CAUTIOUS: Only run this if you know what you are doing.
 
+This will update the whole datasets, so only run this if you want to update them:
+
+```
+$ python ../megafile.py
+```
+
+**Note**: You can use [vax_update.sh.template](vax_update.sh.template) as an example of how to automate data update + git push.
 
 ## Add new automated process
 - Create a script and place it in [`automations/batch`](automations/batch) or
