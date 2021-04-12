@@ -27,9 +27,9 @@ def connect_parse_data(source: str) -> pd.Series:
         # Sanity check
         _sanity_checks(driver)
         # Get doses
-        dose_1, dose_2 = parse_doses(driver)
+        dose_1_only, dose_2 = parse_doses(driver)
     return pd.Series({
-        "people_vaccinated": dose_1,
+        "people_vaccinated": dose_1_only + dose_2,
         "people_fully_vaccinated": dose_2,
         "date": date
     })
