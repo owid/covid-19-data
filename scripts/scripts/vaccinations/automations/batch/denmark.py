@@ -29,6 +29,8 @@ def aggregate(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def enrich_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
+    input["people_vaccinated"] = input.people_vaccinated.ffill()
+    input["people_fully_vaccinated"] = input.people_fully_vaccinated.ffill()
     return input.assign(
         total_vaccinations=input.people_vaccinated.fillna(0) + input.people_fully_vaccinated.fillna(0)
     )
