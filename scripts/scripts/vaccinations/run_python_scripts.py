@@ -27,3 +27,6 @@ if len(failed) > 0:
 if len(failed_twice) > 0:
     print("\n---\n\nThe following scripts failed to run:")
     print("\n".join(failed_twice))
+
+# Prepare files for generate_dataset.R
+os.system(f"python3 collect_vax_data.py")
