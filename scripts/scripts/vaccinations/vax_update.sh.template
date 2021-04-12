@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Git pull
 git pull origin master
