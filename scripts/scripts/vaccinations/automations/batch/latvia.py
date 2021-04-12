@@ -17,7 +17,6 @@ def main():
     vaccine_mapping = {
         "Comirnaty": "Pfizer/BioNTech",
         "COVID-19 Vaccine Moderna": "Moderna",
-        "COVID-19 Vaccine AstraZeneca": "Oxford/AstraZeneca",
         "Vaxzevria": "Oxford/AstraZeneca",
     }
     df["Preparāts"] = df["Preparāts"].str.strip()
