@@ -1,5 +1,4 @@
 library(data.table)
-library(googlesheets4)
 library(imputeTS)
 library(lubridate)
 library(readr)
@@ -12,10 +11,7 @@ rm(list = ls())
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 system("git pull")
-CONFIG <- rjson::fromJSON(file = "vax_dataset_config.json")
 Sys.setlocale("LC_TIME", "en_US")
-gs4_auth(email = CONFIG$google_credentials_email)
-GSHEET_KEY <- CONFIG$vax_time_series_gsheet
 
 subnational_pop <- fread("../../input/owid/subnational_population_2020.csv", select = c("location", "population"))
 continents <- fread("../../input/owid/continents.csv", select = c("Entity", "V4"))
@@ -25,26 +21,14 @@ AGGREGATES <- list(
     "European Union" = list("excluded_locs" = NULL, "included_locs" = fread("../../input/owid/eu_countries.csv")$Country)
 )
 for (continent in c("Asia", "Africa", "Europe", "North America", "Oceania", "South America")) {
-    AGGREGATES[[continent]] = list(
+    AGGREGATES[[continent]] <- list(
         "excluded_locs" = NULL,
         "included_locs" = continents[V4 == continent, Entity]
     )
 }
 
-get_metadata <- function() {
-    retry(
-        expr = {metadata <- data.table(read_sheet(GSHEET_KEY, sheet = "LOCATIONS"))},
-        when = "RESOURCE_EXHAUSTED",
-        max_tries = 10,
-        interval = 20
-    )
-    metadata <- metadata[include == TRUE]
-    setorder(metadata, location)
-    return(metadata)
-}
 
 add_aggregate <- function(vax, aggregate_name, included_locs, excluded_locs) {
-
     agg <- copy(vax)
     agg <- agg[!location %in% names(AGGREGATES)]
     if (!is.null(included_locs)) agg <- agg[location %in% included_locs]
@@ -112,53 +96,6 @@ add_smoothed <- function(df) {
     return(df)
 }
 
-process_location <- function(location_name) {
-    message(location_name)
-    is_automated <- metadata[location == location_name, automated]
-    if (is_automated) {
-        filepath <- sprintf("automations/output/%s.csv", location_name)
-        df <- data.table(suppressMessages(read_csv(filepath)))
-        stopifnot(all(names(df) %in% c("location", "source_url", "vaccine", "date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")))
-    } else {
-        retry(
-            expr = {df <- suppressMessages(read_sheet(GSHEET_KEY, sheet = location_name))},
-            when = "RESOURCE_EXHAUSTED",
-            max_tries = 10,
-            interval = 20
-        )
-        setDT(df)
-    }
-
-    # Sanity checks
-    stopifnot(length(unique(df$date)) == nrow(df))
-    stopifnot(max(df$date) <= today())
-    stopifnot(all(!is.na(df$location)))
-    stopifnot(min(df$date) >= "2020-12-01")
-    stopifnot(all(unlist(str_split(df$vaccine, ", ")) %in% c(
-        "Pfizer/BioNTech", "Moderna", "Oxford/AstraZeneca", "Sputnik V", "Sinopharm/Beijing",
-        "Sinopharm/Wuhan", "Johnson&Johnson", "Sinovac", "Covaxin", "EpiVacCorona"
-    )))
-
-    # Only report up to previous day to avoid partial reporting
-    df <- df[date < today()]
-
-    # Default columns for second doses
-    if (!"people_vaccinated" %in% names(df)) df[, people_vaccinated := NA_integer_]
-    if (!"people_fully_vaccinated" %in% names(df)) df[, people_fully_vaccinated := NA_integer_]
-
-    # Check that vaccination logic is valid
-    stopifnot(all(df$people_fully_vaccinated <= df$people_vaccinated, na.rm = TRUE))
-    stopifnot(all(df$people_vaccinated <= df$total_vaccinations, na.rm = TRUE))
-
-    df <- df[, c("location", "date", "vaccine", "source_url",
-                 "total_vaccinations", "people_vaccinated", "people_fully_vaccinated")]
-
-    df[, date := date(date)]
-
-    setorder(df, date)
-    fwrite(df, sprintf("../../../public/data/vaccinations/country_data/%s.csv", location_name), scipen = 999)
-    return(df)
-}
 
 get_population <- function(subnational_pop) {
     pop <- fread("../../input/un/population_2020.csv", select = c("entity", "population"), col.names = c("location", "population"))
@@ -218,8 +155,10 @@ generate_locations_file <- function(metadata, vax) {
 
 generate_vaccinations_file <- function(vax) {
     vax <- add_iso(vax)
-    setnames(vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million", "new_vaccinations"),
-             c("daily_vaccinations", "daily_vaccinations_per_million", "daily_vaccinations_raw"))
+    setnames(
+        vax, c("new_vaccinations_smoothed", "new_vaccinations_smoothed_per_million", "new_vaccinations"),
+        c("daily_vaccinations", "daily_vaccinations_per_million", "daily_vaccinations_raw")
+    )
     fwrite(vax, "../../../public/data/vaccinations/vaccinations.csv", scipen = 999)
     generate_vaccination_json_file(copy(vax))
 }
@@ -236,7 +175,7 @@ generate_html <- function(metadata) {
     html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
     html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%b. %e, %Y")), "</td>")]
     html[, vaccines := paste0("<td>", vaccines, "</td></tr>")]
-    html[, source := paste0('<td><a href="', source_website, '">', source_name, '</a></td>')]
+    html[, source := paste0('<td><a href="', source_website, '">', source_name, "</a></td>")]
     html <- html[, c("location", "source", "last_observation_date", "vaccines")]
     setnames(html, c("Location", "Source", "Last observation date", "Vaccines"))
     header <- paste0("<tr>", paste0("<th>", names(html), "</th>", collapse = ""), "</tr>")
@@ -267,9 +206,10 @@ jsonify_vax_data <- function(vax) {
     vax_json <- list()
     for (i in seq(nrow(countries))) {
         location <- countries[i, location]
-        location_iso  <- countries[i, iso_code]
+        location_iso <- countries[i, iso_code]
         vax_json[[i]] <- get_country_as_dix(
-            vax, location = location, location_iso = location_iso
+            vax,
+            location = location, location_iso = location_iso
         )
     }
     # JSON format
@@ -293,7 +233,7 @@ get_country_as_dix <- function(vax, location, location_iso) {
         "country" = location,
         "iso_code" = location_iso
     )
-    # Get data field (list, each element refers to one date)
+    #  Get data field (list, each element refers to one date)
     data <- vax_country[, -c("location", "iso_code")]
     setorder(data, date)
     country_data$data <- data
@@ -301,9 +241,12 @@ get_country_as_dix <- function(vax, location, location_iso) {
 }
 
 
-metadata <- get_metadata()
-vax <- lapply(metadata$location, FUN = process_location)
-vax <- rbindlist(vax, use.names = TRUE)
+# Load data
+metadata_file <- "./metadata.preliminary.csv"
+vax_file <- "./vaccinations.preliminary.csv"
+metadata <- fread(metadata_file)
+vax <- fread(vax_file)
+vax[, date := date(date)]
 
 # Metadata
 generate_automation_file(metadata)
@@ -315,7 +258,8 @@ vax <- vax[, c("date", "location", "total_vaccinations", "people_vaccinated", "p
 # Add regional aggregates
 for (agg_name in names(AGGREGATES)) {
     vax <- add_aggregate(
-        vax, aggregate_name = agg_name,
+        vax,
+        aggregate_name = agg_name,
         included_locs = AGGREGATES[[agg_name]][["included_locs"]],
         excluded_locs = AGGREGATES[[agg_name]][["excluded_locs"]]
     )
@@ -337,5 +281,9 @@ setorder(vax, location, date)
 generate_vaccinations_file(copy(vax))
 generate_grapher_file(copy(vax))
 generate_html(metadata)
+
+# Remove temporary files
+file.remove(metadata_file)
+file.remove(vax_file)
 
 source("generate_dataset_by_manufacturer.R")
