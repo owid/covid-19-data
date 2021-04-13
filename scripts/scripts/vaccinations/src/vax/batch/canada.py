@@ -24,8 +24,12 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-if __name__ == "__main__":
+def main2():
     source = "https://api.covid19tracker.ca/reports"
     destination = "output/Canada.csv"
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
+
+
+if __name__ == "__main__":
+    main()

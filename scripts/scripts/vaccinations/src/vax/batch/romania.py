@@ -62,8 +62,7 @@ def process_manufacturer_data(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-if __name__ == "__main__":
-
+def main():
     source = "https://d35p9e4fm9h3wo.cloudfront.net/latestData.json"
     destination = "output/Romania.csv"
 
@@ -71,3 +70,7 @@ if __name__ == "__main__":
 
     process_vaccine_data(data.copy()).to_csv(destination, index=False)
     process_manufacturer_data(data.copy()).to_csv(destination.replace("output", "output/by_manufacturer"), index=False)
+
+
+if __name__ == "__main__":
+    main()

@@ -86,7 +86,7 @@ class NewZealand(object):
         df.to_csv(output_file, index=False)
 
 
-if __name__ == "__main__":
+def main():
     df = NewZealand(
         source_url=(
             "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
@@ -99,3 +99,7 @@ if __name__ == "__main__":
         },
         columns_cumsum=["First dose administered", "Second dose administered"]
     ).to_csv()
+
+
+if __name__ == "__main__":
+    main()

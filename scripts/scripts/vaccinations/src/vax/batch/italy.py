@@ -55,6 +55,10 @@ def get_vaccine_data():
     df.to_csv("output/by_manufacturer/Italy.csv", index=False)
 
 
-if __name__ == "__main__":
+def main():
     get_country_data()
     get_vaccine_data()
+
+
+if __name__ == "__main__":
+    main()
