@@ -18,7 +18,7 @@ CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
 AUTOMATED_OUTPUT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "automations/output"))
 PUBLIC_DATA_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "../../../public/data/vaccinations/country_data/"))
 CONFIG_FILE = os.path.abspath(os.path.join(CURRENT_DIR, "vax_dataset_config.json"))
-SKIP_COUNTRIES = ["Peru"]
+SKIP_COUNTRIES = []
 
 
 class GSheet:
