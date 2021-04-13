@@ -33,9 +33,9 @@ def main():
         .count()
         .pivot(index="date", columns="DOSIS", values="vaccine")
         .rename(columns={1: "people_vaccinated", 2: "people_fully_vaccinated"})
+        .fillna(0)
         .cumsum()
         .reset_index()
-        .fillna(0)
     )
 
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
