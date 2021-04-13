@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 from vax.utils.incremental import enrich_data, increment, clean_count
+from vax.utils.utils import get_soup
 
 
 def parse_date(elem) -> str:
@@ -21,7 +22,7 @@ def parse_source_url(elem) -> str:
 def parse_vaccinations(elem) -> dict:
     # Get news text
     url = elem.find_parent(class_="card").find("a").get("href")
-    soup = vaxutils.get_soup(url)
+    soup = get_soup(url)
     text = "\n".join([p.text for p in soup.find("article").find_all("p")])
 
     # Find metrics
@@ -59,7 +60,7 @@ def read(source: str, last_update: str, num_pages_limit: int = 10):
     for page_nr in range(1, num_pages_limit):
         # Get soup
         url = f"{source}/{page_nr}/"
-        soup = vaxutils.get_soup(url)
+        soup = get_soup(url)
         # Get data (if any)
         records_sub = parse_data(soup)
         if records_sub:

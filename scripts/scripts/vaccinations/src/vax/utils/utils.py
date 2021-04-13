@@ -61,5 +61,5 @@ def get_soup(source: str, headers: dict = None) -> BeautifulSoup:
         BeautifulSoup: Website soup.
     """
     if headers is None:
-        headers = get_header()
+        headers = get_headers()
     return BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")

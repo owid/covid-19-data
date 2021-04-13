@@ -6,7 +6,7 @@ import zipfile
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from utils.pipeline import enrich_total_vaccinations
+from vax.utils.pipeline import enrich_total_vaccinations
 
 
 def read_datasets_download_link(source: str) -> str:

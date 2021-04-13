@@ -2,7 +2,8 @@ from datetime import datetime, timedelta
 from urllib.parse import urlparse
 import pandas as pd
 from bs4 import BeautifulSoup
-from vax.utils.utils import utils
+
+import vax.utils.utils as utils
 
 
 class NewZealand(object):

@@ -1,6 +1,6 @@
 import pandas as pd
 
-from utils.pipeline import enrich_total_vaccinations
+from vax.utils.pipeline import enrich_total_vaccinations
 
 
 def build_url(area: str) -> pd.DataFrame:

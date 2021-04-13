@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import tempfile
 
-from utils.pipeline import enrich_total_vaccinations
+from vax.utils.pipeline import enrich_total_vaccinations
 
 
 def read(source: str) -> pd.DataFrame:

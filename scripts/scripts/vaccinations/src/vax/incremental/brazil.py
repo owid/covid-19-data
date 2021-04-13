@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from vax.utils.incremental import enrich_data, increment
+from vax.utils.incremental import enrich_data, increment, clean_count
 
 
 def read(source: str) -> pd.Series:

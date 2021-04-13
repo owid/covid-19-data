@@ -9,7 +9,7 @@ of `total_vaccinations`
 
 import pandas as pd
 
-from utils.pipeline import enrich_total_vaccinations
+from vax.utils.pipeline import enrich_total_vaccinations
 
 
 vaccine_mapping = {

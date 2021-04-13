@@ -4,11 +4,12 @@ import pandas as pd
 import pytz
 
 from vax.utils.incremental import enrich_data, increment, clean_count
+from vax.utils.utils import get_soup
 
 
 def read(source: str) -> pd.Series:
 
-    soup = vaxutils.get_soup(source)
+    soup = get_soup(source)
     blocks = soup.find_all(class_="aly_tx_center")
 
     for block in blocks:

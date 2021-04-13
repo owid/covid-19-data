@@ -2,7 +2,8 @@ import datetime
 import json
 import requests
 import pandas as pd
-from utils.pipeline import enrich_total_vaccinations
+
+from vax.utils.pipeline import enrich_total_vaccinations
 
 
 def read(source: str) -> pd.DataFrame:
