@@ -30,7 +30,7 @@ def main():
         usecols=['fecha', 'positivas_acumuladas','negativas_acumuladas']
     )
 
-    pcr = pcr[pcr["fecha"] != "Acumulado Feb"]
+    pcr = pcr[(pcr["fecha"] != "Acumulado Feb") & (pcr.fecha.notnull())]
     pcr["Date"] = pd.to_datetime(pcr["fecha"], dayfirst=True)
     del pcr["fecha"]
 

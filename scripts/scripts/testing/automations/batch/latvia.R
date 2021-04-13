@@ -5,6 +5,9 @@ setnames(df, c("Date", "Daily change in cumulative total"))
 
 df[, Date := ymd(Date)]
 df <- df[!is.na(Date)]
+setorder(df, Date)
+df <- df[, .SD[1], Date]
+
 df[, Country := "Latvia"]
 df[, Units := "tests performed"]
 df[, `Source URL` := "https://data.gov.lv/dati/eng/dataset/covid-19"]
