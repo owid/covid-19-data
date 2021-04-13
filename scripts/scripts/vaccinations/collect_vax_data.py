@@ -1,6 +1,6 @@
 """Generate dataset files.
 
-- Retrieves data from the Google Spreadsheet and automations/output folder
+- Retrieves data from the Google Spreadsheet and output folder
 - Generates country csv files and vaccination & metadata temporary files (used & removed by generate_dataset.R)
 """
 import tempfile
@@ -15,7 +15,7 @@ from gsheets import Sheets
 
 
 CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
-AUTOMATED_OUTPUT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "automations/output"))
+AUTOMATED_OUTPUT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "./output"))
 PUBLIC_DATA_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "../../../public/data/vaccinations/country_data/"))
 CONFIG_FILE = os.path.abspath(os.path.join(CURRENT_DIR, "vax_dataset_config.json"))
 SKIP_COUNTRIES = []
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     df_manual_list = gsheet.df_list()
 
     # Get automated-country data
-    print("Getting data from automations/output...")
+    print("Getting data from output...")
     automated = gsheet.automated_countries
     filepaths_auto = [os.path.join(AUTOMATED_OUTPUT_DIR, f"{country}.csv") for country in automated]
     df_auto_list = [pd.read_csv(filepath) for filepath in filepaths_auto]
