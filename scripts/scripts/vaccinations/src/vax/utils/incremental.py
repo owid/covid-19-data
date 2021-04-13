@@ -47,10 +47,10 @@ def increment(
 
     filepath_automated = f"output/{location}.csv"
     filepath_public = f"../../../public/data/vaccinations/country_data/{location}.csv"
-    # Move from public to automations/output folder
+    # Move from public to output folder
     if not os.path.isfile(filepath_automated) and os.path.isfile(filepath_public):
         shutil.copy(filepath_public, filepath_automated)
-    # Update file in automations/output
+    # Update file in automatio/output
     if os.path.isfile(filepath_automated):
         df = _increment(
             filepath=filepath_automated,
