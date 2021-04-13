@@ -51,18 +51,7 @@ $ pip install -r automations/requirements.txt
 In your R console, run:
 
 ```r
-install.packages(c("data.table", "googlesheets4", "imputeTS", "lubridate", "readr", "retry", "rjson", "stringr", "tidyr", "jsonlite", "bit64"))
-```
-
-#### Set up Google credentials
-In your R console, run the following to set up your credentials:
-
-```r
-library(googlesheets4)
-library(rjson)
-
-CONFIG <- rjson::fromJSON(file = "vax_dataset_config.json")
-googlesheets4::gs4_auth(email = CONFIG$google_credentials_email)
+install.packages(c("data.table", "imputeTS", "lubridate", "readr", "retry", "rjson", "stringr", "tidyr", "jsonlite", "bit64"))
 ```
 
 #### Configuration file (internal)
@@ -72,19 +61,20 @@ Create a file `vax_dataset_config.json` with all required parameters:
 ```json
 {
     "greece_api_token": "[GREECE_API_TOKEN]",
-    "google_credentials_email": "[MAIL]",
-    "vax_time_series_gsheet": "[SPREADHSEET_URL]",
-    "owid_cloud_table_post": "[OWID_CLOUD_TABLE_POST]"
+    "owid_cloud_table_post": "[OWID_CLOUD_TABLE_POST]",
+    "google_credentials": "[CREDENTIALS_JSON_PATH]",
+    "google_spreadsheet_vax_id": "[SHEET_ID]"
 }
 ```
 
-Note that your mail needs to have access to the internal spreadsheet. This is currently restricted to OWID members.
+For `google`-related fields, make sure to download valid OAuth JSON credentials file, as explained in [gsheets documentation](https://gsheets.readthedocs.io/en/stable/#quickstart).
+
 
 ### 1. Manual data updates
 
 Check for new updates and manually add them in the internal Spreadsheet:
-- See repo pull requests and issues.
-- Based on previous source urls look for data.
+- See repo [pull requests](https://github.com/owid/covid-19-data/pulls) and [issues](https://github.com/owid/covid-19-data/issues).
+- Look for new data based on previously used source urls.
 
 ### 2. Automated data updates
 Run the following script:
@@ -93,9 +83,13 @@ Run the following script:
 $ python run_python_scripts.py
 ```
 
-This will run the scrips in [in this folder](automations/batch) and [this
+- This will run the scrips in [in this folder](automations/batch) and [this
 folder](automations/incremental). It will generate individual country files and save them in
 [`automations/output`](automations/output).
+- Additionally, it also generates public country data in
+  [`country_data`](../../../public/data/vaccinations/country_data/).
+- Finally, it generates temporary files `vaccinations.preliminary.csv` and `metadata.preliminary.csv` which are later
+  required by script `generate_dataset.R`.
 
 **Note**: This step might crash for some countries, as the automation scripts might no longer (or temporary) be valid
 (e.g. due to source web changes). Try to keep scripts up to date.
