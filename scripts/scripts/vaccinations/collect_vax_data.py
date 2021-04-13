@@ -121,6 +121,7 @@ def _sanity_checks(df: pd.DataFrame) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
+
     # Get data from sheets
     print("Getting data from Google Spreadsheet...")
     gsheet = GSheet.from_json(path=CONFIG_FILE)
@@ -143,7 +144,7 @@ if __name__ == "__main__":
     for df in vax:
         country = df.loc[0, "location"]
         df.to_csv(os.path.join(PUBLIC_DATA_DIR, f"{country}.csv"), index=False)
-    print("export")
     df = pd.concat(vax).sort_values(by=["location", "date"])
     df.to_csv("vaccinations.preliminary.csv", index=False)
     gsheet.metadata.to_csv("metadata.preliminary.csv", index=False)
+    print("Exported")
