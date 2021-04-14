@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+# Git pull
+git pull origin master
+
+# Update source table on website
+url=$(python -c "import json; print(json.load(open('vax_dataset_config.json', 'r'))['owid_cloud_table_post'])")
+pbcopy < automations/source_table.html
+open url
+
+# General data update
+python ../megafile.py
+​
+# Git push
+git add automations/*
+git add ../../grapher/*
+git add ../../../public/data/*
+git commit -m 'Vaccination update'
+git push origin master

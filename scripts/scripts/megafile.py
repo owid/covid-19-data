@@ -13,10 +13,10 @@ from functools import reduce
 import pandas as pd
 
 
-CURRENT_DIR = os.path.dirname(__file__)
-INPUT_DIR = os.path.join(CURRENT_DIR, "../input/")
-GRAPHER_DIR = os.path.join(CURRENT_DIR, "../grapher/")
-DATA_DIR = os.path.join(CURRENT_DIR, "../../public/data/")
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+INPUT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "../input/"))
+GRAPHER_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "../grapher/"))
+DATA_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "../../public/data/"))
 
 
 def get_jhu():
