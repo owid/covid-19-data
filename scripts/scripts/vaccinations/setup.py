@@ -39,7 +39,7 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Operating System :: OS Independent",
     ],
-    keywords="whatsapp analysis parser chat",
+    keywords="Automation, Covid, Covid-19, Vaccination",
     project_urls={
         "Github": "http://github.com/owid/covid-19-data/scripts/scripts/vaccinations",
         "Bug Tracker": "http://github.com/owid/covid-19-data/issues",
