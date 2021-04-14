@@ -39,7 +39,6 @@ def parse_vaccinations(elem) -> dict:
 
 
 def parse_data(soup: BeautifulSoup) -> pd.Series:
-    regex_pattern = r"累計共?(?P<count>[\d,]*)人次完成新冠疫苗接種"
     regex_pattern = r"(新冠|疫苗接種|疫苗)"
     # Get all h3 elements
     elems = soup.find_all("h3")
