@@ -43,7 +43,7 @@ $ R --version
 In your environment (shell), run:
 
 ```
-$ pip install -r automations/requirements.txt
+$ pip install -e .
 ```
 
 #### Install R requirements
