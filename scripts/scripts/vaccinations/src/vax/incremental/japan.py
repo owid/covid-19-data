@@ -1,7 +1,6 @@
 import datetime
 
 import pandas as pd
-import pytz
 
 from vax.utils.incremental import enrich_data, increment, clean_count
 from vax.utils.utils import get_soup
@@ -9,27 +8,30 @@ from vax.utils.utils import get_soup
 
 def read(source: str) -> pd.Series:
 
-    soup = get_soup(source)
-    blocks = soup.find_all(class_="aly_tx_center")
+    df = pd.read_excel(source, skiprows=2, usecols="A:E", nrows=2)
 
-    for block in blocks:
+    first_col = df.columns[0]
 
-        if "医療従事者等：" in block.text:
-            healthcare_workers = clean_count(block.find("font").text)
-
-        elif "高齢者：" in block.text:
-            elderly = clean_count(block.find("font").text)
-
-    total_vaccinations = healthcare_workers + elderly
+    total_vaccinations = df.loc[df[first_col] == "合計", " 接種回数　"].item()
+    people_vaccinated = df.loc[df[first_col] == "合計", " 内１回目"].item()
+    people_fully_vaccinated = df.loc[df[first_col] == "合計", " 内２回目"].item()
+    date = str(df.loc[df[first_col] != "合計", first_col].item().date())
     
     return pd.Series(data={
         "total_vaccinations": total_vaccinations,
+        "people_vaccinated": people_vaccinated,
+        "people_fully_vaccinated": people_fully_vaccinated,
+        "date": date,
     })
 
 
-def enrich_date(input: pd.Series) -> pd.Series:
-    date = str(datetime.datetime.now(pytz.timezone("Asia/Tokyo")).date())
-    return enrich_data(input, "date", date)
+def merge_series(healthcare: pd.Series, elderly: pd.Series) -> pd.Series:
+    return pd.Series(data={
+        "total_vaccinations": healthcare.total_vaccinations + elderly.total_vaccinations,
+        "people_vaccinated": healthcare.people_vaccinated + elderly.people_vaccinated,
+        "people_fully_vaccinated": healthcare.people_fully_vaccinated + elderly.people_fully_vaccinated,
+        "date": max([healthcare.date, elderly.date]),
+    })
 
 
 def enrich_location(ds: pd.Series) -> pd.Series:
@@ -40,26 +42,33 @@ def enrich_vaccine(ds: pd.Series) -> pd.Series:
     return enrich_data(ds, "vaccine", "Pfizer/BioNTech")
 
 
-def enrich_source(ds: pd.Series, source: str) -> pd.Series:
-    return enrich_data(ds, "source_url", source)
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(
+        ds, "source_url", "https://www.kantei.go.jp/jp/headline/kansensho/vaccine.html"
+    )
 
 
-def pipeline(ds: pd.Series, source: str) -> pd.Series:
+def pipeline(healthcare: pd.Series, elderly: pd.Series) -> pd.Series:
     return (
-        ds
-        .pipe(enrich_date)
+        merge_series(healthcare, elderly)
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
-        .pipe(enrich_source, source)
+        .pipe(enrich_source)
     )
 
 
 def main():
-    source = "https://www.kantei.go.jp/jp/headline/kansensho/vaccine.html"
-    data = read(source).pipe(pipeline, source)
+
+    source_healthcare = "https://www.kantei.go.jp/jp/content/IRYO-vaccination_data.xlsx"
+    source_elderly = "https://www.kantei.go.jp/jp/content/KOREI-vaccination_data.xlsx"
+
+    data = pipeline(read(source_healthcare), read(source_elderly))
+
     increment(
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
         date=data["date"],
         source_url=data["source_url"],
         vaccine=data["vaccine"]
