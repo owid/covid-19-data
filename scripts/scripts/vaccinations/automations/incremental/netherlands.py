@@ -24,8 +24,11 @@ def read(source: str) -> pd.Series:
 
 
 def parse_date(soup: BeautifulSoup):
-    date = re.search(r"\d+\s\w+ 202\d", soup.find(class_="content-block-wrapper").h2.text).group(0)
-    date = dateparser.parse(date, languages=["nl"])
+    for h2 in soup.find_all("h2"):
+        date = re.search(r"\d+\s\w+ 202\d", h2.text).group(0)
+        if date:
+            date = dateparser.parse(date, languages=["nl"])
+            break
     return str(date.date())
 
 
