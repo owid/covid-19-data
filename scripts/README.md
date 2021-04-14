@@ -2,6 +2,8 @@
 
 Scripts used internally to generate and standardize the data files.
 
+For information on our vaccination automated scripts, check [here](scripts/vaccinations/README.md).
+
 ## How to run these scripts
 
 ### Prerequisites
