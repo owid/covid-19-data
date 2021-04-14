@@ -6,8 +6,8 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-from vax.utils.incremental import enrich_data, increment, clean_count
-from vax.utils.utils import get_soup
+from vax.utils.utils import get_soup, 
+from vax.utils.incremental import clean_count
 
 
 def parse_date(elem) -> str:

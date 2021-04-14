@@ -6,13 +6,13 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 from vax.utils.incremental import enrich_data, increment, clean_count
-import vax.utils.utils import get_soup 
+from vax.utils.utils import get_soup 
 
 
 def read(source: str) -> pd.Series:
-    soup = vaxutils.get_soup(source)
+    soup = get_soup(source)
     link = parse_infogram_link(soup)
-    soup = vaxutils.get_soup(link)
+    soup = get_soup(link)
     infogram_data = parse_infogram_data(soup)
     return pd.Series({
         "total_vaccinations": parse_infogram_doses(infogram_data),
