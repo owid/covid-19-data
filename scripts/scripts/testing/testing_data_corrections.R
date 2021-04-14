@@ -6,3 +6,7 @@ collated[Country == "Austria" & Date >= "2021-01-01", `Short-term tests per case
 # included cases confirmed without PCR tests (while our data only includes PCR tests)
 collated[Country == "Ecuador" & Date < "2020-09-14", `Short-term positive rate` := NA]
 collated[Country == "Ecuador" & Date < "2020-09-14", `Short-term tests per case` := NA]
+
+# Mauritania: the test definition does not match the case definition (screening tests possibly included in testing figures)
+collated[Country == "Mauritania", `Short-term positive rate` := NA]
+collated[Country == "Mauritania", `Short-term tests per case` := NA]
