@@ -38,6 +38,8 @@ def enrich_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
 
 def enrich_vaccine(input: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine(date: str) -> str:
+        if date >= "2021-04-14":
+            return "Moderna, Pfizer/BioNTech"
         if date >= "2021-02-08":
             return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
         if date >= "2021-01-13":
