@@ -2,7 +2,7 @@
 
 Scripts used internally to generate and standardize the data files.
 
-For details about vaccination automation script check [here](scripts/vaccinations/README.md).
+For information on our vaccination automated scripts, check [here](scripts/vaccinations/README.md).
 
 ## How to run these scripts
 
