@@ -44,6 +44,7 @@ class Ecuador(object):
         )
 
     def enrich_vaccine(self, df: pd.DataFrame) -> pd.DataFrame:
+        """TODO: https://github.com/andrab/ecuacovid/blob/master/datos_crudos/vacunas/fabricantes.csv"""
         def _enrich_vaccine(date: str):
             if date < '2021-03-06':
                 return 'Pfizer/BioNTech'
