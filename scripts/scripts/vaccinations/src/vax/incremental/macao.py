@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-from vax.utils.utils import get_soup, 
+from vax.utils.utils import get_soup
 from vax.utils.incremental import clean_count
 
 

@@ -7,15 +7,28 @@ results = Parallel(n_jobs=2)(delayed(process)(i) for i in range(10))
 print(results)
 """
 import logging
+import os
 import importlib
 from datetime import datetime
 
+import pandas as pd
+
 from vax.batch import __all__ as batch_countries
 from vax.incremental import __all__ as incremental_countries
+from vax.utils.gsheets import GSheet
+from vax.process import process_location
+
+
+SCRAPING_SKIP_COUNTRIES = []
+PROCESS_SKIP_COUNTRIES = []
+VAX_ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+
+AUTOMATED_OUTPUT_DIR = os.path.abspath(os.path.join(VAX_ROOT_DIR, "./output"))
+PUBLIC_DATA_DIR = os.path.abspath(os.path.join(VAX_ROOT_DIR, "../../../public/data/vaccinations/country_data/"))
+CONFIG_FILE = os.path.abspath(os.path.join(VAX_ROOT_DIR, "vax_dataset_config.json"))
 
 
 logger = logging.Logger('catch_all')
-SKIP_COUNTRIES = ["canada"]
 
 batch_countries = [f"vax.batch.{c}" for c in batch_countries]
 incremental_countries = [f"vax.incremental.{c}" for c in incremental_countries]
@@ -27,13 +40,12 @@ def main_get_data():
     
     Is equivalent to script `run_python_scripts.py`
     """
-    modules_name = ["vax.incremental.canada", "vax.incremental.netherlands", "vax.incremental.morocco"]
     modules_failed = []
     for module_name in modules_name:
         date_str = datetime.now().strftime("%Y-%m-%d %X")
         print(f">> {date_str} - {module_name}")
         country = module_name.split(".")[-1]
-        if country in SKIP_COUNTRIES:
+        if country in SCRAPING_SKIP_COUNTRIES:
             print("    skipped!")
             continue
         module = importlib.import_module(module_name)
@@ -61,5 +73,36 @@ def main_get_data():
         print("\n".join([f"* {m}" for m in modules_failed]))
 
 
+def main_process_data():
+    # Get data from sheets
+    print(">> Getting data from Google Spreadsheet...")
+    gsheet = GSheet.from_json(path=CONFIG_FILE)
+    df_manual_list = gsheet.df_list()
+
+    # Get automated-country data
+    print(">> Getting data from output...")
+    automated = gsheet.automated_countries
+    filepaths_auto = [os.path.join(AUTOMATED_OUTPUT_DIR, f"{country}.csv") for country in automated]
+    df_auto_list = [pd.read_csv(filepath) for filepath in filepaths_auto]
+
+    # Concatenate
+    vax = df_manual_list + df_auto_list
+
+    # Process locations
+    print(">> Processing and exporting data...")
+    vax = [process_location(df) for df in vax if df.loc[0, "location"] not in PROCESS_SKIP_COUNTRIES]
+
+    # Export
+    for df in vax:
+        country = df.loc[0, "location"]
+        df.to_csv(os.path.join(PUBLIC_DATA_DIR, f"{country}.csv"), index=False)
+    df = pd.concat(vax).sort_values(by=["location", "date"])
+    df.to_csv("vaccinations.preliminary.csv", index=False)
+    gsheet.metadata.to_csv("metadata.preliminary.csv", index=False)
+    print(">> Exported")
+
+
 if __name__ == "__main__":
     main_get_data()
+    print("----------------------------\n----------------------------\n----------------------------\n")
+    main_process_data()

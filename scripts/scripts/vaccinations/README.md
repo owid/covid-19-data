@@ -2,8 +2,8 @@
 
 Vaccination data is updated on a daily basis. For some countries, the update is done by means of an automated process,
 while others require some manual work. To keep track of the currently automated processes, check [this
-table](automations/automation_state.csv), and the scripts [in the `batch` folder](automations/batch) and [the `incremental`
-folder](automations/incremental).
+table](automation_state.csv), and the scripts [in the `batch` folder](src/vax/batch) and [the `incremental`
+folder](src/vax/incremental).
 
 Once the automation is successfully executed, the following files are updated:
 
@@ -76,17 +76,17 @@ Check for new updates and manually add them in the internal spreadsheet:
 - Look for new data based on previousl-used source URLs.
 
 
-### 2. Automated data updates
+### 2. Automated process
 Run the following script:
 
 ```
-$ python run_python_scripts.py
+$ python src/vax/
 ```
 
-- This will run the scrips in [in this folder](automations/batch) and [this
-folder](automations/incremental). It will generate individual country files and save them in
-[`automations/output`](automations/output).
-- Additionally, it'll automatically run `collect_vax_data.py` which will generate public country data in
+This will do the following:
+1. Run the scrips for [batch](src/vax/batch) and [incremental](src/vax/incremental) updates. It will then generate
+  individual country files and save them in [`output`](output).
+2. Collect manually updated data from the spreadsheet and data generated in (1). Process this data, and generate public country data in
   [`country_data`](../../../public/data/vaccinations/country_data/), as well as temporary files 
   `vaccinations.preliminary.csv` and `metadata.preliminary.csv` which are later
   required by `generate_dataset.R`.
