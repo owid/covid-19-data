@@ -2,57 +2,98 @@ import datetime
 import pandas as pd
 
 
-def week_to_date(row):
-    origin_date = pd.to_datetime("2019-12-29") if row.Vecka >= 52 else pd.to_datetime("2021-01-03")
-    return origin_date + pd.DateOffset(days=7*int(row.Vecka))
+class Sweden(object):
 
+    def __init__(self, source_url: str, location: str, columns_rename: dict = None, columns_cumsum: list = None):
+        """Constructor
 
-def get_weekly_data():
+        Args:
+            source_url (str): Source data url
+            location (str): Location name
+            columns_rename (dict, optional): Maps original to new names. Defaults to None.
+            columns_cumsum (list, optional): List of columns to apply cumsum to. Comes handy when the values reported
+                                                are daily. Defaults to None.
+        """
+        self.source_url = source_url
+        self.location = location
+        self.columns_rename = columns_rename
 
-    url = "https://fohm.maps.arcgis.com/sharing/rest/content/items/fc749115877443d29c2a49ea9eca77e9/data"
-    df = pd.read_excel(url, sheet_name="Vaccinerade tidsserie")
-    df = df[df["Region"] == "| Sverige |"][["Vecka", "Antal vaccinerade", "Dosnummer"]]
-    df = df.pivot_table(values="Antal vaccinerade", index="Vecka", columns="Dosnummer").reset_index()
+    @property
+    def output_file(self):
+        return f"./output/{self.location}.csv"
 
-    # Week-to-date logic will stop working after 2021
-    assert datetime.date.today().year < 2022
-    df.loc[:, "date"] = df.apply(week_to_date, axis=1).dt.date.astype(str)
+    def read(self) -> pd.DataFrame:
+        daily = self._read_daily_data()
+        weekly = self._read_weekly_data()
+        weekly = weekly[weekly["date"] < daily["date"].min()]
+        return pd.concat([daily, weekly]).sort_values("date").reset_index(drop=True)
 
-    df = df.drop(columns=["Vecka"]).sort_values("date").rename(columns={
-        "Dos 1": "people_vaccinated", "Dos 2": "people_fully_vaccinated"
-    })
-    df.loc[:, "total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
-    return df
+    def enrich_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df.assign(
+            location=self.location,
+            source_url=self.source_url
+        )
 
+    def enrich_vaccine(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df.assign(vaccine="Oxford/AstraZeneca, Pfizer/BioNTech")
 
-def get_daily_data():
+    def pipeline(self, df: pd.DataFrame) -> pd.DataFrame:
+        return (
+            df
+            .pipe(self.enrich_vaccine)
+            .pipe(self.enrich_columns)
+        )
 
-    df = pd.read_html("https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/")[1]
+    def _week_to_date(self, row: int):
+        origin_date = pd.to_datetime("2019-12-29") if row.Vecka >= 52 else pd.to_datetime("2021-01-03")
+        return origin_date + pd.DateOffset(days=7*int(row.Vecka))
 
-    df = df[["Datum", "Antal vaccinerademed minst 1 dos*", "Antal vaccinerademed 2 doser"]].rename(columns={
-        "Datum": "date",
-        "Antal vaccinerademed minst 1 dos*": "people_vaccinated",
-        "Antal vaccinerademed 2 doser": "people_fully_vaccinated",
-    })
+    def _read_weekly_data(self) -> pd.DataFrame:
+        url = "https://fohm.maps.arcgis.com/sharing/rest/content/items/fc749115877443d29c2a49ea9eca77e9/data"
+        df = pd.read_excel(url, sheet_name="Vaccinerade tidsserie")
+        df = df[df["Region"] == "| Sverige |"][["Vecka", "Antal vaccinerade", "Vaccinationsstatus"]]
+        df = df.pivot_table(values="Antal vaccinerade", index="Vecka", columns="Vaccinationsstatus").reset_index()
+        # Week-to-date logic will stop working after 2021
+        if not datetime.date.today().year < 2022:
+            raise ValueError("Check the year! This script is not ready for 2022!")
+        df.loc[:, "date"] = df.apply(self._week_to_date, axis=1).dt.date.astype(str)
+        df = df.drop(columns=["Vecka"]).sort_values("date").rename(columns={
+            "Minst 1 dos": "people_vaccinated", "Färdigvaccinerade": "people_fully_vaccinated"
+        })
+        df.loc[:, "total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
+        return df
 
-    df["people_vaccinated"] = df["people_vaccinated"].str.replace(r"\s", "", regex=True).astype(int)
-    df["people_fully_vaccinated"] = df["people_fully_vaccinated"].str.replace(r"\s", "", regex=True).astype(int)
-    df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
-    return df
+    def _read_daily_data(self) -> pd.DataFrame:
+        url = (
+            "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/"
+            "vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/"
+        )
+        df = pd.read_html(url)[1]
+        df = df[["Datum", "Antal vaccinerademed minst 1 dos*", "Antal vaccinerademed 2 doser"]].rename(columns={
+            "Datum": "date",
+            "Antal vaccinerademed minst 1 dos*": "people_vaccinated",
+            "Antal vaccinerademed 2 doser": "people_fully_vaccinated",
+        })
+        df["people_vaccinated"] = df["people_vaccinated"].str.replace(r"\s", "", regex=True).astype(int)
+        df["people_fully_vaccinated"] = df["people_fully_vaccinated"].str.replace(r"\s", "", regex=True).astype(int)
+        df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
+        return df
+
+    def to_csv(self, output_file: str = None):
+        """Generalized"""
+        df = self.read().pipe(self.pipeline)
+        if output_file is None:
+            output_file = self.output_file
+        df.to_csv(output_file, index=False)
 
 
 def main():
-
-    daily = get_daily_data()
-    weekly = get_weekly_data()
-    weekly = weekly[weekly["date"] < daily["date"].min()]
-    df = pd.concat([daily, weekly]).sort_values("date").reset_index(drop=True)
-
-    df.loc[:, "location"] = "Sweden"
-    df.loc[:, "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
-    df.loc[:, "source_url"] = "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/"
-
-    df.to_csv("output/Sweden.csv", index=False)
+    Sweden(
+        source_url=(
+            "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/"
+        ),
+        location="Sweden"
+    ).to_csv()
 
 
 if __name__ == '__main__':
