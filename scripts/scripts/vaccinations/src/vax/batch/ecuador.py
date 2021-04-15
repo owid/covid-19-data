@@ -17,7 +17,7 @@ class Ecuador(object):
     
     @property
     def output_file(self):
-        return f"automations/output/{self.location}.csv"
+        return f"./output/{self.location}.csv"
 
     def read(self) -> pd.DataFrame:
         url = f"{self.source_url}/raw/master/datos_crudos/vacunas/vacunas.csv"

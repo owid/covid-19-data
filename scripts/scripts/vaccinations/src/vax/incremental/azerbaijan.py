@@ -8,7 +8,8 @@ from bs4 import BeautifulSoup
 import PyPDF2
 from pdfreader import SimplePDFViewer
 
-import vax.utils.incremental import get_soup, enrich_data, increment
+from vax.utils.incremental import enrich_data, increment
+from vax.utils.utils import get_soup
 
 
 def read(source: str):

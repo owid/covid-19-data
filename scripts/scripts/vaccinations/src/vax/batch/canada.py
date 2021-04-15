@@ -24,7 +24,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def main2():
+def main():
     source = "https://api.covid19tracker.ca/reports"
     destination = "output/Canada.csv"
 

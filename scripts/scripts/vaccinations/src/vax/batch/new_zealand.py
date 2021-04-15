@@ -25,7 +25,7 @@ class NewZealand(object):
 
     @property
     def output_file(self):
-        return f"output/{self.location}.csv"
+        return f"./output/{self.location}.csv"
 
     def load_data(self) -> pd.DataFrame:
         """Load original data"""
