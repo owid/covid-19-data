@@ -1,4 +1,4 @@
-urls <- read_html("http://irangov.ir/cat/550") %>%
+urls <- read_html("https://irangov.ir/ministry-of-health-and-medical-education") %>%
     html_nodes(".list-content-body a") %>%
     html_attr("href") %>%
     paste0("http://irangov.ir", .)
