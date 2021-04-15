@@ -38,7 +38,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 def enrich_date(input: pd.Series) -> pd.Series:
     date = str((datetime.datetime.now(pytz.timezone("Africa/Casablanca")) - datetime.timedelta(days=1)).date())
-    return vaxutils.enrich_data(input, "date", date)
+    return enrich_data(input, "date", date)
 
 
 def enrich_location(input: pd.Series) -> pd.Series:

@@ -6,6 +6,7 @@ def process(i):
 results = Parallel(n_jobs=2)(delayed(process)(i) for i in range(10))
 print(results)
 """
+import argparse
 import logging
 import os
 import importlib
@@ -102,7 +103,27 @@ def main_process_data():
     print(">> Exported")
 
 
+def _parse_args():
+    parser = argparse.ArgumentParser(description="Execute data collection pipeline.")
+    parser.add_argument(
+        "-ng", "--no-get-data", action="store_true", type=bool
+        help="Skip getting the data."
+    )
+    parser.add_argument(
+        "-np", "--no-process-data", action="store_true", type=bool,
+        help="Skip processing the data."
+    )
+    args = parser.parse_args()
+    return args
+
+
 if __name__ == "__main__":
-    main_get_data()
-    print("----------------------------\n----------------------------\n----------------------------\n")
-    main_process_data()
+    args = _parse_args()
+    print(args.no_get_data)
+    print(args.no_process_data)
+    if not args.no_get_data:
+        main_get_data()
+        print("----------------------------\n----------------------------\n----------------------------\n")
+    if not args.no_process_data:
+        main_process_data()
+        print("----------------------------\n----------------------------\n----------------------------\n")

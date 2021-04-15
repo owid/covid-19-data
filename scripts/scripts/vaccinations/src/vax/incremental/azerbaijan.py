@@ -8,11 +8,11 @@ from bs4 import BeautifulSoup
 import PyPDF2
 from pdfreader import SimplePDFViewer
 
-import vaxutils
+import vax.utils.incremental import get_soup, enrich_data, increment
 
 
 def read(source: str):
-    soup = vaxutils.get_soup(source)
+    soup = get_soup(source)
     url = parse_pdf_link(soup, source)
     ds = pd.Series(parse_data(url))
     return ds
@@ -69,15 +69,15 @@ def parse_vaccinations(filename):
 
 
 def enrich_location(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, "location", "Azerbaijan")
+    return enrich_data(ds, "location", "Azerbaijan")
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return vaxutils.enrich_data(ds, "vaccine", "Sinovac")
+    return enrich_data(ds, "vaccine", "Sinovac")
 
 
 def enrich_source(ds: pd.Series, source: str) -> pd.Series:
-    return vaxutils.enrich_data(ds, "source_url", source)
+    return enrich_data(ds, "source_url", source)
 
 
 def pipeline(df: pd.DataFrame, source: str) -> pd.DataFrame:
@@ -92,7 +92,7 @@ def pipeline(df: pd.DataFrame, source: str) -> pd.DataFrame:
 def main():
     source = "https://koronavirusinfo.az"
     data = read(source).pipe(pipeline, source)
-    vaxutils.increment(
+    increment(
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],
