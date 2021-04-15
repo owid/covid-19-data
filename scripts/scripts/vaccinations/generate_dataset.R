@@ -138,7 +138,7 @@ add_iso <- function(df) {
 generate_automation_file <- function(metadata) {
     auto <- metadata[, c("location", "automated")]
     setorder(auto, -automated, location)
-    fwrite(auto, "automations/automation_state.csv")
+    fwrite(auto, "automation_state.csv")
 }
 
 generate_locations_file <- function(metadata, vax) {
@@ -189,7 +189,7 @@ generate_html <- function(metadata) {
     )
     message(coverage_info)
     html_table <- paste0("<p><strong>", coverage_info, "</strong></p>", html_table)
-    writeLines(html_table, "automations/source_table.html")
+    writeLines(html_table, "source_table.html")
 }
 
 
