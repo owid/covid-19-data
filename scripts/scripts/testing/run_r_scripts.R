@@ -60,7 +60,7 @@ add_snapshot <- function(count, sheet_name, country, units, date = today(),
     }
 
     df <- rbindlist(list(prev, new), use.names = TRUE)
-    setorder(df, -Date, -`Cumulative total`)
+    setorder(df, Date)
     df <- df[, .SD[1], Date]
 
     fwrite(df, sprintf("automated_sheets/%s.csv", sheet_name))
