@@ -13,8 +13,8 @@ def read(source: str) -> pd.Series:
 
     soup = BeautifulSoup(requests.get(source).content, "html.parser")
 
-    for img in soup.find(id="site-dashboard").find_all("img"):
-        if img["alt"] == "Vaccination State Data":
+    for img in soup.find_all("img"):
+        if img.get("alt") == "Vaccination State Data":
             url = img.parent["href"]
             break
 
