@@ -95,8 +95,7 @@ def main():
     data = read_vaccination_datasets(source)
 
     data.pipe(pipeline, country_code="CH").to_csv("automations/output/Switzerland.csv", index=False)
-    # Will probably add Liechtenstein data later, but the data looks wrong as of 2021-02-17
-    # data.pipe(pipeline, country_code="FL").to_csv("automations/output/Liechtenstein.csv", index=False)
+    data.pipe(pipeline, country_code="FL").to_csv("automations/output/Liechtenstein.csv", index=False)
 
 
 if __name__ == "__main__":
