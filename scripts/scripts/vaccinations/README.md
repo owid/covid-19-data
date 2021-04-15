@@ -2,9 +2,29 @@
 
 Vaccination data is updated on a daily basis. For some countries, the update is done by means of an automated process,
 while others require some manual work. To keep track of the currently automated processes, check [this
-table](automation_state.csv), and the scripts [in the `batch` folder](src/vax/batch) and [the `incremental`
-folder](src/vax/incremental).
+table](automation_state.csv), and [`batch`](src/vax/batch) and [`incremental`](src/vax/incremental) folders for
+automated scripts.
 
+### Content
+- [Directory content](#directory-content)
+- [Output generated](#output-generated)
+- [Update the data](#update-the-data)
+- [FAQs](#FAQs)
+
+## Directory content
+- [`output`](output): Temporary automated imports are placed here.
+- [`src/vax`](src/vax): Scripts to automate country data imports.
+- [`us_states/input`](us_states/input): Data for US-state vaccination data updates.
+- [`automation_state.csv`](automation_state.csv):
+- [`generate_dataset.R`](generate_dataset.R): R script to generate the final vaccination dataset.
+- [`generate_dataset_by_manufacturer.R`](generate_dataset_by_manufacturer.R): R script to generate vaccination
+  manufacturer dataset. It is called by `generate_dataset.R`.
+- [`requirements.txt`](requirements.txt): Python library dependencies.
+- [`setup.py`](setup.py): Python library setup instructions file.
+- [`source_table.html`](source_table.html): Table with sources used, used in OWID website.
+- [`vax_update.sh.template`](vax_update.sh.template): Template to push vaccination update changes.
+
+## Generated files
 Once the automation is successfully executed, the following files are updated:
 
 - [`vaccinations.csv`](../../../public/data/vaccinations/vaccinations.csv): main output with vaccination data of all countries.
@@ -83,7 +103,7 @@ Run the following script:
 $ python src/vax/
 ```
 
-This will do the following:
+By default it will do the following:
 1. Run the scrips for [batch](src/vax/batch) and [incremental](src/vax/incremental) updates. It will then generate
   individual country files and save them in [`output`](output).
 2. Collect manually updated data from the spreadsheet and data generated in (1). Process this data, and generate public country data in
@@ -91,9 +111,11 @@ This will do the following:
   `vaccinations.preliminary.csv` and `metadata.preliminary.csv` which are later
   required by `generate_dataset.R`.
 
-**Note**: this step might crash for some countries, as the automation scripts might no longer (or temporarily) work
+**Note 1**: this step might crash for some countries, as the automation scripts might no longer (or temporarily) work
 (e.g. due to changes in the source). Try to keep the scripts up to date.
 
+**Note 2**: Optionally you can use arguments `--no-get-data` and `--no-process-data` to skip steps 1 or 2, respectively.
+E.g. executing `$ python src/vax --no-get-data` will just run step 2. For more info check `$ python src/vax --help`.
 
 ### 3. Dataset generation
 Make sure you've succesfully [configured your environment](#0.-dependencies), then run the following script:
@@ -117,17 +139,18 @@ $ python ../megafile.py
 **Note**: you can use [vax_update.sh.template](vax_update.sh.template) as an example of how to automate data updates and push them to the repo.
 
 
-## How to add new automated data collections
-- Create a script and place it in [`automations/batch`](automations/batch) or
-[`automations/incremental`](automations/incremental) depending, on whether it is an incremental or batch update (see [#250](https://github.com/owid/covid-19-data/issues/250)
+## FAQs
+### How to add new automated data collections
+- Create a script and place it in [`src/vax/batch`](src/vax/batch) or
+[`src/vax/incremental`](src/vax/incremental) depending, on whether it is an incremental or batch update (see [#250](https://github.com/owid/covid-19-data/issues/250)
 for more details).
 - Test that it is working and stable.
 - Issue a pull request and wait for a review.
 
 
-## If an automation no longer works
+### If an automation no longer works
 
 If you detect that an automation is no longer working, and the process seems like it can't be fixed at the moment:
 - Set its state to `automated = FALSE` in the `LOCATIONS` tab of the internal spreadsheet.
-- Add a new tab in the spreadsheet to manually input the country data. Make sure to include the historical data from the [`automations/output`](automations/output) file.
+- Add a new tab in the spreadsheet to manually input the country data. Make sure to include the historical data from the [`output`](output) file.
 - Delete the automation script and automated CSV output to avoid confusion.
