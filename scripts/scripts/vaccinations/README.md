@@ -94,7 +94,7 @@ For `google`-related fields, you'll need a valid OAuth JSON credentials file, as
 
 Check for new updates and manually add them in the internal spreadsheet:
 - See this repo's [pull requests](https://github.com/owid/covid-19-data/pulls) and [issues](https://github.com/owid/covid-19-data/issues).
-- Look for new data based on previousl-used source URLs.
+- Look for new data based on previously-used source URLs.
 
 
 ### 2. Automated process
