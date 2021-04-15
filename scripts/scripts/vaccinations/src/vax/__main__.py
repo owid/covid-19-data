@@ -106,11 +106,11 @@ def main_process_data():
 def _parse_args():
     parser = argparse.ArgumentParser(description="Execute data collection pipeline.")
     parser.add_argument(
-        "-ng", "--no-get-data", action="store_true", type=bool
+        "-ng", "--no-get-data", action="store_true",
         help="Skip getting the data."
     )
     parser.add_argument(
-        "-np", "--no-process-data", action="store_true", type=bool,
+        "-np", "--no-process-data", action="store_true",
         help="Skip processing the data."
     )
     args = parser.parse_args()
@@ -119,11 +119,11 @@ def _parse_args():
 
 if __name__ == "__main__":
     args = _parse_args()
-    print(args.no_get_data)
-    print(args.no_process_data)
     if not args.no_get_data:
+        print("-- Getting data... --")
         main_get_data()
         print("----------------------------\n----------------------------\n----------------------------\n")
     if not args.no_process_data:
+        print("-- Processing data... --")
         main_process_data()
         print("----------------------------\n----------------------------\n----------------------------\n")
