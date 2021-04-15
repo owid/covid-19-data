@@ -136,7 +136,7 @@ def vaccines_tracked(path_locations: str = None, location: str = None, as_list: 
         return list(set([vv for v in df.vaccines for vv in v]))
     return df
 
-def vaccines_approved(path_locations: str = None) -> pd.DataFrame:
+def vaccines_approved(path_locations: str = None, verbose: bool = False) -> pd.DataFrame:
     """Get approved vaccines for tracked countries.
 
     This may take between 2-3 minutes.
@@ -148,6 +148,8 @@ def vaccines_approved(path_locations: str = None) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Dataframe with location and vaccines approved.
     """
+    if verbose:
+        print("This may take from 2 to 3 minutes...")
     if not path_locations:
         path_locations = (
             os.path.abspath(os.path.join(CURRENT_DIR, "../../../../../../public/data/vaccinations/locations.csv"))
@@ -158,7 +160,7 @@ def vaccines_approved(path_locations: str = None) -> pd.DataFrame:
     return df.assign(vaccines=y.apply(lambda x: set(x) if x is not None else None))
 
 
-def vaccines_missing(aggregated: bool = False):
+def vaccines_missing(aggregated: bool = False, verbose: bool = False):
     """Get missing vaccines.
 
     - Columns "_unapproved" mean vaccines not approved but currently being administered.
@@ -183,7 +185,7 @@ def vaccines_missing(aggregated: bool = False):
         }
     else:
         vax_tracked = vaccines_tracked()
-        vax_approved = vaccines_approved()
+        vax_approved = vaccines_approved(verbose=True)
         # Build result dataframe
         df = vax_tracked.merge(vax_approved, on="location", suffixes=("_tracked", "_approved"))
         df = df[df.vaccines_tracked != df.vaccines_approved].dropna()

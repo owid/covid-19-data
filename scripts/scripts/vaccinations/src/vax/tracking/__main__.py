@@ -55,7 +55,7 @@ def main():
         print("----------------------------\n----------------------------\n----------------------------\n")
     if args.vaccines_missing:
         print("-- Missing vaccines... --")
-        df = vaccines_missing()
+        df = vaccines_missing(verbose=True)
         if args.to_csv:
             df.to_csv("vaccines-missing.csv", index=False)
         print(df)
