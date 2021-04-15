@@ -1,8 +1,10 @@
+import datetime
 import re
 import requests
 
 from bs4 import BeautifulSoup
 import pandas as pd
+import pytz
 
 from vax.utils.incremental import enrich_data, increment, clean_date
 
@@ -31,10 +33,12 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     data["people_fully_vaccinated"] = int(re.sub(r"[^\d]", "", spans[-2].text))
     data["total_vaccinations"] = data["people_vaccinated"] + data["people_fully_vaccinated"]
 
-    date = re.search(r"[\d-]{10}", spans[0].text).group(0)
-    data["date"] = clean_date(date, "%d-%m-%Y")
-
     return data
+
+
+def enrich_date(input: pd.Series) -> pd.Series:
+    date = str((datetime.datetime.now(pytz.timezone("Africa/Casablanca")) - datetime.timedelta(days=1)).date())
+    return vaxutils.enrich_data(input, "date", date)
 
 
 def enrich_location(input: pd.Series) -> pd.Series:
@@ -52,6 +56,7 @@ def enrich_source(input: pd.Series, source: str) -> pd.Series:
 def pipeline(input: pd.Series, source: str) -> pd.Series:
     return (
         input
+        .pipe(enrich_date)
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source, source)
