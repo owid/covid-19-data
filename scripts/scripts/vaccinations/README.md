@@ -140,7 +140,7 @@ $ python ../megafile.py
 **Note**: you can use [vax_update.sh.template](vax_update.sh.template) as an example of how to automate data updates and push them to the repo.
 
 
-## Other library tools
+## Other functions
 ### Tracking
 It is extremely usefull to get some insights on which data are we tracking (and which we are not). This can be done with
 module [`vax.tracking`](src/vax/tracking). Find below some use cases.
