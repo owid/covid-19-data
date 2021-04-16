@@ -37,7 +37,7 @@ def _sanity_checks(df: pd.DataFrame) -> pd.DataFrame:
     location = df.loc[:, "location"].unique()
     vaccines_accepted = [
         "Pfizer/BioNTech", "Moderna", "Oxford/AstraZeneca", "Sputnik V", "Sinopharm/Beijing",
-        "Sinopharm/Wuhan", "Johnson&Johnson", "Sinovac", "Covaxin", "EpiVacCorona"
+        "Sinopharm/Wuhan", "Johnson&Johnson", "Sinovac", "Covaxin", "EpiVacCorona", "CanSino"
     ]
     df_ = df[["people_vaccinated", "people_fully_vaccinated", "total_vaccinations"]].dropna()
     vaccines_used = set([xx for x in df.vaccine.tolist() for xx in x.split(', ')])
