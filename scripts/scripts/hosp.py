@@ -231,14 +231,14 @@ def owid_format(df):
     df = df[-df["indicator"].str.contains("Weekly new plot admissions")]
     df = df.groupby(["entity", "date", "indicator"], as_index=False).max()
 
-    df = df.pivot(index=["entity", "date"], columns="indicator").value.reset_index()
-    df = df.rename(columns={"entity": "Country", "year": "Year"})
+    df = df.pivot_table(index=["entity", "date"], columns="indicator").value.reset_index()
+    df = df.rename(columns={"entity": "Country"})
     return df
 
 
 def date_to_owid_year(df):
     df.loc[:, "date"] = (pd.to_datetime(df.date, format="%Y-%m-%d") - datetime.datetime(2020, 1, 21)).dt.days
-    df = df.rename(columns={"date": "year"})
+    df = df.rename(columns={"date": "Year"})
     return df
 
 
