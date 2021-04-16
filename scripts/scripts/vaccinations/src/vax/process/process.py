@@ -48,7 +48,7 @@ def _sanity_checks(df: pd.DataFrame) -> pd.DataFrame:
     if any(df.location.isnull()) or df.location.nunique() != 1:
         raise ValueError(f"{location} -- Invalid location! Check {df.location}")
     if df.date.nunique() != len(df):
-        raise ValueError(f"{location} -- Missmatch between number of rows {len(df)} and number of different dates"
+        raise ValueError(f"{location} -- Missmatch between number of rows {len(df)} and number of different dates "
                             f"{df.date.nunique()}. Check {df.date.unique()}")
     if any(df_.people_fully_vaccinated > df_.people_vaccinated) or any(df_.people_vaccinated > df_.total_vaccinations):
         raise ValueError(f"{location} -- Logic not valid! Check columns ['people_vaccinated', "
