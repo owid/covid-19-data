@@ -76,7 +76,7 @@ def country_updates_summary(path_vaccinations: str = None, path_locations: str =
     return df
 
 
-def missing_countries(path_population: str = None, path_locations: str = None, ascending: bool = False,
+def countries_missing(path_population: str = None, path_locations: str = None, ascending: bool = False,
                             as_dict: bool = False):
     """Get countries currently not present in our dataset.
 

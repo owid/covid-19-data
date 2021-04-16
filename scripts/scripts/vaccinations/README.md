@@ -145,6 +145,8 @@ $ python ../megafile.py
 It is extremely usefull to get some insights on which data are we tracking (and which we are not). This can be done with
 module [`vax.tracking`](src/vax/tracking). Find below some use cases.
 
+**Note**: Use uption `--to-csv` to export results as csv files (a default filename is used).
+
 #### Which countries are missing?
 Run 
 
