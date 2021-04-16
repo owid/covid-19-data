@@ -232,6 +232,7 @@ def owid_format(df):
     df = df.groupby(["entity", "date", "indicator"], as_index=False).max()
 
     df = df.pivot(index=["entity", "date"], columns="indicator").value.reset_index()
+    df = df.rename(columns={"entity": "Country", "year": "Year"})
     return df
 
 
