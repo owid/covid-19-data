@@ -9,6 +9,7 @@ automated scripts.
 - [Directory content](#directory-content)
 - [Output generated](#output-generated)
 - [Update the data](#update-the-data)
+- [Other functions](#other-functions)
 - [FAQs](#FAQs)
 
 ## Directory content
@@ -25,7 +26,7 @@ automated scripts.
 - [`vax_update.sh.template`](vax_update.sh.template): Template to push vaccination update changes.
 
 ## Generated files
-Once the automation is successfully executed, the following files are updated:
+Once the automation is successfully executed (see [Update the data](#update-the-data) section), the following files are updated:
 
 - [`vaccinations.csv`](../../../public/data/vaccinations/vaccinations.csv): main output with vaccination data of all countries.
 - [`vaccinations.json`](../../../public/data/vaccinations/vaccinations.json): same as `vaccinations.csv` but in JSON format.
@@ -46,7 +47,7 @@ To update the data, make sure you follow the steps below.
 ### 0. Dependencies
 
 
-#### Python and R
+#### 0.1 Python and R
 Make sure you have a working environment with R and python 3 installed. We recommend R >= 4.0.2 and Python >= 3.7.
 
 You can check:
@@ -59,21 +60,21 @@ and
 $ R --version
 ```
 
-#### Install python requirements
+#### 0.2 Install python requirements
 In your environment (shell), run:
 
 ```
 $ pip install -e .
 ```
 
-#### Install R requirements
+#### 0.3 Install R requirements
 In your R console, run:
 
 ```r
 install.packages(c("data.table", "imputeTS", "lubridate", "readr", "retry", "rjson", "stringr", "tidyr", "jsonlite", "bit64"))
 ```
 
-#### Configuration file (internal)
+#### 0.4 Configuration file (internal)
 
 Create a file `vax_dataset_config.json` with all required parameters:
 
@@ -93,7 +94,7 @@ For `google`-related fields, you'll need a valid OAuth JSON credentials file, as
 
 Check for new updates and manually add them in the internal spreadsheet:
 - See this repo's [pull requests](https://github.com/owid/covid-19-data/pulls) and [issues](https://github.com/owid/covid-19-data/issues).
-- Look for new data based on previousl-used source URLs.
+- Look for new data based on previously-used source URLs.
 
 
 ### 2. Automated process
@@ -137,6 +138,48 @@ $ python ../megafile.py
 ```
 
 **Note**: you can use [vax_update.sh.template](vax_update.sh.template) as an example of how to automate data updates and push them to the repo.
+
+
+## Other functions
+### Tracking
+It is extremely usefull to get some insights on which data are we tracking (and which are we not). This can be done with
+module [`vax.tracking`](src/vax/tracking). Find below some use cases.
+
+**Note**: Use uption `--to-csv` to export results as csv files (a default filename is used).
+
+#### Which countries are missing?
+Run 
+
+```
+$ python src/vax/tracking --countries-missing
+```
+Countries are given from most to least populated.
+
+#### Which countries haven't been updated for some time?
+Get the list of countries and their last update by running:
+
+```
+$ python src/vax/tracking --countries-last-updated
+```
+
+Countries are given from least to most recently updated.
+#### Which countries are missing?
+Get the list of countries least updated:
+
+```
+$ python src/vax/tracking --countries-least-updated
+```
+
+Countries are given from least to most frequently updated.
+
+#### Which vaccines are missing?
+Get the list of countries with missing vaccines:
+
+```
+$ python src/vax/tracking --vaccines-missing
+```
+
+Countries are given from the one with the least to the one with he most number of untracked vaccines.
 
 
 ## FAQs

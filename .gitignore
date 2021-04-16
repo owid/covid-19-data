@@ -20,3 +20,5 @@ scripts/tmp
 Icon[
 ]
 *.egg-info
+*.preliminary.csv
+*.tmp.csv
