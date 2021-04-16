@@ -27,9 +27,13 @@ def parse_vaccinations(elem) -> dict:
 
     # Find metrics
     metrics = dict()
-    total_vaccinations = re.search(r"疫苗共有(?P<count>[\d,]*)人次", text)
-    people_vaccinated = re.search(r"1劑疫苗共有(?P<count>[\d,]*)人次", text)
-    people_fully_vaccinated = re.search(r"2劑疫苗共有(?P<count>[\d,]*)人次", text)
+    # total_vaccinations = re.search(r"疫苗共有(?P<count>[\d,]*)人次", text)
+    total_vaccinations = re.search(r"累計已接種劑數(?P<count>[\d,]*)劑", text)
+    # people_vaccinated = re.search(r"1劑疫苗共有(?P<count>[\d,]*)人次", text)
+    people_vaccinated = re.search(r"已接種人數共有(?P<count>[\d,]*)人", text)
+    # people_fully_vaccinated = re.search(r"2劑疫苗共有(?P<count>[\d,]*)人次", text)
+    people_fully_vaccinated = re.search(r"已完成接種2劑有(?P<count>[\d,]*)人", text)
+    
     if total_vaccinations:
         metrics["total_vaccinations"] = clean_count(total_vaccinations.group(1))
     if people_vaccinated:
@@ -54,6 +58,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
                 "source_url": parse_source_url(elem),
                 **parse_vaccinations(elem)
             })
+    # print(records)
     return records
 
 
@@ -110,7 +115,7 @@ def merge_with_current_data(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
     # Load current data
     if os.path.isfile(filepath):
         df_current = pd.read_csv(filepath)
-        #  Merge
+        # Merge
         df_current = df_current[~df_current.date.isin(df.date)]
         df = pd.concat([df, df_current]).sort_values(by="date")
         # Int values
