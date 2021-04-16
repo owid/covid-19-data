@@ -162,6 +162,24 @@ fi
 run_python 'import sweden; sweden.update_db()'
 
 # =====================================================================
+# Hospital & ICU data
+
+hour=$(date +%H)
+if [ $hour == 13 ] ; then
+  # Download CSV
+  echo "Generating hospital & ICU export..."
+  run_python 'import hosp; hosp.generate_dataset()'
+  git add .
+  git commit -m "Automated hospital & ICU update"
+  git push
+fi
+
+# Always run the database update.
+# The script itself contains a check against the database
+# to make sure it doesn't run unnecessarily.
+run_python 'import hosp; hosp.update_db()'
+
+# =====================================================================
 # Google Mobility
 
 hour=$(date +%H)

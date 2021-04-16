@@ -2,14 +2,24 @@ import datetime
 import json
 import os
 import requests
+import sys
+
 import numpy as np
 import pandas as pd
+import pytz
+
+
+CURRENT_DIR = os.path.dirname(__file__)
+sys.path.append(CURRENT_DIR)
+
+from utils.db_imports import import_dataset
 
 
 SOURCE_URL = "https://opendata.ecdc.europa.eu/covid19/hospitalicuadmissionrates/csv/data.csv"
-CURRENT_DIR = os.path.dirname(__file__)
 INPUT_PATH = os.path.join(CURRENT_DIR, "../input/")
-OUTPUT_PATH = os.path.join(CURRENT_DIR, "../grapher/")
+GRAPHER_PATH = os.path.join(CURRENT_DIR, "../grapher/")
+DATASET_NAME = "COVID-2019 - Hospital & ICU"
+ZERO_DAY = "2020-01-21"
 POPULATION = pd.read_csv(
     os.path.join(INPUT_PATH, "un/population_2020.csv"),
     usecols=["iso_code", "entity", "population"]
@@ -221,17 +231,18 @@ def owid_format(df):
     df = df[-df["indicator"].str.contains("Weekly new plot admissions")]
     df = df.groupby(["entity", "date", "indicator"], as_index=False).max()
 
-    df = df.pivot(index=["entity", "date"], columns="indicator").value.reset_index()
+    df = df.pivot_table(index=["entity", "date"], columns="indicator").value.reset_index()
+    df = df.rename(columns={"entity": "Country"})
     return df
 
 
 def date_to_owid_year(df):
     df.loc[:, "date"] = (pd.to_datetime(df.date, format="%Y-%m-%d") - datetime.datetime(2020, 1, 21)).dt.days
-    df = df.rename(columns={"date": "year"})
+    df = df.rename(columns={"date": "Year"})
     return df
 
 
-def main():
+def generate_dataset():
     df = download_data()
     df = standardize_entities(df)
     df = undo_per_100k(df)
@@ -240,8 +251,24 @@ def main():
     df = add_per_million(df)
     df = owid_format(df)
     df = date_to_owid_year(df)
-    df.to_csv(os.path.join(OUTPUT_PATH, "COVID-2019 - Hospital & ICU.csv"), index=False)
+    df.to_csv(os.path.join(GRAPHER_PATH, "COVID-2019 - Hospital & ICU.csv"), index=False)
+
+
+def update_db():
+    time_str = datetime.datetime.now().astimezone(pytz.timezone("Europe/London")).strftime("%-d %B, %H:%M")
+    source_name = f"European CDC for EU countries, government sources for other countries – Last updated {time_str} (London time)"
+    import_dataset(
+        dataset_name=DATASET_NAME,
+        namespace='owid',
+        csv_path=os.path.join(GRAPHER_PATH, DATASET_NAME + ".csv"),
+        default_variable_display={
+            'yearIsDay': True,
+            'zeroDay': ZERO_DAY
+        },
+        source_name=source_name,
+        slack_notifications=True
+    )
 
 
 if __name__ == "__main__":
-    main()
+    generate_dataset()
