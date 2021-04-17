@@ -27,10 +27,10 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
     total_vaccinations = int(soup.find(id="stats").find_all("span")[0].text)
     people_fully_vaccinated = int(soup.find(id="stats").find_all("span")[1].text)
-    assert total_vaccinations >= people_vaccinated
+    assert total_vaccinations >= people_fully_vaccinated
 
     data = {
-        "people_vaccinated": people_vaccinated,
+        "total_vaccinations": total_vaccinations,
         "people_fully_vaccinated": people_fully_vaccinated,
     }
     return pd.Series(data=data)
