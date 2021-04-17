@@ -36,7 +36,7 @@ def increment(
     ):
 
     assert type(location) == str
-    assert type(total_vaccinations) == int
+    assert isinstance(total_vaccinations, (int, float))
     assert type(people_vaccinated) == int or people_vaccinated is None
     assert type(people_fully_vaccinated) == int or people_fully_vaccinated is None
     assert type(date) == str
@@ -73,6 +73,11 @@ def increment(
             people_vaccinated=people_vaccinated,
             people_fully_vaccinated=people_fully_vaccinated
         )
+    # To Integer type
+    col_ints = ["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]
+    for col in col_ints:
+        if col in df.columns:
+            df[col] = df[col].astype("Int64").fillna(pd.NA)
 
     df.to_csv(f"output/{location}.csv", index=False)
 
