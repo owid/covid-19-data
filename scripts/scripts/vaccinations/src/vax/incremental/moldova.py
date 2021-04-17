@@ -26,19 +26,19 @@ def read(source: str) -> pd.Series:
 def parse_data(soup: BeautifulSoup) -> pd.Series:
 
     total_vaccinations = int(soup.find(id="stats").find_all("span")[0].text)
-    people_vaccinated = int(soup.find(id="stats").find_all("span")[1].text)
-    assert total_vaccinations >= people_vaccinated
+    people_fully_vaccinated = int(soup.find(id="stats").find_all("span")[1].text)
+    assert total_vaccinations >= people_fully_vaccinated
 
     data = {
-        "people_vaccinated": people_vaccinated,
         "total_vaccinations": total_vaccinations,
+        "people_fully_vaccinated": people_fully_vaccinated,
     }
     return pd.Series(data=data)
 
 
 def add_totals(ds: pd.Series) -> pd.Series:
-    people_fully_vaccinated = ds["total_vaccinations"] - ds["people_vaccinated"]
-    return enrich_data(ds, "people_fully_vaccinated", people_fully_vaccinated)
+    people_vaccinated = ds["total_vaccinations"] - ds["people_fully_vaccinated"]
+    return enrich_data(ds, "people_vaccinated", people_vaccinated)
 
 
 def format_date(ds: pd.Series) -> pd.Series:
