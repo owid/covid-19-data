@@ -107,8 +107,8 @@ def get_reprod():
 def get_hosp():
     hosp = pd.read_csv(os.path.join(GRAPHER_DIR, "COVID-2019 - Hospital & ICU.csv"))
     hosp = hosp.rename(columns={
-        "entity": "location",
-        "year": "date",
+        "Country": "location",
+        "Year": "date",
         "Daily ICU occupancy": "icu_patients",
         "Daily ICU occupancy per million": "icu_patients_per_million",
         "Daily hospital occupancy": "hosp_patients",
