@@ -3,6 +3,7 @@ import locale
 import json
 
 import pandas as pd
+import numpy as np
 from bs4 import BeautifulSoup
 
 from vax.utils.incremental import enrich_data, increment, clean_count
@@ -15,7 +16,7 @@ def read(source: str) -> pd.Series:
     soup = get_soup(link)
     infogram_data = parse_infogram_data(soup)
     return pd.Series({
-        "total_vaccinations": parse_infogram_doses(infogram_data),
+        "people_vaccinated": parse_infogram_people_vaccinated(infogram_data),
         "date": parse_infogram_date(infogram_data),
         "source_url": source
     })
@@ -37,12 +38,12 @@ def parse_infogram_data(soup: BeautifulSoup) -> dict:
     return json_data
 
 
-def parse_infogram_doses(infogram_data: dict) -> int:
-    doses = (
+def parse_infogram_people_vaccinated(infogram_data: dict) -> int:
+    ppl_vax = (
         infogram_data["elements"]["content"]["content"]["entities"]["c5ca046c-84e5-4ee1-a8b0-a408e1f5eb7f"]["props"]
         ["content"]["blocks"][0]["text"]
     )
-    return clean_count(doses)
+    return clean_count(ppl_vax)
 
 
 def parse_infogram_date(infogram_data: dict) -> str:
@@ -75,7 +76,8 @@ def main():
     data = read(source).pipe(pipeline)
     increment(
         location=data["location"],
-        total_vaccinations=data["total_vaccinations"],
+        total_vaccinations=np.nan,
+        people_vaccinated=data["people_vaccinated"],
         date=data["date"],
         source_url=data["source_url"],
         vaccine=data["vaccine"]
