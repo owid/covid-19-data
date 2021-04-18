@@ -14,78 +14,78 @@ date,location,total_vaccinations,source_url,vaccine,people_vaccinated,people_ful
 2021-01-20,Finland,62061,https://github.com/HS-Datadesk/koronavirus-avoindata,Pfizer/BioNTech,,
 2021-01-21,Finland,78300,https://github.com/HS-Datadesk/koronavirus-avoindata,Pfizer/BioNTech,,
 2021-01-22,Finland,91260,https://github.com/HS-Datadesk/koronavirus-avoindata,Pfizer/BioNTech,,
-2021-01-25,Finland,110651,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,106098.0,4553.0
-2021-01-26,Finland,117007,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,110047.0,6960.0
-2021-01-27,Finland,126910,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,117555.0,9355.0
-2021-01-28,Finland,138323,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,127783.0,10540.0
-2021-01-29,Finland,151790,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,137551.0,14239.0
-2021-01-30,Finland,162277,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,144520.0,17757.0
-2021-02-01,Finland,163760,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,145557.0,18203.0
-2021-02-02,Finland,163973,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,145770.0,18203.0
-2021-02-03,Finland,173372,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,149951.0,23421.0
-2021-02-04,Finland,193917,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,159624.0,34293.0
-2021-02-05,Finland,207303,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,164636.0,42667.0
-2021-02-06,Finland,217844,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,169194.0,48650.0
-2021-02-07,Finland,220116,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,170335.0,49781.0
-2021-02-08,Finland,220636,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",170641.0,49995.0
-2021-02-09,Finland,227427,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",173558.0,53869.0
-2021-02-10,Finland,233775,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",178005.0,55770.0
-2021-02-11,Finland,247536,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",187384.0,60152.0
-2021-02-12,Finland,261342,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",197540.0,63802.0
-2021-02-13,Finland,273115,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",206283.0,66832.0
-2021-02-14,Finland,276469,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",209510.0,66959.0
-2021-02-15,Finland,277186,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",210194.0,66992.0
-2021-02-16,Finland,283926,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",216463.0,67463.0
-2021-02-17,Finland,298189,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",229558.0,68631.0
-2021-02-18,Finland,314100,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",243973.0,70127.0
-2021-02-19,Finland,333631,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",262145.0,71486.0
-2021-02-20,Finland,349139,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",276280.0,72859.0
-2021-02-21,Finland,363938,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",287998.0,75940.0
-2021-02-24,Finland,377441,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",302342.0,75099.0
-2021-02-25,Finland,396861,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",319559.0,77302.0
-2021-02-26,Finland,426806,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",347082.0,79724.0
-2021-02-27,Finland,442671,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",361744.0,80927.0
-2021-02-28,Finland,451999,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",370874.0,81125.0
-2021-03-01,Finland,466538,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",384476.0,82062.0
-2021-03-03,Finland,487619,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",404436.0,83183.0
-2021-03-04,Finland,509187,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",425545.0,83642.0
-2021-03-05,Finland,532902,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",448680.0,84222.0
-2021-03-06,Finland,565456,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",480647.0,84809.0
-2021-03-08,Finland,566387,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",481577.0,84810.0
-2021-03-09,Finland,575749,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",490735.0,85014.0
-2021-03-10,Finland,600476,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",515218.0,85258.0
-2021-03-11,Finland,625039,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",539618.0,85421.0
-2021-03-12,Finland,651289,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",565463.0,85826.0
-2021-03-13,Finland,674128,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",587848.0,86280.0
-2021-03-14,Finland,682945,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",596638.0,86307.0
-2021-03-15,Finland,683782,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",597471.0,86311.0
-2021-03-16,Finland,697411,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",610873.0,86538.0
-2021-03-17,Finland,723154,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",636349.0,86805.0
-2021-03-18,Finland,758780,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",671647.0,87133.0
-2021-03-19,Finland,788536,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",701203.0,87333.0
-2021-03-20,Finland,812039,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",724524.0,87515.0
-2021-03-21,Finland,819654,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",732121.0,87533.0
-2021-03-22,Finland,821334,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",733798.0,87536.0
-2021-03-23,Finland,830412,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",742812.0,87600.0
-2021-03-24,Finland,847501,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",759827.0,87674.0
-2021-03-25,Finland,871543,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",783740.0,87803.0
-2021-03-26,Finland,898208,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",809974.0,88234.0
-2021-03-27,Finland,921123,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",832602.0,88521.0
-2021-03-29,Finland,932253,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",843706.0,88547.0
-2021-03-30,Finland,951354,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",862639.0,88715.0
-2021-03-31,Finland,981534,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",892580.0,88954.0
-2021-04-01,Finland,1020206,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",930842.0,89364.0
-2021-04-02,Finland,1054985,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",965298.0,89687.0
-2021-04-03,Finland,1061536,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",971827.0,89709.0
-2021-04-04,Finland,1063590,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",973876.0,89714.0
-2021-04-05,Finland,1063870,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",974153.0,89717.0
-2021-04-06,Finland,1065419,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",975697.0,89722.0
-2021-04-07,Finland,1083567,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",993227.0,90340.0
-2021-04-08,Finland,1120653,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1028848.0,91805.0
-2021-04-09,Finland,1160319,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1066860.0,93459.0
-2021-04-10,Finland,1186035,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1091652.0,94383.0
-2021-04-11,Finland,1219580,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1124365.0,95215.0
-2021-04-12,Finland,1229239,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1133993.0,95246.0
-2021-04-13,Finland,1293219,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1190340.0,102879.0
-2021-04-15,Finland,1340701,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1230792.0,109909.0
-2021-04-16,Finland,1384090,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1267678.0,116412.0
+2021-01-25,Finland,110651,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,106098,4553
+2021-01-26,Finland,117007,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,110047,6960
+2021-01-27,Finland,126910,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,117555,9355
+2021-01-28,Finland,138323,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,127783,10540
+2021-01-29,Finland,151790,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,137551,14239
+2021-01-30,Finland,162277,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,144520,17757
+2021-02-01,Finland,163760,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,145557,18203
+2021-02-02,Finland,163973,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,145770,18203
+2021-02-03,Finland,173372,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,149951,23421
+2021-02-04,Finland,193917,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,159624,34293
+2021-02-05,Finland,207303,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,164636,42667
+2021-02-06,Finland,217844,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,169194,48650
+2021-02-07,Finland,220116,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,Pfizer/BioNTech,170335,49781
+2021-02-08,Finland,220636,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",170641,49995
+2021-02-09,Finland,227427,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",173558,53869
+2021-02-10,Finland,233775,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",178005,55770
+2021-02-11,Finland,247536,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",187384,60152
+2021-02-12,Finland,261342,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",197540,63802
+2021-02-13,Finland,273115,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",206283,66832
+2021-02-14,Finland,276469,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",209510,66959
+2021-02-15,Finland,277186,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",210194,66992
+2021-02-16,Finland,283926,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",216463,67463
+2021-02-17,Finland,298189,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",229558,68631
+2021-02-18,Finland,314100,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",243973,70127
+2021-02-19,Finland,333631,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",262145,71486
+2021-02-20,Finland,349139,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",276280,72859
+2021-02-21,Finland,363938,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",287998,75940
+2021-02-24,Finland,377441,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",302342,75099
+2021-02-25,Finland,396861,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",319559,77302
+2021-02-26,Finland,426806,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",347082,79724
+2021-02-27,Finland,442671,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",361744,80927
+2021-02-28,Finland,451999,https://www.thl.fi/episeuranta/rokotukset/koronarokotusten_edistyminen.html,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",370874,81125
+2021-03-01,Finland,466538,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",384476,82062
+2021-03-03,Finland,487619,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",404436,83183
+2021-03-04,Finland,509187,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",425545,83642
+2021-03-05,Finland,532902,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",448680,84222
+2021-03-06,Finland,565456,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",480647,84809
+2021-03-08,Finland,566387,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",481577,84810
+2021-03-09,Finland,575749,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",490735,85014
+2021-03-10,Finland,600476,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",515218,85258
+2021-03-11,Finland,625039,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",539618,85421
+2021-03-12,Finland,651289,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",565463,85826
+2021-03-13,Finland,674128,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",587848,86280
+2021-03-14,Finland,682945,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",596638,86307
+2021-03-15,Finland,683782,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",597471,86311
+2021-03-16,Finland,697411,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",610873,86538
+2021-03-17,Finland,723154,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",636349,86805
+2021-03-18,Finland,758780,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",671647,87133
+2021-03-19,Finland,788536,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",701203,87333
+2021-03-20,Finland,812039,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",724524,87515
+2021-03-21,Finland,819654,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",732121,87533
+2021-03-22,Finland,821334,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",733798,87536
+2021-03-23,Finland,830412,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",742812,87600
+2021-03-24,Finland,847501,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",759827,87674
+2021-03-25,Finland,871543,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",783740,87803
+2021-03-26,Finland,898208,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",809974,88234
+2021-03-27,Finland,921123,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",832602,88521
+2021-03-29,Finland,932253,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",843706,88547
+2021-03-30,Finland,951354,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",862639,88715
+2021-03-31,Finland,981534,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",892580,88954
+2021-04-01,Finland,1020206,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",930842,89364
+2021-04-02,Finland,1054985,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",965298,89687
+2021-04-03,Finland,1061536,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",971827,89709
+2021-04-04,Finland,1063590,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",973876,89714
+2021-04-05,Finland,1063870,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",974153,89717
+2021-04-06,Finland,1065419,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",975697,89722
+2021-04-07,Finland,1083567,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",993227,90340
+2021-04-08,Finland,1120653,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1028848,91805
+2021-04-09,Finland,1160319,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1066860,93459
+2021-04-10,Finland,1186035,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1091652,94383
+2021-04-11,Finland,1219580,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1124365,95215
+2021-04-12,Finland,1229239,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1133993,95246
+2021-04-13,Finland,1293219,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1190340,102879
+2021-04-15,Finland,1340701,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1230792,109909
+2021-04-16,Finland,1384090,https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1267678,116412
