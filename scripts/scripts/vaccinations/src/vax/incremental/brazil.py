@@ -24,16 +24,16 @@ def connect_parse_data(source: str) -> pd.Series:
         driver.get(source)
         data_blocks = (
             WebDriverWait(driver, 20)
-            .until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "kpi-data")))
+            .until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "sn-kpi-data")))
         )
         for block in data_blocks:
-            block_title = block.find_element_by_class_name("measure-title").get_attribute("title")
+            block_title = block.find_element_by_class_name("sn-kpi-measure-title").get_attribute("title")
             if block_title == "Pessoas Vacinadas (Dose 1)":
-                people_vaccinated = block.find_element_by_class_name("kpi-value").text
+                people_vaccinated = block.find_element_by_class_name("sn-kpi-value").text
             elif block_title == "Pessoas Vacinadas (Dose 2)":
-                people_fully_vaccinated = block.find_element_by_class_name("kpi-value").text
+                people_fully_vaccinated = block.find_element_by_class_name("sn-kpi-value").text
             elif block_title == "Doses Aplicadas":
-                total_vaccinations = block.find_element_by_class_name("kpi-value").text
+                total_vaccinations = block.find_element_by_class_name("sn-kpi-value").text
 
     return pd.Series({
         "total_vaccinations": total_vaccinations,
@@ -70,7 +70,7 @@ def pipeline(input: pd.Series, source: str) -> pd.Series:
 
 
 def main():
-    source = "https://viz.saude.gov.br/extensions/DEMAS_C19Vacina/DEMAS_C19Vacina.html"
+    source = "https://qsprod.saude.gov.br/extensions/DEMAS_C19Vacina/DEMAS_C19Vacina.html"
     data = read(source).pipe(pipeline, source)
     increment(
         location=data["location"],
