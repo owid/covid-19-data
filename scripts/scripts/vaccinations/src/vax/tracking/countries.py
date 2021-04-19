@@ -70,6 +70,17 @@ def country_updates_summary(path_vaccinations: str = None, path_locations: str =
     df = df.sort_values(
         by=sort_column
     )[["location", "last_observation_date", "counts", "automated", "source_website"]]
+    # Add columns
+    def web_type(x):
+        if ("facebook" in x.lower()) or ("twitter" in x.lower()):
+            return "Social Network"
+        elif "github" in x.lower():
+            return "GitHub"
+        elif ("gov" in x.lower()) or ("gob" in x.lower()):
+            return "Govern"
+        else:
+            return "Others"
+    df = df.assign(**{"web_type": df.source_website.apply(web_type)})
     # Return data
     if as_dict:
         return df.to_dict(orient="records")
