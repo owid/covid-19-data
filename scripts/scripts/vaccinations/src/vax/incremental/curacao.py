@@ -52,7 +52,7 @@ def main():
         people_vaccinated=data["people_vaccinated"],
         people_fully_vaccinated=data["people_fully_vaccinated"],
         date=data["date"],
-        source_url="https://bakuna.cw",
+        source_url="https://bakuna.cw/",
         vaccine=data["vaccine"]
     )
 
