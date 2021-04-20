@@ -10,9 +10,6 @@ import pandas as pd
 
 DEBUG = False
 
-# from scripts.scripts.yougov import *
-# from scripts.scripts.yougov import _merge_files, _subset_columns, _preprocess_cols, _standardize_entities, _aggregate, _rename_columns, _reorder_columns
-
 DATASET_NAME = 'YouGov-Imperial COVID-19 Behavior Tracker'
 
 # MIN_RESPONSES: country-date-question observations with less than this
