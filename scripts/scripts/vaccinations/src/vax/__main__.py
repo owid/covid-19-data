@@ -22,6 +22,9 @@ from vax.process import process_location
 
 SCRAPING_SKIP_COUNTRIES = []
 PROCESS_SKIP_COUNTRIES = []
+SKIP_COUNTRIES_MONOTONIC_CHECK = ["Northern Ireland", "Malta", "Ecuador"]
+
+
 VAX_ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 
 AUTOMATED_OUTPUT_DIR = os.path.abspath(os.path.join(VAX_ROOT_DIR, "./output"))
@@ -91,7 +94,12 @@ def main_process_data():
 
     # Process locations
     print(">> Processing and exporting data...")
-    vax = [process_location(df) for df in vax if df.loc[0, "location"] not in PROCESS_SKIP_COUNTRIES]
+    def _process_location(df):
+        check = False if df.loc[0, "location"] in SKIP_COUNTRIES_MONOTONIC_CHECK else True
+        return process_location(df, check)
+    vax = [
+        _process_location(df) for df in vax if df.loc[0, "location"] not in PROCESS_SKIP_COUNTRIES
+    ]
 
     # Export
     for df in vax:

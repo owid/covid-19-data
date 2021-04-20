@@ -13,12 +13,14 @@ from vax.utils.checks import country_df_sanity_checks
 
 class GSheet:
     def __init__(self, credentials: str, sheet_id: str):
+        self.sheet_id = sheet_id
         self.sheets = Sheets.from_files(credentials)
-        self.sheet = self.sheets.get(sheet_id)
+        self.sheet = self.sheets.get(self.sheet_id)
         self.metadata = self.get_metadata()
 
     @classmethod
     def from_json(cls, path: str):
+        """Load sheet from config file."""
         with open(path, "rb") as f:
             conf = json.load(f)
         return cls(
@@ -26,13 +28,17 @@ class GSheet:
             sheet_id=conf["google_spreadsheet_vax_id"]
         )
 
-    def get_metadata(self) -> pd.DataFrame:
+    def get_metadata(self, refresh: bool = False) -> pd.DataFrame:
+        """Get metadata from LOCATIONS tab."""
+        if refresh:
+            self.sheet = self.sheets.get(self.sheet_id)
         metadata = self.sheet.first_sheet.to_frame()
         self._check_metadata(metadata)
         metadata = metadata[metadata["include"]].sort_values(by="location")
         return metadata
 
     def _check_metadata(self, df: pd.DataFrame):
+        """Check metadata LOCATIONS tab has valid format."""
         # Check columns
         cols = ["location", "source_name","automated", "include"]
         cols_missing = [col for col in cols if col not in df.columns]
@@ -58,21 +64,26 @@ class GSheet:
 
     @property
     def automated_countries(self):
+        """Get list of countries with an automated process."""
         return self.metadata.loc[self.metadata.automated, "location"].tolist()
     
     @property
     def manual_countries(self):
+        """Get list of countries that require manual process."""
         return self.metadata.loc[~self.metadata.automated, "location"].tolist()
 
-    def df_list(self, include_all: bool = False) -> List[pd.DataFrame]:
+    def df_list(self, include_all: bool = False, refresh: bool = False) -> List[pd.DataFrame]:
         """Read non-automated files.
         
         Args: 
             include_all (bool): Set to True to only load non-automated countries.
+            refresh (bool): Set to True to get updated data from sheets.
 
         Returns:
             List[pd.DataFrame]: List with dataframe per country.
         """
+        if refresh:
+            self.sheet = self.sheets.get(self.sheet_id)
         with tempfile.TemporaryDirectory() as tmpdirname:
             # Download
             tmpfile = os.path.join(tmpdirname, "%(sheet)s.csv")
@@ -89,6 +100,7 @@ class GSheet:
         return df_list
 
     def _check_with_metadata(self, df_list: list, filepaths: list):
+        """Checks if country tabs are aligned with LOCATIONS metadata tab content."""
         # Assumes df has location field, which only presents a value
         tab_locations = [df.location.unique()[0] for df in df_list]
         counts = pd.value_counts(tab_locations)

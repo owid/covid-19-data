@@ -6,7 +6,8 @@ VACCINES_ACCEPTED = [
     "Sinopharm/Wuhan", "Johnson&Johnson", "Sinovac", "Covaxin", "EpiVacCorona", "CanSino"
 ]
 
-def country_df_sanity_checks(df: pd.DataFrame, allow_extra_cols: bool = True) -> pd.DataFrame:
+def country_df_sanity_checks(
+        df: pd.DataFrame, allow_extra_cols: bool = True, monotonic_check: bool = True) -> pd.DataFrame:
     location = df.loc[:, "location"].unique()
     # Ensure required columns are present
     cols = ["total_vaccinations", "vaccine", "date", "location", "source_url"]
@@ -50,11 +51,14 @@ def country_df_sanity_checks(df: pd.DataFrame, allow_extra_cols: bool = True) ->
     if "people_fully_vaccinated" in df.columns:
         cols.append("people_fully_vaccinated")
     df_ = df.sort_values(by="date")[cols].dropna()
-    for col in cols: 
-        if not df_[col].is_monotonic:
-            idx_dec = df_[col].diff() < 0
-            wrong = df_.loc[idx_dec]
-            raise ValueError(f"{location} -- Column {col} must be monotonically increasing! Check:\n{wrong}")
+    # Monotonically
+    if monotonic_check:
+        for col in cols: 
+            if not df_[col].is_monotonic:
+                idx_dec = df_[col].diff() < 0
+                wrong = df_.loc[idx_dec]
+                raise ValueError(f"{location} -- Column {col} must be monotonically increasing! Check:\n{wrong}")
+    # Inequalities
     if "people_vaccinated" in df_.columns:
         if (df_["total_vaccinations"] < df_["people_vaccinated"]).any():
             raise ValueError(f"{location} -- total_vaccinations can't be < people_vaccinated!")
