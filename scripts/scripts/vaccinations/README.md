@@ -118,6 +118,8 @@ By default it will do the following:
 **Note 2**: Optionally you can use arguments `--no-get-data` and `--no-process-data` to skip steps 1 or 2, respectively.
 E.g. executing `$ python src/vax --no-get-data` will just run step 2. For more info check `$ python src/vax --help`.
 
+**Note 3**: Use option `--parallel` to run the code using parallelisation.
+
 ### 3. Dataset generation
 Make sure you've succesfully [configured your environment](#0.-dependencies), then run the following script:
 
