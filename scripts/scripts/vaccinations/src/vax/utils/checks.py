@@ -27,7 +27,8 @@ def country_df_sanity_checks(df: pd.DataFrame, allow_extra_cols: bool = True) ->
         raise ValueError(f"{location} -- Invalid vaccine! NaN values found.")
     vaccines_used = set([xx for x in df.vaccine.tolist() for xx in x.split(', ')])
     if not all([vac in VACCINES_ACCEPTED for vac in vaccines_used]):
-        raise ValueError(f"{location} -- Invalid vaccine detected! Check {df.vaccine.unique()}.")
+        vaccines_wrong = [vac for vac in vaccines_used if vac not in VACCINES_ACCEPTED]
+        raise ValueError(f"{location} -- Invalid vaccine detected! Check {vaccines_wrong}.")
     # Date consistency
     
     if df.date.isnull().any():
@@ -42,17 +43,18 @@ def country_df_sanity_checks(df: pd.DataFrame, allow_extra_cols: bool = True) ->
         raise ValueError(f"{location} -- Invalid location! NaN values found. Check {df.location}.")
     if df.location.nunique() != 1:
         raise ValueError(f"{location} -- Invalid location! More than one location found. Check {df.location}.")
-    # Metrics consistency: TODO: 1) metrics increscendo, 2) inequalities between them
+    # Metrics consistency: TODO: 1) metrics monotonically increasing by date, 2) inequalities between them valid
     cols = ["total_vaccinations"]
     if "people_vaccinated" in df.columns:
         cols.append("people_vaccinated")
     if "people_fully_vaccinated" in df.columns:
         cols.append("people_fully_vaccinated")
     df_ = df.sort_values(by="date")[cols].dropna()
-    # TODO: makes sense?
-    #for col in cols: 
-    #    if not df_[col].is_monotonic:
-    #        raise ValueError(f"{location} -- Column {col} must be monotnically increasing!")
+    for col in cols: 
+        if not df_[col].is_monotonic:
+            idx_dec = df_[col].diff() < 0
+            wrong = df_.loc[idx_dec]
+            raise ValueError(f"{location} -- Column {col} must be monotonically increasing! Check:\n{wrong}")
     if "people_vaccinated" in df_.columns:
         if (df_["total_vaccinations"] < df_["people_vaccinated"]).any():
             raise ValueError(f"{location} -- total_vaccinations can't be < people_vaccinated!")
