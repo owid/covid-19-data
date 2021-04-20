@@ -10,10 +10,11 @@ from vax.utils.incremental import enrich_data, increment
 
 
 def read(source: str) -> pd.Series:
-    soup = BeautifulSoup(requests.get(source).content, "html.parser")
-
+    soup = BeautifulSoup(requests.get(source[0]).content, "html.parser")
+    total_soup = BeautifulSoup(requests.get(source[1]).content, "html.parser")
     date = parse_date(soup)
-    total_vaccinations, people_vaccinated, people_fully_vaccinated = parse_data(soup)
+    people_vaccinated, people_fully_vaccinated = parse_data(soup)
+    total_vaccinations = parse_total_data(total_soup)
 
     return pd.Series({
         "date": date,
@@ -37,9 +38,13 @@ def parse_data(soup: BeautifulSoup) -> str:
 
     people_vaccinated = int(df.loc[df.Doelgroep == "Totaal", "Eerste dosis"].item())
     people_fully_vaccinated = int(df.loc[df.Doelgroep == "Totaal", "Tweede dosis"].item())
-    total_vaccinations = people_vaccinated + people_fully_vaccinated
 
-    return total_vaccinations, people_vaccinated, people_fully_vaccinated
+    return people_vaccinated, people_fully_vaccinated
+
+
+def parse_total_data(soup: BeautifulSoup) -> str:
+    div = soup.find("div", {"class": "sc-bdfBwQ two-kpi-section___StyledBox-wk5ja3-0 jlCFBI djRldS"})
+    return div.find("div", {"color": "data.primary"}).get_text()
 
 
 def enrich_location(input: pd.Series) -> pd.Series:
@@ -64,7 +69,9 @@ def pipeline(input: pd.Series, source: str) -> pd.Series:
 
 
 def main():
-    source = "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
+    source = list()
+    source += "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
+    source += "https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties"
     data = read(source).pipe(pipeline, source)
     increment(
         location=data["location"],
