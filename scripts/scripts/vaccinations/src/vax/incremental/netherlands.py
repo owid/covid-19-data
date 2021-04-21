@@ -1,30 +1,45 @@
-import datetime
+import os
+from datetime import datetime, timedelta
 import re
 import requests
+import pytz
 
-from bs4 import BeautifulSoup
 import dateparser
 import pandas as pd
+from bs4 import BeautifulSoup
 
+from vax.utils.utils import get_soup
 from vax.utils.incremental import enrich_data, increment
 
 
-def read(source: str) -> pd.Series:
-    soup = BeautifulSoup(requests.get(source[0]).content, "html.parser")
-    total_soup = BeautifulSoup(requests.get(source[1]).content, "html.parser")
-    date = parse_date(soup)
-    people_vaccinated, people_fully_vaccinated = parse_data(soup)
-    total_vaccinations = parse_total_data(total_soup)
+def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
+    # Daily
+    data_daily = requests.get(source_daily).json()
+    date_daily = parse_date_daily(data_daily)
+    total_vaccinations_d = parse_data_daily(data_daily)
+    
+    # Weekly
+    soup_weekly = get_soup(source_weekly)
+    date_weekly = parse_date_weekly(soup_weekly)
+    total_vaccinations_w, people_vaccinated, people_fully_vaccinated = parse_data_weekly(soup_weekly)
+    
+    df = pd.DataFrame.from_records([
+        {
+            "date": date_weekly,
+            "total_vaccinations": total_vaccinations_w,
+            "people_vaccinated": people_vaccinated,
+            "people_fully_vaccinated": people_fully_vaccinated,
+            "source_url": source_weekly
+        },
+        {
+            "date": date_daily,
+            "total_vaccinations": total_vaccinations_d,
+            "source_url": source_daily
+        }
+    ])
+    return df
 
-    return pd.Series({
-        "date": date,
-        "total_vaccinations": total_vaccinations,
-        "people_vaccinated": people_vaccinated,
-        "people_fully_vaccinated": people_fully_vaccinated,
-    })
-
-
-def parse_date(soup: BeautifulSoup):
+def parse_date_weekly(soup: BeautifulSoup):
     for h2 in soup.find_all("h2"):
         date = re.search(r"\d+\s\w+ 202\d", h2.text).group(0)
         if date:
@@ -33,55 +48,87 @@ def parse_date(soup: BeautifulSoup):
     return str(date.date())
 
 
-def parse_data(soup: BeautifulSoup) -> str:
+def parse_data_weekly(soup: BeautifulSoup) -> str:
     df = pd.read_html(str(soup.find("table")), thousands=".")[0]
+    # Get total column
+    col_total = [col for col in df.columns if "Totaal" in col]
+    if len(col_total) != 1:
+        raise Exception("Table changed!")
+    col_total = col_total[0]
 
     people_vaccinated = int(df.loc[df.Doelgroep == "Totaal", "Eerste dosis"].item())
     people_fully_vaccinated = int(df.loc[df.Doelgroep == "Totaal", "Tweede dosis"].item())
+    total_vaccinations = int(df.loc[df.Doelgroep == "Totaal", col_total].item())
 
-    return people_vaccinated, people_fully_vaccinated
-
-
-def parse_total_data(soup: BeautifulSoup) -> str:
-    div = soup.find("div", {"class": "sc-bdfBwQ two-kpi-section___StyledBox-wk5ja3-0 jlCFBI djRldS"})
-    return div.find("div", {"color": "data.primary"}).get_text()
+    return total_vaccinations, people_vaccinated, people_fully_vaccinated
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Netherlands")
+def parse_data_daily(data: dict):
+    return data["pageProps"]["data"]["vaccine_administered_total"]["last_value"]["estimated"]
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+def parse_date_daily(data: dict):
+    # Date
+    ts = data["pageProps"]["data"]["vaccine_administered_total"]["last_value"]["date_unix"]
+    dt = datetime.fromtimestamp(ts, pytz.timezone("Europe/Amsterdam"))
+    if dt.hour < 6:
+        dt = (dt.date() - timedelta(days=1)).strftime("%Y-%m-%d")
+    else:
+        dt = dt.date().strftime("%Y-%m-%d")
+    return dt
 
 
-def enrich_source(input: pd.Series, source: str) -> pd.Series:
-    return enrich_data(input, "source_url", source)
+def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(location="Netherlands")
 
 
-def pipeline(input: pd.Series, source: str) -> pd.Series:
+def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+
+
+def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input
+        df
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
-        .pipe(enrich_source, source)
     )
+
+
+def _contains_weekly_record(df: pd.DataFrame, date: str):
+    ds = df.loc[df.date == "2021-04-19"]
+    if (not ds.empty) and (not ds.isnull().any(axis=1).item()):
+        return True
+    return False
+
+
+def merge_with_current_data(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
+    col_ints = ["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]
+    # Load current data
+    if os.path.isfile(filepath):
+        df_current = pd.read_csv(filepath)
+        # Merge with weekly data
+        df_week = pd.DataFrame(df.loc[0]).T
+        df_current = df_current[~df_current.date.isin(df_week.date)]
+        df_current = pd.concat([df_week, df_current])
+        # Merge with daily data
+        df_day = pd.DataFrame(df.loc[1]).T
+        if not _contains_weekly_record(df_current, df_day.date):
+            df_current = df_current[~df_current.date.isin(df_day.date)]
+            df_current = pd.concat([df_day, df_current])
+    # Int values
+    df_current[col_ints] = df_current[col_ints].astype("Int64").fillna(pd.NA)
+    return df_current.sort_values(by="date")
 
 
 def main():
-    source = list()
-    source += "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
-    source += "https://coronadashboard.rijksoverheid.nl/landelijk/vaccinaties"
-    data = read(source).pipe(pipeline, source)
-    increment(
-        location=data["location"],
-        total_vaccinations=data["total_vaccinations"],
-        people_vaccinated=data["people_vaccinated"],
-        people_fully_vaccinated=data["people_fully_vaccinated"],
-        date=data["date"],
-        source_url=data["source_url"],
-        vaccine=data["vaccine"]
+    source_daily = (
+        "https://coronadashboard.rijksoverheid.nl/_next/data/grtk8p5j2Ex87h9MYOj9a/landelijk/vaccinaties.json"
     )
+    source_weekly = "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
+    output_file = "output/Netherlands.csv"
+    df = read(source_daily, source_weekly).pipe(pipeline)
+    df = merge_with_current_data(df, output_file)
+    df.to_csv(output_file, index=False)
 
 
 if __name__ == "__main__":
