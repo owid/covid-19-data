@@ -11,3 +11,4 @@ lxml>=4.6.3
 requests==2.25.1
 openpyxl==3.0.7
 gsheets==0.5.1
+joblib==1.0.1
