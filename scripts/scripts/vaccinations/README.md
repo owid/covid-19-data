@@ -7,7 +7,7 @@ automated scripts.
 
 ### Content
 - [Directory content](#directory-content)
-- [Output generated](#output-generated)
+- [Generated files](#generated-files)
 - [Update the data](#update-the-data)
 - [Other functions](#other-functions)
 - [FAQs](#FAQs)
