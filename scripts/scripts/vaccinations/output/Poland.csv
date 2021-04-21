@@ -1,93 +1,94 @@
 location,date,vaccine,total_vaccinations,source_url,people_vaccinated,people_fully_vaccinated
-Poland,2020-12-28,Pfizer/BioNTech,2000,"https://next.gazeta.pl/next/7,173953,26642987,wiemy-ile-osob-zaszczepiono-przeciw-covid-19-w-niedziele-rzecznik.html",2000.0,
-Poland,2020-12-29,Pfizer/BioNTech,6300,https://wiadomosci.radiozet.pl/Koronawirus/Koronawirus-w-Polsce.-Trzeci-dzien-szczepien-przeciw-Covid-19.-Zaszczepili-sie-Grodzki-i-Karczewski,6300.0,
-Poland,2020-12-30,Pfizer/BioNTech,36300,https://twitter.com/MZ_GOV_PL/status/1344557383499055104,36300.0,
-Poland,2020-12-31,Pfizer/BioNTech,47600,https://twitter.com/MZ_GOV_PL/status/1344923704799719424,47600.0,
-Poland,2021-01-02,Pfizer/BioNTech,50391,https://tvn24.pl/polska/szczepienia-ile-osob-zaszczepiono-w-polsce-przeciw-covid-19kiedy-szczepienia-osob-z-kolejnej-grupy-1-4919939,50391.0,
-Poland,2021-01-03,Pfizer/BioNTech,50833,https://twitter.com/MZ_GOV_PL/status/1346074068798332929/photo/1,50833.0,
-Poland,2021-01-04,Pfizer/BioNTech,92220,https://twitter.com/MZ_GOV_PL/status/1346396023334133770/photo/1,92220.0,
-Poland,2021-01-05,Pfizer/BioNTech,140226,https://twitter.com/MZ_GOV_PL/status/1346760607622684673,140226.0,
-Poland,2021-01-06,Pfizer/BioNTech,160359,https://twitter.com/MZ_GOV_PL/status/1347120797895294976,160359.0,
-Poland,2021-01-07,Pfizer/BioNTech,188956,https://twitter.com/szczepimysie/status/1347472053063081984,188956.0,
-Poland,2021-01-08,Pfizer/BioNTech,198787,https://twitter.com/szczepimysie/status/1347840116090408960,198787.0,
-Poland,2021-01-09,Pfizer/BioNTech,200022,https://twitter.com/szczepimysie/status/1348196682756993025,200022.0,
-Poland,2021-01-10,Pfizer/BioNTech,203053,https://twitter.com/szczepimysie/status/1348564252215402498,203053.0,
-Poland,2021-01-11,Pfizer/BioNTech,257834,https://twitter.com/szczepimysie/status/1348930712859242496,257834.0,
-Poland,2021-01-12,Pfizer/BioNTech,309620,https://twitter.com/szczepimysie/status/1349284555627388928,309620.0,
-Poland,2021-01-13,Pfizer/BioNTech,369212,https://twitter.com/szczepimysie/status/1349646581092519936,369212.0,
-Poland,2021-01-14,Pfizer/BioNTech,410480,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,410480.0,
-Poland,2021-01-15,Pfizer/BioNTech,436963,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,436963.0,
-Poland,2021-01-16,Pfizer/BioNTech,457303,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,457303.0,
-Poland,2021-01-17,Pfizer/BioNTech,469466,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,468795.0,671.0
-Poland,2021-01-18,Pfizer/BioNTech,495164,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,491696.0,3468.0
-Poland,2021-01-19,Pfizer/BioNTech,541229,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,530055.0,11174.0
-Poland,2021-01-20,Pfizer/BioNTech,591785,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,566793.0,24992.0
-Poland,2021-01-21,Pfizer/BioNTech,644999,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,605313.0,39686.0
-Poland,2021-01-22,Pfizer/BioNTech,684277,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,638798.0,45479.0
-Poland,2021-01-23,Pfizer/BioNTech,701164,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,654184.0,46980.0
-Poland,2021-01-24,Pfizer/BioNTech,707474,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,659753.0,47721.0
-Poland,2021-01-25,Pfizer/BioNTech,776987,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,701222.0,75765.0
-Poland,2021-01-26,Pfizer/BioNTech,905457,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,782413.0,123044.0
-Poland,2021-01-27,Pfizer/BioNTech,1008253,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,858474.0,149779.0
-Poland,2021-01-28,Pfizer/BioNTech,1097036,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,917908.0,179128.0
-Poland,2021-01-29,Pfizer/BioNTech,1141081,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,945600.0,195481.0
-Poland,2021-01-30,Pfizer/BioNTech,1156931,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,958453.0,198478.0
-Poland,2021-01-31,Pfizer/BioNTech,1176904,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,976367.0,200537.0
-Poland,2021-02-01,Pfizer/BioNTech,1231716,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,998587.0,233129.0
-Poland,2021-02-02,Pfizer/BioNTech,1342435,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1053245.0,289190.0
-Poland,2021-02-03,Pfizer/BioNTech,1461578,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1117146.0,344432.0
-Poland,2021-02-04,Pfizer/BioNTech,1566604,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1171229.0,395375.0
-Poland,2021-02-05,Pfizer/BioNTech,1617764,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1193034.0,424730.0
-Poland,2021-02-06,Pfizer/BioNTech,1641158,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1200793.0,440365.0
-Poland,2021-02-07,Pfizer/BioNTech,1656708,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1206212.0,450496.0
-Poland,2021-02-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1773715,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1291569.0,482146.0
-Poland,2021-02-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1993739,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1413132.0,580607.0
-Poland,2021-02-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2071009,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1446102.0,624907.0
-Poland,2021-02-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2107089,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1466439.0,640650.0
-Poland,2021-02-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2122245,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1476274.0,645971.0
-Poland,2021-02-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2159146,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1500911.0,658235.0
-Poland,2021-02-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2230117,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1538737.0,691380.0
-Poland,2021-02-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2384794,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1610734.0,774060.0
-Poland,2021-02-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2556999,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1691115.0,865884.0
-Poland,2021-02-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2660776,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1743841.0,916935.0
-Poland,2021-02-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2697815,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1772133.0,925682.0
-Poland,2021-02-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2715159,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1785194.0,929965.0
-Poland,2021-02-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2759436,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1824654.0,934782.0
-Poland,2021-02-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2990683,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1959165.0,1031518.0
-Poland,2021-02-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3269812,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2101754.0,1168058.0
-Poland,2021-02-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3336354,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2149607.0,1186747.0
-Poland,2021-03-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3383426,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2190526.0,1192900.0
-Poland,2021-03-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3619316,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2338137.0,1281179.0
-Poland,2021-03-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3791577,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2424929.0,1366648.0
-Poland,2021-03-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3951104,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2526389.0,1424715.0
-Poland,2021-03-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4004734,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2570094.0,1434640.0
-Poland,2021-03-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4086863,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2641693.0,1445170.0
-Poland,2021-03-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4391256,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2835856.0,1555400.0
-Poland,2021-03-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4487273,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2891753.0,1595520.0
-Poland,2021-03-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4517537,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2914792.0,1602745.0
-Poland,2021-03-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4530783,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2924629.0,1606154.0
-Poland,2021-03-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4557060,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2946767.0,1610293.0
-Poland,2021-03-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4605929,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2984642.0,1621287.0
-Poland,2021-03-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4738902,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3074378.0,1664524.0
-Poland,2021-03-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4893320,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3162971.0,1730349.0
-Poland,2021-03-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4983494,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3213724.0,1769770.0
-Poland,2021-03-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5014167,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3233998.0,1780169.0
-Poland,2021-03-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5026182,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3242462.0,1783720.0
-Poland,2021-03-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5077928,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3289482.0,1788446.0
-Poland,2021-03-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5193835,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3385827.0,1808008.0
-Poland,2021-03-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5381726,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3524209.0,1857517.0
-Poland,2021-03-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5755551,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3785646.0,1969905.0
-Poland,2021-03-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5882581,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3889970.0,1992611.0
-Poland,2021-03-30,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6081824,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4062784.0,2019040.0
-Poland,2021-03-31,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6270976,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4231313.0,2039663.0
-Poland,2021-04-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6462769,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4404565.0,2058204.0
-Poland,2021-04-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6614819,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4544816.0,2070003.0
-Poland,2021-04-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6658909,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4585575.0,2073334.0
-Poland,2021-04-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6665384,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4591351.0,2074033.0
-Poland,2021-04-07,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6999652,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4909594.0,2090058.0
-Poland,2021-04-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7263426,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5167241.0,2096185.0
-Poland,2021-04-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7635264,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5529714.0,2105550.0
-Poland,2021-04-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7687617,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5581068.0,2106549.0
-Poland,2021-04-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7784384,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5670769.0,2113615.0
-Poland,2021-04-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7970164,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5832860.0,2137304.0
+Poland,2020-12-28,Pfizer/BioNTech,2000,"https://next.gazeta.pl/next/7,173953,26642987,wiemy-ile-osob-zaszczepiono-przeciw-covid-19-w-niedziele-rzecznik.html",2000,
+Poland,2020-12-29,Pfizer/BioNTech,6300,https://wiadomosci.radiozet.pl/Koronawirus/Koronawirus-w-Polsce.-Trzeci-dzien-szczepien-przeciw-Covid-19.-Zaszczepili-sie-Grodzki-i-Karczewski,6300,
+Poland,2020-12-30,Pfizer/BioNTech,36300,https://twitter.com/MZ_GOV_PL/status/1344557383499055104,36300,
+Poland,2020-12-31,Pfizer/BioNTech,47600,https://twitter.com/MZ_GOV_PL/status/1344923704799719424,47600,
+Poland,2021-01-02,Pfizer/BioNTech,50391,https://tvn24.pl/polska/szczepienia-ile-osob-zaszczepiono-w-polsce-przeciw-covid-19kiedy-szczepienia-osob-z-kolejnej-grupy-1-4919939,50391,
+Poland,2021-01-03,Pfizer/BioNTech,50833,https://twitter.com/MZ_GOV_PL/status/1346074068798332929/photo/1,50833,
+Poland,2021-01-04,Pfizer/BioNTech,92220,https://twitter.com/MZ_GOV_PL/status/1346396023334133770/photo/1,92220,
+Poland,2021-01-05,Pfizer/BioNTech,140226,https://twitter.com/MZ_GOV_PL/status/1346760607622684673,140226,
+Poland,2021-01-06,Pfizer/BioNTech,160359,https://twitter.com/MZ_GOV_PL/status/1347120797895294976,160359,
+Poland,2021-01-07,Pfizer/BioNTech,188956,https://twitter.com/szczepimysie/status/1347472053063081984,188956,
+Poland,2021-01-08,Pfizer/BioNTech,198787,https://twitter.com/szczepimysie/status/1347840116090408960,198787,
+Poland,2021-01-09,Pfizer/BioNTech,200022,https://twitter.com/szczepimysie/status/1348196682756993025,200022,
+Poland,2021-01-10,Pfizer/BioNTech,203053,https://twitter.com/szczepimysie/status/1348564252215402498,203053,
+Poland,2021-01-11,Pfizer/BioNTech,257834,https://twitter.com/szczepimysie/status/1348930712859242496,257834,
+Poland,2021-01-12,Pfizer/BioNTech,309620,https://twitter.com/szczepimysie/status/1349284555627388928,309620,
+Poland,2021-01-13,Pfizer/BioNTech,369212,https://twitter.com/szczepimysie/status/1349646581092519936,369212,
+Poland,2021-01-14,Pfizer/BioNTech,410480,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,410480,
+Poland,2021-01-15,Pfizer/BioNTech,436963,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,436963,
+Poland,2021-01-16,Pfizer/BioNTech,457303,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,457303,
+Poland,2021-01-17,Pfizer/BioNTech,469466,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,468795,671
+Poland,2021-01-18,Pfizer/BioNTech,495164,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,491696,3468
+Poland,2021-01-19,Pfizer/BioNTech,541229,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,530055,11174
+Poland,2021-01-20,Pfizer/BioNTech,591785,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,566793,24992
+Poland,2021-01-21,Pfizer/BioNTech,644999,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,605313,39686
+Poland,2021-01-22,Pfizer/BioNTech,684277,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,638798,45479
+Poland,2021-01-23,Pfizer/BioNTech,701164,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,654184,46980
+Poland,2021-01-24,Pfizer/BioNTech,707474,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,659753,47721
+Poland,2021-01-25,Pfizer/BioNTech,776987,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,701222,75765
+Poland,2021-01-26,Pfizer/BioNTech,905457,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,782413,123044
+Poland,2021-01-27,Pfizer/BioNTech,1008253,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,858474,149779
+Poland,2021-01-28,Pfizer/BioNTech,1097036,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,917908,179128
+Poland,2021-01-29,Pfizer/BioNTech,1141081,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,945600,195481
+Poland,2021-01-30,Pfizer/BioNTech,1156931,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,958453,198478
+Poland,2021-01-31,Pfizer/BioNTech,1176904,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,976367,200537
+Poland,2021-02-01,Pfizer/BioNTech,1231716,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,998587,233129
+Poland,2021-02-02,Pfizer/BioNTech,1342435,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1053245,289190
+Poland,2021-02-03,Pfizer/BioNTech,1461578,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1117146,344432
+Poland,2021-02-04,Pfizer/BioNTech,1566604,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1171229,395375
+Poland,2021-02-05,Pfizer/BioNTech,1617764,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1193034,424730
+Poland,2021-02-06,Pfizer/BioNTech,1641158,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1200793,440365
+Poland,2021-02-07,Pfizer/BioNTech,1656708,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1206212,450496
+Poland,2021-02-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1773715,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1291569,482146
+Poland,2021-02-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1993739,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1413132,580607
+Poland,2021-02-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2071009,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1446102,624907
+Poland,2021-02-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2107089,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1466439,640650
+Poland,2021-02-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2122245,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1476274,645971
+Poland,2021-02-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2159146,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1500911,658235
+Poland,2021-02-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2230117,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1538737,691380
+Poland,2021-02-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2384794,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1610734,774060
+Poland,2021-02-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2556999,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1691115,865884
+Poland,2021-02-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2660776,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1743841,916935
+Poland,2021-02-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2697815,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1772133,925682
+Poland,2021-02-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2715159,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1785194,929965
+Poland,2021-02-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2759436,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1824654,934782
+Poland,2021-02-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2990683,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,1959165,1031518
+Poland,2021-02-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3269812,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2101754,1168058
+Poland,2021-02-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3336354,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2149607,1186747
+Poland,2021-03-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3383426,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2190526,1192900
+Poland,2021-03-03,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3619316,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2338137,1281179
+Poland,2021-03-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3791577,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2424929,1366648
+Poland,2021-03-06,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3951104,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2526389,1424715
+Poland,2021-03-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4004734,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2570094,1434640
+Poland,2021-03-09,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4086863,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2641693,1445170
+Poland,2021-03-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4391256,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2835856,1555400
+Poland,2021-03-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4487273,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2891753,1595520
+Poland,2021-03-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4517537,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2914792,1602745
+Poland,2021-03-14,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4530783,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2924629,1606154
+Poland,2021-03-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4557060,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2946767,1610293
+Poland,2021-03-16,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4605929,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,2984642,1621287
+Poland,2021-03-17,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4738902,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3074378,1664524
+Poland,2021-03-18,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4893320,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3162971,1730349
+Poland,2021-03-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4983494,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3213724,1769770
+Poland,2021-03-20,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5014167,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3233998,1780169
+Poland,2021-03-21,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5026182,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3242462,1783720
+Poland,2021-03-22,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5077928,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3289482,1788446
+Poland,2021-03-23,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5193835,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3385827,1808008
+Poland,2021-03-24,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5381726,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3524209,1857517
+Poland,2021-03-26,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5755551,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3785646,1969905
+Poland,2021-03-28,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",5882581,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,3889970,1992611
+Poland,2021-03-30,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6081824,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4062784,2019040
+Poland,2021-03-31,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6270976,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4231313,2039663
+Poland,2021-04-01,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6462769,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4404565,2058204
+Poland,2021-04-02,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6614819,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4544816,2070003
+Poland,2021-04-04,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6658909,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4585575,2073334
+Poland,2021-04-05,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6665384,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4591351,2074033
+Poland,2021-04-07,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",6999652,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,4909594,2090058
+Poland,2021-04-08,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7263426,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5167241,2096185
+Poland,2021-04-10,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7635264,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5529714,2105550
+Poland,2021-04-11,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7687617,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5581068,2106549
+Poland,2021-04-12,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7784384,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5670769,2113615
+Poland,2021-04-13,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",7970164,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,5832860,2137304
 Poland,2021-04-15,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",8484815,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,6236689,2248126
+Poland,2021-04-19,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",9006539,https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19,6699255,2307284
