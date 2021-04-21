@@ -54,6 +54,12 @@ class Ecuador(object):
                 return "Pfizer/BioNTech, Oxford/AstraZeneca, Sinovac" 
         return df.assign(vaccine=df.date.apply(_enrich_vaccine))
 
+    def exclude_data_points(self, df: pd.DataFrame) -> pd.DataFrame:
+        # The data point on 2021-04-10 contains an error, which creates a negative change in the 
+        # people_fully_vaccinated series (from 112624 to 183300)
+        df = df[df.date != "2021-04-10"]
+        return df
+
     def pipeline(self, df: pd.DataFrame) -> pd.DataFrame:
         return (
             df
@@ -62,6 +68,7 @@ class Ecuador(object):
             .pipe(self.format_date)
             .pipe(self.enrich_columns)
             .pipe(self.enrich_vaccine)
+            .pipe(self.exclude_data_points)
         )
 
     def to_csv(self, output_file: str = None):

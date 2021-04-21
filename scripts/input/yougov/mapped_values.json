@@ -1,5 +1,6 @@
 {
     "binary": {"No": 0, "Yes": 100},
+    "quasi_binary": {"No, neither": 0, "Yes, one dose": 100, "Yes, two doses": 100},
     "frequency": {"Not at all": 0, "Rarely": 0, "Sometimes": 0, "Frequently": 100, "Always": 100},
     "easiness": {
         "Very easy": 0,

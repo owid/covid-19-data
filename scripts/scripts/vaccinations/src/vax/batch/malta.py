@@ -36,6 +36,12 @@ def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
+def exclude_data_points(input: pd.DataFrame) -> pd.DataFrame:
+    # The data contains an error that creates a negative change in the people_vaccinated series
+    input = input[input.date.astype(str) != "2021-01-24"]
+    return input
+
+
 def pipeline(input: pd.DataFrame) -> pd.DataFrame:
     return (
         input.pipe(check_columns, expected=3)
@@ -47,6 +53,7 @@ def pipeline(input: pd.DataFrame) -> pd.DataFrame:
         .pipe(add_metrics)
         .pipe(format_date)
         .pipe(enrich_columns)
+        .pipe(exclude_data_points)
     )
 
 

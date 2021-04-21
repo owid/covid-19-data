@@ -3,10 +3,12 @@ import sys
 import pytz
 import json
 import datetime
-import time
 from tqdm import tqdm
+import numpy as np
 import pandas as pd
 
+
+DEBUG = False
 
 DATASET_NAME = 'YouGov-Imperial COVID-19 Behavior Tracker'
 
@@ -36,11 +38,11 @@ MAPPING['label'] = MAPPING['label'].str.lower()
 with open(os.path.join(INPUT_PATH, 'mapped_values.json'), 'r') as f:
     MAPPED_VALUES = json.load(f)
 
-
 def update_csv():
     df = _merge_files()
     df = _subset_columns(df)
     df = _preprocess_cols(df)
+    df = _derive_cols(df)
     df = _standardize_entities(df)
     df = _aggregate(df)
     df = _rename_columns(df)
@@ -86,6 +88,9 @@ def _merge_files():
         "https://github.com/YouGov-Data/covid-19-tracker/raw/master/countries.csv", header=None
     )[0])
 
+    if DEBUG:
+        countries = countries[:3]
+
     for country in tqdm(countries):
         tqdm.write(country)
         try:
@@ -112,7 +117,7 @@ def _subset_columns(df):
     """
     index_cols = ['country', 'date']
     assert MAPPING.keep.isin([True, False]).all(), 'All values in "keep" column of `MAPPING` must be True or False.'
-    questions_keep = MAPPING.label[MAPPING.keep].tolist()
+    questions_keep = MAPPING.label[MAPPING.keep & ~MAPPING.derived].dropna().tolist()
     df = df[index_cols + questions_keep]
     return df
 
@@ -123,6 +128,32 @@ def _preprocess_cols(df):
             df[row.label] = df[row.label].replace(MAPPED_VALUES[row.preprocess])
             uniq_values = set(MAPPED_VALUES[row.preprocess].values())
             assert df[row.label].drop_duplicates().dropna().isin(uniq_values).all(), f"One or more non-NaN values in {row.label} are not in {uniq_values}"
+    return df
+
+
+def _derive_cols(df):
+    derived_variables_to_keep = MAPPING[MAPPING['derived'] & MAPPING['keep']].label.unique().tolist()
+    if 'covid_vaccinated_or_willing' in derived_variables_to_keep:
+        # constructs the covid_vaccinated_or_willing variable
+        # pd.crosstab(df['vac'].fillna(-1), df['vac_1'].fillna(-1))
+        vac_min_val = min(MAPPED_VALUES[MAPPING.loc[MAPPING['label'] == 'vac', 'preprocess'].squeeze()].values())
+        vac_max_val = max(MAPPED_VALUES[MAPPING.loc[MAPPING['label'] == 'vac', 'preprocess'].squeeze()].values())
+        vac_1_max_val = max(MAPPED_VALUES[MAPPING.loc[MAPPING['label'] == 'vac_1', 'preprocess'].squeeze()].values())
+        
+        assert not ((df['vac'] == vac_max_val) & df['vac_1'].notnull()).any(), (
+            "Expected all vaccinated respondents to NOT be asked whether they would "
+            "get vaccinated, but found at least one vaccinated respondent who was "
+            "asked the latter question."
+        )
+        assert not ((df['vac'] == vac_min_val) & df['vac_1'].isnull()).any(), (
+            "Expected all unvaccinated respondents to be asked whether they would "
+            "get vaccinated, but found at least one unvaccinated respondent who was "
+            "not asked the latter question."
+        )
+        
+        df['covid_vaccinated_or_willing'] = ((df['vac'] == vac_max_val) | (df['vac_1'] == vac_1_max_val)).astype(int) * vac_max_val
+        df.loc[df['vac'].isnull() & df['vac_1'].isnull(), 'covid_vaccinated_or_willing'] = np.nan
+    
     return df
 
 

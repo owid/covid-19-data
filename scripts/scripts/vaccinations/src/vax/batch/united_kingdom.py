@@ -71,6 +71,12 @@ def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(vaccine=df.date.apply(_enrich_vaccine))
 
 
+def exclude_data_points(input: pd.DataFrame) -> pd.DataFrame:
+    # The data contains an error that creates a negative change
+    input = input[(input.location != "Northern Ireland") | (input.date != "2021-02-20")]
+    return input
+
+
 def pipeline(df: pd.DataFrame, source_url: str) -> pd.DataFrame:
     return (
         df.pipe(enrich_people_vaccinated)
@@ -79,6 +85,7 @@ def pipeline(df: pd.DataFrame, source_url: str) -> pd.DataFrame:
         .pipe(aggregate_first_date)
         .pipe(enrich_source_url, source_url)
         .pipe(enrich_vaccine)
+        .pipe(exclude_data_points)
     )
 
 

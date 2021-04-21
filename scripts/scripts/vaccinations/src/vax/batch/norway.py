@@ -60,7 +60,7 @@ def main():
         "./antall-personer-vaksiner.csv", 
         separators=[";", ","],
         usecols=[
-            "Category",
+            "Kategori",
             "Kumulativt antall personer vaksinert med 1.dose",
             "Kumulativt antall personer vaksinert med 2.dose"
         ]
@@ -68,16 +68,12 @@ def main():
 
     df = df.rename(columns={
         "Kumulativt antall personer vaksinert med 1.dose": "people_vaccinated",
-        "Kumulativt antall personer vaksinert med 2.dose": "people_fully_vaccinated"
+        "Kumulativt antall personer vaksinert med 2.dose": "people_fully_vaccinated",
+        "Kategori": "date",
     })
 
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"].fillna(0)
 
-    if "Category" in df.columns:
-        df = df.rename(columns={"Category": "date"})
-    elif "DateTime" in df.columns:
-        df = df.rename(columns={"DateTime": "date"})
-        
     df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
 
     df.loc[:, "location"] = "Norway"
