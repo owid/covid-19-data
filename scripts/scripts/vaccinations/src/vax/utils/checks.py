@@ -37,7 +37,7 @@ def country_df_sanity_checks(
     if (df.date.min() < datetime(2020, 12, 1)) or (df.date.max() > datetime.now().date()):
         raise ValueError(f"{location} -- Invalid dates! Check {df.date.min()} and {df.date.max()}")
     if df.date.nunique() != len(df):
-        raise ValueError(f"{location} -- Missmatch between number of rows {len(df)} and number of different dates "
+        raise ValueError(f"{location} -- Mismatch between number of rows {len(df)} and number of different dates "
                             f"{df.date.nunique()}. Check {df.date.unique()}.")
     # Location consistency
     if df.location.isnull().any():
