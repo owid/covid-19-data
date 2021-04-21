@@ -8,7 +8,7 @@ from vax.utils.incremental import enrich_data, increment
 
 
 def read(source: str) -> pd.Series:
-    data = parse_data(source)
+    data = requests.get(source).json()
     for count in data:
         if count[0] == "2nd Vaccine taken":
             people_fully_vaccinated = count[1]
@@ -21,18 +21,13 @@ def read(source: str) -> pd.Series:
     })
 
 
-def parse_data(source: str) -> dict:
-    data = requests.get(source).json()
-    return data
-
-
 def add_totals(ds: pd.Series) -> pd.Series:
-    total_vaccinations = ds['people_vaccinated'] + ds['people_fully_vaccinated']
-    return enrich_data(ds, 'total_vaccinations', total_vaccinations)
+    total_vaccinations = ds["people_vaccinated"] + ds["people_fully_vaccinated"]
+    return enrich_data(ds, "total_vaccinations", total_vaccinations)
 
 
 def enrich_date(ds: pd.Series) -> pd.Series:
-    date_str = date_str = datetime.now().astimezone(pytz.timezone('America/Aruba')).strftime("%Y-%m-%d")
+    date_str = datetime.now().astimezone(pytz.timezone("America/Aruba")).strftime("%Y-%m-%d")
     return enrich_data(ds, "date", date_str)
 
 
@@ -47,10 +42,10 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
         ds
-            .pipe(add_totals)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_date)
+        .pipe(add_totals)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_date)
     )
 
 
