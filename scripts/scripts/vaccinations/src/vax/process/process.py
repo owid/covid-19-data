@@ -46,10 +46,14 @@ def _sanity_checks(df: pd.DataFrame) -> pd.DataFrame:
     if (df.date.min() < datetime(2020, 12, 1)) or (df.date.max() > datetime.now().date()):
         raise ValueError(f"{location} -- Invalid dates! Check {df.date.min()} and {df.date.max()}")
     if any(df.location.isnull()) or df.location.nunique() != 1:
-        raise ValueError(f"{location} -- Invalid location! Check {df.location}")
+        raise ValueError(f"{location} -- Invalid location! Check {location}")
     if df.date.nunique() != len(df):
-        raise ValueError(f"{location} -- Missmatch between number of rows {len(df)} and number of different dates "
+        raise ValueError(f"{location} -- Mismatch between number of rows {len(df)} and number of different dates "
                             f"{df.date.nunique()}. Check {df.date.unique()}")
     if any(df_.people_fully_vaccinated > df_.people_vaccinated) or any(df_.people_vaccinated > df_.total_vaccinations):
         raise ValueError(f"{location} -- Logic not valid! Check columns ['people_vaccinated', "
                           "'people_fully_vaccinated', 'total_vaccinations']")
+    for metric in ("total_vaccinations", "people_vaccinated", "people_fully_vaccinated"):
+        if any((df[metric] -  df[metric].shift(1) < 0).dropna()):
+            print(df[df[metric] < df[metric].shift(1)])
+            raise ValueError(f"{location} -- The {metric} column is not monotonically increasing!")
