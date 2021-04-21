@@ -27,7 +27,7 @@ def connect_parse_data(source: str) -> pd.Series:
     }
     soup = BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
 
-    data = re.search(r"De los ([\d\.]+) vacunados, ([\d\.]+)", soup.text)
+    data = re.search(r"De los ([\d\.]+) vacunados un total de ([\d\.]+)", soup.text)
     people_vaccinated = clean_count(data.group(1))
     people_fully_vaccinated = clean_count(data.group(2))
 
