@@ -188,7 +188,10 @@ generate_html <- function(metadata) {
         WORLD_POP_COVERED
     )
     message(coverage_info)
-    html_table <- paste0("<p><strong>", coverage_info, "</strong></p>", html_table)
+    html_table <- paste0(
+        '<div class="wp-block-full-content-width"><p><strong>', coverage_info, "</strong></p>",
+        html_table, "</div>"
+    )
     writeLines(html_table, "source_table.html")
 }
 
