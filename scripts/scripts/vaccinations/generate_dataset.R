@@ -112,13 +112,11 @@ add_per_capita <- function(df, subnational_pop) {
     pop <- get_population(subnational_pop)
     df <- merge(df, pop)
 
-    world_population <- pop[location == "World", population]
     covered <- unique(df[
         !location %in% names(AGGREGATES) & !location %in% subnational_pop$location,
         c("location", "population")
     ])
     COUNTRIES_COVERED <<- nrow(covered)
-    WORLD_POP_COVERED <<- paste0(round(100 * sum(covered$population) / world_population), "%")
 
     df[, total_vaccinations_per_hundred := round(total_vaccinations * 100 / population, 2)]
     df[, people_vaccinated_per_hundred := round(people_vaccinated * 100 / population, 2)]
@@ -172,7 +170,9 @@ generate_grapher_file <- function(grapher) {
 
 generate_html <- function(metadata) {
     html <- copy(metadata)
-    html[, location := paste0("<tr><td><strong>", location, "</strong></td>")]
+    html[, location := paste0("<strong>", location, "</strong>")]
+    html[str_detect(location, "Israel|Palestine"), location := paste0(location, ' (see <a href="https://ourworldindata.org/covid-vaccinations#frequently-asked-questions">FAQ</a>)')]
+    html[, location := paste0("<tr><td>", location, "</td>")]
     html[, last_observation_date := paste0("<td>", str_squish(format.Date(last_observation_date, "%b. %e, %Y")), "</td>")]
     html[, vaccines := paste0("<td>", vaccines, "</td></tr>")]
     html[, source := paste0('<td><a href="', source_website, '">', source_name, "</a></td>")]
@@ -183,12 +183,13 @@ generate_html <- function(metadata) {
     body <- paste0(html$body, collapse = "")
     html_table <- paste0("<table><tbody>", header, body, "</tbody></table>")
     coverage_info <- sprintf(
-        "Vaccination against COVID-19 has now started in %s locations, covering %s of the world population.",
-        COUNTRIES_COVERED,
-        WORLD_POP_COVERED
+        "Vaccination against COVID-19 has now started in %s locations.", COUNTRIES_COVERED
     )
     message(coverage_info)
-    html_table <- paste0("<p><strong>", coverage_info, "</strong></p>", html_table)
+    html_table <- paste0(
+        '<div class="wp-block-full-content-width"><p><strong>', coverage_info, "</strong></p>",
+        html_table, "</div>"
+    )
     writeLines(html_table, "source_table.html")
 }
 

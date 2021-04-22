@@ -1,5 +1,6 @@
-import requests
+from datetime import datetime, timedelta
 
+import requests
 import pandas as pd
 
 from vax.utils.incremental import enrich_data, increment
@@ -11,7 +12,7 @@ def read(source: str) -> pd.Series:
     people_vaccinated = data["topBlock"]["vaccination"]["tot_dose_1"]
     people_fully_vaccinated = data["topBlock"]["vaccination"]["tot_dose_2"]
     total_vaccinations = data["topBlock"]["vaccination"]["total_doses"]
-    date = str(pd.to_datetime(data["timestamp"]).date())
+    date = datetime.strptime(data["timestamp"], "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
 
     return pd.Series({
         "date": date,
@@ -43,7 +44,8 @@ def pipeline(ds: pd.Series) -> pd.Series:
 
 
 def main():
-    source = "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=2021-04-21"
+    date_str = (datetime.now()-timedelta(days=1)).strftime("%Y-%m-%d")
+    source = f"https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date={date_str}"
     data = read(source).pipe(pipeline)
     increment(
         location=data["location"],
