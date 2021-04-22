@@ -12,7 +12,7 @@ def read(source: str) -> pd.Series:
     people_vaccinated = data["topBlock"]["vaccination"]["tot_dose_1"]
     people_fully_vaccinated = data["topBlock"]["vaccination"]["tot_dose_2"]
     total_vaccinations = data["topBlock"]["vaccination"]["total_doses"]
-    date = datetime.strptime(data["timestamp"]), "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
+    date = datetime.strptime(data["timestamp"], "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
 
     return pd.Series({
         "date": date,
