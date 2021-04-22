@@ -22,7 +22,7 @@ from vax.utils.gsheets import GSheet
 from vax.process import process_location
 
 # Variables
-SCRAPING_SKIP_COUNTRIES = ["Peru"]
+SCRAPING_SKIP_COUNTRIES = []
 PROCESS_SKIP_COUNTRIES = []
 SKIP_COUNTRIES_MONOTONIC_CHECK = ["Northern Ireland", "Malta", "Ecuador"]
 
@@ -80,10 +80,6 @@ def main_get_data(parallel: bool = False, n_jobs: int = -2):
             "success": success,
             "skipped": False
         }
-    modules_name = [
-        "vax.batch.italy",
-        "vax.incremental.spain"
-    ]
     if parallel:
         modules_execution_results = Parallel(n_jobs=n_jobs, backend="threading")(
             delayed(_get_data_country)(module_name) for module_name in modules_name
