@@ -87,7 +87,8 @@ def enrich_vaccine(ds: pd.Series) -> pd.Series:
 
 
 def add_totals(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "total_vaccinations", ds.people_vaccinated)
+    return ds
+    #return enrich_data(ds, "total_vaccinations", ds.people_vaccinated)
 
 
 def pipeline(ds: pd.Series) -> pd.Series:
