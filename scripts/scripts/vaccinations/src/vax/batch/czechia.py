@@ -26,10 +26,10 @@ def check_columns(input: pd.DataFrame) -> pd.DataFrame:
         "vakcina",
         "kraj_nuts_kod",
         "kraj_nazev",
-        "zarizeni_kod",
-        "zarizeni_nazev",
-        "poradi_davky",
         "vekova_skupina",
+        "prvnich_davek",
+        "druhych_davek",
+        "celkem_davek",
     ]
     if list(input.columns) != expected:
         raise ValueError(
@@ -76,11 +76,12 @@ def base_pipeline(input: pd.DataFrame) -> pd.DataFrame:
 def breakdown_per_vaccine(input: pd.DataFrame) -> pd.DataFrame:
     return (
         input.groupby(by=["datum", "vakcina"], as_index=False)
-        .size()
+        [["celkem_davek"]].sum()
         .sort_values("datum")
         .assign(
-            size=lambda df: df.groupby(by=["vakcina"], as_index=False)["size"].cumsum()
+            size=lambda df: df.groupby(by=["vakcina"], as_index=False)["celkem_davek"].cumsum()
         )
+        .drop("celkem_davek", axis=1)
         .rename(
             columns={
                 "datum": "date",
@@ -94,10 +95,13 @@ def breakdown_per_vaccine(input: pd.DataFrame) -> pd.DataFrame:
 
 def aggregate_by_date_vaccine(input: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.groupby(by=["datum", "vakcina", "poradi_davky"])
-        .size()
-        .unstack()
+        input.groupby(by=["datum", "vakcina"])
+        [["prvnich_davek", "druhych_davek"]].sum()
         .reset_index()
+        .rename({
+            "prvnich_davek": 1,
+            "druhych_davek": 2,
+        }, axis=1)
     )
 
 
@@ -173,7 +177,7 @@ def global_pipeline(input: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    source = "https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/ockovaci-mista.csv"
+    source = "https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/ockovani.csv"
 
     global_output = "output/Czechia.csv"
     by_manufacturer_output = "output/by_manufacturer/Czechia.csv"
