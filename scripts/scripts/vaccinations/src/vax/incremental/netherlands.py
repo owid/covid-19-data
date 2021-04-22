@@ -9,14 +9,14 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 from vax.utils.utils import get_soup
-from vax.utils.incremental import enrich_data, increment
+from vax.utils.incremental import enrich_data, increment, clean_count
 
 
 def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
     # Daily
-    data_daily = requests.get(source_daily).json()
-    date_daily = parse_date_daily(data_daily)
-    total_vaccinations_d = parse_data_daily(data_daily)
+    soup_daily = get_soup(source_daily)
+    date_daily = parse_date_daily(soup_daily)
+    total_vaccinations_d = parse_data_daily(soup_daily)
     
     # Weekly
     soup_weekly = get_soup(source_weekly)
@@ -63,19 +63,13 @@ def parse_data_weekly(soup: BeautifulSoup) -> str:
     return total_vaccinations, people_vaccinated, people_fully_vaccinated
 
 
-def parse_data_daily(data: dict):
-    return data["pageProps"]["data"]["vaccine_administered_total"]["last_value"]["estimated"]
+def parse_data_daily(soup: BeautifulSoup):
+    return clean_count(soup.find(class_="sc-hKwCoD liLttJ").text)
 
 
-def parse_date_daily(data: dict):
-    # Date
-    ts = data["pageProps"]["data"]["vaccine_administered_total"]["last_value"]["date_unix"]
-    dt = datetime.fromtimestamp(ts, pytz.timezone("Europe/Amsterdam"))
-    if dt.hour < 6:
-        dt = (dt.date() - timedelta(days=1)).strftime("%Y-%m-%d")
-    else:
-        dt = dt.date().strftime("%Y-%m-%d")
-    return dt
+def parse_date_daily(soup: BeautifulSoup):
+    date_str = soup.find(class_="sc-hKwCoD jMAwtT").text
+    return datetime.strptime(date_str, "Value of %d %B %Y").strftime("%Y-%m-%d")
 
 
 def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
@@ -121,9 +115,7 @@ def merge_with_current_data(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
 
 
 def main():
-    source_daily = (
-        "https://coronadashboard.rijksoverheid.nl/_next/data/grtk8p5j2Ex87h9MYOj9a/landelijk/vaccinaties.json"
-    )
+    source_daily = "https://coronadashboard.government.nl/landelijk/vaccinaties"
     source_weekly = "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
     output_file = "output/Netherlands.csv"
     df = read(source_daily, source_weekly).pipe(pipeline)

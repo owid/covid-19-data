@@ -1,15 +1,16 @@
-date,location,vaccine,total_vaccinations,people_vaccinated,people_fully_vaccinated,source_url
-2021-01-17,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",77000,77000,0,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
-2021-01-24,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",146612,146612,0,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
-2021-01-31,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",343526,327834,15692,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
-2021-02-07,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",571145,504736,66409,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
-2021-02-14,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",783438,628993,154445,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
-2021-02-21,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1014039,795326,218713,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
-2021-02-28,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1336428,1004757,331671,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland
-2021-03-07,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1619839,1207904,411935,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma
-2021-03-14,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",1887726,1394603,493123,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma
-2021-03-21,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2097980,1492489,605491,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma
-2021-03-28,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2378552,1688490,690062,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma
-2021-04-04,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",2863986,2057562,806424,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma
-2021-04-11,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",3783912,2957777,826135,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma
-2021-04-18,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",4578432,3635235,943197,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma
+date,total_vaccinations,people_vaccinated,people_fully_vaccinated,source_url,location,vaccine
+2021-01-17,77000,77000,0,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-01-24,146612,146612,0,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-01-31,343526,327834,15692,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-02-07,571145,504736,66409,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-02-14,783438,628993,154445,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-02-21,1014039,795326,218713,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-02-28,1336428,1004757,331671,https://www.rivm.nl/covid-19-vaccinatie/wekelijkse-update-deelname-covid-19-vaccinatie-in-nederland,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-03-07,1619839,1207904,411935,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-03-14,1887726,1394603,493123,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-03-21,2097980,1492489,605491,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-03-28,2378552,1688490,690062,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-04-04,2863986,2057562,806424,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-04-11,3783912,2957777,826135,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-04-18,4578432,3635235,943197,https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+2021-04-21,4873624,,,https://coronadashboard.government.nl/landelijk/vaccinaties,Netherlands,"Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
