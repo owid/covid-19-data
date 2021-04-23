@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 
 import requests
@@ -13,7 +13,9 @@ def read(source: str) -> pd.Series:
         if count[0] == "2nd Vaccine taken":
             people_fully_vaccinated = count[1]
         if count[0] == "1st Vaccine taken":
-            people_vaccinated = count[1]
+            dose1_only = count[1]
+
+    people_vaccinated = dose1_only + people_fully_vaccinated
 
     return pd.Series({
         "people_vaccinated": people_vaccinated,
@@ -27,8 +29,8 @@ def add_totals(ds: pd.Series) -> pd.Series:
 
 
 def enrich_date(ds: pd.Series) -> pd.Series:
-    date_str = datetime.now().astimezone(pytz.timezone("America/Aruba")).strftime("%Y-%m-%d")
-    return enrich_data(ds, "date", date_str)
+    date = str(datetime.now(pytz.timezone("America/Aruba")).date() - timedelta(days=1))
+    return enrich_data(ds, "date", date)
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
