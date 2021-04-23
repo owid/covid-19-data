@@ -10,6 +10,7 @@ tmp/
 *.log
 testing_dataset_config.json
 scripts/scripts/vaccinations/vax_dataset_config.json
+.Rhistory
 
 # Local Netlify folder
 .netlify
@@ -21,3 +22,11 @@ Icon[
 *.egg-info
 *.preliminary.csv
 *.tmp.csv
+
+# Vaccinations
+scripts/scripts/vaccinations/*.ipynb
+scripts/scripts/vaccinations/notebooks
+scripts/scripts/vaccinations/automations
+scripts/scripts/vaccinations/vax_update.sh
+scripts/scripts/vaccinations/antall-personer-vaksiner.csv
+
