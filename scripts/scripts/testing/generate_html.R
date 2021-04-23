@@ -110,4 +110,4 @@ if (nrow(attempts) > 0) {
     html_add('</ul>')
 }
 
-writeLines(HTML_CODE, sprintf("%s/html_for_post.html", CONFIG$internal_shared_folder))
+writeLines(HTML_CODE, "source_table.html")
