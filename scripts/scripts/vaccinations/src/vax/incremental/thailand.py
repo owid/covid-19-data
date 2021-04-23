@@ -121,20 +121,16 @@ def main():
     source = "https://ddc.moph.go.th/dcd/pagecontent.php?page=643&dept=dcd"
 
     # Since it a PDF Report / Text Format might be change and cause error
-    try:
-      data = read(source).pipe(pipeline)
-      increment(
-          location=data["location"],
-          total_vaccinations=data["total_vaccinations"],
-          people_vaccinated=data["people_vaccinated"],
-          people_fully_vaccinated=data["people_fully_vaccinated"],
-          date=data["date"],
-          source_url=data["source_url"],
-          vaccine=data["vaccine"]
-      )
-    except:
-      print("An error occurred : Text format might change - need further investigation")
-
+    data = read(source).pipe(pipeline)
+    increment(
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
+        date=data["date"],
+        source_url=data["source_url"].replace(" ", "%20"),
+        vaccine=data["vaccine"]
+    )
 
 if __name__ == "__main__":
     main()
