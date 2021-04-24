@@ -19,7 +19,7 @@ def read(source: str) -> pd.Series:
 
 def connect_parse_data(source: str) -> pd.Series:
     op = Options()
-    # op.add_argument("--headless")
+    op.add_argument("--headless")
 
     with webdriver.Chrome(options=op) as driver:
         driver.get(source)
@@ -28,9 +28,9 @@ def connect_parse_data(source: str) -> pd.Series:
         date = re.search(r"Fecha de corte : ([\d/]{10})", driver.page_source).group(1)
 
         for block in driver.find_elements_by_class_name("unselectable"):
-            if block.get_attribute("aria-label") == "Dosis aplicadas Carte":
+            if block.get_attribute("aria-label") == "Dosis aplicadas Card":
                 total_vaccinations = clean_count(block.find_element_by_class_name("value").text)
-            elif block.get_attribute("aria-label") == "Segundas dosis aplicadas Carte":
+            elif block.get_attribute("aria-label") == "Segundas dosis aplicadas Card":
                 people_fully_vaccinated = clean_count(block.find_element_by_class_name("value").text)
 
     people_vaccinated = total_vaccinations - people_fully_vaccinated
