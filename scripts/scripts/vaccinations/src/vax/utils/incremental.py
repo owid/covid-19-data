@@ -18,8 +18,8 @@ def clean_date(date, fmt):
     return date
 
 
-def enrich_data(input: pd.Series, row, value) -> pd.Series:
-    return input.append(pd.Series({row: value}))
+def enrich_data(ds: pd.Series, row, value) -> pd.Series:
+    return ds.append(pd.Series({row: value}))
 
 
 def increment(

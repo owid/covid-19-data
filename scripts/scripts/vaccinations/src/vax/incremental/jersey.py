@@ -23,30 +23,30 @@ def parse_date(soup: BeautifulSoup) -> str:
     return clean_date(date, "%d %B %Y")
 
 
-def translate_index(input: pd.Series) -> pd.Series:
-    return input.rename({
+def translate_index(ds: pd.Series) -> pd.Series:
+    return ds.rename({
         'Total number of first dose vaccinations': 'people_vaccinated',
         'Total number of second dose vaccinations': 'people_fully_vaccinated',
         'Total number of doses': 'total_vaccinations',
     })
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "Jersey")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "Jersey")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine', "Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine', "Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url',
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url',
                                 "https://www.gov.je/Health/Coronavirus/Vaccine/Pages/VaccinationStatistics.aspx")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(translate_index)
+        ds.pipe(translate_index)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)
             .pipe(enrich_source)

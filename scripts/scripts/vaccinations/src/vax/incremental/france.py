@@ -7,35 +7,35 @@ def read(source: str) -> pd.Series:
     return data.set_index(data.columns[0]).T.squeeze()
 
 
-def translate_index(input: pd.Series) -> pd.Series:
-    return input.rename({
+def translate_index(ds: pd.Series) -> pd.Series:
+    return ds.rename({
         'n_tot_dose1': 'people_vaccinated',
         'n_tot_dose2': 'people_fully_vaccinated',
         'jour': 'date',
     })
 
 
-def add_totals(input: pd.Series) -> pd.Series:
-    total_vaccinations = int(input['people_vaccinated']) + int(input['people_fully_vaccinated'])
-    return enrich_data(input, 'total_vaccinations', total_vaccinations)
+def add_totals(ds: pd.Series) -> pd.Series:
+    total_vaccinations = int(ds['people_vaccinated']) + int(ds['people_fully_vaccinated'])
+    return enrich_data(ds, 'total_vaccinations', total_vaccinations)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "France")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "France")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url',
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url',
                                 "https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(translate_index)
+        ds.pipe(translate_index)
             .pipe(add_totals)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)

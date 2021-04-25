@@ -7,37 +7,37 @@ def read(source: str) -> pd.DataFrame:
     return pd.read_csv(source)
 
 
-def melt(input: pd.DataFrame) -> pd.DataFrame:
-    return input.melt(["Type", "Dose"], var_name="date", value_name="value")
+def melt(df: pd.DataFrame) -> pd.DataFrame:
+    return df.melt(["Type", "Dose"], var_name="date", value_name="value")
 
 
-def filter_rows(input: pd.DataFrame) -> pd.DataFrame:
-    return input[(input.Type != "Total") & (input.value > 0)]
+def filter_rows(df: pd.DataFrame) -> pd.DataFrame:
+    return df[(df.Type != "Total") & (df.value > 0)]
 
 
-def pivot(input: pd.DataFrame) -> pd.DataFrame:
-    return input.pivot(index=["Type", "date"], columns="Dose", values="value").reset_index()
+def pivot(df: pd.DataFrame) -> pd.DataFrame:
+    return df.pivot(index=["Type", "date"], columns="Dose", values="value").reset_index()
 
 
-def enrich_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
+def enrich_vaccinations(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.assign(total_vaccinations=input.First.fillna(0) + input.Second.fillna(0))
+        df.assign(total_vaccinations=df.First.fillna(0) + df.Second.fillna(0))
         .rename(columns={"First": "people_vaccinated", "Second": "people_fully_vaccinated"})
     )
 
 
-def rename_vaccines(input: pd.DataFrame) -> pd.DataFrame:
+def rename_vaccines(df: pd.DataFrame) -> pd.DataFrame:
     vaccine_mapping = {
         "Pfizer": "Pfizer/BioNTech",
         "Sinovac": "Sinovac",
     }
-    assert set(input["Type"].unique()) == set(vaccine_mapping.keys())
-    return input.replace(vaccine_mapping)
+    assert set(df["Type"].unique()) == set(vaccine_mapping.keys())
+    return df.replace(vaccine_mapping)
 
 
-def preprocess(input: pd.DataFrame) -> pd.DataFrame:
+def preprocess(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.pipe(melt)
+        df.pipe(melt)
         .pipe(filter_rows)
         .pipe(pivot)
         .pipe(enrich_vaccinations)
@@ -45,9 +45,9 @@ def preprocess(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def aggregate(input: pd.DataFrame) -> pd.DataFrame:
+def aggregate(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input
+        df
         .sort_values("Type")
         .groupby("date", as_index=False)
         .agg(
@@ -59,23 +59,23 @@ def aggregate(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
+def enrich_metadata(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
         source_url="https://www.gob.cl/yomevacuno/",
         location="Chile",
     )
 
 
-def postprocess_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
+def postprocess_vaccinations(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.pipe(aggregate)
+        df.pipe(aggregate)
         .pipe(enrich_metadata)
     )
 
 
-def postprocess_manufacturer(input: pd.DataFrame) -> pd.DataFrame:
+def postprocess_manufacturer(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input[["Type", "date", "total_vaccinations"]]
+        df[["Type", "date", "total_vaccinations"]]
         .rename(columns={"Type": "vaccine"})
         .assign(location="Chile")
     )

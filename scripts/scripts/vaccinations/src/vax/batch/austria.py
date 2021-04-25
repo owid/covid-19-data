@@ -5,34 +5,34 @@ def read(source: str) -> pd.DataFrame:
     return pd.read_csv(source, sep=";")
 
 
-def filter_country(input: pd.DataFrame) -> pd.DataFrame:
-    return input[input["Name"] == "Österreich"]
+def filter_country(df: pd.DataFrame) -> pd.DataFrame:
+    return df[df["Name"] == "Österreich"]
 
 
-def select_columns(input: pd.DataFrame, columns: list) -> pd.DataFrame:
-    return input[columns]
+def select_columns(df: pd.DataFrame, columns: list) -> pd.DataFrame:
+    return df[columns]
 
 
-def rename_columns(input: pd.DataFrame, columns: dict) -> pd.DataFrame:
-    return input.rename(columns=columns)
+def rename_columns(df: pd.DataFrame, columns: dict) -> pd.DataFrame:
+    return df.rename(columns=columns)
 
 
-def format_date(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(date=input.date.str.slice(0, 10))
+def format_date(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(date=df.date.str.slice(0, 10))
 
 
-def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        total_vaccinations=input.people_vaccinated + input.people_fully_vaccinated,
+def enrich_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
+        total_vaccinations=df.people_vaccinated + df.people_fully_vaccinated,
         location="Austria",
         source_url="https://info.gesundheitsministerium.gv.at/opendata/",
         vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",
     )
 
 
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input
+        df
         .pipe(filter_country)
         .pipe(select_columns, columns=["Datum", "Teilgeimpfte", "Vollimmunisierte"])
         .pipe(rename_columns, columns={

@@ -40,31 +40,31 @@ def parse_people_vaccinated(df: dict) -> int:
     return people_vaccinated
 
 
-def add_totals(input: pd.Series) -> pd.Series:
-    total_vaccinations = input['people_vaccinated'] + input['people_fully_vaccinated']
-    return enrich_data(input, 'total_vaccinations', total_vaccinations)
+def add_totals(ds: pd.Series) -> pd.Series:
+    total_vaccinations = ds['people_vaccinated'] + ds['people_fully_vaccinated']
+    return enrich_data(ds, 'total_vaccinations', total_vaccinations)
 
 
-def format_date(input: pd.Series) -> pd.Series:
+def format_date(ds: pd.Series) -> pd.Series:
     date = str(datetime.datetime.now(pytz.timezone("Europe/Isle_of_Man")).date())
-    return enrich_data(input, 'date', date)
+    return enrich_data(ds, 'date', date)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "Isle of Man")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "Isle of Man")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine', "Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine', "Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url', "https://covid19.gov.im/general-information/covid-19-vaccination-statistics/")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url', "https://covid19.gov.im/general-information/covid-19-vaccination-statistics/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(add_totals)
+        ds.pipe(add_totals)
             .pipe(format_date)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)

@@ -26,9 +26,9 @@ def connect_parse_data(source: str) -> pd.Series:
     })
 
 
-def enrich_date(input: pd.Series) -> pd.Series:
+def enrich_date(ds: pd.Series) -> pd.Series:
     date = str(datetime.datetime.now(pytz.timezone("Europe/Skopje")).date() - datetime.timedelta(days=1))
-    return enrich_data(input, "date", date)
+    return enrich_data(ds, "date", date)
 
 
 def enrich_location(ds: pd.Series) -> pd.Series:

@@ -35,27 +35,27 @@ def parse_people_vaccinated(soup: BeautifulSoup) -> int:
     return clean_count(people_vaccinated)
 
 
-def format_date(input: pd.Series) -> pd.Series:
+def format_date(ds: pd.Series) -> pd.Series:
     date = str(datetime.datetime.now(pytz.timezone("Asia/Istanbul")).date())
-    return enrich_data(input, 'date', date)
+    return enrich_data(ds, 'date', date)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "Turkey")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "Turkey")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine', "Pfizer/BioNTech, Sinovac")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine', "Pfizer/BioNTech, Sinovac")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url',
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url',
                                 "https://covid19asi.saglik.gov.tr/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(format_date)
+        ds.pipe(format_date)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)
             .pipe(enrich_source)

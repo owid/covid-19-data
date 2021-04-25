@@ -28,26 +28,26 @@ def set_date() -> str:
     return str(datetime.datetime.now(pytz.timezone("Europe/Madrid")).date() - datetime.timedelta(days=1))
 
 
-def add_vaccinated(input: pd.Series) -> pd.Series:
-    people_vaccinated = input["total_vaccinations"] - input["people_fully_vaccinated"]
-    return enrich_data(input, "people_vaccinated", people_vaccinated)
+def add_vaccinated(ds: pd.Series) -> pd.Series:
+    people_vaccinated = ds["total_vaccinations"] - ds["people_fully_vaccinated"]
+    return enrich_data(ds, "people_vaccinated", people_vaccinated)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Spain")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Spain")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series, source: str) -> pd.Series:
-    return enrich_data(input, "source_url", source)
+def enrich_source(ds: pd.Series, source: str) -> pd.Series:
+    return enrich_data(ds, "source_url", source)
 
 
-def pipeline(input: pd.Series, source: str) -> pd.Series:
+def pipeline(ds: pd.Series, source: str) -> pd.Series:
     return (
-        input
+        ds
         .pipe(add_vaccinated)
         .pipe(enrich_location)
         .pipe(enrich_vaccine)

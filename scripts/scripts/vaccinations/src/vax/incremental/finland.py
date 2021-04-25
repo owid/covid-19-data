@@ -32,25 +32,25 @@ def get_date() -> str:
     return str((datetime.datetime.now(pytz.timezone("Europe/Helsinki")) - datetime.timedelta(days=1)).date())
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Finland")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Finland")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
+def enrich_source(ds: pd.Series) -> pd.Series:
     return enrich_data(
-        input,
+        ds,
         "source_url",
         "https://sampo.thl.fi/pivot/prod/en/vaccreg/cov19cov/fact_cov19cov?column=measure-533185.533172.433796.533175&row=cov_vac_dose-533174L"
     )
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source)

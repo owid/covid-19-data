@@ -8,18 +8,18 @@ def read(source: str) -> str:
     return pd.DataFrame.from_records(elem["attributes"] for elem in data["features"])
 
 
-def rename_columns(input: pd.DataFrame, colname: str) -> pd.DataFrame:
-    input.columns = ("date", colname)
-    return input
+def rename_columns(df: pd.DataFrame, colname: str) -> pd.DataFrame:
+    df.columns = ("date", colname)
+    return df
 
 
-def format_date(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(date=pd.to_datetime(input.date, unit="ms"))
+def format_date(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(date=pd.to_datetime(df.date, unit="ms"))
 
 
-def aggregate(input: pd.DataFrame) -> pd.DataFrame:
+def aggregate(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input
+        df
         .groupby("date")
         .sum()
         .sort_values("date")
@@ -28,15 +28,15 @@ def aggregate(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def enrich_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
-    input["people_vaccinated"] = input.people_vaccinated.ffill()
-    input["people_fully_vaccinated"] = input.people_fully_vaccinated.ffill()
-    return input.assign(
-        total_vaccinations=input.people_vaccinated.fillna(0) + input.people_fully_vaccinated.fillna(0)
+def enrich_vaccinations(df: pd.DataFrame) -> pd.DataFrame:
+    df["people_vaccinated"] = df.people_vaccinated.ffill()
+    df["people_fully_vaccinated"] = df.people_fully_vaccinated.ffill()
+    return df.assign(
+        total_vaccinations=df.people_vaccinated.fillna(0) + df.people_fully_vaccinated.fillna(0)
     )
 
 
-def enrich_vaccine(input: pd.DataFrame) -> pd.DataFrame:
+def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine(date: str) -> str:
         if date >= "2021-04-14":
             return "Moderna, Pfizer/BioNTech"
@@ -45,28 +45,28 @@ def enrich_vaccine(input: pd.DataFrame) -> pd.DataFrame:
         if date >= "2021-01-13":
             return "Moderna, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
-    return input.assign(vaccine=input.date.astype(str).apply(_enrich_vaccine))
+    return df.assign(vaccine=df.date.astype(str).apply(_enrich_vaccine))
 
 
-def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
+def enrich_metadata(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
         location="Denmark",
         source_url="https://covid19.ssi.dk/overvagningsdata/vaccinationstilslutning"
     )
 
 
-def pipeline(input: pd.DataFrame, colname: str) -> pd.DataFrame:
+def pipeline(df: pd.DataFrame, colname: str) -> pd.DataFrame:
     return (
-        input
+        df
         .pipe(rename_columns, colname)
         .pipe(format_date)
         .pipe(aggregate)
     )
 
 
-def post_process(input: pd.DataFrame) -> pd.DataFrame:
+def post_process(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input
+        df
         .pipe(enrich_vaccinations)
         .pipe(enrich_vaccine)
         .pipe(enrich_metadata)

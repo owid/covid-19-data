@@ -7,9 +7,9 @@ def read(source: str) -> pd.DataFrame:
     return pd.read_csv(source, usecols=["DATE", "DOSE", "COUNT"])
 
 
-def aggregate(input: pd.DataFrame) -> pd.DataFrame:
+def aggregate(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.groupby(["DATE", "DOSE"], as_index=False)
+        df.groupby(["DATE", "DOSE"], as_index=False)
         .sum()
         .sort_values("DATE")
         .pivot(index="DATE", columns="DOSE", values="COUNT")
@@ -17,8 +17,8 @@ def aggregate(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.rename(
+def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.rename(
         columns={
             "DATE": "date",
             "A": "people_vaccinated",
@@ -27,14 +27,14 @@ def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def add_totals(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        people_vaccinated=input.people_vaccinated.cumsum().ffill().fillna(0).astype(int),
-        people_fully_vaccinated=input.people_fully_vaccinated.cumsum().ffill().fillna(0).astype(int),
+def add_totals(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
+        people_vaccinated=df.people_vaccinated.cumsum().ffill().fillna(0).astype(int),
+        people_fully_vaccinated=df.people_fully_vaccinated.cumsum().ffill().fillna(0).astype(int),
     ).pipe(enrich_total_vaccinations)
 
 
-def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
+def enrich_vaccine_name(df: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine_name(date: str) -> str:
         if date >= "2021-02-08":
             return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
@@ -42,19 +42,19 @@ def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
             return "Moderna, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
 
-    return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
+    return df.assign(vaccine=df.date.apply(_enrich_vaccine_name))
 
 
-def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
+def enrich_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
         location="Belgium",
         source_url="https://epistat.wiv-isp.be/covid/"
     )
 
 
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.pipe(aggregate)
+        df.pipe(aggregate)
         .pipe(rename_columns)
         .pipe(add_totals)
         .pipe(enrich_vaccine_name)

@@ -21,28 +21,28 @@ def parse_total_vaccinations(soup: BeautifulSoup) -> int:
     return clean_count(total_vaccinations)
 
 
-def format_date(input: pd.Series) -> pd.Series:
+def format_date(ds: pd.Series) -> pd.Series:
     date = str(datetime.datetime.now(pytz.timezone("Asia/Dubai")).date() - datetime.timedelta(days=1))
-    return enrich_data(input, 'date', date)
+    return enrich_data(ds, 'date', date)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "United Arab Emirates")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "United Arab Emirates")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine',
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine',
                                 "Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sinopharm/Wuhan, Sputnik V")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url',
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url',
                                 "http://covid19.ncema.gov.ae/en")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(format_date)
+        ds.pipe(format_date)
             .pipe(enrich_location)
             .pipe(enrich_vaccine)
             .pipe(enrich_source)
