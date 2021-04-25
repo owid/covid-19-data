@@ -31,7 +31,6 @@ def country_df_sanity_checks(
         vaccines_wrong = [vac for vac in vaccines_used if vac not in VACCINES_ACCEPTED]
         raise ValueError(f"{location} -- Invalid vaccine detected! Check {vaccines_wrong}.")
     # Date consistency
-    
     if df.date.isnull().any():
         raise ValueError(f"{location} -- Invalid dates! NaN values found.")
     if (df.date.min() < datetime(2020, 12, 1)) or (df.date.max() > datetime.now().date()):
@@ -50,21 +49,26 @@ def country_df_sanity_checks(
         cols.append("people_vaccinated")
     if "people_fully_vaccinated" in df.columns:
         cols.append("people_fully_vaccinated")
-    df_ = df.sort_values(by="date")[cols].dropna()
     # Monotonically
+    _df = df.sort_values(by="date")[cols]
     if monotonic_check:
-        for col in cols: 
-            if not df_[col].is_monotonic:
-                idx_dec = df_[col].diff() < 0
-                wrong = df_.loc[idx_dec]
+        for col in cols:
+            _x = _df[col].dropna()
+            if not _x.is_monotonic:
+                idx_wrong = _x.diff() < 0
+                wrong = _x.loc[idx_wrong]
                 raise ValueError(f"{location} -- Column {col} must be monotonically increasing! Check:\n{wrong}")
     # Inequalities
-    if "people_vaccinated" in df_.columns:
-        if (df_["total_vaccinations"] < df_["people_vaccinated"]).any():
+    _df = _df.dropna()
+    if ("total_vaccinations" in _df.columns) and ("people_vaccinated" in _df.columns):
+        _df = _df[["people_vaccinated", "total_vaccinations"]].dropna()
+        if (_df["total_vaccinations"] < _df["people_vaccinated"]).any():
             raise ValueError(f"{location} -- total_vaccinations can't be < people_vaccinated!")
-        if "people_fully_vaccinated" in df_.columns:
-            if (df_["people_vaccinated"] < df_["people_fully_vaccinated"]).any():
-                raise ValueError(f"{location} -- people_vaccinated can't be < people_fully_vaccinated!")
-    if "people_fully_vaccinated" in df_.columns:
-        if (df_["total_vaccinations"] < df_["people_fully_vaccinated"]).any():
+    if ("people_vaccinated" in _df.columns) and ("people_fully_vaccinated" in _df.columns):
+        _df = _df[["people_vaccinated", "people_fully_vaccinated"]].dropna()
+        if (_df["people_vaccinated"] < _df["people_fully_vaccinated"]).any():
+            raise ValueError(f"{location} -- people_vaccinated can't be < people_fully_vaccinated!")
+    if ("total_vaccinations" in _df.columns) and ("people_fully_vaccinated" in _df.columns):
+        _df = _df[["people_fully_vaccinated", "total_vaccinations"]].dropna()
+        if (_df["total_vaccinations"] < _df["people_fully_vaccinated"]).any():
             raise ValueError(f"{location} -- people_fully_vaccinated can't be < people_vaccinated!")
