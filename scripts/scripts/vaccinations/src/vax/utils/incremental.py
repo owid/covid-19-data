@@ -2,10 +2,7 @@ import os
 import shutil
 import datetime
 import re
-import requests
-import tempfile
 
-from bs4 import BeautifulSoup
 import pandas as pd
 
 

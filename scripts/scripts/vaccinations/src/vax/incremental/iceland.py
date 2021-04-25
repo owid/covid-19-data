@@ -2,7 +2,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from vax.utils.incremental import enrich_data, increment
+from vax.utils.incremental import increment
 
 
 def main():

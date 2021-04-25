@@ -44,7 +44,7 @@ def main():
         # Setting Chrome to trust downloads
         driver.command_executor._commands["send_command"] = ("POST", "/session/$sessionId/chromium/send_command")
         params = {"cmd": "Page.setDownloadBehavior", "params": {"behavior": "allow", "downloadPath": "."}}
-        command_result = driver.execute("send_command", params)
+        _ = driver.execute("send_command", params)
 
         driver.get(url)
         driver.execute_script("window.scrollTo(0, 1500)")

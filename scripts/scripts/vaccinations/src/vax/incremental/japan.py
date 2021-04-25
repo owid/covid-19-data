@@ -1,9 +1,6 @@
-import datetime
-
 import pandas as pd
 
-from vax.utils.incremental import enrich_data, increment, clean_count
-from vax.utils.utils import get_soup
+from vax.utils.incremental import enrich_data, increment
 
 
 def read(source: str) -> pd.Series:

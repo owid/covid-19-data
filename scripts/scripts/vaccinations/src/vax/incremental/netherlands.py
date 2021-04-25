@@ -1,15 +1,13 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 import re
-import requests
-import pytz
 
 import dateparser
 import pandas as pd
 from bs4 import BeautifulSoup
 
 from vax.utils.utils import get_soup
-from vax.utils.incremental import enrich_data, increment, clean_count
+from vax.utils.incremental import clean_count
 
 
 def read(source_daily: str, source_weekly: str) -> pd.DataFrame:

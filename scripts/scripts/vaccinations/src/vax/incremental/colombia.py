@@ -1,14 +1,9 @@
-import datetime
 import re
 import time
-import pytz
 
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from vax.utils.incremental import enrich_data, increment, clean_count, clean_date
 

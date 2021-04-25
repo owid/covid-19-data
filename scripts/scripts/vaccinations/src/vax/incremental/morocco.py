@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import pytz
 
-from vax.utils.incremental import enrich_data, increment, clean_date
+from vax.utils.incremental import enrich_data, increment
 
 
 def read(source: str) -> pd.Series:

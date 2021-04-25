@@ -1,7 +1,7 @@
 import requests
 from glob import glob
 import pandas as pd
-from vax.utils.incremental import enrich_data, increment
+from vax.utils.incremental import increment
 
 
 def get_country_data():

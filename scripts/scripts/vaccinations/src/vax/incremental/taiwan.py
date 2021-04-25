@@ -1,9 +1,7 @@
-import tempfile
 from datetime import datetime
 
 import pandas as pd
 import tabula
-import requests
 
 from vax.utils.utils import get_soup
 from vax.utils.incremental import clean_count, enrich_data, increment

@@ -5,7 +5,6 @@ import json
 
 
 import pandas as pd
-import gsheets
 from gsheets import Sheets
 
 from vax.utils.checks import country_df_sanity_checks
@@ -53,7 +52,7 @@ class GSheet:
             locations_dup = location_counts[location_counts>1].index.tolist()
             raise ValueError(f"Duplicated location(s) found in LOCATIONS. Check {locations_dup}")
         if df.isnull().any(None):
-            raise ValueError(f"Check LOCATIONS. Some fields missing (empty / NaNs)")
+            raise ValueError("Check LOCATIONS. Some fields missing (empty / NaNs)")
         # Ensure booleanity of columns automated, include
         if not df.automated.isin([True, False]).all():
             vals = df.automated.unique()

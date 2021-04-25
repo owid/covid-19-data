@@ -1,4 +1,3 @@
-from datetime import datetime, timedelta
 from urllib.parse import urlparse
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -87,7 +86,7 @@ class NewZealand(object):
 
 
 def main():
-    df = NewZealand(
+    NewZealand(
         source_url=(
             "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
         ),

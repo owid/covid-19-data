@@ -1,10 +1,7 @@
-import requests
-
 import pandas as pd
 
 
 def read(source: str) -> pd.DataFrame:
-    data = requests.get(source)
     return pd.read_json(source)
 
 

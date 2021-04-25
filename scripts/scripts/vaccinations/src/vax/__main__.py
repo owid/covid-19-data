@@ -6,7 +6,6 @@ def process(i):
 results = Parallel(n_jobs=2)(delayed(process)(i) for i in range(10))
 print(results)
 """
-import sys
 import argparse
 import logging
 import os

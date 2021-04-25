@@ -1,12 +1,9 @@
 import os
 import requests
 import tempfile
-import zipfile
 
 import pandas as pd
 from bs4 import BeautifulSoup
-
-from vax.utils.pipeline import enrich_total_vaccinations
 
 
 def read_datasets_download_link(source: str) -> str:
