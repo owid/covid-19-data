@@ -30,3 +30,9 @@ scripts/scripts/vaccinations/automations
 scripts/scripts/vaccinations/vax_update.sh
 scripts/scripts/vaccinations/antall-personer-vaksiner.csv
 
+# Testing
+testing_data_config.json
+
+# Dev
+.tox
+reports
