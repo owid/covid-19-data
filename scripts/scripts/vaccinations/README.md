@@ -149,6 +149,14 @@ module [`vax.tracking`](src/vax/tracking). Find below some use cases.
 
 **Note**: Use uption `--to-csv` to export results as csv files (a default filename is used).
 
+### Check the style
+We use [flake8](https://flake8.pycqa.org/en/latest/) to check the style of our code. The configuration lives in file 
+[tox.ini](tox.ini). To check the style, simply run
+
+```sh
+$ tox
+```
+
 #### Which countries are missing?
 Run 
 
