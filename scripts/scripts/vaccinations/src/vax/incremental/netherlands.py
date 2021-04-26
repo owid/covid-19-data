@@ -13,8 +13,12 @@ from vax.utils.incremental import clean_count
 def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
     # Daily
     soup_daily = get_soup(source_daily)
-    date_daily = parse_date_daily(soup_daily)
-    total_vaccinations_d = parse_data_daily(soup_daily)
+    for div in soup_daily.find_all("div"):
+        if div.text == "Vaccine doses administered":
+            dose_block = div.parent.findChildren()[1]
+            break
+    date_daily = parse_date_daily(dose_block)
+    total_vaccinations_d = parse_data_daily(dose_block)
     
     # Weekly
     soup_weekly = get_soup(source_weekly)
@@ -61,12 +65,12 @@ def parse_data_weekly(soup: BeautifulSoup) -> str:
     return total_vaccinations, people_vaccinated, people_fully_vaccinated
 
 
-def parse_data_daily(soup: BeautifulSoup):
-    return clean_count(soup.find(class_="sc-hKwCoD liLttJ").text)
+def parse_data_daily(element):
+    return clean_count(element.find("span").text)
 
 
-def parse_date_daily(soup: BeautifulSoup):
-    date_str = soup.find(class_="sc-hKwCoD jMAwtT").text
+def parse_date_daily(element):
+    date_str = element.find_all("span")[1].text
     return datetime.strptime(date_str, "Value of %d %B %Y").strftime("%Y-%m-%d")
 
 
