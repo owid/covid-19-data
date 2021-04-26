@@ -75,7 +75,6 @@ def pipeline(ds: pd.Series) -> pd.Series:
 
 
 def main():
-    source = "https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm"
     data = read().pipe(pipeline)
     increment(
         location=data["location"],
