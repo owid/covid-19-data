@@ -143,12 +143,6 @@ $ python ../megafile.py
 
 
 ## Other functions
-### Tracking
-It is extremely usefull to get some insights on which data are we tracking (and which are we not). This can be done with
-module [`vax.tracking`](src/vax/tracking). Find below some use cases.
-
-**Note**: Use uption `--to-csv` to export results as csv files (a default filename is used).
-
 ### Check the style
 We use [flake8](https://flake8.pycqa.org/en/latest/) to check the style of our code. The configuration lives in file 
 [tox.ini](tox.ini). To check the style, simply run
@@ -156,8 +150,14 @@ We use [flake8](https://flake8.pycqa.org/en/latest/) to check the style of our c
 ```sh
 $ tox
 ```
-
 **Note**: This requires tox to be installed (`$ pip install tox`)
+
+### Tracking
+It is extremely usefull to get some insights on which data are we tracking (and which are we not). This can be done with
+module [`vax.tracking`](src/vax/tracking). Find below some use cases.
+
+**Note**: Use uption `--to-csv` to export results as csv files (a default filename is used).
+
 #### Which countries are missing?
 Run 
 
