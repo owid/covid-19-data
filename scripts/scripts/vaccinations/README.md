@@ -157,6 +157,7 @@ We use [flake8](https://flake8.pycqa.org/en/latest/) to check the style of our c
 $ tox
 ```
 
+**Note**: This requires tox to be installed (`$ pip install tox`)
 #### Which countries are missing?
 Run 
 
