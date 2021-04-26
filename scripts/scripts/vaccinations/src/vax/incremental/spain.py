@@ -1,12 +1,9 @@
 import re
 from datetime import datetime
-import pytz
 
-import requests
-from bs4 import BeautifulSoup
 import pandas as pd
 
-from vax.utils.incremental import enrich_data, increment, clean_count
+from vax.utils.incremental import enrich_data, increment
 
 
 vaccine_mapping = {
