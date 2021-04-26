@@ -6,7 +6,7 @@ git pull origin master
 ​
 # Update source table on website
 url=$(python -c "import json; print(json.load(open(test_dataset_config.json', 'r'))['owid_cloud_table_post'])")
-pbcopy < html_for_post.html # WHERE IS IT
+pbcopy < source_table.html
 open $url
 
 # General data update (+mortality)
