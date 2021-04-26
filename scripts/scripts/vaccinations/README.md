@@ -7,7 +7,7 @@ automated scripts.
 
 ### Content
 - [Directory content](#directory-content)
-- [Output generated](#output-generated)
+- [Generated files](#generated-files)
 - [Update the data](#update-the-data)
 - [Other functions](#other-functions)
 - [FAQs](#FAQs)
@@ -118,6 +118,8 @@ By default it will do the following:
 **Note 2**: Optionally you can use arguments `--no-get-data` and `--no-process-data` to skip steps 1 or 2, respectively.
 E.g. executing `$ python src/vax --no-get-data` will just run step 2. For more info check `$ python src/vax --help`.
 
+**Note 3**: Use option `--parallel` to run the code using parallelisation.
+
 ### 3. Dataset generation
 Make sure you've succesfully [configured your environment](#0.-dependencies), then run the following script:
 
@@ -183,16 +185,21 @@ Countries are given from the one with the least to the one with he most number o
 
 
 ## FAQs
-### How to add new automated data collections
+### CONTRIBUTE: How to add new automated data collections
 - Create a script and place it in [`src/vax/batch`](src/vax/batch) or
 [`src/vax/incremental`](src/vax/incremental) depending, on whether it is an incremental or batch update (see [#250](https://github.com/owid/covid-19-data/issues/250)
 for more details).
 - Test that it is working and stable.
 - Issue a pull request and wait for a review.
 
+### CONTRIBUTE: How to report new data
+If you want to report new data points, please note the following:
+- For automated countries (see [here](automation_state.csv)) new data might appear in next update
+- For manual imported country data, please open an issue or a PR specifying the source of your data. Note: Open one
+  issue/PR per country!
 
+More details: [#230](https://github.com/owid/covid-19-data/issues/230), [#250](https://github.com/owid/covid-19-data/issues/250)
 ### If an automation no longer works
-
 If you detect that an automation is no longer working, and the process seems like it can't be fixed at the moment:
 - Set its state to `automated = FALSE` in the `LOCATIONS` tab of the internal spreadsheet.
 - Add a new tab in the spreadsheet to manually input the country data. Make sure to include the historical data from the [`output`](output) file.

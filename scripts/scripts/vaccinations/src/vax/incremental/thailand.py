@@ -56,16 +56,16 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     total_vaccinations = re.search(total_vaccinations_regex, text).group(2)
     total_vaccinations = clean_count(total_vaccinations)
 
-    people_vaccinated_regex = r"ผู้ได้รับวัคซีนเข็มที่ 1 (.{1,3})นวน (.{1,10}) ราย"
+    people_vaccinated_regex = r"ผู้ได้รับวัคซีนเข็มที่ 1 (.{1,3})นวน (.{1,10}) ร(.{1,3})ย"
     people_vaccinated = re.search(people_vaccinated_regex, text).group(2)
     people_vaccinated = clean_count(people_vaccinated)
 
-    people_fully_vaccinated_regex = r"นวนผู้ได้รับวัคซีนครบตามเกณฑ์ \(ได้รับวัคซีน 2 เข็ม\) (.{1,3})นวน (.{1,10}) ราย"
-    people_fully_vaccinated = re.search(people_fully_vaccinated_regex, text).group(2)
+    people_fully_vaccinated_regex = r"นวนผู้ได้รับวัคซีนครบต(.{1,2})มเกณฑ์ \(ได้รับวัคซีน 2 เข็ม\) (.{1,3})นวน (.{1,10}) ร(.{1,2})ย"
+    people_fully_vaccinated = re.search(people_fully_vaccinated_regex, text).group(3)
     people_fully_vaccinated = clean_count(people_fully_vaccinated)
 
-    thai_date_regex = r"\( ข้อมูล ณ วันที่ (.{1,30}) เวลา (.{1,10}) น. \)"
-    thai_date = re.search(thai_date_regex, text).group(1)
+    thai_date_regex = r"\( ข้อมูล ณ วันที่ (.{1,30}) เวล(.{1,3}) (.{1,10}) น. \)"
+    thai_date = re.search(thai_date_regex, text).group(1).replace("ำ", "า")
     thai_date_replace = {
         "มกราคม":"January",
         "กุมภาพันธ์":"February",
@@ -121,20 +121,16 @@ def main():
     source = "https://ddc.moph.go.th/dcd/pagecontent.php?page=643&dept=dcd"
 
     # Since it a PDF Report / Text Format might be change and cause error
-    try:
-      data = read(source).pipe(pipeline)
-      increment(
-          location=data["location"],
-          total_vaccinations=data["total_vaccinations"],
-          people_vaccinated=data["people_vaccinated"],
-          people_fully_vaccinated=data["people_fully_vaccinated"],
-          date=data["date"],
-          source_url=data["source_url"],
-          vaccine=data["vaccine"]
-      )
-    except:
-      print("An error occurred : Text format might change - need further investigation")
-
+    data = read(source).pipe(pipeline)
+    increment(
+        location=data["location"],
+        total_vaccinations=data["total_vaccinations"],
+        people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
+        date=data["date"],
+        source_url=data["source_url"].replace(" ", "%20"),
+        vaccine=data["vaccine"]
+    )
 
 if __name__ == "__main__":
     main()
