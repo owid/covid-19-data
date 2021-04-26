@@ -48,7 +48,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     }
 
     # Correct Thai Sprcial Character Error
-    special_char_replace = dict((re.escape(k), v) for k, v in special_char_replace.items()) 
+    special_char_replace = dict((re.escape(k), v) for k, v in special_char_replace.items())
     pattern = re.compile("|".join(special_char_replace.keys()))
     text = pattern.sub(lambda m: special_char_replace[re.escape(m.group(0))], raw_text)
 
@@ -75,7 +75,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
         "เมษายน": "April",
         "พฤษภาคม": "May",
         "มิถุนายน": "June",
-        "กรกฎาคม":"July",
+        "กรกฎาคม": "July",
         "สิงหาคม": "August",
         "กันยายน": "September",
         "ตุลาคม": "October",

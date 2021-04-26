@@ -15,7 +15,7 @@ def read_xlsx_from_url(url: str, as_series: bool = False, **kwargs) -> pd.DataFr
 
     Args:
         url (str): File url.
-        as_series (bol): Set to True to return a pandas.Series object. Source file must be of shape 1xN (1 row, N 
+        as_series (bol): Set to True to return a pandas.Series object. Source file must be of shape 1xN (1 row, N
                             columns). Defaults to False.
         kwargs: Arguments for pandas.read_excel.
 

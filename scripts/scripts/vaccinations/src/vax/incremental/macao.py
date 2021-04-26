@@ -32,7 +32,7 @@ def parse_vaccinations(elem) -> dict:
     people_vaccinated = re.search(r"已接種人數共有(?P<count>[\d,]*)人", text)
     # people_fully_vaccinated = re.search(r"2劑疫苗共有(?P<count>[\d,]*)人次", text)
     people_fully_vaccinated = re.search(r"已完成接種2劑有(?P<count>[\d,]*)人", text)
-    
+
     if total_vaccinations:
         metrics["total_vaccinations"] = clean_count(total_vaccinations.group(1))
     if people_vaccinated:

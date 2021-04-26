@@ -22,7 +22,7 @@ def get_country_data():
     date = data["Date"]
     try:
         date = pd.to_datetime(date, format="%m/%d/%Y")
-    except:
+    except Exception:
         date = pd.to_datetime(date, format="%Y-%m-%d")
     date = str(date.date())
 
@@ -48,8 +48,8 @@ def get_vaccine_data():
                     df[vc] = pd.NA
             df = df[["Date", "LongName"] + vaccine_cols]
             dfs.append(df)
-        except:
-            pass
+        except Exception:
+            continue
     df = pd.concat(dfs)
     df = df[df.LongName == "United States"].sort_values("Date").rename(columns={
         "Date": "date",

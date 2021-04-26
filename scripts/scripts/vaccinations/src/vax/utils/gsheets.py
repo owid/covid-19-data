@@ -74,7 +74,7 @@ class GSheet:
     def df_list(self, include_all: bool = False, refresh: bool = False) -> List[pd.DataFrame]:
         """Read non-automated files.
 
-        Args: 
+        Args:
             include_all (bool): Set to True to only load non-automated countries.
             refresh (bool): Set to True to get updated data from sheets.
 

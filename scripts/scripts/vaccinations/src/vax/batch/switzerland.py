@@ -21,7 +21,6 @@ def read_vaccination_datasets(source: str):
         temp_file = f"{temp_dir}/data.zip"
         os.system(f"curl {csv_url} -o {temp_file} -s > /dev/null")
         os.system(f"unzip -d {temp_dir} {temp_file} > /dev/null")
-    
         doses = pd.read_csv(
             os.path.join(temp_dir, "data/COVID19VaccDosesAdministered.csv"),
             usecols=["geoRegion", "date", "sumTotal", "type"]

@@ -6,7 +6,7 @@ import pandas as pd
 CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
-def country_updates_summary(path_vaccinations: str = None, path_locations: str = None, 
+def country_updates_summary(path_vaccinations: str = None, path_locations: str = None,
                             path_automation_state: str = None, as_dict: bool = False, sortby_counts: bool = False):
     """Check last updated countries.
 
@@ -24,18 +24,18 @@ def country_updates_summary(path_vaccinations: str = None, path_locations: str =
     ```
 
     Args:
-        path_vaccinations (str, optional): Path to vaccinations csv file. 
+        path_vaccinations (str, optional): Path to vaccinations csv file.
                                             Default value works if repo structure is left unmodified.
-        path_locations (str, optional): Path to locations csv file. 
+        path_locations (str, optional): Path to locations csv file.
                                         Default value works if repo structure is left unmodified.
         path_automation_state (str, optional): Path to automation state csv file.
                                                 Default value works if repo structure is left unmodified.
-        as_dict (bool, optional): Set to True for the return value to be shaped as a dictionary. Otherwise returns a 
+        as_dict (bool, optional): Set to True for the return value to be shaped as a dictionary. Otherwise returns a
                                     DataFrame.
         sortby_counts (bool, optional): Set to True to sort resuls from least to most updated countries.
 
     Returns:
-        Union[pd.DataFrame, dict]: List or DataFrame, where each row (or element) contains five fields: 
+        Union[pd.DataFrame, dict]: List or DataFrame, where each row (or element) contains five fields:
                                     - 'last_observation_date': Last update date.
                                     - 'location': Country name.
                                     - 'source_website': Source used to retrieve last added data.
@@ -59,7 +59,7 @@ def country_updates_summary(path_vaccinations: str = None, path_locations: str =
     df_state = pd.read_csv(path_automation_state)
     # Get counts
     df_vax = pd.DataFrame({"counts": df_vax.groupby("location").date.count().sort_values()})
-    # Merge data
+    # Merge data
     df = df_loc.merge(df_state, on="location")
     df = df.merge(df_vax, on="location")
     # Sort data
@@ -70,8 +70,8 @@ def country_updates_summary(path_vaccinations: str = None, path_locations: str =
     df = df.sort_values(
         by=sort_column
     )[["location", "last_observation_date", "counts", "automated", "source_website"]]
-    # Add columns
-    def web_type(x):
+
+    def _web_type(x):
         if ("facebook" in x.lower()) or ("twitter" in x.lower()):
             return "Social Network"
         elif "github" in x.lower():
@@ -80,24 +80,25 @@ def country_updates_summary(path_vaccinations: str = None, path_locations: str =
             return "Govern"
         else:
             return "Others"
-    df = df.assign(**{"web_type": df.source_website.apply(web_type)})
+    df = df.assign(**{"web_type": df.source_website.apply(_web_type)})
     # Return data
     if as_dict:
         return df.to_dict(orient="records")
     return df
 
 
-def countries_missing(path_population: str = None, path_locations: str = None, ascending: bool = False,
-                            as_dict: bool = False):
+def countries_missing(
+        path_population: str = None, path_locations: str = None, ascending: bool = False, as_dict: bool = False):
     """Get countries currently not present in our dataset.
 
     Args:
-        path_population (str, optional): Path to UN population csv file. 
+        path_population (str, optional): Path to UN population csv file.
                                             Default value works if repo structure is left unmodified.
-        path_locations (str, optional): Path to locations csv file. 
+        path_locations (str, optional): Path to locations csv file.
                                         Default value works if repo structure is left unmodified.
-        ascending (bool, optional): Set to True to sort results in ascending order. By default sorts in ascedning order.
-        as_dict (bool, optional): Set to True for the return value to be shaped as a dictionary. Otherwise returns a 
+        ascending (bool, optional): Set to True to sort results in ascending order. By default sorts in ascedning
+                                    order.
+        as_dict (bool, optional): Set to True for the return value to be shaped as a dictionary. Otherwise returns a
                                     DataFrame.
     """
     if not path_population:
@@ -110,14 +111,12 @@ def countries_missing(path_population: str = None, path_locations: str = None, a
         )
     df_loc = pd.read_csv(path_locations, usecols=["location"])
     df_pop = pd.read_csv(path_population)
-    df_pop = df_pop[df_pop.iso_code.apply(lambda x: isinstance(x, str) and len(x)==3)]
+    df_pop = df_pop[df_pop.iso_code.apply(lambda x: isinstance(x, str) and len(x) == 3)]
     df_mis = df_pop.loc[~df_pop['entity'].isin(df_loc['location']), ["entity", "population"]]
-    # Sort
+    # Sort
     if not ascending:
         df_mis = df_mis.sort_values(by="population", ascending=False)
     # Return data
     if as_dict:
         return df_mis.to_dict(orient="records")
     return df_mis
-
-

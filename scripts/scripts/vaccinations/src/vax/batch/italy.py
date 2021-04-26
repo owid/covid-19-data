@@ -11,7 +11,10 @@ def main():
     }
     one_dose_vaccines = ["Johnson&Johnson"]
 
-    url = "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
+    url = (
+        "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/"
+        "somministrazioni-vaccini-latest.csv"
+    )
     df = pd.read_csv(url, usecols=["data_somministrazione", "fornitore", "prima_dose", "seconda_dose"])
     assert set(df["fornitore"].unique()) == set(vaccine_mapping.keys())
     df = df.replace(vaccine_mapping)

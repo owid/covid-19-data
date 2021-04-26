@@ -20,7 +20,10 @@ def main():
             json_data = json.loads(json_data)
             break
 
-    data = json_data["elements"]["content"]["content"]["entities"]["39ac25a9-8af7-4d26-bd19-62a3696920a2"]["props"]["chartData"]["data"][0]
+    data = (
+        json_data["elements"]["content"]["content"]["entities"]["39ac25a9-8af7-4d26-bd19-62a3696920a2"]["props"]
+        ["chartData"]["data"][0]
+    )
 
     df = pd.DataFrame(data[1:], columns=data[0])
 
@@ -42,7 +45,10 @@ def main():
     )
 
     # By manufacturer
-    data = json_data["elements"]["content"]["content"]["entities"]["e329559c-c3cc-48e9-8b7b-1a5f87ea7ad3"]["props"]["chartData"]["data"][0]
+    data = (
+        json_data["elements"]["content"]["content"]["entities"]["e329559c-c3cc-48e9-8b7b-1a5f87ea7ad3"]["props"]
+        ["chartData"]["data"][0]
+    )
     df = pd.DataFrame(data[1:]).reset_index(drop=True)
     df.columns = ["date"] + data[0][1:]
 

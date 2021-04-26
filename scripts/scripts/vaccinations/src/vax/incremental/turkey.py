@@ -49,16 +49,16 @@ def enrich_vaccine(ds: pd.Series) -> pd.Series:
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, 'source_url',
-                                "https://covid19asi.saglik.gov.tr/")
+    return enrich_data(ds, 'source_url', "https://covid19asi.saglik.gov.tr/")
 
 
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        ds.pipe(format_date)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(format_date)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 

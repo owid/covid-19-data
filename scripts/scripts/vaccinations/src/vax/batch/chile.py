@@ -86,8 +86,8 @@ def main():
     destination = "output/Chile.csv"
     data = read(source).pipe(preprocess)
 
-    assert (datetime.datetime.now() - pd.to_datetime(data.date.max())).days < 3, \
-    "External repository is not up to date"
+    condition = (datetime.datetime.now() - pd.to_datetime(data.date.max())).days < 3
+    assert condition, "External repository is not up to date"
 
     data.pipe(postprocess_vaccinations).to_csv(destination, index=False)
     data.pipe(postprocess_manufacturer).to_csv(destination.replace("output", "output/by_manufacturer"), index=False)

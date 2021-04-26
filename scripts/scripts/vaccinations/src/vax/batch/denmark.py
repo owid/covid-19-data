@@ -74,8 +74,20 @@ def post_process(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    source_dose1 = "https://services5.arcgis.com/Hx7l9qUpAnKPyvNz/ArcGIS/rest/services/Vaccine_REG_linelist_gdb/FeatureServer/19/query?where=1%3D1&objectIds=&time=&resultType=none&outFields=first_vaccinedate%2Cantal_foerste_vacc&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token="
-    source_dose2 = "https://services5.arcgis.com/Hx7l9qUpAnKPyvNz/ArcGIS/rest/services/Vaccine_REG_linelist_gdb/FeatureServer/20/query?where=1%3D1&objectIds=&time=&resultType=none&outFields=second_vaccinedate%2Cantal_faerdig_vacc&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token="
+    source_dose1 = (
+        "https://services5.arcgis.com/Hx7l9qUpAnKPyvNz/ArcGIS/rest/services/Vaccine_REG_linelist_gdb/FeatureServer/19/"
+        "query?where=1%3D1&objectIds=&time=&resultType=none&outFields=first_vaccinedate%2Cantal_foerste_vacc&"
+        "returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&"
+        "cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&"
+        "resultRecordCount=&sqlFormat=none&f=pjson&token="
+    )
+    source_dose2 = (
+        "https://services5.arcgis.com/Hx7l9qUpAnKPyvNz/ArcGIS/rest/services/Vaccine_REG_linelist_gdb/FeatureServer/20/"
+        "query?where=1%3D1&objectIds=&time=&resultType=none&outFields=second_vaccinedate%2Cantal_faerdig_vacc&"
+        "returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&"
+        "cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&"
+        "resultRecordCount=&sqlFormat=none&f=pjson&token="
+    )
     destination = "output/Denmark.csv"
 
     dose1 = read(source_dose1).pipe(pipeline, colname="people_vaccinated")

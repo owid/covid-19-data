@@ -6,7 +6,7 @@ import re
 
 
 def read(source: str) -> pd.Series:
-    soup = BeautifulSoup(requests.get(source, verify=False).content, "html.parser") #noqa: S501
+    soup = BeautifulSoup(requests.get(source, verify=False).content, "html.parser")  # noqa: S501
     return parse_data(soup)
 
 

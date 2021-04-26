@@ -77,7 +77,7 @@ def _get_month(month_raw: str):
         if month_name in month_raw:
             return month_id
 
-        
+
 def enrich_location(ds: pd.Series) -> pd.Series:
     return enrich_data(ds, "location", "Nepal")
 

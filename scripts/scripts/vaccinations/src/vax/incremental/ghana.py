@@ -16,7 +16,7 @@ def read(source: str) -> pd.Series:
 
     date = re.search(r"\d+ \w+ 202\d", soup.find(class_="stats-decoration-text").text).group(0)
     date = str(pd.to_datetime(date).date())
-    
+
     return pd.Series(data={
         "total_vaccinations": total_vaccinations,
         "people_vaccinated": people_vaccinated,

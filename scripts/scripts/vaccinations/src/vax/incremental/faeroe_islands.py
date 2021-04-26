@@ -5,6 +5,7 @@ import pytz
 
 from vax.utils.incremental import enrich_data, increment
 
+
 def read(source: str) -> pd.Series:
     return pd.read_json(source).pipe(lambda ds: pd.DataFrame.from_records(ds["stats"]).iloc[0])
 
@@ -40,12 +41,13 @@ def enrich_source(ds: pd.Series) -> pd.Series:
 
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        ds.pipe(translate_index)
-            .pipe(add_totals)
-            .pipe(format_date)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(translate_index)
+        .pipe(add_totals)
+        .pipe(format_date)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 

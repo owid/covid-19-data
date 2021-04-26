@@ -18,6 +18,7 @@ def read(source: str) -> pd.Series:
         "date": parse_date(df)
     })
 
+
 def parse_pdf_link(base_url: str, soup) -> str:
     a = soup.find(class_="download").find("a")
     url_pdf = f"{base_url}{a['href']}"

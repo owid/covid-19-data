@@ -49,7 +49,9 @@ def main():
 
     df = df.assign(
         location="France",
-        source_url="https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/"
+        source_url=(
+            "https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/"
+        )
     )
 
     df.to_csv("output/France.csv", index=False)

@@ -13,7 +13,7 @@ def parse_data(data: dict) -> pd.Series:
     date = clean_date(data["updated"], "%Y/%m/%d")
 
     total_vaccinations = data["progress"]
-    
+
     return pd.Series(data={
         "date": date,
         "total_vaccinations": total_vaccinations,

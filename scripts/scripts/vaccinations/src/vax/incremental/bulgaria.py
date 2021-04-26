@@ -46,18 +46,18 @@ def enrich_vaccine(ds: pd.Series) -> pd.Series:
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, 'source_url',
-                                "https://coronavirus.bg/bg/statistika")
+    return enrich_data(ds, 'source_url', "https://coronavirus.bg/bg/statistika")
 
 
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        ds.pipe(translate_index)
-            .pipe(add_totals)
-            .pipe(enrich_date)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(translate_index)
+        .pipe(add_totals)
+        .pipe(enrich_date)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 

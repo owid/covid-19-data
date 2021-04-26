@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 
 
-def read(source:str) -> pd.DataFrame:
+def read(source: str) -> pd.DataFrame:
     data = requests.get(source).json()
     return pd.DataFrame.from_dict([
         {

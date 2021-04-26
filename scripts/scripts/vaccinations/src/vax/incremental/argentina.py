@@ -39,18 +39,22 @@ def enrich_vaccine(ds: pd.Series) -> pd.Series:
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, 'source_url',
-                                "http://datos.salud.gob.ar/dataset/vacunas-contra-covid-19-dosis-aplicadas-en-la-republica-argentina")
+    return enrich_data(
+        ds,
+        'source_url',
+        "http://datos.salud.gob.ar/dataset/vacunas-contra-covid-19-dosis-aplicadas-en-la-republica-argentina"
+    )
 
 
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        ds.pipe(translate_index)
-            .pipe(add_totals)
-            .pipe(format_date)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(translate_index)
+        .pipe(add_totals)
+        .pipe(format_date)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 
