@@ -163,7 +163,7 @@ module [`vax.tracking`](src/vax/tracking). Find below some use cases.
 Run 
 
 ```
-$ python src/vax/tracking --countries-missing
+$ cowid-vax-track countries-missing
 ```
 Countries are given from most to least populated.
 
@@ -171,7 +171,7 @@ Countries are given from most to least populated.
 Get the list of countries and their last update by running:
 
 ```
-$ python src/vax/tracking --countries-last-updated
+$ cowid-vax-track countries-last-updated
 ```
 
 Countries are given from least to most recently updated.
@@ -179,7 +179,7 @@ Countries are given from least to most recently updated.
 Get the list of countries least updated:
 
 ```
-$ python src/vax/tracking --countries-least-updated
+$ cowid-vax-track countries-least-updated
 ```
 
 Countries are given from least to most frequently updated.
@@ -188,7 +188,7 @@ Countries are given from least to most frequently updated.
 Get the list of countries with missing vaccines:
 
 ```
-$ python src/vax/tracking --vaccines-missing
+$ cowid-vax-track vaccines-missing
 ```
 
 Countries are given from the one with the least to the one with he most number of untracked vaccines.

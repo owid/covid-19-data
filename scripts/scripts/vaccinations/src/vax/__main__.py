@@ -155,7 +155,7 @@ def _parse_args():
     parser.add_argument(
         "-j", "--njobs", default=-2,
         help=(
-            "Number of jobs for parallel processing. Check Parallel class in joblib library for more info  (only in ""
+            "Number of jobs for parallel processing. Check Parallel class in joblib library for more info  (only in "
             "mode get-data)."
         )
     )
