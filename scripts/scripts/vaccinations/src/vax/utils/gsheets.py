@@ -39,7 +39,10 @@ class GSheet:
     def _check_metadata(self, df: pd.DataFrame):
         """Check metadata LOCATIONS tab has valid format."""
         # Check columns
-        cols = ["location", "source_name", "automated", "include"]
+        cols = [
+            "location", "source_name", "automated", "include",
+            "1d_approved", "1d_used", "1d_codeready",
+        ]
         cols_missing = [col for col in cols if col not in df.columns]
         cols_wrong = [col for col in df.columns if col not in cols]
         if cols_missing:
