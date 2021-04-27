@@ -45,4 +45,9 @@ setup(
         "Bug Tracker": "http://github.com/owid/covid-19-data/issues",
     },
     python_requires=">=3.7",
+    entry_points={
+        "console_scripts": [
+            "owid-vax=vax.__main__:main" 
+        ]
+    }
 )
