@@ -1,11 +1,9 @@
 import re
-import time
 
-import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from vax.utils.incremental import enrich_data, increment, clean_date, clean_count
+from vax.utils.incremental import increment, clean_date, clean_count
 
 
 def main():

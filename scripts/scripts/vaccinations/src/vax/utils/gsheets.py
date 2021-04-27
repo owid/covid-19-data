@@ -5,7 +5,6 @@ import json
 
 
 import pandas as pd
-import gsheets
 from gsheets import Sheets
 
 from vax.utils.checks import country_df_sanity_checks
@@ -40,7 +39,7 @@ class GSheet:
     def _check_metadata(self, df: pd.DataFrame):
         """Check metadata LOCATIONS tab has valid format."""
         # Check columns
-        cols = ["location", "source_name","automated", "include"]
+        cols = ["location", "source_name", "automated", "include"]
         cols_missing = [col for col in cols if col not in df.columns]
         cols_wrong = [col for col in df.columns if col not in cols]
         if cols_missing:
@@ -49,11 +48,11 @@ class GSheet:
             raise ValueError(f"LOCATIONS has invalid column(s): {cols_wrong}.")
         # Check duplicated rows
         location_counts = df.location.value_counts()
-        if (location_counts>1).any(None):
-            locations_dup = location_counts[location_counts>1].index.tolist()
+        if (location_counts > 1).any(None):
+            locations_dup = location_counts[location_counts > 1].index.tolist()
             raise ValueError(f"Duplicated location(s) found in LOCATIONS. Check {locations_dup}")
         if df.isnull().any(None):
-            raise ValueError(f"Check LOCATIONS. Some fields missing (empty / NaNs)")
+            raise ValueError("Check LOCATIONS. Some fields missing (empty / NaNs)")
         # Ensure booleanity of columns automated, include
         if not df.automated.isin([True, False]).all():
             vals = df.automated.unique()
@@ -66,7 +65,7 @@ class GSheet:
     def automated_countries(self):
         """Get list of countries with an automated process."""
         return self.metadata.loc[self.metadata.automated, "location"].tolist()
-    
+
     @property
     def manual_countries(self):
         """Get list of countries that require manual process."""
@@ -74,8 +73,8 @@ class GSheet:
 
     def df_list(self, include_all: bool = False, refresh: bool = False) -> List[pd.DataFrame]:
         """Read non-automated files.
-        
-        Args: 
+
+        Args:
             include_all (bool): Set to True to only load non-automated countries.
             refresh (bool): Set to True to get updated data from sheets.
 
@@ -105,7 +104,7 @@ class GSheet:
         tab_locations = [df.location.unique()[0] for df in df_list]
         counts = pd.value_counts(tab_locations)
         if (counts > 1).any(None):
-            duplicated_tabs = counts[counts>1].index.tolist()
+            duplicated_tabs = counts[counts > 1].index.tolist()
             raise ValueError(f"Duplicated location(s)! Location(s) {duplicated_tabs} were found in multiple tabs.")
         # Find missing tabs / missing entries
         metadata_missing = [loc for loc in tab_locations if loc not in self.manual_countries]
@@ -125,17 +124,17 @@ def read_csv_and_check(filepath):
     # Read
     try:
         df = pd.read_csv(
-            filepath, 
-            #parse_dates=["date"],
-            #dayfirst=True
+            filepath,
+            # parse_dates=["date"],
+            # dayfirst=True
         )
-    except:
+    except Exception:
         raise ValueError(f"Check the spreadsheet corresponding to {filepath}")
     location = df.loc[:, "location"].unique()
     # Date check
     try:
         df = df.assign(date=pd.to_datetime(df["date"], format="%Y-%m-%d"))
-    except:
+    except Exception:
         raise ValueError(f"{location} -- Invalid date format! Should be %Y-%m-%d. Check {df.date}.")
     if not df.date.is_monotonic:
         raise ValueError(f"{location} -- Check that date field is monotonically increasing.")

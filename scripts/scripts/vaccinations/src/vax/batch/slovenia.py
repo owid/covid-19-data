@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def main():
 
     df = pd.read_csv(
@@ -20,6 +21,7 @@ def main():
     df.loc[:, "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
 
     df.to_csv("output/Slovenia.csv", index=False)
+
 
 if __name__ == "__main__":
     main()

@@ -1,63 +1,78 @@
-import datetime
-import requests
+import re
+from datetime import datetime
 
-from bs4 import BeautifulSoup
 import pandas as pd
-import pytz
 
-from vax.utils.incremental import enrich_data, increment, clean_count
-
-
-def read(source: str) -> pd.Series:
-    soup = BeautifulSoup(requests.get(source).content, "html.parser")
-    return parse_data(soup)
+from vax.utils.incremental import enrich_data, increment
 
 
-def parse_data(soup: BeautifulSoup) -> pd.Series:
+vaccine_mapping = {
+    "Pfizer": "Pfizer/BioNTech",
+    "Moderna": "Moderna",
+    "AstraZeneca": "Oxford/AstraZeneca",
+    "Janssen": "Johnson&Johnson",
+}
 
-    numbers = soup.find(class_="cifras-coronavirus").find_all(class_="cifra")
 
+def read() -> pd.Series:
+    source = _get_source_url()
+    df = pd.read_excel(source, index_col=0)
+    _check_vaccine_names(df)
+    return parse_data(df, source)
+
+
+def parse_data(df: pd.DataFrame, source: str) -> pd.Series:
     return pd.Series(data={
-        "total_vaccinations": clean_count(numbers[1].text),
-        "people_fully_vaccinated": clean_count(numbers[2].text),
-        "date": set_date()
+        "total_vaccinations": df.loc["Totales", "Dosis administradas (2)"].item(),
+        "people_vaccinated": df.loc["Totales", "Nº Personas con al menos 1 dosis"].item(),
+        "people_fully_vaccinated": df.loc["Totales", "Nº Personas vacunadas(pauta completada)"].item(),
+        "date": df["Fecha de la última vacuna registrada (2)"].max().strftime("%Y-%m-%d"),
+        "source_url": source,
+        "vaccine": ", ".join(_get_vaccine_names(df, translate=True)),
     })
 
 
-def set_date() -> str:
-    return str(datetime.datetime.now(pytz.timezone("Europe/Madrid")).date() - datetime.timedelta(days=1))
-
-
-def add_vaccinated(input: pd.Series) -> pd.Series:
-    people_vaccinated = input["total_vaccinations"] - input["people_fully_vaccinated"]
-    return enrich_data(input, "people_vaccinated", people_vaccinated)
-
-
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Spain")
-
-
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
-
-
-def enrich_source(input: pd.Series, source: str) -> pd.Series:
-    return enrich_data(input, "source_url", source)
-
-
-def pipeline(input: pd.Series, source: str) -> pd.Series:
+def _get_source_url():
+    dt_str = datetime.now().strftime("%Y%m%d")
     return (
-        input
-        .pipe(add_vaccinated)
+        f"https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/"
+        f"Informe_Comunicacion_{dt_str}.ods"
+    )
+
+
+def _get_vaccine_names(df: pd.DataFrame, translate: bool = False):
+    regex_vaccines = r'Dosis entregadas ([a-zA-Z]*) \(1\)'
+    if translate:
+        return sorted([
+            vaccine_mapping[re.search(regex_vaccines, col).group(1)]
+            for col in df.columns if re.match(regex_vaccines, col)
+        ])
+    else:
+        return sorted([
+            re.search(regex_vaccines, col).group(1) for col in df.columns if re.match(regex_vaccines, col)
+        ])
+
+
+def _check_vaccine_names(df: pd.DataFrame) -> pd.Series:
+    vaccines = _get_vaccine_names(df)
+    unknown_vaccines = set(vaccines).difference(vaccine_mapping.keys())
+    if unknown_vaccines:
+        raise ValueError("Found unknown vaccines: {}".format(unknown_vaccines))
+
+
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Spain")
+
+
+def pipeline(ds: pd.Series) -> pd.Series:
+    return (
+        ds
         .pipe(enrich_location)
-        .pipe(enrich_vaccine)
-        .pipe(enrich_source, source)
     )
 
 
 def main():
-    source = "https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/vacunaCovid19.htm"
-    data = read(source).pipe(pipeline, source)
+    data = read().pipe(pipeline)
     increment(
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],

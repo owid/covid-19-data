@@ -1,9 +1,6 @@
-import datetime
-
 import pandas as pd
 
-from vax.utils.incremental import enrich_data, increment, clean_count
-from vax.utils.utils import get_soup
+from vax.utils.incremental import enrich_data, increment
 
 
 def read(source: str) -> pd.Series:
@@ -16,7 +13,7 @@ def read(source: str) -> pd.Series:
     people_vaccinated = df.loc[df[first_col] == "合計", " 内１回目"].item()
     people_fully_vaccinated = df.loc[df[first_col] == "合計", " 内２回目"].item()
     date = str(df.loc[df[first_col] != "合計", first_col].item().date())
-    
+
     return pd.Series(data={
         "total_vaccinations": total_vaccinations,
         "people_vaccinated": people_vaccinated,

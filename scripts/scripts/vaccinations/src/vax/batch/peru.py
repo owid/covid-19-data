@@ -42,7 +42,9 @@ def main():
 
     df.loc[:, "location"] = "Peru"
     df.loc[:, "vaccine"] = ", ".join(sorted(vaccine_mapping.values()))
-    df.loc[:, "source_url"] = "https://www.datosabiertos.gob.pe/dataset/vacunaci%C3%B3n-contra-covid-19-ministerio-de-salud-minsa"
+    df.loc[:, "source_url"] = (
+        "https://www.datosabiertos.gob.pe/dataset/vacunaci%C3%B3n-contra-covid-19-ministerio-de-salud-minsa"
+    )
 
     df.to_csv("output/Peru.csv", index=False)
 

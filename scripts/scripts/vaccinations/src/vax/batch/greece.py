@@ -1,5 +1,4 @@
 import json
-from typing import Dict
 
 import requests
 import pandas as pd
@@ -17,8 +16,8 @@ def read(source: str) -> pd.DataFrame:
     return pd.DataFrame.from_records(response.json())
 
 
-def format_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.rename(
+def format_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.rename(
         columns={
             "referencedate": "date",
             "totalvaccinations": "total_vaccinations",
@@ -27,37 +26,37 @@ def format_columns(input: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def aggregate(input: pd.DataFrame) -> pd.DataFrame:
-    return input.groupby(by="date", as_index=False)[
+def aggregate(df: pd.DataFrame) -> pd.DataFrame:
+    return df.groupby(by="date", as_index=False)[
         ["total_vaccinations", "people_vaccinated"]
     ].sum()
 
 
-def enrich_people_fully_vaccinated(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        people_fully_vaccinated=input.total_vaccinations - input.people_vaccinated
+def enrich_people_fully_vaccinated(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
+        people_fully_vaccinated=df.total_vaccinations - df.people_vaccinated
     )
 
 
-def replace_nulls_with_nans(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(people_fully_vaccinated=input.people_fully_vaccinated.replace(0, pd.NA))
+def replace_nulls_with_nans(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(people_fully_vaccinated=df.people_fully_vaccinated.replace(0, pd.NA))
 
 
-def format_date(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(date=input.date.str.slice(0, 10))
+def format_date(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(date=df.date.str.slice(0, 10))
 
 
-def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
+def enrich_metadata(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
         location="Greece",
         vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",
         source_url="https://www.data.gov.gr/datasets/mdg_emvolio/",
     )
 
 
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input.pipe(format_columns)
+        df.pipe(format_columns)
         .pipe(aggregate)
         .pipe(enrich_people_fully_vaccinated)
         .pipe(replace_nulls_with_nans)

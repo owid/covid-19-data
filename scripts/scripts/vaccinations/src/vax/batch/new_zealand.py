@@ -1,4 +1,3 @@
-from datetime import datetime, timedelta
 from urllib.parse import urlparse
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -9,7 +8,7 @@ import vax.utils.utils as utils
 class NewZealand(object):
 
     def __init__(self, source_url: str, location: str, columns_rename: dict = None, columns_cumsum: list = None):
-        """Constructor
+        """Constructor.
 
         Args:
             source_url (str): Source data url
@@ -28,7 +27,7 @@ class NewZealand(object):
         return f"./output/{self.location}.csv"
 
     def load_data(self) -> pd.DataFrame:
-        """Load original data"""
+        """Load original data."""
         soup = utils.get_soup(self.source_url)
         link = self._parse_file_link(soup)
         return utils.read_xlsx_from_url(link, sheet_name="Date")
@@ -39,35 +38,35 @@ class NewZealand(object):
         return link
 
     def rename_columns(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Generalized"""
+        """Generalized."""
         if self.columns_rename:
             return df.rename(columns=self.columns_rename)
         return df
 
     def cumsum_columns(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Generalized"""
+        """Generalized."""
         if self.columns_cumsum:
             df[self.columns_cumsum] = df[self.columns_cumsum].cumsum()
         return df
 
     def add_totals(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Could be generalized"""
-        return df.assign(total_vaccinations=df.people_vaccinated+df.people_fully_vaccinated)
+        """Could be generalized."""
+        return df.assign(total_vaccinations=df.people_vaccinated + df.people_fully_vaccinated)
 
     def enrich_vaccine(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Could be generalized"""
+        """Could be generalized."""
         return df.assign(vaccine="Pfizer/BioNTech")
 
     def enrich_location(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Generalized"""
+        """Generalized."""
         return df.assign(location=self.location)
 
     def enrich_source_url(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Generalized"""
+        """Generalized."""
         return df.assign(source_url=self.source_url)
 
     def pipeline(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Could be generalized"""
+        """Could be generalized."""
         return (
             df
             .pipe(self.cumsum_columns)
@@ -79,7 +78,7 @@ class NewZealand(object):
         )
 
     def to_csv(self, output_file: str = None):
-        """Generalized"""
+        """Generalized."""
         df = self.load_data().pipe(self.pipeline)
         if output_file is None:
             output_file = self.output_file
@@ -87,9 +86,10 @@ class NewZealand(object):
 
 
 def main():
-    df = NewZealand(
+    NewZealand(
         source_url=(
-            "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-data-and-statistics/covid-19-vaccine-data"
+            "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/"
+            "covid-19-data-and-statistics/covid-19-vaccine-data"
         ),
         location="New Zealand",
         columns_rename={

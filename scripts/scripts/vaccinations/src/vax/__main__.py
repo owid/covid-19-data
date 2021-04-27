@@ -1,12 +1,3 @@
-"""
-from joblib import Parallel, delayed
-def process(i):
-    return i * i
-    
-results = Parallel(n_jobs=2)(delayed(process)(i) for i in range(10))
-print(results)
-"""
-import sys
 import argparse
 import logging
 import os
@@ -41,8 +32,6 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S'
 )
-#logging.root.setLevel(logging.NOTSET)
-#logging.basicConfig(level=logging.NOTSET)
 logger = logging.getLogger()
 
 # Import modules
@@ -51,35 +40,37 @@ incremental_countries = [f"vax.incremental.{c}" for c in incremental_countries]
 modules_name = batch_countries + incremental_countries
 
 
-def main_get_data(parallel: bool = False, n_jobs: int = -2):
-    """Get data from sources and export to output folder.
-    
-    Is equivalent to script `run_python_scripts.py`
-    """
-    def _get_data_country(module_name):
-        country = module_name.split(".")[-1]
-        if country.lower() in SCRAPING_SKIP_COUNTRIES:
-            logger.info(f"{module_name} skipped!")
-            return {
-                "module_name": module_name,
-                "success": None,
-                "skipped": True
-            }
-        logger.info(f"{module_name}: started")
-        module = importlib.import_module(module_name)
-        try:
-            module.main()
-        except Exception as err:
-            success = False
-            logger.error(f"{module_name}: {err}", exc_info=True)
-        else:
-            success = True
-            logger.info(f"{module_name}: SUCCESS")
+def _get_data_country(module_name):
+    country = module_name.split(".")[-1]
+    if country.lower() in SCRAPING_SKIP_COUNTRIES:
+        logger.info(f"{module_name} skipped!")
         return {
             "module_name": module_name,
-            "success": success,
-            "skipped": False
+            "success": None,
+            "skipped": True
         }
+    logger.info(f"{module_name}: started")
+    module = importlib.import_module(module_name)
+    try:
+        module.main()
+    except Exception as err:
+        success = False
+        logger.error(f"{module_name}: {err}", exc_info=True)
+    else:
+        success = True
+        logger.info(f"{module_name}: SUCCESS")
+    return {
+        "module_name": module_name,
+        "success": success,
+        "skipped": False
+    }
+
+
+def main_get_data(parallel: bool = False, n_jobs: int = -2):
+    """Get data from sources and export to output folder.
+
+    Is equivalent to script `run_python_scripts.py`
+    """
     if parallel:
         modules_execution_results = Parallel(n_jobs=n_jobs, backend="threading")(
             delayed(_get_data_country)(module_name) for module_name in modules_name
@@ -125,10 +116,11 @@ def main_process_data():
     vax = df_manual_list + df_auto_list
 
     # Process locations
-    print(">> Processing and exporting data...")
     def _process_location(df):
         check = False if df.loc[0, "location"] in SKIP_COUNTRIES_MONOTONIC_CHECK else True
         return process_location(df, check)
+
+    print(">> Processing and exporting data...")
     vax = [
         _process_location(df) for df in vax if df.loc[0, "location"].lower() not in PROCESS_SKIP_COUNTRIES
     ]

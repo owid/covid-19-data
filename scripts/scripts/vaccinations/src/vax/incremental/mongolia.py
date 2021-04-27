@@ -13,28 +13,28 @@ def parse_data(data: dict) -> pd.Series:
     date = clean_date(data["updated"], "%Y/%m/%d")
 
     total_vaccinations = data["progress"]
-    
+
     return pd.Series(data={
         "date": date,
         "total_vaccinations": total_vaccinations,
     })
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Mongolia")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Mongolia")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Oxford/AstraZeneca")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "source_url", "https://ikon.mn/")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "source_url", "https://ikon.mn/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source)
