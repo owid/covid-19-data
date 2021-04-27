@@ -39,7 +39,18 @@ class GSheet:
     def _check_metadata(self, df: pd.DataFrame):
         """Check metadata LOCATIONS tab has valid format."""
         # Check columns
-        cols = ["location", "source_name", "automated", "include"]
+        cols_stable = [
+            "location",
+            "source_name",
+            "automated",
+            "include",
+        ]
+        cols_extra = [
+            "1d_approved",
+            "1d_used",
+            "1d_codeready",
+        ]
+        cols = cols_stable + cols_extra
         cols_missing = [col for col in cols if col not in df.columns]
         cols_wrong = [col for col in df.columns if col not in cols]
         if cols_missing:
@@ -51,7 +62,7 @@ class GSheet:
         if (location_counts > 1).any(None):
             locations_dup = location_counts[location_counts > 1].index.tolist()
             raise ValueError(f"Duplicated location(s) found in LOCATIONS. Check {locations_dup}")
-        if df.isnull().any(None):
+        if df[cols_stable].isnull().any(None):
             raise ValueError("Check LOCATIONS. Some fields missing (empty / NaNs)")
         # Ensure booleanity of columns automated, include
         if not df.automated.isin([True, False]).all():
