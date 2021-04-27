@@ -18,8 +18,8 @@ def read(source: str) -> pd.Series:
 def parse_data(soup: BeautifulSoup) -> pd.Series:
 
     regex = (
-        r"So far, ([\d,]+) or ([\d,]+)% of the estimated population of 65,000 have received at least one dose of the"
-        r"Pfizer-BioNTech vaccine, with ([\d,]+)% having completed the two-dose course"
+        r"So far, ([\d,]+) \(([\d,]+)% of the estimated population of 65,000\) have received at least one dose of the"
+        r" Pfizer-BioNTech vaccine, with ([\d,]+)% having completed the two-dose course"
     )
     matches = re.search(regex, soup.text)
 
