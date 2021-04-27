@@ -16,6 +16,8 @@ python scripts/scripts/megafile.py
 # Git push
 git add scripts/scripts/testing/automated_sheets/*
 git add scripts/scripts/testing/automations/*
+git add scripts/scripts/testing/grapher_annotations.txt
+git add scripts/scripts/testing/source_table.html
 git add scripts/grapher/*
 git add public/data/*
 git commit -m 'Data update'
