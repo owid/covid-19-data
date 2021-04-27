@@ -5,18 +5,20 @@ set -e
 git pull origin master
 ​
 # Update source table on website
-url=$(python -c "import json; print(json.load(open(test_dataset_config.json', 'r'))['owid_cloud_table_post'])")
+url=$(python -c "import json; print(json.load(open('testing_dataset_config.json', 'r'))['owid_cloud_table_post'])")
 pbcopy < source_table.html
 open $url
 
 # General data update (+mortality)
-​python scripts/scripts/excessmortality.py
-python scripts/scripts/megafile.py
+​python ../excessmortality.py
+python ../megafile.py
 ​
 # Git push
-git add scripts/scripts/testing/automated_sheets/*
-git add scripts/scripts/testing/automations/*
-git add scripts/grapher/*
-git add public/data/*
+git add automated_sheets/*
+git add automations/*
+git add ../../grapher/*
+git add ../../../public/data/*
+git add source_table.html
+git add grapher_annotations.txt
 git commit -m 'Data update'
 ​git push

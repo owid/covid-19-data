@@ -33,7 +33,7 @@ In your R console, run:
 
 ```r
 install.packages(c("data.table", "googledrive", "httr", "imputeTS", "lubridate", "pdftools", "retry", "rjson", 
-                   "rvest", "stringr", "tidyr", "rio"))
+                   "rvest", "stringr", "tidyr", "rio", "plyr"))
 ```
 
 Note: `pdftools` requires `poppler`. In MacOS, run `brew install poppler`.
