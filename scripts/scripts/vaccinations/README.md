@@ -101,10 +101,10 @@ Check for new updates and manually add them in the internal spreadsheet:
 Run the following script:
 
 ```
-$ python src/vax/
+$ cowid-vax
 ```
 
-By default it will do the following:
+By default this will do the following:
 1. Run the scrips for [batch](src/vax/batch) and [incremental](src/vax/incremental) updates. It will then generate
   individual country files and save them in [`output`](output).
 2. Collect manually updated data from the spreadsheet and data generated in (1). Process this data, and generate public country data in
@@ -115,8 +115,9 @@ By default it will do the following:
 **Note 1**: this step might crash for some countries, as the automation scripts might no longer (or temporarily) work
 (e.g. due to changes in the source). Try to keep the scripts up to date.
 
-**Note 2**: Optionally you can use arguments `--no-get-data` and `--no-process-data` to skip steps 1 or 2, respectively.
-E.g. executing `$ python src/vax --no-get-data` will just run step 2. For more info check `$ python src/vax --help`.
+**Note 2**: Optionally you can use positional argument `get-data` and `process-data` to only execute steps 1 or 2, 
+respectively. E.g. executing `$ cowid-vax process-data` will just run step 2. For more info check 
+`$ cowid-vax --help`.
 
 **Note 3**: Use option `--parallel` to run the code using parallelisation.
 

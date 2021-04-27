@@ -140,26 +140,24 @@ def main_process_data():
 
 
 def _parse_args():
-    parser = argparse.ArgumentParser(description="Execute data collection pipeline.")
+    parser = argparse.ArgumentParser(description="Execute COVID-19 vaccination data collection pipeline.")
     parser.add_argument(
-        "mode", choices=["get-data", "process-data", "all"], default="all"
-        help="Skip getting the data."
-    )
-    parser.add_argument(
-        "--no-get-data", action="store_true",
-        help="Skip getting the data."
-    )
-    parser.add_argument(
-        "--no-process-data", action="store_true",
-        help="Skip processing the data."
+        "mode", choices=["get-data", "process-data", "all"], default="all",
+        help=(
+            "Choose a step: i) get-data will run automated scripts, 2) process-data will get csvs generated in 1 and"
+            "collect all data from spreadsheet, 3) will run both sequentially."
+        )
     )
     parser.add_argument(
         "-p", "--parallel", action="store_true",
-        help="Execute get data in parallel. In beta."
+        help="Execution done in parallel (only in mode get-data)."
     )
     parser.add_argument(
         "-j", "--njobs", default=-2,
-        help="Number of jobs for parallel processing. Check Parallel class in joblib library for more info. In beta."
+        help=(
+            "Number of jobs for parallel processing. Check Parallel class in joblib library for more info  (only in ""
+            "mode get-data)."
+        )
     )
     args = parser.parse_args()
     return args
