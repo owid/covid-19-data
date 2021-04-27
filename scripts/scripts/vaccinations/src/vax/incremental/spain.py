@@ -1,5 +1,5 @@
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import pandas as pd
 
@@ -33,7 +33,7 @@ def parse_data(df: pd.DataFrame, source: str) -> pd.Series:
 
 
 def _get_source_url():
-    dt_str = datetime.now().strftime("%Y%m%d")
+    dt_str = (datetime.now() - timedelta(days=1)).strftime("%Y%m%d")
     return (
         f"https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/"
         f"Informe_Comunicacion_{dt_str}.ods"
