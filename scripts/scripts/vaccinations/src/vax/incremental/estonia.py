@@ -65,9 +65,10 @@ def enrich_vaccine(ds: pd.Series) -> pd.Series:
 
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        ds.pipe(add_totals)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
+        ds
+        .pipe(add_totals)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
 
     )
 

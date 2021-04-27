@@ -27,21 +27,21 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     })
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Northern Cyprus")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Northern Cyprus")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac")
 
 
-def enrich_source(input: pd.Series, source: str) -> pd.Series:
-    return enrich_data(input, "source_url", source)
+def enrich_source(ds: pd.Series, source: str) -> pd.Series:
+    return enrich_data(ds, "source_url", source)
 
 
-def pipeline(input: pd.Series, source: str) -> pd.Series:
+def pipeline(ds: pd.Series, source: str) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source, source)

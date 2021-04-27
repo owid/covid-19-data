@@ -9,7 +9,7 @@ def main():
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
     file_url = soup.find_all("a", class_="resource-url-analytics")[-1]["href"]
-    
+
     df = pd.read_excel(file_url, usecols=[
         "Vakcinācijas datums", "Vakcinēto personu skaits", "Vakcinācijas posms", "Preparāts"
     ])
@@ -28,7 +28,9 @@ def main():
         df.groupby(["Vakcinācijas datums", "Preparāts"], as_index=False)
         ["Vakcinēto personu skaits"].sum()
         .sort_values("Vakcinācijas datums")
-        .rename(columns={"Vakcinācijas datums": "date", "Preparāts": "vaccine", "Vakcinēto personu skaits": "total_vaccinations"})
+        .rename(columns={
+            "Vakcinācijas datums": "date", "Preparāts": "vaccine", "Vakcinēto personu skaits": "total_vaccinations"}
+        )
     )
     vax["total_vaccinations"] = vax.groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
     vax["location"] = "Latvia"

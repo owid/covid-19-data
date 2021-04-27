@@ -17,7 +17,7 @@ def read(source: str) -> pd.DataFrame:
 
 
 def parse_nested_json(row, metric: str) -> int:
-    values = [v[metric] for k,v in row["vaccines"].items()]
+    values = [v[metric] for k, v in row["vaccines"].items()]
     return sum(values)
 
 
@@ -37,7 +37,7 @@ def process_vaccine_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def parse_vaccine_doses(row):
-    new_row = pd.Series({k:v["total_administered"] for k,v in row["vaccines"].items()})
+    new_row = pd.Series({k: v["total_administered"] for k, v in row["vaccines"].items()})
     new_row["date"] = row["date"]
     new_row["location"] = row["location"]
     return new_row

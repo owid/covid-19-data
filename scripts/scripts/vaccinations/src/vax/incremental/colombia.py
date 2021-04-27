@@ -1,14 +1,9 @@
-import datetime
 import re
 import time
-import pytz
 
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from vax.utils.incremental import enrich_data, increment, clean_count, clean_date
 
@@ -43,21 +38,21 @@ def connect_parse_data(source: str) -> pd.Series:
     })
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Colombia")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Colombia")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Pfizer/BioNTech, Sinovac")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Pfizer/BioNTech, Sinovac")
 
 
-def enrich_source(input: pd.Series, source: str) -> pd.Series:
-    return enrich_data(input, "source_url", source)
+def enrich_source(ds: pd.Series, source: str) -> pd.Series:
+    return enrich_data(ds, "source_url", source)
 
 
-def pipeline(input: pd.Series, source: str) -> pd.Series:
+def pipeline(ds: pd.Series, source: str) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source, source)
@@ -65,7 +60,10 @@ def pipeline(input: pd.Series, source: str) -> pd.Series:
 
 
 def main():
-    source = "https://app.powerbi.com/view?r=eyJrIjoiYjc0NTBhZGMtZGM2NS00YjA0LTljNGYtYTJkNWI1YTJlYzAwIiwidCI6Ijc0YzBjMjUwLTFjNzctNDA1ZC05YjFlLTlhYzFmNTA4YWJlMyIsImMiOjR9&pageName=ReportSectionad9662980220d3261e68"
+    source = (
+        "https://app.powerbi.com/view?r=eyJrIjoiYjc0NTBhZGMtZGM2NS00YjA0LTljNGYtYTJkNWI1YTJlYzAwIiwid"
+        "CI6Ijc0YzBjMjUwLTFjNzctNDA1ZC05YjFlLTlhYzFmNTA4YWJlMyIsImMiOjR9&pageName=ReportSectionad9662980220d3261e68"
+    )
     data = read(source).pipe(pipeline, source)
     increment(
         location=data["location"],

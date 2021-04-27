@@ -35,7 +35,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
         '\uf701': u'\u0e34',
         '\uf702': u'\u0e35',
         '\uf703': u'\u0e36',
-        '\uf704': u'\u0e37', 
+        '\uf704': u'\u0e37',
         '\uf705': u'\u0e48',
         '\uf706': u'\u0e49',
         '\uf70a': u'\u0e48',
@@ -48,7 +48,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     }
 
     # Correct Thai Sprcial Character Error
-    special_char_replace = dict((re.escape(k), v) for k, v in special_char_replace.items()) 
+    special_char_replace = dict((re.escape(k), v) for k, v in special_char_replace.items())
     pattern = re.compile("|".join(special_char_replace.keys()))
     text = pattern.sub(lambda m: special_char_replace[re.escape(m.group(0))], raw_text)
 
@@ -60,34 +60,36 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     people_vaccinated = re.search(people_vaccinated_regex, text).group(2)
     people_vaccinated = clean_count(people_vaccinated)
 
-    people_fully_vaccinated_regex = r"นวนผู้ได้รับวัคซีนครบต(.{1,2})มเกณฑ์ \(ได้รับวัคซีน 2 เข็ม\) (.{1,3})นวน (.{1,10}) ร(.{1,2})ย"
+    people_fully_vaccinated_regex = (
+        r"นวนผู้ได้รับวัคซีนครบต(.{1,2})มเกณฑ์ \(ได้รับวัคซีน 2 เข็ม\) (.{1,3})นวน (.{1,10}) ร(.{1,2})ย"
+    )
     people_fully_vaccinated = re.search(people_fully_vaccinated_regex, text).group(3)
     people_fully_vaccinated = clean_count(people_fully_vaccinated)
 
     thai_date_regex = r"\( ข้อมูล ณ วันที่ (.{1,30}) เวล(.{1,3}) (.{1,10}) น. \)"
     thai_date = re.search(thai_date_regex, text).group(1).replace("ำ", "า")
     thai_date_replace = {
-        "มกราคม":"January",
-        "กุมภาพันธ์":"February",
-        "มีนาคม":"March",
-        "เมษายน":"April",
-        "พฤษภาคม":"May",
-        "มิถุนายน":"June",
-        "กรกฎาคม":"July",
-        "สิงหาคม":"August",
-        "กันยายน":"September",
-        "ตุลาคม":"October",
-        "พฤศจิกายน":"November",
-        "ธันวาคม":"December",
-        "2563":"2020",
-        "2564":"2021",
-        "2565":"2022",
-        "2566":"2023",
-        "2567":"2024"
+        "มกราคม": "January",
+        "กุมภาพันธ์": "February",
+        "มีนาคม": "March",
+        "เมษายน": "April",
+        "พฤษภาคม": "May",
+        "มิถุนายน": "June",
+        "กรกฎาคม": "July",
+        "สิงหาคม": "August",
+        "กันยายน": "September",
+        "ตุลาคม": "October",
+        "พฤศจิกายน": "November",
+        "ธันวาคม": "December",
+        "2563": "2020",
+        "2564": "2021",
+        "2565": "2022",
+        "2566": "2023",
+        "2567": "2024"
     }
 
     # Replace Thai Date Format with Standard Date Time Format
-    thai_date_replace = dict((re.escape(k), v) for k, v in thai_date_replace.items()) 
+    thai_date_replace = dict((re.escape(k), v) for k, v in thai_date_replace.items())
     pattern = re.compile("|".join(thai_date_replace.keys()))
     date = pattern.sub(lambda m: thai_date_replace[re.escape(m.group(0))], thai_date)
     date = clean_date(date, "%d %B %Y")
@@ -95,23 +97,23 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     return pd.Series(data={
         "total_vaccinations": total_vaccinations,
         "people_vaccinated": people_vaccinated,
-        "people_fully_vaccinated" : people_fully_vaccinated,
+        "people_fully_vaccinated": people_fully_vaccinated,
         "date": date,
         "source_url": lastest_report_link,
     })
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Thailand")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Thailand")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Oxford/AstraZeneca, Sinovac")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Sinovac")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
     )
@@ -131,6 +133,7 @@ def main():
         source_url=data["source_url"].replace(" ", "%20"),
         vaccine=data["vaccine"]
     )
+
 
 if __name__ == "__main__":
     main()

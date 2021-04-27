@@ -22,48 +22,48 @@ def read(source_continent: str, source_islands: str) -> pd.DataFrame:
     return df
 
 
-def rename_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.rename(columns={"data": "date"})
+def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.rename(columns={"data": "date"})
 
 
-def format_date(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        date=pd.to_datetime(input.date, format="%d-%m-%Y").astype(str)
+def format_date(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
+        date=pd.to_datetime(df.date, format="%d-%m-%Y").astype(str)
     )
 
 
-def calculate_metrics(input: pd.DataFrame) -> pd.DataFrame:
-    input = input.sort_values("date").ffill().fillna(0)
+def calculate_metrics(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.sort_values("date").ffill().fillna(0)
     return (
-        input
+        df
         .assign(
-            total_vaccinations=input.doses + input.doses_madeira + input.doses_açores,
-            people_vaccinated=input.doses1 + input.doses1_madeira + input.doses1_açores,
-            people_fully_vaccinated=input.doses2 + input.doses2_madeira + input.doses2_açores,
+            total_vaccinations=df.doses + df.doses_madeira + df.doses_açores,
+            people_vaccinated=df.doses1 + df.doses1_madeira + df.doses1_açores,
+            people_fully_vaccinated=df.doses2 + df.doses2_madeira + df.doses2_açores,
         )
         [["date", "total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]]
     )
 
 
-def enrich_vaccine_name(input: pd.DataFrame) -> pd.DataFrame:
+def enrich_vaccine_name(df: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine_name(date: str) -> str:
         if date >= "2021-02-09":
             return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
         return "Pfizer/BioNTech"
 
-    return input.assign(vaccine=input.date.apply(_enrich_vaccine_name))
+    return df.assign(vaccine=df.date.apply(_enrich_vaccine_name))
 
 
-def enrich_columns(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
+def enrich_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
         location="Portugal",
         source_url="https://github.com/dssg-pt/covid19pt-data"
     )
 
 
-def pipeline(input: pd.DataFrame) -> pd.DataFrame:
+def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        input
+        df
         .pipe(rename_columns)
         .pipe(format_date)
         .pipe(calculate_metrics)

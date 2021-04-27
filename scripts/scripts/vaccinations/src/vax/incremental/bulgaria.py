@@ -20,44 +20,44 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     return data.set_index(data.columns[0]).T.squeeze()
 
 
-def enrich_date(input: pd.Series) -> pd.Series:
+def enrich_date(ds: pd.Series) -> pd.Series:
     date = str(datetime.datetime.now(pytz.timezone("Europe/Sofia")).date() - datetime.timedelta(days=1))
-    return enrich_data(input, 'date', date)
+    return enrich_data(ds, 'date', date)
 
 
-def translate_index(input: pd.Series) -> pd.Series:
-    return input.rename({
+def translate_index(ds: pd.Series) -> pd.Series:
+    return ds.rename({
         'Общо ваксинирани лицас втора доза': 'people_fully_vaccinated',
         'Общо поставени дози': 'total_vaccinations',
     })
 
 
-def add_totals(input: pd.Series) -> pd.Series:
-    people_vaccinated = int(input['total_vaccinations']) - int(input['people_fully_vaccinated'])
-    return enrich_data(input, 'people_vaccinated', people_vaccinated)
+def add_totals(ds: pd.Series) -> pd.Series:
+    people_vaccinated = int(ds['total_vaccinations']) - int(ds['people_fully_vaccinated'])
+    return enrich_data(ds, 'people_vaccinated', people_vaccinated)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "Bulgaria")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "Bulgaria")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url',
-                                "https://coronavirus.bg/bg/statistika")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url', "https://coronavirus.bg/bg/statistika")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(translate_index)
-            .pipe(add_totals)
-            .pipe(enrich_date)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(translate_index)
+        .pipe(add_totals)
+        .pipe(enrich_date)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 

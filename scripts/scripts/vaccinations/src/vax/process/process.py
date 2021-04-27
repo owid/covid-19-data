@@ -7,7 +7,7 @@ from vax.utils.checks import country_df_sanity_checks
 def process_location(df: pd.DataFrame, monotonic_check: bool = True) -> pd.DataFrame:
     # Only report up to previous day to avoid partial reporting
     df = df.assign(date=pd.to_datetime(df.date, dayfirst=True))
-    df = df[df.date.dt.date < datetime.now().date()] 
+    df = df[df.date.dt.date < datetime.now().date()]
     # Default columns for second doses
     if "people_vaccinated" not in df:
         df = df.assign(people_vaccinated=pd.NA)
@@ -15,7 +15,7 @@ def process_location(df: pd.DataFrame, monotonic_check: bool = True) -> pd.DataF
     if "people_fully_vaccinated" not in df:
         df = df.assign(people_fully_vaccinated=pd.NA)
         df.people_fully_vaccinated = df.people_fully_vaccinated.astype("Int64")
-    # Avoid decimals
+    # Avoid decimals
     cols = ["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]
     df[cols] = df[cols].astype(float).astype("Int64").fillna(pd.NA)
     # Order columns and rows
@@ -31,5 +31,4 @@ def process_location(df: pd.DataFrame, monotonic_check: bool = True) -> pd.DataF
     df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
     # Date format
     df = df.assign(date=df.date.dt.strftime("%Y-%m-%d"))
-
     return df

@@ -71,8 +71,9 @@ def format_nulls_as_nans(df: pd.DataFrame) -> pd.DataFrame:
 
 def select_output_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = (
-        df[["date", "total_vaccinations", "people_vaccinated",
-        "people_fully_vaccinated", "location", "source_url", "vaccine"
+        df[[
+            "date", "total_vaccinations", "people_vaccinated",
+            "people_fully_vaccinated", "location", "source_url", "vaccine"
         ]]
     )
     return df

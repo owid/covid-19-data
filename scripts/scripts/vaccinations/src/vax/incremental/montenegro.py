@@ -31,21 +31,21 @@ def parse_data(data: dict) -> pd.Series:
     return pd.Series(data=data)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Montenegro")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Montenegro")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Sinopharm/Beijing, Sputnik V")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Sinopharm/Beijing, Sputnik V")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "source_url", "https://www.covidodgovor.me/")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "source_url", "https://www.covidodgovor.me/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source)

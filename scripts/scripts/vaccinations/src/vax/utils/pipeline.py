@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def enrich_total_vaccinations(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
-        total_vaccinations=input.people_vaccinated + input.people_fully_vaccinated
+def enrich_total_vaccinations(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
+        total_vaccinations=df.people_vaccinated + df.people_fully_vaccinated
     )

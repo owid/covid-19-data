@@ -1,5 +1,4 @@
 import datetime
-import time
 import pytz
 
 import pandas as pd
@@ -42,26 +41,26 @@ def connect_parse_data(source: str) -> pd.Series:
     }).transform(clean_count)
 
 
-def set_date(input: pd.Series) -> pd.Series:
+def set_date(ds: pd.Series) -> pd.Series:
     date = str((datetime.datetime.now(pytz.timezone("Brazil/East")) - datetime.timedelta(days=1)).date())
-    return enrich_data(input, "date", date)
+    return enrich_data(ds, "date", date)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Brazil")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Brazil")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Oxford/AstraZeneca, Sinovac")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Sinovac")
 
 
-def enrich_source(input: pd.Series, source: str) -> pd.Series:
-    return enrich_data(input, "source_url", source)
+def enrich_source(ds: pd.Series, source: str) -> pd.Series:
+    return enrich_data(ds, "source_url", source)
 
 
-def pipeline(input: pd.Series, source: str) -> pd.Series:
+def pipeline(ds: pd.Series, source: str) -> pd.Series:
     return (
-        input
+        ds
         .pipe(set_date)
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
