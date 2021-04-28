@@ -47,7 +47,13 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech")
+    """Next additions:
+    - Sputnik V: https://www.aa.com.tr/en/asia-pacific/philippines-to-get-nearly-05m-doses-of-sputnik-v-jab/2222202
+    - Covaxin: https://www.gmanetwork.com/news/news/nation/784349/philppines-fda-approves-eua-for-india-covid-19-vaccine-covaxin/story/
+    - J&J: https://www.gmanetwork.com/news/news/nation/784349/philppines-fda-approves-eua-for-india-covid-19-vaccine-covaxin/story/
+    - Pfizer/BioNTech: https://news.abs-cbn.com/news/04/22/21/philippines-covid19-vaccine-pfizer-arrival-schedule
+    """
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Sinovac")
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
