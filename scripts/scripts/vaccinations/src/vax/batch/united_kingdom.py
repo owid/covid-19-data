@@ -69,6 +69,7 @@ def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
         elif "2021-04-07" > date >= "2021-01-04":
             return "Oxford/AstraZeneca, Pfizer/BioNTech"
         elif date >= "2021-04-07":
+            # https://www.reuters.com/article/us-health-coronavirus-britain-moderna-idUSKBN2BU0KG
             return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     return df.assign(vaccine=df.date.apply(_enrich_vaccine))
 
