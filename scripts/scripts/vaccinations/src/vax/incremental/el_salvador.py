@@ -3,11 +3,10 @@ import locale
 import json
 
 import pandas as pd
-import numpy as np
 from bs4 import BeautifulSoup
 
 from vax.utils.incremental import enrich_data, increment, clean_count
-from vax.utils.utils import get_soup 
+from vax.utils.utils import get_soup
 
 
 def read(source: str) -> pd.Series:
@@ -20,7 +19,8 @@ def read(source: str) -> pd.Series:
         "source_url": source,
         **parse_infogram_vaccinations(infogram_data)
     })
-    
+
+
 def parse_infogram_link(soup: BeautifulSoup) -> str:
     url_end = soup.find(class_="infogram-embed").get("data-id")
     return f"https://e.infogram.com/{url_end}"

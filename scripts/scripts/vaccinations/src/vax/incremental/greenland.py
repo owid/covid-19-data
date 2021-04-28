@@ -55,7 +55,9 @@ def _sanity_checks(driver: webdriver.Chrome):
     elems = driver.find_elements_by_class_name("igc-legend-label")
     labels = [e.text for e in elems]
     if labels[0] != "Fået 1. vaccine" or labels[1] != "Modtaget 2. vaccine*":
-        raise Exception("First graph structure has changed. Consider manually checking the axis labels in the browser.")
+        raise Exception(
+            "First graph structure has changed. Consider manually checking the axis labels in the browser."
+        )
 
 
 def enrich_source(ds: pd.Series, source: str) -> pd.Series:

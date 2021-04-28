@@ -1,15 +1,13 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 import re
-import requests
-import pytz
 
 import dateparser
 import pandas as pd
 from bs4 import BeautifulSoup
 
 from vax.utils.utils import get_soup
-from vax.utils.incremental import enrich_data, increment, clean_count
+from vax.utils.incremental import clean_count
 
 
 def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
@@ -21,12 +19,12 @@ def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
             break
     date_daily = parse_date_daily(dose_block)
     total_vaccinations_d = parse_data_daily(dose_block)
-    
+
     # Weekly
     soup_weekly = get_soup(source_weekly)
     date_weekly = parse_date_weekly(soup_weekly)
     total_vaccinations_w, people_vaccinated, people_fully_vaccinated = parse_data_weekly(soup_weekly)
-    
+
     df = pd.DataFrame.from_records([
         {
             "date": date_weekly,
@@ -42,6 +40,7 @@ def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
         }
     ])
     return df
+
 
 def parse_date_weekly(soup: BeautifulSoup):
     for h2 in soup.find_all("h2"):

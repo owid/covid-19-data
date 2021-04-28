@@ -40,6 +40,7 @@ COUNTRY_MAP = {
 
 }
 
+
 class TrackVaccinesClient:
     """Client to interact with https://covid19.trackvaccines.org."""
 
@@ -47,7 +48,7 @@ class TrackVaccinesClient:
         self.base_url = "https://covid19.trackvaccines.org"
 
     def get_country_url(self, location: str):
-        # Build URL
+        # Build URL
         if location in COUNTRY_MAP:
             location = COUNTRY_MAP[location]
         else:
@@ -114,7 +115,7 @@ def vaccines_tracked(path_locations: str = None, location: str = None, as_list: 
     """Get tracked vaccines for tracked countries.
 
     Args:
-        path_locations (str, optional): Path to locations csv file. 
+        path_locations (str, optional): Path to locations csv file.
                                         Default value works if repo structure is left unmodified.
         location (str, optional): Country name. Defaults to None.
         as_list (bool, optional): Set to True to return a (flattened) list.
@@ -136,13 +137,14 @@ def vaccines_tracked(path_locations: str = None, location: str = None, as_list: 
         return list(set([vv for v in df.vaccines for vv in v]))
     return df
 
+
 def vaccines_approved(path_locations: str = None, verbose: bool = False) -> pd.DataFrame:
     """Get approved vaccines for tracked countries.
 
     This may take between 2-3 minutes.
 
     Args:
-        path_locations (str, optional): Path to locations csv file. 
+        path_locations (str, optional): Path to locations csv file.
                                         Default value works if repo structure is left unmodified.
 
     Returns:
@@ -169,13 +171,14 @@ def vaccines_missing(aggregated: bool = False, verbose: bool = False):
     Note: Unapproved might mean that trackvaccines.org are not counting a vaccine that was actually approved.
 
     Args:
-        aggregated (bool, optional): Set to True to get list of untracked/unapproved global vaccines. Defaults to False.
+        aggregated (bool, optional): Set to True to get list of untracked/unapproved global vaccines. Defaults to
+                                     False.
 
     Returns:
         Union[pd.DataFrame, dict]: Unapproved/untracked vaccines
     """
     if aggregated:
-        # Get tracked vaccines
+        # Get tracked vaccines
         vax_tracked = vaccines_tracked(as_list=True)
         client = TrackVaccinesClient()
         vax_approved = client.vaccines_approved()

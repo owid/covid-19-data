@@ -32,21 +32,21 @@ def parse_total_vaccinations(soup: BeautifulSoup) -> str:
     )
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "South Africa")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "South Africa")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Johnson&Johnson")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Johnson&Johnson")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "source_url", "https://sacoronavirus.co.za/")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "source_url", "https://sacoronavirus.co.za/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source)

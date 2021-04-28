@@ -9,6 +9,7 @@ tmp/
 ~$*.xls*
 *.log
 testing_dataset_config.json
+scripts/scripts/testing/testing_data_config.json
 scripts/scripts/vaccinations/vax_dataset_config.json
 .Rhistory
 
@@ -30,3 +31,9 @@ scripts/scripts/vaccinations/automations
 scripts/scripts/vaccinations/vax_update.sh
 scripts/scripts/vaccinations/antall-personer-vaksiner.csv
 
+# Testing
+testing_data_config.json
+
+# Dev
+.tox
+reports
