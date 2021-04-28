@@ -1,10 +1,11 @@
-import datetime
+from datetime import datetime
 import pytz
 import requests
 
 import pandas as pd
 
 from vax.utils.incremental import enrich_data, increment
+from vax.utils.files import load_query
 
 
 def run_query(url: str, query: str) -> int:
@@ -19,40 +20,43 @@ def run_query(url: str, query: str) -> int:
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache',
     }
-    result = requests.post(url, headers=headers, data=query).json()
-    return result
+    response = requests.post(url, headers=headers, data=query)
+    if response.ok:
+        data = response.json()
+    else:
+        raise "API response not valid. Recommendation: Check header"
+    return data["results"][0]["result"]["data"]["dsr"]["DS"][0]["PH"][0]["DM0"][0]["M0"]
 
 
 def read(url: str) -> pd.Series:
-    dose2_query = '''
-    {"version":"1.0.0","queries":[{"Query":{"Commands":[{"SemanticQueryDataShapeCommand":{"Query":{"Version":2,"From":[{"Name":"p","Entity":"P Regional_Vaccinations","Type":0}],"Select":[{"Aggregation":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"p"}},"Property":"Sum of 2nd Dose"}},"Function":0},"Name":"Sum(P Regional_Vaccinations.Sum of 2nd Dose)"}]},"Binding":{"Primary":{"Groupings":[{"Projections":[0]}]},"DataReduction":{"DataVolume":3,"Primary":{"Top":{}}},"Version":1},"ExecutionMetricsKind":1}}]},"CacheKey":"{\"Commands\":[{\"SemanticQueryDataShapeCommand\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"P Regional_Vaccinations\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Sum of 2nd Dose\"}},\"Function\":0},\"Name\":\"Sum(P Regional_Vaccinations.Sum of 2nd Dose)\"}]},\"Binding\":{\"Primary\":{\"Groupings\":[{\"Projections\":[0]}]},\"DataReduction\":{\"DataVolume\":3,\"Primary\":{\"Top\":{}}},\"Version\":1},\"ExecutionMetricsKind\":1}}]}","QueryId":"","ApplicationContext":{"DatasetId":"4d37c8f9-c7c5-4c69-9b89-cca38ce4ed7b","Sources":[{"ReportId":"bf70ff3f-0214-41fc-9e12-7f99700f4e00","VisualId":"d363f66070e7223e0520"}]}}],"cancelQueries":[],"modelId":4598049}
-    '''
+    date_str = parse_date(run_query(url, load_query("philippines-date")))
     return pd.Series(data={
-        "people_fully_vaccinated": run_query(url, dose2_query)
+        "total_vaccinations": run_query(url, load_query("philippines-total-vaccinations")),
+        "people_vaccinated": run_query(url, load_query("philippines-people-vaccinated")),
+        "people_fully_vaccinated": run_query(url, load_query("philippines-people-fully-vaccinated")),
+        "date": date_str
     })
 
 
-def enrich_date(input: pd.Series) -> pd.Series:
-    date = str(datetime.datetime.now(pytz.timezone("Asia/Manila")).date() - datetime.timedelta(days=1))
-    return enrich_data(input, 'date', date)
+def parse_date(query_response: str):
+    return datetime.strptime(query_response, 'as of %m/%d/%Y %I:%M %p').strftime("%Y-%m-%d")
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Philippines")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Philippines")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "source_url", "https://www.covid19.gov.ph/")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "source_url", "https://www.covid19.gov.ph/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input
-        .pipe(enrich_date)
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
         .pipe(enrich_source)
@@ -60,7 +64,6 @@ def pipeline(input: pd.Series) -> pd.Series:
 
 
 def main():
-
     url = "https://wabi-south-east-asia-api.analysis.windows.net/public/reports/querydata?synchronous=true"
     data = read(url).pipe(pipeline)
     increment(
