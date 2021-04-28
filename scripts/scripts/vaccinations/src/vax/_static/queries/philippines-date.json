@@ -1,0 +1,69 @@
+{
+    "version": "1.0.0",
+    "queries": [
+        {
+            "Query": {
+                "Commands": [
+                    {
+                        "SemanticQueryDataShapeCommand": {
+                            "Query": {
+                                "Version": 2,
+                                "From": [
+                                    {
+                                        "Name": "p",
+                                        "Entity": "P Timestamp",
+                                        "Type": 0
+                                    }
+                                ],
+                                "Select": [
+                                    {
+                                        "Aggregation": {
+                                            "Expression": {
+                                                "Column": {
+                                                    "Expression": {
+                                                        "SourceRef": {
+                                                            "Source": "p"
+                                                        }
+                                                    },
+                                                    "Property": "asof-Caption"
+                                                }
+                                            },
+                                            "Function": 3
+                                        },
+                                        "Name": "Min(P Timestamp.asof-Caption)"
+                                    }
+                                ]
+                            },
+                            "Binding": {
+                                "Primary": {
+                                    "Groupings": [
+                                        {
+                                            "Projections": [
+                                                0
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "Version": 1
+                            },
+                            "ExecutionMetricsKind": 1
+                        }
+                    }
+                ]
+            },
+            "CacheKey": "{\"Commands\":[{\"SemanticQueryDataShapeCommand\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"P Timestamp\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"asof-Caption\"}},\"Function\":3},\"Name\":\"Min(P Timestamp.asof-Caption)\"}]},\"Binding\":{\"Primary\":{\"Groupings\":[{\"Projections\":[0]}]},\"Version\":1},\"ExecutionMetricsKind\":1}}]}",
+            "QueryId": "",
+            "ApplicationContext": {
+                "DatasetId": "4d37c8f9-c7c5-4c69-9b89-cca38ce4ed7b",
+                "Sources": [
+                    {
+                        "ReportId": "bf70ff3f-0214-41fc-9e12-7f99700f4e00",
+                        "VisualId": "91075bc00093c61cb715"
+                    }
+                ]
+            }
+        }
+    ],
+    "cancelQueries": [],
+    "modelId": 4598049
+}
