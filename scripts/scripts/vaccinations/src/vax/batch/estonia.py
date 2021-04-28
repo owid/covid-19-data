@@ -10,7 +10,7 @@ def read(source: str) -> pd.DataFrame:
 
 
 def parse_data(source: str) -> pd.DataFrame:
-    df = pd.read_json(url)[["StatisticsDate", "VaccinationStatus", "TotalCount"]]
+    df = pd.read_json(source)[["StatisticsDate", "VaccinationStatus", "TotalCount"]]
     df = (
         df
         .pivot(
@@ -28,36 +28,39 @@ def parse_data(source: str) -> pd.DataFrame:
     return df
 
 
-def add_totals(ds: pd.DataFrame) -> pd.DataFrame:
-    return df.assign(total_vaccinations=ds['people_vaccinated'] + ds['people_fully_vaccinated'])
+def add_totals(df: pd.DataFrame) -> pd.DataFrame:
+    dt_limit = "2021-04-15"
+    return df.assign(total_vaccinations=df.apply(
+        lambda x: x.people_fully_vaccinated + x.people_vaccinated if x.date < dt_limit else None,
+        axis=1
+    ))
 
 
-def enrich_location(ds: pd.DataFrame) -> pd.DataFrame:
+def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(location="Estonia")
-
-
-def enrich_vaccine(ds: pd.DataFrame) -> pd.DataFrame:
-    return df.assign(ds, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
 def enrich_vaccine_name(df: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine_name(date: str) -> str:
-        if date < "2021-02-09":
+        if date < "2021-01-14":
             return "Pfizer/BioNTech"
-        return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+        elif "2021-01-14" <= date < "2021-02-09":
+            return "Moderna, Pfizer/BioNTech"
+        elif "2021-02-09" <= date: 
+            return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     return df.assign(vaccine=df.date.apply(_enrich_vaccine_name))
 
 
-def enrich_source(ds: pd.DataFrame) -> pd.DataFrame:
+def enrich_source(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(source_url="https://opendata.digilugu.ee")
 
 
-def pipeline(ds: pd.DataFrame) -> pd.DataFrame:
+def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        ds
-        #.pipe(add_totals)
+        df
+        .pipe(add_totals)
         .pipe(enrich_location)
-        .pipe(enrich_vaccine)
+        .pipe(enrich_vaccine_name)
         .pipe(enrich_source)
     )
 
