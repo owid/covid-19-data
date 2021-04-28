@@ -56,7 +56,7 @@ def main():
     df = df.rename(columns={"1.pote": "people_vaccinated", "2.pote": "people_fully_vaccinated"})
     df.loc[df.vaccine.isin(one_dose_vaccines), "people_fully_vaccinated"] = df.people_vaccinated
 
-    df = df.groupby("date").agg({
+    df = df.groupby("date", as_index=False).agg({
         "total_vaccinations": "sum",
         "people_vaccinated": "sum",
         "people_fully_vaccinated": "sum",
