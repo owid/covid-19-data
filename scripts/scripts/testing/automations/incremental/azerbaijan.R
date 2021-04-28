@@ -5,13 +5,13 @@ count <- read_html(url) %>%
     html_text() %>%
     gsub(pattern = ',', replacement = '') %>%
     as.integer() %>%
-    extract(6) 
+    magrittr::extract(6)
 
 add_snapshot(
     count = count,
     sheet_name = "Azerbaijan",
     country = "Azerbaijan",
-    units = "units unclear",
+    units = "tests performed",
     source_url = url,
     source_label = "Cabinet of Ministers of Azerbaijan",
     testing_type = "PCR only"
