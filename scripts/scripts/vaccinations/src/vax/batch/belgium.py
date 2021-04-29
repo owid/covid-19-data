@@ -38,7 +38,7 @@ def enrich_vaccine_name(df: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine_name(date: str) -> str:
         if date < "2021-01-11":
             return "Pfizer/BioNTech"
-        elif "2021-01-11" < date <= "2021-02-12":
+        elif "2021-01-11" <= date <= "2021-02-12":
             return "Moderna, Pfizer/BioNTech"
         elif "2021-02-12" < date:
             return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
