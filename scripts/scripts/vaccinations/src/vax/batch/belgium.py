@@ -14,6 +14,7 @@ def aggregate(df: pd.DataFrame) -> pd.DataFrame:
         .sort_values("DATE")
         .pivot(index="DATE", columns="DOSE", values="COUNT")
         .reset_index()
+        .fillna(0)
     )
 
 
@@ -21,27 +22,39 @@ def rename_columns(df: pd.DataFrame) -> pd.DataFrame:
     return df.rename(
         columns={
             "DATE": "date",
-            "A": "people_vaccinated",
-            "B": "people_fully_vaccinated",
         }
     )
 
 
 def add_totals(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.assign(
+        total_vaccinations=df.A + df.B + df.C,
+        people_vaccinated=df.A + df.C,
+        people_fully_vaccinated=df.B + df.C,
+    )
+    return df.drop(columns=["A", "B", "C"])
+
+
+def enrich_cumsum(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(
-        people_vaccinated=df.people_vaccinated.cumsum().ffill().fillna(0).astype(int),
-        people_fully_vaccinated=df.people_fully_vaccinated.cumsum().ffill().fillna(0).astype(int),
-    ).pipe(enrich_total_vaccinations)
+        total_vaccinations=df.total_vaccinations.cumsum().astype(int),
+        people_vaccinated=df.people_vaccinated.cumsum().astype(int),
+        people_fully_vaccinated=df.people_fully_vaccinated.cumsum().astype(int),
+    )
 
 
 def enrich_vaccine_name(df: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine_name(date: str) -> str:
+        # See timeline in:
+        # https://datastudio.google.com/embed/u/0/reporting/c14a5cfc-cab7-4812-848c-0369173148ab/page/hOMwB
         if date < "2021-01-11":
             return "Pfizer/BioNTech"
-        elif "2021-01-11" <= date <= "2021-02-12":
+        elif "2021-01-11" <= date < "2021-02-12":
             return "Moderna, Pfizer/BioNTech"
-        elif "2021-02-12" < date:
+        elif "2021-02-12" <= date < "2021-04-28":
             return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
+        elif "2021-04-28" <= date:
+            return "Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     return df.assign(vaccine=df.date.apply(_enrich_vaccine_name))
 
 
@@ -54,9 +67,11 @@ def enrich_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     return (
-        df.pipe(aggregate)
+        df
+        .pipe(aggregate)
         .pipe(rename_columns)
         .pipe(add_totals)
+        .pipe(enrich_cumsum)
         .pipe(enrich_vaccine_name)
         .pipe(enrich_columns)
     )
