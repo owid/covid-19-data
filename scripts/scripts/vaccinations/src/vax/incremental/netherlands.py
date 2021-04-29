@@ -12,34 +12,28 @@ from vax.utils.incremental import clean_count
 
 def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
     # Daily
-    soup_daily = get_soup(source_daily)
-    for div in soup_daily.find_all("div"):
-        if div.text == "Vaccine doses administered":
-            dose_block = div.parent.findChildren()[1]
-            break
-    date_daily = parse_date_daily(dose_block)
-    total_vaccinations_d = parse_data_daily(dose_block)
+    # soup_daily = get_soup(source_daily)
+    # for div in soup_daily.find_all("div"):
+    #     if div.text == "Vaccine doses administered":
+    #         dose_block = div.parent.findChildren()[1]
+    #         break
+    # date_daily = parse_date_daily(dose_block)
+    # total_vaccinations_d = parse_data_daily(dose_block)
 
     # Weekly
     soup_weekly = get_soup(source_weekly)
     date_weekly = parse_date_weekly(soup_weekly)
-    total_vaccinations_w, people_vaccinated, people_fully_vaccinated = parse_data_weekly(soup_weekly)
+    total_vaccinations, people_vaccinated, _ = parse_data_weekly(soup_weekly)
 
-    df = pd.DataFrame.from_records([
+    return pd.DataFrame.from_records([
         {
             "date": date_weekly,
-            "total_vaccinations": total_vaccinations_w,
+            "total_vaccinations": total_vaccinations,
             "people_vaccinated": people_vaccinated,
-            "people_fully_vaccinated": people_fully_vaccinated,
+            # "people_fully_vaccinated": people_fully_vaccinated,
             "source_url": source_weekly
-        },
-        {
-            "date": date_daily,
-            "total_vaccinations": total_vaccinations_d,
-            "source_url": source_daily
         }
     ])
-    return df
 
 
 def parse_date_weekly(soup: BeautifulSoup):
@@ -66,13 +60,13 @@ def parse_data_weekly(soup: BeautifulSoup) -> str:
     return total_vaccinations, people_vaccinated, people_fully_vaccinated
 
 
-def parse_data_daily(element):
-    return clean_count(element.find("span").text)
+# def parse_data_daily(element):
+#     return clean_count(element.find("span").text)
 
 
-def parse_date_daily(element):
-    date_str = element.find_all("span")[1].text
-    return datetime.strptime(date_str, "Value of %d %B %Y").strftime("%Y-%m-%d")
+# def parse_date_daily(element):
+#     date_str = element.find_all("span")[1].text
+#     return datetime.strptime(date_str, "Value of %d %B %Y").strftime("%Y-%m-%d")
 
 
 def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
@@ -80,7 +74,7 @@ def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
-    return df.assign(vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+    return df.assign(vaccine="Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
 def pipeline(df: pd.DataFrame) -> pd.DataFrame:
@@ -108,10 +102,10 @@ def merge_with_current_data(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
         df_current = df_current[~df_current.date.isin(df_week.date)]
         df_current = pd.concat([df_week, df_current])
         # Merge with daily data
-        df_day = pd.DataFrame(df.loc[1]).T
-        if not _contains_weekly_record(df_current, df_day.date):
-            df_current = df_current[~df_current.date.isin(df_day.date)]
-            df_current = pd.concat([df_day, df_current])
+        # df_day = pd.DataFrame(df.loc[1]).T
+        # if not _contains_weekly_record(df_current, df_day.date):
+        #     df_current = df_current[~df_current.date.isin(df_day.date)]
+        #     df_current = pd.concat([df_day, df_current])
     # Int values
     df_current[col_ints] = df_current[col_ints].astype("Int64").fillna(pd.NA)
     return df_current.sort_values(by="date")
