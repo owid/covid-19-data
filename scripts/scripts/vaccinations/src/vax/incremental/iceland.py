@@ -5,6 +5,14 @@ import pandas as pd
 from vax.utils.incremental import increment
 
 
+VACCINE_PROTOCOLS = {
+    "Pfizer": 2,
+    "Moderna": 2,
+    "AstraZeneca": 2,
+    "Janssen": 1,
+}
+
+
 def main():
 
     url = "https://e.infogram.com/c3bc3569-c86d-48a7-9d4c-377928f102bf"
@@ -27,10 +35,24 @@ def main():
 
     df = pd.DataFrame(data[1:], columns=data[0])
 
-    only_1dose_people = int(df["Bólusetning hafin"].astype(int).sum())
-    people_fully_vaccinated = int(df["Fullbólusettir"].astype(int).sum())
-    people_vaccinated = only_1dose_people + people_fully_vaccinated
-    total_vaccinations = people_vaccinated + people_fully_vaccinated
+    assert set(df.iloc[:, 0]) == set(VACCINE_PROTOCOLS.keys()), "New vaccine found!"
+    
+    total_vaccinations = 0
+    people_vaccinated = 0
+    people_fully_vaccinated = 0
+
+    for row in df.iterrows():
+        protocol = VACCINE_PROTOCOLS[row[1][0]]
+
+        if protocol == 1:
+            total_vaccinations += row[1]["Fullbólusettir"]
+            people_vaccinated += row[1]["Fullbólusettir"]
+            people_fully_vaccinated += row[1]["Fullbólusettir"]
+
+        elif protocol == 2:
+            total_vaccinations += row[1]["Fullbólusettir"] * 2 + row[1]["Bólusetning hafin"]
+            people_vaccinated += row[1]["Fullbólusettir"] + row[1]["Bólusetning hafin"]
+            people_fully_vaccinated += row[1]["Fullbólusettir"]
 
     date = json_data["updatedAt"][:10]
 
@@ -63,6 +85,7 @@ def main():
         "Pfizer/BioNTech": "Pfizer/BioNTech",
         "Moderna": "Moderna",
         "Oxford/AstraZeneca": "Oxford/AstraZeneca",
+        "Janssen": "Johnson&Johnson",
     }
     assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys()), \
         f"Vaccines present in data: {df['vaccine'].unique()}"
