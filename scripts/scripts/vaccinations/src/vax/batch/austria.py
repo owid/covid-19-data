@@ -31,6 +31,10 @@ def format_date(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(date=df.date.str.slice(0, 10))
 
 
+def filter_rows(df: pd.DataFrame) -> pd.DataFrame:
+    return df[df.total_vaccinations >= df.people_vaccinated]
+
+
 def _get_vaccine_names(df: pd.DataFrame, translate: bool = False):
     ignore_fields = ['', 'Pro']
     regex_vaccines = r'EingetrageneImpfungen([a-zA-Z]*).*'
@@ -50,6 +54,7 @@ def _check_vaccine_names(df: pd.DataFrame) -> pd.DataFrame:
     if unknown_vaccines:
         raise ValueError("Found unknown vaccines: {}".format(unknown_vaccines))
     return df
+
 
 def enrich_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = df.assign(
@@ -73,6 +78,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
             "Vollimmunisierte": "people_fully_vaccinated",
             "EingetrageneImpfungen": "total_vaccinations"
         })
+        .pipe(filter_rows)
         .pipe(format_date)
         .pipe(enrich_columns)
         .sort_values("date")
