@@ -29,11 +29,9 @@ def parse_data(source: str) -> pd.DataFrame:
 
 
 def add_totals(df: pd.DataFrame) -> pd.DataFrame:
-    dt_limit = "2021-04-15"
-    return df.assign(total_vaccinations=df.apply(
-        lambda x: x.people_fully_vaccinated + x.people_vaccinated if x.date < dt_limit else None,
-        axis=1
-    ))
+    return df.assign(
+        total_vaccinations=df.people_fully_vaccinated + df.people_vaccinated 
+    )
 
 
 def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
