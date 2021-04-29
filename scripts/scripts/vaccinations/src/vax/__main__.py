@@ -71,6 +71,7 @@ def main_get_data(parallel: bool = False, n_jobs: int = -2):
 
     Is equivalent to script `run_python_scripts.py`
     """
+    print("-- Getting data... --")
     if parallel:
         modules_execution_results = Parallel(n_jobs=n_jobs, backend="threading")(
             delayed(_get_data_country)(module_name) for module_name in modules_name
@@ -98,9 +99,11 @@ def main_get_data(parallel: bool = False, n_jobs: int = -2):
     if len(modules_failed_retrial) > 0:
         print(f"\n---\n\nThe following scripts failed to run ({len(modules_failed_retrial)}):")
         print("\n".join([f"* {m}" for m in modules_failed_retrial]))
+    print("----------------------------\n----------------------------\n----------------------------\n")
 
 
 def main_process_data():
+    print("-- Processing data... --")
     # Get data from sheets
     print(">> Getting data from Google Spreadsheet...")
     gsheet = GSheet.from_json(path=CONFIG_FILE)
@@ -133,37 +136,43 @@ def main_process_data():
     df.to_csv("vaccinations.preliminary.csv", index=False)
     gsheet.metadata.to_csv("metadata.preliminary.csv", index=False)
     print(">> Exported")
+    print("----------------------------\n----------------------------\n----------------------------\n")
 
 
 def _parse_args():
-    parser = argparse.ArgumentParser(description="Execute data collection pipeline.")
+    parser = argparse.ArgumentParser(description="Execute COVID-19 vaccination data collection pipeline.")
     parser.add_argument(
-        "--no-get-data", action="store_true",
-        help="Skip getting the data."
-    )
-    parser.add_argument(
-        "--no-process-data", action="store_true",
-        help="Skip processing the data."
+        "mode", choices=["get-data", "process-data", "all"], default="all",
+        help=(
+            "Choose a step: i) get-data will run automated scripts, 2) process-data will get csvs generated in 1 and"
+            "collect all data from spreadsheet, 3) will run both sequentially."
+        )
     )
     parser.add_argument(
         "-p", "--parallel", action="store_true",
-        help="Execute get data in parallel. In beta."
+        help="Execution done in parallel (only in mode get-data)."
     )
     parser.add_argument(
         "-j", "--njobs", default=-2,
-        help="Number of jobs for parallel processing. Check Parallel class in joblib library for more info. In beta."
+        help=(
+            "Number of jobs for parallel processing. Check Parallel class in joblib library for more info  (only in "
+            "mode get-data)."
+        )
     )
     args = parser.parse_args()
     return args
 
 
-if __name__ == "__main__":
+def main():
     args = _parse_args()
-    if not args.no_get_data:
-        print("-- Getting data... --")
+    if args.mode=="get-data":
         main_get_data(args.parallel, args.njobs)
-        print("----------------------------\n----------------------------\n----------------------------\n")
-    if not args.no_process_data:
-        print("-- Processing data... --")
+    elif args.mode=="process-data":
         main_process_data()
-        print("----------------------------\n----------------------------\n----------------------------\n")
+    elif args.mode=="all":
+        main_get_data(args.parallel, args.njobs)
+        main_process_data()
+
+
+if __name__ == "__main__":
+    main()

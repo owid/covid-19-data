@@ -8,20 +8,19 @@ from vax.tracking.vaccines import vaccines_missing
 def _parse_args():
     parser = argparse.ArgumentParser(description="Get tracking information from dataset.")
     parser.add_argument(
-        "--countries-missing", action="store_true",
-        help="Get table with countries not included in dataset."
-    )
-    parser.add_argument(
-        "--countries-last-updated", action="store_true",
-        help="Get table with countries last updated."
-    )
-    parser.add_argument(
-        "--countries-least-updated", action="store_true",
-        help="Get table with countries least updated."
-    )
-    parser.add_argument(
-        "--vaccines-missing", action="store_true",
-        help="Get table with missing vaccines. Unapproved (but tracked) and Untracked (but approved)."
+        "mode", choices=[
+            "countries-missing",
+            "countries-last-updated",
+            "countries-least-updated",
+            "vaccines-missing",
+        ],
+        default="countries-last-updated",
+        help=(
+            "Choose a step: i) countries-missing will get table with countries not included in dataset, 2)"
+            "countries-last-updated will get table with countries last updated, 3) countries-least-updated will"
+            "get table with countries least updated, 4) vaccines-missing will get table with missing vaccines."
+            "Unapproved (but tracked) and Untracked (but approved)."
+        )
     )
     parser.add_argument(
         "--to-csv", action="store_true",
@@ -39,40 +38,34 @@ def export_to_csv(df, filename):
 
 def main():
     args = _parse_args()
-    if args.countries_missing:
+    if args.mode == "countries-missing":
         print("-- Missing countries... --\n")
         df = countries_missing()
         print(df)
         print("----------------------------\n----------------------------\n----------------------------\n")
         if args.to_csv:
             export_to_csv(df, filename="countries-missing.tmp.csv")
-    if args.countries_last_updated:
+    if args.mode == "countries-last-updated":
         print("-- Last updated countries... --")
         df = country_updates_summary()
         print(df)
         print("----------------------------\n----------------------------\n----------------------------\n")
         if args.to_csv:
             export_to_csv(df, filename="countries-last-updated.tmp.csv")
-    if args.countries_least_updated:
+    if args.mode == "countries-least-updated":
         print("-- Least updated countries... --")
         df = country_updates_summary(sortby_counts=True)
         print(df)
         print("----------------------------\n----------------------------\n----------------------------\n")
         if args.to_csv:
             export_to_csv(df, filename="countries-least-updated.tmp.csv")
-    if args.vaccines_missing:
+    if args.mode == "vaccines-missing":
         print("-- Missing vaccines... --")
         df = vaccines_missing(verbose=True)
         print(df)
         print("----------------------------\n----------------------------\n----------------------------\n")
         if args.to_csv:
             export_to_csv(df, filename="vaccines-missing.tmp.csv")
-    if not any([args.countries_missing, args.countries_last_updated, args.countries_least_updated,
-                args.vaccines_missing]):
-        print(
-            "[!] Choose an option from --countries-missing, --countries-last-updated, --countries-least-updated"
-            "or --vaccines-missing"
-        )
 
 
 if __name__ == "__main__":
