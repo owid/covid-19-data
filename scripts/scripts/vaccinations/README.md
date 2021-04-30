@@ -121,6 +121,9 @@ respectively. E.g. executing `$ cowid-vax process-data` will just run step 2. Fo
 
 **Note 3**: Use option `--parallel` to run the code using parallelisation.
 
+**Note 4**: Use option `-c` or `--countries` to just run a few countries. E.g. `$ cowid-vax get-data norway,italy`. Only
+works for `get-data` step.
+
 ### 3. Dataset generation
 Make sure you've succesfully [configured your environment](#0.-dependencies), then run the following script:
 
