@@ -3,37 +3,28 @@ import pandas as pd
 
 def main():
 
-    url = "https://cloud.minsa.gob.pe/s/ZgXoXqK2KLjRLxD/download"
+    url = "https://github.com/jmcastagnetto/covid-19-peru-vacunas/raw/main/datos/vacunas_covid_resumen.csv"
 
-    df = pd.read_csv(url, usecols=["FECHA_VACUNACION", "DOSIS", "FABRICANTE"])
+    df = pd.read_csv(url, usecols=["fecha_vacunacion", "fabricante", "dosis", "n_reg"])
 
-    df["FECHA_VACUNACION"] = pd.to_datetime(df["FECHA_VACUNACION"], format="%Y%m%d").dt.date
-
-    df = df.rename(columns={"FECHA_VACUNACION": "date", "FABRICANTE": "vaccine"})
+    df = df.rename(columns={"fecha_vacunacion": "date", "fabricante": "vaccine"})
 
     vaccine_mapping = {
         "SINOPHARM": "Sinopharm/Beijing",
         "PFIZER": "Pfizer/BioNTech",
     }
-    assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys())
+    assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys()), "New vaccine found!"
     df = df.replace(vaccine_mapping)
 
-    # vax = (
-    #     df.groupby(["date", "vaccine"], as_index=False)
-    #     .size()
-    #     .sort_values("date")
-    #     .rename(columns={"size": "total_vaccinations"})
-    # )
-    # vax["total_vaccinations"] = vax.groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
-    # vax["location"] = "Peru"
-    # vax.to_csv("output/by_manufacturer/Peru.csv", index=False)
-
     df = (
-        df.groupby(["date", "DOSIS"], as_index=False)
-        .count()
-        .pivot(index="date", columns="DOSIS", values="vaccine")
+        df
+        .drop(columns="vaccine")
+        .groupby(["date", "dosis"], as_index=False)
+        .sum()
+        .pivot(index="date", columns="dosis", values="n_reg")
         .rename(columns={1: "people_vaccinated", 2: "people_fully_vaccinated"})
         .fillna(0)
+        .sort_values("date")
         .cumsum()
         .reset_index()
     )
