@@ -21,4 +21,4 @@ git add ../../../public/data/*
 git add source_table.html
 git add grapher_annotations.txt
 git commit -m 'Data update'
-​git push
+​git push origin master
