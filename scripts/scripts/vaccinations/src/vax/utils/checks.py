@@ -10,7 +10,7 @@ VACCINES_ACCEPTED = [
 
 def country_df_sanity_checks(
         df: pd.DataFrame, allow_extra_cols: bool = True, monotonic_check: bool = True) -> pd.DataFrame:
-    checker = CountryChecker(df)
+    checker = CountryChecker(df, monotonic_check=monotonic_check)
     checker.run()
 
 
