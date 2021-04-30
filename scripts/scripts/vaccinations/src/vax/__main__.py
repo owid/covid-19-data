@@ -35,6 +35,10 @@ logging.basicConfig(
 logger = logging.getLogger()
 
 # Import modules
+country_to_module = {
+    **{c: f"vax.batch.{c}" for c in batch_countries},
+    **{c: f"vax.incremental.{c}" for c in incremental_countries},
+}
 batch_countries = [f"vax.batch.{c}" for c in batch_countries]
 incremental_countries = [f"vax.incremental.{c}" for c in incremental_countries]
 modules_name = batch_countries + incremental_countries
@@ -66,7 +70,7 @@ def _get_data_country(module_name):
     }
 
 
-def main_get_data(parallel: bool = False, n_jobs: int = -2):
+def main_get_data(parallel: bool = False, n_jobs: int = -2, modules_name: list = modules_name):
     """Get data from sources and export to output folder.
 
     Is equivalent to script `run_python_scripts.py`
@@ -140,12 +144,33 @@ def main_process_data():
 
 
 def _parse_args():
+    def _countries_to_modules(s):
+        if s == "all":
+            return modules_name
+        # Comma separated string to list of strings
+        countries = [ss.strip() for ss in s.split(",")]
+        # Verify validity of countries
+        countries_wrong = [c for c in countries if c not in country_to_module]
+        if countries_wrong:
+            print(f"Invalid countries: {countries_wrong}. Valid countries are: {list(country_to_module.keys())}")
+            raise ValueError("Invalid country")
+        # Get module equivalent names
+        modules = [country_to_module[country] for country in countries]
+        return modules
+
     parser = argparse.ArgumentParser(description="Execute COVID-19 vaccination data collection pipeline.")
     parser.add_argument(
         "mode", choices=["get-data", "process-data", "all"], default="all",
         help=(
             "Choose a step: i) get-data will run automated scripts, 2) process-data will get csvs generated in 1 and"
             "collect all data from spreadsheet, 3) will run both sequentially."
+        )
+    )
+    parser.add_argument(
+        "-c", "--countries", type=_countries_to_modules, default="all",
+        help=(
+            "Run for a specific country. For a list of countries use commas to separate them (only in mode get-data)."
+            "Defaults to all countries. Type 'all' to run all scripts (by default this is used)."
         )
     )
     parser.add_argument(
@@ -165,8 +190,9 @@ def _parse_args():
 
 def main():
     args = _parse_args()
+    print(args.countries)
     if args.mode=="get-data":
-        main_get_data(args.parallel, args.njobs)
+        main_get_data(args.parallel, args.njobs, args.countries)
     elif args.mode=="process-data":
         main_process_data()
     elif args.mode=="all":
