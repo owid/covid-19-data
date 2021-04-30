@@ -6,8 +6,19 @@ from vax.utils.incremental import enrich_data, increment
 
 
 def read(source: str) -> pd.Series:
-    df = pd.read_csv(source, usecols=["primera_dosis_cantidad", "segunda_dosis_cantidad"])
-    return df.sum(level=0, axis=1).sum()
+    df = pd.read_csv(source, usecols=[
+        "primera_dosis_cantidad", "segunda_dosis_cantidad", "vacuna_nombre",
+    ])
+
+    known_vaccines = set((
+        "AstraZeneca ChAdOx1 S recombinante",
+        "COVISHIELD ChAdOx1nCoV COVID 19",
+        "Sinopharm Vacuna SARSCOV 2 inactivada",
+        "Sputnik V COVID19 Instituto Gamaleya",
+    ))
+    assert set(df.vacuna_nombre) == known_vaccines, "New vaccine found!"
+
+    return df.drop(columns="vacuna_nombre").sum(level=0, axis=1).sum()
 
 
 def translate_index(ds: pd.Series) -> pd.Series:
@@ -59,7 +70,7 @@ def pipeline(ds: pd.Series) -> pd.Series:
 
 
 def main():
-    source = "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19VacunasAgrupadas.csv"
+    source = "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19VacunasAgrupadas.csv.zip"
     data = read(source).pipe(pipeline)
     increment(
         location=str(data['location']),
