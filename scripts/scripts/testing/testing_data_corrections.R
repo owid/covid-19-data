@@ -10,3 +10,7 @@ collated[Country == "Ecuador" & Date < "2020-09-14", `Short-term tests per case`
 # Mauritania: the test definition does not match the case definition (screening tests possibly included in testing figures)
 collated[Country == "Mauritania", `Short-term positive rate` := NA]
 collated[Country == "Mauritania", `Short-term tests per case` := NA]
+
+# United Arab Emirates: the test definition does not match the case definition (non-diagnostic tests possibly included in testing figures)
+collated[Country == "United Arab Emirates", `Short-term positive rate` := NA]
+collated[Country == "United Arab Emirates", `Short-term tests per case` := NA]
