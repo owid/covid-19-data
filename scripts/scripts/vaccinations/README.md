@@ -231,9 +231,9 @@ for manually imported country data**. To see which countries are automated and w
 
 ### Report new data values
 To report new values for a country/location, first check if the imports for that country/territory are automated. You
-can check column [`automated`] in [this file](automation_state.csv).
+can check column `automated` in [this file](automation_state.csv).
 
-- If the country imports are automated (`TRUE` value in file above) note that the new value might be added in next
+- If the country imports are automated (`TRUE` value in file above), note that the new value might be added in next
   update. **Only report new values if the data is missing for more than 48 hours!** Report the new data as a [pull request](https://github.com/owid/covid-19-data/compare).
 - If the country imports are not automated, i.e. data is manually added, (`FALSE` value in file above) follow the steps
   below:
@@ -258,11 +258,27 @@ for more details).
 
 
 
-More details: [#230](https://github.com/owid/covid-19-data/issues/230), [#250](https://github.com/owid/covid-19-data/issues/250)
+More details: [#230](https://github.com/owid/covid-19-data/issues/230),
+[#250](https://github.com/owid/covid-19-data/issues/250)
+
+### Accepting pull requests
+Due to how our pipeline operates at the moment, pull requests are only accepted under certain conditions. These include,
+but are not limited to, the following:
+
+- Code improvements / bug fixes. As an example, you can take [#465](https://github.com/owid/covid-19-data/pull/465).
+- Updates on the data for countries with automated data imports and incremental processes (this countries are found
+  [here](src/vax/incremental)). For this case, you can create a PR modifying the corresponding file in [output
+  folder](https://github.com/owid/covid-19-data/tree/master/scripts/scripts/vaccinations/output). Create the pull
+  request only if the daily update already ran but did not update the corresponding country.
+
+You can of course, and we appreciate it very much, create pull requests for other cases.
+
+Note that files in [public folder](https://github.com/owid/covid-19-data/tree/master/public) are not to be manually modified.
 ## FAQs
 
 ### Any question or suggestion?
-Kindly open an [issue](https://github.com/owid/covid-19-data/issues/new).
+Kindly open an [issue](https://github.com/owid/covid-19-data/issues/new). If you have a technical proposal, feel free to
+open a [pull request](https://github.com/owid/covid-19-data/compare)
 
 ### An automation no longer works (internal)
 If you detect that an automation is no longer working, and the process seems like it can't be fixed at the moment:
