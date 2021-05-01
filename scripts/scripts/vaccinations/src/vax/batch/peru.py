@@ -12,8 +12,11 @@ def main():
     vaccine_mapping = {
         "SINOPHARM": "Sinopharm/Beijing",
         "PFIZER": "Pfizer/BioNTech",
+        "ASTRAZENECA": "Ozford/AstraZeneca"
     }
-    assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys()), "New vaccine found!"
+    unknown_vaccines = set(df["vaccine"].unique()).difference(vaccine_mapping.keys())
+    if unknown_vaccines:
+        raise ValueError("Found unknown vaccines: {}".format(unknown_vaccines))
     df = df.replace(vaccine_mapping)
 
     df = (
