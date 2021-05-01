@@ -147,8 +147,12 @@ def _parse_args():
     def _countries_to_modules(s):
         if s == "all":
             return modules_name
+        elif s == "incremental":
+            return incremental_countries
+        elif s == "batch":
+            return batch_countries
         # Comma separated string to list of strings
-        countries = [ss.strip() for ss in s.split(",")]
+        countries = [ss.strip().replace(" ", "_").lower() for ss in s.split(",")]
         # Verify validity of countries
         countries_wrong = [c for c in countries if c not in country_to_module]
         if countries_wrong:
@@ -169,8 +173,9 @@ def _parse_args():
     parser.add_argument(
         "-c", "--countries", type=_countries_to_modules, default="all",
         help=(
-            "Run for a specific country. For a list of countries use commas to separate them (only in mode get-data)."
-            "Defaults to all countries. Type 'all' to run all scripts (by default this is used)."
+            "Run for a specific country. For a list of countries use commas to separate them (only in mode get-data)"
+            "E.g.: peru, norway. \nSpecial keywords: 'all' to run all countries, 'incremental' to run incremental"
+            "updates, 'batch' to run batch updates. Defaults to all countries."
         )
     )
     parser.add_argument(
