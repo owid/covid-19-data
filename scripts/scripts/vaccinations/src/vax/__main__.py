@@ -190,7 +190,6 @@ def _parse_args():
 
 def main():
     args = _parse_args()
-    print(args.countries)
     if args.mode=="get-data":
         main_get_data(args.parallel, args.njobs, args.countries)
     elif args.mode=="process-data":
