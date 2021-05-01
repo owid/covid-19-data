@@ -21,14 +21,14 @@ This directory contains the following files:
 
 | File name      | Description |
 | ----------- | ----------- |
+| [`automations`](automations)      | Deprecated folder. Left for backward compatibility reasons.       |
 | [`output`](output)      | Temporary automated imports are placed here.       |
 | [`src/vax`](src/vax)      | Scripts to automate country data imports.       |
 | [`us_states/input`](us_states/input)      | Data for US-state vaccination data updates.       |
+| [`MANIFEST.in`](MANIFEST.IN), [`setup.py`](setup.py), [`requirements.txt`](requirements.txt), [`requirements-flake.txt`](requirements-flake.txt)      |     Library development related files   |
 | [`automation_state.csv`](automation_state.csv)      |     List if the data import for a location is automated (TRUE) or manual (FALSE)   |
 | [`generate_dataset.R`](generate_dataset.R)      | R script to generate the final vaccination dataset.       |
 | [`generate_dataset_by_manufacturer.R`](generate_dataset_by_manufacturer.R)      | R script to generate vaccination manufacturer dataset. It is called by `generate_dataset.R`.       |
-| [`requirements.txt`](requirements.txt)      | Python library dependencies.       |
-| [`setup.py`](setup.py)      | Python library setup instructions file.       |
 | [`source_table.html`](source_table.html)      | Table with sources used, used in OWID website.       |
 | [`vax_update.sh.template`](vax_update.sh.template)      | Template to push vaccination update changes.       |
 
