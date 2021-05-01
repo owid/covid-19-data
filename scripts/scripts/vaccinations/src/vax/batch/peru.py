@@ -12,7 +12,7 @@ def main():
     vaccine_mapping = {
         "SINOPHARM": "Sinopharm/Beijing",
         "PFIZER": "Pfizer/BioNTech",
-        "ASTRAZENECA": "Ozford/AstraZeneca"
+        "ASTRAZENECA": "Oxford/AstraZeneca"
     }
     unknown_vaccines = set(df["vaccine"].unique()).difference(vaccine_mapping.keys())
     if unknown_vaccines:
