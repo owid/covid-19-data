@@ -1,4 +1,5 @@
 from datetime import datetime
+import re
 
 import pandas as pd
 import tabula
@@ -40,7 +41,9 @@ def parse_total_vaccinations(df: pd.DataFrame) -> int:
 
 
 def parse_date(df: pd.DataFrame) -> str:
-    date_str = datetime.strptime(df.iloc[0, 2], "%m/%d接種數").strftime("2021-%m-%d")
+    s = df.iloc[0, 2]
+    match = re.search(r'(\d{1,2}/\d{1,2})\s?接種數', s)
+    date_str = datetime.strptime(match.group(1), '%m/%d').strftime("2021-%m-%d")
     return date_str
 
 
