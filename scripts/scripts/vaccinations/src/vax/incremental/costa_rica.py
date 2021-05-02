@@ -1,4 +1,3 @@
-import datetime
 import re
 import requests
 
@@ -48,7 +47,7 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Pfizer/BioNTech")
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
 def enrich_source(ds: pd.Series, source: str) -> pd.Series:
