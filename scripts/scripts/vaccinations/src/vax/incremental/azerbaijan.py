@@ -37,6 +37,7 @@ def parse_data(source_pdf: str):
         "date": date
     }
 
+
 def parse_date(filename):
     # Read pdf (for date)
     with open(filename, mode="rb") as f:
@@ -65,7 +66,9 @@ def parse_vaccinations(filename):
     dose_2 = max([int(s) for s in strs[idx_dose_2:] if s.isnumeric()])
     # Sanity check
     if dose_1 + dose_2 != total_vaccinations:
-        raise ValueError(f"Apparently, dose_1 + dose_2 != total_vaccinations ({dose_1} + {dose_2} != {total_vaccinations})")
+        raise ValueError(
+            f"Apparently, dose_1 + dose_2 != total_vaccinations ({dose_1} + {dose_2} != {total_vaccinations})"
+        )
     return total_vaccinations, dose_1, dose_2
 
 
@@ -74,7 +77,7 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Sinovac")
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech, Sinovac")
 
 
 def enrich_source(ds: pd.Series, source: str) -> pd.Series:
