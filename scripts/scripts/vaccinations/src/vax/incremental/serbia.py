@@ -37,7 +37,7 @@ def parse_date(soup: BeautifulSoup) -> str:
             x.append(elem)
     if len(x) > 1:
         raise ValueError("Format of source has changed")
-    date_str = datetime.strptime(x[0].text, "ажурирано %d.%m.%Y.").strftime("%Y-%m-%d")
+    date_str = datetime.strptime(x[0].text, "ажурирано %d.%m.%Y").strftime("%Y-%m-%d")
     return date_str
 
 
