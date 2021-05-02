@@ -12,7 +12,7 @@ vaccine_mapping = {
 
 
 def read(source: str) -> pd.DataFrame:
-    return pd.read_csv(source, sep=";", encoding="ISO-8859-1")
+    return pd.read_csv(source, sep=";")
 
 
 def filter_country(df: pd.DataFrame) -> pd.DataFrame:
