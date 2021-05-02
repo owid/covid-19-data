@@ -235,14 +235,16 @@ can check column `automated` in [this file](automation_state.csv).
 
 - If the country imports are automated (`TRUE` value in file above), note that the new value might be added in next
   update. **Only report new values if the data is missing for more than 48 hours!** Report the new data as a [pull request](https://github.com/owid/covid-19-data/compare).
-- If the country imports are not automated, i.e. data is manually added, (`FALSE` value in file above) follow the steps
-  below:
-  - Open an issue with the data and the corresponding source. 
-  - Note: Open one issue per country! 
-  
-If this seems too complicated, alternatively, you may simply add a comment to thread
-[#230](https://github.com/owid/covid-19-data/issues/230). We only accept official sources or news correctly citing
-official sources.
+- If the country imports are not automated, i.e. data is manually added, (`FALSE` value in file above) you can report
+  new data in any of the following ways:
+  - Open a [new issue](https://github.com/owid/covid-19-data/issues/new), reporting the data and the corresponding
+    source.
+  - If you plan to contribute regularly to a specific country/location, consider opening a dedicated issue. This way,
+    we can easily back-track the data addded for that country/location.
+  - If this seems too complicated, alternatively, you may simply add a comment to thread
+[#230](https://github.com/owid/covid-19-data/issues/230). 
+
+**Note**: We only accept official sources or news correctly citing official sources.
 ### Add new automated data collections
 The scripts that automate country imports are located in [`src/vax/batch`](src/vax/batch) or
 [`src/vax/incremental`](src/vax/incremental), depending on whether they import the data in batch (i.e. all the
