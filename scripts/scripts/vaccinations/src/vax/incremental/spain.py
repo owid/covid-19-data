@@ -24,8 +24,8 @@ def parse_data(last_update: str, max_iter: int = 10):
     records = []
     for days in range(10):
         date_it = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
-        print(date_it)
-        print(f"{date_it} > {last_update}?")
+        # print(date_it)
+        # print(f"{date_it} > {last_update}?")
         if date_it > last_update:
             source = _get_source_url(date_it.replace("-", ""))
             try:
@@ -33,17 +33,17 @@ def parse_data(last_update: str, max_iter: int = 10):
             except HTTPError:
                 print("No available!")
             else:
-                print("Adding!")
+                # print("Adding!")
                 _check_vaccine_names(df_)
                 ds = _parse_ds_data(df_, source)
                 records.append(ds)
         else:
-            print("End!")
+            # print("End!")
             break
-        print(max_iter)
+        # print(max_iter)
     if len(records) > 0:
         return pd.DataFrame(records)
-    print("No data being added to Spain")
+    # print("No data being added to Spain")
     return None
 
 
