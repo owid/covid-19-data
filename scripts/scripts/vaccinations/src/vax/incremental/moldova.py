@@ -1,6 +1,5 @@
 import datetime
 import requests
-import time
 
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -51,7 +50,7 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca")
+    return enrich_data(ds, "vaccine", "Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech,Sinopharm/Beijing, Sinovac, Sputnik V")
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
