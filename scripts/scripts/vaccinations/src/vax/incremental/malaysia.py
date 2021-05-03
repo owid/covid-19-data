@@ -1,23 +1,25 @@
-import datetime
+from datetime import datetime
 import json
-import urllib
 
 import pandas as pd
+import requests
 
-from vax.utils.incremental import enrich_data, increment
+from vax.utils.incremental import enrich_data, increment, clean_count
 
 
 def read(source: str) -> pd.Series:
-    file = urllib.request.urlopen(source)
-    return parse_data(json.load(file))
+    json_data = requests.get(source).json()
+    return parse_data(json_data)
 
 
 def parse_data(data: dict) -> pd.Series:
+    dose1 = clean_count(data["data"][0]["vakdose1"])
+    dose2 = clean_count(data["data"][0]["vakdose2"])
     data = pd.Series({
-        "date": datetime.datetime.fromtimestamp(data["updated"] // 1000).strftime("%Y-%m-%d"),
-        "people_vaccinated": data["data"][0]["vakdose1"],
-        "people_fully_vacinated": data["data"][0]["vakdose2"],
-        "total_vaccinations": int(data["data"][0]["vakdose1"]) + int(data["data"][0]["vakdose2"])
+        "date": datetime.fromtimestamp(data["updated"] // 1000).strftime("%Y-%m-%d"),
+        "people_vaccinated": dose1,
+        "people_fully_vaccinated": dose2,
+        "total_vaccinations": dose1 + dose2
     })
     return data
 
