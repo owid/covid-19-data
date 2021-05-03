@@ -1,11 +1,9 @@
 import re
-import time
 
-import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-from vax.utils.incremental import enrich_data, increment, clean_date, clean_count
+from vax.utils.incremental import increment, clean_date, clean_count
 
 
 def main():
@@ -13,7 +11,7 @@ def main():
     data = {
         "location": "Guatemala",
         "source_url": "https://gtmvigilanciacovid.shinyapps.io/3869aac0fb95d6baf2c80f19f2da5f98",
-        "vaccine": "Moderna, Oxford/AstraZeneca",
+        "vaccine": "Moderna, Oxford/AstraZeneca, Sputnik V",
     }
 
     op = Options()
