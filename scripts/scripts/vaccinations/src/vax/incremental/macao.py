@@ -2,7 +2,6 @@ import re
 from datetime import datetime
 import os
 
-import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
@@ -29,11 +28,12 @@ def parse_vaccinations(elem) -> dict:
     metrics = dict()
     # total_vaccinations = re.search(r"疫苗共有(?P<count>[\d,]*)人次", text)
     total_vaccinations = re.search(r"累計已接種劑數(?P<count>[\d,]*)劑", text)
+    # total_vaccinations = re.search(r"疫苗劑數為(?P<count>[\d,]*)劑", text)
     # people_vaccinated = re.search(r"1劑疫苗共有(?P<count>[\d,]*)人次", text)
     people_vaccinated = re.search(r"已接種人數共有(?P<count>[\d,]*)人", text)
     # people_fully_vaccinated = re.search(r"2劑疫苗共有(?P<count>[\d,]*)人次", text)
     people_fully_vaccinated = re.search(r"已完成接種2劑有(?P<count>[\d,]*)人", text)
-    
+
     if total_vaccinations:
         metrics["total_vaccinations"] = clean_count(total_vaccinations.group(1))
     if people_vaccinated:
@@ -58,7 +58,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
                 "source_url": parse_source_url(elem),
                 **parse_vaccinations(elem)
             })
-    # print(records)
+        # print(records)
     return records
 
 
@@ -99,7 +99,7 @@ def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
-    return df.assign(vaccine="Sinopharm/Beijing, Pfizer/BioNTech")
+    return df.assign(vaccine="Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing")
 
 
 def pipeline(df: pd.DataFrame) -> pd.DataFrame:
