@@ -31,18 +31,19 @@ def parse_pdf_link(base_url: str, soup) -> str:
 def parse_table(url_pdf: str) -> int:
     kwargs = {"pandas_options": {"dtype": str, "header": None}}
     dfs_from_pdf = tabula.read_pdf(url_pdf, pages="all", **kwargs)
-    df = dfs_from_pdf[1]
-    df = df.dropna(subset=[2])
+    df = dfs_from_pdf[0]
+    # df = df.dropna(subset=[2])
     return df
 
 
 def parse_total_vaccinations(df: pd.DataFrame) -> int:
-    return clean_count(df.iloc[-1, 3])
+    return clean_count(df.iloc[-1, 4])
 
 
 def parse_date(df: pd.DataFrame) -> str:
-    s = df.iloc[0, 2]
-    match = re.search(r'(\d{1,2}/\d{1,2})\s?接種數', s)
+    s = df.iloc[0, 3]
+    # match = re.search(r'(\d{1,2}/\d{1,2})\s?接種數', s)
+    match = re.search(r'~(\d{1,2}/\d{1,2})\s?接種人數', s)
     date_str = datetime.strptime(match.group(1), '%m/%d').strftime("2021-%m-%d")
     return date_str
 

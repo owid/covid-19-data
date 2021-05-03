@@ -27,8 +27,8 @@ def parse_vaccinations(elem) -> dict:
     # Find metrics
     metrics = dict()
     # total_vaccinations = re.search(r"疫苗共有(?P<count>[\d,]*)人次", text)
-    total_vaccinations = re.search(r"累計已接種劑數(?P<count>[\d,]*)劑", text)
-    # total_vaccinations = re.search(r"疫苗劑數為(?P<count>[\d,]*)劑", text)
+    total_vaccinations = re.search(r"疫苗劑數為(?P<count>[\d,]*)劑", text)
+    # print(total_vaccinations)
     # people_vaccinated = re.search(r"1劑疫苗共有(?P<count>[\d,]*)人次", text)
     people_vaccinated = re.search(r"已接種人數共有(?P<count>[\d,]*)人", text)
     # people_fully_vaccinated = re.search(r"2劑疫苗共有(?P<count>[\d,]*)人次", text)
@@ -58,7 +58,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
                 "source_url": parse_source_url(elem),
                 **parse_vaccinations(elem)
             })
-        # print(records)
+    # print(records)
     return records
 
 
