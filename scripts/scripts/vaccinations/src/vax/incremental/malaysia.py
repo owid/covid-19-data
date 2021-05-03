@@ -1,21 +1,18 @@
 import datetime
-import requests
 import json
+import urllib
 
-from bs4 import BeautifulSoup
 import pandas as pd
 
 from vax.utils.incremental import enrich_data, increment
-from vax.utils.utils import get_soup
 
 
 def read(source: str) -> pd.Series:
-    soup = get_soup(source)
-    return parse_data(soup)
+    file = urllib.request.urlopen(source)
+    return parse_data(json.load(file))
 
 
-def parse_data(soup: BeautifulSoup) -> pd.Series:
-    data = json.loads(soup.text)
+def parse_data(data: dict) -> pd.Series:
     data = pd.Series({
         "date": datetime.datetime.fromtimestamp(data["updated"] // 1000).strftime("%Y-%m-%d"),
         "people_vaccinated": data["data"][0]["vakdose1"],
