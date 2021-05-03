@@ -3,9 +3,24 @@ import requests
 from vax.utils.incremental import enrich_data, increment
 import pandas as pd
 
-firstDose_source = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/Covid19_Vaccine_Administration_Hosted_View/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22firstDose%22%2C%22outStatisticFieldName%22%3A%22firstDose_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
-secondDose_source = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/Covid19_Vaccine_Administration_Hosted_View/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22secondDose%22%2C%22outStatisticFieldName%22%3A%22secondDose_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
-date_source = "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/Covid19_Vaccine_Administration_Hosted_View/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&outStatistics=%5B%7B%22onStatisticField%22%3A%22relDate%22%2C%22outStatisticFieldName%22%3A%22relDate_max%22%2C%22statisticType%22%3A%22max%22%7D%5D"
+firstDose_source = (
+    "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/Covid19_Vaccine_Administration_Hosted_View/"
+    "FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&"
+    "outStatistics=%5B%7B%22onStatisticField%22%3A%22firstDose%22%2C%22outStatisticFieldName%22%3A%22firstDose_max%22%"
+    "2C%22statisticType%22%3A%22max%22%7D%5D"
+)
+secondDose_source = (
+    "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/Covid19_Vaccine_Administration_Hosted_View/"
+    "FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&"
+    "outStatistics=%5B%7B%22onStatisticField%22%3A%22secondDose%22%2C%22outStatisticFieldName%22%3A%22secondDose_max"
+    "%22%2C%22statisticType%22%3A%22max%22%7D%5D"
+)
+date_source = (
+    "https://services-eu1.arcgis.com/z6bHNio59iTqqSUY/arcgis/rest/services/Covid19_Vaccine_Administration_Hosted_View/"
+    "FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returnGeometry=false&"
+    "outStatistics=%5B%7B%22onStatisticField%22%3A%22relDate%22%2C%22outStatisticFieldName%22%3A%22relDate_max%22%2C"
+    "%22statisticType%22%3A%22max%22%7D%5D"
+)
 
 
 def read() -> pd.Series:
@@ -38,29 +53,30 @@ def parse_people_fully_vaccinated() -> int:
     return people_fully_vaccinated
 
 
-def add_totals(input: pd.Series) -> pd.Series:
-    total_vaccinations = input['people_vaccinated'] + input['people_fully_vaccinated']
-    return enrich_data(input, 'total_vaccinations', total_vaccinations)
+def add_totals(ds: pd.Series) -> pd.Series:
+    total_vaccinations = ds['people_vaccinated'] + ds['people_fully_vaccinated']
+    return enrich_data(ds, 'total_vaccinations', total_vaccinations)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "Ireland")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "Ireland")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine', "Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url', "https://covid19ireland-geohive.hub.arcgis.com/")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url', "https://covid19ireland-geohive.hub.arcgis.com/")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(add_totals)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(add_totals)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 
