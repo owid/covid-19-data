@@ -5,7 +5,7 @@ import pandas as pd
 class Sweden(object):
 
     def __init__(self, source_url: str, location: str, columns_rename: dict = None, columns_cumsum: list = None):
-        """Constructor
+        """Constructor.
 
         Args:
             source_url (str): Source data url
@@ -37,16 +37,22 @@ class Sweden(object):
     def enrich_vaccine(self, df: pd.DataFrame) -> pd.DataFrame:
         return df.assign(vaccine="Oxford/AstraZeneca, Pfizer/BioNTech")
 
+    def exclude_data_points(self, df: pd.DataFrame) -> pd.DataFrame:
+        # The data contains an error that creates a negative change in the people_vaccinated series
+        df = df[df.date.astype(str) != "2021-04-11"]
+        return df
+
     def pipeline(self, df: pd.DataFrame) -> pd.DataFrame:
         return (
             df
             .pipe(self.enrich_vaccine)
             .pipe(self.enrich_columns)
+            .pipe(self.exclude_data_points)
         )
 
     def _week_to_date(self, row: int):
         origin_date = pd.to_datetime("2019-12-29") if row.Vecka >= 52 else pd.to_datetime("2021-01-03")
-        return origin_date + pd.DateOffset(days=7*int(row.Vecka))
+        return origin_date + pd.DateOffset(days=7 * int(row.Vecka))
 
     def _read_weekly_data(self) -> pd.DataFrame:
         url = "https://fohm.maps.arcgis.com/sharing/rest/content/items/fc749115877443d29c2a49ea9eca77e9/data"
@@ -80,7 +86,7 @@ class Sweden(object):
         return df
 
     def to_csv(self, output_file: str = None):
-        """Generalized"""
+        """Generalized."""
         df = self.read().pipe(self.pipeline)
         if output_file is None:
             output_file = self.output_file
@@ -90,7 +96,8 @@ class Sweden(object):
 def main():
     Sweden(
         source_url=(
-            "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/"
+            "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/"
+            "vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/"
         ),
         location="Sweden"
     ).to_csv()

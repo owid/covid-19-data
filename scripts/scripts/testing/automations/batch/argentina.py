@@ -5,7 +5,7 @@ import numpy as np
 
 def get_tests():
     df = pd.read_csv(
-        "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Determinaciones.csv",
+        "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19Determinaciones.zip",
         usecols=["fecha", "total", "positivos"]
     )
 

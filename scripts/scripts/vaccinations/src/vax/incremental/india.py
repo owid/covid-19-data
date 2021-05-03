@@ -34,6 +34,10 @@ def enrich_source(ds: pd.Series) -> pd.Series:
     return enrich_data(ds, "source_url", "https://dashboard.cowin.gov.in/")
 
 
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "source_url", "https://dashboard.cowin.gov.in/")
+
+
 def pipeline(ds: pd.Series) -> pd.Series:
     return (
         ds

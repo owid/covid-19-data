@@ -1,63 +1,57 @@
 import pandas as pd
 
 
-def get_country_data():
-    df = pd.read_csv(
-        "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-summary-latest.csv",
-        usecols=["data_somministrazione", "area", "totale", "prima_dose", "seconda_dose"]
-    )
-
-    df = df[df["area"] != "ITA"]
-    df = df.sort_values("data_somministrazione").groupby("data_somministrazione", as_index=False).sum()
-
-    df.loc[:, "totale"] = df["totale"].cumsum()
-    df.loc[:, "prima_dose"] = df["prima_dose"].cumsum()
-    df.loc[:, "seconda_dose"] = df["seconda_dose"].cumsum()
-
-    df = df.rename(columns={
-        "data_somministrazione": "date",
-        "totale": "total_vaccinations",
-        "prima_dose": "people_vaccinated",
-        "seconda_dose": "people_fully_vaccinated"
-    })
-    df = df[df["date"] >= "2020-01-01"]
-
-    df.loc[:, "location"] = "Italy"
-    df.loc[:, "source_url"] = "https://github.com/italia/covid19-opendata-vaccini/blob/master/dati/somministrazioni-vaccini-summary-latest.csv"
-
-    df.loc[:, "vaccine"] = "Pfizer/BioNTech"
-    df.loc[df["date"] >= "2021-01-14", "vaccine"] = "Moderna, Pfizer/BioNTech"
-    df.loc[df["date"] >= "2021-02-06", "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
-
-    df.to_csv("output/Italy.csv", index=False)
-
-
-def get_vaccine_data():
+def main():
 
     vaccine_mapping = {
         "Pfizer/BioNTech": "Pfizer/BioNTech",
         "Moderna": "Moderna",
         "Vaxzevria (AstraZeneca)": "Oxford/AstraZeneca",
+        "Janssen": "Johnson&Johnson",
     }
-    url = "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/somministrazioni-vaccini-latest.csv"
+    one_dose_vaccines = ["Johnson&Johnson"]
+
+    url = (
+        "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/"
+        "somministrazioni-vaccini-latest.csv"
+    )
     df = pd.read_csv(url, usecols=["data_somministrazione", "fornitore", "prima_dose", "seconda_dose"])
     assert set(df["fornitore"].unique()) == set(vaccine_mapping.keys())
     df = df.replace(vaccine_mapping)
     df["total_vaccinations"] = df["prima_dose"] + df["seconda_dose"]
-    df = (
-        df.groupby(["data_somministrazione", "fornitore"], as_index=False)["total_vaccinations"]
+    df = df.rename(columns={"data_somministrazione": "date", "fornitore": "vaccine"})
+
+    # Data by manufacturer
+    by_manufacturer = (
+        df.groupby(["date", "vaccine"], as_index=False)["total_vaccinations"]
         .sum()
-        .rename(columns={"data_somministrazione": "date", "fornitore": "vaccine"})
         .sort_values("date")
     )
-    df["total_vaccinations"] = df.groupby("vaccine")["total_vaccinations"].cumsum()
-    df["location"] = "Italy"
-    df.to_csv("output/by_manufacturer/Italy.csv", index=False)
+    by_manufacturer["total_vaccinations"] = by_manufacturer.groupby("vaccine")["total_vaccinations"].cumsum()
+    by_manufacturer["location"] = "Italy"
+    by_manufacturer.to_csv("output/by_manufacturer/Italy.csv", index=False)
 
+    # Vaccination data
+    df = df.rename(columns={
+        "prima_dose": "people_vaccinated",
+        "seconda_dose": "people_fully_vaccinated",
+    })
+    df.loc[df.vaccine.isin(one_dose_vaccines), "people_fully_vaccinated"] = df.people_vaccinated
+    df = (
+        df.groupby("date", as_index=False)[["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]]
+        .sum()
+        .sort_values("date")
+    )
 
-def main():
-    get_country_data()
-    get_vaccine_data()
+    df[["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]] = (
+        df[["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]].cumsum()
+    )
+
+    df.loc[:, "location"] = "Italy"
+    df.loc[:, "source_url"] = url
+    df.loc[:, "vaccine"] = ", ".join(sorted(vaccine_mapping.values()))
+
+    df.to_csv("output/Italy.csv", index=False)
 
 
 if __name__ == "__main__":

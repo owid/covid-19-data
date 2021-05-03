@@ -2,7 +2,15 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from vax.utils.incremental import enrich_data, increment
+from vax.utils.incremental import increment
+
+
+VACCINE_PROTOCOLS = {
+    "Pfizer": 2,
+    "Moderna": 2,
+    "AstraZeneca": 2,
+    "Janssen": 1,
+}
 
 
 def main():
@@ -20,14 +28,31 @@ def main():
             json_data = json.loads(json_data)
             break
 
-    data = json_data["elements"]["content"]["content"]["entities"]["39ac25a9-8af7-4d26-bd19-62a3696920a2"]["props"]["chartData"]["data"][0]
+    data = (
+        json_data["elements"]["content"]["content"]["entities"]["39ac25a9-8af7-4d26-bd19-62a3696920a2"]["props"]
+        ["chartData"]["data"][0]
+    )
 
     df = pd.DataFrame(data[1:], columns=data[0])
 
-    only_1dose_people = int(df["Bólusetning hafin"].astype(int).sum())
-    people_fully_vaccinated = int(df["Fullbólusettir"].astype(int).sum())
-    people_vaccinated = only_1dose_people + people_fully_vaccinated
-    total_vaccinations = people_vaccinated + people_fully_vaccinated
+    assert set(df.iloc[:, 0]) == set(VACCINE_PROTOCOLS.keys()), "New vaccine found!"
+    
+    total_vaccinations = 0
+    people_vaccinated = 0
+    people_fully_vaccinated = 0
+
+    for row in df.iterrows():
+        protocol = VACCINE_PROTOCOLS[row[1][0]]
+
+        if protocol == 1:
+            total_vaccinations += row[1]["Fullbólusettir"]
+            people_vaccinated += row[1]["Fullbólusettir"]
+            people_fully_vaccinated += row[1]["Fullbólusettir"]
+
+        elif protocol == 2:
+            total_vaccinations += row[1]["Fullbólusettir"] * 2 + row[1]["Bólusetning hafin"]
+            people_vaccinated += row[1]["Fullbólusettir"] + row[1]["Bólusetning hafin"]
+            people_fully_vaccinated += row[1]["Fullbólusettir"]
 
     date = json_data["updatedAt"][:10]
 
@@ -42,7 +67,10 @@ def main():
     )
 
     # By manufacturer
-    data = json_data["elements"]["content"]["content"]["entities"]["e329559c-c3cc-48e9-8b7b-1a5f87ea7ad3"]["props"]["chartData"]["data"][0]
+    data = (
+        json_data["elements"]["content"]["content"]["entities"]["e329559c-c3cc-48e9-8b7b-1a5f87ea7ad3"]["props"]
+        ["chartData"]["data"][0]
+    )
     df = pd.DataFrame(data[1:]).reset_index(drop=True)
     df.columns = ["date"] + data[0][1:]
 
@@ -57,6 +85,7 @@ def main():
         "Pfizer/BioNTech": "Pfizer/BioNTech",
         "Moderna": "Moderna",
         "Oxford/AstraZeneca": "Oxford/AstraZeneca",
+        "Janssen": "Johnson&Johnson",
     }
     assert set(df["vaccine"].unique()) == set(vaccine_mapping.keys()), \
         f"Vaccines present in data: {df['vaccine'].unique()}"

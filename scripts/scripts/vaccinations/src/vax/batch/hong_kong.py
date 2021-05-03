@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 
 
-def read(source:str) -> pd.DataFrame:
+def read(source: str) -> pd.DataFrame:
     data = requests.get(source).json()
     return pd.DataFrame.from_dict([
         {
@@ -27,8 +27,8 @@ def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
     return df.assign(vaccine=df.date.apply(_enrich_vaccine))
 
 
-def enrich_metadata(input: pd.DataFrame) -> pd.DataFrame:
-    return input.assign(
+def enrich_metadata(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(
         location="Hong Kong",
         source_url="https://www.covidvaccine.gov.hk/en/dashboard"
     )

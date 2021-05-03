@@ -16,7 +16,7 @@ jobs:
         persist-credentials: false
 
     - name: Deploy to Netlify
-      uses: netlify/actions/cli@master
+      uses: MarcelGerber/netlify-actions/cli@master
       with:
         args: deploy --dir=./public/ --prod
       env:

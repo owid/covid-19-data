@@ -11,7 +11,7 @@ def read_csv_multiple_separators(filepath: str, separators: list, usecols: list)
     Args:
         filepath (str): Path to file.
         separators (list): List of potential separator candidates. The file is read with the different candidate
-                        separators. The one that is most likely to be the actual separator is used. Note that the list 
+                        separators. The one that is most likely to be the actual separator is used. Note that the list
                         is checked in sequentially.
         usecols (list): Columns to load.
 
@@ -22,7 +22,7 @@ def read_csv_multiple_separators(filepath: str, separators: list, usecols: list)
         df = pd.read_csv(filepath, sep=sep)
         if df.shape[1] != 1:
             return df[usecols]
-    raise Exception("Check regional settings and the delimiter of the downloaded CSV file.")    
+    raise Exception("Check regional settings and the delimiter of the downloaded CSV file.")
 
 
 def main():
@@ -33,10 +33,10 @@ def main():
     op = Options()
     op.add_argument("--disable-notifications")
     op.add_argument("--headless")
-    op.add_experimental_option("prefs",{
+    op.add_experimental_option("prefs", {
         "download.prompt_for_download": False,
         "download.directory_upgrade": True,
-        "safebrowsing.enabled": True 
+        "safebrowsing.enabled": True,
     })
 
     with webdriver.Chrome(options=op) as driver:
@@ -44,7 +44,7 @@ def main():
         # Setting Chrome to trust downloads
         driver.command_executor._commands["send_command"] = ("POST", "/session/$sessionId/chromium/send_command")
         params = {"cmd": "Page.setDownloadBehavior", "params": {"behavior": "allow", "downloadPath": "."}}
-        command_result = driver.execute("send_command", params)
+        _ = driver.execute("send_command", params)
 
         driver.get(url)
         driver.execute_script("window.scrollTo(0, 1500)")
@@ -55,12 +55,12 @@ def main():
                 item.click()
                 time.sleep(2)
                 break
-    
+
     df = read_csv_multiple_separators(
-        "./antall-personer-vaksiner.csv", 
+        "./antall-personer-vaksiner.csv",
         separators=[";", ","],
         usecols=[
-            "Category",
+            "Kategori",
             "Kumulativt antall personer vaksinert med 1.dose",
             "Kumulativt antall personer vaksinert med 2.dose"
         ]
@@ -68,16 +68,12 @@ def main():
 
     df = df.rename(columns={
         "Kumulativt antall personer vaksinert med 1.dose": "people_vaccinated",
-        "Kumulativt antall personer vaksinert med 2.dose": "people_fully_vaccinated"
+        "Kumulativt antall personer vaksinert med 2.dose": "people_fully_vaccinated",
+        "Kategori": "date",
     })
 
     df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"].fillna(0)
 
-    if "Category" in df.columns:
-        df = df.rename(columns={"Category": "date"})
-    elif "DateTime" in df.columns:
-        df = df.rename(columns={"DateTime": "date"})
-        
     df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
 
     df.loc[:, "location"] = "Norway"
@@ -89,6 +85,7 @@ def main():
     df.to_csv("output/Norway.csv", index=False)
 
     os.remove("./antall-personer-vaksiner.csv")
+
 
 if __name__ == "__main__":
     main()

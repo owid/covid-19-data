@@ -32,12 +32,18 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
         reader = PyPDF2.PdfFileReader(f)
         page = reader.getPage(0)
         text = page.extractText().replace("\n", "")
+    
+    covishield_data = re.search(r"Covishield Vaccine (\d+) (\d+)", text)
+    covishield_dose1 = clean_count(covishield_data.group(1))
+    covishield_dose2 = clean_count(covishield_data.group(2))
+    
+    sinopharm_data = re.search(r"Sinopharm Vaccine \(Chinese Nationals\) (\d+) (\d+)", text)
+    sinopharm_dose1 = clean_count(sinopharm_data.group(1))
+    sinopharm_dose2 = clean_count(sinopharm_data.group(2))
 
-    regex = r"COVID-19\s+Total\s+Vaccinated\s+(\d+)"
-    total_vaccinations = re.search(regex, text).group(1)
-    total_vaccinations = clean_count(total_vaccinations)
-
-    people_vaccinated = total_vaccinations
+    total_vaccinations = covishield_dose1 + covishield_dose2 + sinopharm_dose1 + sinopharm_dose2
+    people_vaccinated = covishield_dose1 + sinopharm_dose1
+    people_fully_vaccinated = covishield_dose2 + sinopharm_dose2
 
     regex = r"Situation Report\s+([\d\.]{10})"
     date = re.search(regex, text).group(1)
@@ -46,22 +52,23 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     return pd.Series(data={
         "total_vaccinations": total_vaccinations,
         "people_vaccinated": people_vaccinated,
+        "people_fully_vaccinated": people_fully_vaccinated,
         "date": date,
         "source_url": pdf_path,
     })
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "location", "Sri Lanka")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "location", "Sri Lanka")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, "vaccine", "Oxford/AstraZeneca")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Sinopharm/Beijing")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input
+        ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
     )
@@ -74,6 +81,7 @@ def main():
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],
+        people_fully_vaccinated=data["people_fully_vaccinated"],
         date=data["date"],
         source_url=data["source_url"],
         vaccine=data["vaccine"]

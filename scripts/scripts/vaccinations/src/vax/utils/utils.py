@@ -15,7 +15,7 @@ def read_xlsx_from_url(url: str, as_series: bool = False, **kwargs) -> pd.DataFr
 
     Args:
         url (str): File url.
-        as_series (bol): Set to True to return a pandas.Series object. Source file must be of shape 1xN (1 row, N 
+        as_series (bol): Set to True to return a pandas.Series object. Source file must be of shape 1xN (1 row, N
                             columns). Defaults to False.
         kwargs: Arguments for pandas.read_excel.
 
@@ -63,3 +63,7 @@ def get_soup(source: str, headers: dict = None) -> BeautifulSoup:
     if headers is None:
         headers = get_headers()
     return BeautifulSoup(requests.get(source, headers=headers).content, "html.parser")
+
+
+def date_formatter(ds: pd.Series, format_input: str, format_output: str) -> pd.Series:
+    return pd.to_datetime(ds, format=format_input).dt.strftime(format_output)

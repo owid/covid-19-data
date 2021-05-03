@@ -4,7 +4,7 @@ import pandas as pd
 class Ecuador(object):
 
     def __init__(self, source_url: str, location: str, columns_rename: dict = None):
-        """Constructor
+        """Constructor.
 
         Args:
             source_url (str): Source data url
@@ -14,7 +14,7 @@ class Ecuador(object):
         self.source_url = source_url
         self.location = location
         self.columns_rename = columns_rename
-    
+
     @property
     def output_file(self):
         return f"./output/{self.location}.csv"
@@ -44,15 +44,24 @@ class Ecuador(object):
         )
 
     def enrich_vaccine(self, df: pd.DataFrame) -> pd.DataFrame:
-        """TODO: https://github.com/andrab/ecuacovid/blob/master/datos_crudos/vacunas/fabricantes.csv"""
+        """TODO: Incorporate manufacturer files.
+
+        REF: https://github.com/andrab/ecuacovid/blob/master/datos_crudos/vacunas/fabricantes.csv
+        """
         def _enrich_vaccine(date: str):
             if date < '2021-03-06':
                 return 'Pfizer/BioNTech'
             elif date < '17/03/2021':
                 return "Pfizer/BioNTech, Sinovac"
             else:
-                return "Pfizer/BioNTech, Oxford/AstraZeneca, Sinovac" 
+                return "Pfizer/BioNTech, Oxford/AstraZeneca, Sinovac"
         return df.assign(vaccine=df.date.apply(_enrich_vaccine))
+
+    def exclude_data_points(self, df: pd.DataFrame) -> pd.DataFrame:
+        # The data point on 2021-04-10 contains an error, which creates a negative change in the
+        # people_fully_vaccinated series (from 112624 to 183300)
+        df = df[df.date != "2021-04-10"]
+        return df
 
     def pipeline(self, df: pd.DataFrame) -> pd.DataFrame:
         return (
@@ -62,10 +71,11 @@ class Ecuador(object):
             .pipe(self.format_date)
             .pipe(self.enrich_columns)
             .pipe(self.enrich_vaccine)
+            .pipe(self.exclude_data_points)
         )
 
     def to_csv(self, output_file: str = None):
-        """Generalized"""
+        """Generalized."""
         df = self.read().pipe(self.pipeline)
         if output_file is None:
             output_file = self.output_file

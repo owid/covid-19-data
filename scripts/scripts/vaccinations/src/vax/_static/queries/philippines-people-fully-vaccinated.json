@@ -1,0 +1,75 @@
+{
+    "version": "1.0.0",
+    "queries": [
+        {
+            "Query": {
+                "Commands": [
+                    {
+                        "SemanticQueryDataShapeCommand": {
+                            "Query": {
+                                "Version": 2,
+                                "From": [
+                                    {
+                                        "Name": "p",
+                                        "Entity": "P Regional_Vaccinations",
+                                        "Type": 0
+                                    }
+                                ],
+                                "Select": [
+                                    {
+                                        "Aggregation": {
+                                            "Expression": {
+                                                "Column": {
+                                                    "Expression": {
+                                                        "SourceRef": {
+                                                            "Source": "p"
+                                                        }
+                                                    },
+                                                    "Property": "Sum of 2nd Dose"
+                                                }
+                                            },
+                                            "Function": 0
+                                        },
+                                        "Name": "Sum(P Regional_Vaccinations.Sum of 2nd Dose)"
+                                    }
+                                ]
+                            },
+                            "Binding": {
+                                "Primary": {
+                                    "Groupings": [
+                                        {
+                                            "Projections": [
+                                                0
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "DataReduction": {
+                                    "DataVolume": 3,
+                                    "Primary": {
+                                        "Top": {}
+                                    }
+                                },
+                                "Version": 1
+                            },
+                            "ExecutionMetricsKind": 1
+                        }
+                    }
+                ]
+            },
+            "CacheKey": "{\"Commands\":[{\"SemanticQueryDataShapeCommand\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"P Regional_Vaccinations\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Sum of 2nd Dose\"}},\"Function\":0},\"Name\":\"Sum(P Regional_Vaccinations.Sum of 2nd Dose)\"}]},\"Binding\":{\"Primary\":{\"Groupings\":[{\"Projections\":[0]}]},\"DataReduction\":{\"DataVolume\":3,\"Primary\":{\"Top\":{}}},\"Version\":1},\"ExecutionMetricsKind\":1}}]}",
+            "QueryId": "",
+            "ApplicationContext": {
+                "DatasetId": "4d37c8f9-c7c5-4c69-9b89-cca38ce4ed7b",
+                "Sources": [
+                    {
+                        "ReportId": "bf70ff3f-0214-41fc-9e12-7f99700f4e00",
+                        "VisualId": "d363f66070e7223e0520"
+                    }
+                ]
+            }
+        }
+    ],
+    "cancelQueries": [],
+    "modelId": 4598049
+}

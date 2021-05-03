@@ -30,34 +30,40 @@ def parse_people_fully_vaccinated(data: dict) -> int:
     return int(data["DAWKA_2_SUMA"])
 
 
-def add_totals(input: pd.Series) -> pd.Series:
-    people_vaccinated = input['total_vaccinations'] - input['people_fully_vaccinated']
-    return enrich_data(input, 'people_vaccinated', people_vaccinated)
+def add_totals(ds: pd.Series) -> pd.Series:
+    people_vaccinated = ds['total_vaccinations'] - ds['people_fully_vaccinated']
+    return enrich_data(ds, 'people_vaccinated', people_vaccinated)
 
 
-def enrich_location(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'location', "Poland")
+def enrich_location(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'location', "Poland")
 
 
-def enrich_vaccine(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'vaccine', "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
+def enrich_vaccine(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'vaccine', "Johnson&Johnson, Moderna, Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
-def enrich_source(input: pd.Series) -> pd.Series:
-    return enrich_data(input, 'source_url', "https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19")
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, 'source_url', "https://www.gov.pl/web/szczepimysie/raport-szczepien-przeciwko-covid-19")
 
 
-def pipeline(input: pd.Series) -> pd.Series:
+def pipeline(ds: pd.Series) -> pd.Series:
     return (
-        input.pipe(add_totals)
-            .pipe(enrich_location)
-            .pipe(enrich_vaccine)
-            .pipe(enrich_source)
+        ds
+        .pipe(add_totals)
+        .pipe(enrich_location)
+        .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 
 def main():
-    source = "https://services-eu1.arcgis.com/zk7YlClTgerl62BY/arcgis/rest/services/global_szczepienia_widok2/FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=1&resultType=standard"
+    source = (
+        "https://services-eu1.arcgis.com/zk7YlClTgerl62BY/arcgis/rest/services/global_szczepienia_widok2/"
+        "FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)"
+        "%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset="
+        "0&resultRecordCount=1&resultType=standard"
+    )
     data = read(source).pipe(pipeline)
     increment(
         location=data['location'],

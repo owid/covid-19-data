@@ -1,11 +1,3 @@
-"""
-from joblib import Parallel, delayed
-def process(i):
-    return i * i
-    
-results = Parallel(n_jobs=2)(delayed(process)(i) for i in range(10))
-print(results)
-"""
 import argparse
 import logging
 import os
@@ -13,52 +5,90 @@ import importlib
 from datetime import datetime
 
 import pandas as pd
+from joblib import Parallel, delayed
 
 from vax.batch import __all__ as batch_countries
 from vax.incremental import __all__ as incremental_countries
 from vax.utils.gsheets import GSheet
 from vax.process import process_location
 
-
+# Variables
 SCRAPING_SKIP_COUNTRIES = []
 PROCESS_SKIP_COUNTRIES = []
-VAX_ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+SKIP_COUNTRIES_MONOTONIC_CHECK = ["Northern Ireland", "Malta", "Romania"]
 
+SCRAPING_SKIP_COUNTRIES = [x.lower() for x in SCRAPING_SKIP_COUNTRIES]
+PROCESS_SKIP_COUNTRIES = [x.lower() for x in PROCESS_SKIP_COUNTRIES]
+
+# Directories
+VAX_ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 AUTOMATED_OUTPUT_DIR = os.path.abspath(os.path.join(VAX_ROOT_DIR, "./output"))
 PUBLIC_DATA_DIR = os.path.abspath(os.path.join(VAX_ROOT_DIR, "../../../public/data/vaccinations/country_data/"))
 CONFIG_FILE = os.path.abspath(os.path.join(VAX_ROOT_DIR, "vax_dataset_config.json"))
 
+# Logging config
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger()
 
-logger = logging.Logger('catch_all')
-
+# Import modules
+country_to_module = {
+    **{c: f"vax.batch.{c}" for c in batch_countries},
+    **{c: f"vax.incremental.{c}" for c in incremental_countries},
+}
 batch_countries = [f"vax.batch.{c}" for c in batch_countries]
 incremental_countries = [f"vax.incremental.{c}" for c in incremental_countries]
 modules_name = batch_countries + incremental_countries
 
 
-def main_get_data():
+def _get_data_country(module_name):
+    country = module_name.split(".")[-1]
+    if country.lower() in SCRAPING_SKIP_COUNTRIES:
+        logger.info(f"{module_name} skipped!")
+        return {
+            "module_name": module_name,
+            "success": None,
+            "skipped": True
+        }
+    logger.info(f"{module_name}: started")
+    module = importlib.import_module(module_name)
+    try:
+        module.main()
+    except Exception as err:
+        success = False
+        logger.error(f"{module_name}: {err}", exc_info=True)
+    else:
+        success = True
+        logger.info(f"{module_name}: SUCCESS")
+    return {
+        "module_name": module_name,
+        "success": success,
+        "skipped": False
+    }
+
+
+def main_get_data(parallel: bool = False, n_jobs: int = -2, modules_name: list = modules_name):
     """Get data from sources and export to output folder.
-    
+
     Is equivalent to script `run_python_scripts.py`
     """
-    modules_failed = []
-    for module_name in modules_name:
-        date_str = datetime.now().strftime("%Y-%m-%d %X")
-        print(f">> {date_str} - {module_name}")
-        country = module_name.split(".")[-1]
-        if country in SCRAPING_SKIP_COUNTRIES:
-            print("    skipped!")
-            continue
-        module = importlib.import_module(module_name)
-        try:
-            module.main()
-        except Exception as err:
-            logger.error(err, exc_info=True)
-            modules_failed.append(module_name)
-            print()
+    print("-- Getting data... --")
+    if parallel:
+        modules_execution_results = Parallel(n_jobs=n_jobs, backend="threading")(
+            delayed(_get_data_country)(module_name) for module_name in modules_name
+        )
+    else:
+        modules_execution_results = []
+        for module_name in modules_name:
+            modules_execution_results.append(_get_data_country(module_name))
 
+    modules_failed = [m["module_name"] for m in modules_execution_results if m["success"] is False]
     # Retry failed modules
     print(f"\n---\n\nRETRIALS ({len(modules_failed)})")
+    modules_failed_retrial = []
     for module_name in modules_failed:
         date_str = datetime.now().strftime("%Y-%m-%d %X")
         print(f">> {date_str} - {module_name} - (RETRIAL)")
@@ -66,15 +96,18 @@ def main_get_data():
         try:
             module.main()
         except Exception as err:
+            modules_failed_retrial.append(module)
             logger.error(err, exc_info=True)
             print()
 
-    if len(modules_failed) > 0:
-        print(f"\n---\n\nThe following scripts failed to run ({len(modules_failed)}):")
-        print("\n".join([f"* {m}" for m in modules_failed]))
+    if len(modules_failed_retrial) > 0:
+        print(f"\n---\n\nThe following scripts failed to run ({len(modules_failed_retrial)}):")
+        print("\n".join([f"* {m}" for m in modules_failed_retrial]))
+    print("----------------------------\n----------------------------\n----------------------------\n")
 
 
 def main_process_data():
+    print("-- Processing data... --")
     # Get data from sheets
     print(">> Getting data from Google Spreadsheet...")
     gsheet = GSheet.from_json(path=CONFIG_FILE)
@@ -90,8 +123,14 @@ def main_process_data():
     vax = df_manual_list + df_auto_list
 
     # Process locations
+    def _process_location(df):
+        check = False if df.loc[0, "location"] in SKIP_COUNTRIES_MONOTONIC_CHECK else True
+        return process_location(df, check)
+
     print(">> Processing and exporting data...")
-    vax = [process_location(df) for df in vax if df.loc[0, "location"] not in PROCESS_SKIP_COUNTRIES]
+    vax = [
+        _process_location(df) for df in vax if df.loc[0, "location"].lower() not in PROCESS_SKIP_COUNTRIES
+    ]
 
     # Export
     for df in vax:
@@ -101,29 +140,69 @@ def main_process_data():
     df.to_csv("vaccinations.preliminary.csv", index=False)
     gsheet.metadata.to_csv("metadata.preliminary.csv", index=False)
     print(">> Exported")
+    print("----------------------------\n----------------------------\n----------------------------\n")
 
 
 def _parse_args():
-    parser = argparse.ArgumentParser(description="Execute data collection pipeline.")
+    def _countries_to_modules(s):
+        if s == "all":
+            return modules_name
+        elif s == "incremental":
+            return incremental_countries
+        elif s == "batch":
+            return batch_countries
+        # Comma separated string to list of strings
+        countries = [ss.strip().replace(" ", "_").lower() for ss in s.split(",")]
+        # Verify validity of countries
+        countries_wrong = [c for c in countries if c not in country_to_module]
+        if countries_wrong:
+            print(f"Invalid countries: {countries_wrong}. Valid countries are: {list(country_to_module.keys())}")
+            raise ValueError("Invalid country")
+        # Get module equivalent names
+        modules = [country_to_module[country] for country in countries]
+        return modules
+
+    parser = argparse.ArgumentParser(description="Execute COVID-19 vaccination data collection pipeline.")
     parser.add_argument(
-        "-ng", "--no-get-data", action="store_true",
-        help="Skip getting the data."
+        "mode", choices=["get-data", "process-data", "all"], default="all",
+        help=(
+            "Choose a step: i) get-data will run automated scripts, 2) process-data will get csvs generated in 1 and"
+            "collect all data from spreadsheet, 3) will run both sequentially."
+        )
     )
     parser.add_argument(
-        "-np", "--no-process-data", action="store_true",
-        help="Skip processing the data."
+        "-c", "--countries", type=_countries_to_modules, default="all",
+        help=(
+            "Run for a specific country. For a list of countries use commas to separate them (only in mode get-data)"
+            "E.g.: peru, norway. \nSpecial keywords: 'all' to run all countries, 'incremental' to run incremental"
+            "updates, 'batch' to run batch updates. Defaults to all countries."
+        )
+    )
+    parser.add_argument(
+        "-p", "--parallel", action="store_true",
+        help="Execution done in parallel (only in mode get-data)."
+    )
+    parser.add_argument(
+        "-j", "--njobs", default=-2,
+        help=(
+            "Number of jobs for parallel processing. Check Parallel class in joblib library for more info  (only in "
+            "mode get-data)."
+        )
     )
     args = parser.parse_args()
     return args
 
 
-if __name__ == "__main__":
+def main():
     args = _parse_args()
-    if not args.no_get_data:
-        print("-- Getting data... --")
-        main_get_data()
-        print("----------------------------\n----------------------------\n----------------------------\n")
-    if not args.no_process_data:
-        print("-- Processing data... --")
+    if args.mode=="get-data":
+        main_get_data(args.parallel, args.njobs, args.countries)
+    elif args.mode=="process-data":
         main_process_data()
-        print("----------------------------\n----------------------------\n----------------------------\n")
+    elif args.mode=="all":
+        main_get_data(args.parallel, args.njobs)
+        main_process_data()
+
+
+if __name__ == "__main__":
+    main()

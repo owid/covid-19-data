@@ -1,0 +1,1 @@
+This directory has been moved to [https://github.com/owid/covid-19-data/tree/master/scripts/scripts/vaccinations/src/vax](https://github.com/owid/covid-19-data/tree/master/scripts/scripts/vaccinations/src/vax)

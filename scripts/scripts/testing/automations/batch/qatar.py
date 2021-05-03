@@ -93,7 +93,7 @@ def get_data() -> pd.DataFrame:
     #     print(df)
 
     # Temporary fix for 2020-10-25 and 2020-11-21 (typo in total number of tests)
-    df = df[-(df["Date"].isin(["2020-10-25", "2020-11-21"]))]
+    df = df[-(df["Date"].isin(["2020-10-25", "2020-11-21", "2021-04-25"]))]
     return df
 
 

@@ -64,11 +64,20 @@ def enrich_source_url(df: pd.DataFrame, source_url: str) -> pd.DataFrame:
 
 def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
     def _enrich_vaccine(date: str) -> str:
-        if date >= "2021-01-04":
+        if date < "2021-01-04":
+            return "Pfizer/BioNTech"
+        elif "2021-04-07" > date >= "2021-01-04":
             return "Oxford/AstraZeneca, Pfizer/BioNTech"
-        return "Pfizer/BioNTech"
-
+        elif date >= "2021-04-07":
+            # https://www.reuters.com/article/us-health-coronavirus-britain-moderna-idUSKBN2BU0KG
+            return "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
     return df.assign(vaccine=df.date.apply(_enrich_vaccine))
+
+
+def exclude_data_points(df: pd.DataFrame) -> pd.DataFrame:
+    # The data contains an error that creates a negative change
+    df = df[(df.location != "Northern Ireland") | (df.date != "2021-02-20")]
+    return df
 
 
 def pipeline(df: pd.DataFrame, source_url: str) -> pd.DataFrame:
@@ -79,6 +88,7 @@ def pipeline(df: pd.DataFrame, source_url: str) -> pd.DataFrame:
         .pipe(aggregate_first_date)
         .pipe(enrich_source_url, source_url)
         .pipe(enrich_vaccine)
+        .pipe(exclude_data_points)
     )
 
 

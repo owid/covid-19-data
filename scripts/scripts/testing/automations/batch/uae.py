@@ -61,11 +61,20 @@ def main() -> None:
     return None
 
 
+def _ts_to_dt(ts):
+    ts = int(ts)/1000
+    if ts < 0:
+        ts += 6.3113904*1e10
+    return datetime.datetime.utcfromtimestamp(ts)
+
+
 def get_data() -> pd.DataFrame:
     res = requests.get(DATA_URL, params=PARAMS)
     json_data = json.loads(res.text)
     df = pd.DataFrame([d['attributes'] for d in json_data['features']])
-    df[DATE_COL] = df[DATE_COL].astype(int).apply(lambda dt: datetime.datetime.utcfromtimestamp(dt/1000))
+    df = df.assign(**{
+        DATE_COL: df[DATE_COL].apply(_ts_to_dt)
+    })
     df[DATE_COL] = df[DATE_COL].dt.strftime('%Y-%m-%d')
     df.rename(columns={'TESTS': 'Daily change in cumulative total', 'CUMULATIVE_TESTS': 'Cumulative total', DATE_COL: 'Date'}, inplace=True)
     df['Source URL'] = None

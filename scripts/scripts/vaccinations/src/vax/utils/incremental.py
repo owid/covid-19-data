@@ -2,10 +2,7 @@ import os
 import shutil
 import datetime
 import re
-import requests
-import tempfile
 
-from bs4 import BeautifulSoup
 import pandas as pd
 
 
@@ -21,8 +18,8 @@ def clean_date(date, fmt):
     return date
 
 
-def enrich_data(input: pd.Series, row, value) -> pd.Series:
-    return input.append(pd.Series({row: value}))
+def enrich_data(ds: pd.Series, row, value) -> pd.Series:
+    return ds.append(pd.Series({row: value}))
 
 
 def increment(
@@ -32,9 +29,7 @@ def increment(
         vaccine,
         source_url,
         people_vaccinated=None,
-        people_fully_vaccinated=None
-    ):
-
+        people_fully_vaccinated=None):
     assert type(location) == str
     assert isinstance(total_vaccinations, (int, float))
     assert type(people_vaccinated) == int or people_vaccinated is None
@@ -73,15 +68,14 @@ def increment(
             people_vaccinated=people_vaccinated,
             people_fully_vaccinated=people_fully_vaccinated
         )
-    # To Integer type
+    # To Integer type
     col_ints = ["total_vaccinations", "people_vaccinated", "people_fully_vaccinated"]
     for col in col_ints:
         if col in df.columns:
             df[col] = df[col].astype("Int64").fillna(pd.NA)
 
     df.to_csv(f"output/{location}.csv", index=False)
-
-    #print(f"NEW: {total_vaccinations} doses on {date}")
+    # print(f"NEW: {total_vaccinations} doses on {date}")
 
 
 def _increment(filepath, location, total_vaccinations, date, vaccine, source_url, people_vaccinated=None,
@@ -97,14 +91,14 @@ def _increment(filepath, location, total_vaccinations, date, vaccine, source_url
         df.loc[df["date"] == date, "source_url"] = source_url
     else:
         new = _build_df(
-            location, total_vaccinations, date, vaccine, source_url, people_vaccinated , people_fully_vaccinated
+            location, total_vaccinations, date, vaccine, source_url, people_vaccinated, people_fully_vaccinated
         )
         df = pd.concat([prev, new])
     return df.sort_values("date")
 
 
 def _build_df(location, total_vaccinations, date, vaccine, source_url, people_vaccinated=None,
-               people_fully_vaccinated=None):
+              people_fully_vaccinated=None):
     new = pd.DataFrame({
         "location": location,
         "date": date,

@@ -1,9 +1,8 @@
-import tempfile
 from datetime import datetime
+import re
 
 import pandas as pd
 import tabula
-import requests
 
 from vax.utils.utils import get_soup
 from vax.utils.incremental import clean_count, enrich_data, increment
@@ -16,8 +15,10 @@ def read(source: str) -> pd.Series:
     df = parse_table(url_pdf)
     return pd.Series({
         "total_vaccinations": parse_total_vaccinations(df),
+        "people_vaccinated": parse_total_vaccinations(df),
         "date": parse_date(df)
     })
+
 
 def parse_pdf_link(base_url: str, soup) -> str:
     a = soup.find(class_="download").find("a")
@@ -40,7 +41,9 @@ def parse_total_vaccinations(df: pd.DataFrame) -> int:
 
 
 def parse_date(df: pd.DataFrame) -> str:
-    date_str = datetime.strptime(df.iloc[0, 2], "%m/%d接種數").strftime("2021-%m-%d")
+    s = df.iloc[0, 2]
+    match = re.search(r'(\d{1,2}/\d{1,2})\s?接種數', s)
+    date_str = datetime.strptime(match.group(1), '%m/%d').strftime("2021-%m-%d")
     return date_str
 
 

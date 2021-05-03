@@ -9,7 +9,10 @@ def import_iza():
     # Previous data is collected from the repo maintained by IZA:
     # https://github.com/Institut-Zdravotnych-Analyz/covid19-data
     iza = pd.read_csv(
-        "https://github.com/Institut-Zdravotnych-Analyz/covid19-data/raw/main/Vaccination/OpenData_Slovakia_Vaccination_Regions.csv",
+        (
+            "https://github.com/Institut-Zdravotnych-Analyz/covid19-data/raw/main/Vaccination/"
+            "OpenData_Slovakia_Vaccination_Regions.csv"
+        ),
         usecols=["Date", "first_dose", "second_dose"],
         sep=";"
     )
