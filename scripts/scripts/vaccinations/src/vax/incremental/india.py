@@ -1,47 +1,24 @@
-import datetime
+from datetime import datetime, timedelta
+
 import requests
-
-from bs4 import BeautifulSoup
 import pandas as pd
-import pytz
-import tabula
 
-from vax.utils.incremental import enrich_data, increment, clean_count
+from vax.utils.incremental import enrich_data, increment
 
 
 def read(source: str) -> pd.Series:
+    data = requests.get(source).json()
 
-    soup = BeautifulSoup(requests.get(source).content, "html.parser")
-
-    for img in soup.find_all("img"):
-        if img.get("alt") == "Vaccination State Data":
-            url = img.parent["href"]
-            break
-
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
-    return parse_data(url)
-
-
-def parse_data(url: str) -> pd.Series:
-    
-    kwargs = {"pandas_options": {"dtype": str, "header": None}}
-    dfs_from_pdf = tabula.read_pdf(url, pages="all", **kwargs)
-    for df in dfs_from_pdf:
-        if "Beneficiaries vaccinated" in dfs_from_pdf[0].values.flatten():
-            break
-    df = df[df[0] == "India"]
-    ncols = df.shape[1]
-
-    people_vaccinated = clean_count(df[ncols-3].item())
-    people_fully_vaccinated = clean_count(df[ncols-2].item())
-    total_vaccinations = clean_count(df[ncols-1].item())
+    people_vaccinated = data["topBlock"]["vaccination"]["tot_dose_1"]
+    people_fully_vaccinated = data["topBlock"]["vaccination"]["tot_dose_2"]
+    total_vaccinations = data["topBlock"]["vaccination"]["total_doses"]
+    date = datetime.strptime(data["timestamp"], "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
 
     return pd.Series({
-        "date": str((datetime.datetime.now(pytz.timezone("Asia/Kolkata")) - datetime.timedelta(days=1)).date()),
+        "date": date,
         "people_vaccinated": people_vaccinated,
         "people_fully_vaccinated": people_fully_vaccinated,
         "total_vaccinations": total_vaccinations,
-        "source_url": url,
     })
 
 
@@ -50,7 +27,11 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Covaxin, Oxford/AstraZeneca")
+    return enrich_data(ds, "vaccine", "Covaxin, Oxford/AstraZeneca, Sputnik V")
+
+
+def enrich_source(ds: pd.Series) -> pd.Series:
+    return enrich_data(ds, "source_url", "https://dashboard.cowin.gov.in/")
 
 
 def pipeline(ds: pd.Series) -> pd.Series:
@@ -58,11 +39,13 @@ def pipeline(ds: pd.Series) -> pd.Series:
         ds
         .pipe(enrich_location)
         .pipe(enrich_vaccine)
+        .pipe(enrich_source)
     )
 
 
 def main():
-    source = "https://www.mohfw.gov.in/"
+    date_str = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    source = f"https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date={date_str}"
     data = read(source).pipe(pipeline)
     increment(
         location=data["location"],
