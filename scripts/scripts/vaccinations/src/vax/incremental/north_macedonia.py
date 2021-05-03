@@ -26,9 +26,9 @@ def connect_parse_data(source: str) -> pd.Series:
     })
 
 
-def enrich_date(input: pd.Series) -> pd.Series:
+def enrich_date(ds: pd.Series) -> pd.Series:
     date = str(datetime.datetime.now(pytz.timezone("Europe/Skopje")).date() - datetime.timedelta(days=1))
-    return enrich_data(input, "date", date)
+    return enrich_data(ds, "date", date)
 
 
 def enrich_location(ds: pd.Series) -> pd.Series:
@@ -36,7 +36,7 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Pfizer/BioNTech")
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V")
 
 
 def enrich_source(ds: pd.Series, source: str) -> pd.Series:
