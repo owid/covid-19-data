@@ -17,7 +17,7 @@ def parse_data(data: dict) -> pd.Series:
         "date": datetime.datetime.fromtimestamp(data["updated"] // 1000).strftime("%Y-%m-%d"),
         "people_vaccinated": data["data"][0]["vakdose1"],
         "people_fully_vacinated": data["data"][0]["vakdose2"],
-        "total_vaccinations": data["data"][0]["vakdose1"] + data["data"][0]["vakdose2"]
+        "total_vaccinations": int(data["data"][0]["vakdose1"]) + int(data["data"][0]["vakdose2"])
     })
     return data
 
