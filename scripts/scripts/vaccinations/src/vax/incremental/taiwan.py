@@ -43,7 +43,7 @@ def parse_total_vaccinations(df: pd.DataFrame) -> int:
 def parse_date(df: pd.DataFrame) -> str:
     s = df.iloc[0, 3]
     # match = re.search(r'(\d{1,2}/\d{1,2})\s?接種數', s)
-    match = re.search(r'~(\d{1,2}/\d{1,2})\s?接種人數', s)
+    match = re.search(r'(\d{1,2}/\d{1,2})\s?接種人數', s)
     date_str = datetime.strptime(match.group(1), '%m/%d').strftime("2021-%m-%d")
     return date_str
 
