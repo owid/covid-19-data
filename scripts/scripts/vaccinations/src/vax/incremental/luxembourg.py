@@ -1,8 +1,12 @@
+import re
+from datetime import datetime
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from vax.utils.incremental import enrich_data, increment, clean_date
 import tabula
+
+from vax.utils.incremental import enrich_data, increment, clean_date
 
 
 def read(source: str) -> pd.Series:
@@ -14,7 +18,8 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     pdf_path = soup.find("a", class_="btn-primary")["href"]  # Get path to newest pdf
     dfs_from_pdf = tabula.read_pdf(pdf_path, pages="all")
     df = pd.DataFrame(dfs_from_pdf[2])  # Hardcoded table location
-    values = sorted(pd.to_numeric(df["Unnamed: 2"].str.replace(r"[^\d]", "", regex=True)).dropna().astype(int))
+    col_name = "Total"  # "Unnamed: 2"
+    values = sorted(pd.to_numeric(df[col_name].str.replace(r"[^\d]", "", regex=True)).dropna().astype(int))
     assert len(values) == 3
     keys = ("date", "people_fully_vaccinated", "people_vaccinated", "total_vaccinations", "source_url")
     values = (parse_date(df), *values, pdf_path)
@@ -23,8 +28,13 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 
 def parse_date(df: dict) -> str:
-    date = df["Unnamed: 1"].str.replace("Journée du ", "").values[0]
-    date = clean_date(date, "%d.%m.%Y")
+    # date = df["Unnamed: 1"].str.replace("Journée du ", "").values[0]
+    date = df.columns.str.replace("Journée du ", "").values[0]
+    _ = [re.search(r"Journée du (\d{1,2}.\d{1,2}.\d{4})", col) for col in df.columns]
+    col = [col for col in _ if col is not None]
+    if len(col) != 1:
+        raise ValueError("Something changed in the columns!")
+    date = datetime.strptime(col[0].group(1), "%d.%m.%Y").strftime("%Y-%m-%d")
     return date
 
 

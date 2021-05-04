@@ -1,5 +1,6 @@
 import re
 import requests
+from datetime import datetime
 
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -66,39 +67,52 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     people_fully_vaccinated = re.search(people_fully_vaccinated_regex, text).group(1)
     people_fully_vaccinated = clean_count(people_fully_vaccinated)
 
-    thai_date_regex = r"\( ข้อมูล ณ วันที่ (.{1,30}) เวล(.{1,3}) (.{1,10}) น. \)"
-    thai_date = re.search(thai_date_regex, text).group(1).replace("ำ", "า")
-    thai_date_replace = {
-        "มกราคม": "January",
-        "กุมภาพันธ์": "February",
-        "มีนาคม": "March",
-        "เมษายน": "April",
-        "พฤษภาคม": "May",
-        "มิถุนายน": "June",
-        "กรกฎาคม": "July",
-        "สิงหาคม": "August",
-        "กันยายน": "September",
-        "ตุลาคม": "October",
-        "พฤศจิกายน": "November",
-        "ธันวาคม": "December",
-        "2563": "2020",
-        "2564": "2021",
-        "2565": "2022",
-        "2566": "2023",
-        "2567": "2024"
-    }
-
+    # thai_date_regex = r"\(\s?ข้อมูล ณ วันที่ (.{1,30}) เวล(.{1,3}) (.{1,10}) น.\s?\)"
+    # thai_date = re.search(thai_date_regex, text).group(1).replace("ำ", "า")
     # Replace Thai Date Format with Standard Date Time Format
-    thai_date_replace = dict((re.escape(k), v) for k, v in thai_date_replace.items())
-    pattern = re.compile("|".join(thai_date_replace.keys()))
-    date = pattern.sub(lambda m: thai_date_replace[re.escape(m.group(0))], thai_date)
-    date = clean_date(date, "%d %B %Y")
+    # thai_date_replace = dict((re.escape(k), v) for k, v in thai_date_replace.items())
+    # pattern = re.compile("|".join(thai_date_replace.keys()))
+    # date = pattern.sub(lambda m: thai_date_replace[re.escape(m.group(0))], thai_date)
+    # date = clean_date(date, "%d %B %Y")
+
+    thai_date_regex = r"\s?ข้อมูล ณ วันที่ (\d{1,2}) (.*) (\d{4}) เวลำ (\d{1,2}.\d{1,2}) น.\s?"
+    thai_date = re.search(thai_date_regex, text)
+    thai_date_replace = {
+        # Months
+        "มกราคม": 1,
+        "กุมภาพันธ์": 2,
+        "มีนาคม": 3,
+        "เมษายน": 4,
+        "พฤษภาคม": 5,
+        "พฤษภำคม": 5,
+        "มิถุนายน": 6,
+        "กรกฎาคม": 7,
+        "สิงหาคม": 8,
+        "กันยายน": 9,
+        "ตุลาคม": 10,
+        "พฤศจิกายน": 11,
+        "ธันวาคม": 12,
+        # Years
+        "2563": 2020,
+        "2564": 2021,
+        "2565": 2022,
+        "2566": 2023,
+        "2567": 2024
+    }
+    year = thai_date_replace[thai_date.group(3)]
+    month = thai_date_replace[thai_date.group(2)]
+    day = clean_count(thai_date.group(1))
+    date_str = datetime(
+        year,
+        month,
+        day,
+    ).strftime("%Y-%m-%d")
 
     return pd.Series(data={
         "total_vaccinations": total_vaccinations,
         "people_vaccinated": people_vaccinated,
         "people_fully_vaccinated": people_fully_vaccinated,
-        "date": date,
+        "date": date_str,
         "source_url": latest_report_link,
     })
 
