@@ -18,7 +18,7 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
     pdf_path = soup.find("a", class_="btn-primary")["href"]  # Get path to newest pdf
     dfs_from_pdf = tabula.read_pdf(pdf_path, pages="all")
     df = pd.DataFrame(dfs_from_pdf[2])  # Hardcoded table location
-    col_name = "Total"  # "Unnamed: 2"
+    col_name = "Unnamed: 2"  # "Total"
     values = sorted(pd.to_numeric(df[col_name].str.replace(r"[^\d]", "", regex=True)).dropna().astype(int))
     assert len(values) == 3
     keys = ("date", "people_fully_vaccinated", "people_vaccinated", "total_vaccinations", "source_url")
@@ -28,9 +28,13 @@ def parse_data(soup: BeautifulSoup) -> pd.Series:
 
 
 def parse_date(df: dict) -> str:
-    # date = df["Unnamed: 1"].str.replace("Journée du ", "").values[0]
-    date = df.columns.str.replace("Journée du ", "").values[0]
-    _ = [re.search(r"Journée du (\d{1,2}.\d{1,2}.\d{4})", col) for col in df.columns]
+    # Old
+    colnames = df.loc[0]
+    date = df.loc[0, "Unnamed: 1"].replace("Journée du ", "")
+    # New
+    # colnames = df.columns
+    # date = df.columns.str.replace("Journée du ", "").values[0]
+    _ = [re.search(r"Journée du (\d{1,2}.\d{1,2}.\d{4})", col) for col in colnames.astype(str)]
     col = [col for col in _ if col is not None]
     if len(col) != 1:
         raise ValueError("Something changed in the columns!")
