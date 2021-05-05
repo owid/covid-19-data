@@ -11,7 +11,7 @@ def main():
     data = {
         "location": "Guatemala",
         "source_url": "https://gtmvigilanciacovid.shinyapps.io/3869aac0fb95d6baf2c80f19f2da5f98",
-        "vaccine": "Moderna, Oxford/AstraZeneca, Sputnik V",
+        "vaccine": "Moderna, Oxford/AstraZeneca",
     }
 
     op = Options()
