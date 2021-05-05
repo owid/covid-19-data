@@ -37,7 +37,7 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Johnson&Johnson, Oxford/AstraZeneca, Pfizer/BioNTech")
+    return enrich_data(ds, "vaccine", "Johnson&Johnson")
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:
