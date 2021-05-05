@@ -1,5 +1,4 @@
 import datetime
-import re
 import requests
 
 from bs4 import BeautifulSoup
@@ -74,8 +73,8 @@ def main():
     increment(
         location=str(data["location"]),
         total_vaccinations=int(data["total_vaccinations"]),
-        people_vaccinated=int(data["total_vaccinations"]),
-        people_fully_vaccinated=int(data["total_vaccinations"]),
+        people_vaccinated=int(data["people_vaccinated"]),
+        people_fully_vaccinated=int(data["people_fully_vaccinated"]),
         date=str(data["date"]),
         source_url=str(data["source_url"]),
         vaccine=str(data["vaccine"])
