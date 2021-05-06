@@ -1,7 +1,10 @@
 import re
+import locale
+
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+
 from vax.utils.incremental import enrich_data, increment, clean_date
 
 
@@ -58,6 +61,7 @@ def pipeline(ds: pd.Series) -> pd.Series:
 
 
 def main():
+    locale.setlocale(locale.LC_TIME, "en_GB")
     source = "https://www.gov.je/Health/Coronavirus/Vaccine/Pages/VaccinationStatistics.aspx"
     data = read(source).pipe(pipeline)
 
