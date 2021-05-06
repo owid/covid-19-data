@@ -15,7 +15,7 @@ from vax.process import process_location
 # Variables
 SCRAPING_SKIP_COUNTRIES = []
 PROCESS_SKIP_COUNTRIES = []
-SKIP_COUNTRIES_MONOTONIC_CHECK = ["Northern Ireland", "Malta", "Romania"]
+SKIP_COUNTRIES_MONOTONIC_CHECK = ["Northern Ireland", "Malta", "Romania", "Sweden"]
 
 SCRAPING_SKIP_COUNTRIES = [x.lower() for x in SCRAPING_SKIP_COUNTRIES]
 PROCESS_SKIP_COUNTRIES = [x.lower() for x in PROCESS_SKIP_COUNTRIES]
