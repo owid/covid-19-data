@@ -67,3 +67,10 @@ def get_soup(source: str, headers: dict = None) -> BeautifulSoup:
 
 def date_formatter(ds: pd.Series, format_input: str, format_output: str) -> pd.Series:
     return pd.to_datetime(ds, format=format_input).dt.strftime(format_output)
+
+
+def url_request_broken(url):
+    url_base, url_params = url.split('query?')
+    x = filter(lambda x: x[0] != 'where', [p.split('=') for p in url_params.split('&')])
+    params = dict(x)
+    return f"{url_base}/query", params

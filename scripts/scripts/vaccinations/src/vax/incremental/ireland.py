@@ -110,7 +110,6 @@ class Ireland:
     def pipe_location(self, ds: pd.Series) -> pd.Series:
         return enrich_data(ds, 'location', "Ireland")
 
-
     def pipe_vaccine(self, ds: pd.Series) -> pd.Series:
         vaccines = []
         if ds.pfizer > 0:
