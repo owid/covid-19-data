@@ -8,7 +8,7 @@ from vax.process import process_location
 
 PROCESS_SKIP_COUNTRIES = []
 PROCESS_SKIP_COUNTRIES = [x.lower() for x in PROCESS_SKIP_COUNTRIES]
-SKIP_COUNTRIES_MONOTONIC_CHECK = ["Northern Ireland", "Malta", "Romania"]
+SKIP_COUNTRIES_MONOTONIC_CHECK = ["Northern Ireland", "Malta", "Romania", "Sweden"]
 
 VAX_ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
 CONFIG_FILE = os.path.abspath(os.path.join(VAX_ROOT_DIR, "vax_dataset_config.json"))

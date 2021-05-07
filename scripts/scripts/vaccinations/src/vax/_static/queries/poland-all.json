@@ -1,0 +1,12 @@
+{
+    "resultType": "none",
+    "outFields": "*",
+    "returnIdsOnly": "false",
+    "returnUniqueIdsOnly": "false",
+    "returnCountOnly": "false",
+    "returnDistinctValues": "false",
+    "cacheHint": "false",
+    "sqlFormat": "none",
+    "f": "json",
+    "where": "1=1"
+}

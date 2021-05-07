@@ -18,8 +18,8 @@ def read(source: str) -> pd.Series:
 def parse_data(soup: BeautifulSoup) -> pd.Series:
 
     regex = (
-        r"So far, ([\d,]+) \(([\d,]+)% of the estimated population of 65,000\) have received at least one dose of the"
-        r" Pfizer-BioNTech vaccine, with ([\d,]+)% having completed the two-dose course"
+        r"So far, ([\d,]+) \(([\d,]+)% of the estimated population of 65,000\) have received at least one dose of a"
+        r" COVID-19 vaccine, with ([\d,]+)% having completed the two-dose course"
     )
     matches = re.search(regex, soup.text)
 
@@ -47,7 +47,7 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Pfizer/BioNTech")
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech")
 
 
 def pipeline(ds: pd.Series) -> pd.Series:

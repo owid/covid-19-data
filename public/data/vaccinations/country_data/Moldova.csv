@@ -1,38 +1,41 @@
 location,date,vaccine,source_url,total_vaccinations,people_vaccinated,people_fully_vaccinated
-Moldova,2021-03-05,Oxford/AstraZeneca,https://msmps.gov.md/comunicare/comunicate/republica-moldova-este-prima-tara-din-regiunea-europeana-care-a-receptionat-vaccinul-impotriva-covid-19-prin-mecanismul-covax/,3849,3849,
-Moldova,2021-03-10,Oxford/AstraZeneca,https://vaccinare.gov.md/,6447,6447,0
-Moldova,2021-03-11,Oxford/AstraZeneca,https://vaccinare.gov.md/,8116,8116,0
-Moldova,2021-03-12,Oxford/AstraZeneca,https://vaccinare.gov.md/,9341,9341,0
-Moldova,2021-03-13,Oxford/AstraZeneca,https://vaccinare.gov.md/,11431,11431,0
-Moldova,2021-03-15,Oxford/AstraZeneca,https://vaccinare.gov.md/,12754,12754,0
-Moldova,2021-03-16,Oxford/AstraZeneca,https://vaccinare.gov.md/,14814,14814,0
-Moldova,2021-03-17,Oxford/AstraZeneca,https://vaccinare.gov.md/,16131,16131,0
-Moldova,2021-03-19,Oxford/AstraZeneca,https://vaccinare.gov.md/,18593,18593,0
-Moldova,2021-03-21,Oxford/AstraZeneca,https://vaccinare.gov.md/,20494,20494,0
-Moldova,2021-03-23,Oxford/AstraZeneca,https://vaccinare.gov.md/,21194,21194,0
-Moldova,2021-03-24,Oxford/AstraZeneca,https://vaccinare.gov.md/,23454,23454,0
-Moldova,2021-03-25,Oxford/AstraZeneca,https://vaccinare.gov.md/,27445,27445,0
-Moldova,2021-03-26,Oxford/AstraZeneca,https://vaccinare.gov.md/,30722,30722,0
-Moldova,2021-03-27,Oxford/AstraZeneca,https://vaccinare.gov.md/,33885,33885,0
-Moldova,2021-03-31,Oxford/AstraZeneca,https://vaccinare.gov.md/,40321,40321,0
-Moldova,2021-04-01,Oxford/AstraZeneca,https://vaccinare.gov.md/,42154,42154,0
-Moldova,2021-04-04,Oxford/AstraZeneca,https://vaccinare.gov.md/,47524,47524,0
-Moldova,2021-04-06,Oxford/AstraZeneca,https://vaccinare.gov.md/,51574,51574,0
-Moldova,2021-04-07,Oxford/AstraZeneca,https://vaccinare.gov.md/,54907,54907,0
-Moldova,2021-04-09,Oxford/AstraZeneca,https://vaccinare.gov.md/,57561,57561,0
-Moldova,2021-04-11,Oxford/AstraZeneca,https://vaccinare.gov.md/,64179,64179,0
-Moldova,2021-04-12,Oxford/AstraZeneca,https://vaccinare.gov.md/,67085,67085,0
-Moldova,2021-04-13,Oxford/AstraZeneca,https://vaccinare.gov.md/,71780,71780,0
-Moldova,2021-04-14,Oxford/AstraZeneca,https://vaccinare.gov.md/,78665,,
-Moldova,2021-04-15,Oxford/AstraZeneca,https://vaccinare.gov.md/,86016,78019,7997
-Moldova,2021-04-16,Oxford/AstraZeneca,https://vaccinare.gov.md/,91743,82267,9476
-Moldova,2021-04-18,Oxford/AstraZeneca,https://vaccinare.gov.md/,93466,83641,9825
-Moldova,2021-04-19,Oxford/AstraZeneca,https://vaccinare.gov.md/,96372,86131,10241
-Moldova,2021-04-20,Oxford/AstraZeneca,https://vaccinare.gov.md/,99639,88824,10815
-Moldova,2021-04-22,Oxford/AstraZeneca,https://vaccinare.gov.md/,109899,98541,11358
-Moldova,2021-04-23,Oxford/AstraZeneca,https://vaccinare.gov.md/,120254,108760,11494
-Moldova,2021-04-26,Oxford/AstraZeneca,https://vaccinare.gov.md/,124695,113135,11560
-Moldova,2021-04-27,Oxford/AstraZeneca,https://vaccinare.gov.md/,132600,119583,13017
-Moldova,2021-04-28,Oxford/AstraZeneca,https://vaccinare.gov.md/,139505,124505,15000
-Moldova,2021-04-29,Oxford/AstraZeneca,https://vaccinare.gov.md/,145117,128587,16530
-Moldova,2021-04-30,Oxford/AstraZeneca,https://vaccinare.gov.md/,147315,130218,17097
+Moldova,2021-03-05,"Oxford/AstraZeneca, Pfizer/BioNTech",https://msmps.gov.md/comunicare/comunicate/republica-moldova-este-prima-tara-din-regiunea-europeana-care-a-receptionat-vaccinul-impotriva-covid-19-prin-mecanismul-covax/,3849,3849,
+Moldova,2021-03-10,"Oxford/AstraZeneca, Pfizer/BioNTech",https://vaccinare.gov.md/,6447,6447,0
+Moldova,2021-03-11,"Oxford/AstraZeneca, Pfizer/BioNTech",https://vaccinare.gov.md/,8116,8116,0
+Moldova,2021-03-12,"Oxford/AstraZeneca, Pfizer/BioNTech",https://vaccinare.gov.md/,9341,9341,0
+Moldova,2021-03-13,"Oxford/AstraZeneca, Pfizer/BioNTech",https://vaccinare.gov.md/,11431,11431,0
+Moldova,2021-03-15,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,12754,12754,0
+Moldova,2021-03-16,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,14814,14814,0
+Moldova,2021-03-17,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,16131,16131,0
+Moldova,2021-03-19,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,18593,18593,0
+Moldova,2021-03-21,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,20494,20494,0
+Moldova,2021-03-23,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,21194,21194,0
+Moldova,2021-03-24,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,23454,23454,0
+Moldova,2021-03-25,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,27445,27445,0
+Moldova,2021-03-26,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,30722,30722,0
+Moldova,2021-03-27,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,33885,33885,0
+Moldova,2021-03-31,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,40321,40321,0
+Moldova,2021-04-01,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,42154,42154,0
+Moldova,2021-04-04,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,47524,47524,0
+Moldova,2021-04-06,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,51574,51574,0
+Moldova,2021-04-07,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,54907,54907,0
+Moldova,2021-04-09,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,57561,57561,0
+Moldova,2021-04-11,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,64179,64179,0
+Moldova,2021-04-12,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,67085,67085,0
+Moldova,2021-04-13,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,71780,71780,0
+Moldova,2021-04-14,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,78665,,
+Moldova,2021-04-15,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,86016,78019,7997
+Moldova,2021-04-16,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,91743,82267,9476
+Moldova,2021-04-18,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,93466,83641,9825
+Moldova,2021-04-19,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,96372,86131,10241
+Moldova,2021-04-20,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,99639,88824,10815
+Moldova,2021-04-22,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,109899,98541,11358
+Moldova,2021-04-23,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,120254,108760,11494
+Moldova,2021-04-26,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,124695,113135,11560
+Moldova,2021-04-27,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,132600,119583,13017
+Moldova,2021-04-28,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,139505,124505,15000
+Moldova,2021-04-29,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,145117,128587,16530
+Moldova,2021-04-30,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,147315,130218,17097
+Moldova,2021-05-04,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,150384,132065,18319
+Moldova,2021-05-05,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,160476,140174,20302
+Moldova,2021-05-06,"Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing",https://vaccinare.gov.md/,171820,150173,21647

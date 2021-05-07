@@ -11,7 +11,6 @@ def read(source: str) -> pd.Series:
 def parse_data(data: dict) -> pd.Series:
 
     people_vaccinated = int(data["data"][data["sheetNames"].index("1. doza")][0][0])
-
     people_fully_vaccinated = data["data"][data["sheetNames"].index("2. doza")]
     if len(people_fully_vaccinated) > 0:
         people_fully_vaccinated = int(people_fully_vaccinated[0][0])
@@ -36,7 +35,7 @@ def enrich_location(ds: pd.Series) -> pd.Series:
 
 
 def enrich_vaccine(ds: pd.Series) -> pd.Series:
-    return enrich_data(ds, "vaccine", "Sinopharm/Beijing, Sputnik V")
+    return enrich_data(ds, "vaccine", "Oxford/AstraZeneca, Pfizer/BioNTech, Sinopharm/Beijing, Sputnik V")
 
 
 def enrich_source(ds: pd.Series) -> pd.Series:

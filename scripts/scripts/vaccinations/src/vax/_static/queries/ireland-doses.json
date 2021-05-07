@@ -1,0 +1,6 @@
+{
+    "f": "json",
+    "outFields": "*",
+    "returnGeometry": "false",
+    "outStatistics": "[{'onStatisticField': 'firstDose','outStatisticFieldName': 'firstDose','statisticType': 'max'},{'onStatisticField':'secondDose','outStatisticFieldName':'secondDose','statisticType':'max'},{'onStatisticField':'relDate','outStatisticFieldName':'relDate','statisticType':'max'}]"
+}

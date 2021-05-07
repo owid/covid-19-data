@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 import re
+import unicodedata
 
 import dateparser
 import pandas as pd
@@ -38,7 +39,7 @@ def read(source_daily: str, source_weekly: str) -> pd.DataFrame:
 
 def parse_date_weekly(soup: BeautifulSoup):
     for h2 in soup.find_all("h2"):
-        date = re.search(r"\d+\s\w+ 202\d", h2.text).group(0)
+        date = re.search(r"\d+\s\w+ 202\d", unicodedata.normalize("NFKD", h2.text)).group(0)
         if date:
             date = dateparser.parse(date, languages=["nl"])
             break

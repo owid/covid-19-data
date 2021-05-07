@@ -18,19 +18,19 @@ files <- drive_ls(url)
 setDT(files)
 
 # NEW
-drop_file <- files[str_detect(files$name, "DOH COVID Data Drop_"), id]
-drive_download(file = as_id(drop_file), path = "tmp/drop.zip", overwrite = TRUE, verbose = FALSE)
-zipped_filenames = unzip("tmp/drop.zip", list=TRUE)
-setDT(zipped_filenames)
-testing_aggregates_file <- zipped_filenames[str_detect(zipped_filenames$Name, "Testing Aggregates.csv"), Name]
-unzip("tmp/drop.zip", files=c(testing_aggregates_file), exdir="tmp")
-testing_aggregates_file = file.path("tmp", testing_aggregates_file)
-df <- fread(testing_aggregates_file, select = c("report_date", "cumulative_unique_individuals"), showProgress = FALSE)
+# drop_file <- files[str_detect(files$name, "DOH COVID Data Drop_"), id]
+# drive_download(file = as_id(drop_file), path = "tmp/drop.zip", overwrite = TRUE, verbose = FALSE)
+# zipped_filenames = unzip("tmp/drop.zip", list=TRUE)
+# setDT(zipped_filenames)
+# testing_aggregates_file <- zipped_filenames[str_detect(zipped_filenames$Name, "Testing Aggregates.csv"), Name]
+# unzip("tmp/drop.zip", files=c(testing_aggregates_file), exdir="tmp")
+# testing_aggregates_file = file.path("tmp", testing_aggregates_file)
+# df <- fread(testing_aggregates_file, select = c("report_date", "cumulative_unique_individuals"), showProgress = FALSE)
 
 # OLD
-# testing_aggregates_file <- files[str_detect(files$name, "Testing Aggregates.csv"), id]
-# drive_download(file = as_id(testing_aggregates_file), path = "tmp", overwrite = TRUE, verbose = FALSE)
-# df <- fread("tmp/tmp.csv", select = c("report_date", "cumulative_unique_individuals"), showProgress = FALSE)
+testing_aggregates_file <- files[str_detect(files$name, "Testing Aggregates.csv"), id]
+drive_download(file = as_id(testing_aggregates_file), path = "tmp/tmp.csv", overwrite = TRUE, verbose = FALSE)
+df <- fread("tmp/tmp.csv", select = c("report_date", "cumulative_unique_individuals"), showProgress = FALSE)
 
 setnames(df, "report_date", "Date")
 df <- df[, .(`Cumulative total` = sum(cumulative_unique_individuals)), Date]

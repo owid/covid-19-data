@@ -1,5 +1,6 @@
 import re
 import requests
+import locale
 
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -65,6 +66,7 @@ def pipeline(ds: pd.Series, source: str) -> pd.Series:
 
 
 def main():
+    locale.setlocale(locale.LC_TIME, "en_GB")
     source = "https://healthalert.gov.bh/en/"
     data = read(source).pipe(pipeline, source)
     increment(

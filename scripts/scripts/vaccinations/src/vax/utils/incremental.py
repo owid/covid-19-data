@@ -13,9 +13,11 @@ def clean_count(count):
 
 
 def clean_date(date, fmt):
-    date = pd.to_datetime(date, format=fmt)
-    date = str(date.date())
-    return date
+    return (
+        datetime.datetime
+        .strptime(date, fmt)
+        .strftime("%Y-%m-%d")
+    )
 
 
 def enrich_data(ds: pd.Series, row, value) -> pd.Series:

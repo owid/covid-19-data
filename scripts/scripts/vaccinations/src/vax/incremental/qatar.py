@@ -1,4 +1,5 @@
 import time
+import locale
 
 import pandas as pd
 from selenium import webdriver
@@ -65,6 +66,7 @@ def pipeline(ds: pd.Series, source: str) -> pd.Series:
 
 
 def main():
+    locale.setlocale(locale.LC_TIME, "en_GB")
     source = "https://covid19.moph.gov.qa/EN/Pages/Vaccination-Program-Data.aspx"
     source_old = "https://covid19.moph.gov.qa/EN/Pages/default.aspx"
     data = read(source, source_old).pipe(pipeline, source)

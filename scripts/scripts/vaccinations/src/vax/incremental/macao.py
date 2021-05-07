@@ -99,7 +99,7 @@ def enrich_location(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def enrich_vaccine(df: pd.DataFrame) -> pd.DataFrame:
-    return df.assign(vaccine="Sinopharm/Beijing, Pfizer/BioNTech")
+    return df.assign(vaccine="Pfizer/BioNTech, Sinopharm/Beijing")
 
 
 def pipeline(df: pd.DataFrame) -> pd.DataFrame:
