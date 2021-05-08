@@ -1,5 +1,8 @@
+import os
+
 import requests
 import pandas as pd
+
 from vax.utils.incremental import enrich_data, increment
 
 
@@ -51,10 +54,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://atlas.jifo.co/api/connectors/520021dc-c292-4903-9cdb-a2467f64ed97"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=str(data["location"]),
         total_vaccinations=int(data["total_vaccinations"]),
         people_vaccinated=int(data["people_vaccinated"]),

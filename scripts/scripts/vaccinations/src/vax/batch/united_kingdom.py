@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 from vax.utils.pipeline import enrich_total_vaccinations
@@ -96,13 +98,13 @@ def filter_location(df: pd.DataFrame, location: str) -> pd.DataFrame:
     return df[df.location == location].assign(location=location)
 
 
-def main():
+def main(paths):
     source = "https://coronavirus.data.gov.uk/details/healthcare"
     result = read("overview").pipe(pipeline, source)
 
     for location in set(result.location):
         result.pipe(filter_location, location).to_csv(
-            f"output/{location}.csv", index=False
+            paths.out_tmp(location), index=False
         )
 
 

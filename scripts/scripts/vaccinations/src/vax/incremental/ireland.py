@@ -1,3 +1,4 @@
+import os
 import json
 from datetime import datetime
 
@@ -42,10 +43,6 @@ class Ireland:
             "Covid19_Vaccine_Administration_VaccineTypeHostedView_V2/"
             "FeatureServer/0/query"
         )
-
-    @property
-    def output_file(self):
-        return f"./output/{self.location}.csv"
 
     def read(self) -> pd.Series:
         ds = pd.Series({
@@ -140,10 +137,11 @@ class Ireland:
             .pipe(self.pipe_source)
         )
 
-    def to_csv(self, output_file: str = None):
+    def to_csv(self, paths):
         """Generalized."""
         data = self.read().pipe(self.pipeline)
         increment(
+            paths=paths,
             location=data['location'],
             total_vaccinations=data['total_vaccinations'],
             people_vaccinated=data['people_vaccinated'],
@@ -154,11 +152,11 @@ class Ireland:
         )
 
 
-def main():
+def main(paths):
     Ireland(
         source_url="https://covid19ireland-geohive.hub.arcgis.com/",
         location="Ireland"
-    ).to_csv() 
+    ).to_csv(paths) 
 
 
 if __name__ == "__main__":

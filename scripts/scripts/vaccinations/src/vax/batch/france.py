@@ -1,7 +1,8 @@
+import os
 import pandas as pd
 
 
-def main():
+def main(paths):
 
     vaccine_mapping = {
         1: "Pfizer/BioNTech",
@@ -31,7 +32,7 @@ def main():
     df["total_vaccinations"] = df.people_vaccinated + df.people_fully_vaccinated
 
     manufacturer = df[["date", "total_vaccinations", "vaccine"]].assign(location="France")
-    manufacturer.to_csv("output/by_manufacturer/France.csv", index=False)
+    manufacturer.to_csv(paths.out_tmp_man("France"), index=False)
 
     # Infer fully vaccinated for one-dose vaccines
     df.loc[df.vaccine.isin(one_dose_vaccines), "people_fully_vaccinated"] = df.people_vaccinated
@@ -54,7 +55,7 @@ def main():
         )
     )
 
-    df.to_csv("output/France.csv", index=False)
+    df.to_csv(paths.out_tmp("France"), index=False)
 
 
 if __name__ == "__main__":

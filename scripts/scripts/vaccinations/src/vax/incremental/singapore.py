@@ -1,3 +1,4 @@
+import os
 import re
 import locale
 import requests
@@ -63,11 +64,12 @@ def pipeline(ds: pd.Series, source: str) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     locale.setlocale(locale.LC_TIME, "en_GB")
     source = "https://www.moh.gov.sg/covid-19"
     data = read(source).pipe(pipeline, source)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

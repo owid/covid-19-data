@@ -1,9 +1,11 @@
+import os
+
 import json
 import requests
 import pandas as pd
 
 
-def main():
+def main(paths):
 
     url = "https://coronamap.sa/Home/GetVaccineCountryInfo?countryname=Saudi%20Arabia"
     data = json.loads(requests.get(url).content)
@@ -17,7 +19,7 @@ def main():
 
     df = df[df.total_vaccinations > 0]
 
-    df.to_csv("output/Saudi Arabia.csv", index=False)
+    df.to_csv(paths.out_tmp("Saudi Arabia"), index=False)
 
 
 if __name__ == '__main__':

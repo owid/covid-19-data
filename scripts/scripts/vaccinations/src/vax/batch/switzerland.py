@@ -86,13 +86,18 @@ def pipeline(df: pd.DataFrame, country_code: str) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://www.covid19.admin.ch/en/epidemiologic/vacc-doses"
     data = read_vaccination_datasets(source)
 
-    data.pipe(pipeline, country_code="CH").to_csv("./output/Switzerland.csv", index=False)
-    data.pipe(pipeline, country_code="FL").to_csv("./output/Liechtenstein.csv", index=False)
-
+    data.pipe(pipeline, country_code="CH").to_csv(
+        paths.out_tmp("Switzerland"),
+        index=False
+    )
+    data.pipe(pipeline, country_code="FL").to_csv(
+        paths.out_tmp("Liechtenstein"),
+        index=False
+    )
 
 if __name__ == "__main__":
     main()

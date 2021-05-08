@@ -1,7 +1,9 @@
+import os
+
 import pandas as pd
 
 
-class Ecuador(object):
+class Ecuador:
 
     def __init__(self, source_url: str, location: str, columns_rename: dict = None):
         """Constructor.
@@ -14,10 +16,6 @@ class Ecuador(object):
         self.source_url = source_url
         self.location = location
         self.columns_rename = columns_rename
-
-    @property
-    def output_file(self):
-        return f"./output/{self.location}.csv"
 
     def read(self) -> pd.DataFrame:
         url = f"{self.source_url}/raw/master/datos_crudos/vacunas/vacunas.csv"
@@ -74,15 +72,16 @@ class Ecuador(object):
             .pipe(self.exclude_data_points)
         )
 
-    def to_csv(self, output_file: str = None):
+    def to_csv(self, paths):
         """Generalized."""
         df = self.read().pipe(self.pipeline)
-        if output_file is None:
-            output_file = self.output_file
-        df.to_csv(output_file, index=False)
+        df.to_csv(
+            paths.out_tmp(self.location),
+            index=False
+        )
 
 
-def main():
+def main(paths):
     Ecuador(
         source_url="https://github.com/andrab/ecuacovid",
         location="Ecuador",
@@ -92,7 +91,7 @@ def main():
             "primera_dosis": "people_vaccinated",
             "segunda_dosis": "people_fully_vaccinated",
         }
-    ).to_csv()
+    ).to_csv(paths)
 
 
 if __name__ == "__main__":

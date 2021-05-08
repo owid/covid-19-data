@@ -1,3 +1,4 @@
+import os
 from datetime import datetime, timedelta
 
 import requests
@@ -43,11 +44,12 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     date_str = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
     source = f"https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date={date_str}"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

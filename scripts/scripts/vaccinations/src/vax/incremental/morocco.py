@@ -1,10 +1,11 @@
+import os
 import datetime
 import re
-import requests
 
+import requests
+import pytz
 from bs4 import BeautifulSoup
 import pandas as pd
-import pytz
 
 from vax.utils.incremental import enrich_data, increment
 
@@ -63,10 +64,11 @@ def pipeline(ds: pd.Series, source: str) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "http://www.covidmaroc.ma/pages/Accueilfr.aspx"
     data = read(source).pipe(pipeline, source)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

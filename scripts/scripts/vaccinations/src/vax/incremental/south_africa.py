@@ -1,7 +1,8 @@
+import os
 import datetime
 import re
-import requests
 
+import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import pytz
@@ -53,10 +54,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://sacoronavirus.co.za/"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=str(data["location"]),
         total_vaccinations=int(data["total_vaccinations"]),
         people_vaccinated=int(data["total_vaccinations"]),

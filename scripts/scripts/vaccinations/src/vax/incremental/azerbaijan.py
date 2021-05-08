@@ -1,3 +1,4 @@
+import os
 import tempfile
 import re
 from datetime import datetime
@@ -93,10 +94,11 @@ def pipeline(df: pd.DataFrame, source: str) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://koronavirusinfo.az"
     data = read(source).pipe(pipeline, source)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

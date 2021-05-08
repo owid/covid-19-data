@@ -1,7 +1,9 @@
+import os
+
 import pandas as pd
 
 
-def main():
+def main(paths):
 
     url = "https://github.com/jmcastagnetto/covid-19-peru-vacunas/raw/main/datos/vacunas_covid_resumen.csv"
 
@@ -40,7 +42,7 @@ def main():
         "https://www.datosabiertos.gob.pe/dataset/vacunaci%C3%B3n-contra-covid-19-ministerio-de-salud-minsa"
     )
 
-    df.to_csv("output/Peru.csv", index=False)
+    df.to_csv(paths.out_tmp("Peru"), index=False)
 
 
 if __name__ == '__main__':

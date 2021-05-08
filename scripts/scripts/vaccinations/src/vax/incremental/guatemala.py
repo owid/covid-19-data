@@ -1,3 +1,4 @@
+import os
 import re
 
 from selenium import webdriver
@@ -6,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 from vax.utils.incremental import increment, clean_date, clean_count
 
 
-def main():
+def main(paths):
 
     data = {
         "location": "Guatemala",
@@ -33,6 +34,7 @@ def main():
     data["date"] = clean_date(date, "%d/%m/%Y")
 
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

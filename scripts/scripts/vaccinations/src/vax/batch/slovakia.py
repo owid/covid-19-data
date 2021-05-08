@@ -1,4 +1,6 @@
+import os
 import json
+
 import requests
 import pandas as pd
 
@@ -55,7 +57,7 @@ def import_dashboard():
     return df
 
 
-def main():
+def main(paths):
 
     iza = import_iza()
     dashboard = import_dashboard()
@@ -66,7 +68,7 @@ def main():
     df.loc[:, "location"] = "Slovakia"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
 
-    df.to_csv("output/Slovakia.csv", index=False)
+    df.to_csv(paths.out_tmp("Slovakia"), index=False)
 
 
 if __name__ == "__main__":

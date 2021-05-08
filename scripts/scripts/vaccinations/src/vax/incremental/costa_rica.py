@@ -1,3 +1,4 @@
+import os
 import re
 import requests
 
@@ -63,10 +64,11 @@ def pipeline(ds: pd.Series, source: str) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://www.ccss.sa.cr/web/coronavirus/vacunacion"
     data = read(source).pipe(pipeline, source)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

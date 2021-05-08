@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 
@@ -57,9 +59,9 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://github.com/COVID19-Malta/COVID19-Cases/raw/master/COVID-19%20Malta%20-%20Vaccination%20Data.csv"
-    destination = "output/Malta.csv"
+    destination = paths.out_tmp("Malta")
     read(source).pipe(pipeline).to_csv(destination, index=False)
 
 

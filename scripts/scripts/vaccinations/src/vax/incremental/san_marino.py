@@ -1,8 +1,11 @@
+import os
 import requests
+import re
+
 import pandas as pd
 from bs4 import BeautifulSoup
+
 from vax.utils.incremental import enrich_data, increment, clean_date, clean_count
-import re
 
 
 def read(source: str) -> pd.Series:
@@ -64,10 +67,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://vaccinocovid.iss.sm/"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

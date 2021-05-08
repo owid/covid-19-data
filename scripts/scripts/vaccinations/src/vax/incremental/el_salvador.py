@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 import locale
 import json
@@ -77,11 +78,12 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     locale.setlocale(locale.LC_TIME, "es_ES")
     source = "https://covid19.gob.sv/"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

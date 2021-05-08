@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 
@@ -73,10 +75,10 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source_continent = "https://github.com/dssg-pt/covid19pt-data/raw/master/vacinas.csv"
     source_islands = "https://github.com/dssg-pt/covid19pt-data/raw/master/vacinas_detalhe.csv"
-    destination = "output/Portugal.csv"
+    destination = paths.out_tmp("Portugal")
 
     read(source_continent, source_islands).pipe(pipeline).to_csv(destination, index=False)
 

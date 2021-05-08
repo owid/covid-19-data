@@ -1,7 +1,7 @@
 import argparse
 
-from vax.scripts import main_get_data, main_process_data
-from vax.scripts.get_data import modules_name, modules_name_batch, modules_name_incremental, country_to_module
+from vax.cmd import main_get_data, main_process_data
+from vax.cmd.get_data import modules_name, modules_name_batch, modules_name_incremental, country_to_module
 
 
 def _parse_args():

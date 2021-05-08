@@ -15,14 +15,6 @@ class Romania:
         self.vaccine_mapping = vaccine_mapping
         self.vaccines_1d = vaccines_1d
 
-    @property
-    def output_file(self):
-        return f"./output/{self.location}.csv"
-
-    @property
-    def output_file_manufacturer(self):
-        return os.path.join("output", "by_manufacturer", f"{self.location}.csv")
-
     def read(self) -> pd.DataFrame:
         data = requests.get(self.source_url).json()
         return (
@@ -147,20 +139,17 @@ class Romania:
             .pipe(self.pipe_manufacturer_cumsum)
         )
 
-    def to_csv(self, output_file: str = None, output_file_manufacturer: str = None):
+    def to_csv(self, paths):
         df_base = self.read().pipe(self.pipeline_base)
         # Export data
         df = df_base.copy().pipe(self.pipeline)
-        if output_file is None:
-            output_file = self.output_file
-        df.to_csv(output_file, index=False)
+        df.to_csv(paths.out_tmp(self.location), index=False)
         # Export manufacturer data
         df = df_base.copy().pipe(self.pipeline_manufacturer)
-        if output_file_manufacturer is None:
-            output_file_manufacturer = self.output_file_manufacturer
-        df.to_csv(output_file_manufacturer, index=False)
+        df.to_csv(paths.out_tmp_man(f"{self.location}"), index=False)
 
-def main():
+
+def main(paths):
     Romania(
         source_url="https://d35p9e4fm9h3wo.cloudfront.net/latestData.json",
         source_url_ref="https://datelazi.ro/",
@@ -176,7 +165,7 @@ def main():
             "johnson_and_johnson": "Johnson&Johnson",
         },
         vaccines_1d=['johnson_and_johnson']
-    ).to_csv()
+    ).to_csv(paths)
 
 
 if __name__ == "__main__":

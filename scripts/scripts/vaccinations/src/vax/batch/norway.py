@@ -1,5 +1,6 @@
 import os
 import time
+
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -25,7 +26,7 @@ def read_csv_multiple_separators(filepath: str, separators: list, usecols: list)
     raise Exception("Check regional settings and the delimiter of the downloaded CSV file.")
 
 
-def main():
+def main(paths):
 
     url = "https://www.fhi.no/sv/vaksine/koronavaksinasjonsprogrammet/koronavaksinasjonsstatistikk/"
 
@@ -82,7 +83,7 @@ def main():
 
     assert len(df) > 10
 
-    df.to_csv("output/Norway.csv", index=False)
+    df.to_csv(paths.out_tmp("Norway"), index=False)
 
     os.remove("./antall-personer-vaksiner.csv")
 

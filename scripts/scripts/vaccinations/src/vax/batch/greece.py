@@ -1,17 +1,11 @@
+import os
 import json
 
 import requests
 import pandas as pd
 
 
-def get_access_token() -> str:
-    with open("vax_dataset_config.json", "rb") as file:
-        config = json.load(file)
-        return config["greece_api_token"]
-
-
-def read(source: str) -> pd.DataFrame:
-    access_token = get_access_token()
+def read(source: str, access_token: str) -> pd.DataFrame:
     response = requests.get(source, headers={"Authorization": f"Token {access_token}"})
     return pd.DataFrame.from_records(response.json())
 
@@ -65,11 +59,10 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths, access_token: str):
     source = "https://data.gov.gr/api/v1/query/mdg_emvolio"
-    destination = "output/Greece.csv"
-
-    read(source).pipe(pipeline).to_csv(destination, index=False)
+    destination = paths.out_tmp("Greece")
+    read(source, access_token).pipe(pipeline).to_csv(destination, index=False)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
+import os
 import datetime
 import json
+
 import requests
 import pandas as pd
 
@@ -112,9 +114,9 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://datadashboardapi.health.gov.il/api/queries/vaccinated"
-    destination = "output/Israel.csv"
+    destination = paths.out_tmp("Israel")
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 

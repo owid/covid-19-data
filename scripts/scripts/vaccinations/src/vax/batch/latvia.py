@@ -1,9 +1,11 @@
+import os
 import requests
+
 from bs4 import BeautifulSoup
 import pandas as pd
 
 
-def main():
+def main(paths):
 
     vaccine_mapping = {
         "Comirnaty": "Pfizer/BioNTech",
@@ -36,7 +38,7 @@ def main():
     )
     vax["total_vaccinations"] = vax.groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
     vax["location"] = "Latvia"
-    vax.to_csv("output/by_manufacturer/Latvia.csv", index=False)
+    vax.to_csv(paths.out_tmp_man("Latvia"), index=False)
 
     df = df.rename(columns={
         "Vakcinācijas datums": "date",
@@ -70,7 +72,7 @@ def main():
     df.loc[:, "vaccine"] = ", ".join(vaccine_mapping.values())
     df.loc[:, "source_url"] = url
 
-    df.to_csv("output/Latvia.csv", index=False)
+    df.to_csv(paths.out_tmp("Latvia"), index=False)
 
 
 if __name__ == '__main__':

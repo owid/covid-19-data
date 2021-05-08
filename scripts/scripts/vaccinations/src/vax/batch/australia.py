@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 
@@ -52,9 +53,9 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://covidlive.com.au/covid-live.json"
-    destination = "output/Australia.csv"
+    destination = paths.out_tmp("Australia")
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 

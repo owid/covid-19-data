@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 import re
 
@@ -64,10 +65,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://www.cdc.gov.tw"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         date=data["date"],

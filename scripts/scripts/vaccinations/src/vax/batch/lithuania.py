@@ -1,9 +1,11 @@
+import os
 import json
+
 import requests
 import pandas as pd
 
 
-def main():
+def main(paths):
 
     DATA_URL = (
         "https://services3.arcgis.com/MF53hRPmwfLccHCj/ArcGIS/rest/services/COVID_vakcinavimas_chart_name/"
@@ -47,7 +49,7 @@ def main():
     )
     vax["total_vaccinations"] = vax.groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
     vax["location"] = "Lithuania"
-    vax.to_csv("output/by_manufacturer/Lithuania.csv", index=False)
+    vax.to_csv(paths.out_tmp_man("Lithuania"), index=False)
 
     # Unpivot
     df = (
@@ -96,7 +98,7 @@ def main():
     # df.loc[df["date"] >= "2021-01-13", "vaccine"] = "Moderna, Pfizer/BioNTech"
     # df.loc[df["date"] >= "2021-02-07", "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 
-    df.to_csv("output/Lithuania.csv", index=False)
+    df.to_csv(paths.out_tmp("Lithuania"), index=False)
 
 
 if __name__ == "__main__":

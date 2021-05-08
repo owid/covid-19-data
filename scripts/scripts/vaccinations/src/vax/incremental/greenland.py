@@ -1,3 +1,4 @@
+import os
 import locale
 from datetime import datetime
 
@@ -87,11 +88,12 @@ def pipeline(ds: pd.Series, source: str) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     locale.setlocale(locale.LC_TIME, "da_DK")
     source = "https://corona.nun.gl/emner/statistik/antal_vaccinerede"
     data = read(source).pipe(pipeline, source)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

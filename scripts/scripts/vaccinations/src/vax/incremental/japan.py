@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 
 from vax.utils.incremental import enrich_data, increment
@@ -54,7 +56,7 @@ def pipeline(healthcare: pd.Series, elderly: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
 
     source_healthcare = "https://www.kantei.go.jp/jp/content/IRYO-vaccination_data.xlsx"
     source_elderly = "https://www.kantei.go.jp/jp/content/KOREI-vaccination_data.xlsx"
@@ -62,6 +64,7 @@ def main():
     data = pipeline(read(source_healthcare), read(source_elderly))
 
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 from vax.utils.pipeline import enrich_total_vaccinations
@@ -77,9 +78,9 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://epistat.sciensano.be/Data/COVID19BE_VACC.csv"
-    destination = "output/Belgium.csv"
+    destination = paths.out_tmp("Belgium")
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 

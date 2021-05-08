@@ -1,3 +1,4 @@
+import os
 import re
 import locale
 
@@ -60,12 +61,13 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     locale.setlocale(locale.LC_TIME, "en_GB")
     source = "https://www.gov.je/Health/Coronavirus/Vaccine/Pages/VaccinationStatistics.aspx"
     data = read(source).pipe(pipeline)
 
     increment(
+        paths=paths,
         location=str(data['location']),
         total_vaccinations=int(data['total_vaccinations']),
         people_vaccinated=int(data['people_vaccinated']),

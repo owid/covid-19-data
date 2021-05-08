@@ -1,3 +1,5 @@
+import os
+
 import requests
 import pandas as pd
 
@@ -66,13 +68,13 @@ def pipeline(df: pd.DataFrame, source: str) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source_ref = "https://experience.arcgis.com/experience/59226cacd2b441c7a939dca13f832112/"
     source = (
         "https://services3.arcgis.com/x3I4DqUw3b3MfTwQ/arcgis/rest/services/service_7a519502598f492a9094fd0ad503cf80/"
         "FeatureServer/0/query"
     )
-    destination = "output/Trinidad and Tobago.csv"
+    destination = paths.out_tmp("Trinidad and Tobago")
     read(source).pipe(pipeline, source_ref).to_csv(destination, index=False)
 
 

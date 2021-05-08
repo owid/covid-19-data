@@ -1,7 +1,9 @@
+import os
+
 import pandas as pd
 
 
-def main():
+def main(paths):
 
     df = pd.read_csv(
         "https://raw.githubusercontent.com/sledilnik/data/master/csv/vaccination.csv",
@@ -20,7 +22,7 @@ def main():
     df.loc[:, "source_url"] = "https://covid-19.sledilnik.org/en/stats"
     df.loc[:, "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
 
-    df.to_csv("output/Slovenia.csv", index=False)
+    df.to_csv(paths.out_tmp("Slovenia"), index=False)
 
 
 if __name__ == "__main__":

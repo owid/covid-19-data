@@ -1,4 +1,6 @@
+import os
 import datetime
+
 import pandas as pd
 
 
@@ -17,10 +19,6 @@ class Sweden(object):
         self.source_url = source_url
         self.location = location
         self.columns_rename = columns_rename
-
-    @property
-    def output_file(self):
-        return f"./output/{self.location}.csv"
 
     def read(self) -> pd.DataFrame:
         daily = self._read_daily_data()
@@ -85,23 +83,21 @@ class Sweden(object):
         df["total_vaccinations"] = df["people_vaccinated"] + df["people_fully_vaccinated"]
         return df
 
-    def to_csv(self, output_file: str = None):
+    def to_csv(self, paths):
         """Generalized."""
         df = self.read().pipe(self.pipeline)
-        if output_file is None:
-            output_file = self.output_file
-        df.to_csv(output_file, index=False)
+        df.to_csv(paths.out_tmp(self.location), index=False)
 
 
-def main():
+def main(paths):
     Sweden(
         source_url=(
             "https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/"
             "vaccination-mot-covid-19/statistik/statistik-over-registrerade-vaccinationer-covid-19/"
         ),
         location="Sweden"
-    ).to_csv()
+    ).to_csv(paths)
 
 
 if __name__ == '__main__':
-    main()
+    main(output_dir)

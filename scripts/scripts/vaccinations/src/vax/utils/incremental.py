@@ -4,7 +4,10 @@ import datetime
 import re
 
 import pandas as pd
+import requests
 
+
+GH_LINK = "https://github.com/owid/covid-19-data/raw/master/public/data/vaccinations/country_data"
 
 def clean_count(count):
     count = re.sub(r"[^0-9]", "", count)
@@ -25,6 +28,7 @@ def enrich_data(ds: pd.Series, row, value) -> pd.Series:
 
 
 def increment(
+        paths,
         location,
         total_vaccinations,
         date,
@@ -42,11 +46,11 @@ def increment(
     assert type(vaccine) == str
     assert type(source_url) == str
 
-    filepath_automated = f"output/{location}.csv"
-    filepath_public = f"../../../public/data/vaccinations/country_data/{location}.csv"
+    filepath_automated = paths.out_tmp(location)
+    filepath_public = f"{GH_LINK}/{location}.csv"
     # Move from public to output folder
-    if not os.path.isfile(filepath_automated) and os.path.isfile(filepath_public):
-        shutil.copy(filepath_public, filepath_automated)
+    if not os.path.isfile(filepath_automated) and requests.get(filepath_public).ok:
+        pd.read_csv(filepath_public).to_csv(filepath_automated, index=False)
     # Update file in automatio/output
     if os.path.isfile(filepath_automated):
         df = _increment(
@@ -76,7 +80,7 @@ def increment(
         if col in df.columns:
             df[col] = df[col].astype("Int64").fillna(pd.NA)
 
-    df.to_csv(f"output/{location}.csv", index=False)
+    df.to_csv(paths.out_tmp(location), index=False)
     # print(f"NEW: {total_vaccinations} doses on {date}")
 
 

@@ -16,14 +16,6 @@ class Germany:
         self.vaccine_mapping = vaccine_mapping
         self.regex_doses_colnames = r"dosen_([a-zA-Z]*)_kumulativ"
 
-    @property
-    def output_file(self):
-        return os.path.join("output", f"{self.location}.csv")
-
-    @property
-    def output_file_manufacturer(self):
-        return os.path.join("output", "by_manufacturer", f"{self.location}.csv")
-
     def read(self):
         return pd.read_csv(self.source_url, sep="\t")
 
@@ -124,21 +116,23 @@ class Germany:
             .pipe(self.melt_manufacturers)
         )
 
-    def to_csv(self, output_file: str = None, output_file_manufacturer: str = None):
+    def to_csv(self, paths):
         df_base = self.read().pipe(self.pipeline_base)
         # Export data
         df = df_base.pipe(self.pipeline)
-        if output_file is None:
-            output_file = self.output_file
-        df.to_csv(output_file, index=False)
+        df.to_csv(
+            paths.out_tmp(self.location),
+            index=False
+        )
         # Export manufacturer data
         df = df_base.pipe(self.pipeline_manufacturer)
-        if output_file_manufacturer is None:
-            output_file_manufacturer = self.output_file_manufacturer
-        df.to_csv(output_file_manufacturer, index=False)
+        df.to_csv(
+            paths.out_tmp_man(self.location),
+            index=False
+        )
 
 
-def main():
+def main(paths):
     Germany(
         source_url="https://impfdashboard.de/static/data/germany_vaccinations_timeseries_v2.tsv",
         source_url_ref="https://impfdashboard.de/",
@@ -154,7 +148,7 @@ def main():
             "dosen_astrazeneca_kumulativ": "Oxford/AstraZeneca",
             "dosen_johnson_kumulativ": "Johnson&Johnson"
         }
-    ).to_csv()
+    ).to_csv(paths)
 
 
 if __name__ == "__main__":

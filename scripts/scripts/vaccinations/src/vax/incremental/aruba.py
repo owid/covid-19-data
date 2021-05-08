@@ -1,3 +1,4 @@
+import os
 from datetime import datetime, timedelta
 import pytz
 
@@ -51,10 +52,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://api.dvgapp.org/healthcheck-restful-api/public/population/total"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

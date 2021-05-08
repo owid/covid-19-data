@@ -1,3 +1,4 @@
+import os
 import requests
 
 import pandas as pd
@@ -73,7 +74,7 @@ def post_process(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source_dose1 = (
         "https://services5.arcgis.com/Hx7l9qUpAnKPyvNz/ArcGIS/rest/services/Vaccine_REG_linelist_gdb/FeatureServer/19/"
         "query?where=1%3D1&objectIds=&time=&resultType=none&outFields=first_vaccinedate%2Cantal_foerste_vacc&"
@@ -88,7 +89,7 @@ def main():
         "cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&"
         "resultRecordCount=&sqlFormat=none&f=pjson&token="
     )
-    destination = "output/Denmark.csv"
+    destination = paths.out_tmp("Denmark")
 
     dose1 = read(source_dose1).pipe(pipeline, colname="people_vaccinated")
     dose2 = read(source_dose2).pipe(pipeline, colname="people_fully_vaccinated")

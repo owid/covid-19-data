@@ -1,7 +1,8 @@
+import os
 import pandas as pd
 
 
-def main():
+def main(paths):
 
     vaccine_mapping = {
         "Pfizer/BioNTech": "Pfizer/BioNTech",
@@ -29,7 +30,7 @@ def main():
     )
     by_manufacturer["total_vaccinations"] = by_manufacturer.groupby("vaccine")["total_vaccinations"].cumsum()
     by_manufacturer["location"] = "Italy"
-    by_manufacturer.to_csv("output/by_manufacturer/Italy.csv", index=False)
+    by_manufacturer.to_csv(paths.out_tmp_man("Italy"), index=False)
 
     # Vaccination data
     df = df.rename(columns={
@@ -51,7 +52,7 @@ def main():
     df.loc[:, "source_url"] = url
     df.loc[:, "vaccine"] = ", ".join(sorted(vaccine_mapping.values()))
 
-    df.to_csv("output/Italy.csv", index=False)
+    df.to_csv(paths.out_tmp("Italy"), index=False)
 
 
 if __name__ == "__main__":

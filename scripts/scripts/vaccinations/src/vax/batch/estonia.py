@@ -1,7 +1,10 @@
+import os
 import re
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+
 from vax.utils.incremental import enrich_data, increment, clean_date, clean_count
 
 
@@ -63,9 +66,9 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://opendata.digilugu.ee/opendata_covid19_vaccination_total.json"
-    destination = "output/Estonia.csv"
+    destination = paths.out_tmp("Estonia")
     read(source).pipe(pipeline).to_csv(destination, index=False)
 
 

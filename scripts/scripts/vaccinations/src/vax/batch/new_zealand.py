@@ -1,11 +1,13 @@
+import os
 from urllib.parse import urlparse
+
 import pandas as pd
 from bs4 import BeautifulSoup
 
 import vax.utils.utils as utils
 
 
-class NewZealand(object):
+class NewZealand:
 
     def __init__(self, source_url: str, location: str, columns_rename: dict = None, columns_cumsum: list = None):
         """Constructor.
@@ -21,10 +23,6 @@ class NewZealand(object):
         self.location = location
         self.columns_rename = columns_rename
         self.columns_cumsum = columns_cumsum
-
-    @property
-    def output_file(self):
-        return f"./output/{self.location}.csv"
 
     def load_data(self) -> pd.DataFrame:
         """Load original data."""
@@ -77,15 +75,13 @@ class NewZealand(object):
             .pipe(self.enrich_source_url)
         )
 
-    def to_csv(self, output_file: str = None):
+    def to_csv(self, paths):
         """Generalized."""
         df = self.load_data().pipe(self.pipeline)
-        if output_file is None:
-            output_file = self.output_file
-        df.to_csv(output_file, index=False)
+        df.to_csv(paths.out_tmp(self.location), index=False)
 
 
-def main():
+def main(paths):
     NewZealand(
         source_url=(
             "https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/"
@@ -98,7 +94,7 @@ def main():
             "Date": "date",
         },
         columns_cumsum=["First dose administered", "Second dose administered"]
-    ).to_csv()
+    ).to_csv(paths)
 
 
 if __name__ == "__main__":

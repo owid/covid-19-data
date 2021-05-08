@@ -1,6 +1,8 @@
-import pandas as pd
+import os
 import datetime
 import pytz
+
+import pandas as pd
 
 from vax.utils.incremental import enrich_data, increment
 
@@ -69,10 +71,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://sisa.msal.gov.ar/datos/descargas/covid-19/files/Covid19VacunasAgrupadas.csv.zip"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=str(data['location']),
         total_vaccinations=int(data['total_vaccinations']),
         people_vaccinated=int(data['people_vaccinated']),

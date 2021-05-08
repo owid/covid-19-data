@@ -1,3 +1,4 @@
+import os
 import json
 from datetime import datetime, timedelta
 
@@ -15,10 +16,6 @@ class Poland:
         self.source_url_ref = source_url_ref
         self.location = location
         self.columns_rename = columns_rename
-
-    @property
-    def output_file(self):
-        return f"./output/{self.location}.csv"
 
     def read(self) -> pd.Series:
         params = load_query('poland-all', to_str=False)
@@ -54,10 +51,11 @@ class Poland:
             .pipe(self.pipe_source)
         )
 
-    def to_csv(self, output_file: str = None):
+    def to_csv(self, paths):
         """Generalized."""
         data = self.read().pipe(self.pipeline)
         increment(
+            paths=paths,
             location=data['location'],
             total_vaccinations=data['total_vaccinations'],
             people_vaccinated=data['people_vaccinated'],
@@ -68,7 +66,7 @@ class Poland:
         )
 
 
-def main():
+def main(paths):
     Poland(
         source_url=(
             "https://services-eu1.arcgis.com/zk7YlClTgerl62BY/ArcGIS/rest/services/global_szczepienia_actual_widok3/"
@@ -82,7 +80,7 @@ def main():
             "zaszczepieni_finalnie": "people_fully_vaccinated",
             "Data": "date"
         }
-    ).to_csv() 
+    ).to_csv(paths) 
 
 
 if __name__ == "__main__":

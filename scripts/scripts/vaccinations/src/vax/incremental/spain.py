@@ -109,8 +109,8 @@ def merge_with_current_data(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
     return df
 
 
-def main():
-    output_file = "output/Spain.csv"
+def main(paths):
+    output_file = paths.out_tmp("Spain")
     last_update = pd.read_csv(output_file).date.astype(str).max()
     df = read(last_update)
     if df is not None:

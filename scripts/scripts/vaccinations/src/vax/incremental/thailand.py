@@ -1,11 +1,12 @@
+import os
 import re
 import requests
 from datetime import datetime
+import tempfile
 
 from bs4 import BeautifulSoup
 import pandas as pd
 from pdfreader import SimplePDFViewer
-import tempfile
 
 from vax.utils.incremental import enrich_data, increment, clean_date, clean_count
 
@@ -133,12 +134,13 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://ddc.moph.go.th/dcd/pagecontent.php?page=643&dept=dcd"
 
     # Since it a PDF Report / Text Format might be change and cause error
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

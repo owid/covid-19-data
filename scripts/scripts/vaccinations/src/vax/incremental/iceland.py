@@ -1,7 +1,10 @@
+import os
 import json
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+
 from vax.utils.incremental import increment
 
 
@@ -13,7 +16,7 @@ VACCINE_PROTOCOLS = {
 }
 
 
-def main():
+def main(paths):
 
     url = "https://e.infogram.com/c3bc3569-c86d-48a7-9d4c-377928f102bf"
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
@@ -57,6 +60,7 @@ def main():
     date = json_data["updatedAt"][:10]
 
     increment(
+        paths=paths,
         location="Iceland",
         total_vaccinations=total_vaccinations,
         people_vaccinated=people_vaccinated,
@@ -91,7 +95,7 @@ def main():
         f"Vaccines present in data: {df['vaccine'].unique()}"
     df = df.replace(vaccine_mapping)
 
-    df.to_csv("output/by_manufacturer/Iceland.csv", index=False)
+    df.to_csv(paths.out_tmp_man("Iceland"), index=False)
 
 
 if __name__ == '__main__':

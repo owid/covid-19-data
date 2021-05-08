@@ -1,3 +1,4 @@
+import os
 import datetime
 
 import pandas as pd
@@ -51,10 +52,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://corona.fo/json/stats"
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=str(data['location']),
         total_vaccinations=int(data['total_vaccinations']),
         people_vaccinated=int(data['people_vaccinated']),

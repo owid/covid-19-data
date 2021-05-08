@@ -1,10 +1,13 @@
-import requests
+import os
 from glob import glob
+
+import requests
 import pandas as pd
+
 from vax.utils.incremental import increment
 
 
-def get_country_data():
+def get_country_data(paths):
 
     url = "https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=vaccination_data"
     data = requests.get(url).json()
@@ -27,6 +30,7 @@ def get_country_data():
     date = str(date.date())
 
     increment(
+        paths=paths,
         location="United States",
         total_vaccinations=total_vaccinations,
         people_vaccinated=people_vaccinated,
@@ -37,10 +41,10 @@ def get_country_data():
     )
 
 
-def get_vaccine_data():
+def get_vaccine_data(paths):
     vaccine_cols = ["Administered_Pfizer", "Administered_Moderna", "Administered_Janssen"]
     dfs = []
-    for file in glob("us_states/input/cdc_data_*.csv"):
+    for file in glob(os.path.join(paths.in_us_states, "cdc_data_*.csv")):
         try:
             df = pd.read_csv(file)
             for vc in vaccine_cols:
@@ -60,12 +64,12 @@ def get_vaccine_data():
     })
     df = df.melt(["date", "location"], var_name="vaccine", value_name="total_vaccinations")
     df = df.dropna(subset=["total_vaccinations"])
-    df.to_csv("output/by_manufacturer/United States.csv", index=False)
+    df.to_csv(paths.out_tmp_man("United States"), index=False)
 
 
-def main():
-    get_country_data()
-    get_vaccine_data()
+def main(paths):
+    get_country_data(paths)
+    get_vaccine_data(paths)
 
 
 if __name__ == "__main__":

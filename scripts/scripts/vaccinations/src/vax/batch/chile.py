@@ -1,3 +1,4 @@
+import os
 import datetime
 
 import pandas as pd
@@ -81,16 +82,22 @@ def postprocess_manufacturer(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://github.com/juancri/covid19-vaccination/raw/master/output/chile-vaccination-type.csv"
-    destination = "output/Chile.csv"
     data = read(source).pipe(preprocess)
+    location = "Chile"
 
     condition = (datetime.datetime.now() - pd.to_datetime(data.date.max())).days < 3
     assert condition, "External repository is not up to date"
 
-    data.pipe(postprocess_vaccinations).to_csv(destination, index=False)
-    data.pipe(postprocess_manufacturer).to_csv(destination.replace("output", "output/by_manufacturer"), index=False)
+    data.pipe(postprocess_vaccinations).to_csv(
+        paths.out_tmp(location),
+        index=False
+    )
+    data.pipe(postprocess_manufacturer).to_csv(
+        paths.out_tmp_man(location),
+        index=False
+    )
 
 
 if __name__ == "__main__":

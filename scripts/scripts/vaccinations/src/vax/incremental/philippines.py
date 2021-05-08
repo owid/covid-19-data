@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 import pytz
 import requests
@@ -69,10 +70,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     url = "https://wabi-south-east-asia-api.analysis.windows.net/public/reports/querydata?synchronous=true"
     data = read(url).pipe(pipeline)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],

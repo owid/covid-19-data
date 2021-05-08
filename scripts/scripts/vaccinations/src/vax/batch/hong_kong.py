@@ -1,3 +1,5 @@
+import os
+
 import requests
 import pandas as pd
 
@@ -43,9 +45,9 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://static.data.gov.hk/covid-vaccine/bar_vaccination_date.json"
-    destination = "output/Hong Kong.csv"
+    destination = paths.out_tmp("Hong Kong")
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 

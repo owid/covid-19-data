@@ -1,9 +1,12 @@
+import os
 import datetime
 import pytz
+import json
+
 import requests
 import pandas as pd
+
 from vax.utils.incremental import enrich_data, increment
-import json
 
 
 def get_api_value(source: str, query: str, headers: dict):
@@ -74,7 +77,7 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = (
         "https://dashboard.impactlebanon.com/s/public/elasticsearch/vaccine_registration_event_data/_search?"
         "rest_total_hits_as_int=true&ignore_unavailable=true&ignore_throttled=true&preference=1619368403040&"
@@ -82,6 +85,7 @@ def main():
     )
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data['location'],
         total_vaccinations=data['total_vaccinations'],
         people_vaccinated=data['people_vaccinated'],

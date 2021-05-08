@@ -47,7 +47,7 @@ setup(
     python_requires=">=3.7",
     entry_points={
         "console_scripts": [
-            "cowid-vax=vax.__main__:main" ,
+            "cowid-vax=vax.cmd.__main__:main" ,
             "cowid-vax-track=vax.tracking.__main__:main" 
         ]
     }

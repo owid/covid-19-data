@@ -1,3 +1,4 @@
+import os
 import re
 
 import pandas as pd
@@ -85,11 +86,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def main():
+def main(paths):
     source = "https://info.gesundheitsministerium.gv.at/data/timeline-eimpfpass.csv"
-    destination = "output/Austria.csv"
+    destination = paths.out_tmp("Austria")
     read(source).pipe(pipeline).to_csv(destination, index=False)
-
-
-if __name__ == "__main__":
-    main()

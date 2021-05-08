@@ -1,8 +1,11 @@
+import os
 import datetime
 import json
 import pytz
+
 import requests
 import pandas as pd
+
 from vax.utils.incremental import enrich_data, increment
 
 
@@ -81,10 +84,11 @@ def pipeline(ds: pd.Series) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = 'https://wabi-west-europe-b-primary-api.analysis.windows.net/public/reports/querydata?synchronous=true'
     data = read(source).pipe(pipeline)
     increment(
+        paths=paths,
         location=data['location'],
         total_vaccinations=data['total_vaccinations'],
         people_vaccinated=data['people_vaccinated'],

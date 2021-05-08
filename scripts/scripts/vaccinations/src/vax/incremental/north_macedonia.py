@@ -1,3 +1,4 @@
+import os
 import datetime
 
 import pandas as pd
@@ -53,10 +54,11 @@ def pipeline(ds: pd.Series, source: str) -> pd.Series:
     )
 
 
-def main():
+def main(paths):
     source = "https://kovid19vakcinacija.mk/"
     data = read(source).pipe(pipeline, source)
     increment(
+        paths=paths,
         location=data["location"],
         total_vaccinations=data["total_vaccinations"],
         people_vaccinated=data["people_vaccinated"],
