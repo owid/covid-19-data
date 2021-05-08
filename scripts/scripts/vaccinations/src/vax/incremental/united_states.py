@@ -64,7 +64,7 @@ def get_vaccine_data(paths):
     })
     df = df.melt(["date", "location"], var_name="vaccine", value_name="total_vaccinations")
     df = df.dropna(subset=["total_vaccinations"])
-    df.to_csv(paths.out_tmp_man("United States"), index=False)
+    df.to_csv(paths.tmp_vax_loc_man("United States"), index=False)
 
 
 def main(paths):

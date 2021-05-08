@@ -143,10 +143,10 @@ class Romania:
         df_base = self.read().pipe(self.pipeline_base)
         # Export data
         df = df_base.copy().pipe(self.pipeline)
-        df.to_csv(paths.out_tmp(self.location), index=False)
+        df.to_csv(paths.tmp_vax_loc(self.location), index=False)
         # Export manufacturer data
         df = df_base.copy().pipe(self.pipeline_manufacturer)
-        df.to_csv(paths.out_tmp_man(f"{self.location}"), index=False)
+        df.to_csv(paths.tmp_vax_loc_man(f"{self.location}"), index=False)
 
 
 def main(paths):

@@ -125,7 +125,7 @@ def merge_with_current_data(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
 
 def main(paths):
     source = "https://www.gov.mo/zh-hant/news/page"
-    output_file = paths.out_tmp("Macao")
+    output_file = paths.tmp_vax_loc("Macao")
     last_update = pd.read_csv(output_file).date.max()
     df = read(source, last_update)
     if df is not None:

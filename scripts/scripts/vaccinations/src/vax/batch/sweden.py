@@ -86,7 +86,7 @@ class Sweden(object):
     def to_csv(self, paths):
         """Generalized."""
         df = self.read().pipe(self.pipeline)
-        df.to_csv(paths.out_tmp(self.location), index=False)
+        df.to_csv(paths.tmp_vax_loc(self.location), index=False)
 
 
 def main(paths):

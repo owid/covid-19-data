@@ -68,7 +68,7 @@ def main(paths):
     df.loc[:, "location"] = "Slovakia"
     df.loc[:, "vaccine"] = "Pfizer/BioNTech"
 
-    df.to_csv(paths.out_tmp("Slovakia"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Slovakia"), index=False)
 
 
 if __name__ == "__main__":

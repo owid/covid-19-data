@@ -61,7 +61,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 def main(paths):
     source = "https://github.com/COVID19-Malta/COVID19-Cases/raw/master/COVID-19%20Malta%20-%20Vaccination%20Data.csv"
-    destination = paths.out_tmp("Malta")
+    destination = paths.tmp_vax_loc("Malta")
     read(source).pipe(pipeline).to_csv(destination, index=False)
 
 

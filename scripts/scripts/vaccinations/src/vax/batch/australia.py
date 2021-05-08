@@ -55,7 +55,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 def main(paths):
     source = "https://covidlive.com.au/covid-live.json"
-    destination = paths.out_tmp("Australia")
+    destination = paths.tmp_vax_loc("Australia")
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 

@@ -16,7 +16,11 @@ class ConfigParamsStep(object):
         self.__dict__.update(adict)
 
     def __str__(self):
-        return f"\n".join([f"* {k}: {v}" for k, v in self._dict.items() if "token" not in k])
+        def _is_secret(name):
+            secret_keys = ["id", "token", "credentials", "credential", "secret"]
+            return any(x in name for x in secret_keys)
+
+        return f"\n".join([f"* {k}: {v}" for k, v in self._dict.items() if not _is_secret(k)])
 
 
 class ConfigParams(object):
@@ -37,7 +41,7 @@ class ConfigParams(object):
             config_file=args.config,
             parallel=args.parallel,
             njobs=args.njobs,
-            countries=args.countries,
+            countries=_countries_to_modules(args.countries),
             mode=args.mode,
             display=args.show_config,
         )
@@ -66,8 +70,18 @@ class ConfigParams(object):
             "output_dir": self._return_value("get-data", "output_dir", "output"),
             "parallel": self._return_value("get-data", "parallel", self.parallel),
             "njobs": self._return_value("get-data", "njobs", self.njobs),
-            "countries": _countries_to_modules(self._return_value("get-data", "countries", self.countries)),
+            "countries": self._return_value("get-data", "countries", self.countries),
             "greece_api_token": self._return_value("get-data", "greece_api_token", None),
+        })
+
+    @property
+    def ProcessDataConfig(self):
+        """Use `_token` for variables that are secret"""
+        return ConfigParamsStep({
+            "skip_complete": self._return_value("process-data", "skip_complete", []),
+            "skip_monotonic_check": self._return_value("process-data", "skip_monotonic_check", []),
+            "google_credentials": self._return_value("process-data", "google_credentials", None),
+            "google_spreadsheet_vax_id": self._return_value("process-data", "google_spreadsheet_vax_id", None),
         })
 
     def _return_value(self, step, feature_name, feature_from_args):
@@ -82,17 +96,19 @@ class ConfigParams(object):
 
     def __str__(self):
         if self.config_file_exists:
-            s = f"CONFIGURATION PARAMS:\nfile: {self.config_file}\n"
+            s = f"CONFIGURATION PARAMS:\nfile: {self.config_file}\n\n"
+            s += "*************************\n"
         else:
-            s = f"CONFIGURATION PARAMS:\nNo config file\n"
+            s = f"CONFIGURATION PARAMS:\nNo config file\n\n"
+            s += "*************************\n"
         if self.mode == "get-data":
             s += f"Get Data: \n{self.GetDataConfig.__str__()}"
         elif self.mode == "process-data":
-            s += f"Process Data: \nNothing"
+            s += f"Process Data: \n{self.ProcessDataConfig.__str__()}"
         elif self.mode == "all":
             s += f"Get Data: \n{self.GetDataConfig.__str__()}"
-            s += "**\n"
-            s += f"\nProcess Data: \nNothing"
+            s += "\n*************************\n\n"
+            s += f"Process Data: \n{self.ProcessDataConfig.__str__()}"
         else:
             raise ValueError("Not a valid mode!")
         s += "\n*************************\n\n"

@@ -19,7 +19,7 @@ def main(paths):
 
     df = df[df.total_vaccinations > 0]
 
-    df.to_csv(paths.out_tmp("Saudi Arabia"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Saudi Arabia"), index=False)
 
 
 if __name__ == '__main__':

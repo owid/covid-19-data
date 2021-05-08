@@ -22,7 +22,7 @@ def main(paths):
     df.loc[:, "source_url"] = "https://covid-19.sledilnik.org/en/stats"
     df.loc[:, "vaccine"] = "Oxford/AstraZeneca, Pfizer/BioNTech"
 
-    df.to_csv(paths.out_tmp("Slovenia"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Slovenia"), index=False)
 
 
 if __name__ == "__main__":

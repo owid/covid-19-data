@@ -16,7 +16,7 @@ def main(paths):
             "people_fully_vaccinated",
         ]
     )
-    df.to_csv(paths.out_tmp("Uruguay"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Uruguay"), index=False)
 
 
 if __name__ == "__main__":

@@ -104,7 +104,7 @@ def main(paths):
 
     for location in set(result.location):
         result.pipe(filter_location, location).to_csv(
-            paths.out_tmp(location), index=False
+            paths.tmp_vax_loc(location), index=False
         )
 
 

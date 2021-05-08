@@ -38,7 +38,7 @@ def main(paths):
     )
     vax["total_vaccinations"] = vax.groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
     vax["location"] = "Latvia"
-    vax.to_csv(paths.out_tmp_man("Latvia"), index=False)
+    vax.to_csv(paths.tmp_vax_loc_man("Latvia"), index=False)
 
     df = df.rename(columns={
         "Vakcinācijas datums": "date",
@@ -72,7 +72,7 @@ def main(paths):
     df.loc[:, "vaccine"] = ", ".join(vaccine_mapping.values())
     df.loc[:, "source_url"] = url
 
-    df.to_csv(paths.out_tmp("Latvia"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Latvia"), index=False)
 
 
 if __name__ == '__main__':

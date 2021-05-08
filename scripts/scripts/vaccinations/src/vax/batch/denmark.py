@@ -89,7 +89,7 @@ def main(paths):
         "cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&"
         "resultRecordCount=&sqlFormat=none&f=pjson&token="
     )
-    destination = paths.out_tmp("Denmark")
+    destination = paths.tmp_vax_loc("Denmark")
 
     dose1 = read(source_dose1).pipe(pipeline, colname="people_vaccinated")
     dose2 = read(source_dose2).pipe(pipeline, colname="people_fully_vaccinated")

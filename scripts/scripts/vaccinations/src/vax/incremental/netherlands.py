@@ -115,7 +115,7 @@ def merge_with_current_data(df: pd.DataFrame, filepath: str) -> pd.DataFrame:
 def main(paths):
     source_daily = "https://coronadashboard.government.nl/landelijk/vaccinaties"
     source_weekly = "https://www.rivm.nl/covid-19-vaccinatie/cijfers-vaccinatieprogramma"
-    output_file = paths.out_tmp("Netherlands")
+    output_file = paths.tmp_vax_loc("Netherlands")
     df = read(source_daily, source_weekly).pipe(pipeline)
     df = merge_with_current_data(df, output_file)
     df.to_csv(output_file, index=False)

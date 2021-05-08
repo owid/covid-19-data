@@ -30,7 +30,7 @@ def main(paths):
     )
     by_manufacturer["total_vaccinations"] = by_manufacturer.groupby("vaccine")["total_vaccinations"].cumsum()
     by_manufacturer["location"] = "Italy"
-    by_manufacturer.to_csv(paths.out_tmp_man("Italy"), index=False)
+    by_manufacturer.to_csv(paths.tmp_vax_loc_man("Italy"), index=False)
 
     # Vaccination data
     df = df.rename(columns={
@@ -52,7 +52,7 @@ def main(paths):
     df.loc[:, "source_url"] = url
     df.loc[:, "vaccine"] = ", ".join(sorted(vaccine_mapping.values()))
 
-    df.to_csv(paths.out_tmp("Italy"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Italy"), index=False)
 
 
 if __name__ == "__main__":

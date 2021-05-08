@@ -182,8 +182,8 @@ def global_pipeline(df: pd.DataFrame) -> pd.DataFrame:
 def main(paths):
     source = "https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/ockovani.csv"
 
-    global_output = paths.out_tmp("Czechia")
-    by_manufacturer_output = paths.out_tmp_man("Czechia")
+    global_output = paths.tmp_vax_loc("Czechia")
+    by_manufacturer_output = paths.tmp_vax_loc_man("Czechia")
 
     base = read(source).pipe(base_pipeline)
 

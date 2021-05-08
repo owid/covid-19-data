@@ -76,7 +76,7 @@ class Ecuador:
         """Generalized."""
         df = self.read().pipe(self.pipeline)
         df.to_csv(
-            paths.out_tmp(self.location),
+            paths.tmp_vax_loc(self.location),
             index=False
         )
 

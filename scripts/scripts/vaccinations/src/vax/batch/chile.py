@@ -91,11 +91,11 @@ def main(paths):
     assert condition, "External repository is not up to date"
 
     data.pipe(postprocess_vaccinations).to_csv(
-        paths.out_tmp(location),
+        paths.tmp_vax_loc(location),
         index=False
     )
     data.pipe(postprocess_manufacturer).to_csv(
-        paths.out_tmp_man(location),
+        paths.tmp_vax_loc_man(location),
         index=False
     )
 

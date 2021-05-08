@@ -54,7 +54,7 @@ def _get_data_country(module_name: str, paths: str, greece_api_token: str):
     }
 
 
-def main_get_data(paths: str, parallel: bool = False, n_jobs: int = -2, modules_name: list = modules_name,
+def main_get_data(paths, parallel: bool = False, n_jobs: int = -2, modules_name: list = modules_name,
                   greece_api_token: str = None):
     """Get data from sources and export to output folder.
 

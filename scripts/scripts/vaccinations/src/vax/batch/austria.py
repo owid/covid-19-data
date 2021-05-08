@@ -88,5 +88,5 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 def main(paths):
     source = "https://info.gesundheitsministerium.gv.at/data/timeline-eimpfpass.csv"
-    destination = paths.out_tmp("Austria")
+    destination = paths.tmp_vax_loc("Austria")
     read(source).pipe(pipeline).to_csv(destination, index=False)

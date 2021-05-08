@@ -61,7 +61,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 def main(paths, access_token: str):
     source = "https://data.gov.gr/api/v1/query/mdg_emvolio"
-    destination = paths.out_tmp("Greece")
+    destination = paths.tmp_vax_loc("Greece")
     read(source, access_token).pipe(pipeline).to_csv(destination, index=False)
 
 

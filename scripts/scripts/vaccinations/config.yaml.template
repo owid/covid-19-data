@@ -1,0 +1,18 @@
+global:
+  project_dir: # Mandatory
+pipeline:
+  get-data:
+    parallel: True
+    countries:
+    njobs: -2
+    greece_api_token: 
+  process-data:
+    skip_complete:
+    skip_monotonic_check:
+        - Northern Ireland
+        - Malta
+        - Romania
+        - Sweden
+    google_credentials:
+    google_spreadsheet_vax_id:
+  generate-dataset:

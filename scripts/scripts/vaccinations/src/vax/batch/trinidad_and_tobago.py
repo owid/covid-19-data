@@ -74,7 +74,7 @@ def main(paths):
         "https://services3.arcgis.com/x3I4DqUw3b3MfTwQ/arcgis/rest/services/service_7a519502598f492a9094fd0ad503cf80/"
         "FeatureServer/0/query"
     )
-    destination = paths.out_tmp("Trinidad and Tobago")
+    destination = paths.tmp_vax_loc("Trinidad and Tobago")
     read(source).pipe(pipeline, source_ref).to_csv(destination, index=False)
 
 

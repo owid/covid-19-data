@@ -95,7 +95,7 @@ def main(paths):
         f"Vaccines present in data: {df['vaccine'].unique()}"
     df = df.replace(vaccine_mapping)
 
-    df.to_csv(paths.out_tmp_man("Iceland"), index=False)
+    df.to_csv(paths.tmp_vax_loc_man("Iceland"), index=False)
 
 
 if __name__ == '__main__':

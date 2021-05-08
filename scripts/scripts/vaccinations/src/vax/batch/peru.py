@@ -42,7 +42,7 @@ def main(paths):
         "https://www.datosabiertos.gob.pe/dataset/vacunaci%C3%B3n-contra-covid-19-ministerio-de-salud-minsa"
     )
 
-    df.to_csv(paths.out_tmp("Peru"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Peru"), index=False)
 
 
 if __name__ == '__main__':

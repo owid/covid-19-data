@@ -116,7 +116,7 @@ def pipeline(df: pd.DataFrame) -> pd.DataFrame:
 
 def main(paths):
     source = "https://datadashboardapi.health.gov.il/api/queries/vaccinated"
-    destination = paths.out_tmp("Israel")
+    destination = paths.tmp_vax_loc("Israel")
 
     read(source).pipe(pipeline).to_csv(destination, index=False)
 

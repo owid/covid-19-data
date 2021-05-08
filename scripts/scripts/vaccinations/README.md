@@ -40,7 +40,7 @@ To update the data, make sure to install all the dependencies and run the code b
 Note that the pipelien currently uses a combination of Python and R. We recommend using a virtual environment for Python
 and an RStudio interactive session for R.
 
-<details closed>
+<details open>
 <summary>Show steps ...</summary>
 
 ### 1. Dependencies
@@ -73,18 +73,33 @@ install.packages(c("data.table", "imputeTS", "lubridate", "readr", "retry", "rjs
 
 #### 1.4 Configuration file (internal)
 
-Create a file `vax_dataset_config.json` with all required parameters:
+To correctly run the pipeline, make sure to previously create a configuration file.
 
-```json
-{
-    "greece_api_token": "[GREECE_API_TOKEN]",
-    "owid_cloud_table_post": "[OWID_CLOUD_TABLE_POST]",
-    "google_credentials": "[CREDENTIALS_JSON_PATH]",
-    "google_spreadsheet_vax_id": "[SHEET_ID]"
-}
+```yaml
+global:
+  project_dir: [PATH TO THE REPOSITORY]  # Mandatory
+pipeline:
+  get-data:
+    parallel: [True or False]  # Use multi-threading
+    countries:  # Can be left empty. Additionally, can use keywords "incremental" and "batch"
+      - [COUNTRY A]
+      - [COUNTRY B]
+    njobs:  # Number of workers if using parallel=True
+    greece_api_token: [GREECE API TOKEN]
+  process-data:
+    skip_complete:
+    skip_monotonic_check:  # Can be left empty
+        - [COUNTRY 1]
+        - [COUNTRY 2]
+        ...
+    google_credentials: [PATH TO credentials.json FILE]
+    google_spreadsheet_vax_id: [GOOGLE SPREADSHEET ID]
+  generate-dataset:
 ```
 
-For `google`-related fields, you'll need a valid OAuth JSON credentials file, as explained in the [gsheets documentation](https://gsheets.readthedocs.io/en/stable/#quickstart).
+We provide [`config.yaml.template`](config.yaml.template) as a template.
+
+**Note**: For `google`-related fields, you'll need a valid OAuth JSON credentials file, as explained in the [gsheets documentation](https://gsheets.readthedocs.io/en/stable/#quickstart).
 
 
 ### 2. Manual data updates

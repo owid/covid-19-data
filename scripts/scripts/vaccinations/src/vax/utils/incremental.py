@@ -46,7 +46,7 @@ def increment(
     assert type(vaccine) == str
     assert type(source_url) == str
 
-    filepath_automated = paths.out_tmp(location)
+    filepath_automated = paths.tmp_vax_loc(location)
     filepath_public = f"{GH_LINK}/{location}.csv"
     # Move from public to output folder
     if not os.path.isfile(filepath_automated) and requests.get(filepath_public).ok:
@@ -80,7 +80,7 @@ def increment(
         if col in df.columns:
             df[col] = df[col].astype("Int64").fillna(pd.NA)
 
-    df.to_csv(paths.out_tmp(location), index=False)
+    df.to_csv(paths.tmp_vax_loc(location), index=False)
     # print(f"NEW: {total_vaccinations} doses on {date}")
 
 

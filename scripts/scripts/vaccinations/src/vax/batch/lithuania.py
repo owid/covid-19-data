@@ -49,7 +49,7 @@ def main(paths):
     )
     vax["total_vaccinations"] = vax.groupby("vaccine", as_index=False)["total_vaccinations"].cumsum()
     vax["location"] = "Lithuania"
-    vax.to_csv(paths.out_tmp_man("Lithuania"), index=False)
+    vax.to_csv(paths.tmp_vax_loc_man("Lithuania"), index=False)
 
     # Unpivot
     df = (
@@ -98,7 +98,7 @@ def main(paths):
     # df.loc[df["date"] >= "2021-01-13", "vaccine"] = "Moderna, Pfizer/BioNTech"
     # df.loc[df["date"] >= "2021-02-07", "vaccine"] = "Moderna, Oxford/AstraZeneca, Pfizer/BioNTech"
 
-    df.to_csv(paths.out_tmp("Lithuania"), index=False)
+    df.to_csv(paths.tmp_vax_loc("Lithuania"), index=False)
 
 
 if __name__ == "__main__":
