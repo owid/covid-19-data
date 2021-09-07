@@ -1,4 +1,4 @@
-Ensure you comply the following requirements:
+⁸Ensure you comply the following requirements:
 
 - [ ] I have read [Contribute section](https://github.com/owid/covid-19-data/tree/master/scripts/scripts/vaccinations#5-contribute).
 - [ ] I am proposing changes for a single country CSV file in [output](https://github.com/owid/covid-19-data/tree/master/scripts/scripts/vaccinations/output).
