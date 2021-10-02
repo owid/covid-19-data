@@ -44,7 +44,7 @@ def main():
                 "Date": [date],
                 "Country": "Jamaica",
                 "Units": "samples tested",
-                "Testing type": "PCR only",
+                "Testing type": "PCR, Antigen test",
                 "Source URL": source_url,
                 "Source label": "Jamaica Ministry of Health and Wellness",
             }
