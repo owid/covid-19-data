@@ -74,7 +74,9 @@ def get_count(soup):
             count_pcr = value
         elif "TMA" in title:
             count_tma = value
-    count = count_pcr + count_tma
+        elif "serològics" in title:
+            count_serologics = value
+    count = count_pcr + count_tma + count_serologics
 
     return count
 
@@ -108,7 +110,7 @@ def main():
                     "Date": date,
                     "Country": COUNTRY,
                     "Units": "people tested",
-                    "Testing type": "PCR, TMA",
+                    "Testing type": "PCR, TMA, Serology test",
                     "Source URL": URL,
                     "Source label": SOURCE_LABEL,
                 }
