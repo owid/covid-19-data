@@ -54,7 +54,7 @@ class HongKong(CountryTestBase):
         cases = self._load_cases()
         df = df.merge(cases, on="Date")
         df = df.sort_values("Date")
-        cases_over_period = df["Number of confirmed cases"].diff()
+        cases_over_period = df["Number of confirmed cases"].diff().abs()
         tests_over_period = df["Cumulative total"].diff()
         return df.assign(**{"Positive rate": (cases_over_period / tests_over_period).round(5)})
 
