@@ -89,7 +89,7 @@ class ElSalvador(CountryTestBase):
     def export(self):
         """Export data to csv"""
         df = self.read().pipe(self.pipeline)
-        self.export_datafile(df, float_format="%.5f")
+        self.export_datafile(df, float_format="%.5f",attach=True)
 
 
 def main():
