@@ -1,112 +1,100 @@
 import re
-import datetime
+import json
+
+from bs4 import BeautifulSoup, element
 import pandas as pd
 
-from cowidev.utils import get_soup
+from cowidev.utils import clean_count, clean_date_series, get_soup
 from cowidev.testing.utils.base import CountryTestBase
-
-COUNTRY = "Andorra"
-URL = "https://www.govern.ad/covid19/"
-SOURCE_LABEL = "Tauler COVID-19, Govern d'Andorra"
-
-
-def get_date(soup):
-    """Get date from soup.
-
-    Args:
-        soup (bs4.BeautifulSoup): Page HTML.
-
-    Returns:
-        str: date
-    """
-    # Month catalan name to index
-    month_map = {
-        "gener": 1,
-        "febrer": 2,
-        "març": 3,
-        "mar": 3,
-        "abril": 4,
-        "maig": 5,
-        "juny": 6,
-        "juliol": 7,
-        "agost": 8,
-        "setembre": 9,
-        "octubre": 10,
-        "novembre": 11,
-        "desembre": 12,
-    }
-    date_str = soup.find(class_="text-primary tracking-normal text-lg font-bold mb-0").text.lower()
-    match = re.search(r"actualització (\d+) d(e |')([a-z]+)", date_str)
-    # Get day and month from website
-    day = int(match.group(1))
-    month = int(month_map[match.group(3)])
-    # Estimate year and build date
-    year = datetime.datetime.now().year
-    date = datetime.date(year, month, day)
-    if date > datetime.datetime.now().date():
-        date = datetime.date(year - 1, month, day)
-    date = date.strftime("%Y-%m-%d")
-    return date
-
-
-def get_count(soup):
-    """Get number of tests from soup.
-
-    Args:
-        soup (bs4.BeautifulSoup): Page HTML.
-
-    Returns:
-        int: Count of tests (PCR + TMA)
-    """
-    tag_id = "capacidtat"  # CHECK ON THIS! It is a typo on their side, correct spelling should be "capacitat"
-    values = [elem.find("span") for elem in soup.find(id=tag_id).find_all("div", class_="text-primary")]
-    values = [int(x.text.replace(".", "")) for x in values]
-    titles = [x.text.strip() for x in soup.find(id=tag_id).findAll("h3")]
-
-    count = 0
-    for value, title in zip(values, titles):
-        if "PCR" in title:
-            count_pcr = value
-        elif "TMA" in title:
-            count_tma = value
-    count = count_pcr + count_tma
-
-    return count
-
-
-def is_404(soup):
-    return "404" in soup.find("title").text
 
 
 class Andorra(CountryTestBase):
     location = "Andorra"
+    units = "tests performed"
+    source_label = "Tauler COVID-19, Govern d'Andorra"
+    source_url_ref = "https://covid19.govern.ad"
+    regex = {
+        "script": r"'n_serologics': {",
+        "pcr": r"'n_pcr': { type: 'line', data: { labels:(.*?), datasets: .*? data: (.*?), fill:",
+        "tma": r"'n_tma': { type: 'line', data: { labels:(.*?), datasets: .*? data: (.*?), fill:",
+    }
+
+    def read(self) -> pd.DataFrame:
+        """Reads data from the source page."""
+        soup = get_soup(self.source_url_ref)
+        data = self._parse_data(soup)
+        return data
+
+    def _parse_data(self, soup: BeautifulSoup) -> pd.DataFrame:
+        """Gets data from the source page."""
+        # Get relevant element
+        elem = self._get_relevant_element(soup)
+        # Extract text from element
+        text = self._get_text_from_element(elem)
+        # Extract data from text
+        data = self._parse_metrics(text)
+        return data
+
+    def _get_relevant_element(self, soup: BeautifulSoup) -> element.Tag:
+        """Gets the relevant element."""
+        elem = soup.find("script", text=re.compile(self.regex["script"]))
+        if not elem:
+            raise ValueError("No element found, please update the script")
+        return elem
+
+    def _get_text_from_element(self, elem: element.Tag) -> str:
+        """Extracts text from the element."""
+        text = re.sub(r"\s+", " ", str(elem))
+        return text
+
+    def _parse_metrics(self, text: str) -> pd.DataFrame:
+        """Get metrics from text."""
+        df_pcr = self._df_builder("pcr", text)
+        df_tma = self._df_builder("tma", text)
+        df = pd.merge(df_pcr, df_tma)
+        return df
+
+    def _df_builder(self, regex_key: str, text: str) -> pd.DataFrame:
+        """Builds Dataframe"""
+        match = re.search(self.regex[regex_key], text)
+        if not match:
+            raise ValueError("No match found, please update the regex")
+        df = pd.DataFrame([json.loads(match.group(1)), json.loads(match.group(2))], index=["Date", f"{regex_key}"]).T
+        return df
+
+    def pipe_date(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Pipes date column."""
+        return df.assign(Date=clean_date_series(df.Date, "%d/%m/%y"))
+
+    def pipe_metrics(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Pipes metrics."""
+        return df.assign(
+            **{
+                "Cumulative total": df.pcr.apply(clean_count) + df.tma.apply(clean_count),
+            }
+        )
+
+    def pipe_correct_dp(self, df: pd.DataFrame):
+        """Pipes the replacement data point."""
+        date = "2021-03-22"
+        correct_dp = 164665
+        df.loc[df.Date == date, "Cumulative total"] = correct_dp
+        return df
+
+    def pipeline(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Pipeline for data."""
+        return (
+            df.pipe(self.pipe_date)
+            .pipe(self.pipe_metrics)
+            .pipe(self.pipe_correct_dp)
+            .pipe(self.pipe_metadata)
+            .sort_values("Date")
+        )
 
     def export(self):
-        """Main function.
-
-        Update file in `PATH`.
-        """
-        data = pd.read_csv(self.output_path)
-
-        # Retrieve HTML page (using fake header, otherwise 404 error)
-        soup = get_soup(URL)
-
-        if not is_404(soup):
-            date = get_date(soup)
-
-            if data.Date.max() < date:
-                count = get_count(soup)
-                if count > data["Cumulative total"].max():
-                    new_row = {
-                        "Cumulative total": count,
-                        "Date": date,
-                        "Country": COUNTRY,
-                        "Units": "people tested",
-                        "Source URL": URL,
-                        "Source label": SOURCE_LABEL,
-                    }
-                    data = data.append(new_row, ignore_index=True)
-                    self.export_datafile(data)
+        """Exports data to CSV."""
+        df = self.read().pipe(self.pipeline)
+        self.export_datafile(df)
 
 
 def main():
