@@ -58,7 +58,6 @@ pipeline:
       countries: 
       skip_countries:
         - Benin #the source is n longer updating
-        - Kazakhstan
         - Lebanon
     process:
     generate:
