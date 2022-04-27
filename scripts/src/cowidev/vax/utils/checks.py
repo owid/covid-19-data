@@ -16,6 +16,7 @@ VACCINES_ACCEPTED = [
     "IMBCAMS",
     "Johnson&Johnson",
     "KCONVAC",
+    "Medicago",
     "Medigen",
     "Moderna",
     "Novavax",
