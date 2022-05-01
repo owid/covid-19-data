@@ -68,18 +68,15 @@ class Canada(CountryVaxBase):
         return df
 
     def pipe_metadata(self, df: pd.DataFrame):
-        df = df.assign(
-            location=self.location,
-            source_url=self.source_url_ref,
-            vaccine="Moderna, Oxford/AstraZeneca, Pfizer/BioNTech",
-        )
+        df = df.assign(location=self.location, source_url=self.source_url_ref)
         df = build_vaccine_timeline(
             df,
             {
+                "Johnson&Johnson": "2021-11-13",
                 "Moderna": "2021-01-02",
+                "Novavax": "2022-04-24",
                 "Oxford/AstraZeneca": "2021-03-13",
-                "Pfizer/BioNTech": "2020-12-01",
-                "Johnson&Johnson": "2021-07-17",
+                "Pfizer/BioNTech": "2020-12-14",
             },
         )
         return df
