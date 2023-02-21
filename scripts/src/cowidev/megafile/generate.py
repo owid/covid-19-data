@@ -69,15 +69,16 @@ def generate_megafile(logger):
 
     # Experimental: Use new cases/deaths source
     logger.info("## EXPERIMENTAL MEGAFILE PROCESS ##")
-    all_covid = load_data(logger, new=True)
+    all_covid_new = load_data(logger, new=True)
+
     export_internal(
         logger,
-        all_covid,
+        all_covid_new,
         output_dir=os.path.join(DATA_DIR, "internal_new"),
         categories_filter=["cases-tests", "deaths", "all-reduced"],
     )
-    all_covid = process_for_public(all_covid)
-    create_dataset(all_covid, MACRO_VARIABLES, logger, "owid-covid-data-new")
+    all_covid_new = process_for_public(all_covid_new)
+    create_dataset(all_covid_new, MACRO_VARIABLES, logger, "owid-covid-data-new")
 
 
 def load_data(logger, new=False):
