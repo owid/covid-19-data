@@ -3,12 +3,14 @@ import datetime
 import pandas as pd
 
 from cowidev.utils.s3 import obj_from_s3
+from cowidev.utils.catalog import load_table_from_catalog
 
 
 def get_variants(cases_file: str, variants_file: str) -> pd.DataFrame:
     """
     Fetches the processed data from CoVariants.org and merges it with biweekly cases from WHO/JHU.
     """
+    tb = load_table_from_catalog(namespace="covid", dataset="sequence", table="variants")
     variants = read(variants_file, usecols=["location", "date", "num_sequences_total"]).drop_duplicates()
     cases = pd.read_csv(cases_file, usecols=["location", "date", "biweekly_cases"]).dropna()
 
