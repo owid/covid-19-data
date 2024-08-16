@@ -3,7 +3,7 @@ COVID-19 dataset by Our World in Data
 
 .. warning::
 
-   **This documentation is deprecated. Please refer to the new documentation at [https://docs.owid.io/projects/etl/api/covid](https://docs.owid.io/projects/etl/api/covid).**
+   **This documentation is deprecated. Please refer to the new documentation at https://docs.owid.io/projects/etl/api/covid.**
 
    The information contained here may be outdated or no longer maintained. We encourage you to visit the new documentation to access the most up-to-date and accurate information.
 
