@@ -1,5 +1,14 @@
 COVID-19 dataset by Our World in Data
 =====================================
+
+.. warning::
+
+   **This documentation is deprecated. Please refer to the new documentation at [https://docs.owid.io/projects/etl/api/covid](https://docs.owid.io/projects/etl/api/covid).**
+
+   The information contained here may be outdated or no longer maintained. We encourage you to visit the new documentation to access the most up-to-date and accurate information.
+
+---
+
 At Our World in Data, we have been collecting COVID-19 data from various domains since the pandemic started. These
 domains include testing, vaccinations, hospitalizations and more. We believed (and still believe) that to make progress
 against the outbreak of the Coronavirus disease – COVID-19 – we need to understand how the pandemic is developing. And
